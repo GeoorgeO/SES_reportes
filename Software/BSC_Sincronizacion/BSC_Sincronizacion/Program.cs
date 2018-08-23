@@ -22,7 +22,7 @@ namespace BSC_Sincronizacion
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new Frm_Conexiones());
+            Application.Run(new Frm_Sincronizar());
         }
     }
 }
