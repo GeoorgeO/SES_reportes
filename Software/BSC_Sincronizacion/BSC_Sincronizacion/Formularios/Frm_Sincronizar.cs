@@ -21,6 +21,7 @@ namespace BSC_Sincronizacion
         private void Frm_Sincronizar_Shown(object sender, EventArgs e)
         {
             dtFechaInicio.EditValue = DateTime.Now;
+            dtFechaFin.EditValue = DateTime.Now;
         }
     }
 }
