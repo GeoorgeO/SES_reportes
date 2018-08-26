@@ -22,6 +22,65 @@ namespace BSC_Sincronizacion
         {
             dtFechaInicio.EditValue = DateTime.Now;
             dtFechaFin.EditValue = DateTime.Now;
+
+
+
+        }
+        public void asignartablaagrid()
+        {
+            
+        }
+
+        private void btnSincronizar_Click(object sender, EventArgs e)
+        {
+            
+                ModificaActualizaCentral();
+            
+        }
+
+        private void btnDataBase_Click(object sender, EventArgs e)
+        {
+            Frm_Conexiones frm = new Frm_Conexiones();
+            frm.ShowDialog();
+        }
+
+        private void ModificaActualizaCentral()
+        {
+            for (int i = 0; i < length; i++)
+            {
+                switch (switch_on)
+                {
+                    case "Articulo":
+                        MtdArticulo();
+                        break;
+                    default:
+                }
+            } 
+            
+
+            
+            //MtdArticuloMedidas();
+            //MtdCaja();
+            //MtdCCliente();
+            //MtdCliente();
+            //MtdCondicionesPagos();
+            //MtdCProveedor();
+            //MtdEntradaMercanciaTipo();
+            //MtdFamilia();
+            //MtdFormasdePago();
+            //MtdIva();
+            //MtdLocalidad();
+            //MtdMedidas();
+            //MtdMetodoPagos();
+            //MtdMoneda();
+            //MtdProveedor();
+            //MtdRoles();
+            //MtdSalidaMercanciaTipo();
+            //MtdSucursales();
+            //MtdTarifa();
+            //MtdUsuarios();
+            //MtdVendedor();
+
         }
     }
 }

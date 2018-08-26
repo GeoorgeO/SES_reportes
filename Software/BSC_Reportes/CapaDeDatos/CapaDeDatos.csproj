@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CLS_Articulos.cs" />
+    <Compile Include="CLS_Catalogos.cs" />
     <Compile Include="CLS_ConexionesLC.cs" />
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\ConexionBase.cs" />
@@ -50,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
+    <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SincronizacionCentral\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

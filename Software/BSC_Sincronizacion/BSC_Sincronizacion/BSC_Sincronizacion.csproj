@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CapaDeDatos">
-      <HintPath>..\..\BSC-Reportes\CapaDeDatos\bin\Debug\CapaDeDatos.dll</HintPath>
+      <HintPath>..\..\BSC_Reportes\CapaDeDatos\bin\Debug\CapaDeDatos.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Data.v17.1" />
