@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapadeDatos
+namespace CapaDeDatos
 {
     class CLSArticulosLocal: ConexionBase
     {
         public string FechaFin { get;  set; }
         public string FechaInicio { get;  set; }
 
-        public void MtdSeleccionarCatalogos()
+        public void MtdSeleccionarArticulos()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;

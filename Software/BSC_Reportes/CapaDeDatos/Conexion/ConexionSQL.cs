@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 
 
-namespace CapadeDatos
+namespace CapaDeDatos
 {
     
     public class ConexionSQL
@@ -29,16 +29,16 @@ namespace CapadeDatos
                 MSRegistro RegOut = new MSRegistro();
                 Crypto DesencriptarTexto = new Crypto();
 
-                valServer = RegOut.GetSetting("ConexionSQL", "Server");
-                valDB = RegOut.GetSetting("ConexionSQL", "DBase");
-                valLogin = RegOut.GetSetting("ConexionSQL", "User");
-                valPass = RegOut.GetSetting("ConexionSQL", "Password");
+                valServer = RegOut.GetSetting("ConexionSQL", "ServerL");
+                valDB = RegOut.GetSetting("ConexionSQL", "DBaseL");
+                valLogin = RegOut.GetSetting("ConexionSQL", "UserL");
+                valPass = RegOut.GetSetting("ConexionSQL", "PasswordL");
                 if (valServer != string.Empty && valLogin != string.Empty && valLogin != string.Empty && valPass != string.Empty)
                 {
-                    valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "Server"));
-                    valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBase"));
-                    valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "User"));
-                    valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "Password"));
+                    valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerL"));
+                    valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseL"));
+                    valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserL"));
+                    valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordL"));
                 }
                 else
                 {
@@ -105,16 +105,16 @@ namespace CapadeDatos
                 MSRegistro RegOut = new MSRegistro();
                 Crypto DesencriptarTexto = new Crypto();
 
-                valServer = RegOut.GetSetting("ConexionSQL", "Server");
-                valDB = RegOut.GetSetting("ConexionSQL", "DBase");
-                valLogin = RegOut.GetSetting("ConexionSQL", "User");
-                valPass = RegOut.GetSetting("ConexionSQL", "Password");
+                valServer = RegOut.GetSetting("ConexionSQL", "ServerC");
+                valDB = RegOut.GetSetting("ConexionSQL", "DBaseC");
+                valLogin = RegOut.GetSetting("ConexionSQL", "UserC");
+                valPass = RegOut.GetSetting("ConexionSQL", "PasswordC");
                 if (valServer != string.Empty && valLogin != string.Empty && valLogin != string.Empty && valPass != string.Empty)
                 {
-                    valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "Server"));
-                    valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBase"));
-                    valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "User"));
-                    valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "Password"));
+                    valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerC"));
+                    valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseC"));
+                    valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserC"));
+                    valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordC"));
                 }
                 else
                 {

@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 
 
-namespace CapadeDatos
+namespace CapaDeDatos
 {
     public class Conexion
     {
@@ -24,32 +24,52 @@ namespace CapadeDatos
         public string Mensaje { get; set; }
         
 
-        private string m_cadenaConexion;
-        public string CadenaConexion
-        {
-            get { return m_cadenaConexion; }
-        }
-        public void conexionAux(string cadenaConexion)
-        {
-            m_cadenaConexion = cadenaConexion;
+        //private string m_cadenaConexion;
+        public string m_cadenaConexion { get; set; }
+        //
+        //public void conexionAux(string cadenaConexion)
+        //{
+        //    m_cadenaConexion = cadenaConexion;
 
-        }
-        public Conexion(string CadenaConexionWindowsForm) 
-        {	        
-	        conexionAux(CadenaConexionWindowsForm);
+        //}
+        public Conexion(string cadenaConexion)
+        {
+            m_cadenaConexion = cadenaConexion; ;
         }
         public void Conectar()
         {
-	        Exito = true;
-	        try {
-		        if (conn != null && conn.State == ConnectionState.Closed) {
-			        conn.ConnectionString = m_cadenaConexion;
-			        conn.Open();
-		        }
-	        } catch (Exception e) {
-		        Mensaje = e.Message;
-		        Exito = false;
-	        }
+            Exito = true;
+            try
+            {
+                if (conn != null && conn.State == ConnectionState.Closed)
+                {
+                    conn.ConnectionString = m_cadenaConexion;
+                    conn.Open();
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
+        }
+        public void ConectarC()
+        {
+            Exito = true;
+            try
+            {
+                if (conn != null && conn.State == ConnectionState.Closed)
+                {
+                    conn.ConnectionString = m_cadenaConexion;
+                    conn.Open();
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
 
         }
         public void Desconectar()
@@ -74,7 +94,7 @@ namespace CapadeDatos
         /// <param name="parametro"></param>
         /// <param name="valor"></param>
 
-        private void TipoDato(EnumTipoDato tipo, ref SqlParameter parametro, TipoDato valor)
+       private void TipoDato(EnumTipoDato tipo, ref SqlParameter parametro, TipoDato valor)
         {
             if (tipo == EnumTipoDato.Tipodecimal)
             {
@@ -148,13 +168,38 @@ namespace CapadeDatos
 		        conn.Close();
 	        }
         }
+        public void EjecutarNonQueryC()
+        {
+            Exito = true;
+            try
+            {
+                ConectarC();
+                if (Exito == true)
+                {
+                    comando.Connection = conn;
+                    comando.CommandText = NombreProcedimiento;
+                    comando.CommandTimeout = 500000;
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         public void EjecutarDataset(bool Tabla)
         {
 	        DataTable dtMyTable = new DataTable("TABLANORMEX");
 	        DataSet dtMyDataSet = new DataSet();
 
-
+            //Conectar();
 	        this.Exito = true;
 
 	        try {
@@ -185,9 +230,58 @@ namespace CapadeDatos
 		        conn.Close();
 	        }
         }
+        public void EjecutarDatasetC(bool Tabla)
+        {
+            DataTable dtMyTable = new DataTable("TABLANORMEX");
+            DataSet dtMyDataSet = new DataSet();
+
+            ConectarC();
+            this.Exito = true;
+
+            try
+            {
+                if (Exito == true)
+                {
+                    comando.Connection = conn;
+                    comando.CommandText = NombreProcedimiento;
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.CommandTimeout = 500000;
+                    conn.ConnectionString = m_cadenaConexion;
+                    comando.Connection = conn;
+                    SqlDataAdapter SqlDa = new SqlDataAdapter(comando);
+                    if (Tabla == true)
+                    {
+                        SqlDa.Fill(dtMyTable);
+                        Datos = dtMyTable;
+                    }
+                    else
+                    {
+                        SqlDa.Fill(dtMyDataSet);
+                        DatosDataSet = dtMyDataSet;
+
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                this.Mensaje = e.Message;
+
+
+                this.Exito = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public void EjecutarDataset()
         {
 	        EjecutarDataset(true);
+        }
+        public void EjecutarDatasetC()
+        {
+            EjecutarDatasetC(true);
         }
     }//End Class
 }

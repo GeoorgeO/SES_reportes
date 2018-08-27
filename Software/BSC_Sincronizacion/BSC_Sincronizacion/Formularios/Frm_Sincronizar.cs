@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using CapaDeDatos;
 
 namespace BSC_Sincronizacion
 {
@@ -17,25 +18,125 @@ namespace BSC_Sincronizacion
         {
             InitializeComponent();
         }
-
-        private void Frm_Sincronizar_Shown(object sender, EventArgs e)
+        private string DosCero(string sVal)
         {
-            dtFechaInicio.EditValue = DateTime.Now;
-            dtFechaFin.EditValue = DateTime.Now;
+            string str = "";
+            if (sVal.Length == 1)
+            {
+                return (str = "0" + sVal);
+            }
+            return sVal;
+        }
+        private void MakeFirstTable()
+        {
+            DataTable table = new DataTable("FirstTable");
+            DataColumn column;
+            table.Reset();
+            // DataRow row;
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Column0";
+            column.AutoIncrement = false;
+            column.Caption = "Catalogos";
+            column.ReadOnly = false;
+            column.Unique = false;
 
+            table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = typeof(Boolean);
+            column.ColumnName = "Column1";
+            column.AutoIncrement = false;
+            column.Caption = "Reenviar";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Column2";
+            column.AutoIncrement = false;
+            column.Caption = "Total Articulos";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Column3";
+            column.AutoIncrement = false;
+            column.Caption = "Total Actualizados";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Column4";
+            column.AutoIncrement = false;
+            column.Caption = "Status";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            GCatalogos.DataSource = table;
 
         }
-        public void asignartablaagrid()
+        private void Frm_Sincronizar_Shown(object sender, EventArgs e)
         {
-            
+            this.ClientSize = new Size(672, 712);
+            dtFechaInicio.EditValue = DateTime.Now;
+            dtFechaFin.EditValue = DateTime.Now;
+            MakeFirstTable();
+            LlenarListaCatalogo();
+        }
+
+        private void LlenarListaCatalogo()
+        {
+            CLSTablasSincronizarCentral gst = new CLSTablasSincronizarCentral();
+
+            gst.MtdSeleccionarCatalogos();
+            if (gst.Exito)
+            {
+                string vCatalogos = string.Empty;
+                Boolean VActualiza = false;
+                string vTotalArticulos = string.Empty;
+                string vTotalActualizados = string.Empty;
+                string vStatus = string.Empty;
+
+                for (int x = 0; x < gst.Datos.Rows.Count; x++)
+                {
+                    vCatalogos = gst.Datos.Rows[x][0].ToString();
+                    VActualiza = false;
+                    vTotalArticulos = "0";
+                    vTotalActualizados = "0";
+                    vStatus = "Not updated";
+                    CreatNewRow(vCatalogos, VActualiza, vTotalArticulos, vTotalActualizados, vStatus);
+                }
+            }
+        }
+        private void CreatNewRow(string vCatalogos, Boolean VActualiza, string vTotalArticulos, string vTotalActualizados, String vStatus)
+        {
+            GValCatalogos.AddNewRow();
+
+            int rowHandle = GValCatalogos.GetRowHandle(GValCatalogos.DataRowCount);
+            if (GValCatalogos.IsNewItemRow(rowHandle))
+            {
+                GValCatalogos.SetRowCellValue(rowHandle, GValCatalogos.Columns[0], vCatalogos);
+                GValCatalogos.SetRowCellValue(rowHandle, GValCatalogos.Columns[1], VActualiza);
+                GValCatalogos.SetRowCellValue(rowHandle, GValCatalogos.Columns[2], vTotalArticulos);
+                GValCatalogos.SetRowCellValue(rowHandle, GValCatalogos.Columns[3], vTotalActualizados);
+                GValCatalogos.SetRowCellValue(rowHandle, GValCatalogos.Columns[4], vStatus);
+            }
         }
 
         private void btnSincronizar_Click(object sender, EventArgs e)
         {
-            
-                ModificaActualizaCentral();
-            
+            ModificaActualizaCentral();
         }
 
         private void btnDataBase_Click(object sender, EventArgs e)
@@ -46,16 +147,16 @@ namespace BSC_Sincronizacion
 
         private void ModificaActualizaCentral()
         {
-            for (int i = 0; i < length; i++)
-            {
-                switch (switch_on)
-                {
-                    case "Articulo":
-                        MtdArticulo();
-                        break;
-                    default:
-                }
-            } 
+            //for (int i = 0; i < length; i++)
+            //{
+            //    switch (switch_on)
+            //    {
+            //        case "Articulo":
+            //            MtdArticulo();
+            //            break;
+            //        default:
+            //    }
+            //} 
             
 
             
@@ -81,6 +182,29 @@ namespace BSC_Sincronizacion
             //MtdUsuarios();
             //MtdVendedor();
 
+        }
+
+        private void chkTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTodos.Checked == true)
+            {
+                int xRow = 0;
+                for (int i = 0; i < GValCatalogos.RowCount; i++)
+                {
+                    xRow = GValCatalogos.GetVisibleRowHandle(i);
+                    GValCatalogos.SetRowCellValue(xRow, "Column1", true);
+                }
+            }
+            else
+            {
+                int xRow = 0;
+                for (int i = 0; i < GValCatalogos.RowCount; i++)
+                {
+                    xRow = GValCatalogos.GetVisibleRowHandle(i);
+                    GValCatalogos.SetRowCellValue(xRow, "Column1", false);
+
+                }
+            }
         }
     }
 }

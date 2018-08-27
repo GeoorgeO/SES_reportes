@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Sincronizar));
             this.lFechaInicio = new DevExpress.XtraEditors.LabelControl();
             this.dtFechaInicio = new DevExpress.XtraEditors.DateEdit();
@@ -38,14 +39,11 @@
             this.lEstatus = new DevExpress.XtraEditors.LabelControl();
             this.GCatalogos = new DevExpress.XtraGrid.GridControl();
             this.GValCatalogos = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.chkTodos = new DevExpress.XtraEditors.CheckEdit();
             this.btnDataBase = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin.Properties.CalendarTimeProperties)).BeginInit();
@@ -55,6 +53,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GValCatalogos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTodos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
@@ -131,61 +130,20 @@
             this.GCatalogos.Location = new System.Drawing.Point(12, 12);
             this.GCatalogos.MainView = this.GValCatalogos;
             this.GCatalogos.Name = "GCatalogos";
-            this.GCatalogos.Size = new System.Drawing.Size(648, 299);
+            this.GCatalogos.Size = new System.Drawing.Size(648, 565);
             this.GCatalogos.TabIndex = 8;
             this.GCatalogos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GValCatalogos});
             // 
             // GValCatalogos
             // 
-            this.GValCatalogos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn5,
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4});
             this.GValCatalogos.GridControl = this.GCatalogos;
             this.GValCatalogos.Name = "GValCatalogos";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Actualiza";
-            this.gridColumn1.FieldName = "Actualiza";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "gridColumn2";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "gridColumn3";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "gridColumn4";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Catalogo";
-            this.gridColumn5.FieldName = "Tabla";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 0;
+            this.GValCatalogos.OptionsView.ShowGroupPanel = false;
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.chkTodos);
             this.panelControl1.Controls.Add(this.btnDataBase);
             this.panelControl1.Controls.Add(this.lFechaInicio);
             this.panelControl1.Controls.Add(this.dtFechaInicio);
@@ -200,6 +158,24 @@
             this.panelControl1.Size = new System.Drawing.Size(672, 123);
             this.panelControl1.TabIndex = 9;
             // 
+            // chkTodos
+            // 
+            this.chkTodos.Location = new System.Drawing.Point(247, 49);
+            this.chkTodos.Name = "chkTodos";
+            this.chkTodos.Properties.Caption = "Todos";
+            this.chkTodos.Size = new System.Drawing.Size(75, 19);
+            this.chkTodos.TabIndex = 9;
+            this.chkTodos.CheckedChanged += new System.EventHandler(this.chkTodos_CheckedChanged);
+            // 
+            // btnDataBase
+            // 
+            this.btnDataBase.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDataBase.ImageOptions.Image")));
+            this.btnDataBase.Location = new System.Drawing.Point(0, 0);
+            this.btnDataBase.Name = "btnDataBase";
+            this.btnDataBase.Size = new System.Drawing.Size(26, 23);
+            this.btnDataBase.TabIndex = 8;
+            this.btnDataBase.Click += new System.EventHandler(this.btnDataBase_Click);
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.GCatalogos);
@@ -207,26 +183,24 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 123);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(672, 323);
+            this.panelControl2.Size = new System.Drawing.Size(672, 589);
             this.panelControl2.TabIndex = 10;
             // 
-            // btnDataBase
+            // SkinForm
             // 
-            this.btnDataBase.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnDataBase.Location = new System.Drawing.Point(0, 0);
-            this.btnDataBase.Name = "btnDataBase";
-            this.btnDataBase.Size = new System.Drawing.Size(26, 23);
-            this.btnDataBase.TabIndex = 8;
-            this.btnDataBase.Click += new System.EventHandler(this.btnDataBase_Click);
+            this.SkinForm.EnableBonusSkins = true;
+            this.SkinForm.LookAndFeel.SkinName = "Sharp";
             // 
             // Frm_Sincronizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 446);
+            this.ClientSize = new System.Drawing.Size(672, 712);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Frm_Sincronizar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Sincronizar";
             this.Shown += new System.EventHandler(this.Frm_Sincronizar_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties.CalendarTimeProperties)).EndInit();
@@ -239,6 +213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTodos.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -256,13 +231,10 @@
         private DevExpress.XtraEditors.LabelControl lEstatus;
         private DevExpress.XtraGrid.GridControl GCatalogos;
         private DevExpress.XtraGrid.Views.Grid.GridView GValCatalogos;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton btnDataBase;
+        private DevExpress.XtraEditors.CheckEdit chkTodos;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel SkinForm;
     }
 }

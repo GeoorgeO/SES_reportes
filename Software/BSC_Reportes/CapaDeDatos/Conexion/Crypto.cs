@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace CapadeDatos
+namespace CapaDeDatos
 {
     class Crypto
     {

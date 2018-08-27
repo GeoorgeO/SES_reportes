@@ -52,10 +52,9 @@
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
+    <Compile Include="SincronizacionCentral\CLSTablasSincronizarCentral.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SincronizacionCentral\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

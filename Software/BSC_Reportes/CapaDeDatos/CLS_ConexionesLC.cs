@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapadeDatos
+namespace CapaDeDatos
 {
     public class CLS_ConexionesLC : ConexionBase
     {

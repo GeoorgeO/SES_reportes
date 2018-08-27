@@ -8,7 +8,7 @@ using System.Text;
 using System.Security.Cryptography;
 using Microsoft.Win32;
 
-namespace CapadeDatos
+namespace CapaDeDatos
 {
     class MSRegistro
     {
