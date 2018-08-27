@@ -7,7 +7,9 @@ GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_CatalogosCentral_Select')
+DROP PROCEDURE SP_BSC_CatalogosCentral_Select
+GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
@@ -27,5 +29,3 @@ BEGIN
 END
 
 GO
-
-
