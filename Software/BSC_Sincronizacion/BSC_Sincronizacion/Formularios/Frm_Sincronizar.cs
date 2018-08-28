@@ -299,7 +299,22 @@ namespace BSC_Sincronizacion
 
         private void AplicaCambiosArticulo()
         {
+            CLSArticulosLocal SelArt = new CLSArticulosLocal();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarArticulos();
+            if(SelArt.Exito==true)
+            {
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(),SelArt.Datos.Rows[i][1].ToString());
+                }
+            }
+        }
 
+        private void SincronizaArticulos(string Codigo, string Descripcion)
+        {
+            
         }
     }
 }

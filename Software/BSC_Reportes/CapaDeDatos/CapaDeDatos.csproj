@@ -53,6 +53,7 @@
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
     <Compile Include="SincronizacionCentral\CLSTablasSincronizarCentral.cs" />
+    <Compile Include="SincronizacionCentral\CLS_Articulo_Central.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
