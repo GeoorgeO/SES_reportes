@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSArticulosLocal: ConexionBase
+    public class CLSArticulosLocal: ConexionBase
     {
         public string FechaFin { get;  set; }
         public string FechaInicio { get;  set; }
@@ -17,7 +17,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "usp_ActualizaArticulosLocal_Select";
+                _conexion.NombreProcedimiento = "SP_BSC_ActualizaArticuloLocal_Select";
                 _dato.CadenaTexto = FechaInicio;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;

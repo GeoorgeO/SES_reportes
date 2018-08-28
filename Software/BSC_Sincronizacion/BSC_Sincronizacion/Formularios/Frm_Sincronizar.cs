@@ -206,5 +206,100 @@ namespace BSC_Sincronizacion
                 }
             }
         }
+        private string RecorreGrid(string NombreJLSV)
+        {
+            int xRow = 0;
+            string Cadena = string.Empty;
+
+            for (int i = 0; i < GValCatalogos.RowCount; i++)
+            {
+                xRow = GValCatalogos.GetVisibleRowHandle(i);
+
+                if (Convert.ToBoolean(GValCatalogos.GetRowCellValue(xRow, "Column1")) )
+                {
+                    switch (GValCatalogos.GetRowCellValue(xRow, "Column0").ToString())
+                    {
+                        case "Articulo":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "ArticuloMedidas":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Caja":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Cliente":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "CCliente":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "ComprasSugeridas":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "CondicionesPagos":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "CProveedor":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Documentos":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "EntradaMercanciaTipo":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Familia":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "FormasdePago":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Iva":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Localidad":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Medidas":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "MetodoPagos":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Moneda":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Proveedor":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Roles":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "SalidaMercanciaTipo":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Sucursales":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Tarifa":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Usuarios":
+                            AplicaCambiosArticulo();
+                            break;
+                        case "Vendedor":
+                            AplicaCambiosArticulo();
+                            break;
+                    }
+                }
+            }
+            return Cadena;
+        }
+
+        private void AplicaCambiosArticulo()
+        {
+
+        }
     }
 }
