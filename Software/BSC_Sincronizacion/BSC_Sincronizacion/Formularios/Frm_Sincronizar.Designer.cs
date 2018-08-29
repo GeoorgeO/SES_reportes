@@ -35,25 +35,25 @@
             this.lFechaFin = new DevExpress.XtraEditors.LabelControl();
             this.dtFechaFin = new DevExpress.XtraEditors.DateEdit();
             this.btnSincronizar = new DevExpress.XtraEditors.SimpleButton();
-            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.lEstatus = new DevExpress.XtraEditors.LabelControl();
             this.GCatalogos = new DevExpress.XtraGrid.GridControl();
             this.GValCatalogos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.chkTodos = new DevExpress.XtraEditors.CheckEdit();
             this.btnDataBase = new DevExpress.XtraEditors.SimpleButton();
+            this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCatalogos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GValCatalogos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkTodos.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
@@ -108,15 +108,10 @@
             this.btnSincronizar.Text = "Sincronizar";
             this.btnSincronizar.Click += new System.EventHandler(this.btnSincronizar_Click);
             // 
-            // progressBarControl1
-            // 
-            this.progressBarControl1.Location = new System.Drawing.Point(55, 90);
-            this.progressBarControl1.Name = "progressBarControl1";
-            this.progressBarControl1.Size = new System.Drawing.Size(471, 18);
-            this.progressBarControl1.TabIndex = 5;
-            // 
             // lEstatus
             // 
+            this.lEstatus.Appearance.Options.UseTextOptions = true;
+            this.lEstatus.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lEstatus.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lEstatus.Location = new System.Drawing.Point(55, 71);
             this.lEstatus.Name = "lEstatus";
@@ -149,9 +144,9 @@
             this.panelControl1.Controls.Add(this.dtFechaInicio);
             this.panelControl1.Controls.Add(this.lEstatus);
             this.panelControl1.Controls.Add(this.lFechaFin);
-            this.panelControl1.Controls.Add(this.progressBarControl1);
             this.panelControl1.Controls.Add(this.dtFechaFin);
             this.panelControl1.Controls.Add(this.btnSincronizar);
+            this.panelControl1.Controls.Add(this.pbProgreso);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
@@ -175,6 +170,15 @@
             this.btnDataBase.Size = new System.Drawing.Size(26, 23);
             this.btnDataBase.TabIndex = 8;
             this.btnDataBase.Click += new System.EventHandler(this.btnDataBase_Click);
+            // 
+            // pbProgreso
+            // 
+            this.pbProgreso.EditValue = 50;
+            this.pbProgreso.Location = new System.Drawing.Point(55, 90);
+            this.pbProgreso.Name = "pbProgreso";
+            this.pbProgreso.Properties.ShowTitle = true;
+            this.pbProgreso.Size = new System.Drawing.Size(471, 18);
+            this.pbProgreso.TabIndex = 5;
             // 
             // panelControl2
             // 
@@ -207,13 +211,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCatalogos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GValCatalogos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkTodos.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -227,7 +231,6 @@
         private DevExpress.XtraEditors.LabelControl lFechaFin;
         private DevExpress.XtraEditors.DateEdit dtFechaFin;
         private DevExpress.XtraEditors.SimpleButton btnSincronizar;
-        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
         private DevExpress.XtraEditors.LabelControl lEstatus;
         private DevExpress.XtraGrid.GridControl GCatalogos;
         private DevExpress.XtraGrid.Views.Grid.GridView GValCatalogos;
@@ -236,5 +239,6 @@
         private DevExpress.XtraEditors.SimpleButton btnDataBase;
         private DevExpress.XtraEditors.CheckEdit chkTodos;
         private DevExpress.LookAndFeel.DefaultLookAndFeel SkinForm;
+        private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
     }
 }

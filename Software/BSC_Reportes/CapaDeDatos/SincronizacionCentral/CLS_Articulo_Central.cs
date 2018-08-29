@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_Articulo_Central:ConexionBase
+    public class CLS_Articulo_Central:ConexionBase
     {
         public string ArticuloCodigo { get; set; }
         public string ArticuloDescripcion { get; set; }
 
-        public void MtdSeleccionarCatalogos()
+        public void MtdActualizarArticulo()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
@@ -19,9 +19,9 @@ namespace CapaDeDatos
             {
                 _conexionC.NombreProcedimiento = "SP_BSC_Articulo_General";
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.CadenaTexto = ArticuloDescripcion;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
                 _conexionC.EjecutarDataset();
 
                 if (_conexionC.Exito)

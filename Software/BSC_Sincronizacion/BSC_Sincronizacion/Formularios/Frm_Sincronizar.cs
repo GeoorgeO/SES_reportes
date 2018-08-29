@@ -14,6 +14,8 @@ namespace BSC_Sincronizacion
 {
     public partial class Frm_Sincronizar : DevExpress.XtraEditors.XtraForm
     {
+        public int ArticulosActualizados { get; private set; }
+
         public Frm_Sincronizar()
         {
             InitializeComponent();
@@ -93,6 +95,8 @@ namespace BSC_Sincronizacion
             dtFechaFin.EditValue = DateTime.Now;
             MakeFirstTable();
             LlenarListaCatalogo();
+            pbProgreso.Position = 0;
+            lEstatus.Text = string.Empty;
         }
 
         private void LlenarListaCatalogo()
@@ -147,41 +151,7 @@ namespace BSC_Sincronizacion
 
         private void ModificaActualizaCentral()
         {
-            //for (int i = 0; i < length; i++)
-            //{
-            //    switch (switch_on)
-            //    {
-            //        case "Articulo":
-            //            MtdArticulo();
-            //            break;
-            //        default:
-            //    }
-            //} 
-            
-
-            
-            //MtdArticuloMedidas();
-            //MtdCaja();
-            //MtdCCliente();
-            //MtdCliente();
-            //MtdCondicionesPagos();
-            //MtdCProveedor();
-            //MtdEntradaMercanciaTipo();
-            //MtdFamilia();
-            //MtdFormasdePago();
-            //MtdIva();
-            //MtdLocalidad();
-            //MtdMedidas();
-            //MtdMetodoPagos();
-            //MtdMoneda();
-            //MtdProveedor();
-            //MtdRoles();
-            //MtdSalidaMercanciaTipo();
-            //MtdSucursales();
-            //MtdTarifa();
-            //MtdUsuarios();
-            //MtdVendedor();
-
+            RecorreGrid();
         }
 
         private void chkTodos_CheckedChanged(object sender, EventArgs e)
@@ -206,7 +176,7 @@ namespace BSC_Sincronizacion
                 }
             }
         }
-        private string RecorreGrid(string NombreJLSV)
+        private string RecorreGrid()
         {
             int xRow = 0;
             string Cadena = string.Empty;
@@ -220,76 +190,76 @@ namespace BSC_Sincronizacion
                     switch (GValCatalogos.GetRowCellValue(xRow, "Column0").ToString())
                     {
                         case "Articulo":
-                            AplicaCambiosArticulo();
+                            AplicaCambiosArticulo(xRow);
                             break;
                         case "ArticuloMedidas":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Caja":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Cliente":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "CCliente":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "ComprasSugeridas":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "CondicionesPagos":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "CProveedor":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Documentos":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "EntradaMercanciaTipo":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Familia":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "FormasdePago":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Iva":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Localidad":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Medidas":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "MetodoPagos":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Moneda":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Proveedor":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Roles":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "SalidaMercanciaTipo":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Sucursales":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Tarifa":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Usuarios":
-                            AplicaCambiosArticulo();
+                            
                             break;
                         case "Vendedor":
-                            AplicaCambiosArticulo();
+                            
                             break;
                     }
                 }
@@ -297,7 +267,7 @@ namespace BSC_Sincronizacion
             return Cadena;
         }
 
-        private void AplicaCambiosArticulo()
+        private void AplicaCambiosArticulo(int Fila)
         {
             CLSArticulosLocal SelArt = new CLSArticulosLocal();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
@@ -305,16 +275,28 @@ namespace BSC_Sincronizacion
             SelArt.MtdSeleccionarArticulos();
             if(SelArt.Exito==true)
             {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
+                    lEstatus.Text = "Actualizando Articulos "+ArticulosActualizados+" de "+ SelArt.Datos.Rows.Count;
                     SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(),SelArt.Datos.Rows[i][1].ToString());
+                    pbProgreso.Position = ArticulosActualizados;
                 }
             }
         }
 
         private void SincronizaArticulos(string Codigo, string Descripcion)
         {
-            
+            CLS_Articulo_Central UdpArt = new CLS_Articulo_Central();
+            UdpArt.ArticuloCodigo = Codigo;
+            UdpArt.ArticuloDescripcion = Descripcion;
+            UdpArt.MtdActualizarArticulo();
+            if(UdpArt.Exito==true)
+            {
+                ArticulosActualizados++;
+            }
         }
     }
 }
