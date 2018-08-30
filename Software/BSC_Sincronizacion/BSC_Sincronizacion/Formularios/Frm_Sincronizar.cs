@@ -187,6 +187,7 @@ namespace BSC_Sincronizacion
 
                 if (Convert.ToBoolean(GValCatalogos.GetRowCellValue(xRow, "Column1")) )
                 {
+                    pbProgreso.Position = 0;
                     switch (GValCatalogos.GetRowCellValue(xRow, "Column0").ToString())
                     {
                         case "Articulo":
@@ -275,16 +276,26 @@ namespace BSC_Sincronizacion
             SelArt.MtdSeleccionarArticulos();
             if(SelArt.Exito==true)
             {
-                ArticulosActualizados = 1;
+                ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
+                    Application.DoEvents();
                     lEstatus.Text = "Actualizando Articulos "+ArticulosActualizados+" de "+ SelArt.Datos.Rows.Count;
                     SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(),SelArt.Datos.Rows[i][1].ToString());
                     pbProgreso.Position = ArticulosActualizados;
                 }
+                lEstatus.Text = "Actualizando Articulos " + ArticulosActualizados + " de " + SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                if(SelArt.Datos.Rows.Count== ArticulosActualizados)
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Done");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Failed");
+                }
             }
         }
         private void SincronizaArticulos(string Codigo, string Descripcion)
@@ -312,7 +323,8 @@ namespace BSC_Sincronizacion
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
-                    lEstatus.Text = "Actualizando Articulos " + ArticulosActualizados + " de " + SelArt.Datos.Rows.Count;
+                    Application.DoEvents();
+                    lEstatus.Text = "Actualizando Articulos Medida" + ArticulosActualizados + " de " + SelArt.Datos.Rows.Count;
                     SincronizaArticulosMedidas(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
                     pbProgreso.Position = ArticulosActualizados;
                 }
