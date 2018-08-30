@@ -1,0 +1,2 @@
+Scripts\Central\ProcedimientosAlmacenados\SP_BSC_ArticuloInsert.sql
+Scripts\Central\ProcedimientosAlmacenados\SP_BSC_ArticuloUpdate.sql
