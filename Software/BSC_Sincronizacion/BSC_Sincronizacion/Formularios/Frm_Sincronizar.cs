@@ -14,7 +14,7 @@ namespace BSC_Sincronizacion
 {
     public partial class Frm_Sincronizar : DevExpress.XtraEditors.XtraForm
     {
-        public int ArticulosActualizados { get; private set; }
+        public int ArticulosActualizados { get; set; }
 
         public Frm_Sincronizar()
         {
@@ -193,7 +193,7 @@ namespace BSC_Sincronizacion
                             AplicaCambiosArticulo(xRow);
                             break;
                         case "ArticuloMedidas":
-                            
+                            AplicaCambiosArticuloMedidas(xRow);
                             break;
                         case "Caja":
                             
@@ -266,7 +266,7 @@ namespace BSC_Sincronizacion
             }
             return Cadena;
         }
-
+        /******* Articulos *****/
         private void AplicaCambiosArticulo(int Fila)
         {
             CLSArticulosLocal SelArt = new CLSArticulosLocal();
@@ -275,7 +275,7 @@ namespace BSC_Sincronizacion
             SelArt.MtdSeleccionarArticulos();
             if(SelArt.Exito==true)
             {
-                ArticulosActualizados = 0;
+                ArticulosActualizados = 1;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
@@ -284,9 +284,9 @@ namespace BSC_Sincronizacion
                     SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(),SelArt.Datos.Rows[i][1].ToString());
                     pbProgreso.Position = ArticulosActualizados;
                 }
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
             }
         }
-
         private void SincronizaArticulos(string Codigo, string Descripcion)
         {
             CLS_Articulo_Central UdpArt = new CLS_Articulo_Central();
@@ -294,6 +294,38 @@ namespace BSC_Sincronizacion
             UdpArt.ArticuloDescripcion = Descripcion;
             UdpArt.MtdActualizarArticulo();
             if(UdpArt.Exito==true)
+            {
+                ArticulosActualizados++;
+            }
+        }
+        /******* ArticulosMedidas *****/
+        private void AplicaCambiosArticuloMedidas(int Fila)
+        {
+            CLSArticulosMedidasLocal SelArt = new CLSArticulosMedidasLocal();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarArticulosMedida();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 1;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    lEstatus.Text = "Actualizando Articulos " + ArticulosActualizados + " de " + SelArt.Datos.Rows.Count;
+                    SincronizaArticulosMedidas(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
+                    pbProgreso.Position = ArticulosActualizados;
+                }
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+            }
+        }
+        private void SincronizaArticulosMedidas(string Codigo, string MedidaId)
+        {
+            CLS_ArticuloMedida_Central UdpArt = new CLS_ArticuloMedida_Central();
+            UdpArt.ArticuloCodigo = Codigo;
+            UdpArt.MedidasId = Convert.ToInt32(MedidaId);
+            UdpArt.MtdActualizarArticuloMedidas();
+            if (UdpArt.Exito == true)
             {
                 ArticulosActualizados++;
             }

@@ -52,7 +52,9 @@
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
+    <Compile Include="Sincronizacion Local\CLSArticulosMedidasLocal.cs" />
     <Compile Include="SincronizacionCentral\CLSTablasSincronizarCentral.cs" />
+    <Compile Include="SincronizacionCentral\CLS_ArticuloMedida_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_Articulo_Central.cs" />
   </ItemGroup>
   <ItemGroup />
