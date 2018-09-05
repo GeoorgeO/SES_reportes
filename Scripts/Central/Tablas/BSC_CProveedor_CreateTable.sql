@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[CProveedor](
-			[CProveedorId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CProveedorId] [decimal](11, 0)  NOT NULL,
 			[CProveedorNombre] [char](60) NOT NULL,
 			[CProveedorFecha] [datetime] NOT NULL,
 			[CProveedorActivo] [char](1) NOT NULL,

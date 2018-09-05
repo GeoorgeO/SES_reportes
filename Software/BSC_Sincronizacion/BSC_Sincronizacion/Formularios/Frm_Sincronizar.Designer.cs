@@ -60,7 +60,7 @@
             // 
             // lFechaInicio
             // 
-            this.lFechaInicio.Location = new System.Drawing.Point(55, 22);
+            this.lFechaInicio.Location = new System.Drawing.Point(65, 32);
             this.lFechaInicio.Name = "lFechaInicio";
             this.lFechaInicio.Size = new System.Drawing.Size(61, 13);
             this.lFechaInicio.TabIndex = 0;
@@ -69,7 +69,7 @@
             // dtFechaInicio
             // 
             this.dtFechaInicio.EditValue = null;
-            this.dtFechaInicio.Location = new System.Drawing.Point(117, 19);
+            this.dtFechaInicio.Location = new System.Drawing.Point(131, 26);
             this.dtFechaInicio.Name = "dtFechaInicio";
             this.dtFechaInicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -80,7 +80,7 @@
             // 
             // lFechaFin
             // 
-            this.lFechaFin.Location = new System.Drawing.Point(55, 49);
+            this.lFechaFin.Location = new System.Drawing.Point(65, 59);
             this.lFechaFin.Name = "lFechaFin";
             this.lFechaFin.Size = new System.Drawing.Size(50, 13);
             this.lFechaFin.TabIndex = 2;
@@ -89,7 +89,7 @@
             // dtFechaFin
             // 
             this.dtFechaFin.EditValue = null;
-            this.dtFechaFin.Location = new System.Drawing.Point(117, 46);
+            this.dtFechaFin.Location = new System.Drawing.Point(131, 53);
             this.dtFechaFin.Name = "dtFechaFin";
             this.dtFechaFin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -101,7 +101,7 @@
             // btnSincronizar
             // 
             this.btnSincronizar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSincronizar.ImageOptions.Image")));
-            this.btnSincronizar.Location = new System.Drawing.Point(247, 17);
+            this.btnSincronizar.Location = new System.Drawing.Point(261, 24);
             this.btnSincronizar.Name = "btnSincronizar";
             this.btnSincronizar.Size = new System.Drawing.Size(83, 23);
             this.btnSincronizar.TabIndex = 4;
@@ -113,7 +113,7 @@
             this.lEstatus.Appearance.Options.UseTextOptions = true;
             this.lEstatus.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lEstatus.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lEstatus.Location = new System.Drawing.Point(55, 71);
+            this.lEstatus.Location = new System.Drawing.Point(101, 76);
             this.lEstatus.Name = "lEstatus";
             this.lEstatus.Size = new System.Drawing.Size(471, 13);
             this.lEstatus.TabIndex = 7;
@@ -150,12 +150,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
             this.panelControl1.Size = new System.Drawing.Size(672, 123);
             this.panelControl1.TabIndex = 9;
             // 
             // chkTodos
             // 
-            this.chkTodos.Location = new System.Drawing.Point(247, 49);
+            this.chkTodos.Location = new System.Drawing.Point(261, 51);
             this.chkTodos.Name = "chkTodos";
             this.chkTodos.Properties.Caption = "Todos";
             this.chkTodos.Size = new System.Drawing.Size(75, 19);
@@ -165,7 +166,7 @@
             // btnDataBase
             // 
             this.btnDataBase.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDataBase.ImageOptions.Image")));
-            this.btnDataBase.Location = new System.Drawing.Point(0, 0);
+            this.btnDataBase.Location = new System.Drawing.Point(15, 12);
             this.btnDataBase.Name = "btnDataBase";
             this.btnDataBase.Size = new System.Drawing.Size(26, 23);
             this.btnDataBase.TabIndex = 8;
@@ -173,11 +174,12 @@
             // 
             // pbProgreso
             // 
+            this.pbProgreso.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pbProgreso.EditValue = 50;
-            this.pbProgreso.Location = new System.Drawing.Point(55, 90);
+            this.pbProgreso.Location = new System.Drawing.Point(12, 93);
             this.pbProgreso.Name = "pbProgreso";
             this.pbProgreso.Properties.ShowTitle = true;
-            this.pbProgreso.Size = new System.Drawing.Size(471, 18);
+            this.pbProgreso.Size = new System.Drawing.Size(648, 18);
             this.pbProgreso.TabIndex = 5;
             // 
             // panelControl2

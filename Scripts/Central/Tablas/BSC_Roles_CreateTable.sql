@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Roles](
-			[RolesId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[RolesId] [decimal](11, 0)  NOT NULL,
 			[RolesNombre] [char](60) NOT NULL,
 			[RolesActivo] [char](1) NOT NULL,
 			[RolesFecha] [datetime] NOT NULL,

@@ -38,17 +38,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Tarifa
 		SET                TarifaNombre = @TarifaNombre, TarifaFecha = @TarifaFecha, TarifaActivo = @TarifaActivo, FechaUpdate = GETDATE()
 		WHERE        (TarifaId = @TarifaId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 

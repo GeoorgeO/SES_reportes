@@ -7,7 +7,7 @@ ELSE
 		
 		
 		CREATE TABLE [dbo].[CCliente](
-			[CClienteId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CClienteId] [decimal](11, 0)  NOT NULL,
 			[CClienteNombre] [char](60) NOT NULL,
 			[CClienteFecha] [datetime] NOT NULL,
 			[CClienteActivo] [char](1) NOT NULL,

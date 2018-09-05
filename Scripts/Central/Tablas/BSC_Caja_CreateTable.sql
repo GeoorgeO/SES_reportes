@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Caja](
-			[CajaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CajaId] [decimal](11, 0)  NOT NULL,
 			[SucursalesId] [decimal](11, 0) NOT NULL,
 			[CajaNumero] [int] NOT NULL,
 			[CajaDescripcion] [varchar](50) NOT NULL,

@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Moneda](
-			[MonedaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[MonedaId] [decimal](11, 0)  NOT NULL,
 			[MonedaNombre] [char](60) NOT NULL,
 			[MonedaSimbolo] [char](3) NOT NULL,
 			[MonedaActivo] [char](1) NOT NULL,

@@ -21,7 +21,7 @@ namespace CapaDeDatos
                 _dato.CadenaTexto = ArticuloCodigo;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = MedidasId;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MedidasId");
+                _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "MedidasId");
                 _conexionC.EjecutarDataset();
 
                 if (_conexionC.Exito)

@@ -41,7 +41,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -63,11 +63,11 @@ BEGIN
 				@UsuariosPassword,
 				@UsuariosActivo,
 				@RolesId;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 

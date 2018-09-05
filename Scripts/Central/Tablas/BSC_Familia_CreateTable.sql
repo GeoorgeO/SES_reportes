@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Familia](
-			[FamiliaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[FamiliaId] [decimal](11, 0)  NOT NULL,
 			[FamiliaNombre] [char](60) NOT NULL,
 			[FamiliaFecha] [datetime] NOT NULL,
 			[FamiliaTipo] [char](1) NOT NULL,

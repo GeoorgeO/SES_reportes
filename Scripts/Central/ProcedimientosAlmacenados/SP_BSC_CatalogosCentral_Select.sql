@@ -25,6 +25,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT TABLE_NAME
 	FROM INFORMATION_SCHEMA.TABLES
+	where TABLE_NAME not in ('Caja')
 	order by 1
 END
 

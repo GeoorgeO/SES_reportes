@@ -31,8 +31,8 @@ create PROCEDURE [dbo].[SP_BSC_CajaGeneral]
 	@CajaUltimoCorte decimal(18, 0),
 	@CajaUltimoRetiro decimal(18, 0),
 	@CajaUltimoTicketMayoreo decimal(18, 0),
-	@CajaUltimoDevolucionMayoreo decimal(18, 0),
-	@CajaImpresoraTicket varchar(100)
+	@CajaUltimoDevolucionMayoreo decimal(18, 0)
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -66,8 +66,8 @@ BEGIN
 				@CajaUltimoCorte,
 				@CajaUltimoRetiro,
 				@CajaUltimoTicketMayoreo,
-				@CajaUltimoDevolucionMayoreo,
-				@CajaImpresoraTicket;
+				@CajaUltimoDevolucionMayoreo;
+				
 		else
 			Exec dbo.SP_BSC_CajaInsert @CajaId,
 				@SucursalesId,
@@ -85,8 +85,8 @@ BEGIN
 				@CajaUltimoCorte,
 				@CajaUltimoRetiro,
 				@CajaUltimoTicketMayoreo,
-				@CajaUltimoDevolucionMayoreo,
-				@CajaImpresoraTicket;
+				@CajaUltimoDevolucionMayoreo;
+				
 	commit transaction T1;
 		set @correcto=1
 	end try

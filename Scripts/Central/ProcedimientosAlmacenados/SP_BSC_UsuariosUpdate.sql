@@ -41,18 +41,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Usuarios
 		SET                UsuariosNombre = @UsuariosNombre, UsuariosRegistroFecha = @UsuariosRegistroFecha, UsuariosLogin = @UsuariosLogin, UsuariosPassword = @UsuariosPassword, UsuariosActivo = @UsuariosActivo, 
 								 RolesId = @RolesId, FechaUpdate = GETDATE()
 		WHERE        (UsuariosId = @UsuariosId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 

@@ -37,17 +37,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Medidas
                          (MedidasId, MedidasNombre, MedidasAlias, FechaInsert)
 		VALUES        (@MedidasId,@MedidasNombre,@MedidasAlias, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 

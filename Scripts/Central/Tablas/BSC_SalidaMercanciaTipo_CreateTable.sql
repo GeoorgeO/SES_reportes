@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[SalidaMercanciaTipo](
-			[SalidaMercanciaTipoId] [bigint] IDENTITY(1,1) NOT NULL,
+			[SalidaMercanciaTipoId] [bigint]  NOT NULL,
 			[SalidaMercanciaTipoDescripcion] [varchar](50) NULL,
 			[FechaInsert] [datetime] NOT NULL,
 			[FechaUpdate] [datetime] NULL,

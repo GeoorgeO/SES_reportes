@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[MetodoPagos](
-			[MetodoPagosId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[MetodoPagosId] [decimal](11, 0)  NOT NULL,
 			[MetodoPagosNombre] [char](60) NOT NULL,
 			[MetodoPagosFecha] [datetime] NOT NULL,
 			[MetodoPagosActivo] [char](1) NOT NULL,

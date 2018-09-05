@@ -7,7 +7,7 @@ ELSE
 		
 		
 		CREATE TABLE [dbo].[Iva](
-			[IvaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[IvaId] [decimal](11, 0)  NOT NULL,
 			[IvaNombre] [char](60) NOT NULL,
 			[IvaFactor] [smallmoney] NOT NULL,
 			[IvaPorcentaje] [smallint] NOT NULL,

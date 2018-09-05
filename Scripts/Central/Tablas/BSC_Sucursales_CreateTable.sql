@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Sucursales](
-			[SucursalesId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[SucursalesId] [decimal](11, 0) NOT NULL,
 			[SucursalesNombre] [char](60) NOT NULL,
 			[SucursalesFecha] [datetime] NOT NULL,
 			[SucursalesActivo] [char](1) NOT NULL,

@@ -6,22 +6,18 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    public class CLSArticulosMedidasLocal:ConexionBase
+    class CLSMonedaLocal: ConexionBase
     {
-        public string FechaFin { get; set; }
-        public string FechaInicio { get; set; }
+        
 
-        public void MtdSeleccionarArticulosMedida()
+        public void MtdSeleccionarMoneda()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_ActualizaArticuloMedidasLocal_Select";
-                _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
-                _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexion.NombreProcedimiento = "SP_BSC_ActualizaMonedaLocal_Select";
+                
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Localidad](
-			[LocalidadId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[LocalidadId] [decimal](11, 0)  NOT NULL,
 			[LocalidadNombre] [char](60) NOT NULL,
 			[LocalidadCP] [char](5) NOT NULL,
 			[MunicipioId] [decimal](11, 0) NOT NULL,

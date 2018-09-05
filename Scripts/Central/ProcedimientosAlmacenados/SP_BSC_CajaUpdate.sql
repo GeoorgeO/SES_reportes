@@ -31,8 +31,7 @@ create PROCEDURE [dbo].[SP_BSC_CajaUpdate]
 	@CajaUltimoCorte decimal(18, 0),
 	@CajaUltimoRetiro decimal(18, 0),
 	@CajaUltimoTicketMayoreo decimal(18, 0),
-	@CajaUltimoDevolucionMayoreo decimal(18, 0),
-	@CajaImpresoraTicket varchar(100)
+	@CajaUltimoDevolucionMayoreo decimal(18, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -48,7 +47,7 @@ BEGIN
 		SET                SucursalesId = @SucursalesId, CajaNumero = @CajaNumero, CajaDescripcion = @CajaDescripcion, CajaReciboInicial = @CajaReciboInicial, CajaFondo = @CajaFondo, CajaMontoEfectivo = @CajaMontoEfectivo, 
                          CajaMontoTarjeta = @CajaMontoTarjeta, CajaMontoVale = @CajaMontoVale, CajaFecha = @CajaFecha, CajaUltimoTicket = @CajaUltimoTicket, CajaUltimaDevolucion = @CajaUltimaDevolucion, 
                          CajaUltimaCancelacion = @CajaUltimaCancelacion, CajaUltimoCorte = @CajaUltimoCorte, CajaUltimoRetiro = @CajaUltimoRetiro, CajaUltimoTicketMayoreo = @CajaUltimoTicketMayoreo, 
-                         CajaUltimoDevolucionMayoreo = @CajaUltimoDevolucionMayoreo, CajaImpresoraTicket = @CajaImpresoraTicket, FechaUpdate = GETDATE()
+                         CajaUltimoDevolucionMayoreo = @CajaUltimoDevolucionMayoreo,  FechaUpdate = GETDATE()
 		WHERE        (CajaId = @CajaId)
 
 		commit transaction T3;

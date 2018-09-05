@@ -31,8 +31,8 @@ create PROCEDURE [dbo].[SP_BSC_CajaInsert]
 	@CajaUltimoCorte decimal(18, 0),
 	@CajaUltimoRetiro decimal(18, 0),
 	@CajaUltimoTicketMayoreo decimal(18, 0),
-	@CajaUltimoDevolucionMayoreo decimal(18, 0),
-	@CajaImpresoraTicket varchar(100)
+	@CajaUltimoDevolucionMayoreo decimal(18, 0)
+	
 
 AS
 BEGIN
@@ -47,8 +47,8 @@ BEGIN
 	begin try
 		INSERT INTO Caja
                          (CajaId, SucursalesId, CajaNumero, CajaDescripcion, CajaReciboInicial, CajaFondo, CajaMontoEfectivo, CajaMontoTarjeta, CajaMontoVale, CajaFecha, CajaUltimoTicket, CajaUltimaDevolucion, 
-                         CajaUltimaCancelacion, CajaUltimoCorte, CajaUltimoRetiro, CajaUltimoTicketMayoreo, CajaUltimoDevolucionMayoreo, CajaImpresoraTicket, FechaInsert)
-		VALUES        (@CajaId,@SucursalesId,@CajaNumero,@CajaDescripcion,@CajaReciboInicial,@CajaFondo,@CajaMontoEfectivo,@CajaMontoTarjeta,@CajaMontoVale,@CajaFecha,@CajaUltimoTicket,@CajaUltimaDevolucion,@CajaUltimaCancelacion,@CajaUltimoCorte,@CajaUltimoRetiro,@CajaUltimoTicketMayoreo,@CajaUltimoDevolucionMayoreo,@CajaImpresoraTicket,
+                         CajaUltimaCancelacion, CajaUltimoCorte, CajaUltimoRetiro, CajaUltimoTicketMayoreo, CajaUltimoDevolucionMayoreo, FechaInsert)
+		VALUES        (@CajaId,@SucursalesId,@CajaNumero,@CajaDescripcion,@CajaReciboInicial,@CajaFondo,@CajaMontoEfectivo,@CajaMontoTarjeta,@CajaMontoVale,@CajaFecha,@CajaUltimoTicket,@CajaUltimaDevolucion,@CajaUltimaCancelacion,@CajaUltimoCorte,@CajaUltimoRetiro,@CajaUltimoTicketMayoreo,@CajaUltimoDevolucionMayoreo,
                           GETDATE())
 
 		commit transaction T2;

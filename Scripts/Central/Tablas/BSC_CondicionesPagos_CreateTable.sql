@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[CondicionesPagos](
-			[CondicionesPagosId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CondicionesPagosId] [decimal](11, 0)  NOT NULL,
 			[CondicionesPagosNombre] [char](60) NOT NULL,
 			[CondicionesPagosCantidad] [int] NOT NULL,
 			[CondicionesPagosAfectacion] [bit] NOT NULL,

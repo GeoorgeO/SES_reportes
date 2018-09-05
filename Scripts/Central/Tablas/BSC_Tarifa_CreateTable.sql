@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Tarifa](
-			[TarifaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[TarifaId] [decimal](11, 0) NOT NULL,
 			[TarifaNombre] [char](60) NOT NULL,
 			[TarifaFecha] [datetime] NOT NULL,
 			[TarifaActivo] [char](1) NOT NULL,

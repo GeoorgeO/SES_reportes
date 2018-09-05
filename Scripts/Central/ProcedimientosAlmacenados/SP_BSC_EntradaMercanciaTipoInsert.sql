@@ -32,11 +32,11 @@ BEGIN
                          (EntradaMercanciaTipoId, EntradaMercanciaTipoDescripcion, FechaInsert)
 		VALUES        (@EntradaMercanciaTipoId,@EntradaMercanciaTipoDescripcion, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 

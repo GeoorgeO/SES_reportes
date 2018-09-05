@@ -38,17 +38,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Roles
 								 (RolesId, RolesNombre, RolesActivo, RolesFecha, FechaInsert)
 		VALUES        (@RolesId,@RolesNombre,@RolesActivo,@RolesFecha, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 

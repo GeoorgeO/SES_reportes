@@ -6,7 +6,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Usuarios](
-			[UsuariosId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[UsuariosId] [decimal](11, 0) NOT NULL,
 			[UsuariosNombre] [char](60) NOT NULL,
 			[UsuariosRegistroFecha] [datetime] NOT NULL,
 			[UsuariosLogin] [char](60) NOT NULL,
