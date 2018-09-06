@@ -1,0 +1,3 @@
+Scripts\Central\ProcedimientosAlmacenados\SP_BSC_IvaInsert.sql
+Scripts\Central\ProcedimientosAlmacenados\SP_BSC_IvaUpdate.sql
+Scripts\Central\ProcedimientosAlmacenados\SP_BSC_IvaGeneral.sql

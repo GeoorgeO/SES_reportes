@@ -1,3 +1,201 @@
+USE [Central]
+GO
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_IvaInsert')
+DROP PROCEDURE SP_BSC_IvaInsert
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE SP_BSC_IvaInsert
+	-- Add the parameters for the stored procedure here
+	@IvaId decimal(11, 0),
+	@IvaNombre char(60),
+	@IvaFactor smallmoney,
+	@IvaPorcentaje smallint
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	declare @correcto bit
+
+	begin transaction T2;
+	begin try
+		INSERT INTO Iva
+                         (IvaId, IvaNombre, IvaFactor, IvaPorcentaje, FechaInsert)
+		VALUES        (@IvaId,@IvaNombre,@IvaFactor,@IvaPorcentaje, GETDATE())
+
+		commit transaction T2;
+		set @correcto=1
+	end try
+	begin catch
+		rollback transaction T2;
+		set @correcto=0
+	end catch
+
+	select @correcto resultado
+END
+GO
+
+GO
+USE [Central]
+GO
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_IvaUpdate')
+DROP PROCEDURE SP_BSC_IvaUpdate
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE SP_BSC_IvaUpdate
+	-- Add the parameters for the stored procedure here
+	@IvaId decimal(11, 0),
+	@IvaNombre char(60),
+	@IvaFactor smallmoney,
+	@IvaPorcentaje smallint
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	declare @correcto bit
+
+	begin transaction T3;
+	begin try
+		UPDATE       Iva
+		SET                IvaNombre = @IvaNombre, IvaFactor = @IvaFactor, IvaPorcentaje = @IvaPorcentaje, FechaUpdate = GETDATE()
+		WHERE        (IvaId = @IvaId)
+
+		commit transaction T3;
+		set @correcto=1
+	end try
+	begin catch
+		rollback transaction T3;
+		set @correcto=0
+	end catch
+
+	select @correcto resultado
+END
+GO
+
+GO
+USE [Central]
+GO
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_IvaGeneral')
+DROP PROCEDURE SP_BSC_IvaGeneral
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE SP_BSC_IvaGeneral
+	-- Add the parameters for the stored procedure here
+	@IvaId decimal(11, 0),
+	@IvaNombre char(60),
+	@IvaFactor smallmoney,
+	@IvaPorcentaje smallint
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	declare @correcto bit
+
+	begin transaction T1;
+	begin try
+
+		declare @Existe int
+		select @Existe = count(IvaId) from Iva a where (a.IvaId=@IvaId)
+
+		if @Existe>0
+			Exec dbo.SP_BSC_IvaUpdate @IvaId,
+				@IvaNombre,
+				@IvaFactor,
+				@IvaPorcentaje;
+		else
+			Exec dbo.SP_BSC_IvaInsert @IvaId,
+				@IvaNombre,
+				@IvaFactor,
+				@IvaPorcentaje;
+		commit transaction T1;
+		set @correcto=1
+	end try
+	begin catch
+		rollback transaction T1;
+		set @correcto=0
+	end catch
+
+	select @correcto resultado
+END
+GO
+
+GO
+USE [master]
+GO
+
+IF NOT EXISTS (SELECT * FROM sysdatabases WHERE (name = 'Central'))
+BEGIN
+	create Database Central
+END
+
+GO
+USE [Central]
+GO
 IF OBJECT_ID('Articulo') IS NOT NULL
 	begin
 		select 0
@@ -4072,8 +4270,7 @@ CREATE PROCEDURE SP_BSC_SucursalesInsert
 	@SucursalesNInterior char(40),
 	@SucursalesnNExterior char(40),
 	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0),
-	@SucursalesCiudad char(100) 
+	@LocalidadId decimal(11, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -4086,8 +4283,8 @@ BEGIN
 	begin transaction T2;
 	begin try
 		INSERT INTO Sucursales
-                         (SucursalesId, SucursalesNombre, SucursalesFecha, SucursalesActivo, SucursalesCalle, SucursalesNInterior, SucursalesnNExterior, SucursalesColonia, LocalidadId, SucursalesCiudad, FechaInsert)
-		VALUES        (@SucursalesId,@SucursalesNombre,@SucursalesFecha,@SucursalesActivo,@SucursalesCalle,@SucursalesNInterior,@SucursalesnNExterior,@SucursalesColonia,@LocalidadId,@SucursalesCiudad, 
+                         (SucursalesId, SucursalesNombre, SucursalesFecha, SucursalesActivo, SucursalesCalle, SucursalesNInterior, SucursalesnNExterior, SucursalesColonia, LocalidadId, FechaInsert)
+		VALUES        (@SucursalesId,@SucursalesNombre,@SucursalesFecha,@SucursalesActivo,@SucursalesCalle,@SucursalesNInterior,@SucursalesnNExterior,@SucursalesColonia,@LocalidadId, 
 								 GETDATE())
 
 		commit transaction T2;
@@ -4138,8 +4335,7 @@ CREATE PROCEDURE SP_BSC_SucursalesUpdate
 	@SucursalesNInterior char(40),
 	@SucursalesnNExterior char(40),
 	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0),
-	@SucursalesCiudad char(100) 
+	@LocalidadId decimal(11, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -4153,7 +4349,7 @@ BEGIN
 	begin try
 		UPDATE       Sucursales
 		SET                SucursalesNombre = @SucursalesNombre, SucursalesFecha = @SucursalesFecha, SucursalesActivo = @SucursalesActivo, SucursalesCalle = @SucursalesCalle, SucursalesNInterior = @SucursalesNInterior, 
-								 SucursalesnNExterior = @SucursalesnNExterior, SucursalesColonia = @SucursalesColonia, LocalidadId = @LocalidadId, SucursalesCiudad = @SucursalesCiudad, FechaUpdate = GETDATE()
+								 SucursalesnNExterior = @SucursalesnNExterior, SucursalesColonia = @SucursalesColonia, LocalidadId = @LocalidadId, FechaUpdate = GETDATE()
 		WHERE        (SucursalesId = @SucursalesId)
 
 		commit transaction T3;
@@ -4204,8 +4400,7 @@ CREATE PROCEDURE SP_BSC_SucursalesGeneral
 	@SucursalesNInterior char(40),
 	@SucursalesnNExterior char(40),
 	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0),
-	@SucursalesCiudad char(100) 
+	@LocalidadId decimal(11, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -4230,8 +4425,7 @@ BEGIN
 				@SucursalesNInterior,
 				@SucursalesnNExterior,
 				@SucursalesColonia,
-				@LocalidadId,
-				@SucursalesCiudad;
+				@LocalidadId;
 		else
 			Exec dbo.SP_BSC_SucursalesInsert @SucursalesId,
 				@SucursalesNombre,
@@ -4241,8 +4435,7 @@ BEGIN
 				@SucursalesNInterior,
 				@SucursalesnNExterior,
 				@SucursalesColonia,
-				@LocalidadId,
-				@SucursalesCiudad;
+				@LocalidadId;
 	commit transaction T1;
 		set @correcto=1
 	end try
@@ -4865,7 +5058,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT TABLE_NAME
 	FROM INFORMATION_SCHEMA.TABLES
-	where TABLE_NAME not in ('Caja')
+	where TABLE_NAME not in ('Caja','Documentos')
 	order by 1
 END
 

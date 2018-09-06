@@ -1,3 +1,5 @@
+USE [Central]
+GO
 IF OBJECT_ID('Articulo') IS NOT NULL
 	begin
 		select 0

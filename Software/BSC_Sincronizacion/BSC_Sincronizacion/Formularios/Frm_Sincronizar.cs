@@ -201,7 +201,7 @@ namespace BSC_Sincronizacion
             for (int i = 0; i < GValCatalogos.RowCount; i++)
             {
                 xRow = GValCatalogos.GetVisibleRowHandle(i);
-
+                ArticulosError = 0;
                 if (Convert.ToBoolean(GValCatalogos.GetRowCellValue(xRow, "Column1")))
                 {
                     pbProgreso.Position = 0;
@@ -485,12 +485,12 @@ namespace BSC_Sincronizacion
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                   
                     lEstatus.Text = "Codigo CCliente [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaCCliente(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][2]), SelArt.Datos.Rows[i][3].ToString(),
                         SelArt.Datos.Rows[i][4].ToString(), SelArt.Datos.Rows[i][5].ToString()
                         );
-
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)
@@ -518,7 +518,7 @@ namespace BSC_Sincronizacion
             }
             else
             {
-                UdpArt.CClientePadreId = null;
+                UdpArt.CClientePadreId = 0;
             }
             if (Convert.ToBoolean( CClienteTieneElementos)==false) {
                 UdpArt.CClienteTieneElementos = 0;
@@ -560,7 +560,7 @@ namespace BSC_Sincronizacion
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    
                     lEstatus.Text = "Codigo Cliente [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaCliente(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][2]), SelArt.Datos.Rows[i][3].ToString(),
                         SelArt.Datos.Rows[i][4].ToString(), SelArt.Datos.Rows[i][5].ToString(), SelArt.Datos.Rows[i][6].ToString(), SelArt.Datos.Rows[i][7].ToString(),
@@ -571,7 +571,7 @@ namespace BSC_Sincronizacion
                         SelArt.Datos.Rows[i][24].ToString(), Convert.ToBoolean(SelArt.Datos.Rows[i][25]), SelArt.Datos.Rows[i][26].ToString(), SelArt.Datos.Rows[i][27].ToString(),
                         SelArt.Datos.Rows[i][28].ToString()
                         );
-
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)

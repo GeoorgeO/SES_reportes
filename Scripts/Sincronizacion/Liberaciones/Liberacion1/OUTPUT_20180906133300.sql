@@ -390,7 +390,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT FormasdePagoId,
       FormasdePagoDescripcion
-	from FormasdePago
+	from SES_AdministradorV1.dbo.FormasdePago
 END
 
 GO
@@ -529,6 +529,34 @@ BEGIN
 END
 
 GO
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_ActualizaMonedaLocal_Select')
+DROP PROCEDURE SP_BSC_ActualizaMonedaLocal_Select
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[SP_BSC_ActualizaMonedaLocal_Select]
+	-- Add the parameters for the stored procedure here
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	select MonedaId,
+      MonedaNombre,
+      MonedaSimbolo,
+      MonedaActivo,
+      MonedaTipoCambio
+	from SES_AdministradorV1.dbo.Moneda
+END
+
+GO
 USE [SES_Sincroniza]
 GO
 /****** Object:  StoredProcedure [dbo].[usp_ActualizaProveedorLocal_Select]    Script Date: 26/08/2018 08:07:43 p. m. ******/
@@ -592,7 +620,8 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT RolesId,
       RolesNombre,
-      RolesActivo
+      RolesActivo,
+	  RolesFecha
 	from SES_AdministradorV1.dbo.Roles
 	where RolesFecha between @FechaInicio and @FechaFin
 END
@@ -625,7 +654,7 @@ BEGIN
     -- Insert statements for procedure here
 	select SalidaMercanciaTipoId,
       SalidaMercanciaTipoDescripcion
-	from SalidaMercanciaTipo
+	from SES_AdministradorV1.dbo.SalidaMercanciaTipo
 END
 
 GO

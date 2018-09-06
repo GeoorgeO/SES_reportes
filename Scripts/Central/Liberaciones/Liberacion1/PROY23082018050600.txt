@@ -1,0 +1,1 @@
+Scripts\Central\Basedatos\BSC_Central_CreateDB.sql
