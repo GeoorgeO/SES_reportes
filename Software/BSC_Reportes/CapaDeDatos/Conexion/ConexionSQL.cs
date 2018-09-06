@@ -61,7 +61,10 @@ namespace CapaDeDatos
             }
             else
             {
+
+
                 throw new Exception("Faltan datos para la Conexión");
+
             }
         }
         static public string LeerConexionR(string ServerR, string DBaseR, string UserR, string PasswordR)
@@ -137,7 +140,11 @@ namespace CapaDeDatos
             }
             else
             {
+                
+
                 throw new Exception("Faltan datos para la Conexión");
+
+
             }
         }
         static public string LeerConexionRC(string ServerC, string DBaseC, string UserC, string PasswordC)

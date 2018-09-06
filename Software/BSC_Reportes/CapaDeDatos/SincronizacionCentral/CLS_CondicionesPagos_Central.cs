@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_CondicionesPagos_Central: ConexionBase
+    public class CLS_CondicionesPagos_Central: ConexionBase
     {
         public int CondicionesPagosId { get; set; }
         public string CondicionesPagosNombre { get; set; }
-        public string CondicionesPagosCantidad { get; set; }
+        public int CondicionesPagosCantidad { get; set; }
         public int CondicionesPagosAfectacion { get; set; }
-        public int CondicionesPagosFecha { get; set; }
+        public String CondicionesPagosFecha { get; set; }
         public string CondicionesPagosActivo { get; set; }
 
         public void MtdActualizarCondicionesPagos()
@@ -26,12 +26,12 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "CondicionesPagosId");
                 _dato.CadenaTexto = CondicionesPagosNombre;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CondicionesPagosNombre");
-                _dato.CadenaTexto = CondicionesPagosCantidad;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CondicionesPagosCantidad");
+                _dato.Entero = CondicionesPagosCantidad;
+                _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "CondicionesPagosCantidad");
                 _dato.Entero = CondicionesPagosAfectacion;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "CondicionesPagosAfectacion");
-                _dato.Entero = CondicionesPagosFecha;
-                _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "CondicionesPagosFecha");
+                _dato.CadenaTexto = CondicionesPagosFecha;
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CondicionesPagosFecha");
                 _dato.CadenaTexto = CondicionesPagosActivo;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CondicionesPagosActivo");
 

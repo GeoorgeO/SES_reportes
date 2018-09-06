@@ -18,7 +18,7 @@ namespace CapaDeDatos
         public string ClienteNInterior { get; set; }
         public string ClienteNExterior { get; set; }
         public string ClienteColonia { get; set; }
-        public int LocalidadId { get; set; }
+        public int? LocalidadId { get; set; }
         public string ClienteFechaActualizacion { get; set; }
         public string ClienteTelefono1 { get; set; }
         public string ClienteTelefono2 { get; set; }
@@ -29,14 +29,14 @@ namespace CapaDeDatos
         public string ClienteActivo { get; set; }
         public int CClienteId { get; set; }
         public int ClienteImpresion { get; set; }
-        public Decimal ClienteLimiteCredito { get; set; }
-        public Decimal ClienteSobregiro { get; set; }
+        public Decimal? ClienteLimiteCredito { get; set; }
+        public Decimal? ClienteSobregiro { get; set; }
         public int VendedorId { get; set; }
         public int CondicionesPagosId { get; set; }
         public int ClienteTieneCredito { get; set; }
         public Decimal ClienteDescuento { get; set; }
         public string ClienteObservaciones { get; set; }
-        public Decimal ClienteSaldoActual { get; set; }
+        public Decimal? ClienteSaldoActual { get; set; }
 
         public void MtdActualizarCliente()
         {

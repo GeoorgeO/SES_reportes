@@ -49,7 +49,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Caja](
-			[CajaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CajaId] [decimal](11, 0)  NOT NULL,
 			[SucursalesId] [decimal](11, 0) NOT NULL,
 			[CajaNumero] [int] NOT NULL,
 			[CajaDescripcion] [varchar](50) NOT NULL,
@@ -87,7 +87,7 @@ ELSE
 		
 		
 		CREATE TABLE [dbo].[CCliente](
-			[CClienteId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CClienteId] [decimal](11, 0)  NOT NULL,
 			[CClienteNombre] [char](60) NOT NULL,
 			[CClienteFecha] [datetime] NOT NULL,
 			[CClienteActivo] [char](1) NOT NULL,
@@ -114,7 +114,7 @@ ELSE
 		
 		
 		CREATE TABLE [dbo].[Cliente](
-			[ClienteId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[ClienteId] [decimal](11, 0)  NOT NULL,
 			[ClienteNombre] [char](200) NOT NULL,
 			[ClienteFecha] [datetime] NOT NULL,
 			[ClientePaterno] [char](60) NULL,
@@ -182,7 +182,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[CondicionesPagos](
-			[CondicionesPagosId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CondicionesPagosId] [decimal](11, 0)  NOT NULL,
 			[CondicionesPagosNombre] [char](60) NOT NULL,
 			[CondicionesPagosCantidad] [int] NOT NULL,
 			[CondicionesPagosAfectacion] [bit] NOT NULL,
@@ -208,7 +208,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[CProveedor](
-			[CProveedorId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[CProveedorId] [decimal](11, 0)  NOT NULL,
 			[CProveedorNombre] [char](60) NOT NULL,
 			[CProveedorFecha] [datetime] NOT NULL,
 			[CProveedorActivo] [char](1) NOT NULL,
@@ -275,7 +275,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Familia](
-			[FamiliaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[FamiliaId] [decimal](11, 0)  NOT NULL,
 			[FamiliaNombre] [char](60) NOT NULL,
 			[FamiliaFecha] [datetime] NOT NULL,
 			[FamiliaTipo] [char](1) NOT NULL,
@@ -325,7 +325,7 @@ ELSE
 		
 		
 		CREATE TABLE [dbo].[Iva](
-			[IvaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[IvaId] [decimal](11, 0)  NOT NULL,
 			[IvaNombre] [char](60) NOT NULL,
 			[IvaFactor] [smallmoney] NOT NULL,
 			[IvaPorcentaje] [smallint] NOT NULL,
@@ -348,7 +348,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Localidad](
-			[LocalidadId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[LocalidadId] [decimal](11, 0)  NOT NULL,
 			[LocalidadNombre] [char](60) NOT NULL,
 			[LocalidadCP] [char](5) NOT NULL,
 			[MunicipioId] [decimal](11, 0) NOT NULL,
@@ -393,7 +393,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[MetodoPagos](
-			[MetodoPagosId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[MetodoPagosId] [decimal](11, 0)  NOT NULL,
 			[MetodoPagosNombre] [char](60) NOT NULL,
 			[MetodoPagosFecha] [datetime] NOT NULL,
 			[MetodoPagosActivo] [char](1) NOT NULL,
@@ -416,7 +416,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Moneda](
-			[MonedaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[MonedaId] [decimal](11, 0)  NOT NULL,
 			[MonedaNombre] [char](60) NOT NULL,
 			[MonedaSimbolo] [char](3) NOT NULL,
 			[MonedaActivo] [char](1) NOT NULL,
@@ -459,7 +459,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Roles](
-			[RolesId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[RolesId] [decimal](11, 0)  NOT NULL,
 			[RolesNombre] [char](60) NOT NULL,
 			[RolesActivo] [char](1) NOT NULL,
 			[RolesFecha] [datetime] NOT NULL,
@@ -482,7 +482,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[SalidaMercanciaTipo](
-			[SalidaMercanciaTipoId] [bigint] IDENTITY(1,1) NOT NULL,
+			[SalidaMercanciaTipoId] [bigint]  NOT NULL,
 			[SalidaMercanciaTipoDescripcion] [varchar](50) NULL,
 			[FechaInsert] [datetime] NOT NULL,
 			[FechaUpdate] [datetime] NULL,
@@ -503,7 +503,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Sucursales](
-			[SucursalesId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[SucursalesId] [decimal](11, 0) NOT NULL,
 			[SucursalesNombre] [char](60) NOT NULL,
 			[SucursalesFecha] [datetime] NOT NULL,
 			[SucursalesActivo] [char](1) NOT NULL,
@@ -532,7 +532,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Tarifa](
-			[TarifaId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[TarifaId] [decimal](11, 0) NOT NULL,
 			[TarifaNombre] [char](60) NOT NULL,
 			[TarifaFecha] [datetime] NOT NULL,
 			[TarifaActivo] [char](1) NOT NULL,
@@ -555,7 +555,7 @@ ELSE
 	begin
 		
 		CREATE TABLE [dbo].[Usuarios](
-			[UsuariosId] [decimal](11, 0) IDENTITY(1,1) NOT NULL,
+			[UsuariosId] [decimal](11, 0) NOT NULL,
 			[UsuariosNombre] [char](60) NOT NULL,
 			[UsuariosRegistroFecha] [datetime] NOT NULL,
 			[UsuariosLogin] [char](60) NOT NULL,
@@ -686,17 +686,17 @@ BEGIN
 
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Articulo
                          (ArticuloCodigo, ArticuloDescripcion, FechaInsert)
 		VALUES        (@ArticuloCodigo,@ArticuloDescripcion, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -741,16 +741,16 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Articulo
 		SET                ArticuloDescripcion = @ArticuloDescripcion, FechaUpdate = GETDATE()
 		WHERE        (ArticuloCodigo = @ArticuloCodigo)
-	commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -786,21 +786,21 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
-		select @Existe = count(ArticuloCodigo) from Articulo a where (a.ArticuloCodigo=@ArticuloCodigo and a.ArticuloDescripcion=@ArticuloDescripcion)
+		select @Existe = count(ArticuloCodigo) from Articulo a where (a.ArticuloCodigo=@ArticuloCodigo)
 
 		if @Existe>0
 			Exec dbo.SP_BSC_Articulo_Update @ArticuloCodigo, @ArticuloDescripcion;
 		else
 			Exec dbo.SP_BSC_Articulo_Insert @ArticuloCodigo, @ArticuloDescripcion;
-	commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -836,17 +836,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO ArticuloMedidas
                          (ArticuloCodigo, MedidasId, FechaInsert)
 		VALUES        (@ArticuloCodigo,@MedidasId, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -882,17 +882,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       ArticuloMedidas
 		SET                MedidasId = @MedidasId, FechaUltimaActualizacion = GETDATE()
 		WHERE        (ArticuloCodigo = @ArticuloCodigo)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -928,7 +928,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -938,11 +938,11 @@ BEGIN
 			Exec dbo.SP_BSC_ArticuloMedidasUpdate @ArticuloCodigo, @MedidasId;
 		else
 			Exec dbo.SP_BSC_ArticuloMedidasInsert @ArticuloCodigo, @MedidasId;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -983,8 +983,8 @@ create PROCEDURE [dbo].[SP_BSC_CajaInsert]
 	@CajaUltimoCorte decimal(18, 0),
 	@CajaUltimoRetiro decimal(18, 0),
 	@CajaUltimoTicketMayoreo decimal(18, 0),
-	@CajaUltimoDevolucionMayoreo decimal(18, 0),
-	@CajaImpresoraTicket varchar(100)
+	@CajaUltimoDevolucionMayoreo decimal(18, 0)
+	
 
 AS
 BEGIN
@@ -995,19 +995,19 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Caja
                          (CajaId, SucursalesId, CajaNumero, CajaDescripcion, CajaReciboInicial, CajaFondo, CajaMontoEfectivo, CajaMontoTarjeta, CajaMontoVale, CajaFecha, CajaUltimoTicket, CajaUltimaDevolucion, 
-                         CajaUltimaCancelacion, CajaUltimoCorte, CajaUltimoRetiro, CajaUltimoTicketMayoreo, CajaUltimoDevolucionMayoreo, CajaImpresoraTicket, FechaInsert)
-		VALUES        (@CajaId,@SucursalesId,@CajaNumero,@CajaDescripcion,@CajaReciboInicial,@CajaFondo,@CajaMontoEfectivo,@CajaMontoTarjeta,@CajaMontoVale,@CajaFecha,@CajaUltimoTicket,@CajaUltimaDevolucion,@CajaUltimaCancelacion,@CajaUltimoCorte,@CajaUltimoRetiro,@CajaUltimoTicketMayoreo,@CajaUltimoDevolucionMayoreo,@CajaImpresoraTicket,
+                         CajaUltimaCancelacion, CajaUltimoCorte, CajaUltimoRetiro, CajaUltimoTicketMayoreo, CajaUltimoDevolucionMayoreo, FechaInsert)
+		VALUES        (@CajaId,@SucursalesId,@CajaNumero,@CajaDescripcion,@CajaReciboInicial,@CajaFondo,@CajaMontoEfectivo,@CajaMontoTarjeta,@CajaMontoVale,@CajaFecha,@CajaUltimoTicket,@CajaUltimaDevolucion,@CajaUltimaCancelacion,@CajaUltimoCorte,@CajaUltimoRetiro,@CajaUltimoTicketMayoreo,@CajaUltimoDevolucionMayoreo,
                           GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -1048,8 +1048,7 @@ create PROCEDURE [dbo].[SP_BSC_CajaUpdate]
 	@CajaUltimoCorte decimal(18, 0),
 	@CajaUltimoRetiro decimal(18, 0),
 	@CajaUltimoTicketMayoreo decimal(18, 0),
-	@CajaUltimoDevolucionMayoreo decimal(18, 0),
-	@CajaImpresoraTicket varchar(100)
+	@CajaUltimoDevolucionMayoreo decimal(18, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -1059,20 +1058,20 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Caja
 		SET                SucursalesId = @SucursalesId, CajaNumero = @CajaNumero, CajaDescripcion = @CajaDescripcion, CajaReciboInicial = @CajaReciboInicial, CajaFondo = @CajaFondo, CajaMontoEfectivo = @CajaMontoEfectivo, 
                          CajaMontoTarjeta = @CajaMontoTarjeta, CajaMontoVale = @CajaMontoVale, CajaFecha = @CajaFecha, CajaUltimoTicket = @CajaUltimoTicket, CajaUltimaDevolucion = @CajaUltimaDevolucion, 
                          CajaUltimaCancelacion = @CajaUltimaCancelacion, CajaUltimoCorte = @CajaUltimoCorte, CajaUltimoRetiro = @CajaUltimoRetiro, CajaUltimoTicketMayoreo = @CajaUltimoTicketMayoreo, 
-                         CajaUltimoDevolucionMayoreo = @CajaUltimoDevolucionMayoreo, CajaImpresoraTicket = @CajaImpresoraTicket, FechaUpdate = GETDATE()
+                         CajaUltimoDevolucionMayoreo = @CajaUltimoDevolucionMayoreo,  FechaUpdate = GETDATE()
 		WHERE        (CajaId = @CajaId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -1113,8 +1112,8 @@ create PROCEDURE [dbo].[SP_BSC_CajaGeneral]
 	@CajaUltimoCorte decimal(18, 0),
 	@CajaUltimoRetiro decimal(18, 0),
 	@CajaUltimoTicketMayoreo decimal(18, 0),
-	@CajaUltimoDevolucionMayoreo decimal(18, 0),
-	@CajaImpresoraTicket varchar(100)
+	@CajaUltimoDevolucionMayoreo decimal(18, 0)
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -1124,7 +1123,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -1148,8 +1147,8 @@ BEGIN
 				@CajaUltimoCorte,
 				@CajaUltimoRetiro,
 				@CajaUltimoTicketMayoreo,
-				@CajaUltimoDevolucionMayoreo,
-				@CajaImpresoraTicket;
+				@CajaUltimoDevolucionMayoreo;
+				
 		else
 			Exec dbo.SP_BSC_CajaInsert @CajaId,
 				@SucursalesId,
@@ -1167,13 +1166,13 @@ BEGIN
 				@CajaUltimoCorte,
 				@CajaUltimoRetiro,
 				@CajaUltimoTicketMayoreo,
-				@CajaUltimoDevolucionMayoreo,
-				@CajaImpresoraTicket;
-	commit;
+				@CajaUltimoDevolucionMayoreo;
+				
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -1213,17 +1212,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO CCliente
                          (CClienteId, CClienteNombre, CClienteFecha, CClienteActivo, CClientePadreId, CClienteTieneElementos, FechaInsert)
 		VALUES        (@CClienteId,@CClienteNombre,@CClienteFecha,@CClienteActivo,@CClientePadreId,@CClienteTieneElementos, GETDATE())
 
-		commit;
+		commit transaction T2;;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;;
 		set @correcto=0
 	end catch
 
@@ -1263,18 +1262,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       CCliente
 		SET                CClienteNombre = @CClienteNombre, CClienteFecha = @CClienteFecha, CClienteActivo = @CClienteActivo, CClientePadreId = @CClientePadreId, CClienteTieneElementos = @CClienteTieneElementos, 
                          FechaUpdate = GETDATE()
 		WHERE        (CClienteId = @CClienteId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -1314,7 +1313,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -1335,11 +1334,11 @@ BEGIN
 			@CClientePadreId,
 			@CClienteTieneElementos;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -1402,7 +1401,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Cliente
                          (ClienteId, ClienteNombre, ClienteFecha, ClientePaterno, ClienteMaterno, ClienteRfc, ClienteCalle, ClienteNInterior, ClienteNExterior, ClienteColonia, LocalidadId, ClienteFechaActualizacion, ClienteTelefono1, 
@@ -1411,11 +1410,11 @@ BEGIN
 		VALUES        (@ClienteId,@ClienteNombre,@ClienteFecha,@ClientePaterno,@ClienteMaterno,@ClienteRfc,@ClienteCalle,@ClienteNInterior,@ClienteNExterior,@ClienteColonia,@LocalidadId,@ClienteFechaActualizacion,@ClienteTelefono1,@ClienteTelefono2,@ClienteTelefono3,@ClienteEmail,@ClienteEmailFiscal,@ClienteTipoPersona,@ClienteActivo,@CClienteId,@ClienteImpresion,@ClienteLimiteCredito,@ClienteSobregiro,@VendedorId,@CondicionesPagosId,@ClienteTieneCredito,@ClienteDescuento,@ClienteObservaciones,@ClienteSaldoActual,
                           GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -1478,7 +1477,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Cliente
 	SET                ClienteNombre = @ClienteNombre, ClienteFecha = @ClienteFecha, ClientePaterno = @ClientePaterno, ClienteMaterno = @ClienteMaterno, ClienteRfc = @ClienteRfc, ClienteCalle = @ClienteCalle, 
@@ -1489,11 +1488,11 @@ BEGIN
                          ClienteObservaciones = @ClienteObservaciones, ClienteSaldoActual = @ClienteSaldoActual, FechaUpdate = GETDATE()
 	WHERE        (ClienteId = @ClienteId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -1556,7 +1555,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -1623,11 +1622,11 @@ BEGIN
 	@ClienteObservaciones,
 	@ClienteSaldoActual;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -1665,17 +1664,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO ComprasSugeridas
                          (Codigo, Descripcion, Centro, Morelos, FechaInsert)
 		VALUES        (@Codigo,@Descripcion,@Centro,@Morelos, GETDATE())
 
-		commit;
+		commit  transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -1713,17 +1712,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       ComprasSugeridas
 		SET                Descripcion = @Descripcion, Centro = @Centro, Morelos = @Morelos, FechaUpdate = GETDATE()
 		WHERE        (Codigo = @Codigo)
 
-		commit;
+		commit  transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback  transaction T3;
 		set @correcto=0
 	end catch
 
@@ -1761,7 +1760,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -1778,11 +1777,11 @@ BEGIN
 			@Centro,
 			@Morelos;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -1822,17 +1821,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO CondicionesPagos
                          (CondicionesPagosId, CondicionesPagosNombre, CondicionesPagosCantidad, CondicionesPagosAfectacion, CondicionesPagosFecha, CondicionesPagosActivo, FechaInsert)
 		VALUES        (@CondicionesPagosId,@CondicionesPagosNombre,@CondicionesPagosCantidad,@CondicionesPagosAfectacion,@CondicionesPagosFecha,@CondicionesPagosActivo, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -1872,18 +1871,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       CondicionesPagos
 		SET                CondicionesPagosNombre = @CondicionesPagosNombre, CondicionesPagosCantidad = @CondicionesPagosCantidad, CondicionesPagosAfectacion = @CondicionesPagosAfectacion, 
                          CondicionesPagosFecha = @CondicionesPagosFecha, CondicionesPagosActivo = @CondicionesPagosActivo, FechaUpdate = GETDATE()
 		WHERE        (CondicionesPagosId = @CondicionesPagosId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -1923,7 +1922,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -1944,11 +1943,11 @@ BEGIN
 			@CondicionesPagosFecha,
 			@CondicionesPagosActivo;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -1988,17 +1987,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO CProveedor
                          (CProveedorId, CProveedorNombre, CProveedorFecha, CProveedorActivo, CProveedorPadreId, CProveedorTieneElementos, FechaInsert)
 		VALUES        (@CProveedorId,@CProveedorNombre,@CProveedorFecha,@CProveedorActivo,@CProveedorPadreId,@CProveedorTieneElementos, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -2039,18 +2038,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       CProveedor
 		SET                CProveedorNombre = @CProveedorNombre, CProveedorFecha = @CProveedorFecha, CProveedorActivo = @CProveedorActivo, CProveedorPadreId = @CProveedorPadreId, 
                          CProveedorTieneElementos = @CProveedorTieneElementos, FechaUpdate = GETDATE()
 		WHERE        (CProveedorId = @CProveedorId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -2090,7 +2089,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -2111,11 +2110,11 @@ BEGIN
 			@CProveedorPadreId,
 			@CProveedorTieneElementos;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -2151,17 +2150,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Documentos
                          (DocumentosId, DocumentosNombre, FechaInsert)
 		VALUES        (@DocumentosId,@DocumentosNombre, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -2197,17 +2196,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Documentos
 		SET                DocumentosNombre = @DocumentosNombre, FechaUpdate = GETDATE()
 		WHERE        (DocumentosId = @DocumentosId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -2243,7 +2242,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -2256,11 +2255,11 @@ BEGIN
 			Exec dbo.SP_BSC_DocumentosInsert @DocumentosId,
 			@DocumentosNombre;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -2296,17 +2295,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO EntradaMercanciaTipo
                          (EntradaMercanciaTipoId, EntradaMercanciaTipoDescripcion, FechaInsert)
 		VALUES        (@EntradaMercanciaTipoId,@EntradaMercanciaTipoDescripcion, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -2342,17 +2341,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       EntradaMercanciaTipo
 		SET                EntradaMercanciaTipoDescripcion = @EntradaMercanciaTipoDescripcion, FechaUpdate = GETDATE()
 		WHERE        (EntradaMercanciaTipoId = @EntradaMercanciaTipoId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -2388,7 +2387,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -2401,11 +2400,11 @@ BEGIN
 			Exec dbo.SP_BSC_EntradaMercanciaTipoInsert @EntradaMercanciaTipoId,
 			@EntradaMercanciaTipoDescripcion;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -2448,17 +2447,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Familia
                          (FamiliaId, FamiliaNombre, FamiliaFecha, FamiliaTipo, FamiliaActivo, FamiliaPadreId, IvaId, Espadre, TieneArticulos, FechaInsert)
 		VALUES        (@FamiliaId,@FamiliaNombre,@FamiliaFecha,@FamiliaTipo,@FamiliaActivo,@FamiliaPadreId,@IvaId,@Espadre,@TieneArticulos, GETDATE())
 
-		commit;
+		commit  transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback  transaction T2;
 		set @correcto=0
 	end catch
 
@@ -2501,18 +2500,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Familia
 		SET                FamiliaNombre = @FamiliaNombre, FamiliaFecha = @FamiliaFecha, FamiliaTipo = @FamiliaTipo, FamiliaActivo = @FamiliaActivo, FamiliaPadreId = @FamiliaPadreId, IvaId = @IvaId, Espadre = @Espadre, 
                          TieneArticulos = @TieneArticulos, FechaUpdate = GETDATE()
 		WHERE        (FamiliaId = @FamiliaId)
 
-		commit;
+		commit  transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback  transaction T3;
 		set @correcto=0
 	end catch
 
@@ -2555,7 +2554,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -2581,11 +2580,11 @@ BEGIN
 			@IvaId,
 			@Espadre,
 			@TieneArticulos;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -2621,17 +2620,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO FormasdePago
                          (FormasdePagoId, FormasdePagoDescripcion, FechaInsert)
 	VALUES        (@FormasdePagoId,@FormasdePagoDescripcion, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -2667,17 +2666,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       FormasdePago
 		SET                FormasdePagoDescripcion = @FormasdePagoDescripcion, FechaUpdate = GETDATE()
 		WHERE        (FormasdePagoId = @FormasdePagoId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -2713,7 +2712,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -2726,11 +2725,11 @@ BEGIN
 			Exec dbo.SP_BSC_FormasdePagoInsert @FormasdePagoId,
 			@FormasdePagoDescripcion;
 		
-		commit;
+		commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -2778,17 +2777,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Localidad
                          (LocalidadId, LocalidadNombre, LocalidadCP, MunicipioId, FechaInsert)
 		VALUES        (@LocalidadId,@LocalidadNombre,@LocalidadCP,@MunicipioId, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -2837,17 +2836,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Localidad
 		SET                LocalidadNombre = @LocalidadNombre, LocalidadCP = @LocalidadCP, MunicipioId = @MunicipioId, FechaUpdate = GETDATE()
 		WHERE        (LocalidadId = @LocalidadId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -2896,7 +2895,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -2913,11 +2912,11 @@ BEGIN
 				@LocalidadNombre,
 				@LocalidadCP,
 				@MunicipioId;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -2965,17 +2964,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Medidas
                          (MedidasId, MedidasNombre, MedidasAlias, FechaInsert)
 		VALUES        (@MedidasId,@MedidasNombre,@MedidasAlias, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -3023,17 +3022,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Medidas
 		SET                MedidasNombre = @MedidasNombre, MedidasAlias = @MedidasAlias, FechaUpdate = GETDATE()
 		WHERE        (MedidasId = @MedidasId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -3081,7 +3080,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -3095,11 +3094,11 @@ BEGIN
 			Exec dbo.SP_BSC_MedidasInsert @MedidasId,
 				@MedidasNombre,
 				@MedidasAlias;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -3148,17 +3147,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO MetodoPagos
 								 (MetodoPagosId, MetodoPagosNombre, MetodoPagosFecha, MetodoPagosActivo, FechaInsert)
 		VALUES        (@MetodoPagosId,@MetodoPagosNombre,@MetodoPagosFecha,@MetodoPagosActivo, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -3207,17 +3206,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       MetodoPagos
 		SET                MetodoPagosNombre = @MetodoPagosNombre, MetodoPagosFecha = @MetodoPagosFecha, MetodoPagosActivo = @MetodoPagosActivo, FechaUpdate = GETDATE()
 		WHERE        (MetodoPagosId = @MetodoPagosId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -3266,7 +3265,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -3282,11 +3281,11 @@ BEGIN
 				@MetodoPagosNombre,
 				@MetodoPagosFecha,
 				@MetodoPagosActivo;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -3336,17 +3335,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Moneda
 								 (MonedaId, MonedaNombre, MonedaSimbolo, MonedaActivo, MonedaTipoCambio, FechaInsert)
 		VALUES        (@MonedaId,@MonedaNombre,@MonedaSimbolo,@MonedaActivo,@MonedaTipoCambio, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -3396,17 +3395,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Moneda
 		SET                MonedaNombre = @MonedaNombre, MonedaSimbolo = @MonedaSimbolo, MonedaActivo = @MonedaActivo, MonedaTipoCambio = @MonedaTipoCambio, FechaUpdate = GETDATE()
 		WHERE        (MonedaId = @MonedaId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -3456,7 +3455,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -3474,11 +3473,11 @@ BEGIN
 				@MonedaSimbolo,
 				@MonedaActivo,
 				@MonedaTipoCambio;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -3527,17 +3526,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Proveedor
 								 (ProveedorId, ProveedorNombre, ProveedorPaterno, ProveedorMaterno, FechaInsert)
 		VALUES        (@ProveedorId,@ProveedorNombre,@ProveedorPaterno,@ProveedorMaterno, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -3586,17 +3585,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Proveedor
 		SET                ProveedorNombre = @ProveedorNombre, ProveedorPaterno = @ProveedorPaterno, ProveedorMaterno = @ProveedorMaterno, FechaUpdate = GETDATE()
 		WHERE        (ProveedorId = @ProveedorId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -3645,7 +3644,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -3661,11 +3660,11 @@ BEGIN
 				@ProveedorNombre,
 				@ProveedorPaterno,
 				@ProveedorMaterno;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -3714,17 +3713,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Roles
 								 (RolesId, RolesNombre, RolesActivo, RolesFecha, FechaInsert)
 		VALUES        (@RolesId,@RolesNombre,@RolesActivo,@RolesFecha, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -3773,17 +3772,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Roles
 		SET                RolesNombre = @RolesNombre, RolesActivo = @RolesActivo, RolesFecha = @RolesFecha, FechaUpdate = GETDATE()
 		WHERE        (RolesId = @RolesId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -3832,7 +3831,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -3848,11 +3847,11 @@ BEGIN
 				@RolesNombre,
 				@RolesActivo,
 				@RolesFecha;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -3899,17 +3898,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO SalidaMercanciaTipo
                          (SalidaMercanciaTipoId, SalidaMercanciaTipoDescripcion, FechaInsert)
 		VALUES        (@SalidaMercanciaTipoId,@SalidaMercanciaTipoDescripcion, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -3956,17 +3955,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       SalidaMercanciaTipo
 		SET                SalidaMercanciaTipoDescripcion = @SalidaMercanciaTipoDescripcion, FechaUpdate = GETDATE()
 		WHERE        (SalidaMercanciaTipoId = @SalidaMercanciaTipoId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -4013,7 +4012,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -4025,11 +4024,11 @@ BEGIN
 		else
 			Exec dbo.SP_BSC_SalidaMercanciaTipoInsert @SalidaMercanciaTipoId,
 				@SalidaMercanciaTipoDescripcion;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -4084,18 +4083,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Sucursales
                          (SucursalesId, SucursalesNombre, SucursalesFecha, SucursalesActivo, SucursalesCalle, SucursalesNInterior, SucursalesnNExterior, SucursalesColonia, LocalidadId, SucursalesCiudad, FechaInsert)
 		VALUES        (@SucursalesId,@SucursalesNombre,@SucursalesFecha,@SucursalesActivo,@SucursalesCalle,@SucursalesNInterior,@SucursalesnNExterior,@SucursalesColonia,@LocalidadId,@SucursalesCiudad, 
 								 GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -4150,18 +4149,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Sucursales
 		SET                SucursalesNombre = @SucursalesNombre, SucursalesFecha = @SucursalesFecha, SucursalesActivo = @SucursalesActivo, SucursalesCalle = @SucursalesCalle, SucursalesNInterior = @SucursalesNInterior, 
 								 SucursalesnNExterior = @SucursalesnNExterior, SucursalesColonia = @SucursalesColonia, LocalidadId = @LocalidadId, SucursalesCiudad = @SucursalesCiudad, FechaUpdate = GETDATE()
 		WHERE        (SucursalesId = @SucursalesId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -4216,7 +4215,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -4244,11 +4243,11 @@ BEGIN
 				@SucursalesColonia,
 				@LocalidadId,
 				@SucursalesCiudad;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -4297,17 +4296,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Tarifa
                          (TarifaId, TarifaNombre, TarifaFecha, TarifaActivo, FechaInsert)
 		VALUES        (@TarifaId,@TarifaNombre,@TarifaFecha,@TarifaActivo, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -4356,17 +4355,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Tarifa
 		SET                TarifaNombre = @TarifaNombre, TarifaFecha = @TarifaFecha, TarifaActivo = @TarifaActivo, FechaUpdate = GETDATE()
 		WHERE        (TarifaId = @TarifaId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -4415,7 +4414,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -4431,11 +4430,11 @@ BEGIN
 				@TarifaNombre,
 				@TarifaFecha,
 				@TarifaActivo;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -4487,17 +4486,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Usuarios
                          (UsuariosId, UsuariosNombre, UsuariosRegistroFecha, UsuariosLogin, UsuariosPassword, UsuariosActivo, RolesId, FechaInsert)
 		VALUES        (@UsuariosId,@UsuariosNombre,@UsuariosRegistroFecha,@UsuariosLogin,@UsuariosPassword,@UsuariosActivo,@RolesId, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -4549,18 +4548,18 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Usuarios
 		SET                UsuariosNombre = @UsuariosNombre, UsuariosRegistroFecha = @UsuariosRegistroFecha, UsuariosLogin = @UsuariosLogin, UsuariosPassword = @UsuariosPassword, UsuariosActivo = @UsuariosActivo, 
 								 RolesId = @RolesId, FechaUpdate = GETDATE()
 		WHERE        (UsuariosId = @UsuariosId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -4612,7 +4611,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -4634,11 +4633,11 @@ BEGIN
 				@UsuariosPassword,
 				@UsuariosActivo,
 				@RolesId;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -4688,17 +4687,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T2;
 	begin try
 		INSERT INTO Vendedor
                          (VendedorId, VendedorNombre, VendedorApellidos, VendedorActivo, VendedorNombreCompleto, FechaInsert)
 		VALUES        (@VendedorId,@VendedorNombre,@VendedorApellidos,@VendedorActivo,@VendedorNombreCompleto, GETDATE())
 
-		commit;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 
@@ -4748,17 +4747,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T3;
 	begin try
 		UPDATE       Vendedor
 		SET                VendedorNombre = @VendedorNombre, VendedorApellidos = @VendedorApellidos, VendedorActivo = @VendedorActivo, VendedorNombreCompleto = @VendedorNombreCompleto, FechaUpdate = GETDATE()
 		WHERE        (VendedorId = @VendedorId)
 
-		commit;
+		commit transaction T3;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T3;
 		set @correcto=0
 	end catch
 
@@ -4808,7 +4807,7 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction;
+	begin transaction T1;
 	begin try
 
 		declare @Existe int
@@ -4826,11 +4825,11 @@ BEGIN
 				@VendedorApellidos,
 				@VendedorActivo,
 				@VendedorNombreCompleto;
-	commit;
+	commit transaction T1;
 		set @correcto=1
 	end try
 	begin catch
-		rollback;
+		rollback transaction T1;
 		set @correcto=0
 	end catch
 
@@ -4852,9 +4851,9 @@ IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Catalo
 DROP PROCEDURE SP_BSC_CatalogosCentral_Select
 GO
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
+-- Author:		<Jorge Onofre>
+-- Create date: <27/08/2018,>
+-- Description:	<Select para mostrar los catalogos a actualizar>
 -- =============================================
 CREATE PROCEDURE [dbo].[SP_BSC_CatalogosCentral_Select]
 AS
@@ -4866,6 +4865,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT TABLE_NAME
 	FROM INFORMATION_SCHEMA.TABLES
+	where TABLE_NAME not in ('Caja')
 	order by 1
 END
 

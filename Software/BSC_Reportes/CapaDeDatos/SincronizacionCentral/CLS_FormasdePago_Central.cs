@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_FormasdePago_Central: ConexionBase
+    public class CLS_FormasdePago_Central: ConexionBase
     {
         public int FormasdePagoId { get; set; }
         public string FormasdePagoDescripcion { get; set; }

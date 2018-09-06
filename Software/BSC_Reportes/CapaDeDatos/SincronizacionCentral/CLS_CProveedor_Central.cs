@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_CProveedor_Central: ConexionBase
+    public class CLS_CProveedor_Central: ConexionBase
     {
         public int CProveedorId { get; set; }
         public string CProveedorNombre { get; set; }
         public string CProveedorFecha { get; set; }
         public string CProveedorActivo { get; set; }
-        public int CProveedorPadreId { get; set; }
+        public int? CProveedorPadreId { get; set; }
         public int CProveedorTieneElementos { get; set; }
 
         public void MtdActualizarCProveedor()

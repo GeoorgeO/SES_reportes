@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSEntradaMercanciaTipoLocal: ConexionBase
+    public class CLSEntradaMercanciaTipoLocal: ConexionBase
     {
         
 

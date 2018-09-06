@@ -217,7 +217,7 @@ namespace BSC_Sincronizacion
                             AplicaCambiosCaja(xRow);
                             break;
                         case "Cliente":
-                            AplicaCambiosCliente()
+                            AplicaCambiosCliente(xRow);
                             break;
                         case "CCliente":
                             AplicaCambiosCCliente(xRow);
@@ -226,22 +226,22 @@ namespace BSC_Sincronizacion
 
                             break;
                         case "CondicionesPagos":
-
+                            AplicaCambiosCondicionesPagos(xRow);
                             break;
                         case "CProveedor":
-
+                            AplicaCambiosCProveedor(xRow);
                             break;
                         case "Documentos":
 
                             break;
                         case "EntradaMercanciaTipo":
-
+                            AplicaCambiosEntradaMercanciaTipo(xRow);
                             break;
                         case "Familia":
-
+                            AplicaCambiosFamilia(xRow);
                             break;
                         case "FormasdePago":
-
+                            AplicaCambiosFormasdePago(xRow);
                             break;
                         case "Iva":
 
@@ -442,9 +442,13 @@ namespace BSC_Sincronizacion
 
             UdpArt.MtdActualizarCaja();
 
-            if (UdpArt.Exito == true)
+            if (UdpArt.Exito.ToString() == "True")
             {
                 ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
             }
         }
         /******* CCliente *****/
@@ -511,9 +515,13 @@ namespace BSC_Sincronizacion
 
             UdpArt.MtdActualizarCCliente();
 
-            if (UdpArt.Exito == true)
+            if (UdpArt.Exito.ToString() == "True")
             {
                 ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
             }
         }
         /******* Cliente *****/
@@ -538,9 +546,9 @@ namespace BSC_Sincronizacion
                         SelArt.Datos.Rows[i][4].ToString(), SelArt.Datos.Rows[i][5].ToString(), SelArt.Datos.Rows[i][6].ToString(), SelArt.Datos.Rows[i][7].ToString(),
                         SelArt.Datos.Rows[i][8].ToString(), SelArt.Datos.Rows[i][9].ToString(), SelArt.Datos.Rows[i][10].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][11]),
                         SelArt.Datos.Rows[i][12].ToString(), SelArt.Datos.Rows[i][13].ToString(), SelArt.Datos.Rows[i][14].ToString(), SelArt.Datos.Rows[i][15].ToString(),
-                        SelArt.Datos.Rows[i][16].ToString(), SelArt.Datos.Rows[i][17].ToString(), SelArt.Datos.Rows[i][18].ToString(), SelArt.Datos.Rows[i][19].ToString(),
-                        SelArt.Datos.Rows[i][20].ToString(), SelArt.Datos.Rows[i][21].ToString(), SelArt.Datos.Rows[i][22].ToString(), SelArt.Datos.Rows[i][23].ToString(),
-                        SelArt.Datos.Rows[i][24].ToString(), SelArt.Datos.Rows[i][25].ToString(), SelArt.Datos.Rows[i][26].ToString(), SelArt.Datos.Rows[i][27].ToString(),
+                        SelArt.Datos.Rows[i][16].ToString(), SelArt.Datos.Rows[i][17].ToString(), SelArt.Datos.Rows[i][18].ToString(), Convert.ToInt32(SelArt.Datos.Rows[i][19]),
+                        Convert.ToInt32(SelArt.Datos.Rows[i][20]), SelArt.Datos.Rows[i][21].ToString(), SelArt.Datos.Rows[i][22].ToString(), SelArt.Datos.Rows[i][23].ToString(),
+                        SelArt.Datos.Rows[i][24].ToString(), Convert.ToBoolean(SelArt.Datos.Rows[i][25]), SelArt.Datos.Rows[i][26].ToString(), SelArt.Datos.Rows[i][27].ToString(),
                         SelArt.Datos.Rows[i][28].ToString()
                         );
 
@@ -558,8 +566,8 @@ namespace BSC_Sincronizacion
         }
         private void SincronizaCliente(string ClienteId, string ClienteNombre, DateTime ClienteFecha, string ClientePaterno, string ClienteMaterno, string ClienteRfc, string ClienteCalle,
             string ClienteNInterior, string ClienteNExterior, string ClienteColonia, string LocalidadId, DateTime ClienteFechaActualizacion, string ClienteTelefono1,
-            string ClienteTelefono2, string ClienteTelefono3, string ClienteEmail, string ClienteEmailFiscal, string ClienteTipoPersona, string ClienteActivo, string CClienteId,
-            string ClienteImpresion, string ClienteLimiteCredito, string ClienteSobregiro, string VendedorId, string CondicionesPagosId, string ClienteTieneCredito,
+            string ClienteTelefono2, string ClienteTelefono3, string ClienteEmail, string ClienteEmailFiscal, string ClienteTipoPersona, string ClienteActivo, int CClienteId,
+            int ClienteImpresion, string ClienteLimiteCredito, string ClienteSobregiro, string VendedorId, string CondicionesPagosId, Boolean ClienteTieneCredito,
             string ClienteDescuento, string ClienteObservaciones, string ClienteSaldoActual)
         {
             CLS_Cliente_Central UdpArt = new CLS_Cliente_Central();
@@ -576,7 +584,15 @@ namespace BSC_Sincronizacion
             UdpArt.ClienteNInterior = ClienteNInterior;
             UdpArt.ClienteNExterior = ClienteNExterior;
             UdpArt.ClienteColonia = ClienteColonia;
-            UdpArt.LocalidadId = Convert.ToInt32(LocalidadId);
+            if (LocalidadId==string.Empty)
+            {
+                UdpArt.LocalidadId = 0;
+            }
+            else
+            {
+                UdpArt.LocalidadId = Convert.ToInt32(LocalidadId);
+            }
+            
             UdpArt.ClienteFechaActualizacion = ClienteFechaActualizacion.Date.Year.ToString() + DosCero(ClienteFechaActualizacion.Date.Month.ToString()) + DosCero(ClienteFechaActualizacion.Date.Day.ToString());
             UdpArt.ClienteTelefono1 = ClienteTelefono1;
             UdpArt.ClienteTelefono2 = ClienteTelefono2;
@@ -585,24 +601,380 @@ namespace BSC_Sincronizacion
             UdpArt.ClienteEmailFiscal = ClienteEmailFiscal;
             UdpArt.ClienteTipoPersona = ClienteTipoPersona;
             UdpArt.ClienteActivo = ClienteActivo;
-            UdpArt.CClienteId = Convert.ToInt32(CClienteId);
-            UdpArt.ClienteImpresion = Convert.ToInt32(ClienteImpresion);
-            UdpArt.ClienteLimiteCredito = Convert.ToDecimal(ClienteLimiteCredito);
-            UdpArt.ClienteSobregiro = Convert.ToDecimal(ClienteSobregiro);
+            UdpArt.CClienteId = CClienteId;
+            UdpArt.ClienteImpresion = ClienteImpresion;
+            if (ClienteLimiteCredito == string.Empty)
+            {
+                UdpArt.ClienteLimiteCredito = 0;
+            }
+            else
+            {
+                UdpArt.ClienteLimiteCredito = Convert.ToDecimal(ClienteLimiteCredito);
+            }
+            if (ClienteSobregiro==string.Empty)
+            {
+                UdpArt.ClienteSobregiro = 0;
+            }
+            else
+            {
+                UdpArt.ClienteSobregiro = Convert.ToDecimal(ClienteSobregiro);
+            }
+            
             UdpArt.VendedorId = Convert.ToInt32(VendedorId);
             UdpArt.CondicionesPagosId = Convert.ToInt32(CondicionesPagosId);
-            UdpArt.ClienteTieneCredito = Convert.ToInt32(ClienteTieneCredito);
+            if (ClienteTieneCredito == false)
+            {
+                UdpArt.ClienteTieneCredito = 0;
+            }
+            else
+            {
+                UdpArt.ClienteTieneCredito = 1;
+            }
+            
             UdpArt.ClienteDescuento = Convert.ToDecimal(ClienteDescuento);
-            UdpArt.ClienteObservaciones = ClienteObservaciones);
-            UdpArt.ClienteSaldoActual = Convert.ToDecimal(ClienteSaldoActual);
+            UdpArt.ClienteObservaciones = ClienteObservaciones;
+            if (ClienteSaldoActual==string.Empty)
+            {
+                UdpArt.ClienteSaldoActual = 0;
+            }
+            else
+            {
+                UdpArt.ClienteSaldoActual = Convert.ToDecimal(ClienteSaldoActual);
+            }
+            
 
             UdpArt.MtdActualizarCliente();
 
-            if (UdpArt.Exito == true)
+            if (UdpArt.Exito.ToString() == "True")
             {
                 ArticulosActualizados++;
             }
+            else
+            {
+                ArticulosError++;
+            }
         }
+        /******* CondicionesPagos *****/
+        private void AplicaCambiosCondicionesPagos(int Fila)
+        {
+            CLSCondicionesPagosLocal SelArt = new CLSCondicionesPagosLocal();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCondicionesPagos();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 1;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    lEstatus.Text = "Codigo CondicionesPagos [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    SincronizaCondicionesPagos(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), SelArt.Datos.Rows[i][2].ToString(), Convert.ToBoolean(SelArt.Datos.Rows[i][3]),
+                        Convert.ToDateTime( SelArt.Datos.Rows[i][4]), SelArt.Datos.Rows[i][5].ToString()
+                        );
+
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+        }
+        private void SincronizaCondicionesPagos(string CondicionesPagosId, string CondicionesPagosNombre, string CondicionesPagosCantidad, Boolean CondicionesPagosAfectacion, DateTime CondicionesPagosFecha, string CondicionesPagosActivo)
+        {
+            CLS_CondicionesPagos_Central UdpArt = new CLS_CondicionesPagos_Central();
+            UdpArt.CondicionesPagosId = Convert.ToInt32(CondicionesPagosId);
+            UdpArt.CondicionesPagosNombre = CondicionesPagosNombre;
+            UdpArt.CondicionesPagosCantidad = Convert.ToInt32(CondicionesPagosCantidad);
+            if (CondicionesPagosAfectacion==true)
+            {
+                UdpArt.CondicionesPagosAfectacion = 1;
+            }
+            else
+            {
+                UdpArt.CondicionesPagosAfectacion = 0;
+            }
+            
+            UdpArt.CondicionesPagosFecha = CondicionesPagosFecha.Date.Year.ToString() + DosCero(CondicionesPagosFecha.Date.Month.ToString()) + DosCero(CondicionesPagosFecha.Date.Day.ToString()); 
+            UdpArt.CondicionesPagosActivo = CondicionesPagosActivo;
+
+            UdpArt.MtdActualizarCondicionesPagos();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+            }
+        }
+        /******* CProveedor *****/
+        private void AplicaCambiosCProveedor(int Fila)
+        {
+            CLSCProveedorLocal SelArt = new CLSCProveedorLocal();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCProveedor();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+                    
+                    lEstatus.Text = "Codigo CondicionesPagos [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    SincronizaCProveedor(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][2]), SelArt.Datos.Rows[i][3].ToString(),
+                        SelArt.Datos.Rows[i][4].ToString(), Convert.ToBoolean(SelArt.Datos.Rows[i][5])
+                        );
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+        }
+        private void SincronizaCProveedor(string CProveedorId, string CProveedorNombre, DateTime CProveedorFecha, string CProveedorActivo, string CProveedorPadreId, Boolean CProveedorTieneElementos)
+        {
+            CLS_CProveedor_Central UdpArt = new CLS_CProveedor_Central();
+            UdpArt.CProveedorId = Convert.ToInt32(CProveedorId);
+            UdpArt.CProveedorNombre = CProveedorNombre;
+            UdpArt.CProveedorFecha = CProveedorFecha.Date.Year.ToString() + DosCero(CProveedorFecha.Date.Month.ToString()) + DosCero(CProveedorFecha.Date.Day.ToString());
+            UdpArt.CProveedorActivo = CProveedorActivo;
+            if (CProveedorPadreId == string.Empty)
+            {
+                UdpArt.CProveedorPadreId = 0;
+            }
+            else
+            {
+                UdpArt.CProveedorPadreId = Convert.ToInt32(CProveedorPadreId);
+            }
+            
+            if (CProveedorTieneElementos==true)
+            {
+                UdpArt.CProveedorTieneElementos = 1;
+            }
+            else
+            {
+                UdpArt.CProveedorTieneElementos = 0;
+            }
+
+            UdpArt.MtdActualizarCProveedor();
+            
+            if (UdpArt.Exito.ToString() == "True" )
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+            }
+        }
+        /******* EntradaMercanciaTipo *****/
+        private void AplicaCambiosEntradaMercanciaTipo(int Fila)
+        {
+            CLSEntradaMercanciaTipoLocal SelArt = new CLSEntradaMercanciaTipoLocal();
+            
+            SelArt.MtdSeleccionarEntradaMercanciaTipo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+                    
+                    lEstatus.Text = "Codigo CondicionesPagos [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    SincronizaEntradaMercanciaTipo(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString()
+                        );
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+        }
+        private void SincronizaEntradaMercanciaTipo(string EntradaMercanciaTipoId, string EntradaMercanciaTipoDescripcion)
+        {
+            CLS_EntradaMercanciaTipo_Central UdpArt = new CLS_EntradaMercanciaTipo_Central();
+            UdpArt.EntradaMercanciaTipoId = Convert.ToInt32(EntradaMercanciaTipoId);
+            UdpArt.EntradaMercanciaTipoDescripcion = EntradaMercanciaTipoDescripcion;
+            
+
+            UdpArt.MtdActualizarEntradaMercanciaTipo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+            }
+        }
+        /******* Familia *****/
+        private void AplicaCambiosFamilia(int Fila)
+        {
+            CLSFamiliaLocal SelArt = new CLSFamiliaLocal();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarFamilia();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo Familia [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    SincronizaFamilia(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][2]), SelArt.Datos.Rows[i][3].ToString(),
+                        SelArt.Datos.Rows[i][4].ToString(), SelArt.Datos.Rows[i][5].ToString(), SelArt.Datos.Rows[i][6].ToString(), SelArt.Datos.Rows[i][7].ToString(),
+                        SelArt.Datos.Rows[i][8].ToString()
+                        );
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+        }
+        private void SincronizaFamilia(string FamiliaId, string FamiliaNombre, DateTime FamiliaFecha, String FamiliaTipo, String FamiliaActivo, string FamiliaPadreId, string IvaId, string Espadre, string TieneArticulos)
+        {
+            CLS_Familia_central UdpArt = new CLS_Familia_central();
+            UdpArt.FamiliaId = Convert.ToInt32(FamiliaId);
+            UdpArt.FamiliaNombre = FamiliaNombre;
+            UdpArt.FamiliaFecha = FamiliaFecha.Date.Year.ToString() + DosCero(FamiliaFecha.Date.Month.ToString()) + DosCero(FamiliaFecha.Date.Day.ToString()); 
+            UdpArt.FamiliaTipo = FamiliaTipo;
+            UdpArt.FamiliaActivo = FamiliaActivo;
+            if (FamiliaPadreId==string.Empty)
+            {
+                UdpArt.FamiliaPadreId = 0;
+            }
+            else
+            {
+                UdpArt.FamiliaPadreId = Convert.ToInt32(FamiliaPadreId);
+            }
+            if (IvaId==string.Empty)
+            {
+                UdpArt.IvaId = 0;
+            }
+            else
+            {
+                UdpArt.IvaId = Convert.ToInt32(IvaId);
+            }
+            
+            if (Convert.ToBoolean(Espadre) == true)
+            {
+                UdpArt.Espadre = 1;
+            }
+            else
+            {
+                UdpArt.Espadre = 0;
+            }
+            if (Convert.ToBoolean(TieneArticulos) == true)
+            {
+                UdpArt.TieneArticulos = 1;
+            }
+            else
+            {
+                UdpArt.TieneArticulos = 0;
+            }
+
+           
+
+            UdpArt.MtdActualizarFamilia();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+            }
+        }
+        /******* FormasdePago *****/
+        private void AplicaCambiosFormasdePago(int Fila)
+        {
+            CLSFormasdePagoLocal SelArt = new CLSFormasdePagoLocal();
+
+            SelArt.MtdSeleccionarFormasdePago();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo FormasdePago [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    SincronizaFormasdePago(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString()
+                        );
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+        }
+        private void SincronizaFormasdePago(string FormasdePagoId, string FormasdePagoDescripcion)
+        {
+            CLS_FormasdePago_Central UdpArt = new CLS_FormasdePago_Central();
+            UdpArt.FormasdePagoId = Convert.ToInt32(FormasdePagoId);
+            UdpArt.FormasdePagoDescripcion = FormasdePagoDescripcion;
+
+
+            UdpArt.MtdActualizarFormasdePagoGeneral();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+            }
+        }
+
 
     }
 }
