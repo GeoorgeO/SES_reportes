@@ -282,12 +282,18 @@ namespace BSC_Sincronizacion
                     }
                 }
             }
+            limpiarFormulario();
+            MessageBox.Show("El proceso Finalizo correctamente.", "Información", MessageBoxButtons.OK,MessageBoxIcon.Information);
             return Cadena;
         }
         /******* Articulos *****/
         private void AplicaCambiosArticulo(int Fila)
         {
             CLSArticulosLocal SelArt = new CLSArticulosLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarArticulos();
@@ -296,22 +302,23 @@ namespace BSC_Sincronizacion
                 ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    lEstatus.Text = "Actualizando Articulos " + ArticulosActualizados + " de " + SelArt.Datos.Rows.Count;
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
-                    pbProgreso.Position = ArticulosActualizados;
+                    pbProgreso.Position = i + 1;
                 }
-                lEstatus.Text = "Actualizando Articulos " + ArticulosActualizados + " de " + SelArt.Datos.Rows.Count;
-                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
-                if (SelArt.Datos.Rows.Count == ArticulosActualizados)
+                if (ArticulosError == 0)
                 {
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Done");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+
                 }
                 else
                 {
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Failed");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
         }
@@ -321,21 +328,27 @@ namespace BSC_Sincronizacion
             UdpArt.ArticuloCodigo = Codigo;
             UdpArt.ArticuloDescripcion = Descripcion;
             UdpArt.MtdActualizarArticulo();
-            if (UdpArt.Exito == true)
+            if (UdpArt.Exito.ToString() == "True")
             {
                 ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
             }
         }
         /******* ArticulosMedidas *****/
         private void AplicaCambiosArticuloMedidas(int Fila)
         {
             CLSArticuloMedidasLocal SelArt = new CLSArticuloMedidasLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarArticuloMedidas();
             if (SelArt.Exito == true)
             {
-                ArticulosActualizados = 1;
+                ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
@@ -351,6 +364,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    
                 }
                 else
                 {
@@ -380,12 +394,14 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosCaja(int Fila)
         {
             CLSCajaLocal SelArt = new CLSCajaLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarCaja();
             if (SelArt.Exito == true)
             {
-                ArticulosActualizados = 1;
+                ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
@@ -455,12 +471,14 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosCCliente(int Fila)
         {
             CLSCClienteLocal SelArt = new CLSCClienteLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarCCliente();
             if (SelArt.Exito == true)
             {
-                ArticulosActualizados = 1;
+                ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
@@ -528,12 +546,14 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosCliente(int Fila)
         {
             CLSClienteLocal SelArt = new CLSClienteLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarCliente();
             if (SelArt.Exito == true)
             {
-                ArticulosActualizados = 1;
+                ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
@@ -658,12 +678,14 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosCondicionesPagos(int Fila)
         {
             CLSCondicionesPagosLocal SelArt = new CLSCondicionesPagosLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarCondicionesPagos();
             if (SelArt.Exito == true)
             {
-                ArticulosActualizados = 1;
+                ArticulosActualizados = 0;
                 pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
                 GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
@@ -720,6 +742,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosCProveedor(int Fila)
         {
             CLSCProveedorLocal SelArt = new CLSCProveedorLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarCProveedor();
@@ -791,7 +815,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosEntradaMercanciaTipo(int Fila)
         {
             CLSEntradaMercanciaTipoLocal SelArt = new CLSEntradaMercanciaTipoLocal();
-            
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarEntradaMercanciaTipo();
             if (SelArt.Exito == true)
             {
@@ -840,6 +865,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosFamilia(int Fila)
         {
             CLSFamiliaLocal SelArt = new CLSFamiliaLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarFamilia();
@@ -929,7 +956,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosFormasdePago(int Fila)
         {
             CLSFormasdePagoLocal SelArt = new CLSFormasdePagoLocal();
-
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarFormasdePago();
             if (SelArt.Exito == true)
             {
@@ -978,8 +1006,11 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosIva(int Fila)
         {
             CLSIvaLocal SelArt = new CLSIvaLocal();
-
+            
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarIva();
+
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1028,7 +1059,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosLocalidad(int Fila)
         {
             CLSLocalidadLocal SelArt = new CLSLocalidadLocal();
-
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarLocalidad();
             if (SelArt.Exito == true)
             {
@@ -1086,7 +1118,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosMedidas(int Fila)
         {
             CLSMedidasLocal SelArt = new CLSMedidasLocal();
-
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarMedidas();
             if (SelArt.Exito == true)
             {
@@ -1137,6 +1170,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosMetodoPagos(int Fila)
         {
             CLSMetodoPagosLocal SelArt = new CLSMetodoPagosLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarMetodoPagos();
@@ -1189,7 +1224,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosMoneda(int Fila)
         {
             CLSMonedaLocal SelArt = new CLSMonedaLocal();
-            
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarMoneda();
             if (SelArt.Exito == true)
             {
@@ -1248,6 +1284,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosProveedor(int Fila)
         {
             CLSProveedorLocal SelArt = new CLSProveedorLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarProveedor();
@@ -1300,6 +1338,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosRoles(int Fila)
         {
             CLSRolesLocal SelArt = new CLSRolesLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarRoles();
@@ -1352,7 +1392,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosSalidaMercanciaTipo(int Fila)
         {
             CLSSalidaMercanciaTipoLocal SelArt = new CLSSalidaMercanciaTipoLocal();
-            
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.MtdSeleccionarSalidaMercanciaTipo();
             if (SelArt.Exito == true)
             {
@@ -1402,6 +1443,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosSucursales(int Fila)
         {
             CLSSucursalesLocal SelArt = new CLSSucursalesLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarSucursales();
@@ -1471,6 +1514,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosTarifa(int Fila)
         {
             CLSTarifaLocal SelArt = new CLSTarifaLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarTarifa();
@@ -1523,9 +1568,13 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosUsuarios(int Fila)
         {
             CLSUsuariosLocal SelArt = new CLSUsuariosLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarUsuarios();
+          
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1586,6 +1635,8 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosVendedor(int Fila)
         {
             CLSVendedorLocal SelArt = new CLSVendedorLocal();
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarVendedor();
