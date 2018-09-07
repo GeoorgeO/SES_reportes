@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_Sucursales_Central: ConexionBase
+    public class CLS_Sucursales_Central: ConexionBase
     {
         public int SucursalesId { get; set; }
         public string SucursalesNombre { get; set; }
         public string SucursalesFecha { get; set; }
-        public Char SucursalesActivo { get; set; }
+        public string SucursalesActivo { get; set; }
         public string SucursalesCalle { get; set; }
         public string SucursalesNInterior { get; set; }
         public string SucursalesnNExterior { get; set; }
         public string SucursalesColonia { get; set; }
-        public int LocalidadId { get; set; }
-        public string SucursalesCiudad { get; set; }
+        public int? LocalidadId { get; set; }
+        
 
         public void MtdActualizarSucursales()
         {
@@ -32,8 +32,8 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SucursalesNombre");
                 _dato.CadenaTexto = SucursalesFecha;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SucursalesFecha");
-                _dato.CaracterValor = SucursalesActivo;
-                _conexionC.agregarParametro(EnumTipoDato.Caracter, _dato, "SucursalesActivo");
+                _dato.CadenaTexto = SucursalesActivo;
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SucursalesActivo");
                 _dato.CadenaTexto = SucursalesCalle;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SucursalesCalle");
                 _dato.CadenaTexto = SucursalesNInterior;
@@ -44,8 +44,6 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SucursalesColonia");
                 _dato.Entero = LocalidadId;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "LocalidadId");
-                _dato.CadenaTexto = SucursalesCiudad;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SucursalesCiudad");
 
                 _conexionC.EjecutarDataset();
 

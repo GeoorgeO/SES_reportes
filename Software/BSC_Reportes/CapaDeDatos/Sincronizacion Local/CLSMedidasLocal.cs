@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSMedidasLocal: ConexionBase
+    public class CLSMedidasLocal: ConexionBase
     {
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
@@ -18,10 +18,10 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_ActualizaMedidasLocal_Select";
-                _dato.CadenaTexto = FechaInicio;
+                /*_dato.CadenaTexto = FechaInicio;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");*/
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

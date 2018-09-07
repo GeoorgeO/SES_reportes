@@ -33,8 +33,7 @@ CREATE PROCEDURE SP_BSC_SucursalesInsert
 	@SucursalesNInterior char(40),
 	@SucursalesnNExterior char(40),
 	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0),
-	@SucursalesCiudad char(100) 
+	@LocalidadId decimal(11, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -47,8 +46,8 @@ BEGIN
 	begin transaction T2;
 	begin try
 		INSERT INTO Sucursales
-                         (SucursalesId, SucursalesNombre, SucursalesFecha, SucursalesActivo, SucursalesCalle, SucursalesNInterior, SucursalesnNExterior, SucursalesColonia, LocalidadId, SucursalesCiudad, FechaInsert)
-		VALUES        (@SucursalesId,@SucursalesNombre,@SucursalesFecha,@SucursalesActivo,@SucursalesCalle,@SucursalesNInterior,@SucursalesnNExterior,@SucursalesColonia,@LocalidadId,@SucursalesCiudad, 
+                         (SucursalesId, SucursalesNombre, SucursalesFecha, SucursalesActivo, SucursalesCalle, SucursalesNInterior, SucursalesnNExterior, SucursalesColonia, LocalidadId, FechaInsert)
+		VALUES        (@SucursalesId,@SucursalesNombre,@SucursalesFecha,@SucursalesActivo,@SucursalesCalle,@SucursalesNInterior,@SucursalesnNExterior,@SucursalesColonia,@LocalidadId, 
 								 GETDATE())
 
 		commit transaction T2;

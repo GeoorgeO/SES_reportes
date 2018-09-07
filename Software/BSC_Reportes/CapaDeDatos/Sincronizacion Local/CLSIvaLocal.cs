@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSIvaLocal: ConexionBase
+    public class CLSIvaLocal: ConexionBase
     {
         
 

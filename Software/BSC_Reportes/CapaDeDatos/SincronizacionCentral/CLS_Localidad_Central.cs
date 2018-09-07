@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDeDatos.SincronizacionCentral
+namespace CapaDeDatos
 {
-    class CLS_Localidad_Central: ConexionBase
+    public class CLS_Localidad_Central: ConexionBase
     {
         public int LocalidadId { get; set; }
         public string LocalidadNombre { get; set; }
         public string LocalidadCP { get; set; }
-        public int MunicipioId { get; set; }
+        public int? MunicipioId { get; set; }
 
         public void MtdActualizarLocalidad()
         {

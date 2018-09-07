@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_Roles_Central: ConexionBase
+    public class CLS_Roles_Central: ConexionBase
     {
         public int RolesId { get; set; }
         public string RolesNombre { get; set; }

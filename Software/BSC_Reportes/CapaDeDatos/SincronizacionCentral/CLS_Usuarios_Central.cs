@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_Usuarios_Central: ConexionBase
+    public class CLS_Usuarios_Central: ConexionBase
     {
         public int UsuariosId { get; set; }
         public string UsuariosNombre { get; set; }
         public string UsuariosRegistroFecha { get; set; }
         public string UsuariosLogin { get; set; }
         public string UsuariosPassword { get; set; }
-        public Char UsuariosActivo { get; set; }
-        public int RolesId { get; set; }
+        public string UsuariosActivo { get; set; }
+        public int? RolesId { get; set; }
 
         public void MtdActualizarUsuarios()
         {
@@ -33,8 +33,8 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.CadenaTexto = UsuariosPassword;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosPassword");
-                _dato.CaracterValor = UsuariosActivo;
-                _conexionC.agregarParametro(EnumTipoDato.Caracter, _dato, "UsuariosActivo");
+                _dato.CadenaTexto = UsuariosActivo;
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosActivo");
                 _dato.Entero = RolesId;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "RolesId");
 

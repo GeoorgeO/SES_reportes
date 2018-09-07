@@ -1,4 +1,4 @@
-USE Central
+USE [Central]
 GO
 -- ================================================
 -- Template generated from Template Explorer using:
@@ -15,25 +15,20 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_SucursalesUpdate')
-DROP PROCEDURE SP_BSC_SucursalesUpdate
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_IvaInsert')
+DROP PROCEDURE SP_BSC_IvaInsert
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_SucursalesUpdate
+CREATE PROCEDURE SP_BSC_IvaInsert
 	-- Add the parameters for the stored procedure here
-	@SucursalesId decimal(11, 0),
-	@SucursalesNombre char(60),
-	@SucursalesFecha datetime,
-	@SucursalesActivo char(1),
-	@SucursalesCalle char(100),
-	@SucursalesNInterior char(40),
-	@SucursalesnNExterior char(40),
-	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0)
+	@IvaId decimal(11, 0),
+	@IvaNombre char(60),
+	@IvaFactor smallmoney,
+	@IvaPorcentaje smallint
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -43,18 +38,17 @@ BEGIN
     -- Insert statements for procedure here
 	declare @correcto bit
 
-	begin transaction T3;
+	begin transaction T2;
 	begin try
-		UPDATE       Sucursales
-		SET                SucursalesNombre = @SucursalesNombre, SucursalesFecha = @SucursalesFecha, SucursalesActivo = @SucursalesActivo, SucursalesCalle = @SucursalesCalle, SucursalesNInterior = @SucursalesNInterior, 
-								 SucursalesnNExterior = @SucursalesnNExterior, SucursalesColonia = @SucursalesColonia, LocalidadId = @LocalidadId, FechaUpdate = GETDATE()
-		WHERE        (SucursalesId = @SucursalesId)
+		INSERT INTO Iva
+                         (IvaId, IvaNombre, IvaFactor, IvaPorcentaje, FechaInsert)
+		VALUES        (@IvaId,@IvaNombre,@IvaFactor,@IvaPorcentaje, GETDATE())
 
-		commit transaction T3;
+		commit transaction T2;
 		set @correcto=1
 	end try
 	begin catch
-		rollback transaction T3;
+		rollback transaction T2;
 		set @correcto=0
 	end catch
 

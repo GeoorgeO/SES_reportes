@@ -1,4 +1,4 @@
-USE Central
+USE [Central]
 GO
 -- ================================================
 -- Template generated from Template Explorer using:
@@ -15,25 +15,20 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_SucursalesUpdate')
-DROP PROCEDURE SP_BSC_SucursalesUpdate
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_IvaUpdate')
+DROP PROCEDURE SP_BSC_IvaUpdate
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_SucursalesUpdate
+CREATE PROCEDURE SP_BSC_IvaUpdate
 	-- Add the parameters for the stored procedure here
-	@SucursalesId decimal(11, 0),
-	@SucursalesNombre char(60),
-	@SucursalesFecha datetime,
-	@SucursalesActivo char(1),
-	@SucursalesCalle char(100),
-	@SucursalesNInterior char(40),
-	@SucursalesnNExterior char(40),
-	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0)
+	@IvaId decimal(11, 0),
+	@IvaNombre char(60),
+	@IvaFactor smallmoney,
+	@IvaPorcentaje smallint
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -45,10 +40,9 @@ BEGIN
 
 	begin transaction T3;
 	begin try
-		UPDATE       Sucursales
-		SET                SucursalesNombre = @SucursalesNombre, SucursalesFecha = @SucursalesFecha, SucursalesActivo = @SucursalesActivo, SucursalesCalle = @SucursalesCalle, SucursalesNInterior = @SucursalesNInterior, 
-								 SucursalesnNExterior = @SucursalesnNExterior, SucursalesColonia = @SucursalesColonia, LocalidadId = @LocalidadId, FechaUpdate = GETDATE()
-		WHERE        (SucursalesId = @SucursalesId)
+		UPDATE       Iva
+		SET                IvaNombre = @IvaNombre, IvaFactor = @IvaFactor, IvaPorcentaje = @IvaPorcentaje, FechaUpdate = GETDATE()
+		WHERE        (IvaId = @IvaId)
 
 		commit transaction T3;
 		set @correcto=1

@@ -33,8 +33,7 @@ CREATE PROCEDURE SP_BSC_SucursalesGeneral
 	@SucursalesNInterior char(40),
 	@SucursalesnNExterior char(40),
 	@SucursalesColonia char(100),
-	@LocalidadId decimal(11, 0),
-	@SucursalesCiudad char(100) 
+	@LocalidadId decimal(11, 0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -59,8 +58,7 @@ BEGIN
 				@SucursalesNInterior,
 				@SucursalesnNExterior,
 				@SucursalesColonia,
-				@LocalidadId,
-				@SucursalesCiudad;
+				@LocalidadId;
 		else
 			Exec dbo.SP_BSC_SucursalesInsert @SucursalesId,
 				@SucursalesNombre,
@@ -70,8 +68,7 @@ BEGIN
 				@SucursalesNInterior,
 				@SucursalesnNExterior,
 				@SucursalesColonia,
-				@LocalidadId,
-				@SucursalesCiudad;
+				@LocalidadId;
 	commit transaction T1;
 		set @correcto=1
 	end try

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_Proveedor_Central: ConexionBase
+    public class CLS_Proveedor_Central: ConexionBase
     {
         public int ProveedorId { get; set; }
         public string ProveedorNombre { get; set; }

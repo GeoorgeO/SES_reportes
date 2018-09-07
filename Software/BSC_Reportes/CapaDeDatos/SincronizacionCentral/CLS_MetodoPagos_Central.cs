@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_MetodoPagos_Central: ConexionBase
+    public class CLS_MetodoPagos_Central: ConexionBase
     {
         public int MetodoPagosId { get; set; }
         public string MetodoPagosNombre { get; set; }
         public string MetodoPagosFecha { get; set; }
-        public Char MetodoPagosActivo { get; set; }
+        public String MetodoPagosActivo { get; set; }
 
         public void MtdActualizarMetodoPagos()
         {
@@ -26,8 +26,8 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MetodoPagosNombre");
                 _dato.CadenaTexto = MetodoPagosFecha;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MetodoPagosFecha");
-                _dato.CaracterValor = MetodoPagosActivo;
-                _conexionC.agregarParametro(EnumTipoDato.Caracter, _dato, "MetodoPagosActivo");
+                _dato.CadenaTexto = MetodoPagosActivo;
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MetodoPagosActivo");
 
                 _conexionC.EjecutarDataset();
 

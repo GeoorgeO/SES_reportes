@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLS_SalidaMercanciaTipo_Central: ConexionBase
+    public class CLS_SalidaMercanciaTipo_Central: ConexionBase
     {
         public int SalidaMercanciaTipoId { get; set; }
         public string SalidaMercanciaTipoDescripcion { get; set; }

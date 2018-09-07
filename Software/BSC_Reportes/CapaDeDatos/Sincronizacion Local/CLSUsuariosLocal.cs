@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSUsuariosLocal: ConexionBase
+    public class CLSUsuariosLocal: ConexionBase
     {
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }

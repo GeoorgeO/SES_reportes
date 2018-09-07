@@ -86,6 +86,7 @@
     <Compile Include="SincronizacionCentral\CLS_EntradaMercanciaTipo_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_Familia_central.cs" />
     <Compile Include="SincronizacionCentral\CLS_FormasdePago_Central.cs" />
+    <Compile Include="SincronizacionCentral\CLS_Iva_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_Localidad_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_Medidas_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_MetodoPagos_Central.cs" />

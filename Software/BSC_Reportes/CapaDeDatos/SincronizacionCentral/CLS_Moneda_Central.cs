@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDeDatos.SincronizacionCentral
+namespace CapaDeDatos
 {
-    class CLS_Moneda_Central: ConexionBase
+    public class CLS_Moneda_Central: ConexionBase
     {
         public int MonedaId { get; set; }
         public string MonedaNombre { get; set; }
         public string MonedaSimbolo { get; set; }
-        public Char MonedaActivo { get; set; }
-        public Decimal MonedaTipoCambio { get; set; }
+        public string MonedaActivo { get; set; }
+        public Decimal? MonedaTipoCambio { get; set; }
 
         public void MtdActualizarMoneda()
         {
@@ -27,8 +27,8 @@ namespace CapaDeDatos.SincronizacionCentral
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MonedaNombre");
                 _dato.CadenaTexto = MonedaSimbolo;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MonedaSimbolo");
-                _dato.CaracterValor = MonedaActivo;
-                _conexionC.agregarParametro(EnumTipoDato.Caracter, _dato, "MonedaActivo");
+                _dato.CadenaTexto = MonedaActivo;
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "MonedaActivo");
                 _dato.DecimalValor = MonedaTipoCambio;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "MonedaTipoCambio");
 

@@ -1,0 +1,1 @@
+Scripts\Sincronizacion\ProcedimientosAlmacenados\SP_BSC_ActualizaMonedaLocal_Select.sql
