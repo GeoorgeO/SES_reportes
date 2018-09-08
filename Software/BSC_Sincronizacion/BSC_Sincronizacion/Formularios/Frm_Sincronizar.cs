@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
+using System.IO;
 
 namespace BSC_Sincronizacion
 {
@@ -16,6 +17,8 @@ namespace BSC_Sincronizacion
     {
         public int ArticulosActualizados { get; set; }
         public int ArticulosError { get; set; }
+
+        StreamWriter escritura;
 
         public Frm_Sincronizar()
         {
@@ -157,7 +160,9 @@ namespace BSC_Sincronizacion
 
         private void btnSincronizar_Click(object sender, EventArgs e)
         {
+            escritura = File.CreateText(DateTime.Today.Date.Year.ToString() + DateTime.Today.Date.Month.ToString() + DateTime.Today.Date.Day.ToString()+DateTime.Today.Date.Hour.ToString()+ DateTime.Today.Date.Minute.ToString()+".txt");
             ModificaActualizaCentral();
+            
         }
 
         private void btnDataBase_Click(object sender, EventArgs e)
@@ -283,6 +288,7 @@ namespace BSC_Sincronizacion
                 }
             }
             limpiarFormulario();
+            escritura.Close();
             MessageBox.Show("El proceso Finalizo correctamente.", "Información", MessageBoxButtons.OK,MessageBoxIcon.Information);
             return Cadena;
         }
@@ -313,6 +319,7 @@ namespace BSC_Sincronizacion
                 }
                 if (ArticulosError == 0)
                 {
+                    escritura.WriteLine("Finalizo sin errores.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
 
                 }
@@ -320,6 +327,10 @@ namespace BSC_Sincronizacion
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
             }
         }
         private void SincronizaArticulos(string Codigo, string Descripcion)
@@ -335,6 +346,7 @@ namespace BSC_Sincronizacion
             else
             {
                 ArticulosError++;
+                escritura.WriteLine("No se logro actualizar el articulo ["+ Codigo + "] "+ Descripcion);
             }
         }
         /******* ArticulosMedidas *****/
@@ -1482,7 +1494,7 @@ namespace BSC_Sincronizacion
             CLS_Sucursales_Central UdpArt = new CLS_Sucursales_Central();
             UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
             UdpArt.SucursalesNombre = SucursalesNombre;
-            UdpArt.SucursalesFecha = SucursalesFecha.Date.Year.ToString() + DosCero(SucursalesFecha.Date.Month.ToString()) + DosCero(SucursalesFecha.Date.Day.ToString()); ;
+            UdpArt.SucursalesFecha = SucursalesFecha.Date.Year.ToString() + DosCero(SucursalesFecha.Date.Month.ToString()) + DosCero(SucursalesFecha.Date.Day.ToString()); 
             UdpArt.SucursalesActivo = SucursalesActivo;
             UdpArt.SucursalesCalle = SucursalesCalle;
             UdpArt.SucursalesNInterior = SucursalesNInterior;
