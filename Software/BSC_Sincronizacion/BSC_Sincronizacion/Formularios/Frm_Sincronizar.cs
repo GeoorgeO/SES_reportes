@@ -160,7 +160,7 @@ namespace BSC_Sincronizacion
 
         private void btnSincronizar_Click(object sender, EventArgs e)
         {
-            escritura = File.CreateText(DateTime.Today.Date.Year.ToString() + DateTime.Today.Date.Month.ToString() + DateTime.Today.Date.Day.ToString()+DateTime.Today.Date.Hour.ToString()+ DateTime.Today.Date.Minute.ToString()+".txt");
+            escritura = File.CreateText(DateTime.Today.Date.Year.ToString() + DateTime.Today.Date.Month.ToString() + DateTime.Today.Date.Day.ToString()+DateTime.Today.Hour.ToString()+ DateTime.Today.Minute.ToString()+".txt");
             ModificaActualizaCentral();
             
         }
@@ -1504,7 +1504,7 @@ namespace BSC_Sincronizacion
                 {
                     Application.DoEvents();
 
-                    lEstatus.Text = "Codigo Proveedor [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    lEstatus.Text = "Codigo SalidaMercanciaTipo [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaSalidaMercanciaTipo(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString()
                         );
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
@@ -1512,12 +1512,16 @@ namespace BSC_Sincronizacion
                 }
                 if (ArticulosError == 0)
                 {
+                    escritura.WriteLine("Finalizo sin errores SalidaMercanciaTipo.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
+            }
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla SalidaMercanciaTipo.");
             }
         }
         private void SincronizaSalidaMercanciaTipo(string SalidaMercanciaTipoId, string SalidaMercanciaTipoDescripcion)
@@ -1535,6 +1539,7 @@ namespace BSC_Sincronizacion
             }
             else
             {
+                escritura.WriteLine("No se logro actualizar la salida mercancia tipo [" + SalidaMercanciaTipoId + "]" + SalidaMercanciaTipoDescripcion);
                 ArticulosError++;
             }
         }
@@ -1557,7 +1562,7 @@ namespace BSC_Sincronizacion
                 {
                     Application.DoEvents();
 
-                    lEstatus.Text = "Codigo Proveedor [" + SelArt.Datos.Rows[i][0].ToString() + "]";
+                    lEstatus.Text = "Codigo Sucursales [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaSucursales(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][2]), SelArt.Datos.Rows[i][3].ToString(),
                         SelArt.Datos.Rows[i][4].ToString(), SelArt.Datos.Rows[i][5].ToString(), SelArt.Datos.Rows[i][6].ToString(), SelArt.Datos.Rows[i][7].ToString(),
                         SelArt.Datos.Rows[i][8].ToString()
@@ -1567,12 +1572,16 @@ namespace BSC_Sincronizacion
                 }
                 if (ArticulosError == 0)
                 {
+                    escritura.WriteLine("Finalizo sin errores Sucursales.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
+            }
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Sucursales.");
             }
         }
         private void SincronizaSucursales(string SucursalesId, string SucursalesNombre,DateTime SucursalesFecha, string SucursalesActivo, string SucursalesCalle, string SucursalesNInterior, 
@@ -1606,6 +1615,7 @@ namespace BSC_Sincronizacion
             }
             else
             {
+                escritura.WriteLine("No se logro actualizar la sucursal [" + SucursalesId + "]" + SucursalesNombre);
                 ArticulosError++;
             }
         }
@@ -1636,12 +1646,16 @@ namespace BSC_Sincronizacion
                 }
                 if (ArticulosError == 0)
                 {
+                    escritura.WriteLine("Finalizo sin errores Tarifa.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
+            }
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Tarifa.");
             }
         }
         private void SincronizaTarifa(string TarifaId, string TarifaNombre, DateTime TarifaFecha, string TarifaActivo)
@@ -1660,6 +1674,7 @@ namespace BSC_Sincronizacion
             }
             else
             {
+                escritura.WriteLine("No se logro actualizar la tarifa [" + TarifaId + "]" + TarifaNombre);
                 ArticulosError++;
             }
         }
@@ -1693,12 +1708,16 @@ namespace BSC_Sincronizacion
                 }
                 if (ArticulosError == 0)
                 {
+                    escritura.WriteLine("Finalizo sin errores Usuarios.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
+            }
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Usuarios.");
             }
         }
         private void SincronizaUsuarios(string UsuariosId, string UsuariosNombre, DateTime UsuariosRegistroFecha, string UsuariosLogin,string UsuariosPassword,string UsuariosActivo,string RolesId)
@@ -1727,6 +1746,7 @@ namespace BSC_Sincronizacion
             }
             else
             {
+                escritura.WriteLine("No se logro actualizar el usuario [" + UsuariosId + "]" + UsuariosNombre);
                 ArticulosError++;
             }
         }
@@ -1758,12 +1778,16 @@ namespace BSC_Sincronizacion
                 }
                 if (ArticulosError == 0)
                 {
+                    escritura.WriteLine("Finalizo sin errores Vendedor.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
+            }
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Vendedor.");
             }
         }
         private void SincronizaVendedor(string VendedorId, string VendedorNombre,  string VendedorApellidos, string VendedorActivo, string VendedorNombreCompleto)
@@ -1785,6 +1809,7 @@ namespace BSC_Sincronizacion
             }
             else
             {
+                escritura.WriteLine("No se logro actualizar el Vendedor [" + VendedorId + "]" + VendedorNombre);
                 ArticulosError++;
             }
         }
