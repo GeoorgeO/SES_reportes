@@ -48,6 +48,8 @@
     <Compile Include="Conexion\ConexionSQL.cs" />
     <Compile Include="Conexion\Crypto.cs" />
     <Compile Include="Conexion\MSRegistro.cs" />
+    <Compile Include="CoorporativoCentral\CLS_Cancelacion_Central.cs" />
+    <Compile Include="CoorporativoLocal\CLSCancelacionLocal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
