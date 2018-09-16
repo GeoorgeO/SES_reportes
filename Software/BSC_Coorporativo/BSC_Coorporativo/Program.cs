@@ -16,7 +16,7 @@ namespace BSC_Coorporativo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Conexiones());
+            Application.Run(new Form1());
         }
     }
 }

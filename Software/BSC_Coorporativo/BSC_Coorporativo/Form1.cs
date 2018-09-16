@@ -25,7 +25,7 @@ namespace BSC_Coorporativo
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-
+            AplicaCambiosCancelacion();
         }
 
         private string DosCero(string sVal)
@@ -38,15 +38,16 @@ namespace BSC_Coorporativo
             return sVal;
         }
 
-        private void AplicaCambiosArticulo()
+        //////////////////////////////////////////////////////////////////Metodo Cancelacion
+        private void AplicaCambiosCancelacion()
         {
             CLSCancelacionLocal SelArt = new CLSCancelacionLocal();
 
             //lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
 
-            SelArt.FechaInicio = DateTime.Today.Year.ToString() + DosCero(DateTime.Today.Month.ToString()) + DosCero(DateTime.Today.Day.ToString());
-            SelArt.FechaFin = DateTime.Today.Year.ToString() + DosCero(DateTime.Today.Month.ToString()) + DosCero(DateTime.Today.Day.ToString());
+            SelArt.FechaInicio = "20130726";//DateTime.Today.Year.ToString() + DosCero(DateTime.Today.Month.ToString()) + DosCero(DateTime.Today.Day.ToString());
+            SelArt.FechaFin = "20130726";//DateTime.Today.Year.ToString() + DosCero(DateTime.Today.Month.ToString()) + DosCero(DateTime.Today.Day.ToString());
             SelArt.MtdSeleccionarCancelacion();
             if (SelArt.Exito == true)
             {
@@ -59,7 +60,10 @@ namespace BSC_Coorporativo
                     Application.DoEvents();
                     //GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     //lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString() + "]";
-                    SincronizaCancelacion(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
+                    SincronizaCancelacion(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), SelArt.Datos.Rows[i][2].ToString(),
+                        SelArt.Datos.Rows[i][3].ToString(), Convert.ToDateTime(SelArt.Datos.Rows[i][4]), SelArt.Datos.Rows[i][5].ToString()
+                        , SelArt.Datos.Rows[i][6].ToString(), SelArt.Datos.Rows[i][7].ToString(), SelArt.Datos.Rows[i][8].ToString()
+                        , SelArt.Datos.Rows[i][9].ToString(), SelArt.Datos.Rows[i][10].ToString(), SelArt.Datos.Rows[i][11].ToString(), SelArt.Datos.Rows[i][12].ToString());
                     //pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)
@@ -78,11 +82,48 @@ namespace BSC_Coorporativo
                 //escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
             }
         }
-        private void SincronizaCancelacion(string Codigo, string Descripcion)
+        private void SincronizaCancelacion(string CancelacionId, string CajaId, string TicketId, string UsuarioId, DateTime CancelacionFecha, string CancelacionSubtotal0, 
+            string CancelacionSubtotal16, string CancelacionIva
+            , string CancelacionTotal, string CancelacionAsignadoCorte, string CorteZId, string CancelacionesTotal, string TicketMayoreoId)
         {
             CLS_Cancelacion_Central UdpArt = new CLS_Cancelacion_Central();
-            UdpArt.ArticuloCodigo = Codigo;
-            UdpArt.ArticuloDescripcion = Descripcion;
+
+            UdpArt.CancelacionId = Convert.ToInt32(CancelacionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
+            UdpArt.CancelacionFecha = CancelacionFecha.Date.Year.ToString() + DosCero(CancelacionFecha.Date.Month.ToString()) + DosCero(CancelacionFecha.Date.Day.ToString()); 
+            UdpArt.CancelacionSubtotal0 = Convert.ToDecimal(CancelacionSubtotal0);
+            UdpArt.CancelacionSubtotal16 = Convert.ToDecimal(CancelacionSubtotal16);
+            UdpArt.CancelacionIva = Convert.ToDecimal(CancelacionIva);
+            UdpArt.CancelacionTotal = Convert.ToDecimal(CancelacionTotal);
+            if (CancelacionAsignadoCorte=="True")
+            {
+                UdpArt.CancelacionAsignadoCorte = 1;
+            }
+            else
+            {
+                UdpArt.CancelacionAsignadoCorte = 0;
+            }
+            if (CorteZId == String.Empty)
+            {
+                UdpArt.CorteZId = 0;
+            }
+            else
+            {
+                UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+            }
+            
+            if (CancelacionesTotal == "True")
+            {
+                UdpArt.CancelacionesTotal = 1;
+            }
+            else
+            {
+                UdpArt.CancelacionesTotal = 0;
+            }
+            
+            UdpArt.TicketMayoreoId = Convert.ToInt32(TicketMayoreoId);
 
             UdpArt.MtdActualizarCancelacion();
 
@@ -96,6 +137,10 @@ namespace BSC_Coorporativo
                 //escritura.WriteLine("No se logro actualizar el articulo [" + Codigo + "] " + Descripcion);
             }
         }
+        //////////////////////////////////////////////////////////////////Metodo CancelacionArticulos
+
+
+
 
     }
 }

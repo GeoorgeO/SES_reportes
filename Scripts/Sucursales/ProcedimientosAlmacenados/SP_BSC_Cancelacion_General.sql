@@ -37,8 +37,7 @@ CREATE PROCEDURE SP_BSC_Cancelacion_General
 	@CancelacionAsignadoCorte bit,
 	@CorteZId bigint,
 	@CancelacionesTotal bit,
-	@TicketMayoreoId bigint,
-	@FechaInsert datetime
+	@TicketMayoreoId bigint
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

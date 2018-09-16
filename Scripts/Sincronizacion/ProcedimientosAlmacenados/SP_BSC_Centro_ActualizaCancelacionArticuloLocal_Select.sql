@@ -47,6 +47,7 @@ BEGIN
 	from SES_AdministradorV1.dbo.CancelacionArticulo as CanArt
 	inner join SES_AdministradorV1.dbo.Cancelacion as Can
 		on CanArt.CancelacionId=Can.CancelacionId
+			and CanArt.CajaId=Can.CajaId
 	where Can.CancelacionFecha between @FechaInicio and @FechaFin
 END
 GO

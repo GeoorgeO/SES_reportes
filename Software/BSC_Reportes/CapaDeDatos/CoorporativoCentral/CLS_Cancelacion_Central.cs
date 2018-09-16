@@ -19,7 +19,7 @@ namespace CapaDeDatos
         public Decimal CancelacionIva { get; set; }
         public Decimal CancelacionTotal { get; set; }
         public int CancelacionAsignadoCorte { get; set; }
-        public int CorteZId { get; set; }
+        public int? CorteZId { get; set; }
         public int CancelacionesTotal { get; set; }
         public int TicketMayoreoId { get; set; }
        
