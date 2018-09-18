@@ -117,6 +117,10 @@ namespace BSC_Sincronizacion
             LlenarListaCatalogo();
             pbProgreso.Position = 0;
             lEstatus.Text = string.Empty;
+            GValCatalogos.Columns[0].OptionsColumn.AllowEdit = false;
+            GValCatalogos.Columns[2].OptionsColumn.AllowEdit = false;
+            GValCatalogos.Columns[3].OptionsColumn.AllowEdit = false;
+            GValCatalogos.Columns[4].OptionsColumn.AllowEdit = false;
         }
 
         private void LlenarListaCatalogo()
@@ -160,7 +164,10 @@ namespace BSC_Sincronizacion
 
         private void btnSincronizar_Click(object sender, EventArgs e)
         {
-            escritura = File.CreateText(DateTime.Today.Date.Year.ToString() + DateTime.Today.Date.Month.ToString() + DateTime.Today.Date.Day.ToString()+DateTime.Today.Hour.ToString()+ DateTime.Today.Minute.ToString()+".txt");
+            Directory.CreateDirectory(@"C:\\Registros");
+            string tvar= @"C:\\Registros\"+DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
+            
+            escritura = File.CreateText(tvar);
             ModificaActualizaCentral();
             
         }
@@ -312,9 +319,10 @@ namespace BSC_Sincronizacion
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    
                     lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)
@@ -367,10 +375,10 @@ namespace BSC_Sincronizacion
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    
                     lEstatus.Text = "Codigo Articulo - Medidas [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaArticulosMedidas(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
-
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)
@@ -426,7 +434,7 @@ namespace BSC_Sincronizacion
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                   
                     lEstatus.Text = "Codigo Caja [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaCaja(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), SelArt.Datos.Rows[i][2].ToString(), SelArt.Datos.Rows[i][3].ToString(),
                         SelArt.Datos.Rows[i][4].ToString(), SelArt.Datos.Rows[i][5].ToString(), SelArt.Datos.Rows[i][6].ToString(), SelArt.Datos.Rows[i][7].ToString(),
@@ -434,7 +442,7 @@ namespace BSC_Sincronizacion
                         SelArt.Datos.Rows[i][12].ToString(), SelArt.Datos.Rows[i][13].ToString(), SelArt.Datos.Rows[i][14].ToString(), SelArt.Datos.Rows[i][15].ToString(),
                         SelArt.Datos.Rows[i][16].ToString()
                         );
-
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)
@@ -728,12 +736,12 @@ namespace BSC_Sincronizacion
                 for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
                 {
                     Application.DoEvents();
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    
                     lEstatus.Text = "Codigo CondicionesPagos [" + SelArt.Datos.Rows[i][0].ToString() + "]";
                     SincronizaCondicionesPagos(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString(), SelArt.Datos.Rows[i][2].ToString(), Convert.ToBoolean(SelArt.Datos.Rows[i][3]),
                         Convert.ToDateTime( SelArt.Datos.Rows[i][4]), SelArt.Datos.Rows[i][5].ToString()
                         );
-
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
                 if (ArticulosError == 0)
@@ -952,6 +960,7 @@ namespace BSC_Sincronizacion
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Familia.");
             }
