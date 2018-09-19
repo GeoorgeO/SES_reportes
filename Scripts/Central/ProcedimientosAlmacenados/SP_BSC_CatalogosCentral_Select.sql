@@ -25,7 +25,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT TABLE_NAME
 	FROM INFORMATION_SCHEMA.TABLES
-	where TABLE_NAME not in ('Caja','Documentos')
+	where TABLE_NAME not in ('Caja','Documentos','ComprasSugeridas')
 	order by 1
 END
 

@@ -164,11 +164,29 @@ namespace BSC_Sincronizacion
 
         private void btnSincronizar_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory(@"C:\\Registros");
-            string tvar= @"C:\\Registros\"+DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
-            
-            escritura = File.CreateText(tvar);
-            ModificaActualizaCentral();
+            Boolean seleccionocat;
+            seleccionocat = false;
+            for (int i = 0; i < GValCatalogos.RowCount; i++)
+            {
+                if (Convert.ToBoolean(GValCatalogos.GetRowCellValue(i, "Column1")))
+                {
+                    seleccionocat = true;
+                    break;
+                }
+            }
+            if (seleccionocat == true)
+            {
+                Directory.CreateDirectory(@"C:\\Registros");
+                string tvar = @"C:\\Registros\" + DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
+
+                escritura = File.CreateText(tvar);
+                ModificaActualizaCentral();
+            }
+            else
+            {
+                MessageBox.Show("No has seleccionado ninguna tabla de la lista, slecciona las que deseas sincronizar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+                
             
         }
 
@@ -328,7 +346,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Articulos.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
 
                 }
                 else
@@ -384,7 +402,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores ArticulosMedidas.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                     
                 }
                 else
@@ -448,7 +466,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Caja.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -528,7 +546,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores CCliente.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -615,7 +633,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Cliente.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -747,7 +765,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores CondicionesPagos.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -818,7 +836,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores CProveedor.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -893,7 +911,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores EntradaMercanciaTipo.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -953,7 +971,7 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Familia.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
@@ -1046,14 +1064,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores FormasdePago.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
-            {
+            else{
                 escritura.WriteLine("No se obtubieron datos de la tabla FormasdePago.");
             }
         }
@@ -1103,14 +1121,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Iva.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
-            {
+            else{
                 escritura.WriteLine("No se obtubieron datos de la tabla Iva.");
             }
         }
@@ -1159,14 +1177,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Localidad.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
-            {
+            else{
                 escritura.WriteLine("No se obtubieron datos de la tabla Localidad.");
             }
         }
@@ -1223,13 +1241,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Medidas.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Medidas.");
             }
@@ -1282,13 +1301,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Metodo pago.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla MetodoPagos.");
             }
@@ -1339,13 +1359,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Moneda.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Moneda.");
             }
@@ -1406,13 +1427,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Proveedor.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Proveedor.");
             }
@@ -1465,13 +1487,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Roles.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Roles.");
             }
@@ -1522,13 +1545,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores SalidaMercanciaTipo.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla SalidaMercanciaTipo.");
             }
@@ -1582,13 +1606,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Sucursales.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Sucursales.");
             }
@@ -1656,13 +1681,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Tarifa.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Tarifa.");
             }
@@ -1718,13 +1744,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Usuarios.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Usuarios.");
             }
@@ -1788,13 +1815,14 @@ namespace BSC_Sincronizacion
                 if (ArticulosError == 0)
                 {
                     escritura.WriteLine("Finalizo sin errores Vendedor.");
-                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Actualizados");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
                 {
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
                 }
             }
+            else
             {
                 escritura.WriteLine("No se obtubieron datos de la tabla Vendedor.");
             }
