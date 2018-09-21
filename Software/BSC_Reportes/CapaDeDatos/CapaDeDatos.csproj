@@ -48,6 +48,7 @@
     <Compile Include="Conexion\ConexionSQL.cs" />
     <Compile Include="Conexion\Crypto.cs" />
     <Compile Include="Conexion\MSRegistro.cs" />
+    <Compile Include="CoorporativoCentral\CLSTablasSincronizarServer.cs" />
     <Compile Include="CoorporativoCentral\CLS_CancelacionArticulo_Central.cs" />
     <Compile Include="CoorporativoCentral\CLS_Cancelacion_Central.cs" />
     <Compile Include="CoorporativoCentral\CLS_DevolucionArticulo_Central.cs" />
