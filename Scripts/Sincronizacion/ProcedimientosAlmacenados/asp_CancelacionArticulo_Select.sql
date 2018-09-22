@@ -13,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_ArticuloKardex_Select')
-DROP PROCEDURE asp_ArticuloKardex_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_CancelacionArticulo_Select')
+DROP PROCEDURE asp_CancelacionArticulo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE asp_ArticuloKardex_Select
+CREATE PROCEDURE asp_CancelacionArticulo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -32,8 +32,20 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        ArticuloCodigo,ArticuloCantidad, ArticuloUltimoCosto,0
-FROM            Articulo
-WHERE        (ArticuloFechaUltimoCosto BETWEEN @FechaInicio AND @FechaFin)
+	SELECT CanArt.CancelacionId
+      ,CanArt.CajaId
+      ,CanArt.CancelacionArticuloUltimoIde
+      ,CanArt.TicketId
+      ,CanArt.ArticuloCodigo
+      ,CanArt.CancelacionArticuloPrecio
+      ,CanArt.CancelacionArticuloCantidad
+      ,CanArt.CancelacionArticuloSubtotal
+      ,CanArt.CancelacionArticuloIva
+      ,CanArt.CancelacionArticuloTotalLinea
+	from CancelacionArticulo as CanArt
+	inner join Cancelacion as Can
+		on CanArt.CancelacionId=Can.CancelacionId
+			and CanArt.CajaId=Can.CajaId
+	where Can.CancelacionFecha between @FechaInicio and @FechaFin
 END
 GO

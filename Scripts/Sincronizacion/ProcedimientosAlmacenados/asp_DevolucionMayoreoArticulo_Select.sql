@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaCancelacionArticuloLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaCancelacionArticuloLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_DevolucionMayoreoArticulo_Select')
+DROP PROCEDURE asp_DevolucionMayoreoArticulo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaCancelacionArticuloLocal_Select
+CREATE PROCEDURE asp_DevolucionMayoreoArticulo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -34,20 +32,23 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT CanArt.CancelacionId
-      ,CanArt.CajaId
-      ,CanArt.CancelacionArticuloUltimoIde
-      ,CanArt.TicketId
-      ,CanArt.ArticuloCodigo
-      ,CanArt.CancelacionArticuloPrecio
-      ,CanArt.CancelacionArticuloCantidad
-      ,CanArt.CancelacionArticuloSubtotal
-      ,CanArt.CancelacionArticuloIva
-      ,CanArt.CancelacionArticuloTotalLinea
-	from SES_AdministradorV1.dbo.CancelacionArticulo as CanArt
-	inner join SES_AdministradorV1.dbo.Cancelacion as Can
-		on CanArt.CancelacionId=Can.CancelacionId
-			and CanArt.CajaId=Can.CajaId
-	where Can.CancelacionFecha between @FechaInicio and @FechaFin
+	select DevolucionId
+      ,CajaId
+      ,TicketId
+      ,UsuariosId
+      ,Clienteid
+      ,DevolucionFecha
+      ,DevolucionSubtotal0
+      ,DevolucionSubtotal16
+      ,DevolucionIva
+      ,DevolucionDescuento
+      ,DevolucionTotal
+      ,TicketTotalLetra
+      /*,DevolucionConcepto
+      ,DevolucionAsignado
+      ,CortesZRecibosId
+      ,NC_Concepto*/
+	from DevolucionMayoreo
+	where DevolucionFecha between @FechaInicio and @FechaFin
 END
 GO

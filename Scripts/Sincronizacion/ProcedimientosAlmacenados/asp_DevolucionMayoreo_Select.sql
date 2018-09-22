@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaDevolucionMayoreoArticuloLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaDevolucionMayoreoArticuloLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_DevolucionMayoreo_Select')
+DROP PROCEDURE asp_DevolucionMayoreo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaDevolucionMayoreoArticuloLocal_Select
+CREATE PROCEDURE asp_DevolucionMayoreo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -43,8 +41,8 @@ BEGIN
       ,DevMayArt.DevolucionArticuloSubtotal
       ,DevMayArt.DevolucionArticuloIva
       ,DevMayArt.DevolucionArticuloTotalLinea
-	from SES_AdministradorV1.dbo.DevolucionMayoreoArticulo as DevMayArt
-	inner join SES_AdministradorV1.dbo.DevolucionMayoreo as DevMay
+	from DevolucionMayoreoArticulo as DevMayArt
+	inner join DevolucionMayoreo as DevMay
 		on DevMayArt.DevolucionId=DevMay.DevolucionId
 			and DevMayArt.CajaId=DevMay.CajaId
 	where DevMay.DevolucionFecha between @FechaInicio and @FechaFin

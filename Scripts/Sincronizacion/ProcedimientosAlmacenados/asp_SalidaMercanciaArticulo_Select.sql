@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaTicketLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaTicketLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_SalidaMercanciaArticulo_Select')
+DROP PROCEDURE asp_SalidaMercanciaArticulo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaTicketLocal_Select
+CREATE PROCEDURE asp_SalidaMercanciaArticulo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -34,17 +32,19 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT TicketId
-      ,CajaId
-      ,UsuarioId
-      ,TicketFecha
-      /*,TicketHora*/
-      ,TicketSubtotal0
-      ,TicketSubtotal16
-      ,TicketIva
-      ,TicketTotal
-      ,CorteZId
-	from SES_AdministradorV1.dbo.Ticket
-	where TicketFecha between @FechaInicio and @FechaFin
+	select SalMerArt.SalidaMercanciaId
+      ,SalMerArt.SucursalesId
+      ,SalMerArt.SalidaMercanciaArticuloUltimoIde
+      ,SalMerArt.ArticuloCodigo
+      ,SalMerArt.SalidaMercanciaArticuloCantidad
+      ,SalMerArt.SalidaMercanciaArticuloSub0
+      ,SalMerArt.SalidaMercanciaArticuloSub16
+      ,SalMerArt.SalidaMercanciaArticuloIva
+      ,SalMerArt.SalidaMercanciaArticuloTotal
+	from SalidaMercanciaArticulo as SalMerArt
+	inner join SalidaMercancia as SalMer
+		on SalMerArt.SalidaMercanciaId=SalMer.SalidaMercanciaId
+			and SalMerArt.SucursalesId=SalMer.SucursalesId
+	where SalMer.SalidaMercanciaFecha between @FechaInicio and @FechaFin
 END
 GO

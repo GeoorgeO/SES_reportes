@@ -1,5 +1,3 @@
-use Server_Centro
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL

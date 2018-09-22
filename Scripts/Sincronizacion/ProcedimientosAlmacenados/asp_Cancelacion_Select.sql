@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,18 +13,19 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaDevolucionLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaDevolucionLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_Cancelacion_Select'
+DROP PROCEDURE asp_Cancelacion_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaDevolucionLocal_Select
+CREATE PROCEDURE asp_Cancelacion_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
+    
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -34,18 +33,20 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT DevolucionId
-      ,CajaId
-      ,TicketId
-      ,UsuariosId
-      ,DevolucionFecha
-      ,DevolucionSubtotal0
-      ,DevolucionSubtotal16
-      ,DevolucionIva
-      ,DevolucionTotal
-      ,DevolucionAsignadoCorte
-      ,CorteZId
-	from SES_AdministradorV1.dbo.Devolucion
-	where DevolucionFecha between @FechaInicio and @FechaFin
+	SELECT CancelacionId, 
+		CajaId, 
+		TicketId, 
+		UsuarioId, 
+		CancelacionFecha, 
+		CancelacionSubtotal0, 
+		CancelacionSubtotal16, 
+		CancelacionIva, 
+		CancelacionTotal, 
+		CancelacionAsignadoCorte, 
+		CorteZId, 
+		CancelacionesTotal, 
+		TicketMayoreoId
+	FROM Cancelacion
+	where CancelacionFecha between @FechaInicio and @FechaFin
 END
 GO

@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaEntradaMercanciaLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaEntradaMercanciaLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_CortesZ_Select')
+DROP PROCEDURE asp_CortesZ_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaEntradaMercanciaLocal_Select
+CREATE PROCEDURE asp_CortesZ_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -34,19 +32,15 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select EntradaMercanciaId
-      ,SucursalesId
+	select CortesZId
+      ,CajaId
+      ,CortesZFecha
       ,UsuariosId
-      ,EntradaMercanciaTipoId
-      ,EntradaMercanciaFecha
-      ,EntradaMercanciaUnidades
-      ,EntradaMercanciaSub0
-      ,EntradaMercanciaSub16
-      ,EntradaMercanciaIva
-      ,EntradaMercanciaTotal
-      ,Observaciones
-      ,Referencias
-	from SES_AdministradorV1.dbo.EntradaMercancia
-	where EntradaMercanciaFecha between @FechaInicio and @FechaFin
+      ,CortesZSub0
+      ,CortesZSub16
+      ,CortesZIva
+      ,CortesZTotal
+	from CortesZ
+	where CortesZFecha between @FechaInicio and @FechaFin
 END
 GO

@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaCortesZLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaCortesZLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_Ticket_Select')
+DROP PROCEDURE asp_Ticket_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaCortesZLocal_Select
+CREATE PROCEDURE asp_Ticket_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -34,15 +32,17 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select CortesZId
+	SELECT TicketId
       ,CajaId
-      ,CortesZFecha
-      ,UsuariosId
-      ,CortesZSub0
-      ,CortesZSub16
-      ,CortesZIva
-      ,CortesZTotal
-	from SES_AdministradorV1.dbo.CortesZ
-	where CortesZFecha between @FechaInicio and @FechaFin
+      ,UsuarioId
+      ,TicketFecha
+      /*,TicketHora*/
+      ,TicketSubtotal0
+      ,TicketSubtotal16
+      ,TicketIva
+      ,TicketTotal
+      ,CorteZId
+	from Ticket
+	where TicketFecha between @FechaInicio and @FechaFin
 END
 GO

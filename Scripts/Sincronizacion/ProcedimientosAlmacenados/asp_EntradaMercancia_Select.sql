@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaEntradaMercanciaArticuloLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaEntradaMercanciaArticuloLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_EntradaMercancia_Select')
+DROP PROCEDURE asp_EntradaMercancia_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaEntradaMercanciaArticuloLocal_Select
+CREATE PROCEDURE asp_EntradaMercancia_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -43,8 +41,8 @@ BEGIN
       ,EntMerArt.EntradasMercanciaArticuloSub16
       ,EntMerArt.EntradasMercanciaArticuloIva
       ,EntMerArt.EntradasMercanciaArticuloTotal
-	from SES_AdministradorV1.dbo.EntradaMercanciaArticulo as EntMerArt
-	inner join SES_AdministradorV1.dbo.EntradaMercancia as EntMer
+	from EntradaMercanciaArticulo as EntMerArt
+	inner join EntradaMercancia as EntMer
 		on EntMerArt.EntradasMercanciaId=EntMer.EntradaMercanciaId
 			and EntMerArt.SucursalesId=EntMer.SucursalesId
 	where EntMer.EntradaMercanciaFecha between @FechaInicio and @FechaFin

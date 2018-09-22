@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaTicketMayoreoLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaTicketMayoreoLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_TicketMayoreo_Select')
+DROP PROCEDURE asp_TicketMayoreo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaTicketMayoreoLocal_Select
+CREATE PROCEDURE asp_TicketMayoreo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -45,7 +43,7 @@ BEGIN
       /*,CortesZRecibosId
       ,FechaHora*/
       ,ClienteId
-	from SES_AdministradorV1.dbo.TicketMayoreo
+	from TicketMayoreo
 	where TicketFecha between @FechaInicio and @FechaFin
 END
 GO

@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaRecibosRemisionesLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaRecibosRemisionesLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_RecibosRemisiones_Select')
+DROP PROCEDURE asp_RecibosRemisiones_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaRecibosRemisionesLocal_Select
+CREATE PROCEDURE asp_RecibosRemisiones_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -47,7 +45,7 @@ BEGIN
       ,CortesZRecibosId
       ,FormasdePagoCobranzaId
       ,RecibosAsignado*/
-	from SES_AdministradorV1.dbo.RecibosRemisiones
+	from RecibosRemisiones
 	where ReciboFecha between @FechaInicio and @FechaFin
 END
 GO

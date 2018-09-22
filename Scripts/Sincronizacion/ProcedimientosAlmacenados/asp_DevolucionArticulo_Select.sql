@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaDevolucionMayoreoLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaDevolucionMayoreoLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_DevolucionArticulo_Select')
+DROP PROCEDURE asp_DevolucionArticulo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaDevolucionMayoreoLocal_Select
+CREATE PROCEDURE asp_DevolucionArticulo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -34,23 +32,19 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select DevolucionId
-      ,CajaId
-      ,TicketId
-      ,UsuariosId
-      ,Clienteid
-      ,DevolucionFecha
-      ,DevolucionSubtotal0
-      ,DevolucionSubtotal16
-      ,DevolucionIva
-      ,DevolucionDescuento
-      ,DevolucionTotal
-      ,TicketTotalLetra
-      /*,DevolucionConcepto
-      ,DevolucionAsignado
-      ,CortesZRecibosId
-      ,NC_Concepto*/
-	from SES_AdministradorV1.dbo.DevolucionMayoreo
-	where DevolucionFecha between @FechaInicio and @FechaFin
+	SELECT DevArt.DevolucionId
+      ,DevArt.CajaId
+      ,DevArt.DevolucionArticuloUltimoIde
+      ,DevArt.ArticuloCodigo
+      ,DevArt.DevolucionArticuloPrecio
+      ,DevArt.DevolucionArticuloCantidad
+      ,DevArt.DevolucionArticuloSubtotal
+      ,DevArt.DevolucionArticuloIva
+      ,DevArt.DevolucionArticuloTotalLinea
+	from DevolucionArticulo as DevArt
+	inner join Devolucion as Dev
+		on DevArt.DevolucionId=Dev.DevolucionId
+			and DevArt.CajaId=Dev.CajaId
+	where Dev.DevolucionFecha between @FechaInicio and @FechaFin
 END
 GO

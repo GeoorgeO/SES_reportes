@@ -1,5 +1,3 @@
-USE [SES_Sincroniza]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Centro_ActualizaTicketMayoreoArticuloLocal_Select')
-DROP PROCEDURE SP_BSC_Centro_ActualizaTicketMayoreoArticuloLocal_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_TicketMayoreoArticulo_Select')
+DROP PROCEDURE asp_TicketMayoreoArticulo_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Centro_ActualizaTicketMayoreoArticuloLocal_Select
+CREATE PROCEDURE asp_TicketMayoreoArticulo_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -52,8 +50,8 @@ BEGIN
       ,TicMayArt.TicketArticuloPrecioDescuento
       ,TicMayArt.TicketArticuloIvaDescuento
       ,TicMayArt.TicketArticuloTotal
-	from SES_AdministradorV1.dbo.TicketMayoreoArticulo as TicMayArt
-	inner join SES_AdministradorV1.dbo.TicketMayoreo as TicMay
+	from TicketMayoreoArticulo as TicMayArt
+	inner join TicketMayoreo as TicMay
 		on TicMayArt.TicketId=TicMay.TicketId
 			and TicMayArt.CajaId=TicMay.CajaId
 	where TicMay.TicketFecha between @FechaInicio and @FechaFin
