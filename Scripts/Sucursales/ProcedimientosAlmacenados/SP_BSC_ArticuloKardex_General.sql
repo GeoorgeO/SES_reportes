@@ -43,6 +43,6 @@ BEGIN
 		else
 			 INSERT INTO ArticuloKardex
 									 (ArticuloCodigo, Existencia, ArticuloCosto, ArticuloIVA, FechaExistencia, FechaInsert)
-			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, GETDATE(), GETDATE());
+			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, convert(varchar, GETDATE(),103), GETDATE());
 END
 GO
