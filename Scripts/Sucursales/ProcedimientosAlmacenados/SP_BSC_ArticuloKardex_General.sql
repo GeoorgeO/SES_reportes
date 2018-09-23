@@ -39,10 +39,10 @@ BEGIN
 	
 	select @Existe = count(ArticuloCodigo) from ArticuloKardex a where (a.ArticuloCodigo=@ArticuloCodigo and FechaExistencia=getdate())
 	if @Existe>0
-			select 'Ya existe este articulo '+@ArticuloCodigo;
+			select 0;
 		else
 			 INSERT INTO ArticuloKardex
-                         (ArticuloCodigo, Existencia, ArticuloCosto, ArticuloIVA, FechaExistencia, FechaInsert)
-VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, GETDATE(), GETDATE())
+									 (ArticuloCodigo, Existencia, ArticuloCosto, ArticuloIVA, FechaExistencia, FechaInsert)
+			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, GETDATE(), GETDATE());
 END
 GO

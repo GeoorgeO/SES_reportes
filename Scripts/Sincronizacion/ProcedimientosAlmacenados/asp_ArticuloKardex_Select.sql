@@ -37,5 +37,6 @@ FROM            Articulo as art
 left join Familia as fam on fam.FamiliaId=art.FamiliaId
 left join Iva on Iva.IvaId=fam.IvaId
 WHERE        (art.ArticuloFechaUltimoCosto BETWEEN @FechaInicio AND @FechaFin)
+and art.ArticuloCantidad>0
 END
 GO
