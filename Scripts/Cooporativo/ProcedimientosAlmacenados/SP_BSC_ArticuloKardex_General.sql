@@ -37,7 +37,7 @@ BEGIN
 	declare @Existe int
 	declare @mensaje varchar(50)
 	
-	select @Existe = count(ArticuloCodigo) from ArticuloKardex a where (a.ArticuloCodigo=@ArticuloCodigo and FechaExistencia=convert(varchar, GETDATE(),103))
+	select @Existe = count(ArticuloCodigo) from ArticuloKardex a where (a.ArticuloCodigo=@ArticuloCodigo and convert(varchar,FechaExistencia,103)=convert(varchar, GETDATE(),103))
 	if @Existe>0
 			select 0;
 		else
