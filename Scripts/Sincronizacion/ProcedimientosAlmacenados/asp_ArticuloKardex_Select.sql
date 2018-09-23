@@ -32,8 +32,10 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        ArticuloCodigo,ArticuloCantidad, ArticuloUltimoCosto,0
-FROM            Articulo
-WHERE        (ArticuloFechaUltimoCosto BETWEEN @FechaInicio AND @FechaFin)
+	SELECT        art.ArticuloCodigo,art.ArticuloCantidad, art.ArticuloUltimoCosto,(art.ArticuloUltimoCosto * Iva.IvaFactor) as iva
+FROM            Articulo as art
+left join Familia as fam on fam.FamiliaId=art.FamiliaId
+left join Iva on Iva.IvaId=fam.IvaId
+WHERE        (art.ArticuloFechaUltimoCosto BETWEEN @FechaInicio AND @FechaFin)
 END
 GO
