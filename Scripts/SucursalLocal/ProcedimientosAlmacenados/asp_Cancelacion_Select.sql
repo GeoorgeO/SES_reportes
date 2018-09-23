@@ -13,7 +13,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_Cancelacion_Select'
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_Cancelacion_Select')
 DROP PROCEDURE asp_Cancelacion_Select
 GO
 -- =============================================
