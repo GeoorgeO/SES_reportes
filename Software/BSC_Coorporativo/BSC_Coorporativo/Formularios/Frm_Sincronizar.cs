@@ -248,7 +248,7 @@ namespace BSC_Coorporativo
         /******* Articulos *****/
         private void ArticuloKardex(int Fila)
         {
-            CLSArticuloKardex SelArt = new CLSArticuloKardex();
+            CLSArticuloKardexLocal SelArt = new CLSArticuloKardexLocal();
 
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
@@ -290,10 +290,14 @@ namespace BSC_Coorporativo
         }
         private void SincronizaArticulos(string Codigo, string Existencia,string ArticuloCosto,string ArticuloIVA,string FechaExistencia)
         {
-            CLS_Articulo_Central UdpArt = new CLS_Articulo_Central();
+            CLSArticuloKardexCentral UdpArt = new CLSArticuloKardexCentral();
             UdpArt.ArticuloCodigo = Codigo;
-            UdpArt.ArticuloDescripcion = Descripcion;
-            UdpArt.MtdActualizarArticulo();
+            UdpArt.Existencia = Convert.ToInt32(Existencia);
+            UdpArt.ArticuloCosto = Convert.ToDecimal(ArticuloCosto);
+            UdpArt.ArticuloIVA = Convert.ToDecimal(ArticuloIVA);
+            DateTime Fecha = Convert.ToDateTime(FechaExistencia);
+            UdpArt.FechaExistencia = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.MtdActualizarArticuloKardex();
             if (UdpArt.Exito.ToString() == "True")
             {
                 ArticulosActualizados++;
@@ -301,7 +305,7 @@ namespace BSC_Coorporativo
             else
             {
                 ArticulosError++;
-                escritura.WriteLine("No se logro actualizar el articulo ["+ Codigo + "] "+ Descripcion);
+                escritura.WriteLine("No se logro actualizar el articulo ["+ Codigo + "] "+ FechaExistencia);
             }
         }
     }

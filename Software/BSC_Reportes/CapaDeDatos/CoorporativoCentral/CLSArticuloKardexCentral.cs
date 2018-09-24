@@ -8,6 +8,12 @@ namespace CapaDeDatos
 {
     public class CLSArticuloKardexCentral : ConexionBase
     {
+        public string ArticuloCodigo { get;  set; }
+        public decimal? ArticuloCosto { get;  set; }
+        public decimal? ArticuloIVA { get;  set; }
+        public int? Existencia { get;  set; }
+        public string FechaExistencia { get;  set; }
+
         public void MtdActualizarArticuloKardex()
         {
             TipoDato _dato = new TipoDato();
