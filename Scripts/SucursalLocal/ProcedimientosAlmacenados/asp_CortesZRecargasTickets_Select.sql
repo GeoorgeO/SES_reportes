@@ -13,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_RecibosRemisiones_Select')
-DROP PROCEDURE asp_RecibosRemisiones_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_CortesZRecargasTickets_Select')
+DROP PROCEDURE asp_CortesZRecargasTickets_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE asp_RecibosRemisiones_Select
+CREATE PROCEDURE asp_CortesZRecargasTickets_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -32,20 +32,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select RecibosId
-      ,TicketId
-      ,CajaId
-      ,RecibosTotal
-      ,ReciboTotalLetra
-      ,ReciboFecha
-      ,ClienteId
-      ,UsuariosId
-      ,DocumentosId
-      ,ReciboConcepto
-      ,CortesZRecibosId
-      ,FormasdePagoCobranzaId
-      ,RecibosAsignado
-	from RecibosRemisiones
-	where ReciboFecha between @FechaInicio and @FechaFin
+	SELECT        CRdet.CortesZRecargasId, CRdet.CajaId, CRdet.CortesZRecargasTicketsInicio, CRdet.CortesZRecargasTicketsFin
+	FROM            CortesZRecargasTickets as CRdet
+	left join CortesZRecargas as CR on CR.CajaId=CRdet.CajaId and CR.CortesZRecargasId=CRdet.CortesZRecargasId
+	where CR.CortesZRecargasFecha between @FechaInicio and @FechaFin
 END
 GO

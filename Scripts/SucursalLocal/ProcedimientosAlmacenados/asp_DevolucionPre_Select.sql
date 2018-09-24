@@ -13,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_RecibosRemisiones_Select')
-DROP PROCEDURE asp_RecibosRemisiones_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_DevolucionPre_Select')
+DROP PROCEDURE asp_DevolucionPre_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE asp_RecibosRemisiones_Select
+CREATE PROCEDURE asp_DevolucionPre_Select 
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -32,20 +32,8 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select RecibosId
-      ,TicketId
-      ,CajaId
-      ,RecibosTotal
-      ,ReciboTotalLetra
-      ,ReciboFecha
-      ,ClienteId
-      ,UsuariosId
-      ,DocumentosId
-      ,ReciboConcepto
-      ,CortesZRecibosId
-      ,FormasdePagoCobranzaId
-      ,RecibosAsignado
-	from RecibosRemisiones
-	where ReciboFecha between @FechaInicio and @FechaFin
+	SELECT        DevolucionPreId, TicketId, CajaId, DevolucionPreTArticulos, UsuarioId, VendedorId, DevolucionPreSub0, DevolucionPreSub16, DevolucionPreIva, DevolucionPreTotal, DevolucionPreProcesada
+	FROM            DevolucionPre
+	WHERE        (DevolucionPreFecha BETWEEN @FechaInicio AND @FechaFin)
 END
 GO
