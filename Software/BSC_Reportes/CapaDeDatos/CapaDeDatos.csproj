@@ -53,6 +53,7 @@
     <Compile Include="CoorporativoCentral\CLS_Cancelacion_Central.cs" />
     <Compile Include="CoorporativoCentral\CLS_DevolucionArticulo_Central.cs" />
     <Compile Include="CoorporativoCentral\CLS_Devolucion_Central.cs" />
+    <Compile Include="CoorporativoLocal\CLSArticuloKardexLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSDevolucionArticuloLocal.cs" />

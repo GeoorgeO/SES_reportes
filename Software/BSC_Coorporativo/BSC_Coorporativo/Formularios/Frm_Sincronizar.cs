@@ -234,7 +234,7 @@ namespace BSC_Coorporativo
                     pbProgreso.Position = 0;
                     switch (GValCatalogos.GetRowCellValue(xRow, "Column0").ToString())
                     {
-                        case "Articulo":
+                        case "ArticuloKardex":
                             ArticuloKardex(xRow);
                             break;
                     }
@@ -248,14 +248,12 @@ namespace BSC_Coorporativo
         /******* Articulos *****/
         private void ArticuloKardex(int Fila)
         {
-            CLSArticulosLocal SelArt = new CLSArticulosLocal();
+            CLSArticuloKardex SelArt = new CLSArticuloKardex();
 
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
 
-            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
-            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
-            SelArt.MtdSeleccionarArticulos();
+            SelArt.MtdSeleccionarArticuloKardex();
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -266,8 +264,12 @@ namespace BSC_Coorporativo
                 {
                     Application.DoEvents();
                     
-                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString() + "]";
-                    SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(), 
+                                        SelArt.Datos.Rows[i][1].ToString(),
+                                        SelArt.Datos.Rows[i][2].ToString(),
+                                        SelArt.Datos.Rows[i][3].ToString(),
+                                        SelArt.Datos.Rows[i][4].ToString());
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
@@ -286,7 +288,7 @@ namespace BSC_Coorporativo
                 escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
             }
         }
-        private void SincronizaArticulos(string Codigo, string Descripcion)
+        private void SincronizaArticulos(string Codigo, string Existencia,string ArticuloCosto,string ArticuloIVA,string FechaExistencia)
         {
             CLS_Articulo_Central UdpArt = new CLS_Articulo_Central();
             UdpArt.ArticuloCodigo = Codigo;
