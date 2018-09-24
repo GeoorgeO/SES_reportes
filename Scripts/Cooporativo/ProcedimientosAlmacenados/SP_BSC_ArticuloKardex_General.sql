@@ -26,7 +26,8 @@ CREATE PROCEDURE SP_BSC_ArticuloKardex_General
 	@ArticuloCodigo char(40) ,
 	@Existencia int ,
 	@ArticuloCosto money ,
-	@ArticuloIVA money 
+	@ArticuloIVA money ,
+	@FechaExistencia varchar(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,12 +38,12 @@ BEGIN
 	declare @Existe int
 	declare @mensaje varchar(50)
 	
-	select @Existe = count(ArticuloCodigo) from ArticuloKardex a where (a.ArticuloCodigo=@ArticuloCodigo and convert(varchar,FechaExistencia,103)=convert(varchar, GETDATE(),103))
+	select @Existe = count(ArticuloCodigo) from ArticuloKardex a where (a.ArticuloCodigo=@ArticuloCodigo and convert(varchar,FechaExistencia,103)=convert(varchar, @FechaExistencia,103))
 	if @Existe>0
 			select 0;
 		else
 			 INSERT INTO ArticuloKardex
 									 (ArticuloCodigo, Existencia, ArticuloCosto, ArticuloIVA, FechaExistencia, FechaInsert)
-			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, convert(varchar, GETDATE(),103), GETDATE());
+			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, convert(varchar, @FechaExistencia,103), GETDATE());
 END
 GO
