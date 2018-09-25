@@ -45,7 +45,7 @@ BEGIN
 	
 	select @Existe = count(CancelacionId) from CancelacionArticulo a where (a.CancelacionId=@CancelacionId and a.CajaId=@CajaId)
 	if @Existe>0
-			select 'Ya existe esta CancelacionArticulo '+@CancelacionId;
+			select 0;
 		else
 			 INSERT INTO CancelacionArticulo
                          (CancelacionId, CajaId, CancelacionArticuloUltimoIde, TicketId, ArticuloCodigo, CancelacionArticuloPrecio, CancelacionArticuloCantidad, CancelacionArticuloSubtotal, CancelacionArticuloIva, CancelacionArticuloTotalLinea, 

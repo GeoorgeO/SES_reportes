@@ -45,7 +45,7 @@ BEGIN
 	
 	select @Existe = count(TicketId) from Ticket a where (a.TicketId=@TicketId and a.CajaId=@CajaId)
 	if @Existe>0
-			select 'Ya existe este ticket '+@TicketId;
+			select 0;
 		else
 			INSERT INTO Ticket
                          (TicketId, CajaId, UsuarioId, TicketFecha, TicketHora, TicketSubtotal0, TicketSubtotal16, TicketIva, TicketTotal, CorteZId, FechaInsert)

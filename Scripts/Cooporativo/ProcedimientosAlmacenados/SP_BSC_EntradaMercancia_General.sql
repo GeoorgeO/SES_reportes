@@ -47,7 +47,7 @@ BEGIN
 	
 	select @Existe = count(EntradaMercanciaId) from EntradaMercancia a where (a.EntradaMercanciaId=@EntradaMercanciaId and a.SucursalesId=@SucursalesId)
 	if @Existe>0
-			select 'Ya existe esta Entrada de Mercancia '+@EntradaMercanciaId;
+			select 0;
 		else
 			INSERT INTO EntradaMercancia
                          (EntradaMercanciaId, SucursalesId, UsuariosId, EntradaMercanciaTipoId, EntradaMercanciaFecha, EntradaMercanciaUnidades, EntradaMercanciaSub0, EntradaMercanciaSub16, EntradaMercanciaIva, 

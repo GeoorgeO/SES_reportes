@@ -53,7 +53,7 @@ BEGIN
 	
 	select @Existe = count(TicketId) from TicketMayoreoArticulo a where (a.TicketId=@TicketId and a.CajaId=@CajaId)
 	if @Existe>0
-			select 'Ya existe este ticket de mayoreo articulo '+@TicketId;
+			select 0;
 		else
 			INSERT INTO TicketMayoreoArticulo
                          (TicketId, CajaId, TicketArticuloUltimoIde, ArticuloCodigo, TarifaId, MedidasId, TicketArticuloCosto, TicketArticuloPrecio, TicketArticuloCantidad, TicketArticuloCantidadDevolucion, TicketArticuloCantidadCancelada, 

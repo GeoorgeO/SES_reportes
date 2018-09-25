@@ -44,7 +44,7 @@ BEGIN
 	
 	select @Existe = count(DevolucionId) from DevolucionArticulo a where (a.DevolucionId=@DevolucionId and a.CajaId=@CajaId)
 	if @Existe>0
-			select 'Ya existe esta Devolucion '+@DevolucionId;
+			select 0;
 		else
 			INSERT INTO DevolucionArticulo
                          (DevolucionId, CajaId, DevolucionArticuloUltimoIde, ArticuloCodigo, DevolucionArticuloPrecio, DevolucionArticuloCantidad, DevolucionArticuloSubtotal, DevolucionArticuloIva, DevolucionArticuloTotalLinea, 
