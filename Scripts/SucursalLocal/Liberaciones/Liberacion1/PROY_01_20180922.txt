@@ -21,4 +21,6 @@ Scripts\SucursalLocal\ProcedimientosAlmacenados\asp_Ticket_Select.sql
 Scripts\SucursalLocal\ProcedimientosAlmacenados\asp_TicketArticulo_Select.sql
 Scripts\SucursalLocal\ProcedimientosAlmacenados\asp_TicketMayoreo_Select.sql
 Scripts\SucursalLocal\ProcedimientosAlmacenados\asp_TicketMayoreoArticulo_Select.sql
+Scripts\SucursalLocal\Tablas\BSC_ArticuloKardex_CreateTable.sql
+Scripts\SucursalLocal\ProcedimientosAlmacenados\SP_BSC_ArticuloKardex_General.sql
 
