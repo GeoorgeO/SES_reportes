@@ -243,6 +243,9 @@ namespace BSC_Coorporativo
                         case "CancelacionArticulo":
                             CancelacionArticulo(xRow);
                             break;
+                        case "CortesZ":
+                            CorteZ(xRow);
+                            break;
                     }
                 }
             }
@@ -484,6 +487,78 @@ namespace BSC_Coorporativo
             {
                 ArticulosError++;
                 escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CancelacionId));
+            }
+        }
+        /**** Corte Z*****/
+        private void CorteZ(int Fila)
+        {
+            CLSCorteZLocal SelArt = new CLSCorteZLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCorteZ();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCorteZ(SelArt.Datos.Rows[i]["CortesZId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZFecha"].ToString(),
+                                        SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZSub0"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZSub16"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZIva"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZTotal"].ToString());
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores Articulos.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCorteZ(string CortesZId, string CajaId, string CortesZFecha, string UsuariosId,
+                                                    string CortesZSub0, string CortesZSub16, string CortesZIva,
+                                                    string CortesZTotal)
+        {
+            CLSCorteZCentral UdpArt = new CLSCorteZCentral();
+            UdpArt.CortesZId = Convert.ToInt32(CortesZId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            DateTime Fecha = Convert.ToDateTime(CortesZFecha);
+            UdpArt.CortesZFecha = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.CortesZSub0 = Convert.ToDecimal(CortesZSub0);
+            UdpArt.CortesZSub16 = Convert.ToDecimal(CortesZSub16);
+            UdpArt.CortesZIva = Convert.ToDecimal(CortesZIva);
+            UdpArt.CortesZTotal = Convert.ToDecimal(CortesZTotal);
+            UdpArt.MtdActualizarCorteZ();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CortesZId));
             }
         }
     }
