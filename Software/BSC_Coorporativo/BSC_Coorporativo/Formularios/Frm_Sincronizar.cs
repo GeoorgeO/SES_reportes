@@ -246,6 +246,9 @@ namespace BSC_Coorporativo
                         case "CortesZ":
                             CorteZ(xRow);
                             break;
+                        case "CorteZRecargas":
+                            CorteZ(xRow);
+                            break;
                     }
                 }
             }
@@ -561,5 +564,94 @@ namespace BSC_Coorporativo
                 escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CortesZId));
             }
         }
+        /**** Corte ZRecargas*****/
+        private void CorteZRecargas(int Fila)
+        {
+            CLSCorteZRecargasLocal SelArt = new CLSCorteZRecargasLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCorteZRecargas();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCorteZRecargas(SelArt.Datos.Rows[i]["CortesZRecargasId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasFecha"].ToString(),
+                                        SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasSub0"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasSub16"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasIva"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasTotal"].ToString(),
+                                        SelArt.Datos.Rows[i]["FacturaGlobalFolio"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasFacturado"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasTotalCosto"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores Articulos.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCorteZRecargas(string CortesZRecargasId, string CajaId,string CortesZRecargasFecha,string UsuariosId,
+                                                string CortesZRecargasSub0,string CortesZRecargasSub16,string CortesZRecargasIva,
+                                                string CortesZRecargasTotal,string FacturaGlobalFolio,string CortesZRecargasFacturado,string CortesZRecargasTotalCosto)
+        {
+
+            CLSCorteZRecargasCentral UdpArt = new CLSCorteZRecargasCentral();
+            UdpArt.CortesZRecargasId = Convert.ToInt32(CortesZRecargasId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            DateTime Fecha = Convert.ToDateTime(CortesZRecargasFecha);
+            UdpArt.CortesZRecargasFecha = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.CortesZRecargasSub0 = Convert.ToDecimal(CortesZRecargasSub0);
+            UdpArt.CortesZRecargasSub16 = Convert.ToDecimal(CortesZRecargasSub16);
+            UdpArt.CortesZRecargasIva = Convert.ToDecimal(CortesZRecargasIva);
+            UdpArt.CortesZRecargasTotal = Convert.ToDecimal(CortesZRecargasTotal);
+            UdpArt.FacturaGlobalFolio = Convert.ToInt32(FacturaGlobalFolio);
+            if (CortesZRecargasFacturado.ToString() == "True")
+            {
+                UdpArt.CortesZRecargasFacturado = 1;
+            }
+            else
+            {
+                UdpArt.CortesZRecargasFacturado = 0;
+            }
+            UdpArt.CortesZRecargasTotalCosto = Convert.ToDecimal(CortesZRecargasTotalCosto);
+            
+            UdpArt.MtdActualizarCorteZRecargas();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CortesZRecargasId));
+            }
+        }
+
     }
 }

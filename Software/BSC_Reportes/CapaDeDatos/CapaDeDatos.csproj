@@ -49,6 +49,7 @@
     <Compile Include="Conexion\Crypto.cs" />
     <Compile Include="Conexion\MSRegistro.cs" />
     <Compile Include="CoorporativoCentral\CLSArticuloKardexCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSCorteZRecargasCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSCorteZCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTablasSincronizarServer.cs" />
     <Compile Include="CoorporativoCentral\CLSCancelacionArticuloCentral.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="CoorporativoLocal\CLSArticuloKardexLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionLocal.cs" />
+    <Compile Include="CoorporativoLocal\CLSCorteZRecargasLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCorteZLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSDevolucionArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSDevolucionLocal.cs" />

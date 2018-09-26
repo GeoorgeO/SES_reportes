@@ -23,7 +23,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexionC.NombreProcedimiento = "SP_BSC_Cancelacion_General";
+                _conexionC.NombreProcedimiento = "SP_BSC_CortesZ_General";
                 _dato.Entero = CortesZId;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "CortesZId");
                 _dato.Entero = CajaId;
