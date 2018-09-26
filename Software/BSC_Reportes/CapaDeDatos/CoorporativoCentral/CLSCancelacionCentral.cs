@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    public class CLS_Cancelacion_Central: ConexionBase
+    public class CLSCancelacionCentral : ConexionBase
     {
        
         public int CancelacionId { get; set; }

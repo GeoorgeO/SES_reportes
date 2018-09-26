@@ -50,8 +50,8 @@
     <Compile Include="Conexion\MSRegistro.cs" />
     <Compile Include="CoorporativoCentral\CLSArticuloKardexCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTablasSincronizarServer.cs" />
-    <Compile Include="CoorporativoCentral\CLS_CancelacionArticulo_Central.cs" />
-    <Compile Include="CoorporativoCentral\CLS_Cancelacion_Central.cs" />
+    <Compile Include="CoorporativoCentral\CLSCancelacionArticuloCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSCancelacionCentral.cs" />
     <Compile Include="CoorporativoCentral\CLS_DevolucionArticulo_Central.cs" />
     <Compile Include="CoorporativoCentral\CLS_Devolucion_Central.cs" />
     <Compile Include="CoorporativoLocal\CLSArticuloKardexLocal.cs" />

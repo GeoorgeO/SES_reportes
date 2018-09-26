@@ -237,6 +237,12 @@ namespace BSC_Coorporativo
                         case "ArticuloKardex":
                             ArticuloKardex(xRow);
                             break;
+                        case "Cancelacion":
+                            Cancelacion(xRow);
+                            break;
+                        case "CancelacionArticulo":
+                            CancelacionArticulo(xRow);
+                            break;
                     }
                 }
             }
@@ -306,6 +312,178 @@ namespace BSC_Coorporativo
             {
                 ArticulosError++;
                 escritura.WriteLine("No se logro actualizar el articulo ["+ Codigo + "] "+ FechaExistencia);
+            }
+        }
+
+        /****** Cancelacion ******/
+        private void Cancelacion(int Fila)
+        {
+            CLSCancelacionLocal SelArt = new CLSCancelacionLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCancelacion();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCancelacion(SelArt.Datos.Rows[i][0].ToString(),
+                                        SelArt.Datos.Rows[i][1].ToString(),
+                                        SelArt.Datos.Rows[i][2].ToString(),
+                                        SelArt.Datos.Rows[i][3].ToString(),
+                                        SelArt.Datos.Rows[i][4].ToString(),
+                                        SelArt.Datos.Rows[i][5].ToString(),
+                                        SelArt.Datos.Rows[i][6].ToString(),
+                                        SelArt.Datos.Rows[i][7].ToString(),
+                                        SelArt.Datos.Rows[i][8].ToString(),
+                                        SelArt.Datos.Rows[i][9].ToString(),
+                                        SelArt.Datos.Rows[i][10].ToString(),
+                                        SelArt.Datos.Rows[i][11].ToString(),
+                                        SelArt.Datos.Rows[i][12].ToString());
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores Articulos.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCancelacion(string CancelacionId , string CajaId, string TicketId, string UsuarioId,string CancelacionFecha, string CancelacionSubtotal0,
+                                            string CancelacionSubtotal16, string CancelacionIva, string CancelacionTotal, string CancelacionAsignadoCorte,
+                                            string CorteZId, string CancelacionesTotal, string TicketMayoreoId)
+        {
+            CLSCancelacionCentral UdpArt = new CLSCancelacionCentral();
+            UdpArt.CancelacionId = Convert.ToInt32(CancelacionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
+            DateTime Fecha = Convert.ToDateTime(CancelacionFecha);
+            UdpArt.CancelacionFecha = Fecha.Year.ToString()+DosCero(Fecha.Month.ToString())+DosCero(Fecha.Day.ToString());
+            UdpArt.CancelacionSubtotal0 = Convert.ToDecimal(CancelacionSubtotal0);
+            UdpArt.CancelacionSubtotal16 = Convert.ToDecimal(CancelacionSubtotal16);
+            UdpArt.CancelacionIva = Convert.ToDecimal(CancelacionIva);
+            UdpArt.CancelacionTotal = Convert.ToDecimal(CancelacionTotal);
+            if(CancelacionAsignadoCorte.ToString()=="True")
+            {
+                UdpArt.CancelacionAsignadoCorte = 1;
+            }
+            else
+            {
+                UdpArt.CancelacionAsignadoCorte = 0;
+            }
+            UdpArt.CorteZId=Convert.ToInt32(CorteZId);
+            if (CancelacionesTotal.ToString() == "True")
+            {
+                UdpArt.CancelacionesTotal = 1;
+            }
+            else
+            {
+                UdpArt.CancelacionesTotal = 0;
+            }
+            UdpArt.TicketMayoreoId= Convert.ToInt32(TicketMayoreoId);
+            UdpArt.MtdActualizarCancelacion();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CancelacionId));
+            }
+        }
+        /**** Cancelacion Articulo*****/
+        private void CancelacionArticulo(int Fila)
+        {
+            CLSCancelacionArticuloLocal SelArt = new CLSCancelacionArticuloLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCancelacionArticulo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCancelacionArticulo(SelArt.Datos.Rows[i]["CancelacionId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CancelacionArticuloUltimoIde"].ToString(),
+                                        SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                        SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                        SelArt.Datos.Rows[i]["CancelacionArticuloPrecio"].ToString(),
+                                        SelArt.Datos.Rows[i]["CancelacionArticuloCantidad"].ToString(),
+                                        SelArt.Datos.Rows[i]["CancelacionArticuloSubtotal"].ToString(),
+                                        SelArt.Datos.Rows[i]["CancelacionArticuloIva"].ToString(),
+                                        SelArt.Datos.Rows[i]["CancelacionArticuloTotalLinea"].ToString());
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores Articulos.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCancelacionArticulo(string CancelacionId, string CajaId, string CancelacionArticuloUltimoIde, string TicketId,
+                                                    string ArticuloCodigo, string CancelacionArticuloPrecio, string CancelacionArticuloCantidad,
+                                                    string CancelacionArticuloSubtotal, string CancelacionArticuloIva, string CancelacionArticuloTotalLinea)
+        {
+            CLSCancelacionArticuloCentral UdpArt = new CLSCancelacionArticuloCentral();
+            UdpArt.CancelacionId = Convert.ToInt32(CancelacionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.CancelacionArticuloUltimoIde = Convert.ToInt32(CancelacionArticuloUltimoIde);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.CancelacionArticuloPrecio = Convert.ToDecimal(CancelacionArticuloPrecio);
+            UdpArt.CancelacionArticuloCantidad = Convert.ToInt32(CancelacionArticuloCantidad);
+            UdpArt.CancelacionArticuloSubtotal=Convert.ToDecimal(CancelacionArticuloSubtotal);
+            UdpArt.CancelacionArticuloIva= Convert.ToDecimal(CancelacionArticuloIva);
+            UdpArt.CancelacionArticuloTotalLinea= Convert.ToDecimal(CancelacionArticuloTotalLinea);
+            UdpArt.MtdActualizarCancelacionArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CancelacionId));
             }
         }
     }

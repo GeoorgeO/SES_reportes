@@ -43,7 +43,7 @@ BEGIN
 	declare @Existe int
 	declare @mensaje varchar(50)
 	
-	select @Existe = count(CancelacionId) from CancelacionArticulo a where (a.CancelacionId=@CancelacionId and a.CajaId=@CajaId)
+	select @Existe = count(CancelacionId) from CancelacionArticulo a where (a.CancelacionId=@CancelacionId and a.CajaId=@CajaId and a.CancelacionArticuloUltimoIde=@CancelacionArticuloUltimoIde)
 	if @Existe>0
 			select 0;
 		else

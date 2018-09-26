@@ -18,7 +18,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Centro_ActualizaCancelacionLocal_Select";
+                _conexion.NombreProcedimiento = "asp_Cancelacion_Select";
                 _dato.CadenaTexto = FechaInicio;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;

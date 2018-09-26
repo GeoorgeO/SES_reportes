@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDeDatos.CoorporativoCentral
+namespace CapaDeDatos
 {
-    public class CLS_CancelacionArticulo_Central: ConexionBase
+    public class CLSCancelacionArticuloCentral: ConexionBase
     {
         public int CancelacionId { get; set; } 
         public int CajaId { get; set; }
