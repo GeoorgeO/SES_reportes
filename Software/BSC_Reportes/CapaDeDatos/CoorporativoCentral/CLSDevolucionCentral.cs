@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    public class CLS_Devolucion_Central: ConexionBase
+    public class CLSDevolucionCentral: ConexionBase
     {
         public Decimal DevolucionId { get; set; }
         public Decimal CajaId { get; set; }
