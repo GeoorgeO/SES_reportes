@@ -249,6 +249,9 @@ namespace BSC_Coorporativo
                         case "CortesZRecargas":
                             CorteZRecargas(xRow);
                             break;
+                        case "CortesZRecargasTickets":
+                            CortesZRecargasTickets(xRow);
+                            break;
                     }
                 }
             }
@@ -642,6 +645,69 @@ namespace BSC_Coorporativo
             UdpArt.CortesZRecargasTotalCosto = Convert.ToDecimal(CortesZRecargasTotalCosto);
             
             UdpArt.MtdActualizarCorteZRecargas();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CortesZRecargasId));
+            }
+        }
+        /**** Corte ZRecargasTickets*****/
+        private void CortesZRecargasTickets(int Fila)
+        {
+            CLSCorteZRecargasTicketsLocal SelArt = new CLSCorteZRecargasTicketsLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCorteZRecargasTickets();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecargasTickets [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCorteZRecargasTickets(SelArt.Datos.Rows[i]["CortesZRecargasId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasTicketsInicio"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecargasTicketsFin"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCorteZRecargasTickets(string CortesZRecargasId, string CajaId, string CortesZRecargasTicketsInicio, string CortesZRecargasTicketsFin)
+        {
+
+            CLSCortesZRecargasTicketsCentral UdpArt = new CLSCortesZRecargasTicketsCentral();
+            UdpArt.CortesZRecargasId = Convert.ToInt32(CortesZRecargasId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.CortesZRecargasTicketsInicio = Convert.ToInt32(CortesZRecargasTicketsInicio);
+            UdpArt.CortesZRecargasTicketsFin = Convert.ToInt32(CortesZRecargasTicketsFin);
+            UdpArt.MtdActualizarCortesZRecargasTickets();
             if (UdpArt.Exito.ToString() == "True")
             {
                 ArticulosActualizados++;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSCortesZRecargasTicketsCentral : ConexionBase
+    public class CLSCortesZRecargasTicketsCentral : ConexionBase
     {
 
         public int CortesZRecargasId { get; set; }
