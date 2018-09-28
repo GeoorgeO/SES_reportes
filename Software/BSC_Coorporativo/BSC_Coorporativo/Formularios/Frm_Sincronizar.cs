@@ -246,8 +246,8 @@ namespace BSC_Coorporativo
                         case "CortesZ":
                             CorteZ(xRow);
                             break;
-                        case "CorteZRecargas":
-                            CorteZ(xRow);
+                        case "CortesZRecargas":
+                            CorteZRecargas(xRow);
                             break;
                     }
                 }

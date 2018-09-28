@@ -32,7 +32,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        CortesZRecargasId, CajaId, UsuariosId, CortesZRecargasSub0, CortesZRecargasSub16, CortesZRecargasIva, CortesZRecargasTotal, FacturaGlobalFolio, CortesZRecargasFacturado, 
+	SELECT        CortesZRecargasId, CajaId,CortesZRecargasFecha, UsuariosId, CortesZRecargasSub0, CortesZRecargasSub16, CortesZRecargasIva, CortesZRecargasTotal, FacturaGlobalFolio, CortesZRecargasFacturado, 
 							 CortesZRecargasTotalCosto
 	FROM            CortesZRecargas
 	WHERE        (CortesZRecargasFecha BETWEEN @FechaInicio AND @FechaFin)
