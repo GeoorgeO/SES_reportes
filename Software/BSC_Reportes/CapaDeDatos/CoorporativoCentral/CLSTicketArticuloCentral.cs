@@ -8,5 +8,8 @@ namespace CapaDeDatos
 {
     public class CLSTicketArticuloCentral : ConexionBase
     {
+
+
+
     }
 }
