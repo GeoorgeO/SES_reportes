@@ -12,7 +12,7 @@ namespace CapaDeDatos
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
 
-        public void MtdSeleccionarCancelacion()
+        public void MtdSeleccionarDevolucionMayoreo()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;

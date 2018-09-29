@@ -63,6 +63,7 @@
     <Compile Include="CoorporativoCentral\CLSDevolucionArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSDevolucionCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTicketArticuloCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSTicketCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTicketMayoreoArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTicketMayoreoCentral.cs" />
     <Compile Include="CoorporativoLocal\CLSArticuloKardexLocal.cs" />
