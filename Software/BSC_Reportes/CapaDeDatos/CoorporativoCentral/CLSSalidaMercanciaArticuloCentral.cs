@@ -36,8 +36,7 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "SalidaMercanciaArticuloUltimoIde");
                 _dato.CadenaTexto = ArticuloCodigo;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
-                _dato.CadenaTexto = ArticuloCodigo;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                
                 _dato.Entero = SalidaMercanciaArticuloCantidad;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "SalidaMercanciaArticuloCantidad");
                 _dato.DecimalValor = SalidaMercanciaArticuloSub0;
