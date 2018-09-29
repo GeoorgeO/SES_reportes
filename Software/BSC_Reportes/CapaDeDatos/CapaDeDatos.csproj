@@ -66,6 +66,7 @@
     <Compile Include="CoorporativoLocal\CLSArticuloKardexLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionLocal.cs" />
+    <Compile Include="CoorporativoLocal\CLSCortesZRecibosLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCorteZRecargasTicketsLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCorteZRecargasLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCorteZLocal.cs" />
