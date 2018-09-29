@@ -29,7 +29,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexionC.NombreProcedimiento = "DevolucionMayoreoArticulo";
+                _conexionC.NombreProcedimiento = "SP_BSC_DevolucionMayoreoArticulo_General";
                 _dato.Entero = DevolucionId;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "DevolucionId");
                 _dato.Entero = CajaId;

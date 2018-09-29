@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSDevolucionPreCentral : ConexionBase
+    public class CLSDevolucionPreCentral : ConexionBase
     {
-
-      
         public int DevolucionPreId { get; set; }
         public int TicketId { get; set; }
         public int CajaId { get; set; }
@@ -25,7 +23,7 @@ namespace CapaDeDatos
 
 
 
-        public void MtdActualizarCorteZ()
+        public void MtdActualizarDevolucionPre()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    public class CLSDevolucionMayoreoLocal : ConexionBase
+    public class CLSDevolucionMayoreoArticuloLocal : ConexionBase
     {
 
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
 
-        public void MtdSeleccionarDevolucionMayoreo()
+        public void MtdSeleccionarDevolucionMayoreoArticulo()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "asp_DevolucionMayoreo_Select";
+                _conexion.NombreProcedimiento = "asp_DevolucionMayoreoArticulo_Select";
                 _dato.CadenaTexto = FechaInicio;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
