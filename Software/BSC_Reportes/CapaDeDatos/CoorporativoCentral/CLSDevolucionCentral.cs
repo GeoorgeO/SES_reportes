@@ -20,13 +20,13 @@ namespace CapaDeDatos
         public int DevolucionAsignadoCorte { get; set; }
         public Decimal CorteZId { get; set; }
 
-        public void MtdActualizarCancelacion()
+        public void MtdActualizarDevolucion()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
             try
             {
-                _conexionC.NombreProcedimiento = "SP_BSC_Cancelacion_General";
+                _conexionC.NombreProcedimiento = "SP_BSC_Devolucion_General";
                 _dato.DecimalValor = DevolucionId;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "DevolucionId");
                 _dato.DecimalValor = CajaId;

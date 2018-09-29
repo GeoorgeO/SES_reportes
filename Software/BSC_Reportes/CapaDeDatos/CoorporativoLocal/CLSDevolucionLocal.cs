@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSDevolucionLocal : ConexionBase
+    public class CLSDevolucionLocal : ConexionBase
     {
 
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
 
-        public void MtdSeleccionarCancelacion()
+        public void MtdSeleccionarDevolucion()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
