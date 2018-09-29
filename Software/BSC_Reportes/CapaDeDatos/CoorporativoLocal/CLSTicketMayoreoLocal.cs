@@ -12,13 +12,13 @@ namespace CapaDeDatos
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
 
-        public void MtdSeleccionarCancelacion()
+        public void MtdSeleccionarTicketMayoreo()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Centro_ActualizaTicketMayoreoLocal_Select";
+                _conexion.NombreProcedimiento = "asp_TicketMayoreo_Select";
                 _dato.CadenaTexto = FechaInicio;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
