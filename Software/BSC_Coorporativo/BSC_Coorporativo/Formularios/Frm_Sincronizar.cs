@@ -1141,7 +1141,487 @@ namespace BSC_Coorporativo
                 escritura.WriteLine(string.Format("No se logro actualizar el Devolucion [{0}] ", DevolucionId));
             }
         }
+        /**** DevolucionMayoreoArticulo*****/
+        private void DevolucionMayoreoArticulo(int Fila)
+        {
+            CLSDevolucionMayoreoLocal SelArt = new CLSDevolucionMayoreoLocal();
 
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarDevolucionMayoreo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaDevolucionMayoreoArticulo(SelArt.Datos.Rows[i][" DevolucionId"].ToString(),
+                                                    SelArt.Datos.Rows[i][" CajaId"].ToString(),
+                                                    SelArt.Datos.Rows[i][" DevolucionArticuloUltimoIde"].ToString(),
+                                                    SelArt.Datos.Rows[i][" ArticuloCodigo"].ToString(),
+                                                    SelArt.Datos.Rows[i][" DevolucionArticuloPrecio"].ToString(),
+                                                    SelArt.Datos.Rows[i][" DevolucionArticuloCantidad"].ToString(),
+                                                    SelArt.Datos.Rows[i][" DevolucionArticuloSubtotal"].ToString(),
+                                                    SelArt.Datos.Rows[i][" DevolucionArticuloIva"].ToString(),
+                                                    SelArt.Datos.Rows[i][" DevolucionArticuloTotalLinea"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaDevolucionMayoreoArticulo(string DevolucionId, string CajaId, string DevolucionArticuloUltimoIde, string ArticuloCodigo,
+                                                string DevolucionArticuloPrecio, string DevolucionArticuloCantidad, string DevolucionArticuloSubtotal,
+                                                string DevolucionArticuloIva, string DevolucionArticuloTotalLinea)
+        {
+            CLSDevolucionMayoreoArticuloCentral UdpArt = new CLSDevolucionMayoreoArticuloCentral();
+            UdpArt.DevolucionId = Convert.ToInt32(DevolucionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.DevolucionArticuloUltimoIde = Convert.ToInt32(DevolucionArticuloUltimoIde);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.DevolucionArticuloPrecio = Convert.ToDecimal(DevolucionArticuloPrecio);
+            UdpArt.DevolucionArticuloCantidad = Convert.ToInt32(DevolucionArticuloCantidad);
+            UdpArt.DevolucionArticuloSubtotal = Convert.ToDecimal(DevolucionArticuloSubtotal);
+            UdpArt.DevolucionArticuloIva = Convert.ToDecimal(DevolucionArticuloIva);
+            UdpArt.DevolucionArticuloTotalLinea = Convert.ToDecimal(DevolucionArticuloTotalLinea);
+            UdpArt.MtdActualizarDevolucionMayoreoArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Devolucion [{0}] ", DevolucionId));
+            }
+        }
+        /**** DevolucionPre*****/
+        private void DevolucionPre(int Fila)
+        {
+            CLSDevolucionPreLocal SelArt = new CLSDevolucionPreLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarDevolucionPre();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaDevolucionPre(SelArt.Datos.Rows[i][" DevolucionPreId"].ToString(),
+                                        SelArt.Datos.Rows[i][" TicketId"].ToString(),
+                                        SelArt.Datos.Rows[i][" CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreFecha"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreTArticulos"].ToString(),
+                                        SelArt.Datos.Rows[i][" UsuarioId"].ToString(),
+                                        SelArt.Datos.Rows[i][" VendedorId"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreSub0"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreSub16"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreIva"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreTotal"].ToString(),
+                                        SelArt.Datos.Rows[i][" DevolucionPreProcesada"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaDevolucionPre(string DevolucionPreId, string TicketId, string CajaId, string DevolucionPreFecha, string DevolucionPreTArticulos,
+                                    string UsuarioId, string VendedorId, string DevolucionPreSub0, string DevolucionPreSub16, string DevolucionPreIva,
+                                    string DevolucionPreTotal, string DevolucionPreProcesada)
+        {
+            CLSDevolucionPreCentral UdpArt = new CLSDevolucionPreCentral();
+            UdpArt.DevolucionPreId = Convert.ToInt32(DevolucionPreId);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            DateTime Fecha = Convert.ToDateTime(DevolucionPreFecha);
+            UdpArt.DevolucionPreFecha = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.DevolucionPreTArticulos = Convert.ToInt32(DevolucionPreTArticulos);
+            UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
+            UdpArt.VendedorId = Convert.ToInt32(VendedorId);
+            UdpArt.DevolucionPreSub0 = Convert.ToDecimal(DevolucionPreSub0);
+            UdpArt.DevolucionPreSub16 = Convert.ToDecimal(DevolucionPreSub16);
+            UdpArt.DevolucionPreSub16 = Convert.ToDecimal(DevolucionPreSub16);
+            UdpArt.DevolucionPreIva = Convert.ToDecimal(DevolucionPreIva);
+            UdpArt.DevolucionPreTotal = Convert.ToDecimal(DevolucionPreTotal);
+            UdpArt.DevolucionPreProcesada = Convert.ToInt32(DevolucionPreProcesada);
+            UdpArt.MtdActualizarDevolucionPre();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar la DevolucionPre [{0}] ", DevolucionPreId));
+            }
+        }
+        /**** EntradaMercancia*****/
+        private void EntradaMercancia(int Fila)
+        {
+            CLSEntradaMercanciaLocal SelArt = new CLSEntradaMercanciaLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarEntradaMercancia();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "SalidaMercancia [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaEntradaMercancia(SelArt.Datos.Rows[i]["EntradaMercanciaId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SucursalesId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaTipoId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaFecha"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaUnidades"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaSub0"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaSub16"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaIva"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradaMercanciaTotal"].ToString(),
+                                                     SelArt.Datos.Rows[i]["Observaciones"].ToString(),
+                                                     SelArt.Datos.Rows[i]["Referencias"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores EntradaMercancia.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla EntradaMercancia.");
+            }
+        }
+        private void SincronizaEntradaMercancia(string EntradaMercanciaId, string SucursalesId, string UsuariosId, string EntradaMercanciaTipoId,
+                                                    string EntradaMercanciaFecha, string EntradaMercanciaUnidades, string EntradaMercanciaSub0,
+                                                    string EntradaMercanciaSub16, string EntradaMercanciaIva, string EntradaMercanciaTotal, string Observaciones, string Referencias)
+        {
+            CLSEntradaMercanciaCentral UdpArt = new CLSEntradaMercanciaCentral();
+            UdpArt.EntradaMercanciaId = Convert.ToInt32(EntradaMercanciaId);
+            UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.EntradaMercanciaTipoId = Convert.ToInt32(EntradaMercanciaTipoId);
+            UdpArt.EntradaMercanciaFecha = EntradaMercanciaFecha;
+            UdpArt.EntradaMercanciaUnidades = Convert.ToInt32(EntradaMercanciaUnidades);
+            UdpArt.EntradaMercanciaSub0 = Convert.ToDecimal(EntradaMercanciaSub0);
+            UdpArt.EntradaMercanciaSub16 = Convert.ToDecimal(EntradaMercanciaSub16);
+            UdpArt.EntradaMercanciaIva = Convert.ToInt32(EntradaMercanciaIva);
+            UdpArt.EntradaMercanciaTotal = Convert.ToDecimal(EntradaMercanciaTotal);
+            UdpArt.Observaciones = Observaciones;
+            UdpArt.Referencias = Referencias;
+
+
+            UdpArt.MtdActualizarEntradaMercancia();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar la Entrada de Mercancia [{0}] ", EntradaMercanciaId));
+            }
+        }
+
+        /**** EntradaMercanciaArticulo*****/
+        private void EntradaMercanciaArticulo(int Fila)
+        {
+            CLSEntradaMercanciaArticuloLocal SelArt = new CLSEntradaMercanciaArticuloLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarEntradaMercanciaArticulo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "EntradaMercanciaArticulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaEntradaMercanciaArticulo(SelArt.Datos.Rows[i]["EntradasMercanciaId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SucursalesId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradasMercanciaArticuloUltimoIde"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradasMercanciaArticuloCantidad"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradasMercanciaArticuloSub0"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradasMercanciaArticuloSub16"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradasMercanciaArticuloIva"].ToString(),
+                                                     SelArt.Datos.Rows[i]["EntradasMercanciaArticuloTotal"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores EntradaMercanciaArticulo.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla EntradaMercanciaArticulo.");
+            }
+        }
+        private void SincronizaEntradaMercanciaArticulo(string EntradasMercanciaId, string SucursalesId, string EntradasMercanciaArticuloUltimoIde, string ArticuloCodigo,
+                                                    string EntradasMercanciaArticuloCantidad, string EntradasMercanciaArticuloSub0, string EntradasMercanciaArticuloSub16,
+                                                    string EntradasMercanciaArticuloIva, string EntradasMercanciaArticuloTotal)
+        {
+            CLSEntradaMercanciaArticuloCentral UdpArt = new CLSEntradaMercanciaArticuloCentral();
+            UdpArt.EntradasMercanciaId = Convert.ToInt32(EntradasMercanciaId);
+            UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
+            UdpArt.EntradasMercanciaArticuloUltimoIde = Convert.ToInt32(EntradasMercanciaArticuloUltimoIde);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.EntradasMercanciaArticuloCantidad = Convert.ToInt32(EntradasMercanciaArticuloCantidad);
+            UdpArt.EntradasMercanciaArticuloSub0 = Convert.ToInt32(EntradasMercanciaArticuloSub0);
+            UdpArt.EntradasMercanciaArticuloSub16 = Convert.ToDecimal(EntradasMercanciaArticuloSub16);
+            UdpArt.EntradasMercanciaArticuloIva = Convert.ToDecimal(EntradasMercanciaArticuloIva);
+            UdpArt.EntradasMercanciaArticuloTotal = Convert.ToInt32(EntradasMercanciaArticuloTotal);
+            UdpArt.MtdActualizarEntradaMercanciaArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el EntradaMercanciaArticulo [{0}] ", EntradasMercanciaId));
+            }
+        }
+
+        /**** RecibosRemisiones*****/
+        private void RecibosRemisiones(int Fila)
+        {
+            CLSRecibosRemisionesLocal SelArt = new CLSRecibosRemisionesLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarRecibosRemisiones();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "RecibosRemisiones [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaRecibosRemisiones(SelArt.Datos.Rows[i]["RecibosId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["RecibosTotal"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ReciboTotalLetra"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ReciboFecha"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ClienteId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["DocumentosId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ReciboConcepto"].ToString(),
+                                                     SelArt.Datos.Rows[i]["CortesZRecibosId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["FormasdePagoCobranzaId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["RecibosAsignado"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores RecibosRemisiones.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla RecibosRemisiones.");
+            }
+        }
+        private void SincronizaRecibosRemisiones(string RecibosId, string TicketId, string CajaId, string RecibosTotal,
+                                                    string ReciboTotalLetra, string ReciboFecha, string ClienteId,
+                                                    string UsuariosId, string DocumentosId, string ReciboConcepto, string CortesZRecibosId, string FormasdePagoCobranzaId, string RecibosAsignado)
+        {
+            CLSRecibosRemisionesCentral UdpArt = new CLSRecibosRemisionesCentral();
+            UdpArt.RecibosId = Convert.ToInt32(RecibosId);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.RecibosTotal = Convert.ToDecimal(RecibosTotal);
+            UdpArt.ReciboTotalLetra = ReciboTotalLetra;
+            UdpArt.ReciboFecha = ReciboFecha;
+            UdpArt.ClienteId = Convert.ToInt32(ClienteId);
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.DocumentosId = Convert.ToInt32(DocumentosId);
+            UdpArt.ReciboConcepto = ReciboConcepto;
+            UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            UdpArt.FormasdePagoCobranzaId = Convert.ToInt32(FormasdePagoCobranzaId);
+            UdpArt.RecibosAsignado = Convert.ToInt32(RecibosAsignado);
+
+            UdpArt.MtdActualizarRecibosRemisiones();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Recibo de Remision [{0}] ", RecibosId));
+            }
+        }
+
+        /**** SalidaMercancia*****/
+        private void SalidaMercancia(int Fila)
+        {
+            CLSSalidaMercanciaLocal SelArt = new CLSSalidaMercanciaLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarSalidaMercancia();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "SalidaMercancia [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaSalidaMercancia(SelArt.Datos.Rows[i]["SalidaMercanciaId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SucursalesId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaTipoId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaFecha"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaUnidades"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaSub0"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaSub16"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaIva"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaTotal"].ToString(),
+                                                     SelArt.Datos.Rows[i]["Observaciones"].ToString(),
+                                                     SelArt.Datos.Rows[i]["Referencias"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ParaSucursal"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores SalidaMercancia.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla SalidaMercancia.");
+            }
+        }
+        private void SincronizaSalidaMercancia(string SalidaMercanciaId, string SucursalesId, string UsuariosId, string SalidaMercanciaTipoId,
+                                                    string SalidaMercanciaFecha, string SalidaMercanciaUnidades, string SalidaMercanciaSub0,
+                                                    string SalidaMercanciaSub16, string SalidaMercanciaIva, string SalidaMercanciaTotal, string Observaciones, string Referencias, string ParaSucursal)
+        {
+            CLSSalidaMercanciaCentral UdpArt = new CLSSalidaMercanciaCentral();
+            UdpArt.SalidaMercanciaId = Convert.ToInt32(SalidaMercanciaId);
+            UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.SalidaMercanciaTipoId = Convert.ToInt32(SalidaMercanciaTipoId);
+            UdpArt.SalidaMercanciaFecha = SalidaMercanciaFecha;
+            UdpArt.SalidaMercanciaUnidades = Convert.ToInt32(SalidaMercanciaUnidades);
+            UdpArt.SalidaMercanciaSub0 = Convert.ToDecimal(SalidaMercanciaSub0);
+            UdpArt.SalidaMercanciaSub16 = Convert.ToDecimal(SalidaMercanciaSub16);
+            UdpArt.SalidaMercanciaIva = Convert.ToInt32(SalidaMercanciaIva);
+            UdpArt.SalidaMercanciaTotal = Convert.ToDecimal(SalidaMercanciaTotal);
+            UdpArt.Observaciones = Observaciones;
+            UdpArt.Referencias = Referencias;
+            UdpArt.ParaSucursal = ParaSucursal;
+
+            UdpArt.MtdActualizarSalidaMercancia();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Salida de Mercancia [{0}] ", SalidaMercanciaId));
+            }
+        }
 
         /**** SalidaMercanciaArticulo*****/
         private void SalidaMercanciaArticulo(int Fila)

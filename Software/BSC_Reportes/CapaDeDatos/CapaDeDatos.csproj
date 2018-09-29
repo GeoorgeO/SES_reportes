@@ -57,7 +57,11 @@
     <Compile Include="CoorporativoCentral\CLSDevolucionMayoreoArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSDevolucionMayoreoCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSDevolucionPreCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSEntradaMercanciaArticuloCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSEntradaMercanciaCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSRecibosRemisionesCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSSalidaMercanciaArticuloCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSSalidaMercanciaCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTablasSincronizarServer.cs" />
     <Compile Include="CoorporativoCentral\CLSCancelacionArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSCancelacionCentral.cs" />
@@ -77,7 +81,9 @@
     <Compile Include="CoorporativoLocal\CLSCorteZLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSDevolucionArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSDevolucionLocal.cs" />
+    <Compile Include="CoorporativoLocal\CLSDevolucionMayoreoArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSDevolucionMayoreoLocal.cs" />
+    <Compile Include="CoorporativoLocal\CLSDevolucionPreLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSEntradaMercanciaArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSEntradaMercanciaLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSRecibosRemisionesLocal.cs" />
