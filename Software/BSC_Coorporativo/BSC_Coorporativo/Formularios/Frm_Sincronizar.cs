@@ -252,6 +252,57 @@ namespace BSC_Coorporativo
                         case "CortesZRecargasTickets":
                             CortesZRecargasTickets(xRow);
                             break;
+                        case "CortesZRecibos":
+                            CortesZRecibos(xRow);
+                            break;
+                        case "CortesZRecibosDetalles":
+                            CortesZRecibosDetalles(xRow);
+                            break;
+                        case "Devolucion":
+                            Devolucion(xRow);
+                            break;
+                        case "DevolucionArticulo":
+                            DevolucionArticulo(xRow);
+                            break;
+                        case "DevolucionMayoreo":
+                            //DevolucionMayoreo(xRow);
+                            break;
+                        case "DevolucionMayoreoArticulo":
+                            //DevolucionMayoreoArticulo(xRow);
+                            break;
+                        case "DevolucionPre":
+                            //DevolucionPre(xRow);
+                            break;
+                        case "DevolucionPreDetalles":
+                            //DevolucionPreDetalles(xRow);
+                            break;
+                        case "EntradaMercancia":
+                            //EntradaMercancia(xRow);
+                            break;
+                        case "EntradaMercanciaArticulo":
+                            //EntradaMercanciaArticulo(xRow);
+                            break;
+                        case "RecibosRemisiones":
+                            //RecibosRemisiones(xRow);
+                            break;
+                        case "SalidaMercancia":
+                            //SalidaMercancia(xRow);
+                            break;
+                        case "SalidaMercanciaArticulo":
+                            //SalidaMercanciaArticulo(xRow);
+                            break;
+                        case "Ticket":
+                            Ticket(xRow);
+                            break;
+                        case "TicketArticulo":
+                            TicketArticulo(xRow);
+                            break;
+                        case "TicketMayoreo":
+                            TicketMayoreo(xRow);
+                            break;
+                        case "TicketMayoreoArticulo":
+                            TicketMayoreoArticulo(xRow);
+                            break;
                     }
                 }
             }
@@ -718,6 +769,795 @@ namespace BSC_Coorporativo
                 escritura.WriteLine(string.Format("No se logro actualizar el articulo [{0}] ", CortesZRecargasId));
             }
         }
+        /**** CortesZRecibos*****/
+        private void CortesZRecibos(int Fila)
+        {
+            CLSCortesZRecibosLocal SelArt = new CLSCortesZRecibosLocal();
 
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCortesZRecibos();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCortesZRecibos(SelArt.Datos.Rows[i]["CortesZRecibosId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecibosFecha"].ToString(),
+                                        SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecibosTotal"].ToString());
+               
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCortesZRecibos(string CortesZRecibosId, string CortesZRecibosFecha, string UsuariosId, string CortesZRecibosTotal)
+        {
+            CLSCortesZRecibosCentral UdpArt = new CLSCortesZRecibosCentral();
+            UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            DateTime Fecha = Convert.ToDateTime(CortesZRecibosFecha);
+            UdpArt.CortesZRecibosFecha = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.CortesZRecibosTotal = Convert.ToDecimal(CortesZRecibosTotal);
+            UdpArt.MtdActualizarCortesZRecibos();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el CortesZRecibosId [{0}] ", CortesZRecibosId));
+            }
+        }
+        /**** CortesZRecibosDetalles*****/
+        private void CortesZRecibosDetalles(int Fila)
+        {
+            CLSCortesZRecibosDetallesLocal SelArt = new CLSCortesZRecibosDetallesLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarCortesZRecibosDetalles();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaCortesZRecibosDetalles(SelArt.Datos.Rows[i]["CortesZRecibosId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecibosInicio"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZRecibosFin"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZNCreditoInicio"].ToString(),
+                                        SelArt.Datos.Rows[i]["CortesZNCreditoFin"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaCortesZRecibosDetalles(string CortesZRecibosId, string CortesZRecibosInicio, string CortesZRecibosFin,
+                                                        string CortesZNCreditoInicio,string CortesZNCreditoFin)
+        {
+            CLSCortesZRecibosDetallesCentral UdpArt = new CLSCortesZRecibosDetallesCentral();
+            UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            UdpArt.CortesZRecibosInicio = Convert.ToInt32(CortesZRecibosInicio);
+            UdpArt.CortesZRecibosFin = Convert.ToInt32(CortesZRecibosFin);
+            UdpArt.CortesZNCreditoInicio = Convert.ToInt32(CortesZNCreditoInicio);
+            UdpArt.CortesZNCreditoFin = Convert.ToInt32(CortesZNCreditoFin);
+            UdpArt.MtdActualizarCortesZRecibosDetalles();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el CortesZRecibosId [{0}] ", CortesZRecibosId));
+            }
+        }
+        /**** Devolucion*****/
+        private void Devolucion(int Fila)
+        {
+            CLSDevolucionLocal SelArt = new CLSDevolucionLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarDevolucion();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaDevolucion(SelArt.Datos.Rows[i]["DevolucionId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                        SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionFecha"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionSubtotal0"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionSubtotal16"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionIva"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionTotal"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionAsignadoCorte"].ToString(),
+                                        SelArt.Datos.Rows[i]["CorteZId"].ToString());
+ 
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaDevolucion(string DevolucionId, string CajaId, string TicketId, string UsuariosId, string DevolucionFecha,
+                                            string DevolucionSubtotal0, string DevolucionSubtotal16, string DevolucionIva, string DevolucionTotal,
+                                            string DevolucionAsignadoCorte, string CorteZId)
+        {
+            CLSDevolucionCentral UdpArt = new CLSDevolucionCentral();
+            UdpArt.DevolucionId = Convert.ToInt32(DevolucionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            DateTime Fecha = Convert.ToDateTime(DevolucionFecha);
+            UdpArt.DevolucionFecha = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.DevolucionSubtotal0 = Convert.ToDecimal(DevolucionSubtotal0);
+            UdpArt.DevolucionSubtotal16 = Convert.ToDecimal(DevolucionSubtotal16);
+            UdpArt.DevolucionIva = Convert.ToDecimal(DevolucionIva);
+            UdpArt.DevolucionTotal = Convert.ToDecimal(DevolucionTotal);
+            UdpArt.DevolucionAsignadoCorte = Convert.ToInt32(DevolucionAsignadoCorte);
+            UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+            UdpArt.MtdActualizarDevolucion();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Devolucion [{0}] ", DevolucionId));
+            }
+        }
+        /**** DevolucionArticulo*****/
+        private void DevolucionArticulo(int Fila)
+        {
+            CLSDevolucionLocal SelArt = new CLSDevolucionLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarDevolucion();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaDevolucionArticulo(SelArt.Datos.Rows[i]["DevolucionId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionArticuloUltimoIde"].ToString(),
+                                        SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionArticuloPrecio"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionArticuloCantidad"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionArticuloSubtotal"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionArticuloIva"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionArticuloTotalLinea"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaDevolucionArticulo(string DevolucionId, string CajaId, string DevolucionArticuloUltimoIde, string ArticuloCodigo,
+                                                string DevolucionArticuloPrecio, string DevolucionArticuloCantidad, string DevolucionArticuloSubtotal,
+                                                string DevolucionArticuloIva, string DevolucionArticuloTotalLinea)
+        {
+
+            CLSDevolucionArticuloCentral UdpArt = new CLSDevolucionArticuloCentral();
+            UdpArt.DevolucionId = Convert.ToInt32(DevolucionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.DevolucionArticuloUltimoIde = Convert.ToInt32(DevolucionArticuloUltimoIde);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.DevolucionArticuloPrecio = Convert.ToDecimal(DevolucionArticuloPrecio);
+            UdpArt.DevolucionArticuloCantidad = Convert.ToInt32(DevolucionArticuloCantidad);
+            UdpArt.DevolucionArticuloSubtotal = Convert.ToDecimal(DevolucionArticuloSubtotal);
+            UdpArt.DevolucionArticuloIva = Convert.ToDecimal(DevolucionArticuloIva);
+            UdpArt.DevolucionArticuloTotalLinea = Convert.ToDecimal(DevolucionArticuloTotalLinea);
+            UdpArt.MtdActualizarDevolucionArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Devolucion [{0}] ", DevolucionId));
+            }
+        }
+        /**** DevolucionMayoreo*****/
+        private void DevolucionMayoreo(int Fila)
+        {
+            CLSDevolucionMayoreoLocal SelArt = new CLSDevolucionMayoreoLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarDevolucionMayoreo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaDevolucionMayoreo(SelArt.Datos.Rows[i]["DevolucionId"].ToString(),
+                                                SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                                SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                                SelArt.Datos.Rows[i]["UsuariosId"].ToString(),
+                                                SelArt.Datos.Rows[i]["Clienteid"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionFecha"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionSubtotal0"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionSubtotal16"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionIva"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionDescuento"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionTotal"].ToString(),
+                                                SelArt.Datos.Rows[i]["TicketTotalLetra"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionConcepto"].ToString(),
+                                                SelArt.Datos.Rows[i]["DevolucionAsignado"].ToString(),
+                                                SelArt.Datos.Rows[i]["CortesZRecibosId"].ToString(),
+                                                SelArt.Datos.Rows[i]["NC_Concepto"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+            }
+        }
+        private void SincronizaDevolucionMayoreo(string DevolucionId, string CajaId, string TicketId, string UsuariosId, string Clienteid, string DevolucionFecha,
+                                            string DevolucionSubtotal0, string DevolucionSubtotal16, string DevolucionIva, string DevolucionDescuento,
+                                            string DevolucionTotal, string TicketTotalLetra, string DevolucionConcepto, string DevolucionAsignado, string CortesZRecibosId,
+                                            string NC_Concepto)
+        {
+            CLSDevolucionMayoreoCentral UdpArt = new CLSDevolucionMayoreoCentral();
+            UdpArt.DevolucionId = Convert.ToInt32(DevolucionId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
+            UdpArt.Clienteid = Convert.ToInt32(Clienteid);
+            DateTime Fecha = Convert.ToDateTime(DevolucionFecha);
+            UdpArt.DevolucionFecha = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.DevolucionSubtotal0 = Convert.ToDecimal(DevolucionSubtotal0);
+            UdpArt.DevolucionSubtotal16 = Convert.ToDecimal(DevolucionSubtotal16);
+            UdpArt.DevolucionIva = Convert.ToDecimal(DevolucionIva);
+            UdpArt.DevolucionDescuento = Convert.ToDecimal(DevolucionDescuento);
+            UdpArt.DevolucionTotal = Convert.ToDecimal(DevolucionTotal);
+            UdpArt.TicketTotalLetra = TicketTotalLetra;
+            UdpArt.DevolucionConcepto = DevolucionConcepto;
+            UdpArt.DevolucionAsignado = Convert.ToInt32(DevolucionAsignado);
+            UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            UdpArt.NC_Concepto = NC_Concepto;
+            UdpArt.MtdActualizarDevolucionMayoreo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Devolucion [{0}] ", DevolucionId));
+            }
+        }
+
+
+        /**** SalidaMercanciaArticulo*****/
+        private void SalidaMercanciaArticulo(int Fila)
+        {
+            CLSSalidaMercanciaArticuloLocal SelArt = new CLSSalidaMercanciaArticuloLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarSalidaMercanciaArticulo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "SalidaMercanciaArticulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaSalidaMercanciaArticulo(SelArt.Datos.Rows[i]["SalidaMercanciaId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SucursalesId"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaArticuloUltimoIde"].ToString(),
+                                                     SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaArticuloCantidad"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaArticuloSub0"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaArticuloSub16"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaArticuloIva"].ToString(),
+                                                     SelArt.Datos.Rows[i]["SalidaMercanciaArticuloTotal"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores SalidaMercanciaArticulo.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla SalidaMercanciaArticulo.");
+            }
+        }
+        private void SincronizaSalidaMercanciaArticulo(string SalidaMercanciaId, string SucursalesId, string SalidaMercanciaArticuloUltimoIde, string ArticuloCodigo,
+                                                    string SalidaMercanciaArticuloCantidad, string SalidaMercanciaArticuloSub0, string SalidaMercanciaArticuloSub16,
+                                                    string SalidaMercanciaArticuloIva, string SalidaMercanciaArticuloTotal)
+        {
+            CLSSalidaMercanciaArticuloCentral UdpArt = new CLSSalidaMercanciaArticuloCentral();
+            UdpArt.SalidaMercanciaId = Convert.ToInt32(SalidaMercanciaId);
+            UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
+            UdpArt.SalidaMercanciaArticuloUltimoIde = Convert.ToInt32(SalidaMercanciaArticuloUltimoIde);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.SalidaMercanciaArticuloCantidad = Convert.ToInt32(SalidaMercanciaArticuloCantidad);
+            UdpArt.SalidaMercanciaArticuloSub0 = Convert.ToInt32(SalidaMercanciaArticuloSub0);
+            UdpArt.SalidaMercanciaArticuloSub16 = Convert.ToDecimal(SalidaMercanciaArticuloSub16);
+            UdpArt.SalidaMercanciaArticuloIva = Convert.ToDecimal(SalidaMercanciaArticuloIva);
+            UdpArt.SalidaMercanciaArticuloTotal = Convert.ToInt32(SalidaMercanciaArticuloTotal);
+            UdpArt.MtdActualizarSalidaMercanciaArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el SalidaMercanciaArticulo [{0}] ", SalidaMercanciaId));
+            }
+        }
+        /**** Ticket*****/
+        private void Ticket(int Fila)
+        {
+            CLSTicketLocal SelArt = new CLSTicketLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarTicket();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Ticket [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaTicket(SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                    SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                    SelArt.Datos.Rows[i]["UsuarioId"].ToString(),
+                                    SelArt.Datos.Rows[i]["TicketFecha"].ToString(),
+                                    SelArt.Datos.Rows[i]["TicketHora"].ToString(),
+                                    SelArt.Datos.Rows[i]["TicketSubtotal0"].ToString(),
+                                    SelArt.Datos.Rows[i]["TicketSubtotal16"].ToString(),
+                                    SelArt.Datos.Rows[i]["TicketIva"].ToString(),
+                                    SelArt.Datos.Rows[i]["TicketTotal"].ToString(),
+                                    SelArt.Datos.Rows[i]["CorteZId"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores Ticket.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla Ticket.");
+            }
+        }
+        private void SincronizaTicket(string TicketId, string CajaId, string UsuarioId, string TicketFecha, string TicketHora, string TicketSubtotal0,
+                                        string TicketSubtotal16, string TicketIva, string TicketTotal, string CorteZId)
+        {
+            CLSTicketCentral UdpArt = new CLSTicketCentral();
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
+            UdpArt.TicketFecha = TicketFecha;
+            UdpArt.TicketHora = TicketHora;
+            UdpArt.TicketSubtotal0 = Convert.ToDecimal(TicketSubtotal0);
+            UdpArt.TicketSubtotal16 = Convert.ToDecimal(TicketSubtotal16);
+            UdpArt.TicketIva = Convert.ToDecimal(TicketIva);
+            UdpArt.TicketTotal = Convert.ToDecimal(TicketTotal);
+            UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+            UdpArt.MtdActualizarTicket();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el TicketMayoreo [{0}] ", TicketId));
+            }
+        }
+        /**** TicketArticulo*****/
+        private void TicketArticulo(int Fila)
+        {
+            CLSTicketArticuloLocal SelArt = new CLSTicketArticuloLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarTicketArticulo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "TicketArticulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaTicketArticulo(SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                            SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloUltimoIde"].ToString(),
+                                            SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                            SelArt.Datos.Rows[i]["TarifaId"].ToString(),
+                                            SelArt.Datos.Rows[i]["MedidasId"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloCosto"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloPrecio"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloCantidad"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloCantidadDevolucion"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloCantidadCancelada"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloSubtotal"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloIva"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloTotalLinea"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloDescuento"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloPrecioDescuento"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloIvaDescuento"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketArticuloTotal"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores TicketArticulo.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla TicketArticulo.");
+            }
+        }
+        private void SincronizaTicketArticulo(string TicketId, string CajaId, string TicketArticuloUltimoIde, string ArticuloCodigo,
+            string TarifaId, string MedidasId, string TicketArticuloCosto, string TicketArticuloPrecio, string TicketArticuloCantidad,
+            string TicketArticuloCantidadDevolucion, string TicketArticuloCantidadCancelada, string TicketArticuloSubtotal, 
+            string TicketArticuloIva, string TicketArticuloTotalLinea, string TicketArticuloDescuento, string TicketArticuloPrecioDescuento,
+            string TicketArticuloIvaDescuento, string TicketArticuloTotal)
+        {
+
+            CLSTicketArticuloCentral UdpArt = new CLSTicketArticuloCentral();
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.TicketArticuloUltimoIde = Convert.ToInt32(TicketArticuloUltimoIde);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.TarifaId = Convert.ToInt32(TarifaId);
+            UdpArt.MedidasId = Convert.ToInt32(MedidasId);
+            UdpArt.TicketArticuloCosto = Convert.ToDecimal(TicketArticuloCosto);
+            UdpArt.TicketArticuloPrecio = Convert.ToDecimal(TicketArticuloPrecio);
+            UdpArt.TicketArticuloCantidad = Convert.ToInt32(TicketArticuloCantidad);
+            UdpArt.TicketArticuloCantidadDevolucion = Convert.ToInt32(TicketArticuloCantidadDevolucion);
+            UdpArt.TicketArticuloCantidadCancelada = Convert.ToInt32(TicketArticuloCantidadCancelada);
+            UdpArt.TicketArticuloSubtotal = Convert.ToDecimal(TicketArticuloSubtotal);
+            UdpArt.TicketArticuloIva = Convert.ToDecimal(TicketArticuloIva);
+            UdpArt.TicketArticuloTotalLinea = Convert.ToDecimal(TicketArticuloTotalLinea);
+            UdpArt.TicketArticuloDescuento = Convert.ToDecimal(TicketArticuloDescuento);
+            UdpArt.TicketArticuloPrecioDescuento = Convert.ToDecimal(TicketArticuloPrecioDescuento);
+            UdpArt.TicketArticuloIvaDescuento = Convert.ToDecimal(TicketArticuloIvaDescuento);
+            UdpArt.TicketArticuloTotal = Convert.ToDecimal(TicketArticuloTotal);
+
+            UdpArt.MtdActualizarTicketArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Ticket Articulo [{0}] ", TicketId));
+            }
+        }
+        /**** TicketMayoreo*****/
+        private void TicketMayoreo(int Fila)
+        {
+            CLSTicketMayoreoLocal SelArt = new CLSTicketMayoreoLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarTicketMayoreo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "TicketMayoreo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaTicketMayoreo(SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                            SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                            SelArt.Datos.Rows[i]["UsuarioId"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketFecha"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketSubtotal0"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketSubtotal16"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketIva"].ToString(),
+                                            SelArt.Datos.Rows[i]["TicketTotal"].ToString(),
+                                            SelArt.Datos.Rows[i]["ClienteId"].ToString());
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores TicketMayoreo.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla TicketMayoreo.");
+            }
+        }
+        private void SincronizaTicketMayoreo(string TicketId, string CajaId, string UsuarioId, string TicketFecha, string TicketSubtotal0,
+                                            string TicketSubtotal16, string TicketIva, string TicketTotal, string ClienteId)
+        {
+
+            CLSTicketMayoreoCentral UdpArt = new CLSTicketMayoreoCentral();
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
+            UdpArt.TicketFecha = TicketFecha;
+            UdpArt.TicketSubtotal0 = Convert.ToDecimal(TicketSubtotal0);
+            UdpArt.TicketSubtotal16 = Convert.ToDecimal(TicketSubtotal16);
+            UdpArt.TicketIva = Convert.ToDecimal(TicketIva);
+            UdpArt.TicketTotal = Convert.ToDecimal(TicketTotal);
+            UdpArt.ClienteId = Convert.ToInt32(ClienteId);
+            UdpArt.MtdActualizarTicketMayoreo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el TicketMayoreo [{0}] ", TicketId));
+            }
+        }
+        /**** TicketMayoreoArticulo*****/
+        private void TicketMayoreoArticulo(int Fila)
+        {
+            CLSTicketMayoreoArticuloLocal SelArt = new CLSTicketMayoreoArticuloLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarTicketMayoreoArticulo();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "TicketMayoreoArticulo [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaTicketMayoreoArticulo(SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                                    SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloUltimoIde"].ToString(),
+                                                    SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TarifaId"].ToString(),
+                                                    SelArt.Datos.Rows[i]["MedidasId"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloCosto"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloPrecio"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloCantidad"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloCantidadDevolucion"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloCantidadCancelada"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloSubtotal"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloIva"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloTotalLinea"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloDescuento"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloPrecioDescuento"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloIvaDescuento"].ToString(),
+                                                    SelArt.Datos.Rows[i]["TicketArticuloTotal"].ToString());
+
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores TicketMayoreoArticulo.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla TicketMayoreoArticulo.");
+            }
+        }
+        private void SincronizaTicketMayoreoArticulo(string TicketId, string CajaId, string TicketArticuloUltimoIde, string ArticuloCodigo, string TarifaId,
+                                                    string MedidasId, string TicketArticuloCosto, string TicketArticuloPrecio, string TicketArticuloCantidad,
+                                                    string TicketArticuloCantidadDevolucion, string TicketArticuloCantidadCancelada, string TicketArticuloSubtotal,
+                                                    string TicketArticuloIva, string TicketArticuloTotalLinea, string TicketArticuloDescuento, string TicketArticuloPrecioDescuento,
+                                                    string TicketArticuloIvaDescuento, string TicketArticuloTotal)
+        {
+            CLSTicketMayoreoArticuloCentral UdpArt = new CLSTicketMayoreoArticuloCentral();
+            UdpArt.TicketId = Convert.ToInt32(TicketId);
+            UdpArt.CajaId = Convert.ToInt32(CajaId);
+            UdpArt.TicketArticuloUltimoIde = Convert.ToInt32(TicketArticuloUltimoIde);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.TarifaId = Convert.ToInt32(TarifaId);
+            UdpArt.MedidasId = Convert.ToInt32(MedidasId);
+            UdpArt.TicketArticuloCosto = Convert.ToDecimal(TicketArticuloCosto);
+            UdpArt.TicketArticuloPrecio = Convert.ToDecimal(TicketArticuloPrecio);
+            UdpArt.TicketArticuloCantidad = Convert.ToInt32(TicketArticuloCantidad);
+            UdpArt.TicketArticuloCantidadDevolucion = Convert.ToInt32(TicketArticuloCantidadDevolucion);
+            UdpArt.TicketArticuloCantidadCancelada = Convert.ToInt32(TicketArticuloCantidadCancelada);
+            UdpArt.TicketArticuloSubtotal = Convert.ToDecimal(TicketArticuloSubtotal);
+            UdpArt.TicketArticuloIva = Convert.ToDecimal(TicketArticuloIva);
+            UdpArt.TicketArticuloTotalLinea = Convert.ToDecimal(TicketArticuloTotalLinea);
+            UdpArt.TicketArticuloDescuento = Convert.ToDecimal(TicketArticuloDescuento);
+            UdpArt.TicketArticuloPrecioDescuento = Convert.ToDecimal(TicketArticuloPrecioDescuento);
+            UdpArt.TicketArticuloIvaDescuento = Convert.ToDecimal(TicketArticuloIvaDescuento);
+            UdpArt.TicketArticuloTotal = Convert.ToDecimal(TicketArticuloTotal);
+
+
+            UdpArt.MtdActualizarTicketMayoreoArticulo();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar el Ticket Mayoreo-Articulo [{0}] ", TicketId));
+            }
+        }
     }
 }

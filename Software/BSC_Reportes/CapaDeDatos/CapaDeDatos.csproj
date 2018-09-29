@@ -57,6 +57,7 @@
     <Compile Include="CoorporativoCentral\CLSDevolucionMayoreoArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSDevolucionMayoreoCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSDevolucionPreCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSSalidaMercanciaArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTablasSincronizarServer.cs" />
     <Compile Include="CoorporativoCentral\CLSCancelacionArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSCancelacionCentral.cs" />
