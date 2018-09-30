@@ -1250,18 +1250,18 @@ namespace BSC_Coorporativo
                     Application.DoEvents();
 
                     lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
-                    SincronizaDevolucionPre(SelArt.Datos.Rows[i][" DevolucionPreId"].ToString(),
-                                        SelArt.Datos.Rows[i][" TicketId"].ToString(),
-                                        SelArt.Datos.Rows[i][" CajaId"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreFecha"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreTArticulos"].ToString(),
-                                        SelArt.Datos.Rows[i][" UsuarioId"].ToString(),
-                                        SelArt.Datos.Rows[i][" VendedorId"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreSub0"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreSub16"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreIva"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreTotal"].ToString(),
-                                        SelArt.Datos.Rows[i][" DevolucionPreProcesada"].ToString());
+                    SincronizaDevolucionPre(SelArt.Datos.Rows[i]["DevolucionPreId"].ToString(),
+                                        SelArt.Datos.Rows[i]["TicketId"].ToString(),
+                                        SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreFecha"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreTArticulos"].ToString(),
+                                        SelArt.Datos.Rows[i]["UsuarioId"].ToString(),
+                                        SelArt.Datos.Rows[i]["VendedorId"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreSub0"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreSub16"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreIva"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreTotal"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreProcesada"].ToString());
 
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
@@ -1299,7 +1299,15 @@ namespace BSC_Coorporativo
             UdpArt.DevolucionPreSub16 = Convert.ToDecimal(DevolucionPreSub16);
             UdpArt.DevolucionPreIva = Convert.ToDecimal(DevolucionPreIva);
             UdpArt.DevolucionPreTotal = Convert.ToDecimal(DevolucionPreTotal);
-            UdpArt.DevolucionPreProcesada = Convert.ToInt32(DevolucionPreProcesada);
+            if (Convert.ToBoolean(DevolucionPreProcesada) == true)
+            {
+                UdpArt.DevolucionPreProcesada = 1;
+            }
+            else
+            {
+                UdpArt.DevolucionPreProcesada = 0;
+            }
+            
             UdpArt.MtdActualizarDevolucionPre();
             if (UdpArt.Exito.ToString() == "True")
             {
@@ -1372,11 +1380,11 @@ namespace BSC_Coorporativo
             UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
             UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
             UdpArt.EntradaMercanciaTipoId = Convert.ToInt32(EntradaMercanciaTipoId);
-            UdpArt.EntradaMercanciaFecha = EntradaMercanciaFecha;
+            UdpArt.EntradaMercanciaFecha = Convert.ToDateTime(EntradaMercanciaFecha).Year.ToString() + DosCero(Convert.ToDateTime(EntradaMercanciaFecha).Month.ToString()) + DosCero(Convert.ToDateTime(EntradaMercanciaFecha).Day.ToString()); 
             UdpArt.EntradaMercanciaUnidades = Convert.ToInt32(EntradaMercanciaUnidades);
             UdpArt.EntradaMercanciaSub0 = Convert.ToDecimal(EntradaMercanciaSub0);
             UdpArt.EntradaMercanciaSub16 = Convert.ToDecimal(EntradaMercanciaSub16);
-            UdpArt.EntradaMercanciaIva = Convert.ToInt32(EntradaMercanciaIva);
+            UdpArt.EntradaMercanciaIva = Convert.ToDecimal(EntradaMercanciaIva);
             UdpArt.EntradaMercanciaTotal = Convert.ToDecimal(EntradaMercanciaTotal);
             UdpArt.Observaciones = Observaciones;
             UdpArt.Referencias = Referencias;
@@ -1453,10 +1461,10 @@ namespace BSC_Coorporativo
             UdpArt.EntradasMercanciaArticuloUltimoIde = Convert.ToInt32(EntradasMercanciaArticuloUltimoIde);
             UdpArt.ArticuloCodigo = ArticuloCodigo;
             UdpArt.EntradasMercanciaArticuloCantidad = Convert.ToInt32(EntradasMercanciaArticuloCantidad);
-            UdpArt.EntradasMercanciaArticuloSub0 = Convert.ToInt32(EntradasMercanciaArticuloSub0);
+            UdpArt.EntradasMercanciaArticuloSub0 = Convert.ToDecimal(EntradasMercanciaArticuloSub0);
             UdpArt.EntradasMercanciaArticuloSub16 = Convert.ToDecimal(EntradasMercanciaArticuloSub16);
             UdpArt.EntradasMercanciaArticuloIva = Convert.ToDecimal(EntradasMercanciaArticuloIva);
-            UdpArt.EntradasMercanciaArticuloTotal = Convert.ToInt32(EntradasMercanciaArticuloTotal);
+            UdpArt.EntradasMercanciaArticuloTotal = Convert.ToDecimal(EntradasMercanciaArticuloTotal);
             UdpArt.MtdActualizarEntradaMercanciaArticulo();
             if (UdpArt.Exito.ToString() == "True")
             {
@@ -1532,14 +1540,31 @@ namespace BSC_Coorporativo
             UdpArt.CajaId = Convert.ToInt32(CajaId);
             UdpArt.RecibosTotal = Convert.ToDecimal(RecibosTotal);
             UdpArt.ReciboTotalLetra = ReciboTotalLetra;
-            UdpArt.ReciboFecha = ReciboFecha;
+            UdpArt.ReciboFecha = Convert.ToDateTime(ReciboFecha).Year.ToString() + DosCero(Convert.ToDateTime(ReciboFecha).Month.ToString()) + DosCero(Convert.ToDateTime(ReciboFecha).Day.ToString()); 
             UdpArt.ClienteId = Convert.ToInt32(ClienteId);
             UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
             UdpArt.DocumentosId = Convert.ToInt32(DocumentosId);
             UdpArt.ReciboConcepto = ReciboConcepto;
-            UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            if (CortesZRecibosId.ToString() == string.Empty)
+            {
+                UdpArt.CortesZRecibosId = 0;
+            }
+            else
+            {
+                UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            }
+            
             UdpArt.FormasdePagoCobranzaId = Convert.ToInt32(FormasdePagoCobranzaId);
-            UdpArt.RecibosAsignado = Convert.ToInt32(RecibosAsignado);
+
+            if (Convert.ToBoolean(RecibosAsignado) == true)
+            {
+                UdpArt.RecibosAsignado = 1;
+            }
+            else
+            {
+                UdpArt.RecibosAsignado = 0;
+            }
+            
 
             UdpArt.MtdActualizarRecibosRemisiones();
             if (UdpArt.Exito.ToString() == "True")
@@ -1615,11 +1640,11 @@ namespace BSC_Coorporativo
             UdpArt.SucursalesId = Convert.ToInt32(SucursalesId);
             UdpArt.UsuariosId = Convert.ToInt32(UsuariosId);
             UdpArt.SalidaMercanciaTipoId = Convert.ToInt32(SalidaMercanciaTipoId);
-            UdpArt.SalidaMercanciaFecha = SalidaMercanciaFecha;
+            UdpArt.SalidaMercanciaFecha = Convert.ToDateTime(SalidaMercanciaFecha).Year.ToString() + DosCero(Convert.ToDateTime(SalidaMercanciaFecha).Month.ToString()) + DosCero(Convert.ToDateTime(SalidaMercanciaFecha).Day.ToString()); 
             UdpArt.SalidaMercanciaUnidades = Convert.ToInt32(SalidaMercanciaUnidades);
             UdpArt.SalidaMercanciaSub0 = Convert.ToDecimal(SalidaMercanciaSub0);
             UdpArt.SalidaMercanciaSub16 = Convert.ToDecimal(SalidaMercanciaSub16);
-            UdpArt.SalidaMercanciaIva = Convert.ToInt32(SalidaMercanciaIva);
+            UdpArt.SalidaMercanciaIva = Convert.ToDecimal(SalidaMercanciaIva);
             UdpArt.SalidaMercanciaTotal = Convert.ToDecimal(SalidaMercanciaTotal);
             UdpArt.Observaciones = Observaciones;
             UdpArt.Referencias = Referencias;
@@ -1696,10 +1721,10 @@ namespace BSC_Coorporativo
             UdpArt.SalidaMercanciaArticuloUltimoIde = Convert.ToInt32(SalidaMercanciaArticuloUltimoIde);
             UdpArt.ArticuloCodigo = ArticuloCodigo;
             UdpArt.SalidaMercanciaArticuloCantidad = Convert.ToInt32(SalidaMercanciaArticuloCantidad);
-            UdpArt.SalidaMercanciaArticuloSub0 = Convert.ToInt32(SalidaMercanciaArticuloSub0);
+            UdpArt.SalidaMercanciaArticuloSub0 = Convert.ToDecimal(SalidaMercanciaArticuloSub0);
             UdpArt.SalidaMercanciaArticuloSub16 = Convert.ToDecimal(SalidaMercanciaArticuloSub16);
             UdpArt.SalidaMercanciaArticuloIva = Convert.ToDecimal(SalidaMercanciaArticuloIva);
-            UdpArt.SalidaMercanciaArticuloTotal = Convert.ToInt32(SalidaMercanciaArticuloTotal);
+            UdpArt.SalidaMercanciaArticuloTotal = Convert.ToDecimal(SalidaMercanciaArticuloTotal);
             UdpArt.MtdActualizarSalidaMercanciaArticulo();
             if (UdpArt.Exito.ToString() == "True")
             {
@@ -1736,7 +1761,7 @@ namespace BSC_Coorporativo
                                     SelArt.Datos.Rows[i]["CajaId"].ToString(),
                                     SelArt.Datos.Rows[i]["UsuarioId"].ToString(),
                                     SelArt.Datos.Rows[i]["TicketFecha"].ToString(),
-                                    SelArt.Datos.Rows[i]["TicketHora"].ToString(),
+                                    /*SelArt.Datos.Rows[i]["TicketHora"].ToString(),*/
                                     SelArt.Datos.Rows[i]["TicketSubtotal0"].ToString(),
                                     SelArt.Datos.Rows[i]["TicketSubtotal16"].ToString(),
                                     SelArt.Datos.Rows[i]["TicketIva"].ToString(),
@@ -1761,7 +1786,7 @@ namespace BSC_Coorporativo
                 escritura.WriteLine("No se obtubieron datos de la tabla Ticket.");
             }
         }
-        private void SincronizaTicket(string TicketId, string CajaId, string UsuarioId, string TicketFecha, string TicketHora, string TicketSubtotal0,
+        private void SincronizaTicket(string TicketId, string CajaId, string UsuarioId, string TicketFecha, /*string TicketHora,*/ string TicketSubtotal0,
                                         string TicketSubtotal16, string TicketIva, string TicketTotal, string CorteZId)
         {
             CLSTicketCentral UdpArt = new CLSTicketCentral();
@@ -1769,12 +1794,21 @@ namespace BSC_Coorporativo
             UdpArt.CajaId = Convert.ToInt32(CajaId);
             UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
             UdpArt.TicketFecha = Convert.ToDateTime(TicketFecha).Year.ToString() + DosCero(Convert.ToDateTime(TicketFecha).Month.ToString()) + DosCero(Convert.ToDateTime(TicketFecha).Day.ToString());
-            UdpArt.TicketHora = TicketHora;
+            /*UdpArt.TicketHora = TicketHora;*/
             UdpArt.TicketSubtotal0 = Convert.ToDecimal(TicketSubtotal0);
             UdpArt.TicketSubtotal16 = Convert.ToDecimal(TicketSubtotal16);
             UdpArt.TicketIva = Convert.ToDecimal(TicketIva);
             UdpArt.TicketTotal = Convert.ToDecimal(TicketTotal);
-            UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+
+            if (CorteZId.ToString() == string.Empty)
+            {
+                UdpArt.CorteZId = 0;
+            }
+            else
+            {
+                UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+            }
+           
             UdpArt.MtdActualizarTicket();
             if (UdpArt.Exito.ToString() == "True")
             {

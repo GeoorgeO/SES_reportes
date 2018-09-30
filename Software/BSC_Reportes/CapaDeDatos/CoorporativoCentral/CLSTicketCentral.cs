@@ -13,12 +13,12 @@ namespace CapaDeDatos
         public int CajaId { get; set; }
         public int UsuarioId { get; set; }
         public string TicketFecha { get; set; }
-        public string TicketHora { get; set; }
+        /*public string TicketHora { get; set; }*/
         public decimal TicketSubtotal0 { get; set; }
         public decimal TicketSubtotal16 { get; set; }
         public decimal TicketIva { get; set; }
         public decimal TicketTotal { get; set; }
-        public int CorteZId { get; set; }
+        public int ?CorteZId { get; set; }
 
 
 
@@ -40,8 +40,8 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "UsuarioId");
                 _dato.CadenaTexto = TicketFecha;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "TicketFecha");
-                _dato.CadenaTexto = TicketHora;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "TicketHora");
+                /*_dato.CadenaTexto = TicketHora;
+                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "TicketHora");*/
                 _dato.DecimalValor = TicketSubtotal0;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "TicketSubtotal0");
                 _dato.DecimalValor = TicketSubtotal16;

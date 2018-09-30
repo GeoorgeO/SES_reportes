@@ -32,19 +32,19 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT EntMerArt.EntradasMercanciaId
-      ,EntMerArt.SucursalesId
-      ,EntMerArt.EntradasMercanciaArticuloUltimoIde
-      ,EntMerArt.ArticuloCodigo
-      ,EntMerArt.EntradasMercanciaArticuloCantidad
-      ,EntMerArt.EntradasMercanciaArticuloSub0
-      ,EntMerArt.EntradasMercanciaArticuloSub16
-      ,EntMerArt.EntradasMercanciaArticuloIva
-      ,EntMerArt.EntradasMercanciaArticuloTotal
-	from EntradaMercanciaArticulo as EntMerArt
-	inner join EntradaMercancia as EntMer
-		on EntMerArt.EntradasMercanciaId=EntMer.EntradaMercanciaId
-			and EntMerArt.SucursalesId=EntMer.SucursalesId
-	where EntMer.EntradaMercanciaFecha between @FechaInicio and @FechaFin
+	select EntradaMercanciaId
+      ,SucursalesId
+      ,UsuariosId
+      ,EntradaMercanciaTipoId
+      ,EntradaMercanciaFecha
+      ,EntradaMercanciaUnidades
+      ,EntradaMercanciaSub0
+      ,EntradaMercanciaSub16
+      ,EntradaMercanciaIva
+      ,EntradaMercanciaTotal
+      ,Observaciones
+      ,Referencias
+	from EntradaMercancia
+	where EntradaMercanciaFecha between @FechaInicio and @FechaFin
 END
 GO

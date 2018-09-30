@@ -32,7 +32,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        DevolucionPreId, TicketId, CajaId, DevolucionPreTArticulos, UsuarioId, VendedorId, DevolucionPreSub0, DevolucionPreSub16, DevolucionPreIva, DevolucionPreTotal, DevolucionPreProcesada
+	SELECT        DevolucionPreId, TicketId, CajaId, DevolucionPreFecha,DevolucionPreTArticulos, UsuarioId, VendedorId, DevolucionPreSub0, DevolucionPreSub16, DevolucionPreIva, DevolucionPreTotal, DevolucionPreProcesada
 	FROM            DevolucionPre
 	WHERE        (DevolucionPreFecha BETWEEN @FechaInicio AND @FechaFin)
 END

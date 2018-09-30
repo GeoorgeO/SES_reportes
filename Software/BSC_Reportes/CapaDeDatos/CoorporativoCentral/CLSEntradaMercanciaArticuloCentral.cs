@@ -27,7 +27,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexionC.NombreProcedimiento = "SP_BSC_EntradaMercancia_General";
+                _conexionC.NombreProcedimiento = "SP_BSC_EntradaMercanciaArticulo_General";
                 _dato.Entero = EntradasMercanciaId;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "EntradasMercanciaId");
                 _dato.Entero = SucursalesId;
@@ -45,7 +45,7 @@ namespace CapaDeDatos
                 _dato.DecimalValor = EntradasMercanciaArticuloIva;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "EntradasMercanciaArticuloIva");
                 _dato.DecimalValor = EntradasMercanciaArticuloTotal;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "EntradasMercanciaArticuloTotal");
+                _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "EntradasMercanciaArticuloTotal");
 
 
                 _conexionC.EjecutarDataset();

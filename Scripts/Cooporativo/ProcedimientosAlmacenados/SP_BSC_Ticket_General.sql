@@ -49,6 +49,6 @@ BEGIN
 		else
 			INSERT INTO Ticket
                          (TicketId, CajaId, UsuarioId, TicketFecha, /*TicketHora,*/ TicketSubtotal0, TicketSubtotal16, TicketIva, TicketTotal, CorteZId, FechaInsert)
-VALUES        (@TicketId,@CajaId,@UsuarioId,TicketFecha,/*@TicketHora,*/@TicketSubtotal0,@TicketSubtotal16,@TicketIva,@TicketTotal,@CorteZId, GETDATE())
+VALUES        (@TicketId,@CajaId,@UsuarioId,@TicketFecha,/*@TicketHora,*/@TicketSubtotal0,@TicketSubtotal16,@TicketIva,@TicketTotal,@CorteZId, GETDATE())
 END
 GO
