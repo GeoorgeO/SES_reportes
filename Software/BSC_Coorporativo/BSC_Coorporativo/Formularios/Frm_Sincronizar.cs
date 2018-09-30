@@ -986,13 +986,13 @@ namespace BSC_Coorporativo
         /**** DevolucionArticulo*****/
         private void DevolucionArticulo(int Fila)
         {
-            CLSDevolucionLocal SelArt = new CLSDevolucionLocal();
+            CLSDevolucionArticuloLocal SelArt = new CLSDevolucionArticuloLocal();
 
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
-            SelArt.MtdSeleccionarDevolucion();
+            SelArt.MtdSeleccionarDevolucionArticulo();
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;

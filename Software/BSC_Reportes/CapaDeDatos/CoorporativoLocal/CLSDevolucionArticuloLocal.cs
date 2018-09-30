@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    class CLSDevolucionArticuloLocal : ConexionBase
+    public class CLSDevolucionArticuloLocal : ConexionBase
     {
 
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
 
-        public void MtdSeleccionarCancelacion()
+        public void MtdSeleccionarDevolucionArticulo()
         {
             TipoDato _dato = new TipoDato();
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Centro_ActualizaDevolucionArticuloLocal_Select";
+                _conexion.NombreProcedimiento = "asp_DevolucionArticulo_Select";
                 _dato.CadenaTexto = FechaInicio;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
