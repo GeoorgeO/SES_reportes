@@ -32,23 +32,11 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select DevolucionId
-      ,CajaId
-      ,TicketId
-      ,UsuariosId
-      ,Clienteid
-      ,DevolucionFecha
-      ,DevolucionSubtotal0
-      ,DevolucionSubtotal16
-      ,DevolucionIva
-      ,DevolucionDescuento
-      ,DevolucionTotal
-      ,TicketTotalLetra
-      /*,DevolucionConcepto
-      ,DevolucionAsignado
-      ,CortesZRecibosId
-      ,NC_Concepto*/
-	from DevolucionMayoreo
-	where DevolucionFecha between @FechaInicio and @FechaFin
+		SELECT        DevolucionMayoreoArticulo.DevolucionId, DevolucionMayoreoArticulo.CajaId, DevolucionMayoreoArticulo.DevolucionArticuloUltimoIde, DevolucionMayoreoArticulo.ArticuloCodigo, 
+                         DevolucionMayoreoArticulo.DevolucionArticuloPrecio, DevolucionMayoreoArticulo.DevolucionArticuloCantidad, DevolucionMayoreoArticulo.DevolucionArticuloSubtotal, DevolucionMayoreoArticulo.DevolucionArticuloIva, 
+                         DevolucionMayoreoArticulo.DevolucionArticuloTotalLinea
+FROM            DevolucionMayoreoArticulo INNER JOIN
+                         DevolucionMayoreo ON DevolucionMayoreoArticulo.DevolucionId = DevolucionMayoreo.DevolucionId AND DevolucionMayoreoArticulo.CajaId = DevolucionMayoreo.CajaId
+	where DevolucionMayoreo.DevolucionFecha between @FechaInicio and @FechaFin
 END
 GO

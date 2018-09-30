@@ -1158,13 +1158,13 @@ namespace BSC_Coorporativo
         /**** DevolucionMayoreoArticulo*****/
         private void DevolucionMayoreoArticulo(int Fila)
         {
-            CLSDevolucionMayoreoLocal SelArt = new CLSDevolucionMayoreoLocal();
+            CLSDevolucionMayoreoArticuloLocal SelArt = new CLSDevolucionMayoreoArticuloLocal();
 
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
-            SelArt.MtdSeleccionarDevolucionMayoreo();
+            SelArt.MtdSeleccionarDevolucionMayoreoArticulo();
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1176,15 +1176,15 @@ namespace BSC_Coorporativo
                     Application.DoEvents();
 
                     lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
-                    SincronizaDevolucionMayoreoArticulo(SelArt.Datos.Rows[i][" DevolucionId"].ToString(),
-                                                    SelArt.Datos.Rows[i][" CajaId"].ToString(),
-                                                    SelArt.Datos.Rows[i][" DevolucionArticuloUltimoIde"].ToString(),
-                                                    SelArt.Datos.Rows[i][" ArticuloCodigo"].ToString(),
-                                                    SelArt.Datos.Rows[i][" DevolucionArticuloPrecio"].ToString(),
-                                                    SelArt.Datos.Rows[i][" DevolucionArticuloCantidad"].ToString(),
-                                                    SelArt.Datos.Rows[i][" DevolucionArticuloSubtotal"].ToString(),
-                                                    SelArt.Datos.Rows[i][" DevolucionArticuloIva"].ToString(),
-                                                    SelArt.Datos.Rows[i][" DevolucionArticuloTotalLinea"].ToString());
+                    SincronizaDevolucionMayoreoArticulo(SelArt.Datos.Rows[i]["DevolucionId"].ToString(),
+                                                    SelArt.Datos.Rows[i]["CajaId"].ToString(),
+                                                    SelArt.Datos.Rows[i]["DevolucionArticuloUltimoIde"].ToString(),
+                                                    SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                                    SelArt.Datos.Rows[i]["DevolucionArticuloPrecio"].ToString(),
+                                                    SelArt.Datos.Rows[i]["DevolucionArticuloCantidad"].ToString(),
+                                                    SelArt.Datos.Rows[i]["DevolucionArticuloSubtotal"].ToString(),
+                                                    SelArt.Datos.Rows[i]["DevolucionArticuloIva"].ToString(),
+                                                    SelArt.Datos.Rows[i]["DevolucionArticuloTotalLinea"].ToString());
 
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
