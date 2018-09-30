@@ -51,7 +51,7 @@ BEGIN
 	declare @Existe int
 	declare @mensaje varchar(50)
 	
-	select @Existe = count(TicketId) from TicketArticulo a where (a.TicketId=@TicketId and a.CajaId=@CajaId)
+	select @Existe = count(TicketId) from TicketArticulo a where (a.TicketId=@TicketId and a.CajaId=@CajaId and a.TicketArticuloUltimoIde=@TicketArticuloUltimoIde)
 	if @Existe>0
 			select 0;
 		else
