@@ -265,31 +265,31 @@ namespace BSC_Coorporativo
                             DevolucionArticulo(xRow);
                             break;
                         case "DevolucionMayoreo":
-                            //DevolucionMayoreo(xRow);
+                            DevolucionMayoreo(xRow);
                             break;
                         case "DevolucionMayoreoArticulo":
-                            //DevolucionMayoreoArticulo(xRow);
+                            DevolucionMayoreoArticulo(xRow);
                             break;
                         case "DevolucionPre":
-                            //DevolucionPre(xRow);
+                            DevolucionPre(xRow);
                             break;
                         case "DevolucionPreDetalles":
                             //DevolucionPreDetalles(xRow);
                             break;
                         case "EntradaMercancia":
-                            //EntradaMercancia(xRow);
+                            EntradaMercancia(xRow);
                             break;
                         case "EntradaMercanciaArticulo":
-                            //EntradaMercanciaArticulo(xRow);
+                            EntradaMercanciaArticulo(xRow);
                             break;
                         case "RecibosRemisiones":
-                            //RecibosRemisiones(xRow);
+                            RecibosRemisiones(xRow);
                             break;
                         case "SalidaMercancia":
-                            //SalidaMercancia(xRow);
+                            SalidaMercancia(xRow);
                             break;
                         case "SalidaMercanciaArticulo":
-                            //SalidaMercanciaArticulo(xRow);
+                            SalidaMercanciaArticulo(xRow);
                             break;
                         case "Ticket":
                             Ticket(xRow);
@@ -1134,7 +1134,14 @@ namespace BSC_Coorporativo
             UdpArt.DevolucionTotal = Convert.ToDecimal(DevolucionTotal);
             UdpArt.TicketTotalLetra = TicketTotalLetra;
             UdpArt.DevolucionConcepto = DevolucionConcepto;
-            UdpArt.DevolucionAsignado = Convert.ToInt32(DevolucionAsignado);
+            if(Convert.ToBoolean(DevolucionAsignado))
+            {
+                UdpArt.DevolucionAsignado = 1;
+            }
+            else
+            {
+                UdpArt.DevolucionAsignado = 0;
+            }
             UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
             UdpArt.NC_Concepto = NC_Concepto;
             UdpArt.MtdActualizarDevolucionMayoreo();
