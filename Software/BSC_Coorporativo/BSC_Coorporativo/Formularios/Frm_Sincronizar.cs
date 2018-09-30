@@ -1768,7 +1768,7 @@ namespace BSC_Coorporativo
             UdpArt.TicketId = Convert.ToInt32(TicketId);
             UdpArt.CajaId = Convert.ToInt32(CajaId);
             UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
-            UdpArt.TicketFecha = TicketFecha;
+            UdpArt.TicketFecha = Convert.ToDateTime(TicketFecha).Year.ToString() + DosCero(Convert.ToDateTime(TicketFecha).Month.ToString()) + DosCero(Convert.ToDateTime(TicketFecha).Day.ToString());
             UdpArt.TicketHora = TicketHora;
             UdpArt.TicketSubtotal0 = Convert.ToDecimal(TicketSubtotal0);
             UdpArt.TicketSubtotal16 = Convert.ToDecimal(TicketSubtotal16);
@@ -1939,7 +1939,7 @@ namespace BSC_Coorporativo
             UdpArt.TicketId = Convert.ToInt32(TicketId);
             UdpArt.CajaId = Convert.ToInt32(CajaId);
             UdpArt.UsuarioId = Convert.ToInt32(UsuarioId);
-            UdpArt.TicketFecha = Convert.ToDateTime(TicketFecha).Year.ToString() + DosCero(Convert.ToDateTime(TicketFecha).Month.ToString()) + DosCero(Convert.ToDateTime(TicketFecha).Day.ToString()); ;
+            UdpArt.TicketFecha = Convert.ToDateTime(TicketFecha).Year.ToString() + DosCero(Convert.ToDateTime(TicketFecha).Month.ToString()) + DosCero(Convert.ToDateTime(TicketFecha).Day.ToString()); 
             UdpArt.TicketSubtotal0 = Convert.ToDecimal(TicketSubtotal0);
             UdpArt.TicketSubtotal16 = Convert.ToDecimal(TicketSubtotal16);
             UdpArt.TicketIva = Convert.ToDecimal(TicketIva);

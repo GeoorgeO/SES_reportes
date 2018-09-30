@@ -27,7 +27,7 @@ CREATE PROCEDURE SP_BSC_Ticket_General
 	@CajaId decimal(11, 0) ,
 	@UsuarioId decimal(11, 0) ,
 	@TicketFecha datetime ,
-	@TicketHora datetime ,
+	/*@TicketHora datetime ,*/
 	@TicketSubtotal0 money ,
 	@TicketSubtotal16 money ,
 	@TicketIva money ,
@@ -48,7 +48,7 @@ BEGIN
 			select 0;
 		else
 			INSERT INTO Ticket
-                         (TicketId, CajaId, UsuarioId, TicketFecha, TicketHora, TicketSubtotal0, TicketSubtotal16, TicketIva, TicketTotal, CorteZId, FechaInsert)
-VALUES        (@TicketId,@CajaId,@UsuarioId,@TicketFecha,@TicketHora,@TicketSubtotal0,@TicketSubtotal16,@TicketIva,@TicketTotal,@CorteZId, GETDATE())
+                         (TicketId, CajaId, UsuarioId, TicketFecha, /*TicketHora,*/ TicketSubtotal0, TicketSubtotal16, TicketIva, TicketTotal, CorteZId, FechaInsert)
+VALUES        (@TicketId,@CajaId,@UsuarioId,TicketFecha,/*@TicketHora,*/@TicketSubtotal0,@TicketSubtotal16,@TicketIva,@TicketTotal,@CorteZId, GETDATE())
 END
 GO
