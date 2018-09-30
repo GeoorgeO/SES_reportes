@@ -963,7 +963,14 @@ namespace BSC_Coorporativo
             UdpArt.DevolucionSubtotal16 = Convert.ToDecimal(DevolucionSubtotal16);
             UdpArt.DevolucionIva = Convert.ToDecimal(DevolucionIva);
             UdpArt.DevolucionTotal = Convert.ToDecimal(DevolucionTotal);
-            UdpArt.DevolucionAsignadoCorte = Convert.ToInt32(DevolucionAsignadoCorte);
+            if(Convert.ToBoolean(DevolucionAsignadoCorte))
+            {
+                UdpArt.DevolucionAsignadoCorte = 1;
+            }
+            else
+            {
+                UdpArt.DevolucionAsignadoCorte = 0;
+            }
             UdpArt.CorteZId = Convert.ToInt32(CorteZId);
             UdpArt.MtdActualizarDevolucion();
             if (UdpArt.Exito.ToString() == "True")
