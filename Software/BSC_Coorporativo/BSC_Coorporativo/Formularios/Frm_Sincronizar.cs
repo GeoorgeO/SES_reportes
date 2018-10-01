@@ -1945,6 +1945,7 @@ namespace BSC_Coorporativo
                                             SelArt.Datos.Rows[i]["TicketSubtotal16"].ToString(),
                                             SelArt.Datos.Rows[i]["TicketIva"].ToString(),
                                             SelArt.Datos.Rows[i]["TicketTotal"].ToString(),
+                                            SelArt.Datos.Rows[i]["CortesZRecibosId"].ToString(),
                                             SelArt.Datos.Rows[i]["ClienteId"].ToString());
 
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
@@ -1966,7 +1967,7 @@ namespace BSC_Coorporativo
             }
         }
         private void SincronizaTicketMayoreo(string TicketId, string CajaId, string UsuarioId, string TicketFecha, string TicketSubtotal0,
-                                            string TicketSubtotal16, string TicketIva, string TicketTotal, string ClienteId)
+                                            string TicketSubtotal16, string TicketIva, string TicketTotal, string CortesZRecibosId, string ClienteId)
         {
 
             CLSTicketMayoreoCentral UdpArt = new CLSTicketMayoreoCentral();
@@ -1978,6 +1979,15 @@ namespace BSC_Coorporativo
             UdpArt.TicketSubtotal16 = Convert.ToDecimal(TicketSubtotal16);
             UdpArt.TicketIva = Convert.ToDecimal(TicketIva);
             UdpArt.TicketTotal = Convert.ToDecimal(TicketTotal);
+            if (CortesZRecibosId.ToString() == string.Empty)
+            {
+                UdpArt.CortesZRecibosId = 0;
+            }
+            else
+            {
+                UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            }
+            
             UdpArt.ClienteId = Convert.ToInt32(ClienteId);
             UdpArt.MtdActualizarTicketMayoreo();
             if (UdpArt.Exito.ToString() == "True")

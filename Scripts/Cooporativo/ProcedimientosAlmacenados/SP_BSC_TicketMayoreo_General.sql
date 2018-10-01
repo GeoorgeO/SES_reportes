@@ -32,7 +32,7 @@ CREATE PROCEDURE SP_BSC_TicketMayoreo_General
 	@TicketIva money ,
 	@TicketTotal money ,
 	@CortesZRecibosId bigint NULL,
-	@FechaHora datetime NULL,
+	/*@FechaHora datetime NULL,*/
 	@ClienteId decimal(11, 0)
 AS
 BEGIN
@@ -49,7 +49,7 @@ BEGIN
 			select 0;
 		else
 		INSERT INTO TicketMayoreo
-                         (TicketId, CajaId, UsuarioId, TicketFecha, TicketSubtotal0, TicketSubtotal16, TicketIva, TicketTotal, CortesZRecibosId, FechaHora, ClienteId, FechaInsert)
-VALUES        (@TicketId,@CajaId,@UsuarioId,@TicketFecha,@TicketSubtotal0,@TicketSubtotal16,@TicketIva,@TicketTotal,@CortesZRecibosId,@FechaHora,@ClienteId, GETDATE())	
+                         (TicketId, CajaId, UsuarioId, TicketFecha, TicketSubtotal0, TicketSubtotal16, TicketIva, TicketTotal, CortesZRecibosId, /*FechaHora,*/ ClienteId, FechaInsert)
+VALUES        (@TicketId,@CajaId,@UsuarioId,@TicketFecha,@TicketSubtotal0,@TicketSubtotal16,@TicketIva,@TicketTotal,@CortesZRecibosId,/*@FechaHora,*/@ClienteId, GETDATE())	
 END
 GO

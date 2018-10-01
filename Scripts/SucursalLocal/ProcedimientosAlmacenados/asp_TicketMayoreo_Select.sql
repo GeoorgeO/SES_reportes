@@ -40,8 +40,8 @@ BEGIN
       ,TicketSubtotal16
       ,TicketIva
       ,TicketTotal
-      /*,CortesZRecibosId
-      ,FechaHora*/
+      ,CortesZRecibosId
+      /*,FechaHora*/
       ,ClienteId
 	from TicketMayoreo
 	where TicketFecha between @FechaInicio and @FechaFin

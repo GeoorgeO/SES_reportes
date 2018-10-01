@@ -17,6 +17,8 @@ namespace CapaDeDatos
         public decimal TicketSubtotal16 { get; set; }
         public decimal TicketIva { get; set; }
         public decimal TicketTotal { get; set; }
+        public int? CortesZRecibosId { get; set; }
+       
         public int ClienteId { get; set; }
 
 
@@ -47,6 +49,9 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "TicketIva");
                 _dato.DecimalValor = TicketTotal;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "TicketTotal");
+                _dato.Entero = CortesZRecibosId;
+                _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "CortesZRecibosId");
+                
                 _dato.Entero = ClienteId;
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "ClienteId");
                
