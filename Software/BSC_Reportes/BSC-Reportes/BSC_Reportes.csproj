@@ -87,6 +87,54 @@
     <Compile Include="Conexion\Frm_InstanciaSQL.designer.cs">
       <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Frm_AlertaCoberturaStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_AlertaCoberturaStock.Designer.cs">
+      <DependentUpon>Frm_AlertaCoberturaStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_CorreccionDistribucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_CorreccionDistribucion.Designer.cs">
+      <DependentUpon>Frm_CorreccionDistribucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_DistribucionPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_DistribucionPedidos.Designer.cs">
+      <DependentUpon>Frm_DistribucionPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_ExistenciasFaltantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_ExistenciasFaltantes.Designer.cs">
+      <DependentUpon>Frm_ExistenciasFaltantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_ExistenciasTotales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_ExistenciasTotales.Designer.cs">
+      <DependentUpon>Frm_ExistenciasTotales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_ReportePedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_ReportePedidos.Designer.cs">
+      <DependentUpon>Frm_ReportePedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_RotacionMercancia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_RotacionMercancia.Designer.cs">
+      <DependentUpon>Frm_RotacionMercancia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_VentasVsMetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_VentasVsMetas.Designer.cs">
+      <DependentUpon>Frm_VentasVsMetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
