@@ -274,7 +274,7 @@ namespace BSC_Coorporativo
                             DevolucionPre(xRow);
                             break;
                         case "DevolucionPreDetalles":
-                            //DevolucionPreDetalles(xRow);
+                            DevolucionPreDetalles(xRow);
                             break;
                         case "EntradaMercancia":
                             EntradaMercancia(xRow);
@@ -1249,7 +1249,7 @@ namespace BSC_Coorporativo
                 {
                     Application.DoEvents();
 
-                    lEstatus.Text = "CortesZRecibos [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    lEstatus.Text = "DevolucionPre [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
                     SincronizaDevolucionPre(SelArt.Datos.Rows[i]["DevolucionPreId"].ToString(),
                                         SelArt.Datos.Rows[i]["TicketId"].ToString(),
                                         SelArt.Datos.Rows[i]["CajaId"].ToString(),
@@ -1268,7 +1268,7 @@ namespace BSC_Coorporativo
                 }
                 if (ArticulosError == 0)
                 {
-                    escritura.WriteLine("Finalizo sin errores CortesZRecargasTickets.");
+                    escritura.WriteLine("Finalizo sin errores DevolucionPre.");
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
                 }
                 else
@@ -1278,7 +1278,7 @@ namespace BSC_Coorporativo
             }
             else
             {
-                escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
+                escritura.WriteLine("No se obtubieron datos de la tabla DevolucionPre.");
             }
         }
         private void SincronizaDevolucionPre(string DevolucionPreId, string TicketId, string CajaId, string DevolucionPreFecha, string DevolucionPreTArticulos,
@@ -1319,6 +1319,78 @@ namespace BSC_Coorporativo
                 escritura.WriteLine(string.Format("No se logro actualizar la DevolucionPre [{0}] ", DevolucionPreId));
             }
         }
+
+        /**** DevolucionPreDetalles*****/
+        private void DevolucionPreDetalles(int Fila)
+        {
+            CLSDevolucionPreDetallesLocal SelArt = new CLSDevolucionPreDetallesLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            SelArt.MtdSeleccionarDevolucionPreDetalles();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "DevolucionPreDetalles [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaDevolucionPreDetalles(SelArt.Datos.Rows[i]["DevolucionPreId"].ToString(),
+                                        SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreCantidad"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPrePUnitarioSimp"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPrePUnitarioCImp"].ToString(),
+                                        SelArt.Datos.Rows[i]["DevolucionPreTLinea"].ToString()
+                                        );
+
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores DevolucionPreDetalles.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla DevolucionPreDetalles.");
+            }
+        }
+        private void SincronizaDevolucionPreDetalles(string DevolucionPreId, string ArticuloCodigo, string DevolucionPreCantidad, string DevolucionPrePUnitarioSimp, string DevolucionPrePUnitarioCImp,
+                                    string DevolucionPreTLinea)
+        {
+            CLSDevolucionPreDetallesCentral UdpArt = new CLSDevolucionPreDetallesCentral();
+            UdpArt.DevolucionPreId = Convert.ToInt32(DevolucionPreId);
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.DevolucionPreCantidad = Convert.ToInt32(DevolucionPreCantidad);
+            UdpArt.DevolucionPrePUnitarioSimp = Convert.ToDecimal(DevolucionPrePUnitarioSimp);
+            UdpArt.DevolucionPrePUnitarioCImp = Convert.ToDecimal(DevolucionPrePUnitarioCImp);  
+            UdpArt.DevolucionPreTLinea = Convert.ToDecimal(DevolucionPreTLinea);
+            
+
+            UdpArt.MtdActualizarDevolucionPreDetalles();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine(string.Format("No se logro actualizar la DevolucionPreDetalles [{0}] ", DevolucionPreId));
+            }
+        }
+
         /**** EntradaMercancia*****/
         private void EntradaMercancia(int Fila)
         {

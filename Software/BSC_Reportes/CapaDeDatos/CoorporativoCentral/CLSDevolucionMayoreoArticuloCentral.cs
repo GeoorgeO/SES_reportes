@@ -21,8 +21,6 @@ namespace CapaDeDatos
         public decimal DevolucionArticuloTotalLinea { get; set; }
 
 
-
-
         public void MtdActualizarDevolucionMayoreoArticulo()
         {
             TipoDato _dato = new TipoDato();
