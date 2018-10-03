@@ -280,7 +280,7 @@ namespace BSC_Sincronizacion
                             AplicaCambiosLocalidad(xRow);
                             break;
                         case "Medidas":
-                            AplicaCambiosMedidas(xRow);
+                             AplicaCambiosMedidas(xRow);
                             break;
                         case "MetodoPagos":
                             AplicaCambiosMetodoPagos(xRow);
@@ -1219,8 +1219,11 @@ namespace BSC_Sincronizacion
         private void AplicaCambiosMedidas(int Fila)
         {
             CLSMedidasLocal SelArt = new CLSMedidasLocal();
+
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarMedidas();
             if (SelArt.Exito == true)
             {

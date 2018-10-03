@@ -1,4 +1,3 @@
-USE [Server_Centro]
 GO
 
 /****** Object:  StoredProcedure [dbo].[SP_BSC_CatalogosServer_Select]    Script Date: 20/09/2018 07:42:37 p. m. ******/
@@ -27,7 +26,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT TABLE_NAME
 	FROM INFORMATION_SCHEMA.TABLES
-	--where TABLE_NAME not in ('Caja','Documentos','ComprasSugeridas')
+	--where TABLE_NAME not in ('DevolucionMayoreo','DevolucionMayoreoArticulo','TicketMayoreo','TicketMayoreoArticulo')
 	order by 1
 END
 
