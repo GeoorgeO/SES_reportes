@@ -30,10 +30,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        art.ArticuloCodigo,art.ArticuloCantidad as Existencia, art.ArticuloUltimoCosto,(art.ArticuloUltimoCosto * Iva.IvaFactor) as iva,convert(varchar, GETDATE(),103) as FechaExistencia
-FROM            Articulo as art
-left join Familia as fam on fam.FamiliaId=art.FamiliaId
-left join Iva on Iva.IvaId=fam.IvaId
-WHERE art.ArticuloCantidad>0
+	SELECT        art.ArticuloCodigo,art.Existencia as Existencia, art.ArticuloCosto,(art.ArticuloIVA) as iva,Art.FechaExistencia
+	FROM            ArticuloKardex as art
 END
 GO
