@@ -237,6 +237,9 @@ namespace BSC_Coorporativo
                         case "ArticuloKardex":
                             ArticuloKardex(xRow);
                             break;
+                        case "ArticuloProveedores":
+                            ArticuloProveedores(xRow);
+                            break;
                         case "Cancelacion":
                             Cancelacion(xRow);
                             break;
@@ -372,6 +375,68 @@ namespace BSC_Coorporativo
             {
                 ArticulosError++;
                 escritura.WriteLine("No se logro actualizar el articulo ["+ Codigo + "] "+ FechaExistencia);
+            }
+        }
+
+        /******* ArticuloProveedores *****/
+        private void ArticuloProveedores(int Fila)
+        {
+            CLSArticuloProveedoresLocal SelArt = new CLSArticuloProveedoresLocal();
+
+            lEstatus.Text = "Recolectando datos";
+            Application.DoEvents();
+
+            SelArt.MtdSeleccionarArticuloProveedores();
+            if (SelArt.Exito == true)
+            {
+                ArticulosActualizados = 0;
+                pbProgreso.Properties.Maximum = SelArt.Datos.Rows.Count;
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[2], SelArt.Datos.Rows.Count);
+                GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Procesando");
+                for (int i = 0; i < SelArt.Datos.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+
+                    lEstatus.Text = "Codigo ArticuloProveedores [" + SelArt.Datos.Rows[i][0].ToString().Trim() + "]";
+                    SincronizaArticuloProveedores(SelArt.Datos.Rows[i][0].ToString(),
+                                        SelArt.Datos.Rows[i][1].ToString(),
+                                        SelArt.Datos.Rows[i][2].ToString(),
+                                        SelArt.Datos.Rows[i][3].ToString());
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
+                    pbProgreso.Position = i + 1;
+                }
+                if (ArticulosError == 0)
+                {
+                    escritura.WriteLine("Finalizo sin errores ArticuloProveedores.");
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Sincronizacion Correcta");
+                }
+                else
+                {
+                    GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[4], "Con Errores");
+                }
+            }
+            else
+            {
+                escritura.WriteLine("No se obtubieron datos de la tabla ArticuloProveedores.");
+            }
+        }
+        private void SincronizaArticuloProveedores(string ArticuloCodigo, string ArticuloProveedoresIde, string ProveedorId,  string ArticuloProveedoresFechaUdp)
+        {
+            CLSArticuloProveedoresCentral UdpArt = new CLSArticuloProveedoresCentral();
+            UdpArt.ArticuloCodigo = ArticuloCodigo;
+            UdpArt.ArticuloProveedoresIde = Convert.ToInt32(ArticuloProveedoresIde);
+            UdpArt.ProveedorId = Convert.ToInt32(ProveedorId);
+            DateTime Fecha = Convert.ToDateTime(ArticuloProveedoresFechaUdp);
+            UdpArt.ArticuloProveedoresFechaUdp = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            UdpArt.MtdActualizarArticuloProveedores();
+            if (UdpArt.Exito.ToString() == "True")
+            {
+                ArticulosActualizados++;
+            }
+            else
+            {
+                ArticulosError++;
+                escritura.WriteLine("No se logro actualizar el Articulo Proveedores [" + ArticuloCodigo + "] " + ArticuloProveedoresIde);
             }
         }
 

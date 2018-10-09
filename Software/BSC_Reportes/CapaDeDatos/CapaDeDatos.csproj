@@ -49,6 +49,7 @@
     <Compile Include="Conexion\Crypto.cs" />
     <Compile Include="Conexion\MSRegistro.cs" />
     <Compile Include="CoorporativoCentral\CLSArticuloKardexCentral.cs" />
+    <Compile Include="CoorporativoCentral\CLSArticuloProveedoresCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSCortesZRecargasTicketsCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSCortesZRecibosCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSCortesZRecibosDetallesCentral.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="CoorporativoCentral\CLSTicketMayoreoArticuloCentral.cs" />
     <Compile Include="CoorporativoCentral\CLSTicketMayoreoCentral.cs" />
     <Compile Include="CoorporativoLocal\CLSArticuloKardexLocal.cs" />
+    <Compile Include="CoorporativoLocal\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionArticuloLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCancelacionLocal.cs" />
     <Compile Include="CoorporativoLocal\CLSCortesZRecibosDetallesLocal.cs" />
