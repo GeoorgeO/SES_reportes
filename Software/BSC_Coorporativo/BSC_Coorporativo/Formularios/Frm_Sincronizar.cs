@@ -385,7 +385,8 @@ namespace BSC_Coorporativo
 
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
-
+            SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
+            SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
             SelArt.MtdSeleccionarArticuloProveedores();
             if (SelArt.Exito == true)
             {

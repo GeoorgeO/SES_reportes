@@ -8,6 +8,8 @@ namespace CapaDeDatos
 {
     public class CLSArticuloProveedoresLocal : ConexionBase
     {
+        public string FechaFin { get; set; }
+        public string FechaInicio { get; set; }
 
         public void MtdSeleccionarArticuloProveedores()
         {
