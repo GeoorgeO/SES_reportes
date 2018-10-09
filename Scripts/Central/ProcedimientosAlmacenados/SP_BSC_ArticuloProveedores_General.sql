@@ -26,8 +26,8 @@ CREATE PROCEDURE SP_BSC_ArticuloProveedores_General
 	@ArticuloCodigo char(40),
     @ArticuloProveedoresIde decimal(11,0),
     @ProveedorId decimal(11,0),
-    @ArticuloProveedoresFechaUdp datetime,
-    @FechaInsert datetime
+    @ArticuloProveedoresFechaUdp datetime
+    
    
 AS
 BEGIN
@@ -41,7 +41,9 @@ BEGIN
 	
 	select @Existe = count(ArticuloCodigo) from ArticuloProveedores a where (a.ArticuloCodigo=@ArticuloCodigo and a.ArticuloProveedoresIde=@ArticuloProveedoresIde)
 	if @Existe>0
-			select 0;
+			update ArticuloProveedores 
+			set ProveedorId=@ProveedorId,ArticuloProveedoresFechaUdp=@ArticuloProveedoresFechaUdp,FechaUpdate=getdate()
+			where ArticuloCodigo=@ArticuloCodigo and ArticuloProveedoresIde=@ArticuloProveedoresIde
 		else
 			 INSERT INTO ArticuloProveedores
                          (ArticuloCodigo, ArticuloProveedoresIde, ProveedorId, ArticuloProveedoresFechaUdp, FechaInsert)

@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    public class CLSArticuloProveedoresCentral : ConexionBase
+    public class CLS_ArticuloProveedores_Central : ConexionBase
     {
 
         public string ArticuloCodigo { get; set; }
         public int ArticuloProveedoresIde { get; set; }
         public int ProveedorId { get; set; }
         public string ArticuloProveedoresFechaUdp { get; set; }
-        
-
-
-
 
         public void MtdActualizarArticuloProveedores()
         {
@@ -33,7 +29,7 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.CadenaTexto = ArticuloProveedoresFechaUdp;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloProveedoresFechaUdp");
-               
+
                 _conexionC.EjecutarDataset();
 
                 if (_conexionC.Exito)

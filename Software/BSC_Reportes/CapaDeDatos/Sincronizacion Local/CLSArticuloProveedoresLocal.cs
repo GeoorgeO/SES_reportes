@@ -8,6 +8,7 @@ namespace CapaDeDatos
 {
     public class CLSArticuloProveedoresLocal : ConexionBase
     {
+
         public string FechaFin { get; set; }
         public string FechaInicio { get; set; }
 
@@ -17,7 +18,11 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "asp_ArticuloProveedores_Select";
+                _conexion.NombreProcedimiento = "SP_BSC_ActualizaArticuloProveedoresLocal_Select";
+                _dato.CadenaTexto = FechaInicio;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _dato.CadenaTexto = FechaFin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

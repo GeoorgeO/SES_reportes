@@ -1,3 +1,4 @@
+use SES_Sincroniza
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -13,15 +14,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_ArticuloProveedores_Select')
-DROP PROCEDURE asp_ArticuloProveedores_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_ActualizaArticuloProveedoresLocal_Select')
+DROP PROCEDURE SP_BSC_ActualizaArticuloProveedoresLocal_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE asp_ArticuloProveedores_Select
+CREATE PROCEDURE SP_BSC_ActualizaArticuloProveedoresLocal_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20)
@@ -32,8 +33,8 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        ArticuloCodigo, ArticuloProveedoresIde, ProveedorId
-	FROM            ArticuloProveedores
+	SELECT        ArticuloCodigo, ArticuloProveedoresIde, ProveedorId, ArticuloProveedoresFechaUdp
+	FROM            SES_AdministradorV1.dbo.ArticuloProveedores
 	WHERE        (ArticuloProveedoresFechaUdp BETWEEN @FechaInicio AND @FechaFin)
 END
 GO
