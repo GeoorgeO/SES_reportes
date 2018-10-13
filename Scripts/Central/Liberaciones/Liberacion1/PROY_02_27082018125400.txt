@@ -22,3 +22,4 @@ Scripts\Central\Tablas\BSC_Sucursales_CreateTable.sql
 Scripts\Central\Tablas\BSC_Tarifa_CreateTable.sql
 Scripts\Central\Tablas\BSC_Usuarios_CreateTable.sql
 Scripts\Central\Tablas\BSC_Vendedor_CreateTable.sql
+Scripts\Central\Tablas\BSC_ArticuloProveedores_CreateTable.sql
