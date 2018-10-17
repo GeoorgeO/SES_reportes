@@ -819,11 +819,12 @@ BEGIN
 	
 	select @Existe = count(ArticuloCodigo) from ArticuloKardex a where (a.ArticuloCodigo=@ArticuloCodigo and convert(datetime,FechaExistencia,103)=convert(datetime, @FechaExistencia,103))
 	if @Existe>0
-			select 0;
-		else
-			 INSERT INTO ArticuloKardex
-									 (ArticuloCodigo, Existencia, ArticuloCosto, ArticuloIVA, FechaExistencia, FechaInsert)
-			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, convert(varchar, @FechaExistencia,103), GETDATE());
+		select 0;
+	else
+		INSERT INTO ArticuloKardex
+		(ArticuloCodigo, Existencia, ArticuloCosto, ArticuloIVA, FechaExistencia, FechaInsert)
+		VALUES 
+		(@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, convert(varchar, @FechaExistencia,103), GETDATE());
 END
 GO
 
@@ -976,7 +977,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT TABLE_NAME
 	FROM INFORMATION_SCHEMA.TABLES
-	--where TABLE_NAME not in ('Caja','Documentos','ComprasSugeridas')
+	where TABLE_NAME not in ('DevolucionMayoreo','DevolucionMayoreoArticulo','TicketMayoreo','TicketMayoreoArticulo')
 	order by 1
 END
 

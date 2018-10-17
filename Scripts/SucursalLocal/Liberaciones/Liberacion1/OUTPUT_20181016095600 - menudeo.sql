@@ -30,13 +30,37 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        art.ArticuloCodigo,art.ArticuloCantidad as Existencia, art.ArticuloUltimoCosto,(art.ArticuloUltimoCosto * Iva.IvaFactor) as iva,convert(varchar, GETDATE(),103) as FechaExistencia
-FROM            Articulo as art
-left join Familia as fam on fam.FamiliaId=art.FamiliaId
-left join Iva on Iva.IvaId=fam.IvaId
-WHERE art.ArticuloCantidad>0
+	SELECT        art.ArticuloCodigo,art.Existencia as Existencia, art.ArticuloCosto,(art.ArticuloIVA) as iva,Art.FechaExistencia
+	FROM            ArticuloKardex as art
 END
 GO
+
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_ArticuloKardexLocal_Select')
+DROP PROCEDURE asp_ArticuloKardexLocal_Select
+GO
+CREATE PROCEDURE asp_ArticuloKardexLocal_Select
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	delete from ArticuloKardex
+	where  CONVERT(date,FechaExistencia ,103)= convert(date, GETDATE(),103) 
+	
+	insert into ArticuloKardex (ArticuloCodigo,Existencia,ArticuloCosto,ArticuloIVA,FechaExistencia,FechaInsert)
+	SELECT  art.ArticuloCodigo,art.ArticuloCantidad, art.ArticuloUltimoCosto,(art.ArticuloUltimoCosto * Iva.IvaFactor) as iva, getdate() ,getdate()
+	FROM            Articulo as art
+	left join Familia as fam on fam.FamiliaId=art.FamiliaId
+	left join Iva on Iva.IvaId=fam.IvaId
+	WHERE  art.ArticuloCantidad>0
+end
+go
+
+
 
 GO
 -- ================================================
@@ -463,92 +487,7 @@ BEGIN
 END
 GO
 
-GO
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_DevolucionMayoreo_Select')
-DROP PROCEDURE asp_DevolucionMayoreo_Select
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE asp_DevolucionMayoreo_Select
-	-- Add the parameters for the stored procedure here
-	@FechaInicio varchar(20),
-	@FechaFin varchar(20)
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-		SELECT        DevolucionId, CajaId, TicketId, UsuariosId, Clienteid, DevolucionFecha, DevolucionSubtotal0, DevolucionSubtotal16, DevolucionIva, DevolucionDescuento, DevolucionTotal, TicketTotalLetra, DevolucionConcepto, 
-                         DevolucionAsignado, CortesZRecibosId, NC_Concepto
-	FROM            DevolucionMayoreo AS DevMay
-	where DevMay.DevolucionFecha between @FechaInicio and @FechaFin
-	
-END
-GO
-
-GO
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_DevolucionMayoreoArticulo_Select')
-DROP PROCEDURE asp_DevolucionMayoreoArticulo_Select
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE asp_DevolucionMayoreoArticulo_Select
-	-- Add the parameters for the stored procedure here
-	@FechaInicio varchar(20),
-	@FechaFin varchar(20)
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-		SELECT        DevolucionMayoreoArticulo.DevolucionId, DevolucionMayoreoArticulo.CajaId, DevolucionMayoreoArticulo.DevolucionArticuloUltimoIde, DevolucionMayoreoArticulo.ArticuloCodigo, 
-                         DevolucionMayoreoArticulo.DevolucionArticuloPrecio, DevolucionMayoreoArticulo.DevolucionArticuloCantidad, DevolucionMayoreoArticulo.DevolucionArticuloSubtotal, DevolucionMayoreoArticulo.DevolucionArticuloIva, 
-                         DevolucionMayoreoArticulo.DevolucionArticuloTotalLinea
-FROM            DevolucionMayoreoArticulo INNER JOIN
-                         DevolucionMayoreo ON DevolucionMayoreoArticulo.DevolucionId = DevolucionMayoreo.DevolucionId AND DevolucionMayoreoArticulo.CajaId = DevolucionMayoreo.CajaId
-	where DevolucionMayoreo.DevolucionFecha between @FechaInicio and @FechaFin
-END
-GO
 
 GO
 -- ================================================
@@ -1008,117 +947,9 @@ BEGIN
 END
 GO
 
-GO
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_TicketMayoreo_Select')
-DROP PROCEDURE asp_TicketMayoreo_Select
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE asp_TicketMayoreo_Select
-	-- Add the parameters for the stored procedure here
-	@FechaInicio varchar(20),
-	@FechaFin varchar(20)
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-	SELECT TicketId
-      ,CajaId
-      ,UsuarioId
-      ,TicketFecha
-      ,TicketSubtotal0
-      ,TicketSubtotal16
-      ,TicketIva
-      ,TicketTotal
-      ,CortesZRecibosId
-      /*,FechaHora*/
-      ,ClienteId
-	from TicketMayoreo
-	where TicketFecha between @FechaInicio and @FechaFin
-END
-GO
 
-GO
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_TicketMayoreoArticulo_Select')
-DROP PROCEDURE asp_TicketMayoreoArticulo_Select
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE asp_TicketMayoreoArticulo_Select
-	-- Add the parameters for the stored procedure here
-	@FechaInicio varchar(20),
-	@FechaFin varchar(20)
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-	SELECT TicMayArt.TicketId
-      ,TicMayArt.CajaId
-      ,TicMayArt.TicketArticuloUltimoIde
-      ,TicMayArt.ArticuloCodigo
-      ,TicMayArt.TarifaId
-      ,TicMayArt.MedidasId
-      ,TicMayArt.TicketArticuloCosto
-      ,TicMayArt.TicketArticuloPrecio
-      ,TicMayArt.TicketArticuloCantidad
-      ,TicMayArt.TicketArticuloCantidadDevolucion
-      ,TicMayArt.TicketArticuloCantidadCancelada
-      ,TicMayArt.TicketArticuloSubtotal
-      ,TicMayArt.TicketArticuloIva
-      ,TicMayArt.TicketArticuloTotalLinea
-      ,TicMayArt.TicketArticuloDescuento
-      ,TicMayArt.TicketArticuloPrecioDescuento
-      ,TicMayArt.TicketArticuloIvaDescuento
-      ,TicMayArt.TicketArticuloTotal
-	from TicketMayoreoArticulo as TicMayArt
-	inner join TicketMayoreo as TicMay
-		on TicMayArt.TicketId=TicMay.TicketId
-			and TicMayArt.CajaId=TicMay.CajaId
-	where TicMay.TicketFecha between @FechaInicio and @FechaFin
-END
-GO
 
 GO
 /****** Object:  Table [dbo].[ArticuloKardex]    Script Date: 24/09/2018 11:52:09 a. m. ******/
@@ -1213,5 +1044,48 @@ BEGIN
 			VALUES        (@ArticuloCodigo,@Existencia,@ArticuloCosto,@ArticuloIVA, convert(varchar, @FechaExistencia,103), GETDATE());
 END
 GO
+
+GO
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Trigger (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- See additional Create Trigger templates for more
+-- examples of different Trigger statements.
+--
+-- This block of comments will not be included in
+-- the definition of the function.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'TR' and name = 'ArticuloKardex_Insert')
+DROP TRIGGER ArticuloKardex_Insert
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE TRIGGER ArticuloKardex_Insert
+   ON  CortesZ
+   AFTER INSERT
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	exec asp_ArticuloKardexLocal_Select
+END
+GO
+ALTER TABLE CortesZ ENABLE TRIGGER ArticuloKardex_Insert
+go
 
 GO
