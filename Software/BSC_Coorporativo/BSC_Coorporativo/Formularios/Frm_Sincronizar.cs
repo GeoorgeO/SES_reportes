@@ -1150,7 +1150,15 @@ namespace BSC_Coorporativo
             {
                 UdpArt.DevolucionAsignado = 0;
             }
-            UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+             if (CortesZRecibosId.ToString() == string.Empty)
+            {
+                UdpArt.CortesZRecibosId = 0;
+            }
+            else
+            {
+                UdpArt.CortesZRecibosId = Convert.ToInt32(CortesZRecibosId);
+            }
+                   
             UdpArt.NC_Concepto = NC_Concepto;
             UdpArt.MtdActualizarDevolucionMayoreo();
             if (UdpArt.Exito.ToString() == "True")
@@ -1655,7 +1663,7 @@ namespace BSC_Coorporativo
             {
                 ArticulosError++;
                 escritura.WriteLine(string.Format("No se logro actualizar el Recibo de Remision [{0}] ", RecibosId));
-            }
+            }     
         }
 
         /**** SalidaMercancia*****/
