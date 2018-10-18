@@ -459,7 +459,15 @@ namespace BSC_Coorporativo
             {
                 UdpArt.CancelacionesTotal = 0;
             }
-            UdpArt.TicketMayoreoId= Convert.ToInt32(TicketMayoreoId);
+            if (TicketMayoreoId.ToString() == string.Empty)
+            {
+                UdpArt.TicketMayoreoId = 0;
+            }
+            else
+            {
+                UdpArt.TicketMayoreoId = Convert.ToInt32(TicketMayoreoId);
+            }
+            
             UdpArt.MtdActualizarCancelacion();
             if (UdpArt.Exito.ToString() == "True")
             {
@@ -1889,7 +1897,7 @@ namespace BSC_Coorporativo
             else
             {
                 ArticulosError++;
-                escritura.WriteLine(string.Format("No se logro actualizar el TicketMayoreo [{0}] ", TicketId));
+                escritura.WriteLine(string.Format("No se logro actualizar el Ticket [{0}] ", TicketId));
             }
         }
         /**** TicketArticulo*****/

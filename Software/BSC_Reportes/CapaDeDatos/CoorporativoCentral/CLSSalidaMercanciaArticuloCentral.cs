@@ -44,7 +44,7 @@ namespace CapaDeDatos
                 _dato.DecimalValor = SalidaMercanciaArticuloSub16;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "SalidaMercanciaArticuloSub16");
                 _dato.DecimalValor = SalidaMercanciaArticuloIva;
-                _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "SalidaMercanciaArticuloIva");
+                _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "SalidaMercanciaArticuloIva");
                 _dato.DecimalValor = SalidaMercanciaArticuloTotal;
                 _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "SalidaMercanciaArticuloTotal");
                
