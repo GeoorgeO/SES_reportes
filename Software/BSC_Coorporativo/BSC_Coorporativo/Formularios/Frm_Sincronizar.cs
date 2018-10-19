@@ -450,6 +450,10 @@ namespace BSC_Coorporativo
             {
                 UdpArt.CancelacionAsignadoCorte = 0;
             }
+            if(CorteZId==string.Empty)
+            {
+                CorteZId = "0";
+            }
             UdpArt.CorteZId=Convert.ToInt32(CorteZId);
             if (CancelacionesTotal.ToString() == "True")
             {
