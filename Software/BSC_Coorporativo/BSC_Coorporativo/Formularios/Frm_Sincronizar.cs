@@ -983,7 +983,14 @@ namespace BSC_Coorporativo
             {
                 UdpArt.DevolucionAsignadoCorte = 0;
             }
-            UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+            if (CorteZId != "")
+            {
+                UdpArt.CorteZId = Convert.ToInt32(CorteZId);
+            }
+            else
+            {
+                UdpArt.CorteZId = 0;
+            }
             UdpArt.MtdActualizarDevolucion();
             if (UdpArt.Exito.ToString() == "True")
             {
