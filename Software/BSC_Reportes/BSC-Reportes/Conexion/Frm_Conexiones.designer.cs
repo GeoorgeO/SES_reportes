@@ -55,19 +55,6 @@
             this.txtLogin = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtServer = new DevExpress.XtraEditors.TextEdit();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnProbarConexionC = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardarConexionC = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDBC = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPasswordC = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txtLoginC = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.txtServerC = new DevExpress.XtraEditors.TextEdit();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -83,15 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLogin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServer.Properties)).BeginInit();
-            this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDBC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLoginC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtServerC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -202,8 +180,7 @@
             this.xtraTabControl1.Size = new System.Drawing.Size(373, 262);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage1});
             // 
             // xtraTabPage1
             // 
@@ -324,123 +301,6 @@
             this.txtServer.TabIndex = 6;
             this.txtServer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtServer_KeyDown);
             // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Controls.Add(this.groupControl1);
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(367, 234);
-            this.xtraTabPage2.Text = "Conexion Central";
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Controls.Add(this.panelControl1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(5, 5);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(357, 224);
-            this.groupControl1.TabIndex = 1;
-            this.groupControl1.Text = "Datos Central";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.btnProbarConexionC);
-            this.panelControl1.Controls.Add(this.btnGuardarConexionC);
-            this.panelControl1.Controls.Add(this.labelControl5);
-            this.panelControl1.Controls.Add(this.txtDBC);
-            this.panelControl1.Controls.Add(this.labelControl6);
-            this.panelControl1.Controls.Add(this.txtPasswordC);
-            this.panelControl1.Controls.Add(this.labelControl7);
-            this.panelControl1.Controls.Add(this.txtLoginC);
-            this.panelControl1.Controls.Add(this.labelControl8);
-            this.panelControl1.Controls.Add(this.txtServerC);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(2, 20);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(353, 202);
-            this.panelControl1.TabIndex = 0;
-            // 
-            // btnProbarConexionC
-            // 
-            this.btnProbarConexionC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProbarConexionC.ImageOptions.Image")));
-            this.btnProbarConexionC.Location = new System.Drawing.Point(102, 132);
-            this.btnProbarConexionC.Name = "btnProbarConexionC";
-            this.btnProbarConexionC.Size = new System.Drawing.Size(75, 40);
-            this.btnProbarConexionC.TabIndex = 15;
-            this.btnProbarConexionC.Text = "Probar \r\nConexion";
-            this.btnProbarConexionC.Click += new System.EventHandler(this.btnProbarConexionC_Click);
-            // 
-            // btnGuardarConexionC
-            // 
-            this.btnGuardarConexionC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConexionC.ImageOptions.Image")));
-            this.btnGuardarConexionC.Location = new System.Drawing.Point(21, 132);
-            this.btnGuardarConexionC.Name = "btnGuardarConexionC";
-            this.btnGuardarConexionC.Size = new System.Drawing.Size(75, 40);
-            this.btnGuardarConexionC.TabIndex = 14;
-            this.btnGuardarConexionC.Text = "Guardar \r\nConexion";
-            this.btnGuardarConexionC.Click += new System.EventHandler(this.btnGuardarConexionC_Click);
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(23, 107);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(73, 13);
-            this.labelControl5.TabIndex = 13;
-            this.labelControl5.Text = "Base de Datos:";
-            // 
-            // txtDBC
-            // 
-            this.txtDBC.Location = new System.Drawing.Point(102, 103);
-            this.txtDBC.Name = "txtDBC";
-            this.txtDBC.Size = new System.Drawing.Size(207, 20);
-            this.txtDBC.TabIndex = 12;
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(36, 80);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(60, 13);
-            this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "Contraseña:";
-            // 
-            // txtPasswordC
-            // 
-            this.txtPasswordC.Location = new System.Drawing.Point(102, 76);
-            this.txtPasswordC.Name = "txtPasswordC";
-            this.txtPasswordC.Properties.PasswordChar = '*';
-            this.txtPasswordC.Size = new System.Drawing.Size(207, 20);
-            this.txtPasswordC.TabIndex = 10;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(56, 52);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(40, 13);
-            this.labelControl7.TabIndex = 9;
-            this.labelControl7.Text = "Usuario:";
-            // 
-            // txtLoginC
-            // 
-            this.txtLoginC.Location = new System.Drawing.Point(102, 48);
-            this.txtLoginC.Name = "txtLoginC";
-            this.txtLoginC.Size = new System.Drawing.Size(207, 20);
-            this.txtLoginC.TabIndex = 8;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(52, 24);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(44, 13);
-            this.labelControl8.TabIndex = 7;
-            this.labelControl8.Text = "Servidor:";
-            // 
-            // txtServerC
-            // 
-            this.txtServerC.Location = new System.Drawing.Point(102, 20);
-            this.txtServerC.Name = "txtServerC";
-            this.txtServerC.Size = new System.Drawing.Size(207, 20);
-            this.txtServerC.TabIndex = 6;
-            // 
             // imageCollection1
             // 
             this.imageCollection1.ImageSize = new System.Drawing.Size(40, 40);
@@ -480,16 +340,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLogin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServer.Properties)).EndInit();
-            this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDBC.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordC.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLoginC.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtServerC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -522,20 +372,7 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit txtDBC;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit txtPasswordC;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit txtLoginC;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.TextEdit txtServerC;
         private DevExpress.XtraEditors.SimpleButton btnProbarConexionL;
         private DevExpress.XtraEditors.SimpleButton btnGuardarConexionL;
-        private DevExpress.XtraEditors.SimpleButton btnProbarConexionC;
-        private DevExpress.XtraEditors.SimpleButton btnGuardarConexionC;
     }
 }

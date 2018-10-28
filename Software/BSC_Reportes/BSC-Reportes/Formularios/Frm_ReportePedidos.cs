@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace BSC_Reportes.Formularios
+namespace BSC_Reportes
 {
     public partial class Frm_ReportePedidos : DevExpress.XtraEditors.XtraForm
     {

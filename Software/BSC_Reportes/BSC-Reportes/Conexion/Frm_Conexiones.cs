@@ -129,32 +129,6 @@ namespace BSC_Reportes
                 txtLogin.Text = string.Empty;
                 txtPassword.Text = string.Empty;
             }
-
-            if (valServerC != null && valDBC != null && valLoginC != null & valPassC != null)
-            {
-                txtServerC.Text = valServerC;
-                txtDBC.Text = valDBC;
-                txtLoginC.Text = valLoginC;
-                txtPasswordC.Text = valPassC;
-                using (SqlConnection conn = new SqlConnection(String.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", txtServerC.Text, txtDBC.Text, txtLoginC.Text, txtPasswordC.Text)))
-                {
-                    try
-                    {
-                        conn.Open();
-                    }
-                    catch
-                    {
-                        XtraMessageBox.Show("No se Han Configurado datos Correctos para la conexion a la base de datos Central");
-                    }
-                }
-            }
-            else
-            {
-                txtServerC.Text = string.Empty;
-                txtDBC.Text = string.Empty;
-                txtLoginC.Text = string.Empty;
-                txtPasswordC.Text = string.Empty;
-            }
         }
         private void btnGuardarConexion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -293,58 +267,7 @@ namespace BSC_Reportes
             }
         }
 
-        private void btnGuardarConexionC_Click(object sender, EventArgs e)
-        {
-            if (txtServerC.Text != "" && txtDBC.Text != "" && txtLoginC.Text != "" && txtPasswordC.Text != "")
-            {
-                {
-                    SqlConnection conn = new SqlConnection(string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", txtServerC.Text, txtDBC.Text, txtLoginC.Text, txtPasswordC.Text));
-                    try
-                    {
-                        MSRegistro RegIn = new MSRegistro();
-                        Crypto EncriptarTexto = new Crypto();
-                        conn.Open();
-                        RegIn.SaveSetting("ConexionSQL", "ServerC", EncriptarTexto.Encriptar(txtServerC.Text));
-                        RegIn.SaveSetting("ConexionSQL", "DBaseC", EncriptarTexto.Encriptar(txtDBC.Text));
-                        RegIn.SaveSetting("ConexionSQL", "UserC", EncriptarTexto.Encriptar(txtLoginC.Text));
-                        RegIn.SaveSetting("ConexionSQL", "PasswordC", EncriptarTexto.Encriptar(txtPasswordC.Text));
-                        XtraMessageBox.Show("Se Grabaron los Datos Del Servidor Central Con Exito");
-                        this.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Error Descripcion: " + ex);
-                    }
-                }
-            }
-            else
-            {
-                XtraMessageBox.Show("Faltan Datos para la Conexion Central");
-            }
-        }
-        private void btnProbarConexionC_Click(object sender, EventArgs e)
-        {
-            if (txtServerC.Text != "" && txtDBC.Text != "" && txtLoginC.Text != "" && txtPasswordC.Text != "")
-            {
-                using (SqlConnection conn = new SqlConnection(String.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", txtServerC.Text, txtDBC.Text, txtLoginC.Text, txtPasswordC.Text)))
-                {
-                    try
-                    {
-                        conn.Open();
-                        XtraMessageBox.Show("Conexion Exitosa DB Central");
-                        MSRegistro RegIn = new MSRegistro();
-                        Crypto EncriptarTexto = new Crypto();
-                        RegIn.SaveSetting("ConexionSQL", "ServerC", EncriptarTexto.Encriptar(txtServerC.Text));
-                        RegIn.SaveSetting("ConexionSQL", "DBaseC", EncriptarTexto.Encriptar(txtDBC.Text));
-                        RegIn.SaveSetting("ConexionSQL", "UserC", EncriptarTexto.Encriptar(txtLoginC.Text));
-                        RegIn.SaveSetting("ConexionSQL", "PasswordC", EncriptarTexto.Encriptar(txtPasswordC.Text));
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("No se pudo Conectar con la Base de Datos Central: " + ex);
-                    }
-                }
-            }
-        }
+        
+        
     }
 }
