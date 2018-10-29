@@ -98,6 +98,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
+    <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />

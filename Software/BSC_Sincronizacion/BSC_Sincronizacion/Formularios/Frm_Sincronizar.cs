@@ -341,7 +341,7 @@ namespace BSC_Sincronizacion
                 {
                     Application.DoEvents();
                     
-                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString() + "]";
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString().Trim() + "]";
                     SincronizaArticulos(SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(), SelArt.Datos.Rows[i]["ArticuloDescripcion"].ToString(),
                                         SelArt.Datos.Rows[i]["ArticuloCostoReposicion"].ToString(), SelArt.Datos.Rows[i]["FamiliaId"].ToString());
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);

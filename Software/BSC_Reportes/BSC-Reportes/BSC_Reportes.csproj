@@ -87,6 +87,12 @@
     <Compile Include="Conexion\Frm_InstanciaSQL.designer.cs">
       <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Proveedores_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Proveedores_Buscar.Designer.cs">
+      <DependentUpon>Frm_Proveedores_Buscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frm_AlertaCoberturaStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Conexion\Frm_InstanciaSQL.resx">
       <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_Proveedores_Buscar.resx">
+      <DependentUpon>Frm_Proveedores_Buscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_ReportePedidos.resx">
       <DependentUpon>Frm_ReportePedidos.cs</DependentUpon>
