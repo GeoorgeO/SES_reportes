@@ -10,6 +10,8 @@ namespace CapaDeDatos
     {
         public string ArticuloCodigo { get; set; }
         public string ArticuloDescripcion { get; set; }
+        public decimal ArticuloCostoReposicion { get; set; }
+        public int FamiliaId { get; set; }
 
         public void MtdActualizarArticulo()
         {
@@ -22,6 +24,10 @@ namespace CapaDeDatos
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.CadenaTexto = ArticuloDescripcion;
                 _conexionC.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
+                _dato.DecimalValor = ArticuloCostoReposicion;
+                _conexionC.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "ArticuloCostoReposicion");
+                _dato.Entero = FamiliaId;
+                _conexionC.agregarParametro(EnumTipoDato.Entero, _dato, "FamiliaId");
                 _conexionC.EjecutarDataset();
 
                 if (_conexionC.Exito)

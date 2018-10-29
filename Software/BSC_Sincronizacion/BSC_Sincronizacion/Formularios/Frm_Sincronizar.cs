@@ -341,8 +341,9 @@ namespace BSC_Sincronizacion
                 {
                     Application.DoEvents();
                     
-                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i][0].ToString() + "]";
-                    SincronizaArticulos(SelArt.Datos.Rows[i][0].ToString(), SelArt.Datos.Rows[i][1].ToString());
+                    lEstatus.Text = "Codigo Articulo [" + SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString() + "]";
+                    SincronizaArticulos(SelArt.Datos.Rows[i]["ArticuloCodigo"].ToString(), SelArt.Datos.Rows[i]["ArticuloDescripcion"].ToString(),
+                                        SelArt.Datos.Rows[i]["ArticuloCostoReposicion"].ToString(), SelArt.Datos.Rows[i]["FamiliaId"].ToString());
                     GValCatalogos.SetRowCellValue(Fila, GValCatalogos.Columns[3], ArticulosActualizados);
                     pbProgreso.Position = i + 1;
                 }
@@ -362,11 +363,13 @@ namespace BSC_Sincronizacion
                 escritura.WriteLine("No se obtubieron datos de la tabla Articulos.");
             }
         }
-        private void SincronizaArticulos(string Codigo, string Descripcion)
+        private void SincronizaArticulos(string Codigo, string Descripcion, string CostoReposicion,string FamiliaId)
         {
             CLS_Articulo_Central UdpArt = new CLS_Articulo_Central();
             UdpArt.ArticuloCodigo = Codigo;
             UdpArt.ArticuloDescripcion = Descripcion;
+            UdpArt.ArticuloCostoReposicion = Convert.ToDecimal(CostoReposicion);
+            UdpArt.FamiliaId = Convert.ToInt32(FamiliaId);
             UdpArt.MtdActualizarArticulo();
             if (UdpArt.Exito.ToString() == "True")
             {

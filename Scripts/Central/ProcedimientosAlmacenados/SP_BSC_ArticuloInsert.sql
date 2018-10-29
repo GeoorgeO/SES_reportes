@@ -21,7 +21,9 @@ GO
 -- =============================================
 create PROCEDURE [dbo].[SP_BSC_Articulo_Insert]
 	@ArticuloCodigo	char(40),
-	@ArticuloDescripcion char(200)
+	@ArticuloDescripcion char(200),
+	@ArticuloCostoReposicion decimal(10,4),
+	@FamiliaId decimal(11,0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -33,8 +35,8 @@ BEGIN
 	begin transaction T2;
 	begin try
 		INSERT INTO Articulo
-                         (ArticuloCodigo, ArticuloDescripcion, FechaInsert)
-		VALUES        (@ArticuloCodigo,@ArticuloDescripcion, GETDATE())
+                         (ArticuloCodigo, ArticuloDescripcion,ArticuloCostoReposicion,FamiliaId, FechaInsert)
+		VALUES        (@ArticuloCodigo,@ArticuloDescripcion,@ArticuloCostoReposicion,@FamiliaId, GETDATE())
 
 		commit transaction T2;
 		set @correcto=1
