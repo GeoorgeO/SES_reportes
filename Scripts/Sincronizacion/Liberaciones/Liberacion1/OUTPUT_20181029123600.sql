@@ -34,7 +34,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select ArticuloCodigo,ArticuloDescripcion from SES_AdministradorV1.dbo.Articulo
+	select ArticuloCodigo,ArticuloDescripcion,ArticuloCostoReposicion,FamiliaId from SES_AdministradorV1.dbo.Articulo
 	where ArticuloFechaUdp between @FechaInicio and @FechaFin
 END
 
