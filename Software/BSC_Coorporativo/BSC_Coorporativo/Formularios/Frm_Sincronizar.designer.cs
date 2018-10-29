@@ -207,7 +207,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Frm_Sincronizar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Frm_Sincronizar";
+            this.Text = "Sincroniza Sucursales";
             this.Shown += new System.EventHandler(this.Frm_Sincronizar_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties)).EndInit();
