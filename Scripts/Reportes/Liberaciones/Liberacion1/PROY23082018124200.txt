@@ -1,2 +1,2 @@
-Scripts\ProcedimientosAlmacenados\SP_BSC_ArticuloInsert.sql
-Scripts\ProcedimientosAlmacenados\SP_BSC_ArticuloUpdate.sql
+Scripts\ProcedimientosAlmacenados\SP_BSC_Proveedores_Select.sql
+Scripts\ProcedimientosAlmacenados\SP_BSC_ProveedorId_Select.sql
