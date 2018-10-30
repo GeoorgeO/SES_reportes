@@ -1281,4 +1281,30 @@ GO
 ALTER TABLE CortesZ ENABLE TRIGGER ArticuloKardex_Insert
 go
 
+
+GO
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'TR' and name = 'ArticuloKardex2_Insert')
+DROP TRIGGER ArticuloKardex2_Insert
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE TRIGGER ArticuloKardex2_Insert
+   ON  CortesZRecibos
+   AFTER INSERT
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	exec asp_ArticuloKardexLocal_Select
+END
+GO
+ALTER TABLE CortesZRecibos ENABLE TRIGGER ArticuloKardex2_Insert
+go
+
 GO
