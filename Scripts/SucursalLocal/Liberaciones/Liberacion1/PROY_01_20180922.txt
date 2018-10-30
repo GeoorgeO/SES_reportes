@@ -25,4 +25,5 @@ Scripts\SucursalLocal\ProcedimientosAlmacenados\asp_TicketMayoreoArticulo_Select
 Scripts\SucursalLocal\Tablas\BSC_ArticuloKardex_CreateTable.sql
 Scripts\SucursalLocal\ProcedimientosAlmacenados\SP_BSC_ArticuloKardex_General.sql
 Scripts\SucursalLocal\Triggers\ArticuloKardex_Insert.sql
+Scripts\SucursalLocal\Triggers\ArticuloKardex2_Insert.sql
 
