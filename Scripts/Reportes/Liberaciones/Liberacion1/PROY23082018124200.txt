@@ -1,2 +1,7 @@
-Scripts\ProcedimientosAlmacenados\SP_BSC_Proveedores_Select.sql
-Scripts\ProcedimientosAlmacenados\SP_BSC_ProveedorId_Select.sql
+Scripts\Reportes\ProcedimientosAlmacenados\SP_BSC_Proveedores_Select.sql
+Scripts\Reportes\ProcedimientosAlmacenados\SP_BSC_ProveedorId_Select.sql
+Scripts\Reportes\ProcedimientosAlmacenados\SP_BSC_PrePedido_Select.sql
+Scripts\Reportes\ProcedimientosAlmacenados\SP_BSC_PrePedido_Insert.sql
+
+Scripts\Reportes\Tablas\BSC_Pre_Pedidos_CreateTable.sql
+Scripts\Reportes\Tablas\BSC_Pre_PedidosDetalles_CreateTable.sql
