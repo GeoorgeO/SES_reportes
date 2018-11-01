@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.chkExistencia = new DevExpress.XtraEditors.CheckEdit();
@@ -40,7 +40,6 @@
             this.rdbTipo = new DevExpress.XtraEditors.RadioGroup();
             this.dtFin = new DevExpress.XtraEditors.DateEdit();
             this.dtInicio = new DevExpress.XtraEditors.DateEdit();
-            this.btnImportar = new DevExpress.XtraEditors.SimpleButton();
             this.txtProveedorNombre = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtProveedorId = new DevExpress.XtraEditors.TextEdit();
@@ -110,6 +109,12 @@
             this.gridColumn29 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn30 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.barLargeButtonItem4 = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -129,26 +134,28 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(50, 0);
+            this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(889, 135);
+            this.panelControl1.Size = new System.Drawing.Size(872, 157);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.labelControl4);
+            this.groupControl1.Controls.Add(this.textEdit1);
             this.groupControl1.Controls.Add(this.chkExistencia);
             this.groupControl1.Controls.Add(this.chkVentas);
             this.groupControl1.Controls.Add(this.rdbTipo);
             this.groupControl1.Controls.Add(this.dtFin);
             this.groupControl1.Controls.Add(this.dtInicio);
-            this.groupControl1.Controls.Add(this.btnImportar);
             this.groupControl1.Controls.Add(this.txtProveedorNombre);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.txtProveedorId);
@@ -157,13 +164,13 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(865, 111);
+            this.groupControl1.Size = new System.Drawing.Size(848, 133);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
             // chkExistencia
             // 
-            this.chkExistencia.Location = new System.Drawing.Point(334, 53);
+            this.chkExistencia.Location = new System.Drawing.Point(334, 78);
             this.chkExistencia.Name = "chkExistencia";
             this.chkExistencia.Properties.Caption = "Existencia";
             this.chkExistencia.Size = new System.Drawing.Size(75, 19);
@@ -172,7 +179,7 @@
             // 
             // chkVentas
             // 
-            this.chkVentas.Location = new System.Drawing.Point(334, 29);
+            this.chkVentas.Location = new System.Drawing.Point(334, 54);
             this.chkVentas.Name = "chkVentas";
             this.chkVentas.Properties.Caption = "Venta";
             this.chkVentas.Size = new System.Drawing.Size(75, 19);
@@ -181,7 +188,7 @@
             // 
             // rdbTipo
             // 
-            this.rdbTipo.Location = new System.Drawing.Point(211, 23);
+            this.rdbTipo.Location = new System.Drawing.Point(211, 48);
             this.rdbTipo.Name = "rdbTipo";
             this.rdbTipo.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.rdbTipo.Properties.Appearance.Options.UseBackColor = true;
@@ -196,7 +203,7 @@
             // dtFin
             // 
             this.dtFin.EditValue = null;
-            this.dtFin.Location = new System.Drawing.Point(105, 54);
+            this.dtFin.Location = new System.Drawing.Point(105, 79);
             this.dtFin.Name = "dtFin";
             this.dtFin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -208,7 +215,7 @@
             // dtInicio
             // 
             this.dtInicio.EditValue = null;
-            this.dtInicio.Location = new System.Drawing.Point(105, 28);
+            this.dtInicio.Location = new System.Drawing.Point(105, 53);
             this.dtInicio.Name = "dtInicio";
             this.dtInicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -217,19 +224,9 @@
             this.dtInicio.Size = new System.Drawing.Size(100, 20);
             this.dtInicio.TabIndex = 6;
             // 
-            // btnImportar
-            // 
-            this.btnImportar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImportar.ImageOptions.Image")));
-            this.btnImportar.Location = new System.Drawing.Point(402, 79);
-            this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(75, 23);
-            this.btnImportar.TabIndex = 5;
-            this.btnImportar.Text = "Importar";
-            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
-            // 
             // txtProveedorNombre
             // 
-            this.txtProveedorNombre.Location = new System.Drawing.Point(154, 80);
+            this.txtProveedorNombre.Location = new System.Drawing.Point(154, 105);
             this.txtProveedorNombre.Name = "txtProveedorNombre";
             this.txtProveedorNombre.Properties.ReadOnly = true;
             this.txtProveedorNombre.Size = new System.Drawing.Size(242, 20);
@@ -237,15 +234,15 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(31, 84);
+            this.labelControl3.Location = new System.Drawing.Point(31, 109);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(50, 13);
+            this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 3;
-            this.labelControl3.Text = "Proveedor";
+            this.labelControl3.Text = "Proveedor:";
             // 
             // txtProveedorId
             // 
-            this.txtProveedorId.Location = new System.Drawing.Point(105, 80);
+            this.txtProveedorId.Location = new System.Drawing.Point(105, 105);
             this.txtProveedorId.Name = "txtProveedorId";
             this.txtProveedorId.Properties.Mask.EditMask = "n0";
             this.txtProveedorId.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -255,19 +252,19 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(31, 58);
+            this.labelControl2.Location = new System.Drawing.Point(31, 83);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(46, 13);
+            this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Fecha Fin";
+            this.labelControl2.Text = "Fecha Fin:";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(31, 32);
+            this.labelControl1.Location = new System.Drawing.Point(31, 57);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(57, 13);
+            this.labelControl1.Size = new System.Drawing.Size(61, 13);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Fecha Inicio";
+            this.labelControl1.Text = "Fecha Inicio:";
             // 
             // barManager1
             // 
@@ -284,9 +281,13 @@
             this.barLargeButtonItem1,
             this.barEditItem1,
             this.lblProveedor,
-            this.btnLimpiar});
+            this.btnLimpiar,
+            this.btnFolios,
+            this.btnImpProveedor,
+            this.barLargeButtonItem3,
+            this.barLargeButtonItem4});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 51;
+            this.barManager1.MaxItemId = 55;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -300,8 +301,12 @@
             this.bIconos.FloatLocation = new System.Drawing.Point(42, 184);
             this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnFolios),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
             this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -315,7 +320,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Caption = "Buscar";
+            this.btnBuscar.Caption = "Generar\r\n Pedido";
             this.btnBuscar.Id = 17;
             this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
             this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
@@ -362,7 +367,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 381);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 474);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(939, 25);
             // 
@@ -372,7 +377,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(50, 381);
+            this.barDockControlLeft.Size = new System.Drawing.Size(67, 474);
             // 
             // barDockControlRight
             // 
@@ -380,7 +385,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(939, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 381);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 474);
             // 
             // barLargeButtonItem1
             // 
@@ -401,10 +406,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(50, 135);
+            this.panelControl2.Location = new System.Drawing.Point(67, 157);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(889, 246);
+            this.panelControl2.Size = new System.Drawing.Size(872, 317);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -413,7 +418,7 @@
             this.dtgVentaExistencia.Location = new System.Drawing.Point(12, 12);
             this.dtgVentaExistencia.MainView = this.dtgValVentaExistencia;
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(865, 222);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 293);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -999,16 +1004,67 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem2.Text = "Seleccionar";
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barLargeButtonItem2.SuperTip = superToolTip1;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(31, 30);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(26, 13);
+            this.labelControl4.TabIndex = 12;
+            this.labelControl4.Text = "Folio:";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(105, 26);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Mask.EditMask = "n0";
+            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit1.Properties.ReadOnly = true;
+            this.textEdit1.Size = new System.Drawing.Size(43, 20);
+            this.textEdit1.TabIndex = 11;
+            // 
+            // btnFolios
+            // 
+            this.btnFolios.Caption = "Buscar \r\n Folios";
+            this.btnFolios.Id = 51;
+            this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
+            this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
+            this.btnFolios.Name = "btnFolios";
+            // 
+            // btnImpProveedor
+            // 
+            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
+            this.btnImpProveedor.Id = 52;
+            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image2")));
+            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage2")));
+            this.btnImpProveedor.Name = "btnImpProveedor";
+            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
+            // 
+            // barLargeButtonItem3
+            // 
+            this.barLargeButtonItem3.Caption = "Guardar \r\n Pedido";
+            this.barLargeButtonItem3.Id = 53;
+            this.barLargeButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image1")));
+            this.barLargeButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage1")));
+            this.barLargeButtonItem3.Name = "barLargeButtonItem3";
+            // 
+            // barLargeButtonItem4
+            // 
+            this.barLargeButtonItem4.Caption = "Cerrar \r\nPedido";
+            this.barLargeButtonItem4.Id = 54;
+            this.barLargeButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.Image")));
+            this.barLargeButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.LargeImage")));
+            this.barLargeButtonItem4.Name = "barLargeButtonItem4";
             // 
             // Frm_ReportePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 406);
+            this.ClientSize = new System.Drawing.Size(939, 499);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -1040,6 +1096,7 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1051,7 +1108,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.DateEdit dtFin;
         private DevExpress.XtraEditors.DateEdit dtInicio;
-        private DevExpress.XtraEditors.SimpleButton btnImportar;
         private DevExpress.XtraEditors.TextEdit txtProveedorNombre;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txtProveedorId;
@@ -1125,5 +1181,11 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraBars.BarLargeButtonItem btnFolios;
+        private DevExpress.XtraBars.BarLargeButtonItem btnImpProveedor;
+        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem3;
+        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem4;
     }
 }

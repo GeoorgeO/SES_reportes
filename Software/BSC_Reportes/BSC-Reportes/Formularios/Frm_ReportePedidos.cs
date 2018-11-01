@@ -360,9 +360,7 @@ namespace BSC_Reportes
         }
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
-            frmpro.FrmReportePedidos = this;
-            frmpro.ShowDialog();
+           
         }
         private void txtProveedorId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -502,6 +500,13 @@ namespace BSC_Reportes
             {
                 ColumnsBands(false);
             }
+        }
+
+        private void btnImpProveedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
+            frmpro.FrmReportePedidos = this;
+            frmpro.ShowDialog();
         }
     }
 }
