@@ -86,5 +86,7 @@ namespace BSC_Reportes
                 XtraMessageBox.Show(ex.Message);
             }
         }
+
+        
     }
 }

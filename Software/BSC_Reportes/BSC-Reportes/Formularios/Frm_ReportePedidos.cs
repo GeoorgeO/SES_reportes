@@ -390,8 +390,8 @@ namespace BSC_Reportes
             dtgValVentaExistencia.OptionsSelection.EnableAppearanceHideSelection = false;
             dtgValVentaExistencia.OptionsSelection.MultiSelect = true;
             dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
-            bandedGridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            bandedGridColumn1.DisplayFormat.FormatString = "$ ###,###0.00";
+            gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            gridColumn3.DisplayFormat.FormatString = "$ ###,###0.00";
         }
         private void rdbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -438,25 +438,11 @@ namespace BSC_Reportes
             gridBand11.Visible = Mostrar;
             gridBand12.Visible = Mostrar;
             gridBand13.Visible = Mostrar;
+            gridBand14.Visible = Mostrar;
+            gridBand15.Visible = Mostrar;
         }
         private void ColumnsExistencia(Boolean Mostrar)
         {
-            gridColumn4.Visible = Mostrar;
-            gridColumn6.Visible = Mostrar;
-            gridColumn8.Visible = Mostrar;
-            gridColumn10.Visible = Mostrar;
-            gridColumn12.Visible = Mostrar;
-            gridColumn14.Visible = Mostrar;
-            gridColumn16.Visible = Mostrar;
-            gridColumn18.Visible = Mostrar;
-            gridColumn20.Visible = Mostrar;
-            gridColumn22.Visible = Mostrar;
-            gridColumn24.Visible = Mostrar;
-            gridColumn26.Visible = Mostrar;
-        }
-        private void ColumnsVentas(Boolean Mostrar)
-        {
-            gridColumn3.Visible = Mostrar;
             gridColumn5.Visible = Mostrar;
             gridColumn7.Visible = Mostrar;
             gridColumn9.Visible = Mostrar;
@@ -468,6 +454,25 @@ namespace BSC_Reportes
             gridColumn21.Visible = Mostrar;
             gridColumn23.Visible = Mostrar;
             gridColumn25.Visible = Mostrar;
+            gridColumn27.Visible = Mostrar;
+            gridColumn29.Visible = Mostrar;
+            gridColumn31.Visible = Mostrar;
+        }
+        private void ColumnsVentas(Boolean Mostrar)
+        {
+            gridColumn6.Visible = Mostrar;
+            gridColumn8.Visible = Mostrar;
+            gridColumn10.Visible = Mostrar;
+            gridColumn12.Visible = Mostrar;
+            gridColumn14.Visible = Mostrar;
+            gridColumn16.Visible = Mostrar;
+            gridColumn18.Visible = Mostrar;
+            gridColumn20.Visible = Mostrar;
+            gridColumn22.Visible = Mostrar;
+            gridColumn24.Visible = Mostrar;
+            gridColumn26.Visible = Mostrar;
+            gridColumn28.Visible = Mostrar;
+            gridColumn30.Visible = Mostrar;
         }
         private void chkVentas_CheckedChanged(object sender, EventArgs e)
         {
@@ -507,6 +512,56 @@ namespace BSC_Reportes
             Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
             frmpro.FrmReportePedidos = this;
             frmpro.ShowDialog();
+        }
+
+        private void CreatNewRowCalibres(string ArticuloCodigo,string ArticuloDescripcion,string ArticuloCostoReposicion,string FamiliaNombre,string VAlmacen, string EAlmacen,
+                                    string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI,string ESarabiaI,
+                                    string VSarabiaII, string ESarabiaII, string VPaseo, string EPaseo, string VEstocolmo, string EEstocolmo, string VCostaRica, string ECostaRica,
+                                    string VCalzada, string ECalzada, string VLombardia, string ELombardia, string VNvaItalia, string ENvaItalia, string VApatzingan, string EApatzingan,
+                                    string VReyes, string EReyes,string TotalV,string TotalE, string TPedido,string PSugerido)
+        {
+            dtgValVentaExistencia.AddNewRow();
+
+            int rowHandle = dtgValVentaExistencia.GetRowHandle(dtgValVentaExistencia.DataRowCount);
+            if (dtgValVentaExistencia.IsNewItemRow(rowHandle))
+            {
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column1"], ArticuloCodigo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column2"], ArticuloDescripcion);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column3"], ArticuloCostoReposicion);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column4"], FamiliaNombre);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column5"], VAlmacen);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column6"], EAlmacen);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column7"], VCentro);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column8"], ECentro);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column9"], VMorelos);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column10"], EMorelos);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column11"], VFCoVilla);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column12"], EFcoVilla);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column13"], VSarabiaI);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column14"], ESarabiaI);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column15"], VSarabiaII);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column16"], ESarabiaII);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column17"], VPaseo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column18"], EPaseo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column19"], VEstocolmo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column20"], EEstocolmo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column21"], VCostaRica);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column22"], ECostaRica);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column23"], VCalzada);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column24"], ECalzada);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column25"], VLombardia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column26"], ELombardia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column27"], VNvaItalia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column28"], ENvaItalia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column29"], VApatzingan);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column30"], EApatzingan);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column31"], VReyes);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column32"], EReyes);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column33"], TotalV);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column34"], TotalE);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column35"], PSugerido);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column36"], TPedido);
+            }
         }
     }
 }
