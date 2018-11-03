@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
+using DevExpress.XtraSplashScreen;
 
 namespace BSC_Reportes
 {
@@ -18,6 +19,15 @@ namespace BSC_Reportes
         {
             InitializeComponent();
         }
+        public string DosCeros(string sVal)
+        {
+            string str = "";
+            if (sVal.Length == 1)
+            {
+                return (str = "0" + sVal);
+            }
+            return sVal;
+        }
         private void MakeTablaPedidos()
         {
             DataTable table = new DataTable("FirstTable");
@@ -26,7 +36,7 @@ namespace BSC_Reportes
             // DataRow row;
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Column0";
+            column.ColumnName = "Column1";
             column.AutoIncrement = false;
             column.Caption = "Codigo";
             column.ReadOnly = false;
@@ -36,7 +46,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Column1";
+            column.ColumnName = "Column2";
             column.AutoIncrement = false;
             column.Caption = "Descripcion";
             column.ReadOnly = false;
@@ -46,7 +56,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(decimal);
-            column.ColumnName = "Column2";
+            column.ColumnName = "Column3";
             column.AutoIncrement = false;
             column.Caption = "Costo Reposicion";
             column.ReadOnly = false;
@@ -56,7 +66,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Column3";
+            column.ColumnName = "Column4";
             column.AutoIncrement = false;
             column.Caption = "Familia";
             column.ReadOnly = false;
@@ -66,19 +76,9 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column4";
-            column.AutoIncrement = false;
-            column.Caption = "V";
-            column.ReadOnly = false;
-            column.Unique = false;
-
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = typeof(Int32);
             column.ColumnName = "Column5";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -88,7 +88,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column6";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -98,7 +98,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column7";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -108,7 +108,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column8";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -118,7 +118,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column9";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -128,7 +128,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column10";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -138,7 +138,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column11";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -148,7 +148,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column12";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -158,7 +158,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column13";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -168,7 +168,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column14";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -178,7 +178,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column15";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -188,7 +188,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column16";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -198,7 +198,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column17";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -208,7 +208,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column18";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -218,7 +218,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column19";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -228,7 +228,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column20";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -238,7 +238,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column21";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -248,7 +248,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column22";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -258,7 +258,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column23";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -268,7 +268,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column24";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -278,7 +278,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column25";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -288,7 +288,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column26";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -298,7 +298,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column27";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -308,7 +308,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column28";
             column.AutoIncrement = false;
-            column.Caption = "V";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -318,7 +318,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column29";
             column.AutoIncrement = false;
-            column.Caption = "E";
+            column.Caption = "V";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -328,7 +328,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column30";
             column.AutoIncrement = false;
-            column.Caption = "Sugerido";
+            column.Caption = "E";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -338,7 +338,57 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column31";
             column.AutoIncrement = false;
-            column.Caption = "Pedido";
+            column.Caption = "V";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Column32";
+            column.AutoIncrement = false;
+            column.Caption = "E";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Column33";
+            column.AutoIncrement = false;
+            column.Caption = "TotalV";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Column34";
+            column.AutoIncrement = false;
+            column.Caption = "TotalE";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Column35";
+            column.AutoIncrement = false;
+            column.Caption = "TSugerido";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Column36";
+            column.AutoIncrement = false;
+            column.Caption = "TPedido";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -513,7 +563,25 @@ namespace BSC_Reportes
             frmpro.FrmReportePedidos = this;
             frmpro.ShowDialog();
         }
-
+        public void MensajeCargando(int opcion)
+        {
+            if (opcion == 1)
+            {
+                SplashScreenManager.ShowForm(this, typeof(Frm_CargandoConsulta), true, true, false);
+                SplashScreenManager.Default.SetWaitFormCaption("Procesando...");
+                SplashScreenManager.Default.SetWaitFormDescription("Espere por favor...");
+            }
+            else
+            {
+                try
+                {
+                    SplashScreenManager.CloseForm();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
         private void CreatNewRowCalibres(string ArticuloCodigo,string ArticuloDescripcion,string ArticuloCostoReposicion,string FamiliaNombre,string VAlmacen, string EAlmacen,
                                     string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI,string ESarabiaI,
                                     string VSarabiaII, string ESarabiaII, string VPaseo, string EPaseo, string VEstocolmo, string EEstocolmo, string VCostaRica, string ECostaRica,
@@ -561,6 +629,56 @@ namespace BSC_Reportes
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column34"], TotalE);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column35"], PSugerido);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column36"], TPedido);
+            }
+        }
+
+        private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(txtProveedorId.Text!=string.Empty)
+            {
+                if (Convert.ToInt32(txtProveedorId.Text) > 0)
+                {
+                    DateTime dInicio = Convert.ToDateTime(dtInicio.EditValue);
+                    DateTime dFin = Convert.ToDateTime(dtFin.EditValue);
+                    int result = DateTime.Compare(dInicio, dFin);
+                    if(result<1)
+                    {
+                        //if()
+                        MensajeCargando(1);
+                        CLS_Pedidos selped = new CLS_Pedidos();
+                        DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
+                        DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
+
+                        selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
+                        selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
+                        selped.MtdGenerarPedidoProveedor();
+                        if (selped.Exito)
+                        {
+                            if (selped.Datos.Rows.Count > 0)
+                            {
+                                CargandoPedido(selped.Datos);
+                            }
+                        }
+                        MensajeCargando(2);
+
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("La fecha de Inicio no puede ser mayor a la Fecha Fin");
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Debe seleccionar un proveedor");
+            }
+        }
+
+        private void CargandoPedido(DataTable datos)
+        {
+            for (int x = 0; x < datos.Rows.Count; x++)
+            {
+
             }
         }
     }
