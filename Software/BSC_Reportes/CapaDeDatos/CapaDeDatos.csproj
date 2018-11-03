@@ -100,6 +100,7 @@
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="SES_Reportes\CLS_Pedidos.cs" />
     <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
+    <Compile Include="SES_Reportes\CLS_Usuarios.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
