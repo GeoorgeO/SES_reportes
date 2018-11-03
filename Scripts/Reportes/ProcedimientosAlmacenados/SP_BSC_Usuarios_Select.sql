@@ -25,7 +25,7 @@ GO
 -- =============================================
 CREATE PROCEDURE SP_BSC_Usuarios_Select 
 	-- Add the parameters for the stored procedure here
-	
+	@activo int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -36,7 +36,9 @@ BEGIN
 	SELECT UsuariosLogin,
 		UsuariosNombre,
 		UsuariosPassword,
-		Usuariosclase
+		Usuariosclase,
+		UsuariosActivo
 	From Usuarios
+	where  UsuariosActivo=@activo
 END
 GO
