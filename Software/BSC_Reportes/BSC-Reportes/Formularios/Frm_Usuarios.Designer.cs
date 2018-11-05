@@ -46,6 +46,7 @@
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.guardar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btninactivos = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -70,6 +71,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.checkadmin = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -79,7 +81,6 @@
             this.usuariosLogin = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.checkactivo = new DevExpress.XtraEditors.CheckEdit();
-            this.btninactivos = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -184,6 +185,15 @@
             superToolTip2.Items.Add(toolTipTitleItem4);
             this.btnLimpiar.SuperTip = superToolTip2;
             this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
+            // 
+            // btninactivos
+            // 
+            this.btninactivos.Caption = "Mostrar inactivos";
+            this.btninactivos.Id = 59;
+            this.btninactivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.Image")));
+            this.btninactivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.LargeImage")));
+            this.btninactivos.Name = "btninactivos";
+            this.btninactivos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btninactivos_ItemClick);
             // 
             // bEstado
             // 
@@ -354,7 +364,8 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
-            this.gridColumn4});
+            this.gridColumn4,
+            this.gridColumn5});
             this.gridView1.GridControl = this.grid;
             this.gridView1.Name = "gridView1";
             // 
@@ -389,6 +400,14 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Activo";
+            this.gridColumn5.FieldName = "UsuariosActivo";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
             // 
             // checkadmin
             // 
@@ -470,15 +489,6 @@
             this.checkactivo.Size = new System.Drawing.Size(75, 19);
             this.checkactivo.TabIndex = 10;
             // 
-            // btninactivos
-            // 
-            this.btninactivos.Caption = "Mostrar inactivos";
-            this.btninactivos.Id = 59;
-            this.btninactivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
-            this.btninactivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
-            this.btninactivos.Name = "btninactivos";
-            this.btninactivos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btninactivos_ItemClick);
-            // 
             // Frm_Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,7 +501,8 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Frm_Usuarios";
-            this.Text = "Frm_Usuarios";
+            this.Text = "Administrador de usuarios";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_Usuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -552,5 +563,6 @@
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
         private DevExpress.XtraEditors.CheckEdit checkactivo;
         private DevExpress.XtraBars.BarLargeButtonItem btninactivos;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

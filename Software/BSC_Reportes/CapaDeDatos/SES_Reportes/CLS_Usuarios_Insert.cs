@@ -14,6 +14,7 @@ namespace CapaDeDatos
         public string UsuariosPassword { get; set; }
         public string UsuariosClase { get; set; }
         public int UsuariosActivo { get; set; }
+        public int nuevo { get; set; }
 
         public void MtdInsertarUsuarios()
         {
@@ -32,6 +33,8 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosClase");
                 _dato.Entero = UsuariosActivo;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "UsuariosActivo");
+                _dato.Entero = nuevo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "nuevo");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

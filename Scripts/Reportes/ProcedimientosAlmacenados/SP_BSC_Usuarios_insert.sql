@@ -28,7 +28,8 @@ CREATE PROCEDURE SP_BSC_Usuarios_insert
 	@UsuariosNombre varchar(60),
 	@UsuariosPassword varchar(50),
 	@Usuariosclase char(1),
-	@UsuariosActivo int
+	@UsuariosActivo int,
+	@nuevo int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -38,11 +39,15 @@ BEGIN
     -- Insert statements for procedure here
 	declare @Existe int
 	select  @Existe =count(UsuariosLogin) from usuarios where UsuariosLogin=@UsuariosLogin
-
+	
+	
 	if @Existe>0
-		UPDATE       usuarios
-		SET                UsuariosNombre = @UsuariosNombre, UsuariosPassword = @UsuariosPassword, UsuariosActivo = @UsuariosActivo, Usuariosclase = @Usuariosclase, UsuariosFechaUpdate = GETDATE()
-		WHERE        (UsuariosLogin = @UsuariosLogin)
+		if @nuevo=0
+			UPDATE       usuarios
+			SET                UsuariosNombre = @UsuariosNombre, UsuariosPassword = @UsuariosPassword, UsuariosActivo = @UsuariosActivo, Usuariosclase = @Usuariosclase, UsuariosFechaUpdate = GETDATE()
+			WHERE        (UsuariosLogin = @UsuariosLogin)
+		else
+			select 'Ya existe el usuario'
 	else
 		INSERT INTO usuarios
 							 (UsuariosNombre, UsuariosRegistroFecha, UsuariosLogin, UsuariosPassword, UsuariosActivo, Usuariosclase)

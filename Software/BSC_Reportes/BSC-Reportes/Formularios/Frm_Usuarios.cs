@@ -17,16 +17,18 @@ namespace BSC_Reportes
     {
 
         int activo = 1;
+        int nuevo = 1;
 
         public Frm_Usuarios()
         {
             InitializeComponent();
         }
 
-        CLS_Usuarios selpro = new CLS_Usuarios();
+        
 
         public void actualizarGrid()
         {
+            CLS_Usuarios selpro = new CLS_Usuarios();
             selpro.UsuariosActivo = activo;
             selpro.MtdSeleccionarUsuarios();
             if (selpro.Exito)
@@ -64,6 +66,7 @@ namespace BSC_Reportes
             gridColumn1.OptionsColumn.AllowEdit = false;
             gridColumn2.OptionsColumn.AllowEdit = false;
             gridColumn4.OptionsColumn.AllowEdit = false;
+            gridColumn5.OptionsColumn.AllowEdit = false;
         }
 
         private void grid_Click(object sender, EventArgs e)
@@ -84,7 +87,18 @@ namespace BSC_Reportes
                     {
                         checkadmin.Checked = false;
                     }
-                   
+                    string tact = row["UsuariosActivo"].ToString();
+                    if (row["UsuariosActivo"].ToString() == "True")
+                    {
+                        checkactivo.Checked = true;
+                    }
+                    else
+                    {
+                        checkactivo.Checked = false;
+                    }
+
+                    usuariosLogin.Enabled = false;
+                    nuevo = 0;
                 }
             }
             catch (Exception ex)
@@ -109,23 +123,39 @@ namespace BSC_Reportes
             {
                 UdpUsu.UsuariosClase = "N";
             }
-            UdpUsu.UsuariosActivo = 1;
+            if (checkactivo.Checked == true)
+            {
+                UdpUsu.UsuariosActivo = 1;
+            }
+            else
+            {
+                UdpUsu.UsuariosActivo = 0;
+            }
+            UdpUsu.nuevo = nuevo;
+
 
             UdpUsu.MtdInsertarUsuarios();
             if (UdpUsu.Exito.ToString() == "True")
             {
-
+               if (UdpUsu.Datos.Rows[0][0].ToString() == "Ya existe el usuario")
+                {
+                    MessageBox.Show("Ya existe este nickname, favor de verificar.","Aviso");
+                }
             }
             else
             {
 
             }
             actualizarGrid();
+            usuariosLogin.Enabled = true;
+            nuevo = 1;
         }
 
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             limpiarFormulario();
+            usuariosLogin.Enabled = true;
+            nuevo = 1;
         }
 
         private void btninactivos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -133,10 +163,14 @@ namespace BSC_Reportes
             if (activo == 1)
             {
                 activo = 0;
+                actualizarGrid();
+                btninactivos.Caption = "Mostrar activos";
             }
             else
             {
                 activo = 1;
+                actualizarGrid();
+                btninactivos.Caption = "Mostrar inactivos";
             }
         }
     }

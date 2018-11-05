@@ -13,10 +13,11 @@ namespace CapaDeDatos
          public string UsuariosNombre { get; set; }
          public string UsuariosPassword { get; set; }
          public char UsuariosClase { get; set; }*/
+        TipoDato _dato = new TipoDato();
 
         public void MtdSeleccionarUsuarios()
         {
-            TipoDato _dato = new TipoDato();
+            
             Exito = true;
             try
             {
