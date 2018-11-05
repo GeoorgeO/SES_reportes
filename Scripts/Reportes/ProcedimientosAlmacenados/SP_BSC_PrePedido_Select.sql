@@ -14,15 +14,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_PrePedido_Select')
-DROP PROCEDURE SP_BSC_PrePedido_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_PrePedido_Genera_Select')
+DROP PROCEDURE SP_BSC_PrePedido_Genera_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_PrePedido_Select
+CREATE PROCEDURE SP_BSC_PrePedido_Genera_Select
 	-- Add the parameters for the stored procedure here
 	@FechaInicio varchar(20),
 	@FechaFin varchar(20),
@@ -328,7 +328,7 @@ from central.dbo.Articulo as Art
         where t.ticketFecha between @FechaInicio and @FechaFin
         group by da.ArticuloCodigo
         )
-        as devest on dev.ArticuloCodigo=ticest.ArticuloCodigo
+        as devest on devest.ArticuloCodigo=ticest.ArticuloCodigo
     left join
         (select count(ta.TicketId) as nticket,ArticuloCodigo
         from Server_Estocolmo.dbo.TicketMayoreo as t
