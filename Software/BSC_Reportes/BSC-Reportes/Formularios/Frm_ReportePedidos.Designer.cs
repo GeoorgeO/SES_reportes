@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -126,6 +126,9 @@
             this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.chkCosto = new DevExpress.XtraEditors.CheckEdit();
+            this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -150,6 +153,10 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCosto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -164,11 +171,10 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.groupControl3);
             this.groupControl1.Controls.Add(this.groupControl2);
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.textEdit1);
-            this.groupControl1.Controls.Add(this.chkExistencia);
-            this.groupControl1.Controls.Add(this.chkVentas);
             this.groupControl1.Controls.Add(this.rdbTipo);
             this.groupControl1.Controls.Add(this.dtFin);
             this.groupControl1.Controls.Add(this.dtInicio);
@@ -188,7 +194,7 @@
             // 
             this.groupControl2.Controls.Add(this.txtPeriodo);
             this.groupControl2.Controls.Add(this.rdbPeriodo);
-            this.groupControl2.Location = new System.Drawing.Point(414, 23);
+            this.groupControl2.Location = new System.Drawing.Point(596, 26);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(158, 100);
             this.groupControl2.TabIndex = 13;
@@ -238,7 +244,7 @@
             // 
             // chkExistencia
             // 
-            this.chkExistencia.Location = new System.Drawing.Point(321, 100);
+            this.chkExistencia.Location = new System.Drawing.Point(99, 34);
             this.chkExistencia.Name = "chkExistencia";
             this.chkExistencia.Properties.Caption = "Existencia";
             this.chkExistencia.Size = new System.Drawing.Size(75, 19);
@@ -247,7 +253,7 @@
             // 
             // chkVentas
             // 
-            this.chkVentas.Location = new System.Drawing.Point(321, 76);
+            this.chkVentas.Location = new System.Drawing.Point(9, 34);
             this.chkVentas.Name = "chkVentas";
             this.chkVentas.Properties.Caption = "Venta";
             this.chkVentas.Size = new System.Drawing.Size(75, 19);
@@ -1189,10 +1195,40 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem1.Text = "Seleccionar";
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barLargeButtonItem2.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Seleccionar";
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.chkFamilia);
+            this.groupControl3.Controls.Add(this.chkCosto);
+            this.groupControl3.Controls.Add(this.chkVentas);
+            this.groupControl3.Controls.Add(this.chkExistencia);
+            this.groupControl3.Location = new System.Drawing.Point(402, 27);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(188, 100);
+            this.groupControl3.TabIndex = 14;
+            this.groupControl3.Text = "Columnas";
+            // 
+            // chkCosto
+            // 
+            this.chkCosto.Location = new System.Drawing.Point(9, 63);
+            this.chkCosto.Name = "chkCosto";
+            this.chkCosto.Properties.Caption = "Costo R.";
+            this.chkCosto.Size = new System.Drawing.Size(75, 19);
+            this.chkCosto.TabIndex = 11;
+            this.chkCosto.CheckedChanged += new System.EventHandler(this.chkCosto_CheckedChanged);
+            // 
+            // chkFamilia
+            // 
+            this.chkFamilia.Location = new System.Drawing.Point(99, 63);
+            this.chkFamilia.Name = "chkFamilia";
+            this.chkFamilia.Properties.Caption = "Familia.";
+            this.chkFamilia.Size = new System.Drawing.Size(75, 19);
+            this.chkFamilia.TabIndex = 12;
+            this.chkFamilia.CheckedChanged += new System.EventHandler(this.chkFamilia_CheckedChanged);
             // 
             // Frm_ReportePedidos
             // 
@@ -1235,6 +1271,10 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkCosto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1336,5 +1376,8 @@
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
         private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem6;
         private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem5;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.CheckEdit chkFamilia;
+        private DevExpress.XtraEditors.CheckEdit chkCosto;
     }
 }

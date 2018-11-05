@@ -22,7 +22,7 @@ namespace BSC_Reportes
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new Frm_Usuarios());
+            Application.Run(new Frm_ReportePedidos());
         }
     }
 }

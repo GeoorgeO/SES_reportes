@@ -15,6 +15,40 @@ namespace BSC_Reportes
 {
     public partial class Frm_ReportePedidos : DevExpress.XtraEditors.XtraForm
     {
+        
+        public string vArticuloCodigo { get; private set; }
+        public string vArticuloDescripcion { get; private set; }
+        public string vArticuloCostoReposicion { get; private set; }
+        public string vFamiliaNombre { get; private set; }
+        public string vTVentasAlmacen { get; private set; }
+        public string vExisAlmacen { get; private set; }
+        public string vTVentasApatzingan { get; private set; }
+        public string vExisApatzingan { get; private set; }
+        public string vTVentasCalzada { get; private set; }
+        public string vExisCalzada { get; private set; }
+        public string vTVentasCentro { get; private set; }
+        public string vExisCentro { get; private set; }
+        public string vTVentasCostaRica { get; private set; }
+        public string vExisCostaRica { get; private set; }
+        public string vTVentasEstocolmo { get; private set; }
+        public string vExisEstocolmo { get; private set; }
+        public string vTVentasFcoVilla { get; private set; }
+        public string vExisFcoVilla { get; private set; }
+        public string vTVentasLombardia { get; private set; }
+        public string vExisLombardia { get; private set; }
+        public string vTVentasLosReyes { get; private set; }
+        public string vExisLosReyes { get; private set; }
+        public string vTVentasMorelos { get; private set; }
+        public string vExisMorelos { get; private set; }
+        public string vTVentasNvaItalia { get; private set; }
+        public string vExisNvaItalia { get; private set; }
+        public string vTVentasPaseo { get; private set; }
+        public string vExisPaseo { get; private set; }
+        public string vTVentasSarabiaI { get; private set; }
+        public string vExisSarabiaI { get; private set; }
+        public string vTVentasSarabiaII { get; private set; }
+        public string vExisSarabiaII { get; private set; }
+
         public Frm_ReportePedidos()
         {
             InitializeComponent();
@@ -433,6 +467,8 @@ namespace BSC_Reportes
             txtProveedorNombre.Text = string.Empty;
             chkVentas.Checked = true;
             chkExistencia.Checked = true;
+            chkCosto.Checked = true;
+            chkFamilia.Checked = true;
             rdbTipo.SelectedIndex = 0;
             dtgVentaExistencia.DataSource = null;
             MakeTablaPedidos();
@@ -508,6 +544,14 @@ namespace BSC_Reportes
             gridColumn29.Visible = Mostrar;
             gridColumn31.Visible = Mostrar;
         }
+        private void ColumnsCosto(Boolean Mostrar)
+        {
+            gridColumn3.Visible = Mostrar;
+        }
+        private void ColumnsFamilia(Boolean Mostrar)
+        {
+            gridColumn4.Visible = Mostrar;
+        }
         private void ColumnsVentas(Boolean Mostrar)
         {
             gridColumn6.Visible = Mostrar;
@@ -556,7 +600,28 @@ namespace BSC_Reportes
                 ColumnsBands(false);
             }
         }
-
+        private void chkCosto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCosto.Checked == true)
+            {
+                ColumnsCosto(true);
+            }
+            else
+            {
+                ColumnsCosto(false);
+            }
+        }
+        private void chkFamilia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFamilia.Checked == true)
+            {
+                ColumnsFamilia(true);
+            }
+            else
+            {
+                ColumnsFamilia(false);
+            }
+        }
         private void btnImpProveedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
@@ -582,7 +647,7 @@ namespace BSC_Reportes
                 }
             }
         }
-        private void CreatNewRowCalibres(string ArticuloCodigo,string ArticuloDescripcion,string ArticuloCostoReposicion,string FamiliaNombre,string VAlmacen, string EAlmacen,
+        private void CreatNewRowProveedor(string ArticuloCodigo,string ArticuloDescripcion,string ArticuloCostoReposicion,string FamiliaNombre,string VAlmacen, string EAlmacen,
                                     string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI,string ESarabiaI,
                                     string VSarabiaII, string ESarabiaII, string VPaseo, string EPaseo, string VEstocolmo, string EEstocolmo, string VCostaRica, string ECostaRica,
                                     string VCalzada, string ECalzada, string VLombardia, string ELombardia, string VNvaItalia, string ENvaItalia, string VApatzingan, string EApatzingan,
@@ -634,51 +699,166 @@ namespace BSC_Reportes
 
         private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(txtProveedorId.Text!=string.Empty)
+            if (!ExistenPrePedidos(txtProveedorId.Text))
             {
-                if (Convert.ToInt32(txtProveedorId.Text) > 0)
+                if (txtProveedorId.Text != string.Empty)
                 {
-                    DateTime dInicio = Convert.ToDateTime(dtInicio.EditValue);
-                    DateTime dFin = Convert.ToDateTime(dtFin.EditValue);
-                    int result = DateTime.Compare(dInicio, dFin);
-                    if(result<1)
+                    if (Convert.ToInt32(txtProveedorId.Text) > 0)
                     {
-                        //if()
-                        MensajeCargando(1);
-                        CLS_Pedidos selped = new CLS_Pedidos();
-                        DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
-                        DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
-
-                        selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
-                        selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
-                        selped.MtdGenerarPedidoProveedor();
-                        if (selped.Exito)
+                        DateTime dInicio = Convert.ToDateTime(dtInicio.EditValue);
+                        DateTime dFin = Convert.ToDateTime(dtFin.EditValue);
+                        int result = DateTime.Compare(dInicio, dFin);
+                        if (result < 1)
                         {
-                            if (selped.Datos.Rows.Count > 0)
+                            if (txtPeriodo.Text != string.Empty)
                             {
-                                CargandoPedido(selped.Datos);
+                                if (Convert.ToInt32(txtPeriodo.Text) > 0)
+                                {
+                                    MensajeCargando(1);
+                                    CLS_Pedidos selped = new CLS_Pedidos();
+                                    DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
+                                    DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
+
+                                    selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
+                                    selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
+                                    selped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+                                    selped.MtdGenerarPedidoProveedor();
+                                    if (selped.Exito)
+                                    {
+                                        if (selped.Datos.Rows.Count > 0)
+                                        {
+                                            CargandoPedido(selped.Datos);
+                                        }
+                                    }
+                                    MensajeCargando(2);
+                                }
+                                else
+                                {
+                                    XtraMessageBox.Show("El Periodo debe ser mayor a 0");
+                                }
+                            }
+                            else
+                            {
+                                XtraMessageBox.Show("No se ha capturado Periodo para el pedido");
                             }
                         }
-                        MensajeCargando(2);
-
+                        else
+                        {
+                            XtraMessageBox.Show("La fecha de Inicio no puede ser mayor a la Fecha Fin");
+                        }
                     }
-                    else
-                    {
-                        XtraMessageBox.Show("La fecha de Inicio no puede ser mayor a la Fecha Fin");
-                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Debe seleccionar un proveedor");
                 }
             }
             else
             {
-                XtraMessageBox.Show("Debe seleccionar un proveedor");
+                XtraMessageBox.Show("Existe Pedido pendiente con este proveedor./nNo se puede generar un nuevo pedido hasta no finalizar o eliminar este pedido");
             }
+        }
+
+        private bool ExistenPrePedidos(string vProveedorId)
+        {
+            Boolean Valor = false;
+            CLS_Pedidos selexi = new CLS_Pedidos();
+            selexi.ProveedorId = Convert.ToInt32(vProveedorId);
+            if (Convert.ToInt32(selexi.MtdExistePedidoProveedor()) > 0)
+            {
+                Valor = true;
+            }
+            return Valor;
         }
 
         private void CargandoPedido(DataTable datos)
         {
+            int TVentas = 0;
+            int TExistencia = 0;
             for (int x = 0; x < datos.Rows.Count; x++)
             {
+                TVentas = 0;
+                TExistencia = 0;
+                vArticuloCodigo = datos.Rows[x]["ArticuloCodigo"].ToString();
+                vArticuloDescripcion = datos.Rows[x]["ArticuloDescripcion"].ToString();
+                vArticuloCostoReposicion = datos.Rows[x]["ArticuloCostoReposicion"].ToString();
+                vFamiliaNombre = datos.Rows[x]["FamiliaNombre"].ToString();
 
+                vTVentasAlmacen = datos.Rows[x]["TVentasAlmacen"].ToString();
+                TVentas += Convert.ToInt32(vTVentasAlmacen);
+                vExisAlmacen = datos.Rows[x]["ExisAlmacen"].ToString();
+                TExistencia += Convert.ToInt32(vExisAlmacen);
+
+                vTVentasApatzingan = datos.Rows[x]["TVentasApatzingan"].ToString();
+                TVentas += Convert.ToInt32(vTVentasApatzingan);
+                vExisApatzingan = datos.Rows[x]["ExisApatzingan"].ToString();
+                TExistencia += Convert.ToInt32(vExisApatzingan);
+
+                vTVentasCalzada = datos.Rows[x]["TVentasCalzada"].ToString();
+                TVentas += Convert.ToInt32(vTVentasCalzada);
+                vExisCalzada = datos.Rows[x]["ExisCalzada"].ToString();
+                TExistencia += Convert.ToInt32(vExisCalzada);
+
+                vTVentasCentro = datos.Rows[x]["TVentasCentro"].ToString();
+                TVentas += Convert.ToInt32(vTVentasCentro);
+                vExisCentro = datos.Rows[x]["ExisCentro"].ToString();
+                TExistencia += Convert.ToInt32(vExisCentro);
+
+                vTVentasCostaRica = datos.Rows[x]["TVentasCostaRica"].ToString();
+                TVentas += Convert.ToInt32(vTVentasCostaRica);
+                vExisCostaRica = datos.Rows[x]["ExisCostaRica"].ToString();
+                TExistencia += Convert.ToInt32(vExisCostaRica);
+
+                vTVentasEstocolmo = datos.Rows[x]["TVentasEstocolmo"].ToString();
+                TVentas += Convert.ToInt32(vTVentasEstocolmo);
+                vExisEstocolmo = datos.Rows[x]["ExisEstocolmo"].ToString();
+                TExistencia += Convert.ToInt32(vExisEstocolmo);
+
+                vTVentasFcoVilla = datos.Rows[x]["TVentasFcoVilla"].ToString();
+                TVentas += Convert.ToInt32(vTVentasFcoVilla);
+                vExisFcoVilla = datos.Rows[x]["ExisFcoVilla"].ToString();
+                TExistencia += Convert.ToInt32(vExisFcoVilla);
+
+                vTVentasLombardia = datos.Rows[x]["TVentasLombardia"].ToString();
+                TVentas += Convert.ToInt32(vTVentasLombardia);
+                vExisLombardia = datos.Rows[x]["ExisLombardia"].ToString();
+                TExistencia += Convert.ToInt32(vExisLombardia);
+
+                vTVentasLosReyes = datos.Rows[x]["TVentasLosReyes"].ToString();
+                TVentas += Convert.ToInt32(vTVentasLosReyes);
+                vExisLosReyes = datos.Rows[x]["ExisLosReyes"].ToString();
+                TExistencia += Convert.ToInt32(vExisLosReyes);
+
+                vTVentasMorelos = datos.Rows[x]["TVentasMorelos"].ToString();
+                TVentas += Convert.ToInt32(vTVentasMorelos);
+                vExisMorelos = datos.Rows[x]["ExisMorelos"].ToString();
+                TExistencia += Convert.ToInt32(vExisMorelos);
+
+                vTVentasNvaItalia = datos.Rows[x]["TVentasNvaItalia"].ToString();
+                TVentas += Convert.ToInt32(vTVentasNvaItalia);
+                vExisNvaItalia = datos.Rows[x]["ExisNvaItalia"].ToString();
+                TExistencia += Convert.ToInt32(vExisNvaItalia);
+
+                vTVentasPaseo = datos.Rows[x]["TVentasPaseo"].ToString();
+                TVentas += Convert.ToInt32(vTVentasPaseo);
+                vExisPaseo = datos.Rows[x]["ExisPaseo"].ToString();
+                TExistencia += Convert.ToInt32(vExisPaseo);
+
+                vTVentasSarabiaI = datos.Rows[x]["TVentasSarabiaI"].ToString();
+                TVentas += Convert.ToInt32(vTVentasSarabiaI);
+                vExisSarabiaI = datos.Rows[x]["ExisSarabiaI"].ToString();
+                TExistencia += Convert.ToInt32(vExisSarabiaI);
+
+                vTVentasSarabiaII = datos.Rows[x]["TVentasSarabiaII"].ToString();
+                TVentas += Convert.ToInt32(vTVentasSarabiaII);
+                vExisSarabiaII = datos.Rows[x]["ExisSarabiaII"].ToString();
+                TExistencia += Convert.ToInt32(vExisSarabiaII);
+
+                CreatNewRowProveedor(vArticuloCodigo, vArticuloDescripcion, vArticuloCostoReposicion, vFamiliaNombre, vTVentasAlmacen, vExisAlmacen, vTVentasCentro, vExisCentro, vTVentasMorelos, vExisMorelos
+                                    , vTVentasFcoVilla, vExisFcoVilla, vTVentasSarabiaI, vExisSarabiaI, vTVentasSarabiaII, vExisSarabiaII
+                                    , vTVentasPaseo, vExisPaseo, vTVentasEstocolmo, vExisEstocolmo, vTVentasCostaRica, vExisCostaRica
+                                    , vTVentasCalzada, vExisCalzada, vTVentasLombardia, vExisLombardia, vTVentasNvaItalia, vExisNvaItalia
+                                    , vTVentasApatzingan, vExisApatzingan, vTVentasLosReyes, vExisLosReyes, TVentas.ToString(), TExistencia.ToString(), "0", "0");
             }
         }
     }

@@ -38,7 +38,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public string MtdSeleccionarProveedorId()
         {
             string Valor=string.Empty;
@@ -72,19 +71,14 @@ namespace CapaDeDatos
             }
             return Valor;
         }
-
-        public string MtdGenerarPedidoProveedor()
+        public string MtdExistePedidoProveedor()
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Select";
-                _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "FechaInicio");
-                _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "FechaFin");
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Existe_Select";
                 _dato.Entero = ProveedorId;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _conexion.EjecutarDataset();
@@ -94,7 +88,7 @@ namespace CapaDeDatos
                     Datos = _conexion.Datos;
                     if (Datos.Rows.Count > 0)
                     {
-                        Valor = Datos.Rows[0][1].ToString();
+                        Valor = Datos.Rows[0][0].ToString();
                     }
                 }
                 else
@@ -110,6 +104,37 @@ namespace CapaDeDatos
             }
             return Valor;
         }
+        public void MtdGenerarPedidoProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Genera_Select";
+                _dato.CadenaTexto = FechaInicio;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _dato.CadenaTexto = FechaFin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _dato.Entero = ProveedorId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexion.EjecutarDataset();
 
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
     }
 }
