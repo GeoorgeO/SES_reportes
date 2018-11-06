@@ -15,7 +15,7 @@ namespace BSC_Reportes
 {
     public partial class Frm_ReportePedidos : DevExpress.XtraEditors.XtraForm
     {
-        
+
         public string vArticuloCodigo { get; private set; }
         public string vArticuloDescripcion { get; private set; }
         public string vArticuloCostoReposicion { get; private set; }
@@ -457,11 +457,11 @@ namespace BSC_Reportes
         }
         private void btnImportar_Click(object sender, EventArgs e)
         {
-           
+
         }
         private void txtProveedorId_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyValue==13)
+            if (e.KeyValue == 13)
             {
                 BuscarProveedor(txtProveedorId.Text);
             }
@@ -495,7 +495,7 @@ namespace BSC_Reportes
         }
         private void rdbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(rdbTipo.SelectedIndex==0)
+            if (rdbTipo.SelectedIndex == 0)
             {
                 DetalladoGrids();
                 chkVentas.Enabled = true;
@@ -584,16 +584,16 @@ namespace BSC_Reportes
         }
         private void chkVentas_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkVentas.Checked==true)
+            if (chkVentas.Checked == true)
             {
                 ColumnsBands(true);
                 ColumnsVentas(true);
             }
-            else if(chkVentas.Checked == false)
+            else if (chkVentas.Checked == false)
             {
                 ColumnsVentas(false);
             }
-            if(chkVentas.Checked == false && chkExistencia.Checked == false)
+            if (chkVentas.Checked == false && chkExistencia.Checked == false)
             {
                 ColumnsBands(false);
             }
@@ -661,11 +661,11 @@ namespace BSC_Reportes
                 }
             }
         }
-        private void CreatNewRowProveedor(string ArticuloCodigo,string ArticuloDescripcion,string ArticuloCostoReposicion,string FamiliaNombre,string VAlmacen, string EAlmacen,
-                                    string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI,string ESarabiaI,
+        private void CreatNewRowProveedor(string ArticuloCodigo, string ArticuloDescripcion, string ArticuloCostoReposicion, string FamiliaNombre, string VAlmacen, string EAlmacen,
+                                    string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI, string ESarabiaI,
                                     string VSarabiaII, string ESarabiaII, string VPaseo, string EPaseo, string VEstocolmo, string EEstocolmo, string VCostaRica, string ECostaRica,
                                     string VCalzada, string ECalzada, string VLombardia, string ELombardia, string VNvaItalia, string ENvaItalia, string VApatzingan, string EApatzingan,
-                                    string VReyes, string EReyes,string TotalV,string TotalE, string TPedido,string PSugerido,string PIdeal)
+                                    string VReyes, string EReyes, string TotalV, string TotalE, string TPedido, string PSugerido, string PIdeal)
         {
             dtgValVentaExistencia.AddNewRow();
 
@@ -793,7 +793,7 @@ namespace BSC_Reportes
             int TVentas = 0;
             int TExistencia = 0;
             pbProgreso.Properties.Maximum = datos.Rows.Count;
-            
+
             for (int x = 0; x < datos.Rows.Count; x++)
             {
                 pbProgreso.Position = x + 1;
@@ -876,11 +876,11 @@ namespace BSC_Reportes
                 TExistencia += Convert.ToInt32(vExisSarabiaII);
 
                 Decimal MesesPedido = 0;
-                if(rdbPeriodo.SelectedIndex==0)
+                if (rdbPeriodo.SelectedIndex == 0)
                 {
                     MesesPedido = Math.Round((Convert.ToDecimal(txtPeriodo.Text) / 30), 0);
                 }
-                else if(rdbPeriodo.SelectedIndex == 1)
+                else if (rdbPeriodo.SelectedIndex == 1)
                 {
                     MesesPedido = Convert.ToDecimal(txtPeriodo.Text);
                 }
@@ -890,9 +890,9 @@ namespace BSC_Reportes
                 }
                 if (mesesT > 0)
                 {
-                    sugerido =Math.Round((Convert.ToDecimal(TVentas / mesesT)* MesesPedido)-TExistencia, 0);
+                    sugerido = Math.Round((Convert.ToDecimal(TVentas / mesesT) * MesesPedido) - TExistencia, 0);
                     Ideal = Math.Round((Convert.ToDecimal(TVentas / mesesT) * MesesPedido), 0);
-                    if (sugerido<0)
+                    if (sugerido < 0)
                     {
                         sugerido = 0;
                     }
@@ -900,7 +900,7 @@ namespace BSC_Reportes
                 else
                 {
                     sugerido = Math.Round(((TVentas / 1) * MesesPedido) - TExistencia, 0);
-                    Ideal = Math.Round((Convert.ToDecimal(TVentas /1) * MesesPedido), 0);
+                    Ideal = Math.Round((Convert.ToDecimal(TVentas / 1) * MesesPedido), 0);
                     if (sugerido < 0)
                     {
                         sugerido = 0;
@@ -912,6 +912,31 @@ namespace BSC_Reportes
                                     , vTVentasPaseo, vExisPaseo, vTVentasEstocolmo, vExisEstocolmo, vTVentasCostaRica, vExisCostaRica
                                     , vTVentasCalzada, vExisCalzada, vTVentasLombardia, vExisLombardia, vTVentasNvaItalia, vExisNvaItalia
                                     , vTVentasApatzingan, vExisApatzingan, vTVentasLosReyes, vExisLosReyes, TVentas.ToString(), TExistencia.ToString(), "0", sugerido.ToString(), Ideal.ToString());
+            }
+        }
+
+        private void btnIgualar_Click(object sender, EventArgs e)
+        {
+            if (dtgValVentaExistencia.RowCount > 0)
+            {
+                DialogResult = XtraMessageBox.Show("¿Desea Igualar el pedido sugerido con el pedido Final?\nLos cambios no se podran revertir", "Igualar sugerido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
+                    for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
+                    {
+                        pbProgreso.Position = i + 1;
+                        Application.DoEvents();
+                        int xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
+                        string Sugerido = dtgValVentaExistencia.GetRowCellValue(xRow, "Column36").ToString();
+                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["Column37"], Sugerido);
+                    }
+                    
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Es necesario generar un pedido", "No Existe Pedido Generado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
     }
