@@ -73,12 +73,13 @@ namespace BSC_Reportes
         {
             try
             {
+                Crypto clsencripta = new Crypto();
                 foreach (int i in this.gridView1.GetSelectedRows())
                 {
                     DataRow row = this.gridView1.GetDataRow(i);
                     usuariosLogin.Text = row["UsuariosLogin"].ToString();
                     usuariosNombre.Text = row["UsuariosNombre"].ToString();
-                    usuariosPassword.Text = row["UsuariosPassword"].ToString();
+                    usuariosPassword.Text = clsencripta.Desencriptar(row["UsuariosPassword"].ToString());
                     if (row["UsuariosClase"].ToString()=="A")
                     {
                         checkadmin.Checked = true;
@@ -112,9 +113,10 @@ namespace BSC_Reportes
         private void guardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CLS_Usuarios_Insert UdpUsu = new CLS_Usuarios_Insert();
+            Crypto clsencripta = new Crypto();
             UdpUsu.UsuariosLogin = usuariosLogin.Text;
             UdpUsu.UsuariosNombre = usuariosNombre.Text;
-            UdpUsu.UsuariosPassword = usuariosPassword.Text;
+            UdpUsu.UsuariosPassword = clsencripta.Encriptar(usuariosPassword.Text);
             if (checkadmin.Checked == true)
             {
                 UdpUsu.UsuariosClase = "A";
@@ -172,6 +174,11 @@ namespace BSC_Reportes
                 actualizarGrid();
                 btninactivos.Caption = "Mostrar inactivos";
             }
+        }
+
+        private void btneliminar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

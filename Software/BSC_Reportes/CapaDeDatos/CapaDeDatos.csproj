@@ -101,6 +101,7 @@
     <Compile Include="SES_Reportes\CLS_Pedidos.cs" />
     <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
     <Compile Include="SES_Reportes\CLS_Usuarios.cs" />
+    <Compile Include="SES_Reportes\CLS_Usuarios_Delete.cs" />
     <Compile Include="SES_Reportes\CLS_Usuarios_Insert.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />

@@ -81,6 +81,7 @@
             this.usuariosLogin = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.checkactivo = new DevExpress.XtraEditors.CheckEdit();
+            this.btneliminar = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -120,9 +121,10 @@
             this.barLargeButtonItem6,
             this.barLargeButtonItem2,
             this.skinBarSubItem1,
-            this.btninactivos});
+            this.btninactivos,
+            this.btneliminar});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 60;
+            this.barManager1.MaxItemId = 61;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -138,6 +140,7 @@
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.guardar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btneliminar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btninactivos)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
@@ -368,6 +371,7 @@
             this.gridColumn5});
             this.gridView1.GridControl = this.grid;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // gridColumn1
             // 
@@ -489,6 +493,15 @@
             this.checkactivo.Size = new System.Drawing.Size(75, 19);
             this.checkactivo.TabIndex = 10;
             // 
+            // btneliminar
+            // 
+            this.btneliminar.Caption = "Eliminar Usuario";
+            this.btneliminar.Id = 60;
+            this.btneliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
+            this.btneliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btneliminar_ItemClick);
+            // 
             // Frm_Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,5 +577,6 @@
         private DevExpress.XtraEditors.CheckEdit checkactivo;
         private DevExpress.XtraBars.BarLargeButtonItem btninactivos;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraBars.BarLargeButtonItem btneliminar;
     }
 }
