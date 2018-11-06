@@ -913,6 +913,7 @@ namespace BSC_Reportes
                                     , vTVentasCalzada, vExisCalzada, vTVentasLombardia, vExisLombardia, vTVentasNvaItalia, vExisNvaItalia
                                     , vTVentasApatzingan, vExisApatzingan, vTVentasLosReyes, vExisLosReyes, TVentas.ToString(), TExistencia.ToString(), "0", sugerido.ToString(), Ideal.ToString());
             }
+            XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
         private void btnIgualar_Click(object sender, EventArgs e)
@@ -931,7 +932,7 @@ namespace BSC_Reportes
                         string Sugerido = dtgValVentaExistencia.GetRowCellValue(xRow, "Column36").ToString();
                         dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["Column37"], Sugerido);
                     }
-                    
+                    XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
             }
             else
