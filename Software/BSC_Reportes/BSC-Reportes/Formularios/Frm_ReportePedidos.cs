@@ -48,6 +48,9 @@ namespace BSC_Reportes
         public string vExisSarabiaI { get; private set; }
         public string vTVentasSarabiaII { get; private set; }
         public string vExisSarabiaII { get; private set; }
+        public decimal mesesT { get; private set; }
+        public decimal sugerido { get; private set; }
+        public decimal Ideal { get; private set; }
 
         public Frm_ReportePedidos()
         {
@@ -412,7 +415,7 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column35";
             column.AutoIncrement = false;
-            column.Caption = "TSugerido";
+            column.Caption = "Pedido Ideal";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -422,7 +425,17 @@ namespace BSC_Reportes
             column.DataType = typeof(Int32);
             column.ColumnName = "Column36";
             column.AutoIncrement = false;
-            column.Caption = "TPedido";
+            column.Caption = "Pedido Sugerido";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Column37";
+            column.AutoIncrement = false;
+            column.Caption = "Total Pedido";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -478,6 +491,7 @@ namespace BSC_Reportes
             dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
             gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             gridColumn3.DisplayFormat.FormatString = "$ ###,###0.00";
+            pbProgreso.Position = 0;
         }
         private void rdbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -529,31 +543,6 @@ namespace BSC_Reportes
         }
         private void ColumnsExistencia(Boolean Mostrar)
         {
-            gridColumn5.Visible = Mostrar;
-            gridColumn7.Visible = Mostrar;
-            gridColumn9.Visible = Mostrar;
-            gridColumn11.Visible = Mostrar;
-            gridColumn13.Visible = Mostrar;
-            gridColumn15.Visible = Mostrar;
-            gridColumn17.Visible = Mostrar;
-            gridColumn19.Visible = Mostrar;
-            gridColumn21.Visible = Mostrar;
-            gridColumn23.Visible = Mostrar;
-            gridColumn25.Visible = Mostrar;
-            gridColumn27.Visible = Mostrar;
-            gridColumn29.Visible = Mostrar;
-            gridColumn31.Visible = Mostrar;
-        }
-        private void ColumnsCosto(Boolean Mostrar)
-        {
-            gridColumn3.Visible = Mostrar;
-        }
-        private void ColumnsFamilia(Boolean Mostrar)
-        {
-            gridColumn4.Visible = Mostrar;
-        }
-        private void ColumnsVentas(Boolean Mostrar)
-        {
             gridColumn6.Visible = Mostrar;
             gridColumn8.Visible = Mostrar;
             gridColumn10.Visible = Mostrar;
@@ -567,6 +556,31 @@ namespace BSC_Reportes
             gridColumn26.Visible = Mostrar;
             gridColumn28.Visible = Mostrar;
             gridColumn30.Visible = Mostrar;
+            gridColumn32.Visible = Mostrar;
+        }
+        private void ColumnsCosto(Boolean Mostrar)
+        {
+            gridColumn3.Visible = Mostrar;
+        }
+        private void ColumnsFamilia(Boolean Mostrar)
+        {
+            gridColumn4.Visible = Mostrar;
+        }
+        private void ColumnsVentas(Boolean Mostrar)
+        {
+            gridColumn5.Visible = Mostrar;
+            gridColumn7.Visible = Mostrar;
+            gridColumn9.Visible = Mostrar;
+            gridColumn11.Visible = Mostrar;
+            gridColumn13.Visible = Mostrar;
+            gridColumn15.Visible = Mostrar;
+            gridColumn19.Visible = Mostrar;
+            gridColumn21.Visible = Mostrar;
+            gridColumn23.Visible = Mostrar;
+            gridColumn25.Visible = Mostrar;
+            gridColumn27.Visible = Mostrar;
+            gridColumn29.Visible = Mostrar;
+            gridColumn31.Visible = Mostrar;
         }
         private void chkVentas_CheckedChanged(object sender, EventArgs e)
         {
@@ -651,7 +665,7 @@ namespace BSC_Reportes
                                     string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI,string ESarabiaI,
                                     string VSarabiaII, string ESarabiaII, string VPaseo, string EPaseo, string VEstocolmo, string EEstocolmo, string VCostaRica, string ECostaRica,
                                     string VCalzada, string ECalzada, string VLombardia, string ELombardia, string VNvaItalia, string ENvaItalia, string VApatzingan, string EApatzingan,
-                                    string VReyes, string EReyes,string TotalV,string TotalE, string TPedido,string PSugerido)
+                                    string VReyes, string EReyes,string TotalV,string TotalE, string TPedido,string PSugerido,string PIdeal)
         {
             dtgValVentaExistencia.AddNewRow();
 
@@ -692,8 +706,9 @@ namespace BSC_Reportes
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column32"], EReyes);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column33"], TotalV);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column34"], TotalE);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column35"], PSugerido);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column36"], TPedido);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column35"], PIdeal);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column36"], PSugerido);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column37"], TPedido);
             }
         }
 
@@ -718,7 +733,9 @@ namespace BSC_Reportes
                                     CLS_Pedidos selped = new CLS_Pedidos();
                                     DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
                                     DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
-
+                                    TimeSpan diferencia = FFin.Subtract(FInicio);
+                                    int diasT = diferencia.Days;
+                                    mesesT = Math.Round((Convert.ToDecimal(diasT) / 30), 0);
                                     selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
                                     selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
                                     selped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
@@ -775,8 +792,12 @@ namespace BSC_Reportes
         {
             int TVentas = 0;
             int TExistencia = 0;
+            pbProgreso.Properties.Maximum = datos.Rows.Count;
+            
             for (int x = 0; x < datos.Rows.Count; x++)
             {
+                pbProgreso.Position = x + 1;
+                Application.DoEvents();
                 TVentas = 0;
                 TExistencia = 0;
                 vArticuloCodigo = datos.Rows[x]["ArticuloCodigo"].ToString();
@@ -854,11 +875,43 @@ namespace BSC_Reportes
                 vExisSarabiaII = datos.Rows[x]["ExisSarabiaII"].ToString();
                 TExistencia += Convert.ToInt32(vExisSarabiaII);
 
+                Decimal MesesPedido = 0;
+                if(rdbPeriodo.SelectedIndex==0)
+                {
+                    MesesPedido = Math.Round((Convert.ToDecimal(txtPeriodo.Text) / 30), 0);
+                }
+                else if(rdbPeriodo.SelectedIndex == 1)
+                {
+                    MesesPedido = Convert.ToDecimal(txtPeriodo.Text);
+                }
+                else if (rdbPeriodo.SelectedIndex == 2)
+                {
+                    MesesPedido = Convert.ToDecimal(txtPeriodo.Text) * 12;
+                }
+                if (mesesT > 0)
+                {
+                    sugerido =Math.Round((Convert.ToDecimal(TVentas / mesesT)* MesesPedido)-TExistencia, 0);
+                    Ideal = Math.Round((Convert.ToDecimal(TVentas / mesesT) * MesesPedido), 0);
+                    if (sugerido<0)
+                    {
+                        sugerido = 0;
+                    }
+                }
+                else
+                {
+                    sugerido = Math.Round(((TVentas / 1) * MesesPedido) - TExistencia, 0);
+                    Ideal = Math.Round((Convert.ToDecimal(TVentas /1) * MesesPedido), 0);
+                    if (sugerido < 0)
+                    {
+                        sugerido = 0;
+                    }
+                }
+
                 CreatNewRowProveedor(vArticuloCodigo, vArticuloDescripcion, vArticuloCostoReposicion, vFamiliaNombre, vTVentasAlmacen, vExisAlmacen, vTVentasCentro, vExisCentro, vTVentasMorelos, vExisMorelos
                                     , vTVentasFcoVilla, vExisFcoVilla, vTVentasSarabiaI, vExisSarabiaI, vTVentasSarabiaII, vExisSarabiaII
                                     , vTVentasPaseo, vExisPaseo, vTVentasEstocolmo, vExisEstocolmo, vTVentasCostaRica, vExisCostaRica
                                     , vTVentasCalzada, vExisCalzada, vTVentasLombardia, vExisLombardia, vTVentasNvaItalia, vExisNvaItalia
-                                    , vTVentasApatzingan, vExisApatzingan, vTVentasLosReyes, vExisLosReyes, TVentas.ToString(), TExistencia.ToString(), "0", "0");
+                                    , vTVentasApatzingan, vExisApatzingan, vTVentasLosReyes, vExisLosReyes, TVentas.ToString(), TExistencia.ToString(), "0", sugerido.ToString(), Ideal.ToString());
             }
         }
     }

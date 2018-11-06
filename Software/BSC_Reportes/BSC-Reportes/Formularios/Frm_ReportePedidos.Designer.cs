@@ -30,18 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
+            this.chkCosto = new DevExpress.XtraEditors.CheckEdit();
+            this.chkVentas = new DevExpress.XtraEditors.CheckEdit();
+            this.chkExistencia = new DevExpress.XtraEditors.CheckEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtPeriodo = new DevExpress.XtraEditors.TextEdit();
             this.rdbPeriodo = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.chkExistencia = new DevExpress.XtraEditors.CheckEdit();
-            this.chkVentas = new DevExpress.XtraEditors.CheckEdit();
             this.rdbTipo = new DevExpress.XtraEditors.RadioGroup();
             this.dtFin = new DevExpress.XtraEditors.DateEdit();
             this.dtInicio = new DevExpress.XtraEditors.DateEdit();
@@ -123,23 +128,26 @@
             this.gridColumn33 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn34 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.chkCosto = new DevExpress.XtraEditors.CheckEdit();
-            this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
+            this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCosto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVentas.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkExistencia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbPeriodo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkExistencia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkVentas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).BeginInit();
@@ -153,10 +161,6 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkCosto.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -166,11 +170,13 @@
             this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(872, 157);
+            this.panelControl1.Size = new System.Drawing.Size(872, 183);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.pbProgreso);
+            this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.groupControl3);
             this.groupControl1.Controls.Add(this.groupControl2);
             this.groupControl1.Controls.Add(this.labelControl4);
@@ -186,15 +192,80 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(848, 133);
+            this.groupControl1.Size = new System.Drawing.Size(848, 159);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // pbProgreso
+            // 
+            this.pbProgreso.EditValue = 50;
+            this.pbProgreso.Location = new System.Drawing.Point(105, 129);
+            this.pbProgreso.Name = "pbProgreso";
+            this.pbProgreso.Properties.ShowTitle = true;
+            this.pbProgreso.Size = new System.Drawing.Size(291, 18);
+            this.pbProgreso.TabIndex = 17;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(31, 132);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(47, 13);
+            this.labelControl5.TabIndex = 16;
+            this.labelControl5.Text = "Procceso:";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.chkFamilia);
+            this.groupControl3.Controls.Add(this.chkCosto);
+            this.groupControl3.Controls.Add(this.chkVentas);
+            this.groupControl3.Controls.Add(this.chkExistencia);
+            this.groupControl3.Location = new System.Drawing.Point(414, 38);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(188, 100);
+            this.groupControl3.TabIndex = 14;
+            this.groupControl3.Text = "Columnas";
+            // 
+            // chkFamilia
+            // 
+            this.chkFamilia.Location = new System.Drawing.Point(99, 63);
+            this.chkFamilia.Name = "chkFamilia";
+            this.chkFamilia.Properties.Caption = "Familia.";
+            this.chkFamilia.Size = new System.Drawing.Size(75, 19);
+            this.chkFamilia.TabIndex = 12;
+            this.chkFamilia.CheckedChanged += new System.EventHandler(this.chkFamilia_CheckedChanged);
+            // 
+            // chkCosto
+            // 
+            this.chkCosto.Location = new System.Drawing.Point(9, 63);
+            this.chkCosto.Name = "chkCosto";
+            this.chkCosto.Properties.Caption = "Costo R.";
+            this.chkCosto.Size = new System.Drawing.Size(75, 19);
+            this.chkCosto.TabIndex = 11;
+            this.chkCosto.CheckedChanged += new System.EventHandler(this.chkCosto_CheckedChanged);
+            // 
+            // chkVentas
+            // 
+            this.chkVentas.Location = new System.Drawing.Point(9, 34);
+            this.chkVentas.Name = "chkVentas";
+            this.chkVentas.Properties.Caption = "Venta";
+            this.chkVentas.Size = new System.Drawing.Size(75, 19);
+            this.chkVentas.TabIndex = 9;
+            this.chkVentas.CheckedChanged += new System.EventHandler(this.chkVentas_CheckedChanged);
+            // 
+            // chkExistencia
+            // 
+            this.chkExistencia.Location = new System.Drawing.Point(99, 34);
+            this.chkExistencia.Name = "chkExistencia";
+            this.chkExistencia.Properties.Caption = "Existencia";
+            this.chkExistencia.Size = new System.Drawing.Size(75, 19);
+            this.chkExistencia.TabIndex = 10;
+            this.chkExistencia.CheckedChanged += new System.EventHandler(this.chkExistencia_CheckedChanged);
             // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.txtPeriodo);
             this.groupControl2.Controls.Add(this.rdbPeriodo);
-            this.groupControl2.Location = new System.Drawing.Point(596, 26);
+            this.groupControl2.Location = new System.Drawing.Point(608, 37);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(158, 100);
             this.groupControl2.TabIndex = 13;
@@ -241,24 +312,6 @@
             this.textEdit1.Properties.ReadOnly = true;
             this.textEdit1.Size = new System.Drawing.Size(43, 20);
             this.textEdit1.TabIndex = 11;
-            // 
-            // chkExistencia
-            // 
-            this.chkExistencia.Location = new System.Drawing.Point(99, 34);
-            this.chkExistencia.Name = "chkExistencia";
-            this.chkExistencia.Properties.Caption = "Existencia";
-            this.chkExistencia.Size = new System.Drawing.Size(75, 19);
-            this.chkExistencia.TabIndex = 10;
-            this.chkExistencia.CheckedChanged += new System.EventHandler(this.chkExistencia_CheckedChanged);
-            // 
-            // chkVentas
-            // 
-            this.chkVentas.Location = new System.Drawing.Point(9, 34);
-            this.chkVentas.Name = "chkVentas";
-            this.chkVentas.Properties.Caption = "Venta";
-            this.chkVentas.Size = new System.Drawing.Size(75, 19);
-            this.chkVentas.TabIndex = 9;
-            this.chkVentas.CheckedChanged += new System.EventHandler(this.chkVentas_CheckedChanged);
             // 
             // rdbTipo
             // 
@@ -534,10 +587,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(67, 157);
+            this.panelControl2.Location = new System.Drawing.Point(67, 183);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(872, 414);
+            this.panelControl2.Size = new System.Drawing.Size(872, 388);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -546,7 +599,7 @@
             this.dtgVentaExistencia.Location = new System.Drawing.Point(12, 12);
             this.dtgVentaExistencia.MainView = this.dtgValVentaExistencia;
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 390);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 364);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -607,7 +660,8 @@
             this.gridColumn33,
             this.gridColumn34,
             this.gridColumn35,
-            this.gridColumn36});
+            this.gridColumn36,
+            this.gridColumn37});
             this.dtgValVentaExistencia.GridControl = this.dtgVentaExistencia;
             this.dtgValVentaExistencia.Name = "dtgValVentaExistencia";
             this.dtgValVentaExistencia.OptionsFind.AlwaysVisible = true;
@@ -688,7 +742,7 @@
             // 
             this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.Caption = "VAlm";
+            this.gridColumn5.Caption = "V";
             this.gridColumn5.FieldName = "Column5";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
@@ -699,9 +753,10 @@
             // 
             this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn6.Caption = "EAlm";
+            this.gridColumn6.Caption = "E";
             this.gridColumn6.FieldName = "Column6";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.Width = 47;
             // 
@@ -720,7 +775,7 @@
             // 
             this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn7.Caption = "VCen";
+            this.gridColumn7.Caption = "V";
             this.gridColumn7.FieldName = "Column7";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
@@ -731,7 +786,7 @@
             // 
             this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn8.Caption = "ECen";
+            this.gridColumn8.Caption = "E";
             this.gridColumn8.FieldName = "Column8";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
@@ -753,7 +808,7 @@
             // 
             this.gridColumn9.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn9.Caption = "VMor";
+            this.gridColumn9.Caption = "V";
             this.gridColumn9.FieldName = "Column9";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
@@ -764,7 +819,7 @@
             // 
             this.gridColumn10.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn10.Caption = "EMor";
+            this.gridColumn10.Caption = "E";
             this.gridColumn10.FieldName = "Column10";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
@@ -786,7 +841,7 @@
             // 
             this.gridColumn12.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn12.Caption = "EFco";
+            this.gridColumn12.Caption = "E";
             this.gridColumn12.FieldName = "Column12";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
@@ -797,7 +852,7 @@
             // 
             this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn11.Caption = "VFco";
+            this.gridColumn11.Caption = "V";
             this.gridColumn11.FieldName = "Column11";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
@@ -819,7 +874,7 @@
             // 
             this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn13.Caption = "VS1";
+            this.gridColumn13.Caption = "V";
             this.gridColumn13.FieldName = "Column13";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
@@ -830,7 +885,7 @@
             // 
             this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn14.Caption = "ES1";
+            this.gridColumn14.Caption = "E";
             this.gridColumn14.FieldName = "Column14";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
@@ -852,7 +907,7 @@
             // 
             this.gridColumn15.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn15.Caption = "VS2";
+            this.gridColumn15.Caption = "V";
             this.gridColumn15.FieldName = "Column15";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
@@ -863,7 +918,7 @@
             // 
             this.gridColumn16.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn16.Caption = "ES2";
+            this.gridColumn16.Caption = "E";
             this.gridColumn16.FieldName = "Column16";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
@@ -885,7 +940,7 @@
             // 
             this.gridColumn17.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn17.Caption = "VPas";
+            this.gridColumn17.Caption = "V";
             this.gridColumn17.FieldName = "Column17";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
@@ -896,7 +951,7 @@
             // 
             this.gridColumn18.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn18.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn18.Caption = "EPas";
+            this.gridColumn18.Caption = "E";
             this.gridColumn18.FieldName = "Column18";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
@@ -918,7 +973,7 @@
             // 
             this.gridColumn19.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn19.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn19.Caption = "VEst";
+            this.gridColumn19.Caption = "V";
             this.gridColumn19.FieldName = "Column19";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowEdit = false;
@@ -929,7 +984,7 @@
             // 
             this.gridColumn20.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn20.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn20.Caption = "EEst";
+            this.gridColumn20.Caption = "E";
             this.gridColumn20.FieldName = "Column20";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowEdit = false;
@@ -951,7 +1006,7 @@
             // 
             this.gridColumn21.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn21.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn21.Caption = "VCos";
+            this.gridColumn21.Caption = "V";
             this.gridColumn21.FieldName = "Column21";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.AllowEdit = false;
@@ -962,7 +1017,7 @@
             // 
             this.gridColumn22.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn22.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn22.Caption = "ECos";
+            this.gridColumn22.Caption = "E";
             this.gridColumn22.FieldName = "Column22";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowEdit = false;
@@ -984,7 +1039,7 @@
             // 
             this.gridColumn23.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn23.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn23.Caption = "VCal";
+            this.gridColumn23.Caption = "V";
             this.gridColumn23.FieldName = "Column23";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;
@@ -995,7 +1050,7 @@
             // 
             this.gridColumn24.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn24.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn24.Caption = "ECal";
+            this.gridColumn24.Caption = "E";
             this.gridColumn24.FieldName = "Column24";
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.OptionsColumn.AllowEdit = false;
@@ -1017,7 +1072,7 @@
             // 
             this.gridColumn25.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn25.Caption = "VLom";
+            this.gridColumn25.Caption = "V";
             this.gridColumn25.FieldName = "Column25";
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.OptionsColumn.AllowEdit = false;
@@ -1028,7 +1083,7 @@
             // 
             this.gridColumn26.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn26.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn26.Caption = "ELom";
+            this.gridColumn26.Caption = "E";
             this.gridColumn26.FieldName = "Column26";
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.OptionsColumn.AllowEdit = false;
@@ -1050,7 +1105,7 @@
             // 
             this.gridColumn27.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn27.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn27.Caption = "VNva";
+            this.gridColumn27.Caption = "V";
             this.gridColumn27.FieldName = "Column27";
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.OptionsColumn.AllowEdit = false;
@@ -1061,7 +1116,7 @@
             // 
             this.gridColumn28.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn28.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn28.Caption = "ENva";
+            this.gridColumn28.Caption = "E";
             this.gridColumn28.FieldName = "Column28";
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.OptionsColumn.AllowEdit = false;
@@ -1083,7 +1138,7 @@
             // 
             this.gridColumn29.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn29.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn29.Caption = "VAp";
+            this.gridColumn29.Caption = "V";
             this.gridColumn29.FieldName = "Column29";
             this.gridColumn29.Name = "gridColumn29";
             this.gridColumn29.OptionsColumn.AllowEdit = false;
@@ -1094,7 +1149,7 @@
             // 
             this.gridColumn30.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn30.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn30.Caption = "EAp";
+            this.gridColumn30.Caption = "E";
             this.gridColumn30.FieldName = "Column30";
             this.gridColumn30.Name = "gridColumn30";
             this.gridColumn30.OptionsColumn.AllowEdit = false;
@@ -1116,7 +1171,7 @@
             // 
             this.gridColumn31.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn31.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn31.Caption = "VLR";
+            this.gridColumn31.Caption = "V";
             this.gridColumn31.FieldName = "Column31";
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.OptionsColumn.AllowEdit = false;
@@ -1127,7 +1182,7 @@
             // 
             this.gridColumn32.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn32.Caption = "ELR";
+            this.gridColumn32.Caption = "E";
             this.gridColumn32.FieldName = "Column32";
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.OptionsColumn.AllowEdit = false;
@@ -1147,17 +1202,23 @@
             // 
             // gridColumn33
             // 
-            this.gridColumn33.Caption = "TotalV";
+            this.gridColumn33.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn33.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn33.Caption = "Total Venta";
             this.gridColumn33.FieldName = "Column33";
             this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.OptionsColumn.AllowEdit = false;
             this.gridColumn33.Visible = true;
             this.gridColumn33.Width = 72;
             // 
             // gridColumn34
             // 
-            this.gridColumn34.Caption = "ToTalE";
+            this.gridColumn34.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn34.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn34.Caption = "ToTal Existencia";
             this.gridColumn34.FieldName = "Column34";
             this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.OptionsColumn.AllowEdit = false;
             this.gridColumn34.Visible = true;
             this.gridColumn34.Width = 72;
             // 
@@ -1166,27 +1227,32 @@
             this.gridBand17.AppearanceHeader.Options.UseTextOptions = true;
             this.gridBand17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridBand17.Caption = "Orden";
-            this.gridBand17.Columns.Add(this.gridColumn35);
             this.gridBand17.Columns.Add(this.gridColumn36);
+            this.gridBand17.Columns.Add(this.gridColumn37);
             this.gridBand17.Name = "gridBand17";
             this.gridBand17.VisibleIndex = 16;
             this.gridBand17.Width = 144;
             // 
-            // gridColumn35
-            // 
-            this.gridColumn35.Caption = "PSugerido";
-            this.gridColumn35.FieldName = "Column35";
-            this.gridColumn35.Name = "gridColumn35";
-            this.gridColumn35.Visible = true;
-            this.gridColumn35.Width = 72;
-            // 
             // gridColumn36
             // 
-            this.gridColumn36.Caption = "TPedido";
-            this.gridColumn36.FieldName = "Column36";
+            this.gridColumn36.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn36.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn36.Caption = "Pedido Sugerido";
+            this.gridColumn36.FieldName = "Column35";
             this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.OptionsColumn.AllowEdit = false;
             this.gridColumn36.Visible = true;
             this.gridColumn36.Width = 72;
+            // 
+            // gridColumn37
+            // 
+            this.gridColumn37.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn37.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn37.Caption = "Pedido";
+            this.gridColumn37.FieldName = "Column36";
+            this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.Visible = true;
+            this.gridColumn37.Width = 72;
             // 
             // barLargeButtonItem2
             // 
@@ -1195,40 +1261,17 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem2.Text = "Seleccionar";
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
-            // groupControl3
+            // gridColumn35
             // 
-            this.groupControl3.Controls.Add(this.chkFamilia);
-            this.groupControl3.Controls.Add(this.chkCosto);
-            this.groupControl3.Controls.Add(this.chkVentas);
-            this.groupControl3.Controls.Add(this.chkExistencia);
-            this.groupControl3.Location = new System.Drawing.Point(402, 27);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(188, 100);
-            this.groupControl3.TabIndex = 14;
-            this.groupControl3.Text = "Columnas";
-            // 
-            // chkCosto
-            // 
-            this.chkCosto.Location = new System.Drawing.Point(9, 63);
-            this.chkCosto.Name = "chkCosto";
-            this.chkCosto.Properties.Caption = "Costo R.";
-            this.chkCosto.Size = new System.Drawing.Size(75, 19);
-            this.chkCosto.TabIndex = 11;
-            this.chkCosto.CheckedChanged += new System.EventHandler(this.chkCosto_CheckedChanged);
-            // 
-            // chkFamilia
-            // 
-            this.chkFamilia.Location = new System.Drawing.Point(99, 63);
-            this.chkFamilia.Name = "chkFamilia";
-            this.chkFamilia.Properties.Caption = "Familia.";
-            this.chkFamilia.Size = new System.Drawing.Size(75, 19);
-            this.chkFamilia.TabIndex = 12;
-            this.chkFamilia.CheckedChanged += new System.EventHandler(this.chkFamilia_CheckedChanged);
+            this.gridColumn35.Caption = "Pedido Ideal";
+            this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.OptionsColumn.AllowEdit = false;
+            this.gridColumn35.Visible = true;
             // 
             // Frm_ReportePedidos
             // 
@@ -1251,13 +1294,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCosto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVentas.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkExistencia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbPeriodo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkExistencia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkVentas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbTipo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).EndInit();
@@ -1271,10 +1319,6 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkCosto.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1352,8 +1396,8 @@
         private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem4;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn33;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn34;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn35;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn36;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn37;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
@@ -1379,5 +1423,8 @@
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.CheckEdit chkFamilia;
         private DevExpress.XtraEditors.CheckEdit chkCosto;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn35;
     }
 }
