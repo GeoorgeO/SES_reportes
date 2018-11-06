@@ -103,5 +103,12 @@ namespace BSC_Reportes
             MSRegistro RegOut = new MSRegistro();
             //SkinForm.LookAndFeel.SetSkinStyle(RegOut.GetSetting("ConexionSQL", "Sking"));
         }
+
+        private void Frm_Login_Shown(object sender, EventArgs e)
+        {
+            txtUser.Focus();
+            MSRegistro RegOut = new MSRegistro();
+            SkinForm.LookAndFeel.SetSkinStyle(RegOut.GetSetting("ConexionSQL", "Sking"));
+        }
     }
 }
