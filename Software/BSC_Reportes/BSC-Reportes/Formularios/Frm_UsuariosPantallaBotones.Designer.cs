@@ -75,6 +75,11 @@
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.barLargeButtonItem7 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -89,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -113,13 +119,17 @@
             this.gridControl1.Location = new System.Drawing.Point(7, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(452, 220);
+            this.gridControl1.Size = new System.Drawing.Size(452, 203);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -150,9 +160,10 @@
             this.skinBarSubItem1,
             this.btninactivos,
             this.btneliminar,
-            this.barLargeButtonItem3});
+            this.barLargeButtonItem3,
+            this.barLargeButtonItem7});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 62;
+            this.barManager1.MaxItemId = 63;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -167,7 +178,8 @@
             this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.guardar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem7)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
             this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -377,17 +389,17 @@
             this.panelControl1.Location = new System.Drawing.Point(58, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl1.Size = new System.Drawing.Size(480, 105);
+            this.panelControl1.Size = new System.Drawing.Size(480, 122);
             this.panelControl1.TabIndex = 9;
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.groupControl2);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(58, 105);
+            this.panelControl2.Location = new System.Drawing.Point(58, 122);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(480, 271);
+            this.panelControl2.Size = new System.Drawing.Size(480, 254);
             this.panelControl2.TabIndex = 10;
             // 
             // barLargeButtonItem3
@@ -400,6 +412,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.checkEdit1);
             this.groupControl1.Controls.Add(this.textEdit1);
             this.groupControl1.Controls.Add(this.lookUpEdit1);
             this.groupControl1.Controls.Add(this.labelControl1);
@@ -407,7 +420,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(7, 7);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(466, 91);
+            this.groupControl1.Size = new System.Drawing.Size(466, 108);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Config Perfil";
             // 
@@ -428,7 +441,7 @@
             this.groupControl2.Location = new System.Drawing.Point(7, 7);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Padding = new System.Windows.Forms.Padding(5, 10, 5, 5);
-            this.groupControl2.Size = new System.Drawing.Size(466, 257);
+            this.groupControl2.Size = new System.Drawing.Size(466, 240);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Botones";
             // 
@@ -439,6 +452,44 @@
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(198, 20);
             this.textEdit1.TabIndex = 4;
+            // 
+            // barLargeButtonItem7
+            // 
+            this.barLargeButtonItem7.Caption = "Limpiar";
+            this.barLargeButtonItem7.Id = 62;
+            this.barLargeButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem7.ImageOptions.Image")));
+            this.barLargeButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem7.ImageOptions.LargeImage")));
+            this.barLargeButtonItem7.Name = "barLargeButtonItem7";
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(104, 81);
+            this.checkEdit1.MenuManager = this.barManager1;
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "Seleccionar Todos";
+            this.checkEdit1.Size = new System.Drawing.Size(130, 19);
+            this.checkEdit1.TabIndex = 5;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "BotonId";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Nombre Boton";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Asignado";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
             // 
             // Frm_UsuariosPantallaBotones
             // 
@@ -468,6 +519,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -509,5 +561,10 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem7;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
     }
 }
