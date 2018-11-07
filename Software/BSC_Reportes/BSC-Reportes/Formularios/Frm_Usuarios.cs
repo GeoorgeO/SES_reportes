@@ -117,7 +117,7 @@ namespace BSC_Reportes
 
         private void guardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            CLS_Usuarios_Insert UdpUsu = new CLS_Usuarios_Insert();
+            CLS_Usuarios UdpUsu = new CLS_Usuarios();
             Crypto clsencripta = new Crypto();
             UdpUsu.UsuariosLogin = usuariosLogin.Text;
             UdpUsu.UsuariosNombre = usuariosNombre.Text;
@@ -183,9 +183,9 @@ namespace BSC_Reportes
 
         private void btneliminar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            CLS_Usuarios_Delete DelUsu = new CLS_Usuarios_Delete();
+            CLS_Usuarios DelUsu = new CLS_Usuarios();
             DelUsu.UsuariosLogin = usuariosLogin.Text;
-            DelUsu.MtdeliminarUsuarios();
+            DelUsu.MtdEliminarUsuarios();
             if (DelUsu.Exito.ToString() == "True")
             {
                 if (DelUsu.Datos.Rows[0][0].ToString() == "0")

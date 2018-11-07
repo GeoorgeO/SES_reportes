@@ -658,6 +658,7 @@ namespace BSC_Reportes
                 }
                 catch (Exception ex)
                 {
+                    XtraMessageBox.Show(ex.Message);
                 }
             }
         }

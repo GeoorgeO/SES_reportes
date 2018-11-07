@@ -35,7 +35,7 @@ namespace BSC_Reportes
 
         public void revisaopciones()
         {
-            CLS_UsuariosPantallas clasePantallas = new CLS_UsuariosPantallas();
+            CLS_Usuarios clasePantallas = new CLS_Usuarios();
             clasePantallas.UsuariosLogin = UsuariosLogin;
             clasePantallas.MtdSeleccionarUsuariosPantallas();
             if (clasePantallas.Exito)
