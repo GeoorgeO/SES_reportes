@@ -29,23 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Usuarios));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.guardar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btneliminar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btninactivos = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
@@ -81,7 +82,8 @@
             this.usuariosLogin = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.checkactivo = new DevExpress.XtraEditors.CheckEdit();
-            this.btneliminar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -95,6 +97,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkactivo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -160,15 +165,15 @@
             this.guardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.Image")));
             this.guardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.LargeImage")));
             this.guardar.Name = "guardar";
-            toolTipTitleItem1.Text = "Guardar cambios";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Guarda los datos ingresados de usuario";
-            toolTipTitleItem2.LeftIndent = 6;
-            toolTipTitleItem2.Text = "Usuarios";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem2);
-            this.guardar.SuperTip = superToolTip1;
+            toolTipTitleItem9.Text = "Guardar cambios";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Guarda los datos ingresados de usuario";
+            toolTipTitleItem10.LeftIndent = 6;
+            toolTipTitleItem10.Text = "Usuarios";
+            superToolTip5.Items.Add(toolTipTitleItem9);
+            superToolTip5.Items.Add(toolTipItem5);
+            superToolTip5.Items.Add(toolTipTitleItem10);
+            this.guardar.SuperTip = superToolTip5;
             this.guardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.guardar_ItemClick);
             // 
             // btnLimpiar
@@ -178,20 +183,29 @@
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
             this.btnLimpiar.Name = "btnLimpiar";
-            toolTipTitleItem3.Text = "Limpia pantalla";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
-            toolTipTitleItem4.LeftIndent = 6;
-            toolTipTitleItem4.Text = "Usuarios";
-            superToolTip2.Items.Add(toolTipTitleItem3);
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem4);
-            this.btnLimpiar.SuperTip = superToolTip2;
+            toolTipTitleItem7.Text = "Limpia pantalla";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
+            toolTipTitleItem8.LeftIndent = 6;
+            toolTipTitleItem8.Text = "Usuarios";
+            superToolTip4.Items.Add(toolTipTitleItem7);
+            superToolTip4.Items.Add(toolTipItem4);
+            superToolTip4.Items.Add(toolTipTitleItem8);
+            this.btnLimpiar.SuperTip = superToolTip4;
             this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Caption = "Eliminar";
+            this.btneliminar.Id = 60;
+            this.btneliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.Image")));
+            this.btneliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.LargeImage")));
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btneliminar_ItemClick);
             // 
             // btninactivos
             // 
-            this.btninactivos.Caption = "Mostrar inactivos";
+            this.btninactivos.Caption = " Mostrar \r\nInactivos";
             this.btninactivos.Id = 59;
             this.btninactivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.Image")));
             this.btninactivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.LargeImage")));
@@ -240,7 +254,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(99, 419);
+            this.barDockControlLeft.Size = new System.Drawing.Size(61, 419);
             // 
             // barDockControlRight
             // 
@@ -322,18 +336,18 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
-            toolTipTitleItem5.Text = "Desactivar usuario";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Inhabilita usuarios para que ya no operen en el sistema";
-            toolTipTitleItem6.LeftIndent = 6;
-            toolTipTitleItem6.Text = "Usuarios";
-            superToolTip3.Items.Add(toolTipTitleItem5);
-            superToolTip3.Items.Add(toolTipItem3);
-            superToolTip3.Items.Add(toolTipTitleItem6);
-            this.barLargeButtonItem2.SuperTip = superToolTip3;
+            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
+            toolTipTitleItem11.Text = "Desactivar usuario";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Inhabilita usuarios para que ya no operen en el sistema";
+            toolTipTitleItem12.LeftIndent = 6;
+            toolTipTitleItem12.Text = "Usuarios";
+            superToolTip6.Items.Add(toolTipTitleItem11);
+            superToolTip6.Items.Add(toolTipItem6);
+            superToolTip6.Items.Add(toolTipTitleItem12);
+            this.barLargeButtonItem2.SuperTip = superToolTip6;
             // 
             // repositoryItemTextEdit1
             // 
@@ -343,10 +357,10 @@
             // 
             this.panelControl2.Controls.Add(this.grid);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(99, 120);
+            this.panelControl2.Location = new System.Drawing.Point(61, 120);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(577, 299);
+            this.panelControl2.Size = new System.Drawing.Size(615, 299);
             this.panelControl2.TabIndex = 14;
             // 
             // grid
@@ -355,7 +369,9 @@
             this.grid.Location = new System.Drawing.Point(7, 7);
             this.grid.MainView = this.gridView1;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(563, 285);
+            this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit2});
+            this.grid.Size = new System.Drawing.Size(601, 285);
             this.grid.TabIndex = 0;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -372,6 +388,7 @@
             this.gridView1.GridControl = this.grid;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
@@ -392,6 +409,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Contraseña";
+            this.gridColumn3.ColumnEdit = this.repositoryItemTextEdit2;
             this.gridColumn3.FieldName = "UsuariosPassword";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -415,7 +433,7 @@
             // 
             // checkadmin
             // 
-            this.checkadmin.Location = new System.Drawing.Point(280, 63);
+            this.checkadmin.Location = new System.Drawing.Point(202, 27);
             this.checkadmin.Name = "checkadmin";
             this.checkadmin.Properties.Caption = "Administrador";
             this.checkadmin.Size = new System.Drawing.Size(97, 19);
@@ -423,7 +441,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(9, 69);
+            this.labelControl3.Location = new System.Drawing.Point(12, 82);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(60, 13);
             this.labelControl3.TabIndex = 2;
@@ -431,7 +449,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(9, 43);
+            this.labelControl2.Location = new System.Drawing.Point(12, 56);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(41, 13);
             this.labelControl2.TabIndex = 1;
@@ -439,14 +457,14 @@
             // 
             // usuariosNombre
             // 
-            this.usuariosNombre.Location = new System.Drawing.Point(70, 35);
+            this.usuariosNombre.Location = new System.Drawing.Point(83, 52);
             this.usuariosNombre.Name = "usuariosNombre";
             this.usuariosNombre.Size = new System.Drawing.Size(307, 20);
             this.usuariosNombre.TabIndex = 5;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(10, 17);
+            this.labelControl1.Location = new System.Drawing.Point(12, 30);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(40, 13);
             this.labelControl1.TabIndex = 0;
@@ -454,7 +472,7 @@
             // 
             // usuariosPassword
             // 
-            this.usuariosPassword.Location = new System.Drawing.Point(70, 61);
+            this.usuariosPassword.Location = new System.Drawing.Point(83, 78);
             this.usuariosPassword.Name = "usuariosPassword";
             this.usuariosPassword.Properties.UseSystemPasswordChar = true;
             this.usuariosPassword.Size = new System.Drawing.Size(100, 20);
@@ -462,45 +480,52 @@
             // 
             // usuariosLogin
             // 
-            this.usuariosLogin.Location = new System.Drawing.Point(70, 9);
+            this.usuariosLogin.Location = new System.Drawing.Point(83, 26);
             this.usuariosLogin.Name = "usuariosLogin";
             this.usuariosLogin.Size = new System.Drawing.Size(100, 20);
             this.usuariosLogin.TabIndex = 4;
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.checkactivo);
-            this.panelControl1.Controls.Add(this.usuariosLogin);
-            this.panelControl1.Controls.Add(this.usuariosPassword);
-            this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.usuariosNombre);
-            this.panelControl1.Controls.Add(this.labelControl2);
-            this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.checkadmin);
+            this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(99, 0);
+            this.panelControl1.Location = new System.Drawing.Point(61, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl1.Size = new System.Drawing.Size(577, 120);
+            this.panelControl1.Size = new System.Drawing.Size(615, 120);
             this.panelControl1.TabIndex = 7;
             // 
             // checkactivo
             // 
-            this.checkactivo.Location = new System.Drawing.Point(70, 88);
+            this.checkactivo.Location = new System.Drawing.Point(202, 79);
             this.checkactivo.MenuManager = this.barManager1;
             this.checkactivo.Name = "checkactivo";
             this.checkactivo.Properties.Caption = "Activo";
-            this.checkactivo.Size = new System.Drawing.Size(75, 19);
+            this.checkactivo.Size = new System.Drawing.Size(57, 19);
             this.checkactivo.TabIndex = 10;
             // 
-            // btneliminar
+            // groupControl1
             // 
-            this.btneliminar.Caption = "Eliminar Usuario";
-            this.btneliminar.Id = 60;
-            this.btneliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
-            this.btneliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btneliminar_ItemClick);
+            this.groupControl1.Controls.Add(this.usuariosLogin);
+            this.groupControl1.Controls.Add(this.checkactivo);
+            this.groupControl1.Controls.Add(this.checkadmin);
+            this.groupControl1.Controls.Add(this.labelControl3);
+            this.groupControl1.Controls.Add(this.usuariosPassword);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.usuariosNombre);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(7, 7);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(601, 106);
+            this.groupControl1.TabIndex = 11;
+            this.groupControl1.Text = "Configuracion Usuarios";
+            // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            this.repositoryItemTextEdit2.PasswordChar = '*';
             // 
             // Frm_Usuarios
             // 
@@ -529,8 +554,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.usuariosLogin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkactivo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,5 +606,7 @@
         private DevExpress.XtraBars.BarLargeButtonItem btninactivos;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraBars.BarLargeButtonItem btneliminar;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
     }
 }

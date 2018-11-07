@@ -67,7 +67,7 @@ namespace BSC_Reportes
             actualizarGrid();
             
 
-            gridColumn3.Visible = false;
+            //gridColumn3.Visible = false;
             gridColumn1.OptionsColumn.AllowEdit = false;
             gridColumn2.OptionsColumn.AllowEdit = false;
             gridColumn4.OptionsColumn.AllowEdit = false;

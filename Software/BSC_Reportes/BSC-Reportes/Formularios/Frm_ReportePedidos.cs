@@ -442,7 +442,6 @@ namespace BSC_Reportes
             table.Columns.Add(column);
 
             dtgVentaExistencia.DataSource = table;
-
         }
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -454,10 +453,6 @@ namespace BSC_Reportes
             chkExistencia.Checked = true;
             rdbTipo.SelectedIndex = 0;
             dtgVentaExistencia.DataSource = null;
-        }
-        private void btnImportar_Click(object sender, EventArgs e)
-        {
-
         }
         private void txtProveedorId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -776,7 +771,6 @@ namespace BSC_Reportes
                 XtraMessageBox.Show("Existe Pedido pendiente con este proveedor./nNo se puede generar un nuevo pedido hasta no finalizar o eliminar este pedido");
             }
         }
-
         private bool ExistenPrePedidos(string vProveedorId)
         {
             Boolean Valor = false;
@@ -788,7 +782,6 @@ namespace BSC_Reportes
             }
             return Valor;
         }
-
         private void CargandoPedido(DataTable datos)
         {
             int TVentas = 0;
@@ -916,7 +909,6 @@ namespace BSC_Reportes
             }
             XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
-
         private void btnIgualar_Click(object sender, EventArgs e)
         {
             if (dtgValVentaExistencia.RowCount > 0)
