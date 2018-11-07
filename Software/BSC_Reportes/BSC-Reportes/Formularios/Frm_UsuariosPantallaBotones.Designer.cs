@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_UsuariosPantallaBotones));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -43,17 +42,12 @@
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.guardar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btneliminar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btninactivos = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -64,17 +58,23 @@
             this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
+            this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barLargeButtonItem4 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barLargeButtonItem5 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barLargeButtonItem6 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btninactivos = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btneliminar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
+            this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -83,49 +83,37 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(5, 14);
+            this.labelControl1.Location = new System.Drawing.Point(26, 32);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(40, 13);
+            this.labelControl1.Size = new System.Drawing.Size(68, 13);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Usuario:";
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(51, 14);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(222, 20);
-            this.comboBoxEdit1.TabIndex = 1;
+            this.labelControl1.Text = "Usuario Login:";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(5, 40);
+            this.labelControl2.Location = new System.Drawing.Point(26, 58);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(44, 13);
+            this.labelControl2.Size = new System.Drawing.Size(42, 13);
             this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "Ventana:";
-            // 
-            // comboBoxEdit2
-            // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(51, 40);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(222, 20);
-            this.comboBoxEdit2.TabIndex = 3;
+            this.labelControl2.Text = "Pantalla:";
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(2, 2);
+            this.gridControl1.Location = new System.Drawing.Point(7, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(478, 303);
+            this.gridControl1.Size = new System.Drawing.Size(452, 220);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -134,6 +122,7 @@
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // barManager1
             // 
@@ -160,9 +149,10 @@
             this.barLargeButtonItem2,
             this.skinBarSubItem1,
             this.btninactivos,
-            this.btneliminar});
+            this.btneliminar,
+            this.barLargeButtonItem3});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 61;
+            this.barManager1.MaxItemId = 62;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -176,7 +166,8 @@
             this.bIconos.FloatLocation = new System.Drawing.Point(42, 184);
             this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.guardar)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.guardar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem3)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
             this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -204,39 +195,6 @@
             superToolTip1.Items.Add(toolTipItem1);
             superToolTip1.Items.Add(toolTipTitleItem2);
             this.guardar.SuperTip = superToolTip1;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Caption = "Limpiar";
-            this.btnLimpiar.Id = 50;
-            this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
-            this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
-            this.btnLimpiar.Name = "btnLimpiar";
-            toolTipTitleItem3.Text = "Limpia pantalla";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
-            toolTipTitleItem4.LeftIndent = 6;
-            toolTipTitleItem4.Text = "Usuarios";
-            superToolTip2.Items.Add(toolTipTitleItem3);
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem4);
-            this.btnLimpiar.SuperTip = superToolTip2;
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.Caption = "Eliminar";
-            this.btneliminar.Id = 60;
-            this.btneliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.Image")));
-            this.btneliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.LargeImage")));
-            this.btneliminar.Name = "btneliminar";
-            // 
-            // btninactivos
-            // 
-            this.btninactivos.Caption = " Mostrar \r\nInactivos";
-            this.btninactivos.Id = 59;
-            this.btninactivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.Image")));
-            this.btninactivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.LargeImage")));
-            this.btninactivos.Name = "btninactivos";
             // 
             // bEstado
             // 
@@ -280,7 +238,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(56, 376);
+            this.barDockControlLeft.Size = new System.Drawing.Size(58, 376);
             // 
             // barDockControlRight
             // 
@@ -314,6 +272,23 @@
             this.lblProveedor.Caption = "Proveedores:";
             this.lblProveedor.Id = 48;
             this.lblProveedor.Name = "lblProveedor";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Caption = "Limpiar";
+            this.btnLimpiar.Id = 50;
+            this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
+            this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
+            this.btnLimpiar.Name = "btnLimpiar";
+            toolTipTitleItem3.Text = "Limpia pantalla";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
+            toolTipTitleItem4.LeftIndent = 6;
+            toolTipTitleItem4.Text = "Usuarios";
+            superToolTip2.Items.Add(toolTipTitleItem3);
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem4);
+            this.btnLimpiar.SuperTip = superToolTip2;
             // 
             // btnFolios
             // 
@@ -375,30 +350,95 @@
             superToolTip3.Items.Add(toolTipTitleItem6);
             this.barLargeButtonItem2.SuperTip = superToolTip3;
             // 
+            // btninactivos
+            // 
+            this.btninactivos.Caption = " Mostrar \r\nInactivos";
+            this.btninactivos.Id = 59;
+            this.btninactivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.Image")));
+            this.btninactivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.LargeImage")));
+            this.btninactivos.Name = "btninactivos";
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Caption = "Eliminar";
+            this.btneliminar.Id = 60;
+            this.btneliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.Image")));
+            this.btneliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.LargeImage")));
+            this.btneliminar.Name = "btneliminar";
+            // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.comboBoxEdit1);
-            this.panelControl1.Controls.Add(this.comboBoxEdit2);
-            this.panelControl1.Controls.Add(this.labelControl2);
+            this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(56, 0);
+            this.panelControl1.Location = new System.Drawing.Point(58, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(482, 69);
+            this.panelControl1.Padding = new System.Windows.Forms.Padding(5);
+            this.panelControl1.Size = new System.Drawing.Size(480, 105);
             this.panelControl1.TabIndex = 9;
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.gridControl1);
+            this.panelControl2.Controls.Add(this.groupControl2);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(56, 69);
+            this.panelControl2.Location = new System.Drawing.Point(58, 105);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(482, 307);
+            this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
+            this.panelControl2.Size = new System.Drawing.Size(480, 271);
             this.panelControl2.TabIndex = 10;
+            // 
+            // barLargeButtonItem3
+            // 
+            this.barLargeButtonItem3.Caption = "Agregar \r\nUsuarios";
+            this.barLargeButtonItem3.Id = 61;
+            this.barLargeButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
+            this.barLargeButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
+            this.barLargeButtonItem3.Name = "barLargeButtonItem3";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.lookUpEdit1);
+            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(7, 7);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(466, 91);
+            this.groupControl1.TabIndex = 4;
+            this.groupControl1.Text = "Config Perfil";
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Location = new System.Drawing.Point(104, 54);
+            this.lookUpEdit1.MenuManager = this.barManager1;
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Size = new System.Drawing.Size(198, 20);
+            this.lookUpEdit1.TabIndex = 3;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(7, 7);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Padding = new System.Windows.Forms.Padding(5, 10, 5, 5);
+            this.groupControl2.Size = new System.Drawing.Size(466, 257);
+            this.groupControl2.TabIndex = 5;
+            this.groupControl2.Text = "Botones";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(104, 28);
+            this.textEdit1.MenuManager = this.barManager1;
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(198, 20);
+            this.textEdit1.TabIndex = 4;
             // 
             // Frm_UsuariosPantallaBotones
             // 
@@ -413,17 +453,21 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Frm_UsuariosPantallaBotones";
             this.Text = "Frm_UsuariosPantallaBotones";
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,9 +476,7 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         public DevExpress.XtraBars.BarManager barManager1;
@@ -462,5 +504,10 @@
         private DevExpress.XtraBars.BarLargeButtonItem btninactivos;
         private DevExpress.XtraBars.BarLargeButtonItem btneliminar;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem3;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }
 }
