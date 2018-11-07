@@ -37,6 +37,11 @@ namespace BSC_Reportes
                 {
                     grid.DataSource = selpro.Datos;
                 }
+                else
+                {
+                    grid.DataSource = null;
+                }
+                
             }
             else
             {
@@ -178,6 +183,23 @@ namespace BSC_Reportes
 
         private void btneliminar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            CLS_Usuarios_Delete DelUsu = new CLS_Usuarios_Delete();
+            DelUsu.UsuariosLogin = usuariosLogin.Text;
+            DelUsu.MtdeliminarUsuarios();
+            if (DelUsu.Exito.ToString() == "True")
+            {
+                if (DelUsu.Datos.Rows[0][0].ToString() == "0")
+                {
+                    MessageBox.Show("Ya no es posible Eliminar el usuario, este ya cuenta con registros en el sistema, Si deseas lo puedes inhabilitar desmarcando la opcion 'Activo' .", "Aviso");
+                }
+            }
+            else
+            {
+
+            }
+            actualizarGrid();
+            usuariosLogin.Enabled = true;
+            nuevo = 1;
 
         }
     }

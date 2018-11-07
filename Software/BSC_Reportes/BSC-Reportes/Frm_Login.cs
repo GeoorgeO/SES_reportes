@@ -36,20 +36,30 @@ namespace BSC_Reportes
             {
                 if (txtUser.Text != string.Empty && txtPass.Text != string.Empty)
                 {
-                    SEG_Login sLogin = new SEG_Login() { c_codigo_usu = txtUser.Text, v_passwo_usu = txtPass.Text };
+                    Crypto claseencripta = new Crypto();
+                    SEG_Login sLogin = new SEG_Login() { c_codigo_usu = txtUser.Text, v_passwo_usu = claseencripta.Encriptar(txtPass.Text) };
                     sLogin.MtdSeleccionarUsuarioLogin();
                     if (sLogin.Exito)
                     {
                         if (sLogin.Datos.Rows.Count > 0)
                         {
                             vIdUsuario = sLogin.Datos.Rows[0][0].ToString();
-                            vIdActivo = Convert.ToInt32(sLogin.Datos.Rows[0][2].ToString());
+                            if (sLogin.Datos.Rows[0][2].ToString() == "True")
+                            {
+                                vIdActivo = 1;
+                            }
+                            else
+                            {
+                                vIdActivo = 0;
+                            }
+                            //vIdActivo = Convert.ToInt32(sLogin.Datos.Rows[0][2].ToString());
                             Frm_Principal frmP = new Frm_Principal();
                             MSRegistro RegIn = new MSRegistro();
                             
                             if (vIdActivo == 1)
                             {
-                                //frmP.c_codigo_usu = txtUser.Text;
+                                frmP.UsuariosLogin = txtUser.Text;
+                                frmP.UsuariosClase = Convert.ToChar(sLogin.Datos.Rows[0][1]);
                                 frmP.Show();
                                 this.Hide();
                             }

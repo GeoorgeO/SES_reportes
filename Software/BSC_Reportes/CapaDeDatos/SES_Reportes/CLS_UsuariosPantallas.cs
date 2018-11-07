@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos
 {
-    public class CLS_Usuarios_Delete:ConexionBase
+    public class CLS_UsuariosPantallas:ConexionBase
     {
 
         public string UsuariosLogin { get; set; }
+        /* public string UsuariosLogin { get; set; }
+         public string UsuariosNombre { get; set; }
+         public string UsuariosPassword { get; set; }
+         public char UsuariosClase { get; set; }*/
+        TipoDato _dato = new TipoDato();
 
-        public void MtdeliminarUsuarios()
+        public void MtdSeleccionarUsuariosPantallas()
         {
 
             Exito = true;
             try
             {
-                TipoDato _dato = new TipoDato();
-                _conexion.NombreProcedimiento = "SP_BSC_Usuarios_Delete";
+                _conexion.NombreProcedimiento = "SP_BSC_UsuarioPantallas_Select";
                 _dato.CadenaTexto = UsuariosLogin;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 /*_dato.CadenaTexto = UsuariosLogin;

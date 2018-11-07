@@ -117,25 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnIgualar.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAddEVYdFRpdGxlAENvbmRpdGlvbjtFcXVhbFRvO1J1
-        bGU77191OwAAAfZJREFUOE+lk9tOE1EUhscCBX0RE6/F071yoQ9gghWCGhOM6eBALWhLYiQSUOAlvDCW
-        ejYGpK0+Co220zIHephhpp3+rLX3MNQ7iE2+rr9rrf11Z5oq4SsWMnAKeP8MocSya6Xi4sZvZDd+Ibsu
-        yayV8Jx5U8QzYuE1sVrE/GoB8ys7eLq8XQwlykBmvYReDycmoLe5V9ugs4MsGORv4Kbd9GE3fFhM80Bk
-        7lkNyjwLczfoQXu5xYIhIUivFESTh+KwqDKbYeZ6RKcbQH3xIxIMpZZ/otMJYNgHMGiBqxli2K7sW0e4
-        8P0Ajxe/syAuBNrSFjxq1mnIXL2VCpnFlZtzhIYL1ybk3HThel1MZ75Ggjhfh5s1GjIttyNx/kU3HeiG
-        gzbNHi58YcGwEPB1uKkbLi25GL2h4tLYjKgXx5IYvZ7E+cvjqNBhpuH4uJ/+FAmGpzPfsN/2Uak7+Es0
-        KAtosT//oRlj0a8xlfrIghEh4OtYTY+GrWNqLZRrDsqUy5TlZ1n39j1MzuYjwciD9GfUbU8s9LOrUyV2
-        +3uETg/z7pNNFpwVgnupD/IBWQ6qDOUKwbVqtlE1GOrt8TNoCxJqLhLEE+q7nUktjwltk8gLO5OYyUlo
-        +Y76nshhnHMyh9uP3hb4LAv4D8GBbedOAZ+JKQD+AyiHvB+XPalMD9IAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnFolios.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABR0RVh0VGl0
