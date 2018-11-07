@@ -141,6 +141,12 @@
     <Compile Include="Formularios\Frm_Usuarios.Designer.cs">
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Frm_UsuariosPantallaBotones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_UsuariosPantallaBotones.Designer.cs">
+      <DependentUpon>Frm_UsuariosPantallaBotones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frm_VentasVsMetas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_Usuarios.resx">
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Frm_UsuariosPantallaBotones.resx">
+      <DependentUpon>Frm_UsuariosPantallaBotones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_CargandoConsulta.resx">
       <DependentUpon>Frm_CargandoConsulta.cs</DependentUpon>
