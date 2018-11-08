@@ -19,6 +19,48 @@ namespace BSC_Reportes
             InitializeComponent();
         }
 
+        private void MakeFirstTable()
+        {
+            DataTable table = new DataTable("FirstTable");
+            DataColumn column;
+            table.Reset();
+            // DataRow row;
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Column0";
+            column.AutoIncrement = false;
+            column.Caption = "BotonId";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Column1";
+            column.AutoIncrement = false;
+            column.Caption = "Nombre Boton";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Boolean);
+            column.ColumnName = "Column2";
+            column.AutoIncrement = false;
+            column.Caption = "Asignados";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+
+
+            gridControl1.DataSource = table;
+
+        }
+
         private void btnselusuario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Frm_Usuarios frmusu = new Frm_Usuarios();
@@ -62,6 +104,7 @@ namespace BSC_Reportes
         {
             if (tUsuarioLogin.Text.Length > 0)
             {
+                MakeFirstTable();
                 cargagrid();
             }
         }
