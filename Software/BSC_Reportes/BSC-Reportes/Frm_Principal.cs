@@ -57,5 +57,16 @@ namespace BSC_Reportes
             }
         }
 
+        private void btnUsuarios_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_Usuarios vusuarios = new Frm_Usuarios();
+            vusuarios.Show();
+        }
+
+        private void btncontrolacesos_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_UsuariosPantallaBotones vcontrol = new Frm_UsuariosPantallaBotones();
+            vcontrol.Show();
+        }
     }
 }

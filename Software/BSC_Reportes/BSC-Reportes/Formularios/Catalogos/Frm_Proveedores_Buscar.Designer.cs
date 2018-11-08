@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Proveedores_Buscar));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnSeleccionar = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -108,13 +108,13 @@
             this.btnSeleccionar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSeleccionar.ImageOptions.Image")));
             this.btnSeleccionar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSeleccionar.ImageOptions.LargeImage")));
             this.btnSeleccionar.Name = "btnSeleccionar";
-            toolTipItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipItem2.Appearance.Options.UseImage = true;
-            toolTipItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem2.Image")));
-            toolTipTitleItem2.Text = "Seleccionar";
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnSeleccionar.SuperTip = superToolTip2;
+            toolTipItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipItem1.Appearance.Options.UseImage = true;
+            toolTipItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem1.Image")));
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnSeleccionar.SuperTip = superToolTip1;
             this.btnSeleccionar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSeleccionar_ItemClick);
             // 
             // bEstado
@@ -149,9 +149,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(10, 416);
+            this.barDockControlBottom.Location = new System.Drawing.Point(10, 413);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(676, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(676, 28);
             // 
             // barDockControlLeft
             // 
@@ -159,7 +159,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(10, 10);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(71, 406);
+            this.barDockControlLeft.Size = new System.Drawing.Size(73, 403);
             // 
             // barDockControlRight
             // 
@@ -167,7 +167,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(686, 10);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 406);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 403);
             // 
             // barLargeButtonItem1
             // 
@@ -193,10 +193,10 @@
             // 
             this.panelControl1.Controls.Add(this.dtgProveedores);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(81, 10);
+            this.panelControl1.Location = new System.Drawing.Point(83, 10);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(605, 406);
+            this.panelControl1.Size = new System.Drawing.Size(603, 403);
             this.panelControl1.TabIndex = 10;
             // 
             // dtgProveedores
@@ -205,7 +205,7 @@
             this.dtgProveedores.Location = new System.Drawing.Point(12, 12);
             this.dtgProveedores.MainView = this.dtgValProveedores;
             this.dtgProveedores.Name = "dtgProveedores";
-            this.dtgProveedores.Size = new System.Drawing.Size(581, 382);
+            this.dtgProveedores.Size = new System.Drawing.Size(579, 379);
             this.dtgProveedores.TabIndex = 4;
             this.dtgProveedores.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValProveedores});

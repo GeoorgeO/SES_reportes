@@ -99,6 +99,7 @@
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="SEG_Login.cs" />
+    <Compile Include="SES_Reportes\CLS_Pantallas.cs" />
     <Compile Include="SES_Reportes\CLS_Pedidos.cs" />
     <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
     <Compile Include="SES_Reportes\CLS_Usuarios.cs" />

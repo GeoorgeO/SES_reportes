@@ -18,6 +18,9 @@ namespace BSC_Reportes
 
         int activo = 1;
         int nuevo = 1;
+        public Boolean selusu = false;
+
+        public Frm_UsuariosPantallaBotones FrmUsuariosPantallaBotones;
 
         public Frm_Usuarios()
         {
@@ -72,6 +75,11 @@ namespace BSC_Reportes
             gridColumn2.OptionsColumn.AllowEdit = false;
             gridColumn4.OptionsColumn.AllowEdit = false;
             gridColumn5.OptionsColumn.AllowEdit = false;
+
+            if (selusu == true)
+            {
+                btnselusuario.Enabled = true;
+            }
         }
 
         private void grid_Click(object sender, EventArgs e)
@@ -201,6 +209,12 @@ namespace BSC_Reportes
             usuariosLogin.Enabled = true;
             nuevo = 1;
 
+        }
+
+        private void btnselusuario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmUsuariosPantallaBotones.cargarusuario(usuariosLogin.Text);
+            this.Close();
         }
     }
 }

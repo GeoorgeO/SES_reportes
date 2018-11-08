@@ -42,6 +42,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -53,9 +54,10 @@
             this.ribbon.ExpandCollapseItem,
             this.btnUsuarios,
             this.barButtonItem1,
-            this.skinRibbonGalleryBarItem1});
+            this.skinRibbonGalleryBarItem1,
+            this.btncontrolacesos});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 4;
+            this.ribbon.MaxItemId = 5;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -69,6 +71,7 @@
             this.btnUsuarios.Caption = "Usuarios";
             this.btnUsuarios.Id = 1;
             this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsuarios_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -97,6 +100,7 @@
             // 
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.ItemLinks.Add(this.btnUsuarios);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btncontrolacesos);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "Seguridad";
@@ -147,6 +151,13 @@
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp";
             // 
+            // btncontrolacesos
+            // 
+            this.btncontrolacesos.Caption = "Control de accesos";
+            this.btncontrolacesos.Id = 4;
+            this.btncontrolacesos.Name = "btncontrolacesos";
+            this.btncontrolacesos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btncontrolacesos_ItemClick);
+            // 
             // Frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,5 +194,6 @@
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem btncontrolacesos;
     }
 }
