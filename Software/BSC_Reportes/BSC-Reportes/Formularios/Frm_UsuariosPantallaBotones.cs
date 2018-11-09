@@ -19,47 +19,6 @@ namespace BSC_Reportes
             InitializeComponent();
         }
 
-        private void MakeFirstTable()
-        {
-            DataTable table = new DataTable("FirstTable");
-            DataColumn column;
-            table.Reset();
-            // DataRow row;
-            column = new DataColumn();
-            column.DataType = typeof(string);
-            column.ColumnName = "Column0";
-            column.AutoIncrement = false;
-            column.Caption = "BotonId";
-            column.ReadOnly = false;
-            column.Unique = false;
-
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = typeof(string);
-            column.ColumnName = "Column1";
-            column.AutoIncrement = false;
-            column.Caption = "Nombre Boton";
-            column.ReadOnly = false;
-            column.Unique = false;
-
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = typeof(Boolean);
-            column.ColumnName = "Column2";
-            column.AutoIncrement = false;
-            column.Caption = "Asignados";
-            column.ReadOnly = false;
-            column.Unique = false;
-
-            table.Columns.Add(column);
-
-
-
-            gridControl1.DataSource = table;
-
-        }
 
         private void btnselusuario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -102,38 +61,115 @@ namespace BSC_Reportes
 
         private void luepantallas_EditValueChanged(object sender, EventArgs e)
         {
-            if (tUsuarioLogin.Text.Length > 0)
-            {
-                MakeFirstTable();
+            
+                //MakeFirstTable();
                 cargagrid();
-            }
+            
         }
 
         public void cargagrid()
         {
-            CLS_Pantallas clspan = new CLS_Pantallas();
-            clspan.UsuariosLogin = tUsuarioLogin.Text;
-            clspan.pantallasid= Convert.ToInt32(luepantallas.EditValue);
-            clspan.Mtdseleccionarbotones();
-            if (clspan.Exito)
+            if (tUsuarioLogin.Text.Length > 0 && luepantallas.EditValue != null)
             {
-                if (clspan.Datos.Rows.Count > 0)
+                CLS_Pantallas clspan = new CLS_Pantallas();
+                clspan.UsuariosLogin = tUsuarioLogin.Text;
+                clspan.pantallasid = Convert.ToInt32(luepantallas.EditValue);
+                clspan.Mtdseleccionarbotones();
+                if (clspan.Exito)
                 {
-                    gridControl1.DataSource = clspan.Datos;
+                    if (clspan.Datos.Rows.Count > 0)
+                    {
+                        gridControl1.DataSource = clspan.Datos;
+                    }
+                    else
+                    {
+                        gridControl1.DataSource = null;
+                    }
+
                 }
                 else
                 {
-                    gridControl1.DataSource = null;
+                    XtraMessageBox.Show(clspan.Mensaje);
                 }
+            }
+        }
+
+        public void guardarbotones()
+        {
+            CLS_Pantallas clspantallas = new CLS_Pantallas();
+            clspantallas.UsuariosLogin = tUsuarioLogin.Text;
+            clspantallas.pantallasid= Convert.ToInt32(luepantallas.EditValue);
+
+            clspantallas.Mtdeliminararbotones();
+            int r = 0, xRow;
+           
+            for (r=0;r< gridView1.RowCount; r++)
+            {
                 
+                xRow = gridView1.GetVisibleRowHandle(r);
+                //fr=gridView1.GetRowCellValue(xRow, "gridColumn3").ToString();
+                if (gridView1.GetRowCellValue(xRow, "cheked").ToString()=="True")
+                {
+                    CLS_Pantallas clspantallas2 = new CLS_Pantallas();
+                    clspantallas2.UsuariosLogin = tUsuarioLogin.Text;
+                    clspantallas2.pantallasid = Convert.ToInt32(luepantallas.EditValue);
+                    clspantallas2.botonesId = Convert.ToInt32(gridView1.GetRowCellValue(xRow, "botonesid"));
+                    clspantallas2.Mtdinsertarbotones();
+                    
+                }
+            }
+        }
+
+        private void guardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.RowCount > 0)
+            {
+                luepantallas.Focus();
+                guardarbotones();
+            }
+            
+        }
+
+        public void limpiarcampos()
+        {
+            tUsuarioLogin.Text="";
+            checktodos.Checked = false;
+            luepantallas.Text = "Seleccione una ventana";
+            gridControl1.DataSource = null;
+        }
+        public void marcartodos(Boolean checa)
+        {
+            int r = 0, xRow;
+
+            for (r = 0; r < gridView1.RowCount; r++)
+            {
+
+                xRow = gridView1.GetVisibleRowHandle(r);
+               
+                    gridView1.SetRowCellValue(xRow, "cheked", checa);
+
+                
+            }
+        }
+
+
+        private void btnlimpia_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            limpiarcampos();
+        }
+
+        private void checktodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checktodos.Checked == true)
+            {
+                marcartodos(true);
+                checktodos.Text = "Desmarcar todos";
             }
             else
             {
-                XtraMessageBox.Show(clspan.Mensaje);
+                marcartodos(false);
+                checktodos.Text = "Seleccionar Todos";
             }
-
-
         }
-
     }
 }

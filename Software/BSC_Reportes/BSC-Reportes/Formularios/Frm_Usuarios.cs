@@ -213,8 +213,22 @@ namespace BSC_Reportes
 
         private void btnselusuario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            enviarUsuario();
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (selusu == true)
+            {
+                enviarUsuario();
+            }
+                
+        }
+        public void enviarUsuario()
+        {
             FrmUsuariosPantallaBotones.cargarusuario(usuariosLogin.Text);
             this.Close();
+            FrmUsuariosPantallaBotones.cargagrid();
         }
     }
 }
