@@ -18,6 +18,9 @@ namespace BSC_Reportes
 
         int activo = 1;
         int nuevo = 1;
+        public string GusuariosLogin;
+        public char GusuariosClase;
+
         public Boolean selusu = false;
 
         public Frm_UsuariosPantallaBotones FrmUsuariosPantallaBotones;
@@ -80,6 +83,7 @@ namespace BSC_Reportes
             {
                 btnselusuario.Enabled = true;
             }
+            controlbotones();
         }
 
         private void grid_Click(object sender, EventArgs e)
@@ -229,6 +233,46 @@ namespace BSC_Reportes
             FrmUsuariosPantallaBotones.cargarusuario(usuariosLogin.Text);
             this.Close();
             FrmUsuariosPantallaBotones.cargagrid();
+        }
+
+        public void controlbotones()
+        {
+            CLS_Pantallas clspantbotones = new CLS_Pantallas();
+            clspantbotones.UsuariosLogin = GusuariosLogin;
+            clspantbotones.pantallasid = 1;
+            clspantbotones.Mtdselecionarbotonespantalla();
+            if (clspantbotones.Exito.ToString() == "True")
+            {
+                int t;
+                for(t=0;t< clspantbotones.Datos.Rows.Count; t++)
+                {
+                    switch(clspantbotones.Datos.Rows[t][0].ToString() )
+                    {
+                        case "1":
+                            guardar.Enabled = true;
+                            break;
+                        case "2":
+                            btnLimpiar.Enabled = true;
+                            break;
+                        case "3":
+                            btneliminar.Enabled = true;
+                            break;
+                        case "4":
+                            btninactivos.Enabled = true;
+                            break;
+                    }
+                }
+                
+            }
+            else
+            {
+
+            }
+        }
+        public void llenarusuario(string usuario,char clase)
+        {
+            GusuariosLogin = usuario;
+            GusuariosClase = clase;
         }
     }
 }

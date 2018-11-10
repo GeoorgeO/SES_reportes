@@ -63,6 +63,7 @@ namespace BSC_Reportes
         private void btnUsuarios_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_Usuarios vusuarios = new Frm_Usuarios();
+            vusuarios.llenarusuario(UsuariosLogin, UsuariosClase);
             vusuarios.Show();
         }
 

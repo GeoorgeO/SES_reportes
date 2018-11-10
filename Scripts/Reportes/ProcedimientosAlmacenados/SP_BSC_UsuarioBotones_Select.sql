@@ -34,7 +34,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	declare  @resultado bit
-	SELECT botonesid,botonesNombre, convert(bit,(select count(botonesid) as boton from usuariopantallabotones as upb where UsuariosLogin=@UsuariosLogin and pantallasId=@pantallasId and botonesId=b.botonesId ))  as cheked from Botones as b
+	SELECT botonesid,botonesNombre, convert(bit,(select count(botonesid) as boton from usuariopantallabotones as upb where UsuariosLogin=@UsuariosLogin and pantallasId=@pantallasId and botonesId=b.botonesId ))  as cheked from Botones as b where pantallasId=@pantallasId
 END
 GO
 
