@@ -116,6 +116,8 @@ namespace CapaDeDatos
                 _conexion.NombreProcedimiento = "SP_BSC_Usuarios_Select";
                 _dato.Entero = UsuariosActivo;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "activo");
+                _dato.CadenaTexto = UsuariosClase;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "clase");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

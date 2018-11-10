@@ -52,6 +52,10 @@ namespace BSC_Reportes
         public decimal sugerido { get; private set; }
         public decimal Ideal { get; private set; }
 
+
+        public string GusuariosLogin;
+        public char GusuariosClase;
+
         public Frm_ReportePedidos()
         {
             InitializeComponent();
@@ -931,6 +935,83 @@ namespace BSC_Reportes
             else
             {
                 XtraMessageBox.Show("Es necesario generar un pedido", "No Existe Pedido Generado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        public void llenarusuario(string usuario, char clase)
+        {
+            GusuariosLogin = usuario;
+            GusuariosClase = clase;
+        }
+
+        public void controlbotones()
+        {
+            CLS_Pantallas clspantbotones = new CLS_Pantallas();
+            clspantbotones.UsuariosLogin = GusuariosLogin;
+            clspantbotones.pantallasid = 2;
+            clspantbotones.Mtdselecionarbotonespantalla();
+            if (clspantbotones.Exito.ToString() == "True")
+            {
+                int t;
+                for (t = 0; t < clspantbotones.Datos.Rows.Count; t++)
+                {
+                    switch (clspantbotones.Datos.Rows[t][0].ToString())
+                    {
+                        case "5":
+                            btnFolios.Enabled = true;
+                            break;
+                        case "6":
+                            barLargeButtonItem6.Enabled = true;
+                            break;
+                        case "7":
+                            btnBuscar.Enabled = true;
+                            break;
+                        case "8":
+                            barLargeButtonItem3.Enabled = true;
+                            break;
+                        case "9":
+                            btnLimpiar.Enabled = true;
+                            break;
+                        case "10":
+                            barLargeButtonItem5.Enabled = true;
+                            break;
+                        case "11":
+                            barLargeButtonItem4.Enabled = true;
+                            break;
+                        case "12":
+                            btnImpProveedor.Enabled = true;
+                            break;
+                    }
+                }
+
+            }
+            else
+            {
+
+            }
+        }
+
+        public void accesosuperusuario()
+        {
+            btnFolios.Enabled = true;
+            barLargeButtonItem6.Enabled = true;
+            btnBuscar.Enabled = true;
+            barLargeButtonItem3.Enabled = true;
+            btnLimpiar.Enabled = true;
+            barLargeButtonItem5.Enabled = true;
+            barLargeButtonItem4.Enabled = true;
+            btnImpProveedor.Enabled = true;
+        }
+
+        private void Frm_ReportePedidos_Load(object sender, EventArgs e)
+        {
+            if (GusuariosClase == 'S')
+            {
+                accesosuperusuario();
+            }
+            else
+            {
+                controlbotones();
             }
         }
     }

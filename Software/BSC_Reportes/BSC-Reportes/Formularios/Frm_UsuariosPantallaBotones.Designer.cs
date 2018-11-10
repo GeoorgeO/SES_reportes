@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_UsuariosPantallaBotones));
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -117,10 +117,10 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(7, 30);
+            this.gridControl1.Location = new System.Drawing.Point(7, 32);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(452, 203);
+            this.gridControl1.Size = new System.Drawing.Size(450, 204);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -225,15 +225,15 @@
             this.guardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.Image")));
             this.guardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.LargeImage")));
             this.guardar.Name = "guardar";
-            toolTipTitleItem15.Text = "Guardar cambios";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Guarda los datos ingresados de usuario";
-            toolTipTitleItem16.LeftIndent = 6;
-            toolTipTitleItem16.Text = "Usuarios";
-            superToolTip8.Items.Add(toolTipTitleItem15);
-            superToolTip8.Items.Add(toolTipItem8);
-            superToolTip8.Items.Add(toolTipTitleItem16);
-            this.guardar.SuperTip = superToolTip8;
+            toolTipTitleItem1.Text = "Guardar cambios";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Guarda los datos ingresados de usuario";
+            toolTipTitleItem2.LeftIndent = 6;
+            toolTipTitleItem2.Text = "Usuarios";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem2);
+            this.guardar.SuperTip = superToolTip1;
             this.guardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.guardar_ItemClick);
             // 
             // btnselusuario
@@ -249,8 +249,8 @@
             // 
             this.btnlimpia.Caption = "Limpiar";
             this.btnlimpia.Id = 62;
-            this.btnlimpia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem7.ImageOptions.Image")));
-            this.btnlimpia.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem7.ImageOptions.LargeImage")));
+            this.btnlimpia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpia.ImageOptions.Image")));
+            this.btnlimpia.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnlimpia.ImageOptions.LargeImage")));
             this.btnlimpia.Name = "btnlimpia";
             this.btnlimpia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnlimpia_ItemClick);
             // 
@@ -286,9 +286,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 376);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 379);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(538, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(538, 22);
             // 
             // barDockControlLeft
             // 
@@ -296,7 +296,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(58, 376);
+            this.barDockControlLeft.Size = new System.Drawing.Size(60, 379);
             // 
             // barDockControlRight
             // 
@@ -304,7 +304,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(538, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 376);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 379);
             // 
             // btnBuscar
             // 
@@ -338,15 +338,15 @@
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
             this.btnLimpiar.Name = "btnLimpiar";
-            toolTipTitleItem13.Text = "Limpia pantalla";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
-            toolTipTitleItem14.LeftIndent = 6;
-            toolTipTitleItem14.Text = "Usuarios";
-            superToolTip7.Items.Add(toolTipTitleItem13);
-            superToolTip7.Items.Add(toolTipItem7);
-            superToolTip7.Items.Add(toolTipTitleItem14);
-            this.btnLimpiar.SuperTip = superToolTip7;
+            toolTipTitleItem3.Text = "Limpia pantalla";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
+            toolTipTitleItem4.LeftIndent = 6;
+            toolTipTitleItem4.Text = "Usuarios";
+            superToolTip2.Items.Add(toolTipTitleItem3);
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem4);
+            this.btnLimpiar.SuperTip = superToolTip2;
             // 
             // btnFolios
             // 
@@ -395,15 +395,15 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem17.Text = "Desactivar usuario";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "Inhabilita usuarios para que ya no operen en el sistema";
-            toolTipTitleItem18.LeftIndent = 6;
-            toolTipTitleItem18.Text = "Usuarios";
-            superToolTip9.Items.Add(toolTipTitleItem17);
-            superToolTip9.Items.Add(toolTipItem9);
-            superToolTip9.Items.Add(toolTipTitleItem18);
-            this.barLargeButtonItem2.SuperTip = superToolTip9;
+            toolTipTitleItem5.Text = "Desactivar usuario";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Inhabilita usuarios para que ya no operen en el sistema";
+            toolTipTitleItem6.LeftIndent = 6;
+            toolTipTitleItem6.Text = "Usuarios";
+            superToolTip3.Items.Add(toolTipTitleItem5);
+            superToolTip3.Items.Add(toolTipItem3);
+            superToolTip3.Items.Add(toolTipTitleItem6);
+            this.barLargeButtonItem2.SuperTip = superToolTip3;
             // 
             // btninactivos
             // 
@@ -429,10 +429,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(58, 0);
+            this.panelControl1.Location = new System.Drawing.Point(60, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl1.Size = new System.Drawing.Size(480, 122);
+            this.panelControl1.Size = new System.Drawing.Size(478, 122);
             this.panelControl1.TabIndex = 9;
             // 
             // groupControl1
@@ -445,7 +445,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(7, 7);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(466, 108);
+            this.groupControl1.Size = new System.Drawing.Size(464, 108);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Config Perfil";
             // 
@@ -487,10 +487,10 @@
             // 
             this.panelControl2.Controls.Add(this.groupControl2);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(58, 122);
+            this.panelControl2.Location = new System.Drawing.Point(60, 122);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(480, 254);
+            this.panelControl2.Size = new System.Drawing.Size(478, 257);
             this.panelControl2.TabIndex = 10;
             // 
             // groupControl2
@@ -500,7 +500,7 @@
             this.groupControl2.Location = new System.Drawing.Point(7, 7);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Padding = new System.Windows.Forms.Padding(5, 10, 5, 5);
-            this.groupControl2.Size = new System.Drawing.Size(466, 240);
+            this.groupControl2.Size = new System.Drawing.Size(464, 243);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Botones";
             // 

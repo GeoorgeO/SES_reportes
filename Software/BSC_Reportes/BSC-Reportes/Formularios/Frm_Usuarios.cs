@@ -36,6 +36,7 @@ namespace BSC_Reportes
         {
             CLS_Usuarios selpro = new CLS_Usuarios();
             selpro.UsuariosActivo = activo;
+            selpro.UsuariosClase = Convert.ToChar(GusuariosClase);
             selpro.MtdSeleccionarUsuarios();
             if (selpro.Exito)
             {
@@ -83,7 +84,15 @@ namespace BSC_Reportes
             {
                 btnselusuario.Enabled = true;
             }
-            controlbotones();
+
+            if (GusuariosClase == 'S')
+            {
+                accesosuperusuario();
+            }else
+            {
+                controlbotones();
+            }
+            
         }
 
         private void grid_Click(object sender, EventArgs e)
@@ -273,6 +282,13 @@ namespace BSC_Reportes
         {
             GusuariosLogin = usuario;
             GusuariosClase = clase;
+        }
+        public void accesosuperusuario()
+        {
+            guardar.Enabled = true;
+            btnLimpiar.Enabled = true;
+            btneliminar.Enabled = true;
+            btninactivos.Enabled = true;
         }
     }
 }

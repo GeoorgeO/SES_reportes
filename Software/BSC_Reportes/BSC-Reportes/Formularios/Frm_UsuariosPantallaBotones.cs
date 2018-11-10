@@ -14,9 +14,19 @@ namespace BSC_Reportes
 {
     public partial class Frm_UsuariosPantallaBotones : DevExpress.XtraEditors.XtraForm
     {
+
+        public string GusuariosLogin;
+        public char GusuariosClase;
+
         public Frm_UsuariosPantallaBotones()
         {
             InitializeComponent();
+        }
+
+        public void llenarusuario(string usuario, char clase)
+        {
+            GusuariosLogin = usuario;
+            GusuariosClase = clase;
         }
 
 
@@ -24,6 +34,7 @@ namespace BSC_Reportes
         {
             Frm_Usuarios frmusu = new Frm_Usuarios();
             frmusu.FrmUsuariosPantallaBotones = this;
+            frmusu.llenarusuario(GusuariosLogin, GusuariosClase);
             frmusu.selusu = true;
             frmusu.ShowDialog();
            
@@ -56,6 +67,13 @@ namespace BSC_Reportes
             else
             {
                 XtraMessageBox.Show(clasepantallas.Mensaje);
+            }
+            if (GusuariosClase == 'S')
+            {
+                accesosuperusuario();
+            }else
+            {
+                controlbotones();
             }
         }
 
@@ -102,6 +120,7 @@ namespace BSC_Reportes
 
             clspantallas.Mtdeliminararbotones();
             int r = 0, xRow;
+            Boolean comprueba=false;
            
             for (r=0;r< gridView1.RowCount; r++)
             {
@@ -115,8 +134,19 @@ namespace BSC_Reportes
                     clspantallas2.pantallasid = Convert.ToInt32(luepantallas.EditValue);
                     clspantallas2.botonesId = Convert.ToInt32(gridView1.GetRowCellValue(xRow, "botonesid"));
                     clspantallas2.Mtdinsertarbotones();
-                    
+                    if (!clspantallas2.Exito)
+                    {
+                        comprueba = true;
+                    }
                 }
+            }
+            if (comprueba == false)
+            {
+                XtraMessageBox.Show("Se han guadado los permisos correctamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                XtraMessageBox.Show("Ha ocurrido un error al intentar guardar los permisos.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -171,5 +201,45 @@ namespace BSC_Reportes
                 checktodos.Text = "Seleccionar Todos";
             }
         }
+
+        public void controlbotones()
+        {
+            CLS_Pantallas clspantbotones = new CLS_Pantallas();
+            clspantbotones.UsuariosLogin = GusuariosLogin;
+            clspantbotones.pantallasid = 3;
+            clspantbotones.Mtdselecionarbotonespantalla();
+            if (clspantbotones.Exito.ToString() == "True")
+            {
+                int t;
+                for (t = 0; t < clspantbotones.Datos.Rows.Count; t++)
+                {
+                    switch (clspantbotones.Datos.Rows[t][0].ToString())
+                    {
+                        case "13":
+                            guardar.Enabled = true;
+                            break;
+                        case "14":
+                            btnselusuario.Enabled = true;
+                            break;
+                        case "15":
+                            btnlimpia.Enabled = true;
+                            break;
+                        
+                    }
+                }
+
+            }
+            else
+            {
+
+            }
+        }
+        public void accesosuperusuario()
+        {
+            guardar.Enabled = true;
+            btnselusuario.Enabled = true;
+            btnlimpia.Enabled = true;
+        }
+
     }
 }

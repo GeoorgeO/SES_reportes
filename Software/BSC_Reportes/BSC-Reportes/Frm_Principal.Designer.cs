@@ -80,6 +80,7 @@
             this.barButtonItem1.Enabled = false;
             this.barButtonItem1.Id = 2;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -94,6 +95,7 @@
             // btncontrolacesos
             // 
             this.btncontrolacesos.Caption = "Control de accesos";
+            this.btncontrolacesos.Enabled = false;
             this.btncontrolacesos.Id = 4;
             this.btncontrolacesos.Name = "btncontrolacesos";
             this.btncontrolacesos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btncontrolacesos_ItemClick);

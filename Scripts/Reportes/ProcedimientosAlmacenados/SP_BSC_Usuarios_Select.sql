@@ -25,7 +25,8 @@ GO
 -- =============================================
 CREATE PROCEDURE SP_BSC_Usuarios_Select 
 	-- Add the parameters for the stored procedure here
-	@activo int
+	@activo int,
+	@clase char(1)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -40,5 +41,8 @@ BEGIN
 		UsuariosActivo
 	From Usuarios
 	where  UsuariosActivo=@activo
+	and ('S'=@clase 
+		or ('A'=@clase and (UsuariosClase='A' or UsuariosClase='N'))
+		or ('N'=@clase and UsuariosClase='N'))
 END
 GO

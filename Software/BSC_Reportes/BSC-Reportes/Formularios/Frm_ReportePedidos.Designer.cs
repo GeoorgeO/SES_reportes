@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
@@ -463,6 +463,7 @@
             // btnFolios
             // 
             this.btnFolios.Caption = "Buscar \r\n Folios";
+            this.btnFolios.Enabled = false;
             this.btnFolios.Id = 51;
             this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
             this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
@@ -471,6 +472,7 @@
             // barLargeButtonItem6
             // 
             this.barLargeButtonItem6.Caption = "  Buscar\r\nP Cerrado";
+            this.barLargeButtonItem6.Enabled = false;
             this.barLargeButtonItem6.Id = 56;
             this.barLargeButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.Image")));
             this.barLargeButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.LargeImage")));
@@ -479,6 +481,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Caption = "Generar\r\n Pedido";
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.Id = 17;
             this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
             this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
@@ -488,6 +491,7 @@
             // barLargeButtonItem3
             // 
             this.barLargeButtonItem3.Caption = "Guardar \r\n Pedido";
+            this.barLargeButtonItem3.Enabled = false;
             this.barLargeButtonItem3.Id = 53;
             this.barLargeButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
             this.barLargeButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
@@ -496,6 +500,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Caption = "Limpiar";
+            this.btnLimpiar.Enabled = false;
             this.btnLimpiar.Id = 50;
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
@@ -505,6 +510,7 @@
             // barLargeButtonItem5
             // 
             this.barLargeButtonItem5.Caption = "Actualizar \r\n Pedido";
+            this.barLargeButtonItem5.Enabled = false;
             this.barLargeButtonItem5.Id = 55;
             this.barLargeButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.Image")));
             this.barLargeButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.LargeImage")));
@@ -513,6 +519,7 @@
             // barLargeButtonItem4
             // 
             this.barLargeButtonItem4.Caption = "Cerrar \r\nPedido";
+            this.barLargeButtonItem4.Enabled = false;
             this.barLargeButtonItem4.Id = 54;
             this.barLargeButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.Image")));
             this.barLargeButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.LargeImage")));
@@ -521,6 +528,7 @@
             // btnImpProveedor
             // 
             this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
+            this.btnImpProveedor.Enabled = false;
             this.btnImpProveedor.Id = 52;
             this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
             this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
@@ -1296,10 +1304,10 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem1.Text = "Seleccionar";
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barLargeButtonItem2.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Seleccionar";
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barLargeButtonItem2.SuperTip = superToolTip2;
             // 
             // Frm_ReportePedidos
             // 
@@ -1316,6 +1324,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_ReportePedidos_Load);
             this.Shown += new System.EventHandler(this.Frm_ReportePedidos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
