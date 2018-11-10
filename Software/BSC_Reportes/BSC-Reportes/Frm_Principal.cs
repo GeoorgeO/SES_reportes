@@ -48,7 +48,10 @@ namespace BSC_Reportes
                         switch (clasePantallas.Datos.Rows[r]["pantallasId"].ToString())
                         {
                             case "1":
-
+                                btnUsuarios.Enabled = true;
+                                break;
+                            case "2":
+                                barButtonItem1.Enabled = true;
                                 break;
 
                         }
@@ -67,6 +70,11 @@ namespace BSC_Reportes
         {
             Frm_UsuariosPantallaBotones vcontrol = new Frm_UsuariosPantallaBotones();
             vcontrol.Show();
+        }
+
+        private void Frm_Principal_Load(object sender, EventArgs e)
+        {
+            revisaopciones();
         }
     }
 }
