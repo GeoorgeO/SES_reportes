@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
@@ -56,15 +55,15 @@
             this.txtProveedorId = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barLargeButtonItem6 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnGuardar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barLargeButtonItem5 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barLargeButtonItem4 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnCerrarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
@@ -78,61 +77,61 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dtgVentaExistencia = new DevExpress.XtraGrid.GridControl();
             this.dtgValVentaExistencia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.Codigo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.Descripcion = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CostoReposicion = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.Familia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.AlmacenV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.AlmacenE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.CentroV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CentroE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.MorelosV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.MorelosE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.FcoVillaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.FcoVillaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.SarabiaIV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SarabiaIE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.SarabiaIIV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SarabiaIIE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.PaseoV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.PaseoE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.EstocolmoV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.EstocolmoE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand10 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.CostaRicaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CostaRicaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.CalzadaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CalzadaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.LombardiaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LombardiaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.NvaItaliaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.NvaItaliaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.ApatzinganV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ApatzinganE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.ReyesV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ReyesE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.TotalV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TotalE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.PIdeal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.PSugerido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand10 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -423,9 +422,9 @@
             this.btnFolios,
             this.btnImpProveedor,
             this.btnGuardar,
-            this.barLargeButtonItem4,
-            this.barLargeButtonItem5,
-            this.barLargeButtonItem6});
+            this.btnCerrarPedido,
+            this.btnActualizarPedido,
+            this.btnBuscarPedidoCerrado});
             this.barManager1.MainMenu = this.bIconos;
             this.barManager1.MaxItemId = 57;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -442,12 +441,12 @@
             this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnFolios),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscarPedidoCerrado),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnGuardar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barLargeButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCerrarPedido),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
@@ -469,14 +468,14 @@
             this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
             this.btnFolios.Name = "btnFolios";
             // 
-            // barLargeButtonItem6
+            // btnBuscarPedidoCerrado
             // 
-            this.barLargeButtonItem6.Caption = "  Buscar\r\nP Cerrado";
-            this.barLargeButtonItem6.Enabled = false;
-            this.barLargeButtonItem6.Id = 56;
-            this.barLargeButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.Image")));
-            this.barLargeButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.LargeImage")));
-            this.barLargeButtonItem6.Name = "barLargeButtonItem6";
+            this.btnBuscarPedidoCerrado.Caption = "  Buscar\r\nP Cerrado";
+            this.btnBuscarPedidoCerrado.Enabled = false;
+            this.btnBuscarPedidoCerrado.Id = 56;
+            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.Image")));
+            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.LargeImage")));
+            this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
             // 
             // btnBuscar
             // 
@@ -490,14 +489,12 @@
             // 
             // btnGuardar
             // 
-
             this.btnGuardar.Caption = "Guardar \r\n Pedido";
             this.btnGuardar.Id = 53;
             this.btnGuardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
             this.btnGuardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardar_ItemClick);
-
             // 
             // btnLimpiar
             // 
@@ -509,23 +506,23 @@
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
             // 
-            // barLargeButtonItem5
+            // btnActualizarPedido
             // 
-            this.barLargeButtonItem5.Caption = "Actualizar \r\n Pedido";
-            this.barLargeButtonItem5.Enabled = false;
-            this.barLargeButtonItem5.Id = 55;
-            this.barLargeButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.Image")));
-            this.barLargeButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.LargeImage")));
-            this.barLargeButtonItem5.Name = "barLargeButtonItem5";
+            this.btnActualizarPedido.Caption = "Actualizar \r\n Pedido";
+            this.btnActualizarPedido.Enabled = false;
+            this.btnActualizarPedido.Id = 55;
+            this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.Image")));
+            this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.LargeImage")));
+            this.btnActualizarPedido.Name = "btnActualizarPedido";
             // 
-            // barLargeButtonItem4
+            // btnCerrarPedido
             // 
-            this.barLargeButtonItem4.Caption = "Cerrar \r\nPedido";
-            this.barLargeButtonItem4.Enabled = false;
-            this.barLargeButtonItem4.Id = 54;
-            this.barLargeButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.Image")));
-            this.barLargeButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.LargeImage")));
-            this.barLargeButtonItem4.Name = "barLargeButtonItem4";
+            this.btnCerrarPedido.Caption = "Cerrar \r\nPedido";
+            this.btnCerrarPedido.Enabled = false;
+            this.btnCerrarPedido.Id = 54;
+            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.Image")));
+            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.LargeImage")));
+            this.btnCerrarPedido.Name = "btnCerrarPedido";
             // 
             // btnImpProveedor
             // 
@@ -680,9 +677,9 @@
             this.ReyesE,
             this.TotalV,
             this.TotalE,
-            this.PIdeal,
-            this.PSugerido,
-            this.TPedido});
+            this.gridColumn35,
+            this.gridColumn36,
+            this.gridColumn37});
             this.dtgValVentaExistencia.GridControl = this.dtgVentaExistencia;
             this.dtgValVentaExistencia.Name = "dtgValVentaExistencia";
             this.dtgValVentaExistencia.OptionsFind.AlwaysVisible = true;
@@ -690,6 +687,19 @@
             this.dtgValVentaExistencia.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.dtgValVentaExistencia.OptionsView.ShowFooter = true;
             this.dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Articulos";
+            this.gridBand1.Columns.Add(this.Codigo);
+            this.gridBand1.Columns.Add(this.Descripcion);
+            this.gridBand1.Columns.Add(this.CostoReposicion);
+            this.gridBand1.Columns.Add(this.Familia);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 737;
             // 
             // Codigo
             // 
@@ -735,6 +745,17 @@
             this.Familia.Visible = true;
             this.Familia.Width = 202;
             // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand2.Caption = "Almacen";
+            this.gridBand2.Columns.Add(this.AlmacenV);
+            this.gridBand2.Columns.Add(this.AlmacenE);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 94;
+            // 
             // AlmacenV
             // 
             this.AlmacenV.AppearanceHeader.Options.UseTextOptions = true;
@@ -756,6 +777,17 @@
             this.AlmacenE.OptionsColumn.AllowEdit = false;
             this.AlmacenE.Visible = true;
             this.AlmacenE.Width = 47;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand3.Caption = "Centro";
+            this.gridBand3.Columns.Add(this.CentroV);
+            this.gridBand3.Columns.Add(this.CentroE);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 2;
+            this.gridBand3.Width = 94;
             // 
             // CentroV
             // 
@@ -779,6 +811,17 @@
             this.CentroE.Visible = true;
             this.CentroE.Width = 47;
             // 
+            // gridBand4
+            // 
+            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand4.Caption = "Morelos";
+            this.gridBand4.Columns.Add(this.MorelosV);
+            this.gridBand4.Columns.Add(this.MorelosE);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 3;
+            this.gridBand4.Width = 94;
+            // 
             // MorelosV
             // 
             this.MorelosV.AppearanceHeader.Options.UseTextOptions = true;
@@ -800,6 +843,17 @@
             this.MorelosE.OptionsColumn.AllowEdit = false;
             this.MorelosE.Visible = true;
             this.MorelosE.Width = 47;
+            // 
+            // gridBand5
+            // 
+            this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand5.Caption = "Fco Villa";
+            this.gridBand5.Columns.Add(this.FcoVillaE);
+            this.gridBand5.Columns.Add(this.FcoVillaV);
+            this.gridBand5.Name = "gridBand5";
+            this.gridBand5.VisibleIndex = 4;
+            this.gridBand5.Width = 94;
             // 
             // FcoVillaE
             // 
@@ -823,6 +877,17 @@
             this.FcoVillaV.Visible = true;
             this.FcoVillaV.Width = 47;
             // 
+            // gridBand6
+            // 
+            this.gridBand6.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand6.Caption = "Sarabia";
+            this.gridBand6.Columns.Add(this.SarabiaIV);
+            this.gridBand6.Columns.Add(this.SarabiaIE);
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.VisibleIndex = 5;
+            this.gridBand6.Width = 94;
+            // 
             // SarabiaIV
             // 
             this.SarabiaIV.AppearanceHeader.Options.UseTextOptions = true;
@@ -844,6 +909,17 @@
             this.SarabiaIE.OptionsColumn.AllowEdit = false;
             this.SarabiaIE.Visible = true;
             this.SarabiaIE.Width = 47;
+            // 
+            // gridBand7
+            // 
+            this.gridBand7.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand7.Caption = "Sarabia II";
+            this.gridBand7.Columns.Add(this.SarabiaIIV);
+            this.gridBand7.Columns.Add(this.SarabiaIIE);
+            this.gridBand7.Name = "gridBand7";
+            this.gridBand7.VisibleIndex = 6;
+            this.gridBand7.Width = 94;
             // 
             // SarabiaIIV
             // 
@@ -867,6 +943,17 @@
             this.SarabiaIIE.Visible = true;
             this.SarabiaIIE.Width = 47;
             // 
+            // gridBand8
+            // 
+            this.gridBand8.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand8.Caption = "Paseo";
+            this.gridBand8.Columns.Add(this.PaseoV);
+            this.gridBand8.Columns.Add(this.PaseoE);
+            this.gridBand8.Name = "gridBand8";
+            this.gridBand8.VisibleIndex = 7;
+            this.gridBand8.Width = 94;
+            // 
             // PaseoV
             // 
             this.PaseoV.AppearanceHeader.Options.UseTextOptions = true;
@@ -888,6 +975,17 @@
             this.PaseoE.OptionsColumn.AllowEdit = false;
             this.PaseoE.Visible = true;
             this.PaseoE.Width = 47;
+            // 
+            // gridBand9
+            // 
+            this.gridBand9.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand9.Caption = "Estocolmo";
+            this.gridBand9.Columns.Add(this.EstocolmoV);
+            this.gridBand9.Columns.Add(this.EstocolmoE);
+            this.gridBand9.Name = "gridBand9";
+            this.gridBand9.VisibleIndex = 8;
+            this.gridBand9.Width = 94;
             // 
             // EstocolmoV
             // 
@@ -911,6 +1009,17 @@
             this.EstocolmoE.Visible = true;
             this.EstocolmoE.Width = 47;
             // 
+            // gridBand10
+            // 
+            this.gridBand10.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand10.Caption = "Costa Rica";
+            this.gridBand10.Columns.Add(this.CostaRicaV);
+            this.gridBand10.Columns.Add(this.CostaRicaE);
+            this.gridBand10.Name = "gridBand10";
+            this.gridBand10.VisibleIndex = 9;
+            this.gridBand10.Width = 94;
+            // 
             // CostaRicaV
             // 
             this.CostaRicaV.AppearanceHeader.Options.UseTextOptions = true;
@@ -932,6 +1041,17 @@
             this.CostaRicaE.OptionsColumn.AllowEdit = false;
             this.CostaRicaE.Visible = true;
             this.CostaRicaE.Width = 47;
+            // 
+            // gridBand11
+            // 
+            this.gridBand11.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand11.Caption = "Calzada";
+            this.gridBand11.Columns.Add(this.CalzadaV);
+            this.gridBand11.Columns.Add(this.CalzadaE);
+            this.gridBand11.Name = "gridBand11";
+            this.gridBand11.VisibleIndex = 10;
+            this.gridBand11.Width = 94;
             // 
             // CalzadaV
             // 
@@ -955,6 +1075,17 @@
             this.CalzadaE.Visible = true;
             this.CalzadaE.Width = 47;
             // 
+            // gridBand12
+            // 
+            this.gridBand12.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand12.Caption = "Lombardia";
+            this.gridBand12.Columns.Add(this.LombardiaV);
+            this.gridBand12.Columns.Add(this.LombardiaE);
+            this.gridBand12.Name = "gridBand12";
+            this.gridBand12.VisibleIndex = 11;
+            this.gridBand12.Width = 94;
+            // 
             // LombardiaV
             // 
             this.LombardiaV.AppearanceHeader.Options.UseTextOptions = true;
@@ -976,6 +1107,17 @@
             this.LombardiaE.OptionsColumn.AllowEdit = false;
             this.LombardiaE.Visible = true;
             this.LombardiaE.Width = 47;
+            // 
+            // gridBand13
+            // 
+            this.gridBand13.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand13.Caption = "Nva Italia";
+            this.gridBand13.Columns.Add(this.NvaItaliaV);
+            this.gridBand13.Columns.Add(this.NvaItaliaE);
+            this.gridBand13.Name = "gridBand13";
+            this.gridBand13.VisibleIndex = 12;
+            this.gridBand13.Width = 94;
             // 
             // NvaItaliaV
             // 
@@ -999,6 +1141,17 @@
             this.NvaItaliaE.Visible = true;
             this.NvaItaliaE.Width = 47;
             // 
+            // gridBand14
+            // 
+            this.gridBand14.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand14.Caption = "Apatzingan";
+            this.gridBand14.Columns.Add(this.ApatzinganV);
+            this.gridBand14.Columns.Add(this.ApatzinganE);
+            this.gridBand14.Name = "gridBand14";
+            this.gridBand14.VisibleIndex = 13;
+            this.gridBand14.Width = 94;
+            // 
             // ApatzinganV
             // 
             this.ApatzinganV.AppearanceHeader.Options.UseTextOptions = true;
@@ -1021,6 +1174,17 @@
             this.ApatzinganE.Visible = true;
             this.ApatzinganE.Width = 47;
             // 
+            // gridBand15
+            // 
+            this.gridBand15.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand15.Caption = "Los Reyes";
+            this.gridBand15.Columns.Add(this.ReyesV);
+            this.gridBand15.Columns.Add(this.ReyesE);
+            this.gridBand15.Name = "gridBand15";
+            this.gridBand15.VisibleIndex = 14;
+            this.gridBand15.Width = 94;
+            // 
             // ReyesV
             // 
             this.ReyesV.AppearanceHeader.Options.UseTextOptions = true;
@@ -1042,6 +1206,17 @@
             this.ReyesE.OptionsColumn.AllowEdit = false;
             this.ReyesE.Visible = true;
             this.ReyesE.Width = 47;
+            // 
+            // gridBand16
+            // 
+            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand16.Caption = "Totales";
+            this.gridBand16.Columns.Add(this.TotalV);
+            this.gridBand16.Columns.Add(this.TotalE);
+            this.gridBand16.Name = "gridBand16";
+            this.gridBand16.VisibleIndex = 15;
+            this.gridBand16.Width = 144;
             // 
             // TotalV
             // 
@@ -1069,286 +1244,57 @@
             this.TotalE.Visible = true;
             this.TotalE.Width = 72;
             // 
-            // PIdeal
-            // 
-            this.PIdeal.AppearanceCell.Options.UseTextOptions = true;
-            this.PIdeal.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PIdeal.AppearanceHeader.Options.UseTextOptions = true;
-            this.PIdeal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PIdeal.Caption = "Pedido Ideal";
-            this.PIdeal.FieldName = "PIdeal";
-            this.PIdeal.Name = "PIdeal";
-            this.PIdeal.OptionsColumn.AllowEdit = false;
-            this.PIdeal.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)";
-            this.PIdeal.Visible = true;
-            // 
-            // PSugerido
-            // 
-            this.PSugerido.AppearanceCell.Options.UseTextOptions = true;
-            this.PSugerido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PSugerido.AppearanceHeader.Options.UseTextOptions = true;
-            this.PSugerido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PSugerido.Caption = "Pedido Sugerido";
-            this.PSugerido.FieldName = "PSugerido";
-            this.PSugerido.Name = "PSugerido";
-            this.PSugerido.OptionsColumn.AllowEdit = false;
-            this.PSugerido.ToolTip = "Pedido Sugerido = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)-TExistencia" +
-    "";
-            this.PSugerido.Visible = true;
-            this.PSugerido.Width = 72;
-            // 
-            // TPedido
-            // 
-            this.TPedido.AppearanceCell.Options.UseTextOptions = true;
-            this.TPedido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.TPedido.AppearanceHeader.Options.UseTextOptions = true;
-            this.TPedido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.TPedido.Caption = "Pedido";
-            this.TPedido.FieldName = "TPedido";
-            this.TPedido.Name = "TPedido";
-            this.TPedido.Visible = true;
-            this.TPedido.Width = 72;
-            // 
-            // barLargeButtonItem2
-            // 
-            this.barLargeButtonItem2.Caption = "Buscar";
-            this.barLargeButtonItem2.Id = 17;
-            this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
-            this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
-            this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            //toolTipTitleItem1.Text = "Seleccionar";
-            //superToolTip1.Items.Add(toolTipItem1);
-            //superToolTip1.Items.Add(toolTipTitleItem1);
-            //this.barLargeButtonItem2.SuperTip = superToolTip1;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Articulos";
-            this.gridBand1.Columns.Add(this.Codigo);
-            this.gridBand1.Columns.Add(this.Descripcion);
-            this.gridBand1.Columns.Add(this.CostoReposicion);
-            this.gridBand1.Columns.Add(this.Familia);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 737;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand2.Caption = "Almacen";
-            this.gridBand2.Columns.Add(this.AlmacenV);
-            this.gridBand2.Columns.Add(this.AlmacenE);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 94;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand3.Caption = "Centro";
-            this.gridBand3.Columns.Add(this.CentroV);
-            this.gridBand3.Columns.Add(this.CentroE);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 94;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand4.Caption = "Morelos";
-            this.gridBand4.Columns.Add(this.MorelosV);
-            this.gridBand4.Columns.Add(this.MorelosE);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 3;
-            this.gridBand4.Width = 94;
-            // 
-            // gridBand5
-            // 
-            this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand5.Caption = "Fco Villa";
-            this.gridBand5.Columns.Add(this.FcoVillaE);
-            this.gridBand5.Columns.Add(this.FcoVillaV);
-            this.gridBand5.Name = "gridBand5";
-            this.gridBand5.VisibleIndex = 4;
-            this.gridBand5.Width = 94;
-            // 
-            // gridBand6
-            // 
-            this.gridBand6.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand6.Caption = "Sarabia";
-            this.gridBand6.Columns.Add(this.SarabiaIV);
-            this.gridBand6.Columns.Add(this.SarabiaIE);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.VisibleIndex = 5;
-            this.gridBand6.Width = 94;
-            // 
-            // gridBand7
-            // 
-            this.gridBand7.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand7.Caption = "Sarabia II";
-            this.gridBand7.Columns.Add(this.SarabiaIIV);
-            this.gridBand7.Columns.Add(this.SarabiaIIE);
-            this.gridBand7.Name = "gridBand7";
-            this.gridBand7.VisibleIndex = 6;
-            this.gridBand7.Width = 94;
-            // 
-            // gridBand8
-            // 
-            this.gridBand8.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand8.Caption = "Paseo";
-            this.gridBand8.Columns.Add(this.PaseoV);
-            this.gridBand8.Columns.Add(this.PaseoE);
-            this.gridBand8.Name = "gridBand8";
-            this.gridBand8.VisibleIndex = 7;
-            this.gridBand8.Width = 94;
-            // 
-            // gridBand9
-            // 
-            this.gridBand9.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand9.Caption = "Estocolmo";
-            this.gridBand9.Columns.Add(this.EstocolmoV);
-            this.gridBand9.Columns.Add(this.EstocolmoE);
-            this.gridBand9.Name = "gridBand9";
-            this.gridBand9.VisibleIndex = 8;
-            this.gridBand9.Width = 94;
-            // 
-            // gridBand10
-            // 
-            this.gridBand10.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand10.Caption = "Costa Rica";
-            this.gridBand10.Columns.Add(this.CostaRicaV);
-            this.gridBand10.Columns.Add(this.CostaRicaE);
-            this.gridBand10.Name = "gridBand10";
-            this.gridBand10.VisibleIndex = 9;
-            this.gridBand10.Width = 94;
-            // 
-            // gridBand11
-            // 
-            this.gridBand11.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand11.Caption = "Calzada";
-            this.gridBand11.Columns.Add(this.CalzadaV);
-            this.gridBand11.Columns.Add(this.CalzadaE);
-            this.gridBand11.Name = "gridBand11";
-            this.gridBand11.VisibleIndex = 10;
-            this.gridBand11.Width = 94;
-            // 
-            // gridBand12
-            // 
-            this.gridBand12.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand12.Caption = "Lombardia";
-            this.gridBand12.Columns.Add(this.LombardiaV);
-            this.gridBand12.Columns.Add(this.LombardiaE);
-            this.gridBand12.Name = "gridBand12";
-            this.gridBand12.VisibleIndex = 11;
-            this.gridBand12.Width = 94;
-            // 
-            // gridBand13
-            // 
-            this.gridBand13.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand13.Caption = "Nva Italia";
-            this.gridBand13.Columns.Add(this.NvaItaliaV);
-            this.gridBand13.Columns.Add(this.NvaItaliaE);
-            this.gridBand13.Name = "gridBand13";
-            this.gridBand13.VisibleIndex = 12;
-            this.gridBand13.Width = 94;
-            // 
-            // gridBand14
-            // 
-            this.gridBand14.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand14.Caption = "Apatzingan";
-            this.gridBand14.Columns.Add(this.ApatzinganV);
-            this.gridBand14.Columns.Add(this.ApatzinganE);
-            this.gridBand14.Name = "gridBand14";
-            this.gridBand14.VisibleIndex = 13;
-            this.gridBand14.Width = 94;
-            // 
-            // gridBand15
-            // 
-            this.gridBand15.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand15.Caption = "Los Reyes";
-            this.gridBand15.Columns.Add(this.ReyesV);
-            this.gridBand15.Columns.Add(this.ReyesE);
-            this.gridBand15.Name = "gridBand15";
-            this.gridBand15.VisibleIndex = 14;
-            this.gridBand15.Width = 94;
-            // 
-            // gridBand16
-            // 
-            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand16.Caption = "Totales";
-            this.gridBand16.Columns.Add(this.TotalV);
-            this.gridBand16.Columns.Add(this.TotalE);
-            this.gridBand16.Name = "gridBand16";
-            this.gridBand16.VisibleIndex = 15;
-            this.gridBand16.Width = 144;
-            // 
             // gridBand17
             // 
             this.gridBand17.AppearanceHeader.Options.UseTextOptions = true;
             this.gridBand17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridBand17.Caption = "Orden";
-            this.gridBand17.Columns.Add(this.PIdeal);
-            this.gridBand17.Columns.Add(this.PSugerido);
-            this.gridBand17.Columns.Add(this.TPedido);
+            this.gridBand17.Columns.Add(this.gridColumn35);
+            this.gridBand17.Columns.Add(this.gridColumn36);
+            this.gridBand17.Columns.Add(this.gridColumn37);
             this.gridBand17.Name = "gridBand17";
             this.gridBand17.VisibleIndex = 16;
             this.gridBand17.Width = 219;
             // 
             // gridColumn35
             // 
-            this.PIdeal.AppearanceCell.Options.UseTextOptions = true;
-            this.PIdeal.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PIdeal.AppearanceHeader.Options.UseTextOptions = true;
-            this.PIdeal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PIdeal.Caption = "Pedido Ideal";
-            this.PIdeal.FieldName = "Column35";
-            this.PIdeal.Name = "gridColumn35";
-            this.PIdeal.OptionsColumn.AllowEdit = false;
-            this.PIdeal.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)";
-            this.PIdeal.Visible = true;
+            this.gridColumn35.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn35.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn35.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn35.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn35.Caption = "Pedido Ideal";
+            this.gridColumn35.FieldName = "Column35";
+            this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.OptionsColumn.AllowEdit = false;
+            this.gridColumn35.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)";
+            this.gridColumn35.Visible = true;
             // 
             // gridColumn36
             // 
-            this.PSugerido.AppearanceCell.Options.UseTextOptions = true;
-            this.PSugerido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PSugerido.AppearanceHeader.Options.UseTextOptions = true;
-            this.PSugerido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PSugerido.Caption = "Pedido Sugerido";
-            this.PSugerido.FieldName = "Column36";
-            this.PSugerido.Name = "gridColumn36";
-            this.PSugerido.OptionsColumn.AllowEdit = false;
-            this.PSugerido.ToolTip = "Pedido Sugerido = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)-TExistencia" +"";
-            this.PSugerido.Visible = true;
-            this.PSugerido.Width = 72;
+            this.gridColumn36.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn36.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn36.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn36.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn36.Caption = "Pedido Sugerido";
+            this.gridColumn36.FieldName = "Column36";
+            this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.OptionsColumn.AllowEdit = false;
+            this.gridColumn36.ToolTip = "Pedido Sugerido = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)-TExistencia" +
+    "";
+            this.gridColumn36.Visible = true;
+            this.gridColumn36.Width = 72;
             // 
             // gridColumn37
             // 
-            this.TPedido.AppearanceCell.Options.UseTextOptions = true;
-            this.TPedido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.TPedido.AppearanceHeader.Options.UseTextOptions = true;
-            this.TPedido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.TPedido.Caption = "Pedido";
-            this.TPedido.FieldName = "Column37";
-            this.TPedido.Name = "gridColumn37";
-            this.TPedido.Visible = true;
-            this.TPedido.Width = 72;
+            this.gridColumn37.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn37.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn37.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn37.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn37.Caption = "Pedido";
+            this.gridColumn37.FieldName = "Column37";
+            this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.Visible = true;
+            this.gridColumn37.Width = 72;
             // 
             // barLargeButtonItem2
             // 
@@ -1357,10 +1303,10 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem2.Text = "Seleccionar";
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
             // Frm_ReportePedidos
             // 
@@ -1482,7 +1428,7 @@
         private DevExpress.XtraBars.BarLargeButtonItem btnFolios;
         private DevExpress.XtraBars.BarLargeButtonItem btnImpProveedor;
         private DevExpress.XtraBars.BarLargeButtonItem btnGuardar;
-        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem4;
+        private DevExpress.XtraBars.BarLargeButtonItem btnCerrarPedido;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TotalV;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TotalE;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn PSugerido;
@@ -1490,8 +1436,8 @@
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.RadioGroup rdbPeriodo;
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
-        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem6;
-        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem5;
+        private DevExpress.XtraBars.BarLargeButtonItem btnBuscarPedidoCerrado;
+        private DevExpress.XtraBars.BarLargeButtonItem btnActualizarPedido;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.CheckEdit chkFamilia;
         private DevExpress.XtraEditors.CheckEdit chkCosto;
@@ -1517,5 +1463,8 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn35;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn36;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn37;
     }
 }

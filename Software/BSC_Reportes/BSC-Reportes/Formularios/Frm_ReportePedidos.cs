@@ -1051,22 +1051,22 @@ namespace BSC_Reportes
                             btnFolios.Enabled = true;
                             break;
                         case "6":
-                            barLargeButtonItem6.Enabled = true;
+                            btnBuscarPedidoCerrado.Enabled = true;
                             break;
                         case "7":
                             btnBuscar.Enabled = true;
                             break;
                         case "8":
-                            //barLargeButtonItem3.Enabled = true;
+                            btnGuardar.Enabled = true;
                             break;
                         case "9":
                             btnLimpiar.Enabled = true;
                             break;
                         case "10":
-                            barLargeButtonItem5.Enabled = true;
+                            btnActualizarPedido.Enabled = true;
                             break;
                         case "11":
-                            barLargeButtonItem4.Enabled = true;
+                            btnCerrarPedido.Enabled = true;
                             break;
                         case "12":
                             btnImpProveedor.Enabled = true;
@@ -1084,12 +1084,11 @@ namespace BSC_Reportes
         public void accesosuperusuario()
         {
             btnFolios.Enabled = true;
-            barLargeButtonItem6.Enabled = true;
+            btnBuscarPedidoCerrado.Enabled = true;
             btnBuscar.Enabled = true;
-            //barLargeButtonItem3.Enabled = true;
             btnLimpiar.Enabled = true;
-            barLargeButtonItem5.Enabled = true;
-            barLargeButtonItem4.Enabled = true;
+            btnActualizarPedido.Enabled = true;
+            btnCerrarPedido.Enabled = true;
             btnImpProveedor.Enabled = true;
         }
 
