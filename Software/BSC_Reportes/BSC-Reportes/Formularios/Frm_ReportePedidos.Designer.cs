@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
@@ -463,6 +463,7 @@
             // btnFolios
             // 
             this.btnFolios.Caption = "Buscar \r\n Folios";
+            this.btnFolios.Enabled = false;
             this.btnFolios.Id = 51;
             this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
             this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
@@ -471,6 +472,7 @@
             // barLargeButtonItem6
             // 
             this.barLargeButtonItem6.Caption = "  Buscar\r\nP Cerrado";
+            this.barLargeButtonItem6.Enabled = false;
             this.barLargeButtonItem6.Id = 56;
             this.barLargeButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.Image")));
             this.barLargeButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.LargeImage")));
@@ -479,6 +481,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Caption = "Generar\r\n Pedido";
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.Id = 17;
             this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
             this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
@@ -487,16 +490,19 @@
             // 
             // btnGuardar
             // 
+
             this.btnGuardar.Caption = "Guardar \r\n Pedido";
             this.btnGuardar.Id = 53;
             this.btnGuardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
             this.btnGuardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardar_ItemClick);
+
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Caption = "Limpiar";
+            this.btnLimpiar.Enabled = false;
             this.btnLimpiar.Id = 50;
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
@@ -506,6 +512,7 @@
             // barLargeButtonItem5
             // 
             this.barLargeButtonItem5.Caption = "Actualizar \r\n Pedido";
+            this.barLargeButtonItem5.Enabled = false;
             this.barLargeButtonItem5.Id = 55;
             this.barLargeButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.Image")));
             this.barLargeButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.LargeImage")));
@@ -514,6 +521,7 @@
             // barLargeButtonItem4
             // 
             this.barLargeButtonItem4.Caption = "Cerrar \r\nPedido";
+            this.barLargeButtonItem4.Enabled = false;
             this.barLargeButtonItem4.Id = 54;
             this.barLargeButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.Image")));
             this.barLargeButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.LargeImage")));
@@ -522,6 +530,7 @@
             // btnImpProveedor
             // 
             this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
+            this.btnImpProveedor.Enabled = false;
             this.btnImpProveedor.Id = 52;
             this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
             this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
@@ -1107,10 +1116,10 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem1.Text = "Seleccionar";
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barLargeButtonItem2.SuperTip = superToolTip1;
+            //toolTipTitleItem1.Text = "Seleccionar";
+            //superToolTip1.Items.Add(toolTipItem1);
+            //superToolTip1.Items.Add(toolTipTitleItem1);
+            //this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
             // gridBand1
             // 
@@ -1302,6 +1311,57 @@
             this.gridBand17.VisibleIndex = 16;
             this.gridBand17.Width = 219;
             // 
+            // gridColumn35
+            // 
+            this.PIdeal.AppearanceCell.Options.UseTextOptions = true;
+            this.PIdeal.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PIdeal.AppearanceHeader.Options.UseTextOptions = true;
+            this.PIdeal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PIdeal.Caption = "Pedido Ideal";
+            this.PIdeal.FieldName = "Column35";
+            this.PIdeal.Name = "gridColumn35";
+            this.PIdeal.OptionsColumn.AllowEdit = false;
+            this.PIdeal.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)";
+            this.PIdeal.Visible = true;
+            // 
+            // gridColumn36
+            // 
+            this.PSugerido.AppearanceCell.Options.UseTextOptions = true;
+            this.PSugerido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PSugerido.AppearanceHeader.Options.UseTextOptions = true;
+            this.PSugerido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PSugerido.Caption = "Pedido Sugerido";
+            this.PSugerido.FieldName = "Column36";
+            this.PSugerido.Name = "gridColumn36";
+            this.PSugerido.OptionsColumn.AllowEdit = false;
+            this.PSugerido.ToolTip = "Pedido Sugerido = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)-TExistencia" +"";
+            this.PSugerido.Visible = true;
+            this.PSugerido.Width = 72;
+            // 
+            // gridColumn37
+            // 
+            this.TPedido.AppearanceCell.Options.UseTextOptions = true;
+            this.TPedido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TPedido.AppearanceHeader.Options.UseTextOptions = true;
+            this.TPedido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TPedido.Caption = "Pedido";
+            this.TPedido.FieldName = "Column37";
+            this.TPedido.Name = "gridColumn37";
+            this.TPedido.Visible = true;
+            this.TPedido.Width = 72;
+            // 
+            // barLargeButtonItem2
+            // 
+            this.barLargeButtonItem2.Caption = "Buscar";
+            this.barLargeButtonItem2.Id = 17;
+            this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
+            this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
+            this.barLargeButtonItem2.Name = "barLargeButtonItem2";
+            toolTipTitleItem2.Text = "Seleccionar";
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            // 
             // Frm_ReportePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1317,6 +1377,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_ReportePedidos_Load);
             this.Shown += new System.EventHandler(this.Frm_ReportePedidos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

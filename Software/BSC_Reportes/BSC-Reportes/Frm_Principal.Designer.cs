@@ -33,6 +33,7 @@
             this.btnUsuarios = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -42,7 +43,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +69,7 @@
             // btnUsuarios
             // 
             this.btnUsuarios.Caption = "Usuarios";
+            this.btnUsuarios.Enabled = false;
             this.btnUsuarios.Id = 1;
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsuarios_ItemClick);
@@ -76,8 +77,10 @@
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Pedidos";
+            this.barButtonItem1.Enabled = false;
             this.barButtonItem1.Id = 2;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -88,6 +91,14 @@
             this.skinRibbonGalleryBarItem1.Gallery.ShowItemText = true;
             this.skinRibbonGalleryBarItem1.Id = 3;
             this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // btncontrolacesos
+            // 
+            this.btncontrolacesos.Caption = "Control de accesos";
+            this.btncontrolacesos.Enabled = false;
+            this.btncontrolacesos.Id = 4;
+            this.btncontrolacesos.Name = "btncontrolacesos";
+            this.btncontrolacesos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btncontrolacesos_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -151,13 +162,6 @@
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp";
             // 
-            // btncontrolacesos
-            // 
-            this.btncontrolacesos.Caption = "Control de accesos";
-            this.btncontrolacesos.Id = 4;
-            this.btncontrolacesos.Name = "btncontrolacesos";
-            this.btncontrolacesos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btncontrolacesos_ItemClick);
-            // 
             // Frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,6 +176,7 @@
             this.Text = "Frm_Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_Principal_FormClosing);
+            this.Load += new System.EventHandler(this.Frm_Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);

@@ -10,8 +10,9 @@ namespace CapaDeDatos
     {
         public string UsuariosLogin { get; set; }
         public int pantallasid { get; set; }
+        public int botonesId { get; set; }
 
-
+       
         public void Mtdseleccionarpantallas()
         {
             TipoDato _dato = new TipoDato();
@@ -47,6 +48,99 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_UsuarioBotones_Select";
+                _dato.CadenaTexto = UsuariosLogin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _dato.Entero = pantallasid;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
+        public void Mtdeliminararbotones()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Usuariopantallabotones_delete";
+                _dato.CadenaTexto = UsuariosLogin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _dato.Entero = pantallasid;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
+        public void Mtdinsertarbotones()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Usuariopantallabotones_insert";
+                _dato.CadenaTexto = UsuariosLogin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _dato.Entero = pantallasid;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                _dato.Entero = botonesId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "botonesId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
+        public void Mtdselecionarbotonespantalla()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_UsuarioBotonesPantalla_Select";
                 _dato.CadenaTexto = UsuariosLogin;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = pantallasid;

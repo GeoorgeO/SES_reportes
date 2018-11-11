@@ -48,9 +48,28 @@ namespace BSC_Reportes
                         switch (clasePantallas.Datos.Rows[r]["pantallasId"].ToString())
                         {
                             case "1":
+                                if (UsuariosClase == 'N')
+                                {
 
+                                }else
+                                {
+                                    btnUsuarios.Enabled = true;
+                                }
+                                
                                 break;
+                            case "2":
+                                barButtonItem1.Enabled = true;
+                                break;
+                            case "3":
+                                if (UsuariosClase == 'N')
+                                {
 
+                                }
+                                else
+                                {
+                                    btncontrolacesos.Enabled = true;
+                                }
+                                break;
                         }
                     }
                 }
@@ -60,13 +79,42 @@ namespace BSC_Reportes
         private void btnUsuarios_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_Usuarios vusuarios = new Frm_Usuarios();
+            vusuarios.llenarusuario(UsuariosLogin, UsuariosClase);
             vusuarios.Show();
         }
 
         private void btncontrolacesos_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_UsuariosPantallaBotones vcontrol = new Frm_UsuariosPantallaBotones();
+            vcontrol.llenarusuario(UsuariosLogin, UsuariosClase);
             vcontrol.Show();
+        }
+
+        private void Frm_Principal_Load(object sender, EventArgs e)
+        {
+            if (UsuariosClase == 'S')
+            {
+                accesosuperusuario();
+            }
+            else
+            {
+                revisaopciones();
+            }
+            
+        }
+
+        public void accesosuperusuario()
+        {
+            btnUsuarios.Enabled = true;
+            btncontrolacesos.Enabled = true;
+            barButtonItem1.Enabled = true;
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ReportePedidos vpedidos = new Frm_ReportePedidos();
+            vpedidos.llenarusuario(UsuariosLogin, UsuariosClase);
+            vpedidos.Show();
         }
     }
 }

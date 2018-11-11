@@ -1,5 +1,4 @@
 USE [SES_Reportes]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -15,18 +14,18 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_Usuarios_Select')
-DROP PROCEDURE SP_BSC_Usuarios_Select
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_UsuarioBotonesPantalla_Select')
+DROP PROCEDURE SP_BSC_UsuarioBotonesPantalla_Select
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_BSC_Usuarios_Select 
+CREATE PROCEDURE SP_BSC_UsuarioBotonesPantalla_Select
 	-- Add the parameters for the stored procedure here
-	@activo int,
-	@clase char(1)
+	@usuariosLogin varchar(60),
+	@pantallasId int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -34,15 +33,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT UsuariosLogin,
-		UsuariosNombre,
-		UsuariosPassword,
-		Usuariosclase,
-		UsuariosActivo
-	From Usuarios
-	where  UsuariosActivo=@activo
-	and ('S'=@clase 
-		or ('A'=@clase and (UsuariosClase='A' or UsuariosClase='N'))
-		or ('N'=@clase and UsuariosClase='N'))
+	SELECT botonesId from usuarioPantallaBotones where usuariosLogin=@usuariosLogin and pantallasId=@pantallasId
 END
 GO

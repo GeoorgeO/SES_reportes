@@ -33,6 +33,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT botonesid,botonesNombre,(select count(botonesid) as boton from usuariopantallabotones as upb where UsuariosLogin=@UsuariosLogin and pantallasId=@pantallasId and botonesId=b.botonesId ) as cheked from Botones as b
+	declare  @resultado bit
+	SELECT botonesid,botonesNombre, convert(bit,(select count(botonesid) as boton from usuariopantallabotones as upb where UsuariosLogin=@UsuariosLogin and pantallasId=@pantallasId and botonesId=b.botonesId ))  as cheked from Botones as b where pantallasId=@pantallasId
 END
 GO
+
+
