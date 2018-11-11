@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ReportePedidos));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -55,7 +56,7 @@
             this.txtProveedorId = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -462,7 +463,6 @@
             // btnFolios
             // 
             this.btnFolios.Caption = "Buscar \r\n Folios";
-            this.btnFolios.Enabled = false;
             this.btnFolios.Id = 51;
             this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
             this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
@@ -471,16 +471,14 @@
             // btnBuscarPedidoCerrado
             // 
             this.btnBuscarPedidoCerrado.Caption = "  Buscar\r\nP Cerrado";
-            this.btnBuscarPedidoCerrado.Enabled = false;
             this.btnBuscarPedidoCerrado.Id = 56;
-            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.Image")));
-            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem6.ImageOptions.LargeImage")));
+            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.Image")));
+            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.LargeImage")));
             this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
             // 
             // btnBuscar
             // 
             this.btnBuscar.Caption = "Generar\r\n Pedido";
-            this.btnBuscar.Enabled = false;
             this.btnBuscar.Id = 17;
             this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
             this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
@@ -499,7 +497,6 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Caption = "Limpiar";
-            this.btnLimpiar.Enabled = false;
             this.btnLimpiar.Id = 50;
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
@@ -509,25 +506,22 @@
             // btnActualizarPedido
             // 
             this.btnActualizarPedido.Caption = "Actualizar \r\n Pedido";
-            this.btnActualizarPedido.Enabled = false;
             this.btnActualizarPedido.Id = 55;
-            this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.Image")));
-            this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem5.ImageOptions.LargeImage")));
+            this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.Image")));
+            this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
             this.btnActualizarPedido.Name = "btnActualizarPedido";
             // 
             // btnCerrarPedido
             // 
             this.btnCerrarPedido.Caption = "Cerrar \r\nPedido";
-            this.btnCerrarPedido.Enabled = false;
             this.btnCerrarPedido.Id = 54;
-            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.Image")));
-            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem4.ImageOptions.LargeImage")));
+            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.Image")));
+            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.LargeImage")));
             this.btnCerrarPedido.Name = "btnCerrarPedido";
             // 
             // btnImpProveedor
             // 
             this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
-            this.btnImpProveedor.Enabled = false;
             this.btnImpProveedor.Id = 52;
             this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
             this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));

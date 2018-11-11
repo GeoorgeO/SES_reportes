@@ -1033,43 +1033,52 @@ namespace BSC_Reportes
             GusuariosLogin = usuario;
             GusuariosClase = clase;
         }
-
-        public void controlbotones()
+        public void OcultarBotones()
+        {
+            btnFolios.Links[0].Visible = false;
+            btnBuscarPedidoCerrado.Links[0].Visible = false;
+            btnBuscar.Links[0].Visible = false;
+            btnGuardar.Links[0].Visible = false;
+            btnLimpiar.Links[0].Visible = false;
+            btnActualizarPedido.Links[0].Visible = false;
+            btnCerrarPedido.Links[0].Visible = false;
+            btnImpProveedor.Links[0].Visible = false;
+        }
+        public void MostrarBotones()
         {
             CLS_Pantallas clspantbotones = new CLS_Pantallas();
             clspantbotones.UsuariosLogin = GusuariosLogin;
             clspantbotones.pantallasid = 2;
             clspantbotones.Mtdselecionarbotonespantalla();
-            if (clspantbotones.Exito.ToString() == "True")
+            if (clspantbotones.Exito)
             {
-                int t;
-                for (t = 0; t < clspantbotones.Datos.Rows.Count; t++)
+                for (int t = 0; t < clspantbotones.Datos.Rows.Count; t++)
                 {
                     switch (clspantbotones.Datos.Rows[t][0].ToString())
                     {
                         case "5":
-                            btnFolios.Enabled = true;
+                            btnFolios.Links[0].Visible = true;
                             break;
                         case "6":
-                            btnBuscarPedidoCerrado.Enabled = true;
+                            btnBuscarPedidoCerrado.Links[0].Visible = true;
                             break;
                         case "7":
-                            btnBuscar.Enabled = true;
+                            btnBuscar.Links[0].Visible = true;
                             break;
                         case "8":
-                            btnGuardar.Enabled = true;
+                            btnGuardar.Links[0].Visible = true;
                             break;
                         case "9":
-                            btnLimpiar.Enabled = true;
+                            btnLimpiar.Links[0].Visible = true;
                             break;
                         case "10":
-                            btnActualizarPedido.Enabled = true;
+                            btnActualizarPedido.Links[0].Visible = true;
                             break;
                         case "11":
-                            btnCerrarPedido.Enabled = true;
+                            btnCerrarPedido.Links[0].Visible = true;
                             break;
                         case "12":
-                            btnImpProveedor.Enabled = true;
+                            btnImpProveedor.Links[0].Visible = true;
                             break;
                     }
                 }
@@ -1077,30 +1086,31 @@ namespace BSC_Reportes
             }
             else
             {
-
+                XtraMessageBox.Show(clspantbotones.Mensaje);
             }
         }
 
         public void accesosuperusuario()
         {
-            btnFolios.Enabled = true;
-            btnBuscarPedidoCerrado.Enabled = true;
-            btnBuscar.Enabled = true;
-            btnLimpiar.Enabled = true;
-            btnActualizarPedido.Enabled = true;
-            btnCerrarPedido.Enabled = true;
-            btnImpProveedor.Enabled = true;
+            btnFolios.Links[0].Visible = true;
+            btnBuscarPedidoCerrado.Links[0].Visible = true;
+            btnBuscar.Links[0].Visible = true;
+            btnLimpiar.Links[0].Visible = true;
+            btnActualizarPedido.Links[0].Visible = true;
+            btnCerrarPedido.Links[0].Visible = true;
+            btnImpProveedor.Links[0].Visible = true;
         }
 
         private void Frm_ReportePedidos_Load(object sender, EventArgs e)
         {
+            OcultarBotones();
             if (GusuariosClase == 'S')
             {
                 accesosuperusuario();
             }
             else
             {
-                controlbotones();
+                MostrarBotones();
             }
         }
     }
