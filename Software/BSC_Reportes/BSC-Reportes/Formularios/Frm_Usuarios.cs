@@ -36,7 +36,7 @@ namespace BSC_Reportes
         {
             CLS_Usuarios selpro = new CLS_Usuarios();
             selpro.UsuariosActivo = activo;
-            selpro.UsuariosClase = Convert.ToChar(GusuariosClase);
+            selpro.UsuariosClase = GusuariosClase.ToString();
             selpro.MtdSeleccionarUsuarios();
             if (selpro.Exito)
             {

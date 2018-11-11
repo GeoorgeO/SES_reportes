@@ -48,13 +48,27 @@ namespace BSC_Reportes
                         switch (clasePantallas.Datos.Rows[r]["pantallasId"].ToString())
                         {
                             case "1":
-                                btnUsuarios.Enabled = true;
+                                if (UsuariosClase == 'N')
+                                {
+
+                                }else
+                                {
+                                    btnUsuarios.Enabled = true;
+                                }
+                                
                                 break;
                             case "2":
                                 barButtonItem1.Enabled = true;
                                 break;
                             case "3":
-                                btncontrolacesos.Enabled = true;
+                                if (UsuariosClase == 'N')
+                                {
+
+                                }
+                                else
+                                {
+                                    btncontrolacesos.Enabled = true;
+                                }
                                 break;
                         }
                     }
