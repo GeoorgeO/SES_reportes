@@ -71,7 +71,7 @@
             // SkinForm
             // 
             this.SkinForm.EnableBonusSkins = true;
-            this.SkinForm.LookAndFeel.SkinName = "Sharp";
+            this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
             // 
             // btnAcceso
             // 

@@ -31,7 +31,10 @@ namespace BSC_Reportes
             MSRegistro RegIn = new MSRegistro();
             RegIn.SaveSetting("ConexionSQL", "Sking", SkinForm.LookAndFeel.SkinName);
         }
-
+        private void Frm_Principal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
         public void revisaopciones()
         {
@@ -53,12 +56,12 @@ namespace BSC_Reportes
 
                                 }else
                                 {
-                                    btnUsuarios.Enabled = true;
+                                    btnUsuarios.Visibility = BarItemVisibility.Always;
                                 }
                                 
                                 break;
                             case "2":
-                                barButtonItem1.Enabled = true;
+                                btnPedidos.Visibility = BarItemVisibility.Always;
                                 break;
                             case "3":
                                 if (UsuariosClase == 'N')
@@ -67,7 +70,7 @@ namespace BSC_Reportes
                                 }
                                 else
                                 {
-                                    btncontrolacesos.Enabled = true;
+                                    btncontrolacesos.Visibility = BarItemVisibility.Always;
                                 }
                                 break;
                         }
@@ -102,19 +105,26 @@ namespace BSC_Reportes
             }
             
         }
-
+        private void OcultarBotones()
+        {
+            btnUsuarios.Visibility = BarItemVisibility.Never;
+            btncontrolacesos.Visibility = BarItemVisibility.Never;
+            btnPedidos.Visibility = BarItemVisibility.Never;
+        }
         public void accesosuperusuario()
         {
-            btnUsuarios.Enabled = true;
-            btncontrolacesos.Enabled = true;
-            barButtonItem1.Enabled = true;
+            btnUsuarios.Visibility = BarItemVisibility.Always;
+            btncontrolacesos.Visibility = BarItemVisibility.Always;
+            btnPedidos.Visibility = BarItemVisibility.Always;
         }
 
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnPedidos_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_ReportePedidos vpedidos = new Frm_ReportePedidos();
-            vpedidos.llenarusuario(UsuariosLogin, UsuariosClase);
-            vpedidos.Show();
+            Frm_ReportePedidos.DefInstance.MdiParent = this;
+            Frm_ReportePedidos.DefInstance.IdPantallaBotones = 2;
+            Frm_ReportePedidos.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_ReportePedidos.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_ReportePedidos.DefInstance.Show();
         }
     }
 }

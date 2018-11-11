@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
+using DevExpress.XtraBars.Helpers;
 
 namespace BSC_Reportes
 {
@@ -52,7 +53,6 @@ namespace BSC_Reportes
                             {
                                 vIdActivo = 0;
                             }
-                            //vIdActivo = Convert.ToInt32(sLogin.Datos.Rows[0][2].ToString());
                             Frm_Principal frmP = new Frm_Principal();
                             MSRegistro RegIn = new MSRegistro();
                             
@@ -111,7 +111,7 @@ namespace BSC_Reportes
         {
             txtUser.Focus();
             MSRegistro RegOut = new MSRegistro();
-            //SkinForm.LookAndFeel.SetSkinStyle(RegOut.GetSetting("ConexionSQL", "Sking"));
+            SkinForm.LookAndFeel.SetSkinStyle(RegOut.GetSetting("ConexionSQL", "Sking"));
         }
 
         private void Frm_Login_Shown(object sender, EventArgs e)

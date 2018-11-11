@@ -52,12 +52,26 @@ namespace BSC_Reportes
         public decimal sugerido { get; private set; }
         public decimal Ideal { get; private set; }
         public string UsuariosLogin { get;  set; }
+        public char UsuarioClase { get; set; }
         public int PrePedidosId { get; private set; }
         public int xRow { get; private set; }
+        public int IdPantallaBotones { get;  set; }
+        private static Frm_ReportePedidos m_FormDefInstance;
+        public static Frm_ReportePedidos DefInstance
+        {
+            get
+            {
+                if (m_FormDefInstance == null || m_FormDefInstance.IsDisposed)
+                    m_FormDefInstance = new Frm_ReportePedidos();
+                return m_FormDefInstance;
+            }
+            set
+            {
+                m_FormDefInstance = value;
+            }
+        }
 
-
-        public string GusuariosLogin;
-        public char GusuariosClase;
+        
 
         public Frm_ReportePedidos()
         {
@@ -1028,11 +1042,6 @@ namespace BSC_Reportes
             delped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
             delped.MtdEliminarPrePedidoProveedor();
         }
-        public void llenarusuario(string usuario, char clase)
-        {
-            GusuariosLogin = usuario;
-            GusuariosClase = clase;
-        }
         public void OcultarBotones()
         {
             btnFolios.Links[0].Visible = false;
@@ -1047,8 +1056,8 @@ namespace BSC_Reportes
         public void MostrarBotones()
         {
             CLS_Pantallas clspantbotones = new CLS_Pantallas();
-            clspantbotones.UsuariosLogin = GusuariosLogin;
-            clspantbotones.pantallasid = 2;
+            clspantbotones.UsuariosLogin = UsuariosLogin;
+            clspantbotones.pantallasid = IdPantallaBotones;
             clspantbotones.Mtdselecionarbotonespantalla();
             if (clspantbotones.Exito)
             {
@@ -1104,7 +1113,7 @@ namespace BSC_Reportes
         private void Frm_ReportePedidos_Load(object sender, EventArgs e)
         {
             OcultarBotones();
-            if (GusuariosClase == 'S')
+            if (UsuarioClase == 'S')
             {
                 accesosuperusuario();
             }
