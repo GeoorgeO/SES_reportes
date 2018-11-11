@@ -51,6 +51,9 @@ namespace BSC_Reportes
         public decimal mesesT { get; private set; }
         public decimal sugerido { get; private set; }
         public decimal Ideal { get; private set; }
+        public string UsuariosLogin { get;  set; }
+        public int PrePedidosId { get; private set; }
+        public int xRow { get; private set; }
 
         public Frm_ReportePedidos()
         {
@@ -73,7 +76,7 @@ namespace BSC_Reportes
             // DataRow row;
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Column1";
+            column.ColumnName = "Codigo";
             column.AutoIncrement = false;
             column.Caption = "Codigo";
             column.ReadOnly = false;
@@ -83,7 +86,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Column2";
+            column.ColumnName = "Descripcion";
             column.AutoIncrement = false;
             column.Caption = "Descripcion";
             column.ReadOnly = false;
@@ -93,7 +96,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(decimal);
-            column.ColumnName = "Column3";
+            column.ColumnName = "CostoReposicion";
             column.AutoIncrement = false;
             column.Caption = "Costo Reposicion";
             column.ReadOnly = false;
@@ -103,7 +106,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Column4";
+            column.ColumnName = "Familia";
             column.AutoIncrement = false;
             column.Caption = "Familia";
             column.ReadOnly = false;
@@ -113,7 +116,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column5";
+            column.ColumnName = "AlmacenV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -123,7 +126,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column6";
+            column.ColumnName = "AlmacenE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -133,7 +136,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column7";
+            column.ColumnName = "CentroV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -143,7 +146,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column8";
+            column.ColumnName = "CentroE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -153,7 +156,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column9";
+            column.ColumnName = "MorelosV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -163,7 +166,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column10";
+            column.ColumnName = "MorelosE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -173,7 +176,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column11";
+            column.ColumnName = "FcoVillaV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -183,7 +186,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column12";
+            column.ColumnName = "FcoVillaE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -193,7 +196,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column13";
+            column.ColumnName = "SarabiaIV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -203,7 +206,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column14";
+            column.ColumnName = "SarabiaIE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -213,7 +216,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column15";
+            column.ColumnName = "SarabiaIIV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -223,7 +226,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column16";
+            column.ColumnName = "SarabiaIIE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -233,7 +236,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column17";
+            column.ColumnName = "PaseoV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -243,7 +246,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column18";
+            column.ColumnName = "PaseoE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -253,7 +256,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column19";
+            column.ColumnName = "EstocolmoV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -263,7 +266,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column20";
+            column.ColumnName = "EstocolmoE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -273,7 +276,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column21";
+            column.ColumnName = "CostaRicaV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -283,7 +286,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column22";
+            column.ColumnName = "CostaRicaE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -293,7 +296,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column23";
+            column.ColumnName = "CalzadaV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -303,7 +306,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column24";
+            column.ColumnName = "CalzadaE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -313,7 +316,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column25";
+            column.ColumnName = "LombardiaV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -323,7 +326,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column26";
+            column.ColumnName = "LombardiaE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -333,7 +336,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column27";
+            column.ColumnName = "NvaItaliaV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -343,7 +346,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column28";
+            column.ColumnName = "nvaItaliaE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -353,7 +356,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column29";
+            column.ColumnName = "ApatzinganV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -363,7 +366,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column30";
+            column.ColumnName = "ApatzinganE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -373,7 +376,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column31";
+            column.ColumnName = "ReyesV";
             column.AutoIncrement = false;
             column.Caption = "V";
             column.ReadOnly = false;
@@ -383,7 +386,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column32";
+            column.ColumnName = "ReyesE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -393,7 +396,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column33";
+            column.ColumnName = "TotalV";
             column.AutoIncrement = false;
             column.Caption = "TotalV";
             column.ReadOnly = false;
@@ -403,7 +406,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column34";
+            column.ColumnName = "TotalE";
             column.AutoIncrement = false;
             column.Caption = "TotalE";
             column.ReadOnly = false;
@@ -413,7 +416,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column35";
+            column.ColumnName = "PIdeal";
             column.AutoIncrement = false;
             column.Caption = "Pedido Ideal";
             column.ReadOnly = false;
@@ -423,7 +426,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column36";
+            column.ColumnName = "PSugerido";
             column.AutoIncrement = false;
             column.Caption = "Pedido Sugerido";
             column.ReadOnly = false;
@@ -433,7 +436,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Column37";
+            column.ColumnName = "TPedido";
             column.AutoIncrement = false;
             column.Caption = "Total Pedido";
             column.ReadOnly = false;
@@ -484,8 +487,8 @@ namespace BSC_Reportes
             dtgValVentaExistencia.OptionsSelection.EnableAppearanceHideSelection = false;
             dtgValVentaExistencia.OptionsSelection.MultiSelect = true;
             dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
-            gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            gridColumn3.DisplayFormat.FormatString = "$ ###,###0.00";
+            CostoReposicion.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            CostoReposicion.DisplayFormat.FormatString = "$ ###,###0.00";
             pbProgreso.Position = 0;
         }
         private void rdbTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -538,44 +541,44 @@ namespace BSC_Reportes
         }
         private void ColumnsExistencia(Boolean Mostrar)
         {
-            gridColumn6.Visible = Mostrar;
-            gridColumn8.Visible = Mostrar;
-            gridColumn10.Visible = Mostrar;
-            gridColumn12.Visible = Mostrar;
-            gridColumn14.Visible = Mostrar;
-            gridColumn16.Visible = Mostrar;
-            gridColumn18.Visible = Mostrar;
-            gridColumn20.Visible = Mostrar;
-            gridColumn22.Visible = Mostrar;
-            gridColumn24.Visible = Mostrar;
-            gridColumn26.Visible = Mostrar;
-            gridColumn28.Visible = Mostrar;
-            gridColumn30.Visible = Mostrar;
-            gridColumn32.Visible = Mostrar;
+            AlmacenE.Visible = Mostrar;
+            CentroE.Visible = Mostrar;
+            MorelosE.Visible = Mostrar;
+            FcoVillaE.Visible = Mostrar;
+            SarabiaIE.Visible = Mostrar;
+            SarabiaIIE.Visible = Mostrar;
+            PaseoE.Visible = Mostrar;
+            EstocolmoE.Visible = Mostrar;
+            CostaRicaE.Visible = Mostrar;
+            CalzadaE.Visible = Mostrar;
+            LombardiaE.Visible = Mostrar;
+            NvaItaliaE.Visible = Mostrar;
+            ApatzinganE.Visible = Mostrar;
+            ReyesE.Visible = Mostrar;
         }
         private void ColumnsCosto(Boolean Mostrar)
         {
-            gridColumn3.Visible = Mostrar;
+            CostoReposicion.Visible = Mostrar;
         }
         private void ColumnsFamilia(Boolean Mostrar)
         {
-            gridColumn4.Visible = Mostrar;
+            Familia.Visible = Mostrar;
         }
         private void ColumnsVentas(Boolean Mostrar)
         {
-            gridColumn5.Visible = Mostrar;
-            gridColumn7.Visible = Mostrar;
-            gridColumn9.Visible = Mostrar;
-            gridColumn11.Visible = Mostrar;
-            gridColumn13.Visible = Mostrar;
-            gridColumn15.Visible = Mostrar;
-            gridColumn19.Visible = Mostrar;
-            gridColumn21.Visible = Mostrar;
-            gridColumn23.Visible = Mostrar;
-            gridColumn25.Visible = Mostrar;
-            gridColumn27.Visible = Mostrar;
-            gridColumn29.Visible = Mostrar;
-            gridColumn31.Visible = Mostrar;
+            AlmacenV.Visible = Mostrar;
+            CentroV.Visible = Mostrar;
+            MorelosV.Visible = Mostrar;
+            FcoVillaV.Visible = Mostrar;
+            SarabiaIV.Visible = Mostrar;
+            SarabiaIIV.Visible = Mostrar;
+            EstocolmoV.Visible = Mostrar;
+            CostaRicaV.Visible = Mostrar;
+            CalzadaV.Visible = Mostrar;
+            LombardiaV.Visible = Mostrar;
+            NvaItaliaV.Visible = Mostrar;
+            ApatzinganV.Visible = Mostrar;
+            ReyesV.Visible = Mostrar;
         }
         private void chkVentas_CheckedChanged(object sender, EventArgs e)
         {
@@ -668,43 +671,43 @@ namespace BSC_Reportes
             int rowHandle = dtgValVentaExistencia.GetRowHandle(dtgValVentaExistencia.DataRowCount);
             if (dtgValVentaExistencia.IsNewItemRow(rowHandle))
             {
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column1"], ArticuloCodigo);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column2"], ArticuloDescripcion);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column3"], ArticuloCostoReposicion);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column4"], FamiliaNombre);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column5"], VAlmacen);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column6"], EAlmacen);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column7"], VCentro);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column8"], ECentro);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column9"], VMorelos);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column10"], EMorelos);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column11"], VFCoVilla);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column12"], EFcoVilla);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column13"], VSarabiaI);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column14"], ESarabiaI);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column15"], VSarabiaII);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column16"], ESarabiaII);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column17"], VPaseo);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column18"], EPaseo);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column19"], VEstocolmo);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column20"], EEstocolmo);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column21"], VCostaRica);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column22"], ECostaRica);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column23"], VCalzada);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column24"], ECalzada);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column25"], VLombardia);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column26"], ELombardia);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column27"], VNvaItalia);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column28"], ENvaItalia);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column29"], VApatzingan);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column30"], EApatzingan);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column31"], VReyes);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column32"], EReyes);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column33"], TotalV);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column34"], TotalE);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column35"], PIdeal);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column36"], PSugerido);
-                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Column37"], TPedido);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Codigo"], ArticuloCodigo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Descripcion"], ArticuloDescripcion);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CostoReposicion"], ArticuloCostoReposicion);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["Familia"], FamiliaNombre);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["AlmacenV"], VAlmacen);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["AlmacenE"], EAlmacen);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CentroV"], VCentro);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CentroE"], ECentro);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["MorelosV"], VMorelos);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["MorelosE"], EMorelos);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["FcoVillaV"], VFCoVilla);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["FcoVillaE"], EFcoVilla);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["SarabiaIV"], VSarabiaI);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["SarabiaIE"], ESarabiaI);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["SarabiaIIV"], VSarabiaII);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["SarabiaIIE"], ESarabiaII);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["PaseoV"], VPaseo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["PaseoE"], EPaseo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["EstocolmoV"], VEstocolmo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["EstocolmoE"], EEstocolmo);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CostaRicaV"], VCostaRica);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CostaRicaE"], ECostaRica);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CalzadaV"], VCalzada);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["CalzadaE"], ECalzada);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["LombardiaV"], VLombardia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["LombardiaE"], ELombardia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["NvaItaliaV"], VNvaItalia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["NvaItaliaE"], ENvaItalia);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ApatzinganV"], VApatzingan);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ApatzinganE"], EApatzingan);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ReyesV"], VReyes);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ReyesE"], EReyes);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TotalV"], TotalV);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TotalE"], TotalE);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["PIdeal"], PIdeal);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["PSugerido"], PSugerido);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TPedido"], TPedido);
             }
         }
 
@@ -932,6 +935,95 @@ namespace BSC_Reportes
             {
                 XtraMessageBox.Show("Es necesario generar un pedido", "No Existe Pedido Generado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MensajeCargando(1);
+            EliminarPedido();
+            GuardarPrepedido();
+            MensajeCargando(2);
+        }
+
+        private void GuardarPrepedido()
+        {
+            CLS_Pedidos insped = new CLS_Pedidos();
+            insped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+            insped.ProveedorNombre = txtProveedorNombre.Text;
+            insped.FechaInicio = dtInicio.DateTime.Year + DosCeros(dtInicio.DateTime.Month.ToString()) + DosCeros(dtInicio.DateTime.Day.ToString());
+            insped.FechaFin = dtFin.DateTime.Year + DosCeros(dtFin.DateTime.Month.ToString()) + DosCeros(dtFin.DateTime.Day.ToString());
+            insped.UsuariosLogin = UsuariosLogin;
+            insped.MtdInsertPrePedidoProveedor();
+            if (insped.Exito)
+            {
+                if (insped.Datos.Rows.Count > 0)
+                {
+                    PrePedidosId =Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
+                    GuardarDetalles();
+                }
+            }
+        }
+
+        private void GuardarDetalles()
+        {
+            pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
+            for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
+            {
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                CLS_Pedidos insdetped = new CLS_Pedidos();
+                xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
+                insdetped.PrePedidosId = PrePedidosId;
+                insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
+                insdetped.ArticuloCostoReposicion =Convert.ToDecimal(dtgValVentaExistencia.GetRowCellValue(xRow, "CostoReposicion").ToString());
+                insdetped.FamiliaNombre = dtgValVentaExistencia.GetRowCellValue(xRow, "Familia").ToString();
+                insdetped.VAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlamcenV").ToString());
+                insdetped.EAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenE").ToString());
+                insdetped.VCentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroV").ToString());
+                insdetped.ECentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroE").ToString());
+                insdetped.VApatzingan = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ApatzinganV").ToString());
+                insdetped.EApatzingan = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ApatzinganE").ToString());
+                insdetped.VCalzada = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CalzadaV").ToString());
+                insdetped.ECalzada = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CalzadaE").ToString());
+                insdetped.VCostaRica = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CostaRicaV").ToString());
+                insdetped.ECostaRica = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CostaRicaE").ToString());
+                insdetped.VEstocolmo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "EstocolmoV").ToString());
+                insdetped.EEstocolmo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "EstocolmoE").ToString());
+                insdetped.VFCoVilla = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "FcoVillaV").ToString());
+                insdetped.EFcoVilla = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "FcoVillaE").ToString());
+                insdetped.VLombardia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "LombardiaV").ToString());
+                insdetped.ELombardia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "LombardiaE").ToString());
+                insdetped.VReyes = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ReyesV").ToString());
+                insdetped.EReyes = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ReyesE").ToString());
+                insdetped.VMorelos = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "MorelosV").ToString());
+                insdetped.EMorelos = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "MorelosE").ToString());
+                insdetped.VNvaItalia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "NvaItaliaV").ToString());
+                insdetped.ENvaItalia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "NvaItaliaE").ToString());
+                insdetped.VPaseo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PaseoV").ToString());
+                insdetped.EPaseo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PaseoE").ToString());
+                insdetped.VSarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIV").ToString());
+                insdetped.ESarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
+                insdetped.VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
+                insdetped.ESarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
+                insdetped.TotalV = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
+                insdetped.TotalE = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalE").ToString());
+                insdetped.PIdeal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PIdeal").ToString());
+                insdetped.PSugerido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PSugerido").ToString());
+                insdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
+                insdetped.MtdInsertPrePedidoDetalleProveedor();
+                if(!insdetped.Exito)
+                {
+                    XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
+                }
+            }
+        }
+
+        private void EliminarPedido()
+        {
+            CLS_Pedidos delped = new CLS_Pedidos();
+            delped.ProveedorId =Convert.ToInt32(txtProveedorId.Text);
+            delped.MtdEliminarPrePedidoProveedor();
         }
     }
 }
