@@ -13,7 +13,7 @@ using DevExpress.XtraSplashScreen;
 
 namespace BSC_Reportes
 {
-    public partial class Frm_ReportePedidos : DevExpress.XtraEditors.XtraForm
+    public partial class Frm_Pre_Pedidos : DevExpress.XtraEditors.XtraForm
     {
 
         public string vArticuloCodigo { get; private set; }
@@ -56,13 +56,13 @@ namespace BSC_Reportes
         public int PrePedidosId { get; private set; }
         public int xRow { get; private set; }
         public int IdPantallaBotones { get;  set; }
-        private static Frm_ReportePedidos m_FormDefInstance;
-        public static Frm_ReportePedidos DefInstance
+        private static Frm_Pre_Pedidos m_FormDefInstance;
+        public static Frm_Pre_Pedidos DefInstance
         {
             get
             {
                 if (m_FormDefInstance == null || m_FormDefInstance.IsDisposed)
-                    m_FormDefInstance = new Frm_ReportePedidos();
+                    m_FormDefInstance = new Frm_Pre_Pedidos();
                 return m_FormDefInstance;
             }
             set
@@ -73,7 +73,7 @@ namespace BSC_Reportes
 
         public object PeriodoPedido { get; private set; }
 
-        public Frm_ReportePedidos()
+        public Frm_Pre_Pedidos()
         {
             InitializeComponent();
         }

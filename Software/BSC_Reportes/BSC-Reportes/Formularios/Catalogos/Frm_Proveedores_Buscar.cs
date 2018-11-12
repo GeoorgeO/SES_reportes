@@ -14,7 +14,7 @@ namespace BSC_Reportes
 {
     public partial class Frm_Proveedores_Buscar : DevExpress.XtraEditors.XtraForm
     {
-        public Frm_ReportePedidos FrmReportePedidos;
+        public Frm_Pre_Pedidos FrmReportePedidos;
         public Frm_Proveedores_Buscar()
         {
             InitializeComponent();

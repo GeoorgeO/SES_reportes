@@ -120,11 +120,11 @@ namespace BSC_Reportes
 
         private void btnPedidos_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_ReportePedidos.DefInstance.MdiParent = this;
-            Frm_ReportePedidos.DefInstance.IdPantallaBotones = 2;
-            Frm_ReportePedidos.DefInstance.UsuariosLogin = UsuariosLogin;
-            Frm_ReportePedidos.DefInstance.UsuarioClase = UsuariosClase;
-            Frm_ReportePedidos.DefInstance.Show();
+            Frm_Pre_Pedidos.DefInstance.MdiParent = this;
+            Frm_Pre_Pedidos.DefInstance.IdPantallaBotones = 2;
+            Frm_Pre_Pedidos.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Pre_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Pre_Pedidos.DefInstance.Show();
         }
     }
 }
