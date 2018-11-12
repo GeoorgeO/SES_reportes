@@ -54,6 +54,8 @@ namespace CapaDeDatos
         public int PIdeal { get; set; }
         public int PSugerido { get; set; }
         public int Pedido { get; set; }
+        public int PeriodoPedido { get; set; }
+        public int PeriodoTipo { get; set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -224,6 +226,10 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ProveedorNombre");
                 _dato.CadenaTexto = UsuariosLogin;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _dato.Entero = PeriodoPedido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoPedido");
+                _dato.Entero = PeriodoTipo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoTipo");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

@@ -71,7 +71,7 @@ namespace BSC_Reportes
             }
         }
 
-        
+        public object PeriodoPedido { get; private set; }
 
         public Frm_ReportePedidos()
         {
@@ -364,7 +364,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "nvaItaliaE";
+            column.ColumnName = "NvaItaliaE";
             column.AutoIncrement = false;
             column.Caption = "E";
             column.ReadOnly = false;
@@ -943,8 +943,8 @@ namespace BSC_Reportes
                         pbProgreso.Position = i + 1;
                         Application.DoEvents();
                         int xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
-                        string Sugerido = dtgValVentaExistencia.GetRowCellValue(xRow, "Column36").ToString();
-                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["Column37"], Sugerido);
+                        string Sugerido = dtgValVentaExistencia.GetRowCellValue(xRow, "PSugerido").ToString();
+                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], Sugerido);
                     }
                     XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
@@ -970,12 +970,25 @@ namespace BSC_Reportes
             insped.FechaInicio = dtInicio.DateTime.Year + DosCeros(dtInicio.DateTime.Month.ToString()) + DosCeros(dtInicio.DateTime.Day.ToString());
             insped.FechaFin = dtFin.DateTime.Year + DosCeros(dtFin.DateTime.Month.ToString()) + DosCeros(dtFin.DateTime.Day.ToString());
             insped.UsuariosLogin = UsuariosLogin;
+            insped.PeriodoPedido = Convert.ToInt32(txtPeriodo.Text);
+            if (rdbPeriodo.SelectedIndex == 0)
+            {
+                insped.PeriodoTipo = 1;
+            }
+            else if (rdbPeriodo.SelectedIndex == 1)
+            {
+                insped.PeriodoTipo = 2;
+            }
+            else if (rdbPeriodo.SelectedIndex == 2)
+            {
+                insped.PeriodoTipo = 3;
+            }
             insped.MtdInsertPrePedidoProveedor();
             if (insped.Exito)
             {
                 if (insped.Datos.Rows.Count > 0)
                 {
-                    PrePedidosId =Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
+                    PrePedidosId = Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
                     GuardarDetalles();
                 }
             }
@@ -995,7 +1008,7 @@ namespace BSC_Reportes
                 insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
                 insdetped.ArticuloCostoReposicion =Convert.ToDecimal(dtgValVentaExistencia.GetRowCellValue(xRow, "CostoReposicion").ToString());
                 insdetped.FamiliaNombre = dtgValVentaExistencia.GetRowCellValue(xRow, "Familia").ToString();
-                insdetped.VAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlamcenV").ToString());
+                insdetped.VAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenV").ToString());
                 insdetped.EAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenE").ToString());
                 insdetped.VCentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroV").ToString());
                 insdetped.ECentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroE").ToString());
@@ -1104,6 +1117,7 @@ namespace BSC_Reportes
             btnFolios.Links[0].Visible = true;
             btnBuscarPedidoCerrado.Links[0].Visible = true;
             btnBuscar.Links[0].Visible = true;
+            btnGuardar.Links[0].Visible = true;
             btnLimpiar.Links[0].Visible = true;
             btnActualizarPedido.Links[0].Visible = true;
             btnCerrarPedido.Links[0].Visible = true;

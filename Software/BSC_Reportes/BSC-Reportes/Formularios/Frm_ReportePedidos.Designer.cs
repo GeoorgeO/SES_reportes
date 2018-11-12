@@ -168,10 +168,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(67, 0);
+            this.panelControl1.Location = new System.Drawing.Point(69, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(872, 183);
+            this.panelControl1.Size = new System.Drawing.Size(870, 183);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
@@ -194,7 +194,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(848, 159);
+            this.groupControl1.Size = new System.Drawing.Size(846, 159);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -560,9 +560,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 571);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 568);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(939, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(939, 28);
             // 
             // barDockControlLeft
             // 
@@ -570,7 +570,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(67, 571);
+            this.barDockControlLeft.Size = new System.Drawing.Size(69, 568);
             // 
             // barDockControlRight
             // 
@@ -578,7 +578,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(939, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 571);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
             // barLargeButtonItem1
             // 
@@ -599,10 +599,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(67, 183);
+            this.panelControl2.Location = new System.Drawing.Point(69, 183);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(872, 388);
+            this.panelControl2.Size = new System.Drawing.Size(870, 385);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -611,7 +611,7 @@
             this.dtgVentaExistencia.Location = new System.Drawing.Point(12, 12);
             this.dtgVentaExistencia.MainView = this.dtgValVentaExistencia;
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 364);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(846, 361);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -1257,10 +1257,10 @@
             this.gridColumn35.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn35.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn35.Caption = "Pedido Ideal";
-            this.gridColumn35.FieldName = "Column35";
+            this.gridColumn35.FieldName = "PIdeal";
             this.gridColumn35.Name = "gridColumn35";
             this.gridColumn35.OptionsColumn.AllowEdit = false;
-            this.gridColumn35.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)";
+            this.gridColumn35.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)";
             this.gridColumn35.Visible = true;
             // 
             // gridColumn36
@@ -1270,11 +1270,10 @@
             this.gridColumn36.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn36.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn36.Caption = "Pedido Sugerido";
-            this.gridColumn36.FieldName = "Column36";
+            this.gridColumn36.FieldName = "PSugerido";
             this.gridColumn36.Name = "gridColumn36";
             this.gridColumn36.OptionsColumn.AllowEdit = false;
-            this.gridColumn36.ToolTip = "Pedido Sugerido = (TVentas / Meses[F.Inicio-F.Fin] )* PeriodoEnMeses)-TExistencia" +
-    "";
+            this.gridColumn36.ToolTip = "Pedido Sugerido = ((TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)-TExistencia";
             this.gridColumn36.Visible = true;
             this.gridColumn36.Width = 72;
             // 
@@ -1285,7 +1284,7 @@
             this.gridColumn37.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn37.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn37.Caption = "Pedido";
-            this.gridColumn37.FieldName = "Column37";
+            this.gridColumn37.FieldName = "TPedido";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Visible = true;
             this.gridColumn37.Width = 72;
@@ -1425,8 +1424,6 @@
         private DevExpress.XtraBars.BarLargeButtonItem btnCerrarPedido;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TotalV;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TotalE;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn PSugerido;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TPedido;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.RadioGroup rdbPeriodo;
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
@@ -1437,7 +1434,6 @@
         private DevExpress.XtraEditors.CheckEdit chkCosto;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn PIdeal;
         private DevExpress.XtraEditors.SimpleButton btnIgualar;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn NvaItaliaE;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
