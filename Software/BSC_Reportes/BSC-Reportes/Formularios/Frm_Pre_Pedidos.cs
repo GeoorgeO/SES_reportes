@@ -488,6 +488,10 @@ namespace BSC_Reportes
             CLS_Proveedores selpro = new CLS_Proveedores() { ProveedorId = Convert.ToInt32(vProveedorId) };
             txtProveedorNombre.Text = selpro.MtdSeleccionarProveedorId();
         }
+        public void BuscarPrePedido(string vPrePedidoId)
+        {
+            txtFolio.Text = vPrePedidoId;
+        }
         private void Frm_ReportePedidos_Shown(object sender, EventArgs e)
         {
             dtInicio.EditValue = DateTime.Now;
@@ -1135,6 +1139,11 @@ namespace BSC_Reportes
             {
                 MostrarBotones();
             }
+        }
+
+        private void btnFolios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
         }
     }
 }

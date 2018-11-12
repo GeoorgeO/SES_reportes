@@ -47,7 +47,7 @@
             this.txtPeriodo = new DevExpress.XtraEditors.TextEdit();
             this.rdbPeriodo = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtFolio = new DevExpress.XtraEditors.TextEdit();
             this.rdbTipo = new DevExpress.XtraEditors.RadioGroup();
             this.dtFin = new DevExpress.XtraEditors.DateEdit();
             this.dtInicio = new DevExpress.XtraEditors.DateEdit();
@@ -148,7 +148,7 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbPeriodo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFolio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).BeginInit();
@@ -168,10 +168,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(69, 0);
+            this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(870, 183);
+            this.panelControl1.Size = new System.Drawing.Size(872, 183);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
@@ -182,7 +182,7 @@
             this.groupControl1.Controls.Add(this.groupControl3);
             this.groupControl1.Controls.Add(this.groupControl2);
             this.groupControl1.Controls.Add(this.labelControl4);
-            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.txtFolio);
             this.groupControl1.Controls.Add(this.rdbTipo);
             this.groupControl1.Controls.Add(this.dtFin);
             this.groupControl1.Controls.Add(this.dtInicio);
@@ -194,7 +194,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(846, 159);
+            this.groupControl1.Size = new System.Drawing.Size(848, 159);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -314,15 +314,15 @@
             this.labelControl4.TabIndex = 12;
             this.labelControl4.Text = "Folio:";
             // 
-            // textEdit1
+            // txtFolio
             // 
-            this.textEdit1.Location = new System.Drawing.Point(105, 23);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Mask.EditMask = "n0";
-            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(43, 20);
-            this.textEdit1.TabIndex = 11;
+            this.txtFolio.Location = new System.Drawing.Point(105, 23);
+            this.txtFolio.Name = "txtFolio";
+            this.txtFolio.Properties.Mask.EditMask = "n0";
+            this.txtFolio.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtFolio.Properties.ReadOnly = true;
+            this.txtFolio.Size = new System.Drawing.Size(43, 20);
+            this.txtFolio.TabIndex = 11;
             // 
             // rdbTipo
             // 
@@ -467,6 +467,7 @@
             this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
             this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
             this.btnFolios.Name = "btnFolios";
+            this.btnFolios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFolios_ItemClick);
             // 
             // btnBuscarPedidoCerrado
             // 
@@ -560,9 +561,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 568);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 571);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(939, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(939, 25);
             // 
             // barDockControlLeft
             // 
@@ -570,7 +571,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(69, 568);
+            this.barDockControlLeft.Size = new System.Drawing.Size(67, 571);
             // 
             // barDockControlRight
             // 
@@ -578,7 +579,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(939, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 571);
             // 
             // barLargeButtonItem1
             // 
@@ -599,10 +600,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(69, 183);
+            this.panelControl2.Location = new System.Drawing.Point(67, 183);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(870, 385);
+            this.panelControl2.Size = new System.Drawing.Size(872, 388);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -611,7 +612,7 @@
             this.dtgVentaExistencia.Location = new System.Drawing.Point(12, 12);
             this.dtgVentaExistencia.MainView = this.dtgValVentaExistencia;
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(846, 361);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 364);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -1273,7 +1274,8 @@
             this.gridColumn36.FieldName = "PSugerido";
             this.gridColumn36.Name = "gridColumn36";
             this.gridColumn36.OptionsColumn.AllowEdit = false;
-            this.gridColumn36.ToolTip = "Pedido Sugerido = ((TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)-TExistencia";
+            this.gridColumn36.ToolTip = "Pedido Sugerido = ((TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)-TExisten" +
+    "cia";
             this.gridColumn36.Visible = true;
             this.gridColumn36.Width = 72;
             // 
@@ -1301,7 +1303,7 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
-            // Frm_ReportePedidos
+            // Frm_Pre_Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1312,7 +1314,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "Frm_ReportePedidos";
+            this.Name = "Frm_Pre_Pedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1334,7 +1336,7 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbPeriodo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFolio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdbTipo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).EndInit();
@@ -1417,7 +1419,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn CostoReposicion;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn Familia;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtFolio;
         private DevExpress.XtraBars.BarLargeButtonItem btnFolios;
         private DevExpress.XtraBars.BarLargeButtonItem btnImpProveedor;
         private DevExpress.XtraBars.BarLargeButtonItem btnGuardar;

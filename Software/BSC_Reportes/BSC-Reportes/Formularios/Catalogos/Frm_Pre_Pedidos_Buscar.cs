@@ -14,6 +14,8 @@ namespace BSC_Reportes.Formularios.Catalogos
 {
     public partial class Frm_Pre_Pedidos_Buscar : DevExpress.XtraEditors.XtraForm
     {
+        public Frm_Pre_Pedidos FrmReportePedidos;
+        public string vPrePedidosId { get;  set; }
         public Frm_Pre_Pedidos_Buscar()
         {
             InitializeComponent();
@@ -37,6 +39,29 @@ namespace BSC_Reportes.Formularios.Catalogos
                 XtraMessageBox.Show(selpro.Mensaje);
             }
             lblProveedor.Caption = "Proveedor:";
+        }
+        private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmReportePedidos.BuscarPrePedido(vPrePedidosId);
+            this.Close();
+        }
+        private void dtgProveedores_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (int i in this.dtgValPrePedidos.GetSelectedRows())
+                {
+                    DataRow row = this.dtgValPrePedidos.GetDataRow(i);
+                    vPrePedidosId = row["PrePedidosId"].ToString();
+                    lblProveedor.Caption = string.Format("Folio: {0}", vPrePedidosId);
+                    FrmReportePedidos.BuscarPrePedido(vPrePedidosId);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
         }
     }
 }
