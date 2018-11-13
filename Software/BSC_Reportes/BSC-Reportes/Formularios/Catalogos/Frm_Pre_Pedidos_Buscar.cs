@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
 
-namespace BSC_Reportes.Formularios.Catalogos
+namespace BSC_Reportes
 {
     public partial class Frm_Pre_Pedidos_Buscar : DevExpress.XtraEditors.XtraForm
     {

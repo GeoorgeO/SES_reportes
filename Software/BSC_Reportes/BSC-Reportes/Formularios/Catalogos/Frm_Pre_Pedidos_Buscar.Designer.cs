@@ -1,4 +1,4 @@
-﻿namespace BSC_Reportes.Formularios.Catalogos
+﻿namespace BSC_Reportes
 {
     partial class Frm_Pre_Pedidos_Buscar
     {

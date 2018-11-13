@@ -1143,7 +1143,9 @@ namespace BSC_Reportes
 
         private void btnFolios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            Frm_Pre_Pedidos_Buscar frmpro = new Frm_Pre_Pedidos_Buscar();
+            frmpro.FrmReportePedidos = this;
+            frmpro.ShowDialog();
         }
     }
 }
