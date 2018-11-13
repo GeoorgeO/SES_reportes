@@ -21,6 +21,10 @@ namespace BSC_Reportes
         public string GusuariosLogin;
         public char GusuariosClase;
 
+        public string UsuariosLogin { get; set; }
+        public char UsuarioClase { get; set; }
+        public int IdPantallaBotones { get; set; }
+
         public Boolean selusu = false;
 
         public Frm_UsuariosPantallaBotones FrmUsuariosPantallaBotones;
@@ -30,13 +34,28 @@ namespace BSC_Reportes
             InitializeComponent();
         }
 
-        
+        private static Frm_Usuarios m_FormDefInstance;
+        public static Frm_Usuarios DefInstance
+        {
+            get
+            {
+                if (m_FormDefInstance == null || m_FormDefInstance.IsDisposed)
+                    m_FormDefInstance = new Frm_Usuarios();
+                return m_FormDefInstance;
+            }
+            set
+            {
+                m_FormDefInstance = value;
+            }
+        }
+
+
 
         public void actualizarGrid()
         {
             CLS_Usuarios selpro = new CLS_Usuarios();
             selpro.UsuariosActivo = activo;
-            selpro.UsuariosClase = GusuariosClase.ToString();
+            selpro.UsuariosClase = UsuarioClase.ToString();
             selpro.MtdSeleccionarUsuarios();
             if (selpro.Exito)
             {
@@ -71,27 +90,7 @@ namespace BSC_Reportes
         private void Frm_Usuarios_Load(object sender, EventArgs e)
         {
 
-            actualizarGrid();
             
-
-            //gridColumn3.Visible = false;
-            gridColumn1.OptionsColumn.AllowEdit = false;
-            gridColumn2.OptionsColumn.AllowEdit = false;
-            gridColumn4.OptionsColumn.AllowEdit = false;
-            gridColumn5.OptionsColumn.AllowEdit = false;
-
-            if (selusu == true)
-            {
-                btnselusuario.Enabled = true;
-            }
-
-            if (GusuariosClase == 'S')
-            {
-                accesosuperusuario();
-            }else
-            {
-                controlbotones();
-            }
             
         }
 
@@ -247,8 +246,8 @@ namespace BSC_Reportes
         public void controlbotones()
         {
             CLS_Pantallas clspantbotones = new CLS_Pantallas();
-            clspantbotones.UsuariosLogin = GusuariosLogin;
-            clspantbotones.pantallasid = 1;
+            clspantbotones.UsuariosLogin = UsuariosLogin;
+            clspantbotones.pantallasid = IdPantallaBotones;
             clspantbotones.Mtdselecionarbotonespantalla();
             if (clspantbotones.Exito.ToString() == "True")
             {
@@ -289,6 +288,32 @@ namespace BSC_Reportes
             btnLimpiar.Enabled = true;
             btneliminar.Enabled = true;
             btninactivos.Enabled = true;
+        }
+
+        private void Frm_Usuarios_Shown(object sender, EventArgs e)
+        {
+            actualizarGrid();
+
+
+            //gridColumn3.Visible = false;
+            gridColumn1.OptionsColumn.AllowEdit = false;
+            gridColumn2.OptionsColumn.AllowEdit = false;
+            gridColumn4.OptionsColumn.AllowEdit = false;
+            gridColumn5.OptionsColumn.AllowEdit = false;
+
+            if (selusu == true)
+            {
+                btnselusuario.Enabled = true;
+            }
+
+            if (UsuarioClase == 'S')
+            {
+                accesosuperusuario();
+            }
+            else
+            {
+                controlbotones();
+            }
         }
     }
 }

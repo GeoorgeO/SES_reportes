@@ -18,9 +18,29 @@ namespace BSC_Reportes
         public string GusuariosLogin;
         public char GusuariosClase;
 
+
+        public string UsuariosLogin { get; set; }
+        public char UsuarioClase { get; set; }
+        public int IdPantallaBotones { get; set; }
+
         public Frm_UsuariosPantallaBotones()
         {
             InitializeComponent();
+        }
+
+        private static Frm_UsuariosPantallaBotones m_FormDefInstance;
+        public static Frm_UsuariosPantallaBotones DefInstance
+        {
+            get
+            {
+                if (m_FormDefInstance == null || m_FormDefInstance.IsDisposed)
+                    m_FormDefInstance = new Frm_UsuariosPantallaBotones();
+                return m_FormDefInstance;
+            }
+            set
+            {
+                m_FormDefInstance = value;
+            }
         }
 
         public void llenarusuario(string usuario, char clase)
@@ -34,7 +54,10 @@ namespace BSC_Reportes
         {
             Frm_Usuarios frmusu = new Frm_Usuarios();
             frmusu.FrmUsuariosPantallaBotones = this;
-            frmusu.llenarusuario(GusuariosLogin, GusuariosClase);
+            frmusu.IdPantallaBotones = 1;
+            frmusu.UsuariosLogin = UsuariosLogin;
+            frmusu.UsuarioClase = UsuarioClase;
+            //frmusu.llenarusuario(GusuariosLogin, GusuariosClase);
             frmusu.selusu = true;
             frmusu.ShowDialog();
            
@@ -205,8 +228,8 @@ namespace BSC_Reportes
         public void controlbotones()
         {
             CLS_Pantallas clspantbotones = new CLS_Pantallas();
-            clspantbotones.UsuariosLogin = GusuariosLogin;
-            clspantbotones.pantallasid = 3;
+            clspantbotones.UsuariosLogin = UsuariosLogin;
+            clspantbotones.pantallasid = IdPantallaBotones;
             clspantbotones.Mtdselecionarbotonespantalla();
             if (clspantbotones.Exito.ToString() == "True")
             {
