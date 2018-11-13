@@ -21,7 +21,7 @@ namespace BSC_Reportes
             InitializeComponent();
         }
 
-        private void Frm_Proveedores_Buscar_Shown(object sender, EventArgs e)
+        private void Frm_Pre_Pedidos_Buscar_Shown(object sender, EventArgs e)
         {
             dtgValPrePedidos.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             dtgValPrePedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -45,7 +45,23 @@ namespace BSC_Reportes
             FrmReportePedidos.BuscarPrePedido(vPrePedidosId);
             this.Close();
         }
-        private void dtgProveedores_DoubleClick(object sender, EventArgs e)
+        private void dtgPrePedidos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (int i in this.dtgValPrePedidos.GetSelectedRows())
+                {
+                    DataRow row = this.dtgValPrePedidos.GetDataRow(i);
+                    vPrePedidosId = row["PrePedidosId"].ToString();
+                    lblProveedor.Caption = string.Format("Folio: {0}", vPrePedidosId);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+        }
+        private void dtgPrePedidos_DoubleClick(object sender, EventArgs e)
         {
             try
             {

@@ -116,6 +116,7 @@
             superToolTip1.Items.Add(toolTipItem1);
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.btnSeleccionar.SuperTip = superToolTip1;
+            this.btnSeleccionar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSeleccionar_ItemClick);
             // 
             // bEstado
             // 
@@ -204,6 +205,8 @@
             this.dtgPrePedidos.TabIndex = 4;
             this.dtgPrePedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPrePedidos});
+            this.dtgPrePedidos.Click += new System.EventHandler(this.dtgPrePedidos_Click);
+            this.dtgPrePedidos.DoubleClick += new System.EventHandler(this.dtgPrePedidos_DoubleClick);
             // 
             // dtgValPrePedidos
             // 
@@ -266,7 +269,9 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Frm_Pre_Pedidos_Buscar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar PrePedidos";
+            this.Shown += new System.EventHandler(this.Frm_Pre_Pedidos_Buscar_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
