@@ -82,15 +82,22 @@ namespace BSC_Reportes
         private void btnUsuarios_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_Usuarios vusuarios = new Frm_Usuarios();
-            vusuarios.llenarusuario(UsuariosLogin, UsuariosClase);
-            vusuarios.Show();
+            Frm_Usuarios.DefInstance.MdiParent = this;
+            Frm_Usuarios.DefInstance.IdPantallaBotones = 1;
+            Frm_Usuarios.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Usuarios.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Usuarios.DefInstance.Show();
         }
 
         private void btncontrolacesos_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_UsuariosPantallaBotones vcontrol = new Frm_UsuariosPantallaBotones();
-            vcontrol.llenarusuario(UsuariosLogin, UsuariosClase);
-            vcontrol.Show();
+
+            Frm_UsuariosPantallaBotones.DefInstance.MdiParent = this;
+            Frm_UsuariosPantallaBotones.DefInstance.IdPantallaBotones = 3;
+            Frm_UsuariosPantallaBotones.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_UsuariosPantallaBotones.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_UsuariosPantallaBotones.DefInstance.Show();
         }
 
         private void Frm_Principal_Load(object sender, EventArgs e)
