@@ -14,6 +14,7 @@ namespace CapaDeDatos
         public string UsuariosPassword { get; set; }
         public string UsuariosClase { get; set; }
         public int nuevo { get; set; }
+        public string UsuariosOldPass { get; set; }
 
         public void MtdSeleccionarUsuariosPantallas()
         {
@@ -136,5 +137,39 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+
+        public void MtdUpdatePassUsuarios()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_UsuariosPass_Update";
+                _dato.CadenaTexto = UsuariosLogin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _dato.CadenaTexto = UsuariosOldPass;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosOldPass");
+                _dato.CadenaTexto = UsuariosPassword;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosPassword");
+                
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
     }
 }
