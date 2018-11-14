@@ -26,6 +26,7 @@ namespace BSC_Reportes
             dtgValPrePedidos.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             dtgValPrePedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
             CLS_Pedidos selpro = new CLS_Pedidos();
+            selpro.PrePedidoCerrado = 0;
             selpro.MtdSeleccionarPrePedidos();
             if (selpro.Exito)
             {

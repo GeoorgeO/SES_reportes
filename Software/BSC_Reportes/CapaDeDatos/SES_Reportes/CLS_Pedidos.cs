@@ -56,6 +56,7 @@ namespace CapaDeDatos
         public int Pedido { get; set; }
         public int PeriodoPedido { get; set; }
         public int PeriodoTipo { get; set; }
+        public int PrePedidoCerrado { get; set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -356,6 +357,62 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_PrePedidos_Select";
+                _dato.Entero = PrePedidoCerrado;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPrePedidosId()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedidosId_Select";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPrePedidosDetalles()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedidosDetalles_Select";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

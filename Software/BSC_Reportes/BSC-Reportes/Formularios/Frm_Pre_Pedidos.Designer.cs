@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
@@ -78,61 +78,62 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dtgVentaExistencia = new DevExpress.XtraGrid.GridControl();
             this.dtgValVentaExistencia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.Codigo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.Descripcion = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CostoReposicion = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.Familia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.AlmacenV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.AlmacenE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.CentroV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CentroE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.MorelosV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.MorelosE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.FcoVillaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.FcoVillaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.SarabiaIV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SarabiaIE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.SarabiaIIV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SarabiaIIE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.PaseoV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.PaseoE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.EstocolmoV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.EstocolmoE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand10 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.CostaRicaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CostaRicaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.CalzadaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CalzadaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.LombardiaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LombardiaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.NvaItaliaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.NvaItaliaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.ApatzinganV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ApatzinganE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.ReyesV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ReyesE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.TotalV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TotalE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.Reg = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand10 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -638,6 +639,7 @@
             this.gridBand16,
             this.gridBand17});
             this.dtgValVentaExistencia.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.Reg,
             this.Codigo,
             this.Descripcion,
             this.CostoReposicion,
@@ -683,19 +685,6 @@
             this.dtgValVentaExistencia.OptionsView.ShowFooter = true;
             this.dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
             // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Articulos";
-            this.gridBand1.Columns.Add(this.Codigo);
-            this.gridBand1.Columns.Add(this.Descripcion);
-            this.gridBand1.Columns.Add(this.CostoReposicion);
-            this.gridBand1.Columns.Add(this.Familia);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 737;
-            // 
             // Codigo
             // 
             this.Codigo.AppearanceHeader.Options.UseTextOptions = true;
@@ -740,17 +729,6 @@
             this.Familia.Visible = true;
             this.Familia.Width = 202;
             // 
-            // gridBand2
-            // 
-            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand2.Caption = "Almacen";
-            this.gridBand2.Columns.Add(this.AlmacenV);
-            this.gridBand2.Columns.Add(this.AlmacenE);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 94;
-            // 
             // AlmacenV
             // 
             this.AlmacenV.AppearanceHeader.Options.UseTextOptions = true;
@@ -772,17 +750,6 @@
             this.AlmacenE.OptionsColumn.AllowEdit = false;
             this.AlmacenE.Visible = true;
             this.AlmacenE.Width = 47;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand3.Caption = "Centro";
-            this.gridBand3.Columns.Add(this.CentroV);
-            this.gridBand3.Columns.Add(this.CentroE);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 94;
             // 
             // CentroV
             // 
@@ -806,17 +773,6 @@
             this.CentroE.Visible = true;
             this.CentroE.Width = 47;
             // 
-            // gridBand4
-            // 
-            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand4.Caption = "Morelos";
-            this.gridBand4.Columns.Add(this.MorelosV);
-            this.gridBand4.Columns.Add(this.MorelosE);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 3;
-            this.gridBand4.Width = 94;
-            // 
             // MorelosV
             // 
             this.MorelosV.AppearanceHeader.Options.UseTextOptions = true;
@@ -838,17 +794,6 @@
             this.MorelosE.OptionsColumn.AllowEdit = false;
             this.MorelosE.Visible = true;
             this.MorelosE.Width = 47;
-            // 
-            // gridBand5
-            // 
-            this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand5.Caption = "Fco Villa";
-            this.gridBand5.Columns.Add(this.FcoVillaE);
-            this.gridBand5.Columns.Add(this.FcoVillaV);
-            this.gridBand5.Name = "gridBand5";
-            this.gridBand5.VisibleIndex = 4;
-            this.gridBand5.Width = 94;
             // 
             // FcoVillaE
             // 
@@ -872,17 +817,6 @@
             this.FcoVillaV.Visible = true;
             this.FcoVillaV.Width = 47;
             // 
-            // gridBand6
-            // 
-            this.gridBand6.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand6.Caption = "Sarabia";
-            this.gridBand6.Columns.Add(this.SarabiaIV);
-            this.gridBand6.Columns.Add(this.SarabiaIE);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.VisibleIndex = 5;
-            this.gridBand6.Width = 94;
-            // 
             // SarabiaIV
             // 
             this.SarabiaIV.AppearanceHeader.Options.UseTextOptions = true;
@@ -904,17 +838,6 @@
             this.SarabiaIE.OptionsColumn.AllowEdit = false;
             this.SarabiaIE.Visible = true;
             this.SarabiaIE.Width = 47;
-            // 
-            // gridBand7
-            // 
-            this.gridBand7.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand7.Caption = "Sarabia II";
-            this.gridBand7.Columns.Add(this.SarabiaIIV);
-            this.gridBand7.Columns.Add(this.SarabiaIIE);
-            this.gridBand7.Name = "gridBand7";
-            this.gridBand7.VisibleIndex = 6;
-            this.gridBand7.Width = 94;
             // 
             // SarabiaIIV
             // 
@@ -938,17 +861,6 @@
             this.SarabiaIIE.Visible = true;
             this.SarabiaIIE.Width = 47;
             // 
-            // gridBand8
-            // 
-            this.gridBand8.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand8.Caption = "Paseo";
-            this.gridBand8.Columns.Add(this.PaseoV);
-            this.gridBand8.Columns.Add(this.PaseoE);
-            this.gridBand8.Name = "gridBand8";
-            this.gridBand8.VisibleIndex = 7;
-            this.gridBand8.Width = 94;
-            // 
             // PaseoV
             // 
             this.PaseoV.AppearanceHeader.Options.UseTextOptions = true;
@@ -970,17 +882,6 @@
             this.PaseoE.OptionsColumn.AllowEdit = false;
             this.PaseoE.Visible = true;
             this.PaseoE.Width = 47;
-            // 
-            // gridBand9
-            // 
-            this.gridBand9.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand9.Caption = "Estocolmo";
-            this.gridBand9.Columns.Add(this.EstocolmoV);
-            this.gridBand9.Columns.Add(this.EstocolmoE);
-            this.gridBand9.Name = "gridBand9";
-            this.gridBand9.VisibleIndex = 8;
-            this.gridBand9.Width = 94;
             // 
             // EstocolmoV
             // 
@@ -1004,17 +905,6 @@
             this.EstocolmoE.Visible = true;
             this.EstocolmoE.Width = 47;
             // 
-            // gridBand10
-            // 
-            this.gridBand10.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand10.Caption = "Costa Rica";
-            this.gridBand10.Columns.Add(this.CostaRicaV);
-            this.gridBand10.Columns.Add(this.CostaRicaE);
-            this.gridBand10.Name = "gridBand10";
-            this.gridBand10.VisibleIndex = 9;
-            this.gridBand10.Width = 94;
-            // 
             // CostaRicaV
             // 
             this.CostaRicaV.AppearanceHeader.Options.UseTextOptions = true;
@@ -1036,17 +926,6 @@
             this.CostaRicaE.OptionsColumn.AllowEdit = false;
             this.CostaRicaE.Visible = true;
             this.CostaRicaE.Width = 47;
-            // 
-            // gridBand11
-            // 
-            this.gridBand11.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand11.Caption = "Calzada";
-            this.gridBand11.Columns.Add(this.CalzadaV);
-            this.gridBand11.Columns.Add(this.CalzadaE);
-            this.gridBand11.Name = "gridBand11";
-            this.gridBand11.VisibleIndex = 10;
-            this.gridBand11.Width = 94;
             // 
             // CalzadaV
             // 
@@ -1070,17 +949,6 @@
             this.CalzadaE.Visible = true;
             this.CalzadaE.Width = 47;
             // 
-            // gridBand12
-            // 
-            this.gridBand12.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand12.Caption = "Lombardia";
-            this.gridBand12.Columns.Add(this.LombardiaV);
-            this.gridBand12.Columns.Add(this.LombardiaE);
-            this.gridBand12.Name = "gridBand12";
-            this.gridBand12.VisibleIndex = 11;
-            this.gridBand12.Width = 94;
-            // 
             // LombardiaV
             // 
             this.LombardiaV.AppearanceHeader.Options.UseTextOptions = true;
@@ -1102,17 +970,6 @@
             this.LombardiaE.OptionsColumn.AllowEdit = false;
             this.LombardiaE.Visible = true;
             this.LombardiaE.Width = 47;
-            // 
-            // gridBand13
-            // 
-            this.gridBand13.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand13.Caption = "Nva Italia";
-            this.gridBand13.Columns.Add(this.NvaItaliaV);
-            this.gridBand13.Columns.Add(this.NvaItaliaE);
-            this.gridBand13.Name = "gridBand13";
-            this.gridBand13.VisibleIndex = 12;
-            this.gridBand13.Width = 94;
             // 
             // NvaItaliaV
             // 
@@ -1136,17 +993,6 @@
             this.NvaItaliaE.Visible = true;
             this.NvaItaliaE.Width = 47;
             // 
-            // gridBand14
-            // 
-            this.gridBand14.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand14.Caption = "Apatzingan";
-            this.gridBand14.Columns.Add(this.ApatzinganV);
-            this.gridBand14.Columns.Add(this.ApatzinganE);
-            this.gridBand14.Name = "gridBand14";
-            this.gridBand14.VisibleIndex = 13;
-            this.gridBand14.Width = 94;
-            // 
             // ApatzinganV
             // 
             this.ApatzinganV.AppearanceHeader.Options.UseTextOptions = true;
@@ -1169,17 +1015,6 @@
             this.ApatzinganE.Visible = true;
             this.ApatzinganE.Width = 47;
             // 
-            // gridBand15
-            // 
-            this.gridBand15.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand15.Caption = "Los Reyes";
-            this.gridBand15.Columns.Add(this.ReyesV);
-            this.gridBand15.Columns.Add(this.ReyesE);
-            this.gridBand15.Name = "gridBand15";
-            this.gridBand15.VisibleIndex = 14;
-            this.gridBand15.Width = 94;
-            // 
             // ReyesV
             // 
             this.ReyesV.AppearanceHeader.Options.UseTextOptions = true;
@@ -1201,17 +1036,6 @@
             this.ReyesE.OptionsColumn.AllowEdit = false;
             this.ReyesE.Visible = true;
             this.ReyesE.Width = 47;
-            // 
-            // gridBand16
-            // 
-            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand16.Caption = "Totales";
-            this.gridBand16.Columns.Add(this.TotalV);
-            this.gridBand16.Columns.Add(this.TotalE);
-            this.gridBand16.Name = "gridBand16";
-            this.gridBand16.VisibleIndex = 15;
-            this.gridBand16.Width = 144;
             // 
             // TotalV
             // 
@@ -1238,18 +1062,6 @@
             this.TotalE.OptionsColumn.AllowEdit = false;
             this.TotalE.Visible = true;
             this.TotalE.Width = 72;
-            // 
-            // gridBand17
-            // 
-            this.gridBand17.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand17.Caption = "Orden";
-            this.gridBand17.Columns.Add(this.gridColumn35);
-            this.gridBand17.Columns.Add(this.gridColumn36);
-            this.gridBand17.Columns.Add(this.gridColumn37);
-            this.gridBand17.Name = "gridBand17";
-            this.gridBand17.VisibleIndex = 16;
-            this.gridBand17.Width = 219;
             // 
             // gridColumn35
             // 
@@ -1298,10 +1110,210 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem1.Text = "Seleccionar";
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barLargeButtonItem2.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Seleccionar";
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            // 
+            // Reg
+            // 
+            this.Reg.Caption = "#";
+            this.Reg.FieldName = "Reg";
+            this.Reg.Name = "Reg";
+            this.Reg.Visible = true;
+            this.Reg.Width = 47;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Articulos";
+            this.gridBand1.Columns.Add(this.Reg);
+            this.gridBand1.Columns.Add(this.Codigo);
+            this.gridBand1.Columns.Add(this.Descripcion);
+            this.gridBand1.Columns.Add(this.CostoReposicion);
+            this.gridBand1.Columns.Add(this.Familia);
+            this.gridBand1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 784;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand2.Caption = "Almacen";
+            this.gridBand2.Columns.Add(this.AlmacenV);
+            this.gridBand2.Columns.Add(this.AlmacenE);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 94;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand3.Caption = "Centro";
+            this.gridBand3.Columns.Add(this.CentroV);
+            this.gridBand3.Columns.Add(this.CentroE);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 2;
+            this.gridBand3.Width = 94;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand4.Caption = "Morelos";
+            this.gridBand4.Columns.Add(this.MorelosV);
+            this.gridBand4.Columns.Add(this.MorelosE);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 3;
+            this.gridBand4.Width = 94;
+            // 
+            // gridBand5
+            // 
+            this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand5.Caption = "Fco Villa";
+            this.gridBand5.Columns.Add(this.FcoVillaE);
+            this.gridBand5.Columns.Add(this.FcoVillaV);
+            this.gridBand5.Name = "gridBand5";
+            this.gridBand5.VisibleIndex = 4;
+            this.gridBand5.Width = 94;
+            // 
+            // gridBand6
+            // 
+            this.gridBand6.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand6.Caption = "Sarabia";
+            this.gridBand6.Columns.Add(this.SarabiaIV);
+            this.gridBand6.Columns.Add(this.SarabiaIE);
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.VisibleIndex = 5;
+            this.gridBand6.Width = 94;
+            // 
+            // gridBand7
+            // 
+            this.gridBand7.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand7.Caption = "Sarabia II";
+            this.gridBand7.Columns.Add(this.SarabiaIIV);
+            this.gridBand7.Columns.Add(this.SarabiaIIE);
+            this.gridBand7.Name = "gridBand7";
+            this.gridBand7.VisibleIndex = 6;
+            this.gridBand7.Width = 94;
+            // 
+            // gridBand8
+            // 
+            this.gridBand8.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand8.Caption = "Paseo";
+            this.gridBand8.Columns.Add(this.PaseoV);
+            this.gridBand8.Columns.Add(this.PaseoE);
+            this.gridBand8.Name = "gridBand8";
+            this.gridBand8.VisibleIndex = 7;
+            this.gridBand8.Width = 94;
+            // 
+            // gridBand9
+            // 
+            this.gridBand9.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand9.Caption = "Estocolmo";
+            this.gridBand9.Columns.Add(this.EstocolmoV);
+            this.gridBand9.Columns.Add(this.EstocolmoE);
+            this.gridBand9.Name = "gridBand9";
+            this.gridBand9.VisibleIndex = 8;
+            this.gridBand9.Width = 94;
+            // 
+            // gridBand10
+            // 
+            this.gridBand10.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand10.Caption = "Costa Rica";
+            this.gridBand10.Columns.Add(this.CostaRicaV);
+            this.gridBand10.Columns.Add(this.CostaRicaE);
+            this.gridBand10.Name = "gridBand10";
+            this.gridBand10.VisibleIndex = 9;
+            this.gridBand10.Width = 94;
+            // 
+            // gridBand11
+            // 
+            this.gridBand11.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand11.Caption = "Calzada";
+            this.gridBand11.Columns.Add(this.CalzadaV);
+            this.gridBand11.Columns.Add(this.CalzadaE);
+            this.gridBand11.Name = "gridBand11";
+            this.gridBand11.VisibleIndex = 10;
+            this.gridBand11.Width = 94;
+            // 
+            // gridBand12
+            // 
+            this.gridBand12.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand12.Caption = "Lombardia";
+            this.gridBand12.Columns.Add(this.LombardiaV);
+            this.gridBand12.Columns.Add(this.LombardiaE);
+            this.gridBand12.Name = "gridBand12";
+            this.gridBand12.VisibleIndex = 11;
+            this.gridBand12.Width = 94;
+            // 
+            // gridBand13
+            // 
+            this.gridBand13.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand13.Caption = "Nva Italia";
+            this.gridBand13.Columns.Add(this.NvaItaliaV);
+            this.gridBand13.Columns.Add(this.NvaItaliaE);
+            this.gridBand13.Name = "gridBand13";
+            this.gridBand13.VisibleIndex = 12;
+            this.gridBand13.Width = 94;
+            // 
+            // gridBand14
+            // 
+            this.gridBand14.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand14.Caption = "Apatzingan";
+            this.gridBand14.Columns.Add(this.ApatzinganV);
+            this.gridBand14.Columns.Add(this.ApatzinganE);
+            this.gridBand14.Name = "gridBand14";
+            this.gridBand14.VisibleIndex = 13;
+            this.gridBand14.Width = 94;
+            // 
+            // gridBand15
+            // 
+            this.gridBand15.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand15.Caption = "Los Reyes";
+            this.gridBand15.Columns.Add(this.ReyesV);
+            this.gridBand15.Columns.Add(this.ReyesE);
+            this.gridBand15.Name = "gridBand15";
+            this.gridBand15.VisibleIndex = 14;
+            this.gridBand15.Width = 94;
+            // 
+            // gridBand16
+            // 
+            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand16.Caption = "Totales";
+            this.gridBand16.Columns.Add(this.TotalV);
+            this.gridBand16.Columns.Add(this.TotalE);
+            this.gridBand16.Name = "gridBand16";
+            this.gridBand16.VisibleIndex = 15;
+            this.gridBand16.Width = 144;
+            // 
+            // gridBand17
+            // 
+            this.gridBand17.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand17.Caption = "Orden";
+            this.gridBand17.Columns.Add(this.gridColumn35);
+            this.gridBand17.Columns.Add(this.gridColumn36);
+            this.gridBand17.Columns.Add(this.gridColumn37);
+            this.gridBand17.Name = "gridBand17";
+            this.gridBand17.VisibleIndex = 16;
+            this.gridBand17.Width = 219;
             // 
             // Frm_Pre_Pedidos
             // 
@@ -1438,7 +1450,11 @@
         private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
         private DevExpress.XtraEditors.SimpleButton btnIgualar;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn NvaItaliaE;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn35;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn36;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn37;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn Reg;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
@@ -1455,8 +1471,5 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn35;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn36;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn37;
     }
 }
