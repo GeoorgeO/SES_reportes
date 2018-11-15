@@ -164,7 +164,6 @@
             // guardar
             // 
             this.guardar.Caption = "Guardar \r\n";
-            this.guardar.Enabled = false;
             this.guardar.Id = 53;
             this.guardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.Image")));
             this.guardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.LargeImage")));
@@ -183,7 +182,6 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Caption = "Limpiar";
-            this.btnLimpiar.Enabled = false;
             this.btnLimpiar.Id = 50;
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
@@ -202,7 +200,6 @@
             // btneliminar
             // 
             this.btneliminar.Caption = "Eliminar";
-            this.btneliminar.Enabled = false;
             this.btneliminar.Id = 60;
             this.btneliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.Image")));
             this.btneliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btneliminar.ImageOptions.LargeImage")));
@@ -212,7 +209,6 @@
             // btninactivos
             // 
             this.btninactivos.Caption = " Mostrar \r\nInactivos";
-            this.btninactivos.Enabled = false;
             this.btninactivos.Id = 59;
             this.btninactivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.Image")));
             this.btninactivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btninactivos.ImageOptions.LargeImage")));
@@ -222,7 +218,6 @@
             // btnselusuario
             // 
             this.btnselusuario.Caption = "Selecionar Usuario";
-            this.btnselusuario.Enabled = false;
             this.btnselusuario.Id = 61;
             this.btnselusuario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnselusuario.ImageOptions.Image")));
             this.btnselusuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnselusuario.ImageOptions.LargeImage")));
@@ -465,7 +460,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(12, 86);
+            this.labelControl3.Location = new System.Drawing.Point(12, 87);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(60, 13);
             this.labelControl3.TabIndex = 2;
@@ -473,7 +468,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 60);
+            this.labelControl2.Location = new System.Drawing.Point(12, 61);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(41, 13);
             this.labelControl2.TabIndex = 1;
@@ -488,7 +483,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 34);
+            this.labelControl1.Location = new System.Drawing.Point(12, 35);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(40, 13);
             this.labelControl1.TabIndex = 0;
@@ -557,6 +552,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Frm_Usuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de usuarios";
             this.Load += new System.EventHandler(this.Frm_Usuarios_Load);
             this.Shown += new System.EventHandler(this.Frm_Usuarios_Shown);

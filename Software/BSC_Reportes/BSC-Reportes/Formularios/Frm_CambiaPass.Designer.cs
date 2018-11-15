@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CambiaPass));
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -92,38 +92,41 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(6, 50);
+            this.labelControl2.Location = new System.Drawing.Point(6, 61);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(108, 13);
+            this.labelControl2.Size = new System.Drawing.Size(92, 13);
             this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Confirmar contraseña:";
+            this.labelControl2.Text = "Nueva contraseña:";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(6, 98);
+            this.labelControl3.Location = new System.Drawing.Point(6, 102);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(92, 13);
+            this.labelControl3.Size = new System.Drawing.Size(108, 13);
             this.labelControl3.TabIndex = 2;
-            this.labelControl3.Text = "Nueva contraseña:";
+            this.labelControl3.Text = "Confirmar contraseña:";
             // 
             // tpassold
             // 
-            this.tpassold.Location = new System.Drawing.Point(6, 24);
+            this.tpassold.Location = new System.Drawing.Point(6, 22);
             this.tpassold.Name = "tpassold";
+            this.tpassold.Properties.UseSystemPasswordChar = true;
             this.tpassold.Size = new System.Drawing.Size(194, 20);
             this.tpassold.TabIndex = 3;
             // 
             // tconfirmapass
             // 
-            this.tconfirmapass.Location = new System.Drawing.Point(5, 66);
+            this.tconfirmapass.Location = new System.Drawing.Point(5, 77);
             this.tconfirmapass.Name = "tconfirmapass";
+            this.tconfirmapass.Properties.UseSystemPasswordChar = true;
             this.tconfirmapass.Size = new System.Drawing.Size(194, 20);
             this.tconfirmapass.TabIndex = 4;
             // 
             // tnewpass
             // 
-            this.tnewpass.Location = new System.Drawing.Point(6, 117);
+            this.tnewpass.Location = new System.Drawing.Point(5, 118);
             this.tnewpass.Name = "tnewpass";
+            this.tnewpass.Properties.UseSystemPasswordChar = true;
             this.tnewpass.Size = new System.Drawing.Size(194, 20);
             this.tnewpass.TabIndex = 5;
             // 
@@ -185,39 +188,37 @@
             // guardar
             // 
             this.guardar.Caption = "Guardar \r\n";
-            this.guardar.Enabled = false;
             this.guardar.Id = 53;
             this.guardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.Image")));
             this.guardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("guardar.ImageOptions.LargeImage")));
             this.guardar.Name = "guardar";
-            toolTipTitleItem9.Text = "Guardar cambios";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Guarda los datos ingresados de usuario";
-            toolTipTitleItem10.LeftIndent = 6;
-            toolTipTitleItem10.Text = "Usuarios";
-            superToolTip5.Items.Add(toolTipTitleItem9);
-            superToolTip5.Items.Add(toolTipItem5);
-            superToolTip5.Items.Add(toolTipTitleItem10);
-            this.guardar.SuperTip = superToolTip5;
+            toolTipTitleItem1.Text = "Guardar cambios";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Guarda los datos ingresados de usuario";
+            toolTipTitleItem2.LeftIndent = 6;
+            toolTipTitleItem2.Text = "Usuarios";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem2);
+            this.guardar.SuperTip = superToolTip1;
             this.guardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.guardar_ItemClick);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Caption = "Limpiar";
-            this.btnLimpiar.Enabled = false;
             this.btnLimpiar.Id = 50;
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
             this.btnLimpiar.Name = "btnLimpiar";
-            toolTipTitleItem7.Text = "Limpia pantalla";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
-            toolTipTitleItem8.LeftIndent = 6;
-            toolTipTitleItem8.Text = "Usuarios";
-            superToolTip4.Items.Add(toolTipTitleItem7);
-            superToolTip4.Items.Add(toolTipItem4);
-            superToolTip4.Items.Add(toolTipTitleItem8);
-            this.btnLimpiar.SuperTip = superToolTip4;
+            toolTipTitleItem3.Text = "Limpia pantalla";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Quita los datos del formulario, para poder agregar un nuevo usuario.";
+            toolTipTitleItem4.LeftIndent = 6;
+            toolTipTitleItem4.Text = "Usuarios";
+            superToolTip2.Items.Add(toolTipTitleItem3);
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem4);
+            this.btnLimpiar.SuperTip = superToolTip2;
             this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
             // 
             // bEstado
@@ -252,9 +253,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 156);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 159);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(270, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(270, 22);
             // 
             // barDockControlLeft
             // 
@@ -262,7 +263,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(56, 156);
+            this.barDockControlLeft.Size = new System.Drawing.Size(58, 159);
             // 
             // barDockControlRight
             // 
@@ -270,7 +271,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(270, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 156);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 159);
             // 
             // btnBuscar
             // 
@@ -344,18 +345,18 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem11.Appearance.Options.UseImage = true;
-            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
-            toolTipTitleItem11.Text = "Desactivar usuario";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Inhabilita usuarios para que ya no operen en el sistema";
-            toolTipTitleItem12.LeftIndent = 6;
-            toolTipTitleItem12.Text = "Usuarios";
-            superToolTip6.Items.Add(toolTipTitleItem11);
-            superToolTip6.Items.Add(toolTipItem6);
-            superToolTip6.Items.Add(toolTipTitleItem12);
-            this.barLargeButtonItem2.SuperTip = superToolTip6;
+            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem5.Appearance.Options.UseImage = true;
+            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
+            toolTipTitleItem5.Text = "Desactivar usuario";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Inhabilita usuarios para que ya no operen en el sistema";
+            toolTipTitleItem6.LeftIndent = 6;
+            toolTipTitleItem6.Text = "Usuarios";
+            superToolTip3.Items.Add(toolTipTitleItem5);
+            superToolTip3.Items.Add(toolTipItem3);
+            superToolTip3.Items.Add(toolTipTitleItem6);
+            this.barLargeButtonItem2.SuperTip = superToolTip3;
             // 
             // btninactivos
             // 
@@ -397,9 +398,9 @@
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.tpassold);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(56, 0);
+            this.panelControl1.Location = new System.Drawing.Point(58, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(214, 156);
+            this.panelControl1.Size = new System.Drawing.Size(212, 159);
             this.panelControl1.TabIndex = 10;
             // 
             // Frm_CambiaPass
@@ -413,6 +414,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Frm_CambiaPass";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Cambia";
             ((System.ComponentModel.ISupportInitialize)(this.tpassold.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tconfirmapass.Properties)).EndInit();

@@ -35,6 +35,7 @@
             this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCambiaPass = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -56,13 +57,14 @@
             this.btnUsuarios,
             this.btnPedidos,
             this.skinRibbonGalleryBarItem1,
-            this.btncontrolacesos});
+            this.btncontrolacesos,
+            this.btnCambiaPass});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 1;
+            this.ribbon.MaxItemId = 2;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1,
             this.ribbonPage2,
+            this.ribbonPage1,
             this.ribbonPage3});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
@@ -110,6 +112,15 @@
             this.btncontrolacesos.Name = "btncontrolacesos";
             this.btncontrolacesos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btncontrolacesos_ItemClick);
             // 
+            // btnCambiaPass
+            // 
+            this.btnCambiaPass.Caption = "Cambiar contraseña";
+            this.btnCambiaPass.Id = 1;
+            this.btnCambiaPass.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCambiaPass.ImageOptions.Image")));
+            this.btnCambiaPass.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCambiaPass.ImageOptions.LargeImage")));
+            this.btnCambiaPass.Name = "btnCambiaPass";
+            this.btnCambiaPass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCambiaPass_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -123,6 +134,7 @@
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.ItemLinks.Add(this.btnUsuarios);
             this.ribbonPageGroup1.ItemLinks.Add(this.btncontrolacesos);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnCambiaPass);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "Seguridad";
@@ -215,5 +227,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btncontrolacesos;
         private DevExpress.XtraBars.BarButtonItem btnPedidos;
+        private DevExpress.XtraBars.BarButtonItem btnCambiaPass;
     }
 }

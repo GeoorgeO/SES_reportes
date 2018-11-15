@@ -70,6 +70,9 @@ namespace BSC_Reportes
 
         private void Frm_UsuariosPantallaBotones_Load(object sender, EventArgs e)
         {
+
+            invisible();
+
             CLS_Pantallas clasepantallas = new CLS_Pantallas();
              clasepantallas.Mtdseleccionarpantallas();
             if (clasepantallas.Exito)
@@ -239,13 +242,13 @@ namespace BSC_Reportes
                     switch (clspantbotones.Datos.Rows[t][0].ToString())
                     {
                         case "13":
-                            guardar.Enabled = true;
+                            guardar.Links[0].Visible = true;
                             break;
                         case "14":
-                            btnselusuario.Enabled = true;
+                            btnselusuario.Links[0].Visible = true;
                             break;
                         case "15":
-                            btnlimpia.Enabled = true;
+                            btnlimpia.Links[0].Visible = true;
                             break;
                         
                     }
@@ -259,9 +262,15 @@ namespace BSC_Reportes
         }
         public void accesosuperusuario()
         {
-            guardar.Enabled = true;
-            btnselusuario.Enabled = true;
-            btnlimpia.Enabled = true;
+            guardar.Links[0].Visible = true;
+            btnselusuario.Links[0].Visible = true;
+            btnlimpia.Links[0].Visible = true;
+        }
+        public void invisible()
+        {
+            guardar.Links[0].Visible = false;
+            btnselusuario.Links[0].Visible = false;
+            btnlimpia.Links[0].Visible = false;
         }
 
     }

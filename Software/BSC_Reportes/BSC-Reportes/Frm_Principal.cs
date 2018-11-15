@@ -41,6 +41,16 @@ namespace BSC_Reportes
             CLS_Usuarios clasePantallas = new CLS_Usuarios();
             clasePantallas.UsuariosLogin = UsuariosLogin;
             clasePantallas.MtdSeleccionarUsuariosPantallas();
+
+            if(UsuariosClase == 'N')
+            {
+                btnCambiaPass.Visibility = BarItemVisibility.Always;
+            }
+            else
+            {
+                btnCambiaPass.Visibility = BarItemVisibility.Never;
+            }
+
             if (clasePantallas.Exito)
             {
                 if (clasePantallas.Datos.Rows.Count > 0)
@@ -102,6 +112,7 @@ namespace BSC_Reportes
 
         private void Frm_Principal_Load(object sender, EventArgs e)
         {
+            OcultarBotones();
             if (UsuariosClase == 'S')
             {
                 accesosuperusuario();
@@ -110,6 +121,7 @@ namespace BSC_Reportes
             {
                 revisaopciones();
             }
+
             
         }
         private void OcultarBotones()
@@ -132,6 +144,17 @@ namespace BSC_Reportes
             Frm_Pre_Pedidos.DefInstance.UsuariosLogin = UsuariosLogin;
             Frm_Pre_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
             Frm_Pre_Pedidos.DefInstance.Show();
+        }
+
+        private void btnCambiaPass_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_CambiaPass frmusu = new Frm_CambiaPass();
+            //frmusu.FrmUsuariosPantallaBotones = this;
+            frmusu.IdPantallaBotones = 4;
+            frmusu.UsuariosLogin = UsuariosLogin;
+            frmusu.UsuarioClase = UsuariosClase;
+            //frmusu.llenarusuario(GusuariosLogin, GusuariosClase);
+            frmusu.ShowDialog();
         }
     }
 }

@@ -67,7 +67,7 @@ namespace BSC_Reportes
                 {
                     grid.DataSource = null;
                 }
-                
+
             }
             else
             {
@@ -76,7 +76,7 @@ namespace BSC_Reportes
             gridView1.RefreshData();
             limpiarFormulario();
         }
-  
+
         public void limpiarFormulario()
         {
             usuariosLogin.Text = "";
@@ -85,13 +85,14 @@ namespace BSC_Reportes
             checkadmin.Checked = false;
             checkactivo.Checked = true;
         }
-       
+
 
         private void Frm_Usuarios_Load(object sender, EventArgs e)
         {
 
-            
-            
+
+
+
         }
 
         private void grid_Click(object sender, EventArgs e)
@@ -105,7 +106,7 @@ namespace BSC_Reportes
                     usuariosLogin.Text = row["UsuariosLogin"].ToString();
                     usuariosNombre.Text = row["UsuariosNombre"].ToString();
                     usuariosPassword.Text = clsencripta.Desencriptar(row["UsuariosPassword"].ToString());
-                    if (row["UsuariosClase"].ToString()=="A")
+                    if (row["UsuariosClase"].ToString() == "A")
                     {
                         checkadmin.Checked = true;
                     }
@@ -133,7 +134,7 @@ namespace BSC_Reportes
             }
         }
 
-        
+
 
         private void guardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -164,9 +165,9 @@ namespace BSC_Reportes
             UdpUsu.MtdInsertarUsuarios();
             if (UdpUsu.Exito.ToString() == "True")
             {
-               if (UdpUsu.Datos.Rows[0][0].ToString() == "Ya existe el usuario")
+                if (UdpUsu.Datos.Rows[0][0].ToString() == "Ya existe el usuario")
                 {
-                    MessageBox.Show("Ya existe este nickname, favor de verificar.","Aviso");
+                    MessageBox.Show("Ya existe este nickname, favor de verificar.", "Aviso");
                 }
             }
             else
@@ -234,7 +235,7 @@ namespace BSC_Reportes
             {
                 enviarUsuario();
             }
-                
+
         }
         public void enviarUsuario()
         {
@@ -252,49 +253,50 @@ namespace BSC_Reportes
             if (clspantbotones.Exito.ToString() == "True")
             {
                 int t;
-                for(t=0;t< clspantbotones.Datos.Rows.Count; t++)
+                for (t = 0; t < clspantbotones.Datos.Rows.Count; t++)
                 {
-                    switch(clspantbotones.Datos.Rows[t][0].ToString() )
+                    switch (clspantbotones.Datos.Rows[t][0].ToString())
                     {
                         case "1":
-                            guardar.Enabled = true;
+                            guardar.Links[0].Visible = true;
                             break;
                         case "2":
-                            btnLimpiar.Enabled = true;
+                            btnLimpiar.Links[0].Visible = true;
                             break;
                         case "3":
-                            btneliminar.Enabled = true;
+                            btneliminar.Links[0].Visible = true;
                             break;
                         case "4":
-                            btninactivos.Enabled = true;
+                            btninactivos.Links[0].Visible = true;
                             break;
                     }
                 }
-                
+
             }
             else
             {
 
             }
         }
-        public void llenarusuario(string usuario,char clase)
+        public void llenarusuario(string usuario, char clase)
         {
             GusuariosLogin = usuario;
             GusuariosClase = clase;
         }
         public void accesosuperusuario()
         {
-            guardar.Enabled = true;
-            btnLimpiar.Enabled = true;
-            btneliminar.Enabled = true;
-            btninactivos.Enabled = true;
+            guardar.Links[0].Visible = true;
+            btnLimpiar.Links[0].Visible = true;
+            btneliminar.Links[0].Visible = true;
+            btninactivos.Links[0].Visible = true;
+            btnselusuario.Links[0].Visible = true;
         }
 
         private void Frm_Usuarios_Shown(object sender, EventArgs e)
         {
             actualizarGrid();
 
-
+            invisibles();
             //gridColumn3.Visible = false;
             gridColumn1.OptionsColumn.AllowEdit = false;
             gridColumn2.OptionsColumn.AllowEdit = false;
@@ -303,7 +305,7 @@ namespace BSC_Reportes
 
             if (selusu == true)
             {
-                btnselusuario.Enabled = true;
+                btnselusuario.Links[0].Visible = true;
             }
 
             if (UsuarioClase == 'S')
@@ -314,6 +316,18 @@ namespace BSC_Reportes
             {
                 controlbotones();
             }
+
+
+
         }
+        public void invisibles()
+        {
+            guardar.Links[0].Visible = false;
+            btnLimpiar.Links[0].Visible = false;
+            btneliminar.Links[0].Visible = false;
+            btninactivos.Links[0].Visible = false;
+            btnselusuario.Links[0].Visible = false;
+        } 
+        
     }
 }
