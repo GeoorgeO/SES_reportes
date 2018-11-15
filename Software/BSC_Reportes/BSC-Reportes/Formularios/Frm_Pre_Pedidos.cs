@@ -938,9 +938,9 @@ namespace BSC_Reportes
         private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MensajeCargando(1);
-            //EliminarPedido();
             GuardarPrepedido();
             MensajeCargando(2);
+            XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
         private void GuardarPrepedido()
@@ -971,8 +971,10 @@ namespace BSC_Reportes
                 {
                     if (insped.Datos.Rows.Count > 0)
                     {
+                        txtFolio.Text = insped.Datos.Rows[0][0].ToString();
                         PrePedidosId = Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
                         GuardarDetalles();
+
                     }
                 }
             }
