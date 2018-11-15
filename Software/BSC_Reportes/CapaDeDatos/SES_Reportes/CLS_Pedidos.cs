@@ -249,6 +249,48 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+        public void MtdUpdatePrePedidoProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Update";
+                _dato.CadenaTexto = FechaInicio;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _dato.CadenaTexto = FechaFin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _dato.Entero = ProveedorId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.CadenaTexto = ProveedorNombre;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ProveedorNombre");
+                _dato.CadenaTexto = UsuariosLogin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _dato.Entero = PeriodoPedido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoPedido");
+                _dato.Entero = PeriodoTipo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoTipo");
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
         public void MtdInsertPrePedidoDetalleProveedor()
         {
             string Valor = string.Empty;
@@ -331,6 +373,37 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PIdeal ");
                 _dato.Entero = PSugerido;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PSugerido ");
+                _dato.Entero = Pedido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
+                _conexion.EjecutarDataset();
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdUpdatePrePedidoDetalleProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Update";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = Pedido;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
                 _conexion.EjecutarDataset();

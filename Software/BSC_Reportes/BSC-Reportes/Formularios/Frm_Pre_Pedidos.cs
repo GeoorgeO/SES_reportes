@@ -925,7 +925,7 @@ namespace BSC_Reportes
                         Application.DoEvents();
                         int xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
                         string Sugerido = dtgValVentaExistencia.GetRowCellValue(xRow, "PSugerido").ToString();
-                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], 0);
+                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], Sugerido);
                     }
                     XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
@@ -938,7 +938,7 @@ namespace BSC_Reportes
         private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MensajeCargando(1);
-            EliminarPedido();
+            //EliminarPedido();
             GuardarPrepedido();
             MensajeCargando(2);
         }
@@ -964,14 +964,23 @@ namespace BSC_Reportes
             {
                 insped.PeriodoTipo = 3;
             }
-            insped.MtdInsertPrePedidoProveedor();
-            if (insped.Exito)
+            if (txtFolio.Text == string.Empty)
             {
-                if (insped.Datos.Rows.Count > 0)
+                insped.MtdInsertPrePedidoProveedor();
+                if (insped.Exito)
                 {
-                    PrePedidosId = Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
-                    GuardarDetalles();
+                    if (insped.Datos.Rows.Count > 0)
+                    {
+                        PrePedidosId = Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
+                        GuardarDetalles();
+                    }
                 }
+            }
+            else
+            {
+                insped.MtdUpdatePrePedidoProveedor();
+                PrePedidosId =Convert.ToInt32(txtFolio.Text);
+                UpdateDetalles();
             }
         }
 
@@ -1023,6 +1032,25 @@ namespace BSC_Reportes
                 insdetped.PSugerido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PSugerido").ToString());
                 insdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
                 insdetped.MtdInsertPrePedidoDetalleProveedor();
+                if (!insdetped.Exito)
+                {
+                    XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
+                }
+            }
+        }
+        private void UpdateDetalles()
+        {
+            pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
+            for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
+            {
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                CLS_Pedidos insdetped = new CLS_Pedidos();
+                xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
+                insdetped.PrePedidosId = PrePedidosId;
+                insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                insdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
+                insdetped.MtdUpdatePrePedidoDetalleProveedor();
                 if (!insdetped.Exito)
                 {
                     XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
