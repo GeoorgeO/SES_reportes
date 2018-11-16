@@ -292,6 +292,34 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+        public void MtdUpdatePrePedidoCancelarProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedidoCancelar_Update";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
         public void MtdInsertPrePedidoDetalleProveedor()
         {
             string Valor = string.Empty;

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
@@ -63,6 +63,7 @@
             this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnGuardar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnCancelar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnCerrarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -134,7 +135,6 @@
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnElimnar = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -428,7 +428,7 @@
             this.btnCerrarPedido,
             this.btnActualizarPedido,
             this.btnBuscarPedidoCerrado,
-            this.btnElimnar});
+            this.btnCancelar});
             this.barManager1.MainMenu = this.bIconos;
             this.barManager1.MaxItemId = 58;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -444,15 +444,14 @@
             this.bIconos.FloatLocation = new System.Drawing.Point(42, 184);
             this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnFolios),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscarPedidoCerrado),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnGuardar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnElimnar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCerrarPedido),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
             this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -508,6 +507,15 @@
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Caption = "Cancelar \r\n Pedido";
+            this.btnCancelar.Id = 57;
+            this.btnCancelar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnElimnar.ImageOptions.Image")));
+            this.btnCancelar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnElimnar.ImageOptions.LargeImage")));
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelar_ItemClick);
+            // 
             // btnActualizarPedido
             // 
             this.btnActualizarPedido.Caption = "Actualizar \r\n Pedido";
@@ -515,6 +523,7 @@
             this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.Image")));
             this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
             this.btnActualizarPedido.Name = "btnActualizarPedido";
+            this.btnActualizarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnActualizarPedido_ItemClick);
             // 
             // btnCerrarPedido
             // 
@@ -1313,18 +1322,10 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem1.Text = "Seleccionar";
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barLargeButtonItem2.SuperTip = superToolTip1;
-            // 
-            // btnElimnar
-            // 
-            this.btnElimnar.Caption = "Eliminar \r\nPedido";
-            this.btnElimnar.Id = 57;
-            this.btnElimnar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.Image")));
-            this.btnElimnar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem3.ImageOptions.LargeImage")));
-            this.btnElimnar.Name = "btnElimnar";
+            toolTipTitleItem2.Text = "Seleccionar";
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barLargeButtonItem2.SuperTip = superToolTip2;
             // 
             // Frm_Pre_Pedidos
             // 
@@ -1482,6 +1483,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
-        private DevExpress.XtraBars.BarLargeButtonItem btnElimnar;
+        private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
     }
 }

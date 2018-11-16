@@ -1089,14 +1089,14 @@ namespace BSC_Reportes
         public void OcultarBotones()
         {
             btnFolios.Links[0].Visible = false;
-            btnBuscarPedidoCerrado.Links[0].Visible = false;
+            //btnBuscarPedidoCerrado.Links[0].Visible = false;
             btnBuscar.Links[0].Visible = false;
             btnGuardar.Links[0].Visible = false;
             btnLimpiar.Links[0].Visible = false;
             btnActualizarPedido.Links[0].Visible = false;
             btnCerrarPedido.Links[0].Visible = false;
             btnImpProveedor.Links[0].Visible = false;
-            btnElimnar.Links[0].Visible = false;
+            btnCancelar.Links[0].Visible = false;
         }
         public void MostrarBotones()
         {
@@ -1114,7 +1114,7 @@ namespace BSC_Reportes
                             btnFolios.Links[0].Visible = true;
                             break;
                         case "6":
-                            btnBuscarPedidoCerrado.Links[0].Visible = true;
+                            btnCancelar.Links[0].Visible = true;
                             break;
                         case "7":
                             btnBuscar.Links[0].Visible = true;
@@ -1134,9 +1134,6 @@ namespace BSC_Reportes
                         case "12":
                             btnImpProveedor.Links[0].Visible = true;
                             break;
-                        case "16":
-                            btnElimnar.Links[0].Visible = true;
-                            break;
                     }
                 }
             }
@@ -1149,14 +1146,14 @@ namespace BSC_Reportes
         public void accesosuperusuario()
         {
             btnFolios.Links[0].Visible = true;
-            btnBuscarPedidoCerrado.Links[0].Visible = true;
+            //btnBuscarPedidoCerrado.Links[0].Visible = true;
             btnBuscar.Links[0].Visible = true;
             btnGuardar.Links[0].Visible = true;
             btnLimpiar.Links[0].Visible = true;
             btnActualizarPedido.Links[0].Visible = true;
             btnCerrarPedido.Links[0].Visible = true;
             btnImpProveedor.Links[0].Visible = true;
-            btnElimnar.Links[0].Visible = true;
+            btnCancelar.Links[0].Visible = true;
         }
 
         private void Frm_ReportePedidos_Load(object sender, EventArgs e)
@@ -1229,6 +1226,33 @@ namespace BSC_Reportes
             }
             MensajeCargando(2);
             XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+        }
+
+        private void btnCancelar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult = XtraMessageBox.Show("¿Desea Cancelar el pedido, perdera todos datos ?\nLos cambios no se podran revertir", "Cancelar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
+            {
+                CLS_Pedidos canpre = new CLS_Pedidos();
+                canpre.PrePedidosId = Convert.ToInt32(txtFolio.Text);
+                canpre.MtdUpdatePrePedidoCancelarProveedor();
+                btnLimpiar.PerformClick();
+                XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+
+        }
+
+        private void btnActualizarPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (txtFolio.Text != string.Empty)
+            {
+                CargarPrePedidos(txtFolio.Text);
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha Cargado o Generado un Folio de Pedido", "Cargar o Generar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+
         }
     }
 }
