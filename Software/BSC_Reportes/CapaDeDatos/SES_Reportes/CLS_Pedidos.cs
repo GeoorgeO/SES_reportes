@@ -57,6 +57,7 @@ namespace CapaDeDatos
         public int PeriodoPedido { get; set; }
         public int PeriodoTipo { get; set; }
         public int PrePedidoCerrado { get; set; }
+        public int Reg { get; set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -300,7 +301,9 @@ namespace CapaDeDatos
             {
                 _conexion.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Insert";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _dato.Entero = Reg;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Reg");
                 _dato.CadenaTexto = ArticuloCodigo;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.CadenaTexto = ArticuloDescripcion;

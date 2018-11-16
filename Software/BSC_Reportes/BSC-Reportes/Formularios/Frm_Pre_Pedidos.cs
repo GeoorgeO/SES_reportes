@@ -494,6 +494,7 @@ namespace BSC_Reportes
             rdbTipo.SelectedIndex = 0;
             dtgVentaExistencia.DataSource = null;
             MakeTablaPedidos();
+            BloquearObjetos(false);
         }
         private void txtProveedorId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -532,6 +533,7 @@ namespace BSC_Reportes
             CostoReposicion.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             CostoReposicion.DisplayFormat.FormatString = "$ ###,###0.00";
             pbProgreso.Position = 0;
+            BloquearObjetos(false);
         }
         private void rdbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -940,7 +942,17 @@ namespace BSC_Reportes
             MensajeCargando(1);
             GuardarPrepedido();
             MensajeCargando(2);
+            BloquearObjetos(true);
             XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+        }
+
+        private void BloquearObjetos(Boolean Valor)
+        {
+            txtFolio.Enabled = Valor;
+            dtInicio.Enabled = Valor;
+            dtFin.Enabled = Valor;
+            txtProveedorId.Enabled = Valor;
+            txtProveedorNombre.Enabled = Valor;
         }
 
         private void GuardarPrepedido()
@@ -980,9 +992,16 @@ namespace BSC_Reportes
             }
             else
             {
+                insped.PrePedidosId = PrePedidosId;
                 insped.MtdUpdatePrePedidoProveedor();
-                PrePedidosId =Convert.ToInt32(txtFolio.Text);
-                UpdateDetalles();
+                if (insped.Exito)
+                {
+                    if (insped.Datos.Rows.Count > 0)
+                    {
+                        PrePedidosId = Convert.ToInt32(txtFolio.Text);
+                        UpdateDetalles();
+                    }
+                }
             }
         }
 
@@ -996,6 +1015,7 @@ namespace BSC_Reportes
                 CLS_Pedidos insdetped = new CLS_Pedidos();
                 xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
                 insdetped.PrePedidosId = PrePedidosId;
+                insdetped.Reg= Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
                 insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
                 insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
                 insdetped.ArticuloCostoReposicion = Convert.ToDecimal(dtgValVentaExistencia.GetRowCellValue(xRow, "CostoReposicion").ToString());
@@ -1076,6 +1096,7 @@ namespace BSC_Reportes
             btnActualizarPedido.Links[0].Visible = false;
             btnCerrarPedido.Links[0].Visible = false;
             btnImpProveedor.Links[0].Visible = false;
+            btnElimnar.Links[0].Visible = false;
         }
         public void MostrarBotones()
         {
@@ -1113,6 +1134,9 @@ namespace BSC_Reportes
                         case "12":
                             btnImpProveedor.Links[0].Visible = true;
                             break;
+                        case "16":
+                            btnElimnar.Links[0].Visible = true;
+                            break;
                     }
                 }
             }
@@ -1132,6 +1156,7 @@ namespace BSC_Reportes
             btnActualizarPedido.Links[0].Visible = true;
             btnCerrarPedido.Links[0].Visible = true;
             btnImpProveedor.Links[0].Visible = true;
+            btnElimnar.Links[0].Visible = true;
         }
 
         private void Frm_ReportePedidos_Load(object sender, EventArgs e)
@@ -1159,6 +1184,7 @@ namespace BSC_Reportes
                 if (txtFolio.Text != string.Empty)
                 {
                     CargarPrePedidos(txtFolio.Text);
+                    BloquearObjetos(true);
                 }
             }
         }
