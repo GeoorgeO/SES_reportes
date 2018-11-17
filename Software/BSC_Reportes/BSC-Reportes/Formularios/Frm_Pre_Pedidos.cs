@@ -20,34 +20,20 @@ namespace BSC_Reportes
         public string vArticuloDescripcion { get; private set; }
         public string vArticuloCostoReposicion { get; private set; }
         public string vFamiliaNombre { get; private set; }
-        public string vTVentasAlmacen { get; private set; }
-        public string vExisAlmacen { get; private set; }
-        public string vTVentasApatzingan { get; private set; }
-        public string vExisApatzingan { get; private set; }
-        public string vTVentasCalzada { get; private set; }
-        public string vExisCalzada { get; private set; }
-        public string vTVentasCentro { get; private set; }
-        public string vExisCentro { get; private set; }
-        public string vTVentasCostaRica { get; private set; }
-        public string vExisCostaRica { get; private set; }
-        public string vTVentasEstocolmo { get; private set; }
-        public string vExisEstocolmo { get; private set; }
-        public string vTVentasFcoVilla { get; private set; }
-        public string vExisFcoVilla { get; private set; }
-        public string vTVentasLombardia { get; private set; }
-        public string vExisLombardia { get; private set; }
-        public string vTVentasLosReyes { get; private set; }
-        public string vExisLosReyes { get; private set; }
-        public string vTVentasMorelos { get; private set; }
-        public string vExisMorelos { get; private set; }
-        public string vTVentasNvaItalia { get; private set; }
-        public string vExisNvaItalia { get; private set; }
-        public string vTVentasPaseo { get; private set; }
-        public string vExisPaseo { get; private set; }
-        public string vTVentasSarabiaI { get; private set; }
-        public string vExisSarabiaI { get; private set; }
-        public string vTVentasSarabiaII { get; private set; }
-        public string vExisSarabiaII { get; private set; }
+        public int VAlmacen { get; private set; }
+        public int VApatzingan { get; private set; }
+        public int VCalzada { get; private set; }
+        public int VCentro { get; private set; }
+        public int VCostaRica { get; private set; }
+        public int VEstocolmo { get; private set; }
+        public int VFcoVilla { get; private set; }
+        public int VLombardia { get; private set; }
+        public int VLosReyes { get; private set; }
+        public int VMorelos { get; private set; }
+        public int VNvaItalia { get; private set; }
+        public int VPaseo { get; private set; }
+        public int VSarabiaI { get; private set; }
+        public int VSarabiaII { get; private set; }
         public decimal mesesT { get; private set; }
         public decimal sugerido { get; private set; }
         public decimal Ideal { get; private set; }
@@ -76,7 +62,22 @@ namespace BSC_Reportes
         public string TExistencia { get; private set; }
         public string PIdeal { get; private set; }
         public string PSugerido { get; private set; }
-        public string TPedido { get; private set; }
+        public int vTPedido { get; private set; }
+        public int VTotal { get; private set; }
+        public decimal DAlmacen { get; set; }
+        public decimal DCentro { get; private set; }
+        public decimal DApatzingan { get; private set; }
+        public decimal DCalzada { get; private set; }
+        public decimal DCostaRica { get; private set; }
+        public decimal DEstocolmo { get; private set; }
+        public decimal DFcoVilla { get; private set; }
+        public decimal DLombardia { get; private set; }
+        public decimal DLosReyes { get; private set; }
+        public decimal DMorelos { get; private set; }
+        public decimal DNvaItalia { get; private set; }
+        public decimal DPaseo { get; private set; }
+        public decimal DSarabiaI { get; private set; }
+        public decimal DSarabiaII { get; private set; }
 
         public Frm_Pre_Pedidos()
         {
@@ -1253,6 +1254,96 @@ namespace BSC_Reportes
                 XtraMessageBox.Show("No se ha Cargado o Generado un Folio de Pedido", "Cargar o Generar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
 
+        }
+
+        private void btnCerrarPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CalcularDistribucion();
+            CerrarPedido();
+        }
+
+        private void CerrarPedido()
+        {
+            
+        }
+
+        private void CalcularDistribucion()
+        {
+            pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
+            for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
+            {
+                
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                if (Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString()) > 0)
+                {
+                    if (Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString())>0)
+                    {
+                        int TotalDistribucion = 0;
+                        CLS_Pedidos insdetped = new CLS_Pedidos();
+                        xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
+                        insdetped.PrePedidosId = PrePedidosId;
+                        vArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                        VTotal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
+                        VAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenV").ToString());
+                        vTPedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
+                        DAlmacen = Math.Round(((Convert.ToDecimal(VAlmacen) / VTotal) * vTPedido),0);
+                        TotalDistribucion += Convert.ToInt32(DAlmacen);
+                        VCentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroV").ToString());
+                        DCentro = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DCentro);
+                        VApatzingan = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ApatzinganV").ToString());
+                        DApatzingan = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VCalzada = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CalzadaV").ToString());
+                        DCalzada = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VCostaRica = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CostaRicaV").ToString());
+                        DCostaRica = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VEstocolmo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "EstocolmoV").ToString());
+                        DEstocolmo = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VFcoVilla = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "FcoVillaV").ToString());
+                        DFcoVilla = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VLombardia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "LombardiaV").ToString());
+                        DLombardia = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VLosReyes = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ReyesV").ToString());
+                        DLosReyes = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VMorelos = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "MorelosV").ToString());
+                        DMorelos = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VNvaItalia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "NvaItaliaV").ToString());
+                        DNvaItalia = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VPaseo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PaseoV").ToString());
+                        DPaseo = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VSarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIV").ToString());
+                        DSarabiaI = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
+                        DSarabiaII = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        if(!(TotalDistribucion== vTPedido))
+                        {
+
+                        }
+                        //insdetped.MtdInsertPrePedidoDetalleProveedor();
+                        if (!insdetped.Exito)
+                        {
+                            XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
     }
 }

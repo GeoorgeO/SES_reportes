@@ -87,6 +87,18 @@
     <Compile Include="Conexion\Frm_InstanciaSQL.designer.cs">
       <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_AgregarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_AgregarArticulo.Designer.cs">
+      <DependentUpon>Frm_AgregarArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_DistribucionManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_DistribucionManual.Designer.cs">
+      <DependentUpon>Frm_DistribucionManual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\Frm_Pre_Pedidos_Buscar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +205,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Conexion\Frm_InstanciaSQL.resx">
       <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_AgregarArticulo.resx">
+      <DependentUpon>Frm_AgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_DistribucionManual.resx">
+      <DependentUpon>Frm_DistribucionManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Frm_Pre_Pedidos_Buscar.resx">
       <DependentUpon>Frm_Pre_Pedidos_Buscar.cs</DependentUpon>

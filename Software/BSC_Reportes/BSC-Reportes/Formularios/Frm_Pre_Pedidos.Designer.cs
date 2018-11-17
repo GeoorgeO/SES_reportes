@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
@@ -58,15 +58,14 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
+            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnGuardar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnCancelar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnCerrarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -75,6 +74,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dtgVentaExistencia = new DevExpress.XtraGrid.GridControl();
@@ -135,6 +135,7 @@
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -173,11 +174,12 @@
             this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(872, 183);
+            this.panelControl1.Size = new System.Drawing.Size(872, 191);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.btnIgualar);
             this.groupControl1.Controls.Add(this.pbProgreso);
             this.groupControl1.Controls.Add(this.labelControl5);
@@ -196,17 +198,20 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(848, 159);
+            this.groupControl1.Size = new System.Drawing.Size(848, 167);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
             // btnIgualar
             // 
+            this.btnIgualar.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnIgualar.Appearance.Options.UseFont = true;
+            this.btnIgualar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIgualar.ImageOptions.Image")));
             this.btnIgualar.Location = new System.Drawing.Point(414, 129);
             this.btnIgualar.Name = "btnIgualar";
-            this.btnIgualar.Size = new System.Drawing.Size(108, 23);
+            this.btnIgualar.Size = new System.Drawing.Size(98, 30);
             this.btnIgualar.TabIndex = 18;
-            this.btnIgualar.Text = "Igualar Pedido";
+            this.btnIgualar.Text = "Igualar \r\nPedido";
             this.btnIgualar.Click += new System.EventHandler(this.btnIgualar_Click);
             // 
             // pbProgreso
@@ -463,6 +468,15 @@
             this.bIconos.OptionsBar.UseWholeRow = true;
             this.bIconos.Text = "Menú principal";
             // 
+            // btnImpProveedor
+            // 
+            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
+            this.btnImpProveedor.Id = 52;
+            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
+            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
+            this.btnImpProveedor.Name = "btnImpProveedor";
+            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
+            // 
             // btnFolios
             // 
             this.btnFolios.Caption = "Buscar \r\n Folios";
@@ -471,14 +485,6 @@
             this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
             this.btnFolios.Name = "btnFolios";
             this.btnFolios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFolios_ItemClick);
-            // 
-            // btnBuscarPedidoCerrado
-            // 
-            this.btnBuscarPedidoCerrado.Caption = "  Buscar\r\nP Cerrado";
-            this.btnBuscarPedidoCerrado.Id = 56;
-            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.Image")));
-            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.LargeImage")));
-            this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
             // 
             // btnBuscar
             // 
@@ -511,10 +517,19 @@
             // 
             this.btnCancelar.Caption = "Cancelar \r\n Pedido";
             this.btnCancelar.Id = 57;
-            this.btnCancelar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnElimnar.ImageOptions.Image")));
-            this.btnCancelar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnElimnar.ImageOptions.LargeImage")));
+            this.btnCancelar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.Image")));
+            this.btnCancelar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.LargeImage")));
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelar_ItemClick);
+            // 
+            // btnCerrarPedido
+            // 
+            this.btnCerrarPedido.Caption = "Cerrar \r\nPedido";
+            this.btnCerrarPedido.Id = 54;
+            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.Image")));
+            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.LargeImage")));
+            this.btnCerrarPedido.Name = "btnCerrarPedido";
+            this.btnCerrarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCerrarPedido_ItemClick);
             // 
             // btnActualizarPedido
             // 
@@ -524,23 +539,6 @@
             this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
             this.btnActualizarPedido.Name = "btnActualizarPedido";
             this.btnActualizarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnActualizarPedido_ItemClick);
-            // 
-            // btnCerrarPedido
-            // 
-            this.btnCerrarPedido.Caption = "Cerrar \r\nPedido";
-            this.btnCerrarPedido.Id = 54;
-            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.Image")));
-            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.LargeImage")));
-            this.btnCerrarPedido.Name = "btnCerrarPedido";
-            // 
-            // btnImpProveedor
-            // 
-            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
-            this.btnImpProveedor.Id = 52;
-            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
-            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
-            this.btnImpProveedor.Name = "btnImpProveedor";
-            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
             // 
             // bEstado
             // 
@@ -605,6 +603,14 @@
             this.barEditItem1.Id = 47;
             this.barEditItem1.Name = "barEditItem1";
             // 
+            // btnBuscarPedidoCerrado
+            // 
+            this.btnBuscarPedidoCerrado.Caption = "  Buscar\r\nP Cerrado";
+            this.btnBuscarPedidoCerrado.Id = 56;
+            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.Image")));
+            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.LargeImage")));
+            this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
+            // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
@@ -613,10 +619,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(67, 183);
+            this.panelControl2.Location = new System.Drawing.Point(67, 191);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(872, 448);
+            this.panelControl2.Size = new System.Drawing.Size(872, 440);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -625,7 +631,7 @@
             this.dtgVentaExistencia.Location = new System.Drawing.Point(12, 12);
             this.dtgVentaExistencia.MainView = this.dtgValVentaExistencia;
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 424);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 416);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -1322,10 +1328,21 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem2.Text = "Seleccionar";
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.barLargeButtonItem2.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barLargeButtonItem2.SuperTip = superToolTip1;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(518, 129);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(125, 30);
+            this.simpleButton1.TabIndex = 19;
+            this.simpleButton1.Text = "Agregar\r\nProducto Nuevo";
             // 
             // Frm_Pre_Pedidos
             // 
@@ -1484,5 +1501,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
         private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
