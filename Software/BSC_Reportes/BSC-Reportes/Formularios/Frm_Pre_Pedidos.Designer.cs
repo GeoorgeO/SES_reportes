@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
             this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -135,7 +136,7 @@
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -165,6 +166,7 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -201,6 +203,17 @@
             this.groupControl1.Size = new System.Drawing.Size(848, 167);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(518, 129);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(125, 30);
+            this.simpleButton1.TabIndex = 19;
+            this.simpleButton1.Text = "Agregar\r\nProducto Nuevo";
             // 
             // btnIgualar
             // 
@@ -631,6 +644,8 @@
             this.dtgVentaExistencia.Location = new System.Drawing.Point(12, 12);
             this.dtgVentaExistencia.MainView = this.dtgValVentaExistencia;
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
+            this.dtgVentaExistencia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit2});
             this.dtgVentaExistencia.Size = new System.Drawing.Size(848, 416);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1316,6 +1331,7 @@
             this.gridColumn37.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn37.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn37.Caption = "Pedido";
+            this.gridColumn37.ColumnEdit = this.repositoryItemTextEdit2;
             this.gridColumn37.FieldName = "TPedido";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Visible = true;
@@ -1333,16 +1349,12 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
-            // simpleButton1
+            // repositoryItemTextEdit2
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(518, 129);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(125, 30);
-            this.simpleButton1.TabIndex = 19;
-            this.simpleButton1.Text = "Agregar\r\nProducto Nuevo";
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Mask.EditMask = "n0";
+            this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
             // Frm_Pre_Pedidos
             // 
@@ -1391,6 +1403,7 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1502,5 +1515,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
         private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
     }
 }
