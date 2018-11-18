@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAgregarProducto = new DevExpress.XtraEditors.SimpleButton();
             this.btnIgualar = new DevExpress.XtraEditors.SimpleButton();
             this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -135,8 +135,8 @@
             this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -181,7 +181,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.simpleButton1);
+            this.groupControl1.Controls.Add(this.btnAgregarProducto);
             this.groupControl1.Controls.Add(this.btnIgualar);
             this.groupControl1.Controls.Add(this.pbProgreso);
             this.groupControl1.Controls.Add(this.labelControl5);
@@ -204,16 +204,17 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
-            // simpleButton1
+            // btnAgregarProducto
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(518, 129);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(125, 30);
-            this.simpleButton1.TabIndex = 19;
-            this.simpleButton1.Text = "Agregar\r\nProducto Nuevo";
+            this.btnAgregarProducto.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarProducto.Appearance.Options.UseFont = true;
+            this.btnAgregarProducto.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnAgregarProducto.Location = new System.Drawing.Point(518, 129);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(125, 30);
+            this.btnAgregarProducto.TabIndex = 19;
+            this.btnAgregarProducto.Text = "Agregar\r\nProducto Nuevo";
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
             // btnIgualar
             // 
@@ -738,6 +739,7 @@
             this.Reg.Caption = "#";
             this.Reg.FieldName = "Reg";
             this.Reg.Name = "Reg";
+            this.Reg.OptionsColumn.AllowEdit = false;
             this.Reg.Visible = true;
             this.Reg.Width = 47;
             // 
@@ -1337,6 +1339,13 @@
             this.gridColumn37.Visible = true;
             this.gridColumn37.Width = 72;
             // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Mask.EditMask = "n0";
+            this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            // 
             // barLargeButtonItem2
             // 
             this.barLargeButtonItem2.Caption = "Buscar";
@@ -1344,17 +1353,10 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem1.Text = "Seleccionar";
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barLargeButtonItem2.SuperTip = superToolTip1;
-            // 
-            // repositoryItemTextEdit2
-            // 
-            this.repositoryItemTextEdit2.AutoHeight = false;
-            this.repositoryItemTextEdit2.Mask.EditMask = "n0";
-            this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            toolTipTitleItem2.Text = "Seleccionar";
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barLargeButtonItem2.SuperTip = superToolTip2;
             // 
             // Frm_Pre_Pedidos
             // 
@@ -1514,7 +1516,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
         private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnAgregarProducto;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
     }
 }

@@ -27,6 +27,7 @@ namespace BSC_Reportes
             dtgValPrePedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
             CLS_Pedidos selpro = new CLS_Pedidos();
             selpro.PrePedidoCerrado = 0;
+            selpro.PrePedidosCancelado = 0;
             selpro.MtdSeleccionarPrePedidos();
             if (selpro.Exito)
             {

@@ -141,7 +141,7 @@ namespace BSC_Reportes
             txtArticuloNombre.Enabled = false;
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void btnAgregarDistribucion_Click(object sender, EventArgs e)
         {
 
             this.Close();

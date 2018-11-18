@@ -163,7 +163,7 @@
             this.btnAgregarDistribucion.Size = new System.Drawing.Size(87, 33);
             this.btnAgregarDistribucion.TabIndex = 0;
             this.btnAgregarDistribucion.Text = "Agregar \r\nDistribucion";
-            this.btnAgregarDistribucion.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnAgregarDistribucion.Click += new System.EventHandler(this.btnAgregarDistribucion_Click);
             // 
             // panelControl2
             // 

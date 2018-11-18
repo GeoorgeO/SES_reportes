@@ -58,6 +58,8 @@ namespace CapaDeDatos
         public int PeriodoTipo { get; set; }
         public int PrePedidoCerrado { get; set; }
         public int Reg { get; set; }
+        public int PrePedidosCancelado { get; set; }
+        
 
         public void MtdSeleccionarProveedores()
         {
@@ -127,6 +129,10 @@ namespace CapaDeDatos
                 _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Existe_Select";
                 _dato.Entero = ProveedorId;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.Entero = PrePedidoCerrado;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
+                _dato.Entero = PrePedidosCancelado;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCancelado");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
@@ -463,6 +469,8 @@ namespace CapaDeDatos
                 _conexion.NombreProcedimiento = "SP_BSC_PrePedidos_Select";
                 _dato.Entero = PrePedidoCerrado;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
+                _dato.Entero = PrePedidosCancelado;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCancelado");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
