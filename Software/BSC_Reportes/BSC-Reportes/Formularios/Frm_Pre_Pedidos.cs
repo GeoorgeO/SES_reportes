@@ -1086,7 +1086,9 @@ namespace BSC_Reportes
                 CLS_Pedidos insdetped = new CLS_Pedidos();
                 xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
                 insdetped.PrePedidosId = PrePedidosId;
+                insdetped.Reg =Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
                 insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
                 insdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
                 insdetped.MtdUpdatePrePedidoDetalleProveedor();
                 if (!insdetped.Exito)

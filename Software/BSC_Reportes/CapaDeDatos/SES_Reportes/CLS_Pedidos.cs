@@ -437,10 +437,14 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Update";
+                _dato.Entero = Reg;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Reg ");
                 _dato.Entero = PrePedidosId;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
                 _dato.CadenaTexto = ArticuloCodigo;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.CadenaTexto = ArticuloDescripcion;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
                 _dato.Entero = Pedido;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
                 _conexion.EjecutarDataset();
