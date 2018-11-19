@@ -1285,13 +1285,39 @@ namespace BSC_Reportes
 
         private void btnCerrarPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            CalcularDistribucion();
-            CerrarPedido();
+            try
+            {
+                CerrarEncabezado();
+                CalcularDistribucion();
+                CerrarPedido();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CerrarEncabezado()
+        {
+            CLS_Pedidos insped = new CLS_Pedidos();
+            insped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+            insped.PrePedidosId = Convert.ToInt32(txtFolio.Text);
+            insped.MtdInsertPedidoProveedor();
+            if (!insped.Exito)
+            {
+                XtraMessageBox.Show(insped.Mensaje, "Error al guardar el Registro");
+            }
         }
 
         private void CerrarPedido()
         {
-            
+            CLS_Pedidos insped = new CLS_Pedidos();
+            insped.PrePedidosId = Convert.ToInt32(txtFolio.Text);
+            insped.MtdUpdatePedidoCerrarProveedor();
+            if (!insped.Exito)
+            {
+                XtraMessageBox.Show(insped.Mensaje, "Error al guardar el Registro");
+            }
         }
 
         private void CalcularDistribucion()
@@ -1359,7 +1385,7 @@ namespace BSC_Reportes
                         {
 
                         }
-                        //insdetped.MtdInsertPrePedidoDetalleProveedor();
+                        
                         if (!insdetped.Exito)
                         {
                             XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
@@ -1367,7 +1393,13 @@ namespace BSC_Reportes
                     }
                     else
                     {
-
+                        Frm_DistribucionManual frmdis = new Frm_DistribucionManual();
+                        frmdis.CodigoArticulo= dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                        frmdis.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
+                        frmdis.Folio =Convert.ToInt32(txtFolio.Text);
+                        frmdis.TPedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString();
+                        frmdis.NombreProveedor = txtProveedorNombre.Text;
+                        frmdis.ShowDialog();
                     }
                 }
             }

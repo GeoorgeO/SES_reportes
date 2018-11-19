@@ -59,7 +59,25 @@ namespace CapaDeDatos
         public int PrePedidoCerrado { get; set; }
         public int Reg { get; set; }
         public int PrePedidosCancelado { get; set; }
-        
+        // Encabezado Pedido
+
+        // Detalles Pedidos
+        public int? PedidosId { get; private set; }
+        public int? DAlmacen { get; private set; }
+        public int? DApatzingan { get; private set; }
+        public int? DCalzada { get; private set; }
+        public int? DCentro { get; private set; }
+        public int? DCostaRica { get; private set; }
+        public int? DEstocolmo { get; private set; }
+        public int? DFCoVilla { get; private set; }
+        public int? DLombardia { get; private set; }
+        public int? DReyes { get; private set; }
+        public int? DMorelos { get; private set; }
+        public int? DNvaItalia { get; private set; }
+        public int? DPaseo { get; private set; }
+        public int? DSarabiaI { get; private set; }
+        public int? DSarabiaII { get; private set; }
+        public int? TPedido { get; private set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -529,6 +547,126 @@ namespace CapaDeDatos
                 _conexion.NombreProcedimiento = "SP_BSC_PrePedidosDetalles_Select";
                 _dato.Entero = PrePedidosId;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
+        //Pedidos
+        public void MtdInsertPedidoProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Encabezado_Insert";
+                _dato.Entero = ProveedorId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdInsertPedidoDetalleProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Detalles_Insert";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.Entero = DAlmacen;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
+                _dato.Entero = DApatzingan;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
+                _dato.Entero = DCalzada;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
+                _dato.Entero = DCentro;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
+                _dato.Entero = DCostaRica;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
+                _dato.Entero = DEstocolmo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
+                _dato.Entero = DFCoVilla;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFCoVilla");
+                _dato.Entero = DLombardia;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
+                _dato.Entero = DReyes;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
+                _dato.Entero = DMorelos;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
+                _dato.Entero = DNvaItalia;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
+                _dato.Entero = DPaseo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
+                _dato.Entero = DSarabiaI;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
+                _dato.Entero = DSarabiaII;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _dato.Entero = TPedido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
+                _conexion.EjecutarDataset();
+  
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdUpdatePedidoCerrarProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Cerrar_Update";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
