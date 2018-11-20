@@ -63,8 +63,15 @@ namespace BSC_Reportes
 
         private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmReportePedidos.BuscarProveedor(ProveedorId);
-            this.Close();
+            if (ProveedorId != string.Empty)
+            {
+                FrmReportePedidos.BuscarProveedor(ProveedorId);
+                this.Close();
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha seleccionado Proveedor");
+            }
         }
 
         private void dtgProveedores_DoubleClick(object sender, EventArgs e)

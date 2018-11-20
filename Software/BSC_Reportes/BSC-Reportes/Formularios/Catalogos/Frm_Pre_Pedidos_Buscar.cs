@@ -44,8 +44,15 @@ namespace BSC_Reportes
         }
         private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmReportePedidos.BuscarPrePedido(vPrePedidosId);
-            this.Close();
+            if (vPrePedidosId != string.Empty)
+            {
+                FrmReportePedidos.BuscarPrePedido(vPrePedidosId);
+                this.Close();
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha seleccionado Pedido");
+            }
         }
         private void dtgPrePedidos_Click(object sender, EventArgs e)
         {
