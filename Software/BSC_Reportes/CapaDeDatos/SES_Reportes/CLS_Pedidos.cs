@@ -62,22 +62,22 @@ namespace CapaDeDatos
         // Encabezado Pedido
 
         // Detalles Pedidos
-        public int? PedidosId { get; private set; }
-        public int? DAlmacen { get; private set; }
-        public int? DApatzingan { get; private set; }
-        public int? DCalzada { get; private set; }
-        public int? DCentro { get; private set; }
-        public int? DCostaRica { get; private set; }
-        public int? DEstocolmo { get; private set; }
-        public int? DFCoVilla { get; private set; }
-        public int? DLombardia { get; private set; }
-        public int? DReyes { get; private set; }
-        public int? DMorelos { get; private set; }
-        public int? DNvaItalia { get; private set; }
-        public int? DPaseo { get; private set; }
-        public int? DSarabiaI { get; private set; }
-        public int? DSarabiaII { get; private set; }
-        public int? TPedido { get; private set; }
+        public int? PedidosId { get;  set; }
+        public int? DAlmacen { get;  set; }
+        public int? DApatzingan { get;  set; }
+        public int? DCalzada { get;  set; }
+        public int? DCentro { get;  set; }
+        public int? DCostaRica { get;  set; }
+        public int? DEstocolmo { get;  set; }
+        public int? DFcoVilla { get;  set; }
+        public int? DLombardia { get;  set; }
+        public int? DReyes { get;  set; }
+        public int? DMorelos { get;  set; }
+        public int? DNvaItalia { get;  set; }
+        public int? DPaseo { get;  set; }
+        public int? DSarabiaI { get;  set; }
+        public int? DSarabiaII { get;  set; }
+        public int? TPedido { get;  set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -621,8 +621,8 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
                 _dato.Entero = DEstocolmo;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
-                _dato.Entero = DFCoVilla;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFCoVilla");
+                _dato.Entero = DFcoVilla;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
                 _dato.Entero = DLombardia;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
                 _dato.Entero = DReyes;

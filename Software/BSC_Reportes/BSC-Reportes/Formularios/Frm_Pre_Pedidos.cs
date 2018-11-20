@@ -78,6 +78,7 @@ namespace BSC_Reportes
         public decimal DPaseo { get; private set; }
         public decimal DSarabiaI { get; private set; }
         public decimal DSarabiaII { get; private set; }
+        public int PedidosId { get;  set; }
 
         public Frm_Pre_Pedidos()
         {
@@ -1287,9 +1288,12 @@ namespace BSC_Reportes
         {
             try
             {
-                CerrarEncabezado();
-                CalcularDistribucion();
-                CerrarPedido();
+                DialogResult = XtraMessageBox.Show("¿Desea Cerrar el pedido?\nLos cambios no se podran revertir", "Cerrar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    CrearPedido();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -1297,12 +1301,23 @@ namespace BSC_Reportes
             }
         }
 
-        private void CerrarEncabezado()
+        private void CrearPedido()
         {
             CLS_Pedidos insped = new CLS_Pedidos();
             insped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
             insped.PrePedidosId = Convert.ToInt32(txtFolio.Text);
             insped.MtdInsertPedidoProveedor();
+            if(insped.Exito)
+            {
+                if(insped.Datos.Rows.Count>0)
+                {
+                    PedidosId =Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
+                    CalcularDistribucion();
+                    CerrarPedido();
+                    btnLimpiar.PerformClick();
+                }
+            }
+            
             if (!insped.Exito)
             {
                 XtraMessageBox.Show(insped.Mensaje, "Error al guardar el Registro");
@@ -1325,17 +1340,15 @@ namespace BSC_Reportes
             pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
             for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
             {
-                
                 pbProgreso.Position = i + 1;
                 Application.DoEvents();
+                xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
                 if (Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString()) > 0)
                 {
                     if (Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString())>0)
                     {
                         int TotalDistribucion = 0;
-                        CLS_Pedidos insdetped = new CLS_Pedidos();
-                        xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
-                        insdetped.PrePedidosId = PrePedidosId;
+                        
                         vArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
                         VTotal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
                         VAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenV").ToString());
@@ -1346,62 +1359,154 @@ namespace BSC_Reportes
                         DCentro = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
                         TotalDistribucion += Convert.ToInt32(DCentro);
                         VApatzingan = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ApatzinganV").ToString());
-                        DApatzingan = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
+                        DApatzingan = Math.Round(((Convert.ToDecimal(VApatzingan) / VTotal) * vTPedido), 0);
                         TotalDistribucion += Convert.ToInt32(DApatzingan);
                         VCalzada = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CalzadaV").ToString());
-                        DCalzada = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DCalzada = Math.Round(((Convert.ToDecimal(VCalzada) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DCalzada);
                         VCostaRica = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CostaRicaV").ToString());
-                        DCostaRica = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DCostaRica = Math.Round(((Convert.ToDecimal(VCostaRica) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DCostaRica);
                         VEstocolmo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "EstocolmoV").ToString());
-                        DEstocolmo = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DEstocolmo = Math.Round(((Convert.ToDecimal(VEstocolmo) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DEstocolmo);
                         VFcoVilla = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "FcoVillaV").ToString());
-                        DFcoVilla = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DFcoVilla = Math.Round(((Convert.ToDecimal(VFcoVilla) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DFcoVilla);
                         VLombardia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "LombardiaV").ToString());
-                        DLombardia = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DLombardia = Math.Round(((Convert.ToDecimal(VLombardia) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DLombardia);
                         VLosReyes = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ReyesV").ToString());
-                        DLosReyes = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DLosReyes = Math.Round(((Convert.ToDecimal(VLosReyes) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DLosReyes);
                         VMorelos = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "MorelosV").ToString());
-                        DMorelos = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DMorelos = Math.Round(((Convert.ToDecimal(VMorelos) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DMorelos);
                         VNvaItalia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "NvaItaliaV").ToString());
-                        DNvaItalia = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DNvaItalia = Math.Round(((Convert.ToDecimal(VNvaItalia) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DNvaItalia);
                         VPaseo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PaseoV").ToString());
-                        DPaseo = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DPaseo = Math.Round(((Convert.ToDecimal(VPaseo) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DPaseo);
                         VSarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIV").ToString());
-                        DSarabiaI = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DSarabiaI = Math.Round(((Convert.ToDecimal(VSarabiaI) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DSarabiaI);
                         VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
-                        DSarabiaII = Math.Round(((Convert.ToDecimal(VCentro) / VTotal) * vTPedido), 0);
-                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+                        DSarabiaII = Math.Round(((Convert.ToDecimal(VSarabiaII) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DSarabiaII);
                         if(!(TotalDistribucion== vTPedido))
-                        {
-
+                        { 
+                            int Diferencia = vTPedido - TotalDistribucion;
+                            AcomodarDiferencia(Diferencia);
                         }
-                        
-                        if (!insdetped.Exito)
-                        {
-                            XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
-                        }
+                        GuardarDistribucion();
                     }
                     else
                     {
                         Frm_DistribucionManual frmdis = new Frm_DistribucionManual();
                         frmdis.CodigoArticulo= dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                        frmdis.PedidosId = PedidosId;
                         frmdis.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
                         frmdis.Folio =Convert.ToInt32(txtFolio.Text);
-                        frmdis.TPedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString();
+                        frmdis.TPedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
                         frmdis.NombreProveedor = txtProveedorNombre.Text;
                         frmdis.ShowDialog();
                     }
                 }
+            }
+        }
+
+        private void GuardarDistribucion()
+        {
+            CLS_Pedidos insdet = new CLS_Pedidos();
+            insdet.PedidosId = PedidosId;
+            insdet.ArticuloCodigo = vArticuloCodigo;
+            insdet.DAlmacen = Convert.ToInt32(DAlmacen);
+            insdet.DApatzingan = Convert.ToInt32(DApatzingan);
+            insdet.DCalzada = Convert.ToInt32(DCalzada);
+            insdet.DCentro = Convert.ToInt32(DCentro);
+            insdet.DCostaRica = Convert.ToInt32(DCostaRica);
+            insdet.DEstocolmo = Convert.ToInt32(DEstocolmo);
+            insdet.DFcoVilla = Convert.ToInt32(DFcoVilla);
+            insdet.DLombardia = Convert.ToInt32(DLombardia);
+            insdet.DReyes = Convert.ToInt32(DLosReyes);
+            insdet.DMorelos = Convert.ToInt32(DMorelos);
+            insdet.DNvaItalia = Convert.ToInt32(DNvaItalia);
+            insdet.DPaseo = Convert.ToInt32(DPaseo);
+            insdet.DSarabiaI = Convert.ToInt32(DSarabiaI);
+            insdet.DSarabiaII = Convert.ToInt32(DSarabiaII);
+            insdet.TPedido = Convert.ToInt32(vTPedido);
+            insdet.MtdInsertPedidoDetalleProveedor();
+            if (!insdet.Exito)
+            {
+                XtraMessageBox.Show(insdet.Mensaje, "Error al guardar el Registro");
+            }
+        }
+
+        private void AcomodarDiferencia(int diferencia)
+        {
+            int Mayor = 0;
+            int pos = 0;
+            int[] datos = new int[14]
+            {Convert.ToInt32(DAlmacen), Convert.ToInt32(DCentro), Convert.ToInt32(DMorelos),
+             Convert.ToInt32(DFcoVilla), Convert.ToInt32(DSarabiaI), Convert.ToInt32(DSarabiaII),
+             Convert.ToInt32(DPaseo), Convert.ToInt32(DEstocolmo), Convert.ToInt32(DCostaRica),
+             Convert.ToInt32(DCalzada), Convert.ToInt32(DLombardia), Convert.ToInt32(DNvaItalia),
+             Convert.ToInt32(DApatzingan), Convert.ToInt32(DLosReyes)};
+            int i = 0;
+            while (i<=13)
+            {
+                if(datos[i]>Mayor)
+                {
+                    Mayor = datos[i];
+                    pos = i;
+                }
+                i++;
+            }
+            switch (pos)
+            {
+                case 0:
+                    DAlmacen += diferencia;
+                    break;
+                case 1:
+                    DCentro += diferencia;
+                    break;
+                case 2:
+                    DMorelos += diferencia;
+                    break;
+                case 3:
+                    DFcoVilla += diferencia;
+                    break;
+                case 4:
+                    DSarabiaI += diferencia;
+                    break;
+                case 5:
+                    DSarabiaII += diferencia;
+                    break;
+                case 6:
+                    DPaseo += diferencia;
+                    break;
+                case 7:
+                    DEstocolmo += diferencia;
+                    break;
+                case 8:
+                    DCostaRica += diferencia;
+                    break;
+                case 9:
+                    DCalzada += diferencia;
+                    break;
+                case 10:
+                    DLombardia += diferencia;
+                    break;
+                case 11:
+                    DNvaItalia += diferencia;
+                    break;
+                case 12:
+                    DApatzingan += diferencia;
+                    break;
+                case 13:
+                    DLosReyes += diferencia;
+                    break;
             }
         }
 
