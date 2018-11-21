@@ -7,24 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using Microsoft.Win32;
-
+using System.Configuration;
 
 namespace CapaDeDatos
 {
     
     public class ConexionSQL
     {
-        
-
         const string NombreProyecto = "BSC-Reportes";
         static public string LeerConexion()
         {
-            string StrConexion;
-            string valServer;
-            string valDB;
-            string valLogin;
-            string valPass;
+            string StrConexion = string.Empty;
+            string valServer = string.Empty;
+            string valDB = string.Empty;
+            string valLogin = string.Empty;
+            string valPass = string.Empty;
+            string ProyectName = string.Empty;
             try
+            {
+                StrConexion = string.Empty;
+                valServer = ConfigurationManager.AppSettings["ServerName"].ToString();
+                valDB = ConfigurationManager.AppSettings["DataBase"].ToString();
+                valLogin = ConfigurationManager.AppSettings["UserName"].ToString();
+                valPass = ConfigurationManager.AppSettings["Password"].ToString();
+                ProyectName = ConfigurationManager.AppSettings["ProyectName"].ToString();
+
+                StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
+                return StrConexion;
+            }
+            catch
             {
                 MSRegistro RegOut = new MSRegistro();
                 Crypto DesencriptarTexto = new Crypto();
@@ -33,77 +44,49 @@ namespace CapaDeDatos
                 valDB = RegOut.GetSetting("ConexionSQL", "DBaseL");
                 valLogin = RegOut.GetSetting("ConexionSQL", "UserL");
                 valPass = RegOut.GetSetting("ConexionSQL", "PasswordL");
-                if (valServer != string.Empty && valLogin != string.Empty && valLogin != string.Empty && valPass != string.Empty)
+
+                if (valServer != string.Empty && valDB != string.Empty && valLogin != string.Empty && valPass != string.Empty)
                 {
-                    valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerL"));
-                    valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseL"));
-                    valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserL"));
-                    valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordL"));
+                    valServer = DesencriptarTexto.Desencriptar(valServer);
+                    valDB = DesencriptarTexto.Desencriptar(valDB);
+                    valLogin = DesencriptarTexto.Desencriptar(valLogin);
+                    valPass = DesencriptarTexto.Desencriptar(valPass);
                 }
                 else
                 {
-                    throw new Exception("Faltan datos para la Conexión");
+                    valServer = string.Empty;
+                    valDB = string.Empty;
+                    valLogin = string.Empty;
+                    valPass = string.Empty;
+                    ProyectName = string.Empty;
+                    throw new Exception("Faltan datos de Conexion");
                 }
-            }
-
-            catch
-            {
-                valServer = string.Empty;
-                valDB = string.Empty;
-                valLogin = string.Empty;
-                valPass = string.Empty;
-            }
-
-            if (valServer != string.Empty && valLogin != string.Empty && valLogin != string.Empty && valPass != string.Empty)
-            {
                 StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
                 return StrConexion;
-            }
-            else
-            {
-
-
-                throw new Exception("Faltan datos para la Conexión");
-
-            }
-        }
-        static public string LeerConexionR(string ServerR, string DBaseR, string UserR, string PasswordR)
-        {
-            try
-            {
-                string StrConexion;
-                string ValServerR=string.Empty;
-                string ValDBaseR = string.Empty;
-                string ValUserR = string.Empty;
-                string ValPassR = string.Empty;
-
-                if (ServerR != null && DBaseR != null && UserR != null && PasswordR != null)
-                {
-                    MSRegistro RegOut = new MSRegistro();
-                    Crypto DesencriptarTexto = new Crypto();
-                    ValServerR = DesencriptarTexto.Desencriptar(ServerR);
-                    ValDBaseR = DesencriptarTexto.Desencriptar(DBaseR);
-                    ValUserR = DesencriptarTexto.Desencriptar(UserR);
-                    ValPassR = DesencriptarTexto.Desencriptar(PasswordR);
-
-                }
-                StrConexion = "Data Source=" + ValServerR + ";Initial Catalog=" + ValDBaseR + ";Persist Security Info=True;User ID=" + ValUserR + ";Password=" + ValPassR;
-                return StrConexion;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
             }
         }
 
         static public string LeerConexionC()
         {
-            string StrConexion;
-            string valServer;
-            string valDB;
-            string valLogin;
-            string valPass;
+            string StrConexion = string.Empty;
+            string valServer = string.Empty;
+            string valDB = string.Empty;
+            string valLogin = string.Empty;
+            string valPass = string.Empty;
+            string ProyectName = string.Empty;
             try
+            {
+                StrConexion = string.Empty;
+                valServer = ConfigurationManager.AppSettings["ServerName"].ToString();
+                valDB = ConfigurationManager.AppSettings["DataBase"].ToString();
+                valLogin = ConfigurationManager.AppSettings["UserName"].ToString();
+                valPass = ConfigurationManager.AppSettings["Password"].ToString();
+                ProyectName = ConfigurationManager.AppSettings["ProyectName"].ToString();
+
+                StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
+                return StrConexion;
+            }
+            catch
             {
                 MSRegistro RegOut = new MSRegistro();
                 Crypto DesencriptarTexto = new Crypto();
@@ -112,40 +95,27 @@ namespace CapaDeDatos
                 valDB = RegOut.GetSetting("ConexionSQL", "DBaseC");
                 valLogin = RegOut.GetSetting("ConexionSQL", "UserC");
                 valPass = RegOut.GetSetting("ConexionSQL", "PasswordC");
-                if (valServer != string.Empty && valLogin != string.Empty && valLogin != string.Empty && valPass != string.Empty)
+
+                if (valServer != string.Empty && valDB != string.Empty && valLogin != string.Empty && valPass != string.Empty)
                 {
-                    valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerC"));
-                    valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseC"));
-                    valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserC"));
-                    valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordC"));
+                    valServer = DesencriptarTexto.Desencriptar(valServer);
+                    valDB = DesencriptarTexto.Desencriptar(valDB);
+                    valLogin = DesencriptarTexto.Desencriptar(valLogin);
+                    valPass = DesencriptarTexto.Desencriptar(valPass);
                 }
                 else
                 {
-                    throw new Exception("Faltan datos para la Conexión");
+                    valServer = string.Empty;
+                    valDB = string.Empty;
+                    valLogin = string.Empty;
+                    valPass = string.Empty;
+                    ProyectName = string.Empty;
+                    throw new Exception("Faltan datos de Conexion");
                 }
-            }
-
-            catch
-            {
-                valServer = string.Empty;
-                valDB = string.Empty;
-                valLogin = string.Empty;
-                valPass = string.Empty;
-            }
-
-            if (valServer != string.Empty && valLogin != string.Empty && valLogin != string.Empty && valPass != string.Empty)
-            {
                 StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
                 return StrConexion;
             }
-            else
-            {
-                
 
-                throw new Exception("Faltan datos para la Conexión");
-
-
-            }
         }
         static public string LeerConexionRC(string ServerC, string DBaseC, string UserC, string PasswordC)
         {
@@ -167,7 +137,7 @@ namespace CapaDeDatos
                     ValPassC = DesencriptarTexto.Desencriptar(PasswordC);
 
                 }
-                StrConexion = "Data Source=" + ValServerC + ";Initial Catalog=" + ValDBaseC + ";Persist Security Info=True;User ID=" + ValUserC + ";Password=" + ValPassC;
+                StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", ValServerC, ValDBaseC, ValUserC, ValPassC);
                 return StrConexion;
             }
             catch (Exception ex)
@@ -193,7 +163,7 @@ namespace CapaDeDatos
                 ValPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting(NombreProyecto, "ConexionSQL", "PasswordL"));
 
 
-                StrConexion = "Data Source=" + ValServer + ";Initial Catalog=" + ValDBase + ";Persist Security Info=True;User ID=" + ValUser + ";Password=" + ValPass;
+                StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", ValServer, ValDBase, ValUser, ValPass);
                 return StrConexion;
             }
             catch (Exception ex)
@@ -230,7 +200,7 @@ namespace CapaDeDatos
                 {
                     try
                     {
-                        SqlConnection conn = new SqlConnection("Data Source=" + ValServer + ";Initial Catalog=" + ValDBase + ";Persist Security Info=True;User ID=" + ValUser + ";Password=" + ValPass);
+                        SqlConnection conn = new SqlConnection(string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", ValServer, ValDBase, ValUser, ValPass));
                         conn.Open();
                         return true;
                     }
