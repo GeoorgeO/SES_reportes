@@ -64,14 +64,22 @@ namespace BSC_Reportes
                                 if (UsuariosClase == 'N')
                                 {
 
-                                }else
+                                }
+                                else
                                 {
                                     btnUsuarios.Visibility = BarItemVisibility.Always;
                                 }
-                                
+
                                 break;
                             case "2":
-                                btnPedidos.Visibility = BarItemVisibility.Always;
+                                if (UsuariosClase == 'N')
+                                {
+
+                                }
+                                else
+                                {
+                                    btnPedidos.Visibility = BarItemVisibility.Always;
+                                }
                                 break;
                             case "3":
                                 if (UsuariosClase == 'N')
@@ -81,6 +89,16 @@ namespace BSC_Reportes
                                 else
                                 {
                                     btncontrolacesos.Visibility = BarItemVisibility.Always;
+                                }
+                                break;
+                            case "4":
+                                if (UsuariosClase == 'N')
+                                {
+
+                                }
+                                else
+                                {
+                                    btnEmail.Visibility = BarItemVisibility.Always;
                                 }
                                 break;
                         }
@@ -155,6 +173,15 @@ namespace BSC_Reportes
             frmusu.UsuarioClase = UsuariosClase;
             //frmusu.llenarusuario(GusuariosLogin, GusuariosClase);
             frmusu.ShowDialog();
+        }
+
+        private void btnEmail_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ConfigEmail.DefInstance.MdiParent = this;
+            Frm_ConfigEmail.DefInstance.IdPantallaBotones = 4;
+            Frm_ConfigEmail.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_ConfigEmail.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_ConfigEmail.DefInstance.Show();
         }
     }
 }

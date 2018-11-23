@@ -150,9 +150,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 414);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 411);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(649, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(649, 28);
             // 
             // barDockControlLeft
             // 
@@ -160,7 +160,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(71, 414);
+            this.barDockControlLeft.Size = new System.Drawing.Size(73, 411);
             // 
             // barDockControlRight
             // 
@@ -168,7 +168,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(649, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 414);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 411);
             // 
             // barLargeButtonItem1
             // 
@@ -189,10 +189,10 @@
             // 
             this.panelControl1.Controls.Add(this.dtgPrePedidos);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(71, 0);
+            this.panelControl1.Location = new System.Drawing.Point(73, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(578, 414);
+            this.panelControl1.Size = new System.Drawing.Size(576, 411);
             this.panelControl1.TabIndex = 11;
             // 
             // dtgPrePedidos
@@ -201,7 +201,7 @@
             this.dtgPrePedidos.Location = new System.Drawing.Point(12, 12);
             this.dtgPrePedidos.MainView = this.dtgValPrePedidos;
             this.dtgPrePedidos.Name = "dtgPrePedidos";
-            this.dtgPrePedidos.Size = new System.Drawing.Size(554, 390);
+            this.dtgPrePedidos.Size = new System.Drawing.Size(552, 387);
             this.dtgPrePedidos.TabIndex = 4;
             this.dtgPrePedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPrePedidos});

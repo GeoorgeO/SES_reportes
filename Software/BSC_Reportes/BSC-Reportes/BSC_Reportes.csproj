@@ -111,6 +111,12 @@
     <Compile Include="Formularios\Catalogos\Frm_Proveedores_Buscar.Designer.cs">
       <DependentUpon>Frm_Proveedores_Buscar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Email\Frm_ConfigEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Email\Frm_ConfigEmail.designer.cs">
+      <DependentUpon>Frm_ConfigEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frm_AlertaCoberturaStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Frm_Proveedores_Buscar.resx">
       <DependentUpon>Frm_Proveedores_Buscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Email\Frm_ConfigEmail.resx">
+      <DependentUpon>Frm_ConfigEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_CambiaPass.resx">
       <DependentUpon>Frm_CambiaPass.cs</DependentUpon>

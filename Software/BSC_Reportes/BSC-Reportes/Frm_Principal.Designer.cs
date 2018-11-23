@@ -36,15 +36,16 @@
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             this.btnCambiaPass = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +59,10 @@
             this.btnPedidos,
             this.skinRibbonGalleryBarItem1,
             this.btncontrolacesos,
-            this.btnCambiaPass});
+            this.btnCambiaPass,
+            this.btnEmail});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 2;
+            this.ribbon.MaxItemId = 3;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -121,24 +123,6 @@
             this.btnCambiaPass.Name = "btnCambiaPass";
             this.btnCambiaPass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCambiaPass_ItemClick);
             // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
-            this.ribbonPage1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.Image")));
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Config";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnUsuarios);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btncontrolacesos);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnCambiaPass);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.ShowCaptionButton = false;
-            this.ribbonPageGroup1.Text = "Seguridad";
-            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -154,6 +138,25 @@
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "Compras";
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.Image")));
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Config";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.AllowTextClipping = false;
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnUsuarios);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btncontrolacesos);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnCambiaPass);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnEmail);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.ShowCaptionButton = false;
+            this.ribbonPageGroup1.Text = "Seguridad";
             // 
             // ribbonPage3
             // 
@@ -186,6 +189,15 @@
             // 
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.Caption = "EMail";
+            this.btnEmail.Id = 2;
+            this.btnEmail.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnEmail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmail_ItemClick);
             // 
             // Frm_Principal
             // 
@@ -228,5 +240,6 @@
         private DevExpress.XtraBars.BarButtonItem btncontrolacesos;
         private DevExpress.XtraBars.BarButtonItem btnPedidos;
         private DevExpress.XtraBars.BarButtonItem btnCambiaPass;
+        private DevExpress.XtraBars.BarButtonItem btnEmail;
     }
 }

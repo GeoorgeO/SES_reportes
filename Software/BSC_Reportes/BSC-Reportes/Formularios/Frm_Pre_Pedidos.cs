@@ -1161,7 +1161,6 @@ namespace BSC_Reportes
                 XtraMessageBox.Show(clspantbotones.Mensaje);
             }
         }
-
         public void accesosuperusuario()
         {
             btnFolios.Links[0].Visible = true;
