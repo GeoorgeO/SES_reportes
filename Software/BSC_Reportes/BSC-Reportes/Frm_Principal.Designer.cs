@@ -32,10 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnUsuarios = new DevExpress.XtraBars.BarButtonItem();
-            this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPrePedidos = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             this.btnCambiaPass = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -45,7 +46,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -56,13 +57,14 @@
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.btnUsuarios,
-            this.btnPedidos,
+            this.btnPrePedidos,
             this.skinRibbonGalleryBarItem1,
             this.btncontrolacesos,
             this.btnCambiaPass,
-            this.btnEmail});
+            this.btnEmail,
+            this.btnPedidos});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 3;
+            this.ribbon.MaxItemId = 4;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -86,14 +88,14 @@
             this.btnUsuarios.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnUsuarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsuarios_ItemClick);
             // 
-            // btnPedidos
+            // btnPrePedidos
             // 
-            this.btnPedidos.Caption = "Pedidos";
-            this.btnPedidos.Id = 2;
-            this.btnPedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.Image")));
-            this.btnPedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.LargeImage")));
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick);
+            this.btnPrePedidos.Caption = "Pre-Pedidos";
+            this.btnPrePedidos.Id = 2;
+            this.btnPrePedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.Image")));
+            this.btnPrePedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.LargeImage")));
+            this.btnPrePedidos.Name = "btnPrePedidos";
+            this.btnPrePedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -123,6 +125,15 @@
             this.btnCambiaPass.Name = "btnCambiaPass";
             this.btnCambiaPass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCambiaPass_ItemClick);
             // 
+            // btnEmail
+            // 
+            this.btnEmail.Caption = "EMail";
+            this.btnEmail.Id = 2;
+            this.btnEmail.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmail.ImageOptions.Image")));
+            this.btnEmail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEmail.ImageOptions.LargeImage")));
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmail_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -134,6 +145,7 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnPrePedidos);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnPedidos);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
@@ -190,14 +202,14 @@
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
             // 
-            // btnEmail
+            // btnPedidos
             // 
-            this.btnEmail.Caption = "EMail";
-            this.btnEmail.Id = 2;
-            this.btnEmail.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnEmail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnEmail.Name = "btnEmail";
-            this.btnEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmail_ItemClick);
+            this.btnPedidos.Caption = "Pedidos";
+            this.btnPedidos.Id = 3;
+            this.btnPedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnPedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick_1);
             // 
             // Frm_Principal
             // 
@@ -238,8 +250,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btncontrolacesos;
-        private DevExpress.XtraBars.BarButtonItem btnPedidos;
+        private DevExpress.XtraBars.BarButtonItem btnPrePedidos;
         private DevExpress.XtraBars.BarButtonItem btnCambiaPass;
         private DevExpress.XtraBars.BarButtonItem btnEmail;
+        private DevExpress.XtraBars.BarButtonItem btnPedidos;
     }
 }

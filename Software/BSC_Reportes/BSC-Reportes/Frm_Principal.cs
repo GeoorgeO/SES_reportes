@@ -78,7 +78,7 @@ namespace BSC_Reportes
                                 }
                                 else
                                 {
-                                    btnPedidos.Visibility = BarItemVisibility.Always;
+                                    btnPrePedidos.Visibility = BarItemVisibility.Always;
                                 }
                                 break;
                             case "3":
@@ -146,13 +146,13 @@ namespace BSC_Reportes
         {
             btnUsuarios.Visibility = BarItemVisibility.Never;
             btncontrolacesos.Visibility = BarItemVisibility.Never;
-            btnPedidos.Visibility = BarItemVisibility.Never;
+            btnPrePedidos.Visibility = BarItemVisibility.Never;
         }
         public void accesosuperusuario()
         {
             btnUsuarios.Visibility = BarItemVisibility.Always;
             btncontrolacesos.Visibility = BarItemVisibility.Always;
-            btnPedidos.Visibility = BarItemVisibility.Always;
+            btnPrePedidos.Visibility = BarItemVisibility.Always;
         }
 
         private void btnPedidos_ItemClick(object sender, ItemClickEventArgs e)
@@ -182,6 +182,15 @@ namespace BSC_Reportes
             Frm_ConfigEmail.DefInstance.UsuariosLogin = UsuariosLogin;
             Frm_ConfigEmail.DefInstance.UsuarioClase = UsuariosClase;
             Frm_ConfigEmail.DefInstance.Show();
+        }
+
+        private void btnPedidos_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            Frm_Pedidos.DefInstance.MdiParent = this;
+            Frm_Pedidos.DefInstance.IdPantallaBotones = 5;
+            Frm_Pedidos.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Pedidos.DefInstance.Show();
         }
     }
 }

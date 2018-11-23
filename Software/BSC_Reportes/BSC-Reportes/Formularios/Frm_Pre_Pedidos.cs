@@ -101,7 +101,7 @@ namespace BSC_Reportes
 
             // DataRow row;
             column = new DataColumn();
-            column.DataType = typeof(string);
+            column.DataType = typeof(int);
             column.ColumnName = "Reg";
             column.AutoIncrement = false;
             column.Caption = "#";
@@ -682,9 +682,16 @@ namespace BSC_Reportes
         }
         private void btnImpProveedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
-            frmpro.FrmReportePedidos = this;
-            frmpro.ShowDialog();
+            if (txtFolio.Text == string.Empty)
+            {
+                Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
+                frmpro.FrmReportePedidos = this;
+                frmpro.ShowDialog();
+            }
+            else
+            {
+                XtraMessageBox.Show("Existe un pedido en curso, Termine de guardar el pedido actual");
+            }
         }
         public void MensajeCargando(int opcion)
         {
@@ -959,6 +966,7 @@ namespace BSC_Reportes
             txtProveedorId.Enabled = Valor;
             txtProveedorNombre.Enabled = Valor;
             txtPeriodo.Enabled = Valor;
+            rdbPeriodo.Enabled = Valor;
         }
 
         private void GuardarPrepedido()

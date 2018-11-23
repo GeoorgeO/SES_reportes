@@ -179,6 +179,51 @@ namespace BSC_Reportes
             {
                int xRow = dtgValSucursales.GetVisibleRowHandle(i);
                 Valor += Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                switch (dtgValSucursales.GetRowCellValue(xRow, "Sucursales").ToString())
+                {
+                    case "Almacen":
+                        DAlmacen = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Centro":
+                        DCentro = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Morelos":
+                        DMorelos = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Fco Villa":
+                        DFcoVilla = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Sarabia I":
+                        DSarabiaI = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Sarabia II":
+                        DSarabiaII = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Paseo":
+                        DPaseo = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Estocolmo":
+                        DEstocolmo = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Costa Rica":
+                        DCostaRica = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Calzada":
+                        DCalzada = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Lombardia":
+                        DLombardia = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Nva Italia":
+                        DNvaItalia = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Apatzingan":
+                        DApatzingan = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                    case "Los Reyes":
+                        DLosReyes = Convert.ToInt32(dtgValSucursales.GetRowCellValue(xRow, "Cantidad").ToString());
+                        break;
+                }
             }
             return Valor;
         }
