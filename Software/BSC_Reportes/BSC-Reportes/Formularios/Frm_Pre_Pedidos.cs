@@ -485,6 +485,10 @@ namespace BSC_Reportes
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             txtFolio.Text = string.Empty;
+            txtCMayorA.Text = "0";
+            txtCMenorA.Text = "0";
+            txtCIgualA.Text = "0";
+            txtCopiasPedido.Text = "0";
             dtInicio.EditValue = DateTime.Now;
             dtFin.EditValue = DateTime.Now;
             txtProveedorId.Text = string.Empty;
@@ -521,6 +525,10 @@ namespace BSC_Reportes
             dtFin.EditValue = DateTime.Now;
             txtProveedorId.Text = string.Empty;
             txtProveedorNombre.Text = string.Empty;
+            txtCMayorA.Text = "0";
+            txtCMenorA.Text = "0";
+            txtCIgualA.Text = "0";
+            txtCopiasPedido.Text = "0";
             chkVentas.Checked = true;
             chkExistencia.Checked = true;
             chkCosto.Checked = true;
