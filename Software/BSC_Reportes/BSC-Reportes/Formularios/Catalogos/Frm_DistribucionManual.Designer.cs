@@ -157,7 +157,7 @@
             // 
             // btnAgregarDistribucion
             // 
-            this.btnAgregarDistribucion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnAgregarDistribucion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarDistribucion.ImageOptions.Image")));
             this.btnAgregarDistribucion.Location = new System.Drawing.Point(125, 117);
             this.btnAgregarDistribucion.Name = "btnAgregarDistribucion";
             this.btnAgregarDistribucion.Size = new System.Drawing.Size(87, 33);

@@ -130,6 +130,8 @@ namespace BSC_Reportes
 
         private void Frm_Principal_Load(object sender, EventArgs e)
         {
+            MSRegistro RegOut = new MSRegistro();
+            SkinForm.LookAndFeel.SetSkinStyle(RegOut.GetSetting("ConexionSQL", "Sking"));
             OcultarBotones();
             if (UsuariosClase == 'S')
             {

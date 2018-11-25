@@ -37,6 +37,7 @@
             this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             this.btnCambiaPass = new DevExpress.XtraBars.BarButtonItem();
             this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -46,7 +47,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -92,8 +92,8 @@
             // 
             this.btnPrePedidos.Caption = "Pre-Pedidos";
             this.btnPrePedidos.Id = 2;
-            this.btnPrePedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.Image")));
-            this.btnPrePedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.LargeImage")));
+            this.btnPrePedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrePedidos.ImageOptions.Image")));
+            this.btnPrePedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrePedidos.ImageOptions.LargeImage")));
             this.btnPrePedidos.Name = "btnPrePedidos";
             this.btnPrePedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick);
             // 
@@ -133,6 +133,15 @@
             this.btnEmail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEmail.ImageOptions.LargeImage")));
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmail_ItemClick);
+            // 
+            // btnPedidos
+            // 
+            this.btnPedidos.Caption = "Pedidos";
+            this.btnPedidos.Id = 3;
+            this.btnPedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.Image")));
+            this.btnPedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.LargeImage")));
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick_1);
             // 
             // ribbonPage2
             // 
@@ -202,15 +211,6 @@
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
             // 
-            // btnPedidos
-            // 
-            this.btnPedidos.Caption = "Pedidos";
-            this.btnPedidos.Id = 3;
-            this.btnPedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnPedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick_1);
-            // 
             // Frm_Principal
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -219,6 +219,7 @@
             this.ClientSize = new System.Drawing.Size(931, 534);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "Frm_Principal";
             this.Ribbon = this.ribbon;

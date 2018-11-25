@@ -767,7 +767,7 @@ namespace BSC_Reportes
 
         private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            txtPeriodo.Focus();
             if (txtProveedorId.Text != string.Empty)
             {
                 if (!ExistenPrePedidos(txtProveedorId.Text))
@@ -1116,7 +1116,6 @@ namespace BSC_Reportes
         public void OcultarBotones()
         {
             btnFolios.Links[0].Visible = false;
-            //btnBuscarPedidoCerrado.Links[0].Visible = false;
             btnBuscar.Links[0].Visible = false;
             btnGuardar.Links[0].Visible = false;
             btnLimpiar.Links[0].Visible = false;
@@ -1124,6 +1123,9 @@ namespace BSC_Reportes
             btnCerrarPedido.Links[0].Visible = false;
             btnImpProveedor.Links[0].Visible = false;
             btnCancelar.Links[0].Visible = false;
+            btnIgualar.Visible = false;
+            btnAgregarProducto.Visible = false;
+            btnConvertir.Visible = false;
         }
         public void MostrarBotones()
         {
@@ -1161,6 +1163,15 @@ namespace BSC_Reportes
                         case "12":
                             btnImpProveedor.Links[0].Visible = true;
                             break;
+                        case "24":
+                            btnIgualar.Visible = true;
+                            break;
+                        case "25":
+                            btnAgregarProducto.Visible = true;
+                            break;
+                        case "26":
+                            btnConvertir.Visible = true;
+                            break;
                     }
                 }
             }
@@ -1172,7 +1183,6 @@ namespace BSC_Reportes
         public void accesosuperusuario()
         {
             btnFolios.Links[0].Visible = true;
-            //btnBuscarPedidoCerrado.Links[0].Visible = true;
             btnBuscar.Links[0].Visible = true;
             btnGuardar.Links[0].Visible = true;
             btnLimpiar.Links[0].Visible = true;
@@ -1180,6 +1190,9 @@ namespace BSC_Reportes
             btnCerrarPedido.Links[0].Visible = true;
             btnImpProveedor.Links[0].Visible = true;
             btnCancelar.Links[0].Visible = true;
+            btnIgualar.Visible = true;
+            btnAgregarProducto.Visible = true;
+            btnConvertir.Visible = true;
         }
 
         private void Frm_ReportePedidos_Load(object sender, EventArgs e)
@@ -1295,12 +1308,22 @@ namespace BSC_Reportes
         {
             try
             {
-                DialogResult = XtraMessageBox.Show("¿Desea Cerrar el pedido?\nLos cambios no se podran revertir", "Cerrar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                if (DialogResult == DialogResult.Yes)
+                if (txtFolio.Text != string.Empty)
                 {
-                    CrearPedido();
+                    DialogResult = XtraMessageBox.Show("¿Desea Cerrar el pedido?\nLos cambios no se podran revertir", "Cerrar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (DialogResult == DialogResult.Yes)
+                    {
+                        int Copias =Convert.ToInt32(txtCopiasPedido.Text);
+                        for (int c = 0; c < Copias; c++)
+                        {
+                            CrearPedido();
+                        }
+                    }
                 }
-                
+                else
+                {
+                    XtraMessageBox.Show("Debe de guardar el Pedido para generar un numero de Folio", "Guardar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
             }
             catch (Exception ex)
             {
@@ -1537,6 +1560,42 @@ namespace BSC_Reportes
             else
             {
                 XtraMessageBox.Show("No se ha Cargado o Generado Pedido", "Cargar o Generar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btnConvertir_Click(object sender, EventArgs e)
+        {
+            if (txtCMayorA.Text != string.Empty && txtCMenorA.Text != string.Empty && txtCIgualA.Text != string.Empty)
+            {
+                if (Convert.ToInt32(txtCMayorA.Text) >= Convert.ToInt32(txtCMenorA.Text))
+                {
+                    ConvertDatosPedido(Convert.ToInt32(txtCMayorA.Text), Convert.ToInt32(txtCMenorA.Text), Convert.ToInt32(txtCIgualA.Text));
+                }
+                else
+                {
+                    XtraMessageBox.Show("El Campo >= debe ser Menor que el Campo <=", "Error en los campos para convertir", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
+            }
+        }
+
+        private void ConvertDatosPedido(int v1, int v2, int v3)
+        {
+            DialogResult = XtraMessageBox.Show("¿Desea Convertir los datos que coincidan con el rango de valores?\nLos cambios no se podran revertir", "Convertir Valores del Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
+            {
+                pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
+                for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
+                {
+                    pbProgreso.Position = i + 1;
+                    Application.DoEvents();
+                    int xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
+                    string Pedido = dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString();
+                    if ( Convert.ToInt32(Pedido)  >= v1 &&  Convert.ToInt32(Pedido) <= v2)
+                    {
+                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], v3);
+                    }
+                }
+                XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
     }
