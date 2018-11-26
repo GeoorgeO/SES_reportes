@@ -79,6 +79,7 @@ namespace BSC_Reportes
         public decimal DSarabiaI { get; private set; }
         public decimal DSarabiaII { get; private set; }
         public int PedidosId { get;  set; }
+        public string Pedido { get; private set; }
 
         public Frm_Pre_Pedidos()
         {
@@ -1326,6 +1327,8 @@ namespace BSC_Reportes
                         {
                             CrearPedido();
                         }
+                        CerrarPedido();
+                        btnLimpiar.PerformClick();
                     }
                 }
                 else
@@ -1351,8 +1354,6 @@ namespace BSC_Reportes
                 {
                     PedidosId =Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
                     CalcularDistribucion();
-                    CerrarPedido();
-                    btnLimpiar.PerformClick();
                 }
             }
             
@@ -1575,9 +1576,15 @@ namespace BSC_Reportes
         {
             if (txtCMayorA.Text != string.Empty && txtCMenorA.Text != string.Empty && txtCIgualA.Text != string.Empty)
             {
-                if (Convert.ToInt32(txtCMayorA.Text) >= Convert.ToInt32(txtCMenorA.Text))
+                if (Convert.ToInt32(txtCMayorA.Text) <= Convert.ToInt32(txtCMenorA.Text))
                 {
-                    ConvertDatosPedido(Convert.ToInt32(txtCMayorA.Text), Convert.ToInt32(txtCMenorA.Text), Convert.ToInt32(txtCIgualA.Text));
+                    DialogResult = XtraMessageBox.Show("¿Desea Convertir los datos que coincidan con el rango de valores?\nLos cambios no se podran revertir", "Convertir Valores del Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (DialogResult == DialogResult.Yes)
+                    {
+                        ConvertDatosPedido(Convert.ToInt32(txtCMayorA.Text), Convert.ToInt32(txtCMenorA.Text), Convert.ToInt32(txtCIgualA.Text));
+                        ConvertDatosPedido(Convert.ToInt32(txtCMayorA.Text), Convert.ToInt32(txtCMenorA.Text), Convert.ToInt32(txtCIgualA.Text));
+                    }
+                    XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
@@ -1585,25 +1592,19 @@ namespace BSC_Reportes
                 }
             }
         }
-
         private void ConvertDatosPedido(int v1, int v2, int v3)
         {
-            DialogResult = XtraMessageBox.Show("¿Desea Convertir los datos que coincidan con el rango de valores?\nLos cambios no se podran revertir", "Convertir Valores del Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (DialogResult == DialogResult.Yes)
+            pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
+            for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
             {
-                pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
-                for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
+                Pedido = dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString();
+                if (Convert.ToInt32(Pedido) >= v1 && Convert.ToInt32(Pedido) <= v2)
                 {
-                    pbProgreso.Position = i + 1;
-                    Application.DoEvents();
-                    int xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
-                    string Pedido = dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString();
-                    if ( Convert.ToInt32(Pedido)  >= v1 &&  Convert.ToInt32(Pedido) <= v2)
-                    {
-                        dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], v3);
-                    }
+                    dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], v3);
                 }
-                XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
     }
