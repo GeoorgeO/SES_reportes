@@ -35,7 +35,8 @@ namespace CapaDeDatos
             hashmd5.Clear();
             //Algoritmo 3DAS 
             TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
-            tdes.Key = keyArray; tdes.Mode = CipherMode.ECB;
+            tdes.Key = keyArray;
+            tdes.Mode = CipherMode.ECB;
             tdes.Padding = PaddingMode.PKCS7;
             //se empieza con la transformación de la cadena 
             ICryptoTransform cTransform = tdes.CreateEncryptor();

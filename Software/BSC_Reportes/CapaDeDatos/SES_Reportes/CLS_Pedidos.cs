@@ -78,6 +78,7 @@ namespace CapaDeDatos
         public int? DSarabiaI { get;  set; }
         public int? DSarabiaII { get;  set; }
         public int? TPedido { get;  set; }
+        public int? Surtido { get; set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -685,5 +686,7 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+
+        
     }
 }
