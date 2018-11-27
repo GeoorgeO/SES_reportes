@@ -11,6 +11,9 @@ namespace CapaDeDatos
         public string ArticuloCodigo { get;  set; }
         public int? PedidosId { get; set; }
         public int? Surtido { get;  set; }
+        public string ArticuloDescripcion { get; set; }
+        public int Cantidad { get; set; }
+        public string Tipo { get; set; }
 
         public void MtdSelectPedidoDetallesProveedor()
         {
@@ -98,6 +101,73 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+
+        public void MtdInsertPedidoDetalleInsidencias()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_WEB_PedidoDetallesInsidencias_Insert";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.CadenaTexto = ArticuloDescripcion;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
+                _dato.Entero = Cantidad;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Cantidad");
+                _dato.CadenaTexto = Tipo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "Tipo");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
+        public void MtdUpdatePedidoSurtido()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_WEB_PedidoSurtido_Update";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
         public void MtdSelectArticulo()
         {
             string Valor = string.Empty;
