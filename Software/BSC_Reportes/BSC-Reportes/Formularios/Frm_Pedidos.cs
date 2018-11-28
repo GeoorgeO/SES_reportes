@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
+using DevExpress.XtraSplashScreen;
 
 namespace BSC_Reportes
 {
@@ -252,7 +253,7 @@ namespace BSC_Reportes
 
             table.Columns.Add(column);
 
-            dtgVentaExistencia.DataSource = table;
+            dtgPedidos.DataSource = table;
         }
         public void OcultarBotones()
         {
@@ -355,12 +356,12 @@ namespace BSC_Reportes
             txtProveedorNombre.Text = string.Empty;
             chkCosto.Checked = true;
             chkFamilia.Checked = true;
-            dtgVentaExistencia.DataSource = null;
+            dtgPedidos.DataSource = null;
             MakeTablaPedidos();
-            dtgValVentaExistencia.OptionsSelection.EnableAppearanceFocusedCell = false;
-            dtgValVentaExistencia.OptionsSelection.EnableAppearanceHideSelection = false;
-            dtgValVentaExistencia.OptionsSelection.MultiSelect = true;
-            dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
+            dtgValPedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
+            dtgValPedidos.OptionsSelection.EnableAppearanceHideSelection = false;
+            dtgValPedidos.OptionsSelection.MultiSelect = true;
+            dtgValPedidos.OptionsView.ShowGroupPanel = false;
             CostoReposicion.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             CostoReposicion.DisplayFormat.FormatString = "$ ###,###0.00";
             pbProgreso.Position = 0;
@@ -369,6 +370,116 @@ namespace BSC_Reportes
         private void DesbloquearObjetos(Boolean Valor)
         {
             txtFolio.Enabled = Valor;
+        }
+
+        private void dtgValVentaExistencia_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        {
+            if (e.Column == TPedido && e.IsGetData)
+            {
+                decimal vEntrada = (decimal)dtgValPedidos.GetListSourceRowCellValue(e.ListSourceRowIndex, Entrada);
+                decimal vTPedido = (decimal)dtgValPedidos.GetListSourceRowCellValue(e.ListSourceRowIndex, TPedido);
+
+                if (Convert.ToInt32(vEntrada.ToString()) > Convert.ToDouble(vTPedido.ToString()))
+                {
+                    //Set an icon with index 0
+                    e.Value = imageCollection1.Images[0];
+                }
+                else if (Convert.ToDouble(vEntrada.ToString()) < Convert.ToDouble(vTPedido.ToString()))
+                {
+                    //Set an icon with index 1
+                    e.Value = imageCollection1.Images[1];
+                }
+                else
+                {
+                    //Set an icon with index 2
+                    e.Value = imageCollection1.Images[2];
+                }
+            }
+        }
+
+        private void btnFolios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult = XtraMessageBox.Show("¿Desea cargar un pedido, perdera los datos no guardados?\nLos cambios no se podran revertir", "Igualar sugerido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
+            {
+                btnLimpiar.PerformClick();
+                Frm_Pedidos_Buscar frmpro = new Frm_Pedidos_Buscar();
+                frmpro.FrmPedidos = this;
+                frmpro.ShowDialog();
+                if (txtFolio.Text != string.Empty)
+                {
+                    CargarPedidos(txtFolio.Text);
+                    DesbloquearObjetos(false);
+                }
+                else
+                {
+                    DesbloquearObjetos(true);
+                }
+            }
+        }
+        private void CargarPedidos(string vFolio)
+        {
+            CLS_Pedidos selenc = new CLS_Pedidos();
+            selenc.PrePedidosId = Convert.ToInt32(vFolio);
+            selenc.MtdSeleccionarPedidosId();
+            if (selenc.Exito)
+            {
+                dtInicio.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaInicio"]);
+                dtFin.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaFin"]);
+                txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
+                txtProveedorNombre.Text = selenc.Datos.Rows[0]["ProveedorNombre"].ToString();
+                txtPeriodo.Text = selenc.Datos.Rows[0]["PeriodoPedido"].ToString();
+                if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "1")
+                {
+                    rdbPeriodo.SelectedIndex = 0;
+                }
+                else if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "2")
+                {
+                    rdbPeriodo.SelectedIndex = 1;
+                }
+                else if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "3")
+                {
+                    rdbPeriodo.SelectedIndex = 2;
+                }
+                CargarPedidosDetalles(vFolio);
+            }
+        }
+        private void CargarPedidosDetalles(string vFolio)
+        {
+            MensajeCargando(1);
+            CLS_Pedidos selenc = new CLS_Pedidos();
+            selenc.PrePedidosId = Convert.ToInt32(vFolio);
+            selenc.MtdSeleccionarPrePedidosDetalles();
+            if (selenc.Exito)
+            {
+                dtgPedidos.DataSource = selenc.Datos;
+            }
+            MensajeCargando(2);
+            XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+        }
+        public void MensajeCargando(int opcion)
+        {
+            if (opcion == 1)
+            {
+                SplashScreenManager.ShowForm(this, typeof(Frm_CargandoConsulta), true, true, false);
+                SplashScreenManager.Default.SetWaitFormCaption("Procesando...");
+                SplashScreenManager.Default.SetWaitFormDescription("Espere por favor...");
+            }
+            else
+            {
+                try
+                {
+                    SplashScreenManager.CloseForm();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message);
+                }
+            }
+        }
+        public void BuscarPedido(string vPrePedidoId)
+        {
+            txtFolio.Text = vPrePedidoId;
         }
     }
 }

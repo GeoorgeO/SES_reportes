@@ -448,6 +448,12 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+
+        public void MtdSeleccionarPedidosId()
+        {
+            throw new NotImplementedException();
+        }
+
         public void MtdUpdatePrePedidoDetalleProveedor()
         {
             string Valor = string.Empty;
