@@ -425,22 +425,8 @@ namespace BSC_Reportes
             if (selenc.Exito)
             {
                 dtInicio.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaInicio"]);
-                dtFin.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaFin"]);
                 txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
                 txtProveedorNombre.Text = selenc.Datos.Rows[0]["ProveedorNombre"].ToString();
-                txtPeriodo.Text = selenc.Datos.Rows[0]["PeriodoPedido"].ToString();
-                if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "1")
-                {
-                    rdbPeriodo.SelectedIndex = 0;
-                }
-                else if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "2")
-                {
-                    rdbPeriodo.SelectedIndex = 1;
-                }
-                else if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "3")
-                {
-                    rdbPeriodo.SelectedIndex = 2;
-                }
                 CargarPedidosDetalles(vFolio);
             }
         }

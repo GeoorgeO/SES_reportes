@@ -43,6 +43,34 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+        public void MtdSelectPedidoDetallesInsidenciasProveedor()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_WEB_PedidoDetallesInsidencias_Select";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
 
         public void MtdSelectPedidoNombreProveedor()
         {

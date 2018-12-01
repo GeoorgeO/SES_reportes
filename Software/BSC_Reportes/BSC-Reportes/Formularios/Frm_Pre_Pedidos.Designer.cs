@@ -1489,7 +1489,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Frm_Pre_Pedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pedidos";
+            this.Text = "Pre Pedidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_ReportePedidos_Load);
             this.Shown += new System.EventHandler(this.Frm_ReportePedidos_Shown);

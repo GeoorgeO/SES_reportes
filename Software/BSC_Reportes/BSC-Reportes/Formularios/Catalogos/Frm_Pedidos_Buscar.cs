@@ -21,26 +21,14 @@ namespace BSC_Reportes
             InitializeComponent();
         }
 
-        private void Frm_Pre_Pedidos_Buscar_Shown(object sender, EventArgs e)
+        private void Frm_Pedidos_Buscar_Shown(object sender, EventArgs e)
         {
-            dtgValPrePedidos.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            dtgValPrePedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
-            CLS_Pedidos selpro = new CLS_Pedidos();
-            selpro.PrePedidoCerrado = 0;
-            selpro.PrePedidosCancelado = 0;
-            selpro.MtdSeleccionarPrePedidos();
-            if (selpro.Exito)
-            {
-                if (selpro.Datos.Rows.Count > 0)
-                {
-                    dtgPrePedidos.DataSource = selpro.Datos;
-                }
-            }
-            else
-            {
-                XtraMessageBox.Show(selpro.Mensaje);
-            }
-            lblProveedor.Caption = "Proveedor:";
+            dtInicio.EditValue = DateTime.Now;
+            dtFin.EditValue = DateTime.Now;
+            txtProveedorId.Text = string.Empty;
+            dtgValPedidos.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            dtgValPedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
+            lblProveedor.Caption = "Folio:";
         }
         private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -58,9 +46,9 @@ namespace BSC_Reportes
         {
             try
             {
-                foreach (int i in this.dtgValPrePedidos.GetSelectedRows())
+                foreach (int i in this.dtgValPedidos.GetSelectedRows())
                 {
-                    DataRow row = this.dtgValPrePedidos.GetDataRow(i);
+                    DataRow row = this.dtgValPedidos.GetDataRow(i);
                     vPrePedidosId = row["PrePedidosId"].ToString();
                     lblProveedor.Caption = string.Format("Folio: {0}", vPrePedidosId);
                 }
@@ -74,9 +62,9 @@ namespace BSC_Reportes
         {
             try
             {
-                foreach (int i in this.dtgValPrePedidos.GetSelectedRows())
+                foreach (int i in this.dtgValPedidos.GetSelectedRows())
                 {
-                    DataRow row = this.dtgValPrePedidos.GetDataRow(i);
+                    DataRow row = this.dtgValPedidos.GetDataRow(i);
                     vPrePedidosId = row["PrePedidosId"].ToString();
                     lblProveedor.Caption = string.Format("Folio: {0}", vPrePedidosId);
                     FrmPedidos.BuscarPedido(vPrePedidosId);
@@ -88,15 +76,52 @@ namespace BSC_Reportes
                 XtraMessageBox.Show(ex.Message);
             }
         }
-
-        private void labelControl1_Click(object sender, EventArgs e)
+        private void btn_ImportarProveedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
+            frmpro.FrmPedidosBuscar = this;
+            frmpro.ShowDialog();
+        }
+        public void BuscarProveedor(string vProveedorId)
+        {
+            txtProveedorId.Text = vProveedorId;
+            CLS_Proveedores selpro = new CLS_Proveedores() { ProveedorId = Convert.ToInt32(vProveedorId) };
+            txtProveedorNombre.Text = selpro.MtdSeleccionarProveedorId();
         }
 
-        private void dtInicio_EditValueChanged(object sender, EventArgs e)
+        private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            CLS_Pedidos selped = new CLS_Pedidos();
+            DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
+            DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
+            selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
+            selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
+            selped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+            selped.MtdGenerarPedidoProveedor();
+            if (selped.Exito)
+            {
+                if (selped.Datos.Rows.Count > 0)
+                {
+                    dtgPedidos.DataSource = selped.Datos;
+                }
+            }
+        }
+        public string DosCeros(string sVal)
+        {
+            string str = "";
+            if (sVal.Length == 1)
+            {
+                return (str = "0" + sVal);
+            }
+            return sVal;
+        }
 
+        private void txtProveedorId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                BuscarProveedor(txtProveedorId.Text);
+            }
         }
     }
 }
