@@ -49,7 +49,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
+            this.rdgTipoPedido = new DevExpress.XtraEditors.RadioGroup();
             this.chkProveedor = new DevExpress.XtraEditors.CheckEdit();
             this.chkFecha = new DevExpress.XtraEditors.CheckEdit();
             this.txtProveedorNombre = new DevExpress.XtraEditors.TextEdit();
@@ -62,25 +62,25 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dtgPedidos = new DevExpress.XtraGrid.GridControl();
             this.dtgValPedidos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.PrePedidoId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.ProveedorNombre = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.FechaInicio = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.FechaFin = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdgTipoPedido.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProveedor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFecha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorNombre.Properties)).BeginInit();
@@ -256,7 +256,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.radioGroup1);
+            this.groupControl1.Controls.Add(this.rdgTipoPedido);
             this.groupControl1.Controls.Add(this.chkProveedor);
             this.groupControl1.Controls.Add(this.chkFecha);
             this.groupControl1.Controls.Add(this.txtProveedorNombre);
@@ -273,22 +273,22 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
-            // radioGroup1
+            // rdgTipoPedido
             // 
-            this.radioGroup1.Location = new System.Drawing.Point(491, 22);
-            this.radioGroup1.MenuManager = this.barManager1;
-            this.radioGroup1.Name = "radioGroup1";
-            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup1.Properties.Columns = 1;
-            this.radioGroup1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pendientes"),
+            this.rdgTipoPedido.Location = new System.Drawing.Point(491, 22);
+            this.rdgTipoPedido.MenuManager = this.barManager1;
+            this.rdgTipoPedido.Name = "rdgTipoPedido";
+            this.rdgTipoPedido.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.rdgTipoPedido.Properties.Appearance.Options.UseBackColor = true;
+            this.rdgTipoPedido.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rdgTipoPedido.Properties.Columns = 1;
+            this.rdgTipoPedido.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.rdgTipoPedido.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Surtidos"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pendientes"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Todos")});
-            this.radioGroup1.Size = new System.Drawing.Size(100, 57);
-            this.radioGroup1.TabIndex = 17;
+            this.rdgTipoPedido.Size = new System.Drawing.Size(100, 57);
+            this.rdgTipoPedido.TabIndex = 17;
             // 
             // chkProveedor
             // 
@@ -298,6 +298,7 @@
             this.chkProveedor.Properties.Caption = "Proveedor";
             this.chkProveedor.Size = new System.Drawing.Size(75, 19);
             this.chkProveedor.TabIndex = 16;
+            this.chkProveedor.CheckedChanged += new System.EventHandler(this.chkProveedor_CheckedChanged);
             // 
             // chkFecha
             // 
@@ -307,6 +308,7 @@
             this.chkFecha.Properties.Caption = "Fecha";
             this.chkFecha.Size = new System.Drawing.Size(75, 19);
             this.chkFecha.TabIndex = 15;
+            this.chkFecha.CheckedChanged += new System.EventHandler(this.chkFecha_CheckedChanged);
             // 
             // txtProveedorNombre
             // 
@@ -412,7 +414,7 @@
             this.gridBand4});
             this.dtgValPedidos.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.PrePedidoId,
-            this.ProveedorNombre,
+            this.bandedGridColumn2,
             this.FechaInicio,
             this.FechaFin,
             this.gridColumn1,
@@ -422,17 +424,6 @@
             this.dtgValPedidos.OptionsFind.AlwaysVisible = true;
             this.dtgValPedidos.OptionsView.ShowGroupPanel = false;
             // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Articulo";
-            this.gridBand1.Columns.Add(this.PrePedidoId);
-            this.gridBand1.Columns.Add(this.ProveedorNombre);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 410;
-            // 
             // PrePedidoId
             // 
             this.PrePedidoId.Caption = "Folio";
@@ -441,28 +432,7 @@
             this.PrePedidoId.OptionsColumn.AllowEdit = false;
             this.PrePedidoId.OptionsColumn.AllowMove = false;
             this.PrePedidoId.Visible = true;
-            this.PrePedidoId.Width = 106;
-            // 
-            // ProveedorNombre
-            // 
-            this.ProveedorNombre.Caption = "Proveedor";
-            this.ProveedorNombre.FieldName = "ProveedorNombre";
-            this.ProveedorNombre.Name = "ProveedorNombre";
-            this.ProveedorNombre.OptionsColumn.AllowEdit = false;
-            this.ProveedorNombre.OptionsColumn.AllowMove = false;
-            this.ProveedorNombre.Visible = true;
-            this.ProveedorNombre.Width = 304;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand2.Caption = "Periodo";
-            this.gridBand2.Columns.Add(this.FechaInicio);
-            this.gridBand2.Columns.Add(this.FechaFin);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 150;
+            this.PrePedidoId.Width = 53;
             // 
             // FechaInicio
             // 
@@ -478,16 +448,6 @@
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.Visible = true;
             // 
-            // gridBand3
-            // 
-            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand3.Caption = "Creacion";
-            this.gridBand3.Columns.Add(this.gridColumn1);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 88;
-            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Fecha Creacion";
@@ -495,16 +455,6 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.Width = 88;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand4.Caption = "Estado";
-            this.gridBand4.Columns.Add(this.bandedGridColumn1);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 3;
-            this.gridBand4.Width = 82;
             // 
             // bandedGridColumn1
             // 
@@ -531,6 +481,56 @@
             this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
             this.btnImpProveedor.Name = "btnImpProveedor";
             // 
+            // bandedGridColumn2
+            // 
+            this.bandedGridColumn2.Caption = "Proveedores";
+            this.bandedGridColumn2.FieldName = "Proveedor";
+            this.bandedGridColumn2.Name = "bandedGridColumn2";
+            this.bandedGridColumn2.Visible = true;
+            this.bandedGridColumn2.Width = 285;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Pedidos";
+            this.gridBand1.Columns.Add(this.PrePedidoId);
+            this.gridBand1.Columns.Add(this.bandedGridColumn2);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 338;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand2.Caption = "Periodo";
+            this.gridBand2.Columns.Add(this.FechaInicio);
+            this.gridBand2.Columns.Add(this.FechaFin);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 150;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand3.Caption = "Creacion";
+            this.gridBand3.Columns.Add(this.gridColumn1);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 2;
+            this.gridBand3.Width = 88;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand4.Caption = "Estado";
+            this.gridBand4.Columns.Add(this.bandedGridColumn1);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 3;
+            this.gridBand4.Width = 82;
+            // 
             // Frm_Pedidos_Buscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,7 +553,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdgTipoPedido.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProveedor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFecha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorNombre.Properties)).EndInit();
@@ -592,7 +592,6 @@
         private DevExpress.XtraGrid.GridControl dtgPedidos;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView dtgValPedidos;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn PrePedidoId;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ProveedorNombre;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn FechaInicio;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn FechaFin;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn1;
@@ -611,8 +610,9 @@
         private DevExpress.XtraEditors.CheckEdit chkFecha;
         private DevExpress.XtraBars.BarLargeButtonItem btnImpProveedor;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
-        private DevExpress.XtraEditors.RadioGroup radioGroup1;
+        private DevExpress.XtraEditors.RadioGroup rdgTipoPedido;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;

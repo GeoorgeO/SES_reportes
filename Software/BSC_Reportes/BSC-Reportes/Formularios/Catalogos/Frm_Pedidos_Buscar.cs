@@ -29,6 +29,8 @@ namespace BSC_Reportes
             dtgValPedidos.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             dtgValPedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
             lblProveedor.Caption = "Folio:";
+            chkFecha.Checked = true;
+            chkProveedor.Checked = true;
         }
         private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -94,10 +96,91 @@ namespace BSC_Reportes
             CLS_Pedidos selped = new CLS_Pedidos();
             DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
             DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
-            selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
-            selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
-            selped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
-            selped.MtdGenerarPedidoProveedor();
+            if (chkFecha.Checked==true && chkProveedor.Checked==true)
+            {
+                int result = DateTime.Compare(FInicio, FFin);
+                if (result < 1)
+                {
+                    if (txtProveedorId.Text != string.Empty)
+                    {
+                        selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
+                        selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
+                        selped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+                        if (rdgTipoPedido.SelectedIndex == 0)
+                        {
+                            selped.Opcion = 1;
+                        }
+                        else if (rdgTipoPedido.SelectedIndex == 1)
+                        {
+                            selped.Opcion = 2;
+                        }
+                        else if (rdgTipoPedido.SelectedIndex == 2)
+                        {
+                            selped.Opcion = 3;
+                        }
+                        selped.MtdSeleccionarPedidoFechaProveedorLista();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Falta Ingrasar un Proveedor");
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("La fecha de Inicio no puede ser mayor a la Fecha Fin");
+                }
+            }
+            else if(chkFecha.Checked == false && chkProveedor.Checked == true)
+            {
+                if (txtProveedorId.Text != string.Empty)
+                {
+                    selped.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+                    if (rdgTipoPedido.SelectedIndex == 0)
+                    {
+                        selped.Opcion = 1;
+                    }
+                    else if (rdgTipoPedido.SelectedIndex == 1)
+                    {
+                        selped.Opcion = 2;
+                    }
+                    else if (rdgTipoPedido.SelectedIndex == 2)
+                    {
+                        selped.Opcion = 3;
+                    }
+                    selped.MtdSeleccionarPedidoProveedorLista();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Falta Ingrasar un Proveedor");
+                }
+            }
+            else if (chkFecha.Checked == true && chkProveedor.Checked == false)
+            {
+                int result = DateTime.Compare(FInicio, FFin);
+                if (result < 1)
+                {
+                    selped.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
+                    selped.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
+                    if (rdgTipoPedido.SelectedIndex == 0)
+                    {
+                        selped.Opcion = 1;
+                    }
+                    else if (rdgTipoPedido.SelectedIndex == 1)
+                    {
+                        selped.Opcion = 2;
+                    }
+                    else if (rdgTipoPedido.SelectedIndex == 2)
+                    {
+                        selped.Opcion = 3;
+                    }
+                    selped.MtdSeleccionarPedidoFechaLista();
+                }
+                else
+                {
+                    XtraMessageBox.Show("La fecha de Inicio no puede ser mayor a la Fecha Fin");
+                }
+            }
+            
             if (selped.Exito)
             {
                 if (selped.Datos.Rows.Count > 0)
@@ -121,6 +204,48 @@ namespace BSC_Reportes
             if (e.KeyValue == 13)
             {
                 BuscarProveedor(txtProveedorId.Text);
+            }
+        }
+
+        private void chkFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkFecha.Checked==true)
+            {
+                dtInicio.Enabled = true;
+                dtFin.Enabled = true;
+            }
+            else
+            {
+                dtInicio.Enabled = false;
+                dtFin.Enabled = false;
+            }
+            if(chkFecha.Checked==false && chkProveedor.Checked==false)
+            {
+                dtInicio.Enabled = true;
+                dtFin.Enabled = true;
+                txtProveedorId.Enabled = true;
+                chkProveedor.Checked = true;
+                chkFecha.Checked = true;
+            }
+        }
+
+        private void chkProveedor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkProveedor.Checked == true)
+            {
+                txtProveedorId.Enabled = true;
+            }
+            else
+            {
+                txtProveedorId.Enabled = false;
+            }
+            if (chkFecha.Checked == false && chkProveedor.Checked == false)
+            {
+                dtInicio.Enabled = true;
+                dtFin.Enabled = true;
+                txtProveedorId.Enabled = true;
+                chkProveedor.Checked = true;
+                chkFecha.Checked = true;
             }
         }
     }

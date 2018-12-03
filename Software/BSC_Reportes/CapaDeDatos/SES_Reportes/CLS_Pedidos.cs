@@ -79,6 +79,7 @@ namespace CapaDeDatos
         public int? DSarabiaII { get;  set; }
         public int? TPedido { get;  set; }
         public int? Surtido { get; set; }
+        public int Opcion { get; set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -692,7 +693,102 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+        //Buscar Pedidos
+        public void MtdSeleccionarPedidoFechaProveedorLista()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_FechaProveedorLista_Select";
+                _dato.CadenaTexto = FechaInicio;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _dato.CadenaTexto = FechaFin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _dato.Entero = ProveedorId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.Entero = Opcion;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexion.EjecutarDataset();
 
-        
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPedidoFechaLista()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_FechaLista_Select";
+                _dato.CadenaTexto = FechaInicio;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _dato.CadenaTexto = FechaFin;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _dato.Entero = Opcion;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPedidoProveedorLista()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_ProveedorLista_Select";
+                _dato.Entero = ProveedorId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.Entero = Opcion;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
     }
 }

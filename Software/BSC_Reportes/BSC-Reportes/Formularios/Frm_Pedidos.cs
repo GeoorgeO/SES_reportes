@@ -417,6 +417,10 @@ namespace BSC_Reportes
                 }
             }
         }
+        public void BuscarPrePedido(string vPrePedidoId)
+        {
+            txtFolio.Text = vPrePedidoId;
+        }
         private void CargarPedidos(string vFolio)
         {
             CLS_Pedidos selenc = new CLS_Pedidos();
