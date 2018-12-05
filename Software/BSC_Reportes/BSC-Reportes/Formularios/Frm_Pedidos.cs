@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
 using DevExpress.XtraSplashScreen;
+using DevExpress.XtraEditors.ViewInfo;
 
 namespace BSC_Reportes
 {
@@ -32,6 +33,9 @@ namespace BSC_Reportes
                 m_FormDefInstance = value;
             }
         }
+
+        public Boolean PedidoSurtido { get;  set; }
+
         public Frm_Pedidos()
         {
             InitializeComponent();
@@ -55,7 +59,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(string);
-            column.ColumnName = "Codigo";
+            column.ColumnName = "ArticuloCodigo";
             column.AutoIncrement = false;
             column.Caption = "Codigo";
             column.ReadOnly = false;
@@ -95,7 +99,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "AlmacenD";
+            column.ColumnName = "DAlmacen";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -105,7 +109,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "CentroD";
+            column.ColumnName = "DCentro";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -115,7 +119,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "MorelosD";
+            column.ColumnName = "DMorelos";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -125,7 +129,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "FcoVillaD";
+            column.ColumnName = "DFcoVilla";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -135,7 +139,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "SarabiaID";
+            column.ColumnName = "DSarabiaI";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -145,7 +149,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "SarabiaIID";
+            column.ColumnName = "DSarabiaII";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -155,7 +159,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "PaseoD";
+            column.ColumnName = "DPaseo";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -165,7 +169,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "EstocolmoD";
+            column.ColumnName = "DEstocolmo";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -175,7 +179,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "CostaRicaD";
+            column.ColumnName = "DCostaRica";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -185,7 +189,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "CalzadaD";
+            column.ColumnName = "DCalzada";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -195,7 +199,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "LombardiaD";
+            column.ColumnName = "DLombardia";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -205,7 +209,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "NvaItaliaD";
+            column.ColumnName = "DNvaItalia";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -215,7 +219,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "ApatzinganD";
+            column.ColumnName = "DApatzingan";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -225,7 +229,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "ReyesD";
+            column.ColumnName = "DReyes";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -235,7 +239,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "Entrada";
+            column.ColumnName = "Surtido";
             column.AutoIncrement = false;
             column.Caption = "Entrada";
             column.ReadOnly = false;
@@ -366,6 +370,7 @@ namespace BSC_Reportes
             CostoReposicion.DisplayFormat.FormatString = "$ ###,###0.00";
             pbProgreso.Position = 0;
             DesbloquearObjetos(true);
+            dtgValPedidos.CustomDrawCell += dtgValPedidos_CustomDrawCell;
         }
         private void DesbloquearObjetos(Boolean Valor)
         {
@@ -402,12 +407,12 @@ namespace BSC_Reportes
             DialogResult = XtraMessageBox.Show("¿Desea cargar un pedido, perdera los datos no guardados?\nLos cambios no se podran revertir", "Igualar sugerido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
             if (DialogResult == DialogResult.Yes)
             {
-                btnLimpiar.PerformClick();
                 Frm_Pedidos_Buscar frmpro = new Frm_Pedidos_Buscar();
                 frmpro.FrmPedidos = this;
                 frmpro.ShowDialog();
                 if (txtFolio.Text != string.Empty)
                 {
+                    btnLimpiar.PerformClick();
                     CargarPedidos(txtFolio.Text);
                     DesbloquearObjetos(false);
                 }
@@ -428,10 +433,51 @@ namespace BSC_Reportes
             selenc.MtdSeleccionarPedidosId();
             if (selenc.Exito)
             {
-                dtInicio.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaInicio"]);
+                dtInicio.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaInsert"]);
                 txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
-                txtProveedorNombre.Text = selenc.Datos.Rows[0]["ProveedorNombre"].ToString();
+                txtProveedorNombre.Text = selenc.Datos.Rows[0]["Proveedor"].ToString();
+                PedidoSurtido= Convert.ToBoolean(selenc.Datos.Rows[0]["PedidosSurtido"].ToString());
                 CargarPedidosDetalles(vFolio);
+                
+            }
+        }
+
+        void dtgValPedidos_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column == TPedido)
+            {
+                var row = dtgValPedidos.GetRow(e.RowHandle) as DataRowView;
+                if ((int)row.Row["Surtido"] == (int)e.CellValue)
+                {
+                    DevExpress.XtraGrid.Views.Grid.ViewInfo.GridCellInfo cell = e.Cell as DevExpress.XtraGrid.Views.Grid.ViewInfo.GridCellInfo;
+                    if (cell != null)
+                    {
+                        TextEditViewInfo viewInfo = cell.ViewInfo as TextEditViewInfo;
+                        viewInfo.ContextImage = imageCollection1.Images[2];
+                        viewInfo.CalcViewInfo(e.Graphics);
+                    }
+                }
+                else if ((int)row.Row["Surtido"] > (int)e.CellValue)
+                {
+                    DevExpress.XtraGrid.Views.Grid.ViewInfo.GridCellInfo cell = e.Cell as DevExpress.XtraGrid.Views.Grid.ViewInfo.GridCellInfo;
+                    if (cell != null)
+                    {
+                        TextEditViewInfo viewInfo = cell.ViewInfo as TextEditViewInfo;
+                        viewInfo.ContextImage = DevExpress.XtraEditors.Helpers.IconSetImageLoader.GetDefault(dtgPedidos.LookAndFeel).GetImage("Arrows3_1.png");
+                        viewInfo.CalcViewInfo(e.Graphics);
+                    }
+                }
+                else if ((int)row.Row["Surtido"] < (int)e.CellValue)
+                {
+                    DevExpress.XtraGrid.Views.Grid.ViewInfo.GridCellInfo cell = e.Cell as DevExpress.XtraGrid.Views.Grid.ViewInfo.GridCellInfo;
+                    if (cell != null)
+                    {
+                        TextEditViewInfo viewInfo = cell.ViewInfo as TextEditViewInfo;
+                        viewInfo.ContextImage = DevExpress.XtraEditors.Helpers.IconSetImageLoader.GetDefault(dtgPedidos.LookAndFeel).GetImage("Arrows3_3.png");
+                        viewInfo.CalcViewInfo(e.Graphics);
+                    }
+                }
+                
             }
         }
         private void CargarPedidosDetalles(string vFolio)
@@ -439,7 +485,7 @@ namespace BSC_Reportes
             MensajeCargando(1);
             CLS_Pedidos selenc = new CLS_Pedidos();
             selenc.PrePedidosId = Convert.ToInt32(vFolio);
-            selenc.MtdSeleccionarPrePedidosDetalles();
+            selenc.MtdSeleccionarPedidosDetallesId();
             if (selenc.Exito)
             {
                 dtgPedidos.DataSource = selenc.Datos;
@@ -470,6 +516,23 @@ namespace BSC_Reportes
         public void BuscarPedido(string vPrePedidoId)
         {
             txtFolio.Text = vPrePedidoId;
+        }
+
+        private void txtFolio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyValue==13)
+            {
+                if(txtFolio.Text!=string.Empty)
+                {
+                    btnLimpiar.PerformClick();
+                    CargarPedidos(txtFolio.Text);
+                    DesbloquearObjetos(false);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Falta ingresar un numero de pedido");
+                }
+            }
         }
     }
 }

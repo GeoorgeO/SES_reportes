@@ -36,6 +36,8 @@
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.Entrada = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn21 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -68,6 +70,8 @@
             this.txtProveedorId = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.dtgPedidos = new DevExpress.XtraGrid.GridControl();
             this.dtgValPedidos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -108,9 +112,6 @@
             this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.dtgPedidosInsidencias = new DevExpress.XtraGrid.GridControl();
             this.dtgValPedidosInsidencias = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
@@ -150,10 +151,9 @@
             this.gridBand31 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn19 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn21 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -172,26 +172,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPedidosInsidencias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidosInsidencias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // Entrada
             // 
             this.Entrada.Caption = "Entrada";
+            this.Entrada.FieldName = "Surtido";
             this.Entrada.Name = "Entrada";
             this.Entrada.OptionsColumn.AllowEdit = false;
             this.Entrada.Visible = true;
@@ -208,6 +209,26 @@
             this.TPedido.OptionsColumn.AllowEdit = false;
             this.TPedido.Visible = true;
             this.TPedido.Width = 72;
+            // 
+            // bandedGridColumn20
+            // 
+            this.bandedGridColumn20.Caption = "Entrada";
+            this.bandedGridColumn20.Name = "bandedGridColumn20";
+            this.bandedGridColumn20.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn20.Visible = true;
+            // 
+            // bandedGridColumn21
+            // 
+            this.bandedGridColumn21.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumn21.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn21.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn21.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn21.Caption = "Pedido";
+            this.bandedGridColumn21.FieldName = "TPedido";
+            this.bandedGridColumn21.Name = "bandedGridColumn21";
+            this.bandedGridColumn21.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn21.Visible = true;
+            this.bandedGridColumn21.Width = 72;
             // 
             // barManager1
             // 
@@ -463,6 +484,7 @@
             this.txtFolio.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtFolio.Size = new System.Drawing.Size(43, 20);
             this.txtFolio.TabIndex = 11;
+            this.txtFolio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFolio_KeyDown);
             // 
             // dtInicio
             // 
@@ -522,6 +544,27 @@
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
             this.panelControl2.Size = new System.Drawing.Size(1056, 342);
             this.panelControl2.TabIndex = 7;
+            // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(12, 12);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(1032, 318);
+            this.xtraTabControl1.TabIndex = 1;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.dtgPedidos);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1026, 290);
+            this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
             // 
@@ -625,7 +668,7 @@
             this.Codigo.AppearanceHeader.Options.UseTextOptions = true;
             this.Codigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Codigo.Caption = "Codigo";
-            this.Codigo.FieldName = "Codigo";
+            this.Codigo.FieldName = "ArticuloCodigo";
             this.Codigo.Name = "Codigo";
             this.Codigo.OptionsColumn.AllowEdit = false;
             this.Codigo.Visible = true;
@@ -680,7 +723,7 @@
             this.AlmacenD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.AlmacenD.Caption = "D";
             this.AlmacenD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.AlmacenD.FieldName = "AlmacenV";
+            this.AlmacenD.FieldName = "DAlmacen";
             this.AlmacenD.Name = "AlmacenD";
             this.AlmacenD.Visible = true;
             this.AlmacenD.Width = 60;
@@ -708,7 +751,7 @@
             this.CentroD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.CentroD.Caption = "D";
             this.CentroD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.CentroD.FieldName = "CentroV";
+            this.CentroD.FieldName = "DCentro";
             this.CentroD.Name = "CentroD";
             this.CentroD.Visible = true;
             this.CentroD.Width = 60;
@@ -729,7 +772,7 @@
             this.MorelosD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.MorelosD.Caption = "D";
             this.MorelosD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.MorelosD.FieldName = "MorelosV";
+            this.MorelosD.FieldName = "DMorelos";
             this.MorelosD.Name = "MorelosD";
             this.MorelosD.Visible = true;
             this.MorelosD.Width = 60;
@@ -750,7 +793,7 @@
             this.FcoVillaD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.FcoVillaD.Caption = "D";
             this.FcoVillaD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.FcoVillaD.FieldName = "FcoVillaV";
+            this.FcoVillaD.FieldName = "DFcoVilla";
             this.FcoVillaD.Name = "FcoVillaD";
             this.FcoVillaD.Visible = true;
             this.FcoVillaD.Width = 60;
@@ -771,7 +814,7 @@
             this.SarabiaID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.SarabiaID.Caption = "D";
             this.SarabiaID.ColumnEdit = this.repositoryItemTextEdit2;
-            this.SarabiaID.FieldName = "SarabiaIV";
+            this.SarabiaID.FieldName = "DSarabiaI";
             this.SarabiaID.Name = "SarabiaID";
             this.SarabiaID.Visible = true;
             this.SarabiaID.Width = 60;
@@ -792,7 +835,7 @@
             this.SarabiaIID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.SarabiaIID.Caption = "D";
             this.SarabiaIID.ColumnEdit = this.repositoryItemTextEdit2;
-            this.SarabiaIID.FieldName = "SarabiaIIV";
+            this.SarabiaIID.FieldName = "DSarabiaII";
             this.SarabiaIID.Name = "SarabiaIID";
             this.SarabiaIID.Visible = true;
             this.SarabiaIID.Width = 60;
@@ -813,7 +856,7 @@
             this.PaseoD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.PaseoD.Caption = "D";
             this.PaseoD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.PaseoD.FieldName = "PaseoV";
+            this.PaseoD.FieldName = "DPaseo";
             this.PaseoD.Name = "PaseoD";
             this.PaseoD.Visible = true;
             this.PaseoD.Width = 60;
@@ -834,7 +877,7 @@
             this.EstocolmoD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.EstocolmoD.Caption = "D";
             this.EstocolmoD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.EstocolmoD.FieldName = "EstocolmoV";
+            this.EstocolmoD.FieldName = "DEstocolmo";
             this.EstocolmoD.Name = "EstocolmoD";
             this.EstocolmoD.Visible = true;
             this.EstocolmoD.Width = 60;
@@ -855,7 +898,7 @@
             this.CostaRicaD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.CostaRicaD.Caption = "D";
             this.CostaRicaD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.CostaRicaD.FieldName = "CostaRicaV";
+            this.CostaRicaD.FieldName = "DCostaRica";
             this.CostaRicaD.Name = "CostaRicaD";
             this.CostaRicaD.Visible = true;
             this.CostaRicaD.Width = 60;
@@ -876,7 +919,7 @@
             this.CalzadaD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.CalzadaD.Caption = "D";
             this.CalzadaD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.CalzadaD.FieldName = "CalzadaV";
+            this.CalzadaD.FieldName = "DCalzada";
             this.CalzadaD.Name = "CalzadaD";
             this.CalzadaD.Visible = true;
             this.CalzadaD.Width = 60;
@@ -897,7 +940,7 @@
             this.LombardiaD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.LombardiaD.Caption = "D";
             this.LombardiaD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.LombardiaD.FieldName = "LombardiaV";
+            this.LombardiaD.FieldName = "DLombardia";
             this.LombardiaD.Name = "LombardiaD";
             this.LombardiaD.Visible = true;
             this.LombardiaD.Width = 60;
@@ -918,7 +961,7 @@
             this.NvaItaliaD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.NvaItaliaD.Caption = "D";
             this.NvaItaliaD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.NvaItaliaD.FieldName = "NvaItaliaV";
+            this.NvaItaliaD.FieldName = "DNvaItalia";
             this.NvaItaliaD.Name = "NvaItaliaD";
             this.NvaItaliaD.Visible = true;
             this.NvaItaliaD.Width = 60;
@@ -939,7 +982,7 @@
             this.ApatzinganD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ApatzinganD.Caption = "D";
             this.ApatzinganD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.ApatzinganD.FieldName = "ApatzinganV";
+            this.ApatzinganD.FieldName = "DApatzingan";
             this.ApatzinganD.Name = "ApatzinganD";
             this.ApatzinganD.Visible = true;
             this.ApatzinganD.Width = 60;
@@ -960,7 +1003,7 @@
             this.ReyesD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ReyesD.Caption = "D";
             this.ReyesD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.ReyesD.FieldName = "ReyesV";
+            this.ReyesD.FieldName = "DReyes";
             this.ReyesD.Name = "ReyesD";
             this.ReyesD.Visible = true;
             this.ReyesD.Width = 60;
@@ -987,34 +1030,6 @@
             this.repositoryItemTextEdit4.Mask.EditMask = "n0";
             this.repositoryItemTextEdit4.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
-            // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.Images.SetKeyName(0, "iconfinder_Stock Index Up_27881.png");
-            this.imageCollection1.Images.SetKeyName(1, "iconfinder_Stock Index Down_27880.png");
-            this.imageCollection1.Images.SetKeyName(2, "iconfinder_Glyph Check_58561.png");
-            // 
-            // xtraTabControl1
-            // 
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(12, 12);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1032, 318);
-            this.xtraTabControl1.TabIndex = 1;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2});
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Controls.Add(this.dtgPedidos);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1026, 290);
-            this.xtraTabPage1.Text = "Pedido";
             // 
             // xtraTabPage2
             // 
@@ -1476,26 +1491,6 @@
             this.gridBand32.VisibleIndex = 15;
             this.gridBand32.Width = 147;
             // 
-            // bandedGridColumn20
-            // 
-            this.bandedGridColumn20.Caption = "Entrada";
-            this.bandedGridColumn20.Name = "bandedGridColumn20";
-            this.bandedGridColumn20.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn20.Visible = true;
-            // 
-            // bandedGridColumn21
-            // 
-            this.bandedGridColumn21.AppearanceCell.Options.UseTextOptions = true;
-            this.bandedGridColumn21.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn21.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn21.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn21.Caption = "Pedido";
-            this.bandedGridColumn21.FieldName = "TPedido";
-            this.bandedGridColumn21.Name = "bandedGridColumn21";
-            this.bandedGridColumn21.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn21.Visible = true;
-            this.bandedGridColumn21.Width = 72;
-            // 
             // repositoryItemTextEdit6
             // 
             this.repositoryItemTextEdit6.AutoHeight = false;
@@ -1507,6 +1502,13 @@
             this.repositoryItemTextEdit7.Mask.EditMask = "n0";
             this.repositoryItemTextEdit7.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit7.Name = "repositoryItemTextEdit7";
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.Images.SetKeyName(0, "iconfinder_Stock Index Up_27881.png");
+            this.imageCollection1.Images.SetKeyName(1, "iconfinder_Stock Index Down_27880.png");
+            this.imageCollection1.Images.SetKeyName(2, "iconfinder_Glyph Check_58561.png");
             // 
             // Frm_Pedidos
             // 
@@ -1542,21 +1544,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgPedidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgPedidosInsidencias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidosInsidencias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -450,10 +450,7 @@ namespace CapaDeDatos
             }
         }
 
-        public void MtdSeleccionarPedidosId()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void MtdUpdatePrePedidoDetalleProveedor()
         {
@@ -575,6 +572,62 @@ namespace CapaDeDatos
         }
 
         //Pedidos
+        public void MtdSeleccionarPedidosId()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Id_Select";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPedidosDetallesId()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_PedidoDetalles_Id_Select";
+                _dato.Entero = PrePedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
         public void MtdInsertPedidoProveedor()
         {
             string Valor = string.Empty;

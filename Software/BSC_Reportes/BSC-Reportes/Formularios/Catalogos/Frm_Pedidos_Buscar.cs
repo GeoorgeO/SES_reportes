@@ -51,7 +51,7 @@ namespace BSC_Reportes
                 foreach (int i in this.dtgValPedidos.GetSelectedRows())
                 {
                     DataRow row = this.dtgValPedidos.GetDataRow(i);
-                    vPrePedidosId = row["PrePedidosId"].ToString();
+                    vPrePedidosId = row["PedidosId"].ToString();
                     lblProveedor.Caption = string.Format("Folio: {0}", vPrePedidosId);
                 }
             }
@@ -67,7 +67,7 @@ namespace BSC_Reportes
                 foreach (int i in this.dtgValPedidos.GetSelectedRows())
                 {
                     DataRow row = this.dtgValPedidos.GetDataRow(i);
-                    vPrePedidosId = row["PrePedidosId"].ToString();
+                    vPrePedidosId = row["PedidosId"].ToString();
                     lblProveedor.Caption = string.Format("Folio: {0}", vPrePedidosId);
                     FrmPedidos.BuscarPedido(vPrePedidosId);
                     this.Close();

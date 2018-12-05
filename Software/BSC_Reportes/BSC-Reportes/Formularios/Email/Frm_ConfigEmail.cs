@@ -317,7 +317,7 @@ namespace BSC_Reportes
             {
                 CLS_Email Envio = new CLS_Email();
                 Envio.SendMailPrueba();
-                XtraMessageBox.Show("Se han enviado el Correo con Exito");
+               
             }
         }
     }

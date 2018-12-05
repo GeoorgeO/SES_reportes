@@ -124,6 +124,7 @@ namespace CapaDeDatos
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = new System.Net.NetworkCredential(EmailUsuario, EmailPass);
                 smtp.Send(mail);
+                XtraMessageBox.Show("Se han enviado el Correo con Exito");
             }
             catch(Exception ex)
             {
