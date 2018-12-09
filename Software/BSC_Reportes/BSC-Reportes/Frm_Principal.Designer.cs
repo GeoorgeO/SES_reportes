@@ -204,6 +204,7 @@
             // 
             // xtraTabbedMdiManager1
             // 
+            this.xtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // SkinForm

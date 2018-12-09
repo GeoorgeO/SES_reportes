@@ -371,6 +371,7 @@ namespace BSC_Reportes
             pbProgreso.Position = 0;
             DesbloquearObjetos(true);
             dtgValPedidos.CustomDrawCell += dtgValPedidos_CustomDrawCell;
+            txtFolio.Focus();
         }
         private void DesbloquearObjetos(Boolean Valor)
         {
@@ -414,10 +415,6 @@ namespace BSC_Reportes
                 {
                     btnLimpiar.PerformClick();
                     CargarPedidos(txtFolio.Text);
-                    DesbloquearObjetos(false);
-                }
-                else
-                {
                     DesbloquearObjetos(true);
                 }
             }
@@ -437,6 +434,16 @@ namespace BSC_Reportes
                 txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
                 txtProveedorNombre.Text = selenc.Datos.Rows[0]["Proveedor"].ToString();
                 PedidoSurtido= Convert.ToBoolean(selenc.Datos.Rows[0]["PedidosSurtido"].ToString());
+                if(PedidoSurtido)
+                {
+                    lblStatus.Text = "Surtido";
+                    this.TPedido.OptionsColumn.AllowEdit = false;
+                }
+                else
+                {
+                    lblStatus.Text = "Pendiente";
+                    this.TPedido.OptionsColumn.AllowEdit = true;
+                }
                 CargarPedidosDetalles(vFolio);
                 
             }
@@ -526,13 +533,18 @@ namespace BSC_Reportes
                 {
                     btnLimpiar.PerformClick();
                     CargarPedidos(txtFolio.Text);
-                    DesbloquearObjetos(false);
+                    DesbloquearObjetos(true);
                 }
                 else
                 {
                     XtraMessageBox.Show("Falta ingresar un numero de pedido");
                 }
             }
+        }
+
+        private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

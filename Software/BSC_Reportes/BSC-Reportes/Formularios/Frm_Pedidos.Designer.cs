@@ -57,6 +57,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
             this.chkCosto = new DevExpress.XtraEditors.CheckEdit();
@@ -305,6 +306,7 @@
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
             this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
             // 
             // btnCancelar
             // 
@@ -354,9 +356,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 475);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 469);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
             // 
             // barDockControlLeft
             // 
@@ -364,7 +366,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(64, 475);
+            this.barDockControlLeft.Size = new System.Drawing.Size(66, 469);
             // 
             // barDockControlRight
             // 
@@ -372,7 +374,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 475);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 469);
             // 
             // btnBuscar
             // 
@@ -398,14 +400,15 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(64, 0);
+            this.panelControl1.Location = new System.Drawing.Point(66, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1056, 133);
+            this.panelControl1.Size = new System.Drawing.Size(1054, 133);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.lblStatus);
             this.groupControl1.Controls.Add(this.groupControl3);
             this.groupControl1.Controls.Add(this.pbProgreso);
             this.groupControl1.Controls.Add(this.labelControl5);
@@ -419,9 +422,20 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1032, 109);
+            this.groupControl1.Size = new System.Drawing.Size(1030, 109);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.lblStatus.Appearance.Options.UseFont = true;
+            this.lblStatus.Appearance.Options.UseForeColor = true;
+            this.lblStatus.Location = new System.Drawing.Point(637, 48);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 39);
+            this.lblStatus.TabIndex = 19;
             // 
             // groupControl3
             // 
@@ -462,7 +476,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(31, 78);
+            this.labelControl5.Location = new System.Drawing.Point(31, 80);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(47, 13);
             this.labelControl5.TabIndex = 16;
@@ -470,7 +484,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(31, 27);
+            this.labelControl4.Location = new System.Drawing.Point(31, 29);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(26, 13);
             this.labelControl4.TabIndex = 12;
@@ -510,7 +524,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(31, 53);
+            this.labelControl3.Location = new System.Drawing.Point(31, 55);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 3;
@@ -529,7 +543,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(212, 27);
+            this.labelControl1.Location = new System.Drawing.Point(212, 29);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(78, 13);
             this.labelControl1.TabIndex = 0;
@@ -539,10 +553,10 @@
             // 
             this.panelControl2.Controls.Add(this.xtraTabControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(64, 133);
+            this.panelControl2.Location = new System.Drawing.Point(66, 133);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1056, 342);
+            this.panelControl2.Size = new System.Drawing.Size(1054, 336);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -552,7 +566,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1032, 318);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1030, 312);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -563,7 +577,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1026, 290);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1026, 287);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -576,7 +590,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(1016, 280);
+            this.dtgPedidos.Size = new System.Drawing.Size(1016, 277);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -1514,7 +1528,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 500);
+            this.ClientSize = new System.Drawing.Size(1120, 497);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -1687,5 +1701,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn21;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit6;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit7;
+        private DevExpress.XtraEditors.LabelControl lblStatus;
     }
 }
