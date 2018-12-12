@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using CapaDeDatos;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraEditors.ViewInfo;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace BSC_Reportes
 {
@@ -35,6 +36,8 @@ namespace BSC_Reportes
         }
 
         public Boolean PedidoSurtido { get;  set; }
+        public Boolean _valida { get;  set; }
+        public bool PrimeraEdicion { get; private set; }
 
         public Frm_Pedidos()
         {
@@ -239,6 +242,16 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
+            column.ColumnName = "SumaD";
+            column.AutoIncrement = false;
+            column.Caption = "Suma D";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
             column.ColumnName = "Surtido";
             column.AutoIncrement = false;
             column.Caption = "Entrada";
@@ -372,6 +385,7 @@ namespace BSC_Reportes
             DesbloquearObjetos(true);
             dtgValPedidos.CustomDrawCell += dtgValPedidos_CustomDrawCell;
             txtFolio.Focus();
+            PrimeraEdicion = false;
         }
         private void DesbloquearObjetos(Boolean Valor)
         {
@@ -445,7 +459,7 @@ namespace BSC_Reportes
                     this.TPedido.OptionsColumn.AllowEdit = true;
                 }
                 CargarPedidosDetalles(vFolio);
-                
+                SumaDistribucion();
             }
         }
 
@@ -485,6 +499,30 @@ namespace BSC_Reportes
                     }
                 }
                 
+            }
+            if (e.Column == TPedido && PedidoSurtido == false)
+            {
+                var row = dtgValPedidos.GetRow(e.RowHandle) as DataRowView;
+                if ((int)row.Row["SumaD"] == (int)e.CellValue)
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    e.Appearance.BackColor = Color.LightCoral;
+                }
+            }
+            else if (e.Column == Entrada && PedidoSurtido == true)
+            {
+                var row = dtgValPedidos.GetRow(e.RowHandle) as DataRowView;
+                if ((int)row.Row["SumaD"] == (int)e.CellValue)
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    e.Appearance.BackColor = Color.LightCoral;
+                }
             }
         }
         private void CargarPedidosDetalles(string vFolio)
@@ -541,10 +579,73 @@ namespace BSC_Reportes
                 }
             }
         }
+        private void SumaDistribucion()
+        {
+            int TDistribucion = 0;
+            pbProgreso.Properties.Maximum = dtgValPedidos.RowCount;
 
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                pbProgreso.Position = x + 1;
+                Application.DoEvents();
+                TDistribucion = 0;
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DAlmacen").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DReyes").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString());
+                dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["SumaD"], TDistribucion);
+                
+            }
+        }
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtFolio.Text = string.Empty;
+            dtInicio.EditValue = DateTime.Now;
+            txtProveedorId.Text = string.Empty;
+            txtProveedorNombre.Text = string.Empty;
+            chkCosto.Checked = true;
+            chkFamilia.Checked = true;
+            dtgPedidos.DataSource = null;
+            dtgPedidosInsidencias.DataSource = null;
+            MakeTablaPedidos();
+            DesbloquearObjetos(true);
+        }
 
+        private void dtgValPedidos_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (!PrimeraEdicion)
+            {
+                PrimeraEdicion = true;
+                GridView gv = sender as GridView;
+                int TDistribucion = 0;
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DAlmacen"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DCentro"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DApatzingan"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DCalzada"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DCostaRica"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DEstocolmo"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DFcoVilla"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DLombardia"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DReyes"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DMorelos"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DNvaItalia"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DPaseo"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DSarabiaI"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DSarabiaII"]).ToString());
+                gv.SetRowCellValue(e.RowHandle, gv.Columns["SumaD"], TDistribucion);
+                PrimeraEdicion = false;
+            }
         }
     }
 }
