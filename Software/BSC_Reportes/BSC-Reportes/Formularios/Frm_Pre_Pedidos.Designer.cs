@@ -146,6 +146,7 @@
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.ptb1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -182,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -191,11 +193,12 @@
             this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1052, 191);
+            this.panelControl1.Size = new System.Drawing.Size(1074, 191);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.ptb1);
             this.groupControl1.Controls.Add(this.labelControl8);
             this.groupControl1.Controls.Add(this.txtCopiasPedido);
             this.groupControl1.Controls.Add(this.btnConvertir);
@@ -219,7 +222,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1028, 167);
+            this.groupControl1.Size = new System.Drawing.Size(1050, 167);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -698,7 +701,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1119, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1141, 0);
             // 
             // barDockControlBottom
             // 
@@ -706,7 +709,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 631);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1119, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1141, 25);
             // 
             // barDockControlLeft
             // 
@@ -720,7 +723,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1119, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1141, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 631);
             // 
@@ -754,7 +757,7 @@
             this.panelControl2.Location = new System.Drawing.Point(67, 191);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1052, 440);
+            this.panelControl2.Size = new System.Drawing.Size(1074, 440);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -765,7 +768,7 @@
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
             this.dtgVentaExistencia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit2});
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(1028, 416);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(1050, 416);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -1476,11 +1479,23 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
+            // ptb1
+            // 
+            this.ptb1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ptb1.Location = new System.Drawing.Point(915, 46);
+            this.ptb1.MenuManager = this.barManager1;
+            this.ptb1.Name = "ptb1";
+            this.ptb1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.ptb1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.ptb1.Size = new System.Drawing.Size(125, 56);
+            this.ptb1.TabIndex = 97;
+            this.ptb1.Visible = false;
+            // 
             // Frm_Pre_Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 656);
+            this.ClientSize = new System.Drawing.Size(1141, 656);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -1531,6 +1546,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1652,5 +1668,6 @@
         private DevExpress.XtraEditors.TextEdit txtCIgualA;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.TextEdit txtCopiasPedido;
+        private DevExpress.XtraEditors.PictureEdit ptb1;
     }
 }

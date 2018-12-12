@@ -13,6 +13,6 @@ namespace CapaDeDatos
         public System.Nullable<decimal> DecimalValor { get; set; }
         public System.Nullable<Boolean> BoleanoValor { get; set; }
         public System.Char CaracterValor { get; set; }
-
+        public byte[] ImagenValor { get; set; }
     }
 }

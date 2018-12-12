@@ -80,6 +80,7 @@ namespace CapaDeDatos
         public int? TPedido { get;  set; }
         public int? Surtido { get; set; }
         public int Opcion { get; set; }
+        public byte[] CodigoBarra { get;  set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -569,6 +570,36 @@ namespace CapaDeDatos
                 Mensaje = e.Message;
                 Exito = false;
             }
+        }
+        public void MtdActualizarCodigoBarra()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_CodigoBarra_Update";
+                _dato.Entero = this.PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.ImagenValor = CodigoBarra;
+                _conexion.agregarParametro(EnumTipoDato.imagen, _dato, "CodigoBarra");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
         }
 
         //Pedidos

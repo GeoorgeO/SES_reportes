@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
 using DevExpress.XtraSplashScreen;
+using System.IO;
 
 namespace BSC_Reportes
 {
@@ -1353,6 +1354,7 @@ namespace BSC_Reportes
                 if(insped.Datos.Rows.Count>0)
                 {
                     PedidosId =Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
+                    Guardarcodigo(insped.Datos.Rows[0][0].ToString());
                     CalcularDistribucion();
                 }
             }
@@ -1606,6 +1608,48 @@ namespace BSC_Reportes
                     dtgValVentaExistencia.SetRowCellValue(xRow, dtgValVentaExistencia.Columns["TPedido"], v3);
                 }
             }
+        }
+        private void CreaCodigoBarras(string Folio, string AltoTamaño)
+        {
+            if (Folio == string.Empty)
+            {
+                MessageBox.Show("No existe Codigo a Generar");
+            }
+            else
+            {
+                try
+                {
+                    Single alto = 0;
+                    if (AltoTamaño != string.Empty)
+                    {
+                        alto = Convert.ToSingle(AltoTamaño);
+                    }
+                    Bitmap bm = Codigos.Codigos128(Folio + " ", true, alto);
+                    ptb1.Image = bm;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+            }
+        }
+        private void Guardarcodigo(string Folio)
+        {
+            CreaCodigoBarras(Folio, "50");
+            Image Imagen = ptb1.Image;
+            byte[] arr = null;
+            arr = ImageAArray(Imagen);
+            CLS_Pedidos savecodigo = new CLS_Pedidos();
+            savecodigo.PedidosId =Convert.ToInt32(Folio);
+            savecodigo.CodigoBarra = arr;
+            savecodigo.MtdActualizarCodigoBarra();
+        }
+        public byte[] ImageAArray(Image Imagen)
+        {
+            MemoryStream ms = new MemoryStream();
+            Imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            return ms.ToArray();
         }
     }
 }
