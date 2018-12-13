@@ -1324,7 +1324,7 @@ namespace BSC_Reportes
                     if (DialogResult == DialogResult.Yes)
                     {
                         int Copias =Convert.ToInt32(txtCopiasPedido.Text);
-                        for (int c = 0; c < Copias; c++)
+                        for (int c = -1; c < Copias; c++)
                         {
                             CrearPedido();
                         }
@@ -1624,8 +1624,7 @@ namespace BSC_Reportes
                     {
                         alto = Convert.ToSingle(AltoTamaño);
                     }
-                    Bitmap bm = Codigos.Codigos128(Folio + " ", true, alto);
-                    ptb1.Image = bm;
+                    ptb1.Image = Codigos.Codigos128(Folio + " ", true, alto);
                 }
                 catch (Exception ex)
                 {
@@ -1637,13 +1636,17 @@ namespace BSC_Reportes
         private void Guardarcodigo(string Folio)
         {
             CreaCodigoBarras(Folio, "50");
-            Image Imagen = ptb1.Image;
+            //Image Imagen = ptb1.Image;
             byte[] arr = null;
-            arr = ImageAArray(Imagen);
+            arr = ImageAArray(ptb1.Image);
             CLS_Pedidos savecodigo = new CLS_Pedidos();
             savecodigo.PedidosId =Convert.ToInt32(Folio);
-            savecodigo.CodigoBarra = arr;
+            savecodigo.imageCodigoBarra = arr;
             savecodigo.MtdActualizarCodigoBarra();
+            if(!savecodigo.Exito)
+            {
+                XtraMessageBox.Show(savecodigo.Mensaje, "Error al Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
         }
         public byte[] ImageAArray(Image Imagen)
         {

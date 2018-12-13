@@ -610,7 +610,7 @@ namespace BSC_Reportes
         }
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtFolio.Text = string.Empty;
+            
             dtInicio.EditValue = DateTime.Now;
             txtProveedorId.Text = string.Empty;
             txtProveedorNombre.Text = string.Empty;
