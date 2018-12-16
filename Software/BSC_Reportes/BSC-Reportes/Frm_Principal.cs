@@ -141,7 +141,8 @@ namespace BSC_Reportes
             {
                 revisaopciones();
             }
-
+            CLS_AppConfig con = new CLS_AppConfig();
+            con.ConnectionStrings("SES_Reportes_Connection");
             
         }
         private void OcultarBotones()

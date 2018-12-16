@@ -30,11 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.ptb1 = new DevExpress.XtraEditors.PictureEdit();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bIconos = new DevExpress.XtraBars.Bar();
+            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnGuardar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnCancelar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnCerrarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.bEstado = new DevExpress.XtraBars.Bar();
+            this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtCopiasPedido = new DevExpress.XtraEditors.TextEdit();
             this.btnConvertir = new DevExpress.XtraEditors.SimpleButton();
@@ -66,26 +87,6 @@
             this.txtProveedorId = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bIconos = new DevExpress.XtraBars.Bar();
-            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnGuardar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnCancelar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnCerrarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.bEstado = new DevExpress.XtraBars.Bar();
-            this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
-            this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dtgVentaExistencia = new DevExpress.XtraGrid.GridControl();
             this.dtgValVentaExistencia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
@@ -146,11 +147,14 @@
             this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.ptb1 = new DevExpress.XtraEditors.PictureEdit();
+            this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCopiasPedido.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
@@ -176,14 +180,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtInicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -225,6 +226,223 @@
             this.groupControl1.Size = new System.Drawing.Size(1050, 167);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // ptb1
+            // 
+            this.ptb1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ptb1.Location = new System.Drawing.Point(915, 46);
+            this.ptb1.MenuManager = this.barManager1;
+            this.ptb1.Name = "ptb1";
+            this.ptb1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.ptb1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.ptb1.Size = new System.Drawing.Size(125, 56);
+            this.ptb1.TabIndex = 97;
+            this.ptb1.Visible = false;
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bIconos,
+            this.bEstado});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.btnBuscar,
+            this.barLargeButtonItem1,
+            this.barEditItem1,
+            this.lblProveedor,
+            this.btnLimpiar,
+            this.btnFolios,
+            this.btnImpProveedor,
+            this.btnGuardar,
+            this.btnCerrarPedido,
+            this.btnActualizarPedido,
+            this.btnBuscarPedidoCerrado,
+            this.btnCancelar,
+            this.barLargeButtonItem3});
+            this.barManager1.MainMenu = this.bIconos;
+            this.barManager1.MaxItemId = 59;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1});
+            this.barManager1.StatusBar = this.bEstado;
+            // 
+            // bIconos
+            // 
+            this.bIconos.BarName = "Menú principal";
+            this.bIconos.DockCol = 0;
+            this.bIconos.DockRow = 0;
+            this.bIconos.DockStyle = DevExpress.XtraBars.BarDockStyle.Left;
+            this.bIconos.FloatLocation = new System.Drawing.Point(42, 184);
+            this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
+            this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnFolios),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscar, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnGuardar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelar, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCerrarPedido),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido)});
+            this.bIconos.OptionsBar.AllowCollapse = true;
+            this.bIconos.OptionsBar.AllowQuickCustomization = false;
+            this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
+            this.bIconos.OptionsBar.DisableClose = true;
+            this.bIconos.OptionsBar.DisableCustomization = true;
+            this.bIconos.OptionsBar.DrawBorder = false;
+            this.bIconos.OptionsBar.DrawDragBorder = false;
+            this.bIconos.OptionsBar.RotateWhenVertical = false;
+            this.bIconos.OptionsBar.UseWholeRow = true;
+            this.bIconos.Text = "Menú principal";
+            // 
+            // btnImpProveedor
+            // 
+            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
+            this.btnImpProveedor.Id = 52;
+            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
+            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
+            this.btnImpProveedor.Name = "btnImpProveedor";
+            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
+            // 
+            // btnFolios
+            // 
+            this.btnFolios.Caption = "Buscar \r\n Folios";
+            this.btnFolios.Id = 51;
+            this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
+            this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
+            this.btnFolios.Name = "btnFolios";
+            this.btnFolios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFolios_ItemClick);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Caption = "Generar\r\n Pedido";
+            this.btnBuscar.Id = 17;
+            this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
+            this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Caption = "Guardar \r\n Pedido";
+            this.btnGuardar.Id = 53;
+            this.btnGuardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
+            this.btnGuardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardar_ItemClick);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Caption = "Limpiar";
+            this.btnLimpiar.Id = 50;
+            this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
+            this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Caption = "Cancelar \r\n Pedido";
+            this.btnCancelar.Id = 57;
+            this.btnCancelar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.Image")));
+            this.btnCancelar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.LargeImage")));
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelar_ItemClick);
+            // 
+            // btnCerrarPedido
+            // 
+            this.btnCerrarPedido.Caption = "Cerrar \r\nPedido";
+            this.btnCerrarPedido.Id = 54;
+            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.Image")));
+            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.LargeImage")));
+            this.btnCerrarPedido.Name = "btnCerrarPedido";
+            this.btnCerrarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCerrarPedido_ItemClick);
+            // 
+            // btnActualizarPedido
+            // 
+            this.btnActualizarPedido.Caption = "Actualizar \r\n Pedido";
+            this.btnActualizarPedido.Id = 55;
+            this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.Image")));
+            this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
+            this.btnActualizarPedido.Name = "btnActualizarPedido";
+            this.btnActualizarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnActualizarPedido_ItemClick);
+            // 
+            // bEstado
+            // 
+            this.bEstado.BarName = "Barra de estado";
+            this.bEstado.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bEstado.DockCol = 0;
+            this.bEstado.DockRow = 0;
+            this.bEstado.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bEstado.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.lblProveedor)});
+            this.bEstado.OptionsBar.AllowQuickCustomization = false;
+            this.bEstado.OptionsBar.DrawDragBorder = false;
+            this.bEstado.OptionsBar.UseWholeRow = true;
+            this.bEstado.Text = "Barra de estado";
+            // 
+            // lblProveedor
+            // 
+            this.lblProveedor.Caption = "Proveedor:";
+            this.lblProveedor.Id = 48;
+            this.lblProveedor.Name = "lblProveedor";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1141, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 631);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1141, 25);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(67, 631);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1141, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 631);
+            // 
+            // barLargeButtonItem1
+            // 
+            this.barLargeButtonItem1.Id = 46;
+            this.barLargeButtonItem1.Name = "barLargeButtonItem1";
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Edit = null;
+            this.barEditItem1.Id = 47;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // btnBuscarPedidoCerrado
+            // 
+            this.btnBuscarPedidoCerrado.Caption = "  Buscar\r\nP Cerrado";
+            this.btnBuscarPedidoCerrado.Id = 56;
+            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.Image")));
+            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.LargeImage")));
+            this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // labelControl8
             // 
@@ -545,210 +763,6 @@
             this.labelControl1.Size = new System.Drawing.Size(61, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Fecha Inicio:";
-            // 
-            // barManager1
-            // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bIconos,
-            this.bEstado});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnBuscar,
-            this.barLargeButtonItem1,
-            this.barEditItem1,
-            this.lblProveedor,
-            this.btnLimpiar,
-            this.btnFolios,
-            this.btnImpProveedor,
-            this.btnGuardar,
-            this.btnCerrarPedido,
-            this.btnActualizarPedido,
-            this.btnBuscarPedidoCerrado,
-            this.btnCancelar});
-            this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 58;
-            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit1});
-            this.barManager1.StatusBar = this.bEstado;
-            // 
-            // bIconos
-            // 
-            this.bIconos.BarName = "Menú principal";
-            this.bIconos.DockCol = 0;
-            this.bIconos.DockRow = 0;
-            this.bIconos.DockStyle = DevExpress.XtraBars.BarDockStyle.Left;
-            this.bIconos.FloatLocation = new System.Drawing.Point(42, 184);
-            this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
-            this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnFolios),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscar, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnGuardar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelar, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCerrarPedido),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido)});
-            this.bIconos.OptionsBar.AllowCollapse = true;
-            this.bIconos.OptionsBar.AllowQuickCustomization = false;
-            this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
-            this.bIconos.OptionsBar.DisableClose = true;
-            this.bIconos.OptionsBar.DisableCustomization = true;
-            this.bIconos.OptionsBar.DrawBorder = false;
-            this.bIconos.OptionsBar.DrawDragBorder = false;
-            this.bIconos.OptionsBar.RotateWhenVertical = false;
-            this.bIconos.OptionsBar.UseWholeRow = true;
-            this.bIconos.Text = "Menú principal";
-            // 
-            // btnImpProveedor
-            // 
-            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
-            this.btnImpProveedor.Id = 52;
-            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
-            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
-            this.btnImpProveedor.Name = "btnImpProveedor";
-            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
-            // 
-            // btnFolios
-            // 
-            this.btnFolios.Caption = "Buscar \r\n Folios";
-            this.btnFolios.Id = 51;
-            this.btnFolios.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
-            this.btnFolios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
-            this.btnFolios.Name = "btnFolios";
-            this.btnFolios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFolios_ItemClick);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Caption = "Generar\r\n Pedido";
-            this.btnBuscar.Id = 17;
-            this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
-            this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Caption = "Guardar \r\n Pedido";
-            this.btnGuardar.Id = 53;
-            this.btnGuardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
-            this.btnGuardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardar_ItemClick);
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Caption = "Limpiar";
-            this.btnLimpiar.Id = 50;
-            this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
-            this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Caption = "Cancelar \r\n Pedido";
-            this.btnCancelar.Id = 57;
-            this.btnCancelar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.Image")));
-            this.btnCancelar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.LargeImage")));
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelar_ItemClick);
-            // 
-            // btnCerrarPedido
-            // 
-            this.btnCerrarPedido.Caption = "Cerrar \r\nPedido";
-            this.btnCerrarPedido.Id = 54;
-            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.Image")));
-            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.LargeImage")));
-            this.btnCerrarPedido.Name = "btnCerrarPedido";
-            this.btnCerrarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCerrarPedido_ItemClick);
-            // 
-            // btnActualizarPedido
-            // 
-            this.btnActualizarPedido.Caption = "Actualizar \r\n Pedido";
-            this.btnActualizarPedido.Id = 55;
-            this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.Image")));
-            this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
-            this.btnActualizarPedido.Name = "btnActualizarPedido";
-            this.btnActualizarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnActualizarPedido_ItemClick);
-            // 
-            // bEstado
-            // 
-            this.bEstado.BarName = "Barra de estado";
-            this.bEstado.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bEstado.DockCol = 0;
-            this.bEstado.DockRow = 0;
-            this.bEstado.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bEstado.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.lblProveedor)});
-            this.bEstado.OptionsBar.AllowQuickCustomization = false;
-            this.bEstado.OptionsBar.DrawDragBorder = false;
-            this.bEstado.OptionsBar.UseWholeRow = true;
-            this.bEstado.Text = "Barra de estado";
-            // 
-            // lblProveedor
-            // 
-            this.lblProveedor.Caption = "Proveedor:";
-            this.lblProveedor.Id = 48;
-            this.lblProveedor.Name = "lblProveedor";
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1141, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 631);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1141, 25);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(67, 631);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1141, 0);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 631);
-            // 
-            // barLargeButtonItem1
-            // 
-            this.barLargeButtonItem1.Id = 46;
-            this.barLargeButtonItem1.Name = "barLargeButtonItem1";
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Edit = null;
-            this.barEditItem1.Id = 47;
-            this.barEditItem1.Name = "barEditItem1";
-            // 
-            // btnBuscarPedidoCerrado
-            // 
-            this.btnBuscarPedidoCerrado.Caption = "  Buscar\r\nP Cerrado";
-            this.btnBuscarPedidoCerrado.Id = 56;
-            this.btnBuscarPedidoCerrado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.Image")));
-            this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.LargeImage")));
-            this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // panelControl2
             // 
@@ -1474,22 +1488,16 @@
             this.barLargeButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
             this.barLargeButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
-            toolTipTitleItem3.Text = "Seleccionar";
-            superToolTip3.Items.Add(toolTipItem3);
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.barLargeButtonItem2.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
-            // ptb1
+            // barLargeButtonItem3
             // 
-            this.ptb1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ptb1.Location = new System.Drawing.Point(915, 46);
-            this.ptb1.MenuManager = this.barManager1;
-            this.ptb1.Name = "ptb1";
-            this.ptb1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.ptb1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.ptb1.Size = new System.Drawing.Size(125, 56);
-            this.ptb1.TabIndex = 97;
-            this.ptb1.Visible = false;
+            this.barLargeButtonItem3.Caption = "barLargeButtonItem3";
+            this.barLargeButtonItem3.Id = 58;
+            this.barLargeButtonItem3.Name = "barLargeButtonItem3";
             // 
             // Frm_Pre_Pedidos
             // 
@@ -1513,6 +1521,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCopiasPedido.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
@@ -1539,14 +1550,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtInicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProveedorId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1669,5 +1677,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.TextEdit txtCopiasPedido;
         private DevExpress.XtraEditors.PictureEdit ptb1;
+        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem3;
     }
 }

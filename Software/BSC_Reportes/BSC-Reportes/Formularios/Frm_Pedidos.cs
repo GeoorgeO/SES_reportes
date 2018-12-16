@@ -12,6 +12,7 @@ using CapaDeDatos;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraEditors.ViewInfo;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 
 namespace BSC_Reportes
 {
@@ -645,6 +646,21 @@ namespace BSC_Reportes
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DSarabiaII"]).ToString());
                 gv.SetRowCellValue(e.RowHandle, gv.Columns["SumaD"], TDistribucion);
                 PrimeraEdicion = false;
+            }
+        }
+
+        private void btnVistaPreviaPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (txtFolio.Text != string.Empty)
+            {
+                int folio = Convert.ToInt32(txtFolio.Text);
+                rpt_Pedidos rpt = new rpt_Pedidos(folio);
+                ReportPrintTool print = new ReportPrintTool(rpt);
+                rpt.ShowPreviewDialog();
+            }
+            else
+            {
+                XtraMessageBox.Show("Falta seleccionar un Pedido");
             }
         }
     }
