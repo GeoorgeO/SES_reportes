@@ -39,6 +39,8 @@ namespace BSC_Reportes
         public Boolean PedidoSurtido { get;  set; }
         public Boolean _valida { get;  set; }
         public bool PrimeraEdicion { get; private set; }
+        public int xRow { get; private set; }
+        public int? PedidosId { get; private set; }
 
         public Frm_Pedidos()
         {
@@ -661,6 +663,60 @@ namespace BSC_Reportes
             else
             {
                 XtraMessageBox.Show("Falta seleccionar un Pedido");
+            }
+        }
+
+        private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("¡Solo se guardaran los Articulos con la distribucion Correcta!", "Valida Distribucion", MessageBoxButtons.OK, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            GuardarDetalles();
+        }
+        private void GuardarDetalles()
+        {
+            pbProgreso.Properties.Maximum = dtgValPedidos.RowCount;
+            for (int i = 0; i < dtgValPedidos.RowCount; i++)
+            {
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                CLS_Pedidos insdetped = new CLS_Pedidos();
+                xRow = dtgValPedidos.GetVisibleRowHandle(i);
+                insdetped.PedidosId = PedidosId;
+                insdetped.ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "Codigo").ToString();
+                insdetped.VAlmacen = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DAlmacen").ToString());
+                insdetped.VCentro = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString());
+                insdetped.VApatzingan = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString());
+                insdetped.VCalzada = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString());
+                insdetped.VCostaRica = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString());
+                insdetped.VEstocolmo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
+                insdetped.VFCoVilla = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
+                insdetped.VLombardia = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
+                insdetped.VReyes = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DReyes").ToString());
+                insdetped.VMorelos = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
+                insdetped.VNvaItalia = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
+                insdetped.VPaseo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
+                insdetped.VSarabiaI = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString());
+                insdetped.VSarabiaII = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString());
+                int SumaD= Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "SumaD").ToString());
+                insdetped.Surtido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
+                insdetped.Pedido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "TPedido").ToString());
+                if (PedidoSurtido)
+                {
+                    if (SumaD == insdetped.Surtido)
+                    {
+                        insdetped.MtdUpdatePedidoDetalleSurtido();
+                    }
+                }
+                else
+                {
+                    if (SumaD == insdetped.Pedido)
+                    {
+                        insdetped.MtdUpdatePedidoDetallePendiente();
+                    }
+                }
+                if (!insdetped.Exito)
+                {
+                    XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
+                }
             }
         }
     }

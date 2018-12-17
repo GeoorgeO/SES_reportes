@@ -874,5 +874,126 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+
+        //Actualizar Pedidos
+        public void MtdUpdatePedidoDetalleSurtido()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_DetallesSurtido_Update";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.Entero = DAlmacen;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
+                _dato.Entero = DApatzingan;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
+                _dato.Entero = DCalzada;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
+                _dato.Entero = DCentro;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
+                _dato.Entero = DCostaRica;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
+                _dato.Entero = DEstocolmo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
+                _dato.Entero = DFcoVilla;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
+                _dato.Entero = DLombardia;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
+                _dato.Entero = DReyes;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
+                _dato.Entero = DMorelos;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
+                _dato.Entero = DNvaItalia;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
+                _dato.Entero = DPaseo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
+                _dato.Entero = DSarabiaI;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
+                _dato.Entero = DSarabiaII;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdUpdatePedidoDetallePendiente()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_DetallesPendiente_Update";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.Entero = DAlmacen;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
+                _dato.Entero = DApatzingan;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
+                _dato.Entero = DCalzada;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
+                _dato.Entero = DCentro;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
+                _dato.Entero = DCostaRica;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
+                _dato.Entero = DEstocolmo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
+                _dato.Entero = DFcoVilla;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
+                _dato.Entero = DLombardia;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
+                _dato.Entero = DReyes;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
+                _dato.Entero = DMorelos;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
+                _dato.Entero = DNvaItalia;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
+                _dato.Entero = DPaseo;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
+                _dato.Entero = DSarabiaI;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
+                _dato.Entero = DSarabiaII;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _dato.Entero = TPedido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
     }
 }

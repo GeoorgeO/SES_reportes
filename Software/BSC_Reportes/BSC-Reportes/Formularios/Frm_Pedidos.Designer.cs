@@ -45,6 +45,7 @@
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnCancelar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnVistaPreviaPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -156,7 +157,6 @@
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.btnVistaPreviaPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -302,6 +302,7 @@
             this.btnGuardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
             this.btnGuardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
             this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardar_ItemClick);
             // 
             // btnLimpiar
             // 
@@ -327,6 +328,15 @@
             this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.Image")));
             this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
             this.btnActualizarPedido.Name = "btnActualizarPedido";
+            // 
+            // btnVistaPreviaPedido
+            // 
+            this.btnVistaPreviaPedido.Caption = "Vista Previa \r\n  Pedidos";
+            this.btnVistaPreviaPedido.Id = 59;
+            this.btnVistaPreviaPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVistaPreviaPedido.ImageOptions.Image")));
+            this.btnVistaPreviaPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVistaPreviaPedido.ImageOptions.LargeImage")));
+            this.btnVistaPreviaPedido.Name = "btnVistaPreviaPedido";
+            this.btnVistaPreviaPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVistaPreviaPedido_ItemClick);
             // 
             // bEstado
             // 
@@ -360,9 +370,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 472);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 469);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
             // 
             // barDockControlLeft
             // 
@@ -370,7 +380,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(73, 472);
+            this.barDockControlLeft.Size = new System.Drawing.Size(75, 469);
             // 
             // barDockControlRight
             // 
@@ -378,7 +388,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 472);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 469);
             // 
             // btnBuscar
             // 
@@ -404,10 +414,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(73, 0);
+            this.panelControl1.Location = new System.Drawing.Point(75, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1047, 133);
+            this.panelControl1.Size = new System.Drawing.Size(1045, 133);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
@@ -426,7 +436,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1023, 109);
+            this.groupControl1.Size = new System.Drawing.Size(1021, 109);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -557,10 +567,10 @@
             // 
             this.panelControl2.Controls.Add(this.xtraTabControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(73, 133);
+            this.panelControl2.Location = new System.Drawing.Point(75, 133);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1047, 339);
+            this.panelControl2.Size = new System.Drawing.Size(1045, 336);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -570,7 +580,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1023, 315);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1021, 312);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1065,7 +1075,7 @@
             this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(1026, 287);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1019, 290);
             this.xtraTabPage2.Text = "Insidencias";
             // 
             // dtgPedidosInsidencias
@@ -1078,7 +1088,7 @@
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(1016, 277);
+            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(1009, 280);
             this.dtgPedidosInsidencias.TabIndex = 1;
             this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidosInsidencias});
@@ -1538,15 +1548,6 @@
             this.imageCollection1.Images.SetKeyName(0, "iconfinder_Stock Index Up_27881.png");
             this.imageCollection1.Images.SetKeyName(1, "iconfinder_Stock Index Down_27880.png");
             this.imageCollection1.Images.SetKeyName(2, "iconfinder_Glyph Check_58561.png");
-            // 
-            // btnVistaPreviaPedido
-            // 
-            this.btnVistaPreviaPedido.Caption = "Vista Previa \r\n  Pedidos";
-            this.btnVistaPreviaPedido.Id = 59;
-            this.btnVistaPreviaPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.Image")));
-            this.btnVistaPreviaPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barLargeButtonItem2.ImageOptions.LargeImage")));
-            this.btnVistaPreviaPedido.Name = "btnVistaPreviaPedido";
-            this.btnVistaPreviaPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVistaPreviaPedido_ItemClick);
             // 
             // Frm_Pedidos
             // 
