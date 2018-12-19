@@ -46,6 +46,8 @@
             this.btnCancelar = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnVistaPreviaPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnLiberaPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnGeneraArchivos = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -253,9 +255,11 @@
             this.btnGuardar,
             this.btnActualizarPedido,
             this.btnCancelar,
-            this.btnVistaPreviaPedido});
+            this.btnVistaPreviaPedido,
+            this.btnLiberaPedido,
+            this.btnGeneraArchivos});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 60;
+            this.barManager1.MaxItemId = 62;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -274,7 +278,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelar),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnVistaPreviaPedido)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnVistaPreviaPedido),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLiberaPedido),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnGeneraArchivos)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
             this.bIconos.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -338,6 +344,24 @@
             this.btnVistaPreviaPedido.Name = "btnVistaPreviaPedido";
             this.btnVistaPreviaPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVistaPreviaPedido_ItemClick);
             // 
+            // btnLiberaPedido
+            // 
+            this.btnLiberaPedido.Caption = "Libera Pedido";
+            this.btnLiberaPedido.Id = 60;
+            this.btnLiberaPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLiberaPedido.ImageOptions.Image")));
+            this.btnLiberaPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLiberaPedido.ImageOptions.LargeImage")));
+            this.btnLiberaPedido.Name = "btnLiberaPedido";
+            this.btnLiberaPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLiberaPedido_ItemClick);
+            // 
+            // btnGeneraArchivos
+            // 
+            this.btnGeneraArchivos.Caption = "  Genera \r\nArchivos E/S";
+            this.btnGeneraArchivos.Id = 61;
+            this.btnGeneraArchivos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneraArchivos.ImageOptions.Image")));
+            this.btnGeneraArchivos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGeneraArchivos.ImageOptions.LargeImage")));
+            this.btnGeneraArchivos.Name = "btnGeneraArchivos";
+            this.btnGeneraArchivos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGeneraArchivos_ItemClick);
+            // 
             // bEstado
             // 
             this.bEstado.BarName = "Barra de estado";
@@ -370,9 +394,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 469);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 25);
             // 
             // barDockControlLeft
             // 
@@ -380,7 +404,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(75, 469);
+            this.barDockControlLeft.Size = new System.Drawing.Size(81, 574);
             // 
             // barDockControlRight
             // 
@@ -388,7 +412,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 469);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 574);
             // 
             // btnBuscar
             // 
@@ -414,10 +438,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(75, 0);
+            this.panelControl1.Location = new System.Drawing.Point(81, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1045, 133);
+            this.panelControl1.Size = new System.Drawing.Size(1039, 133);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
@@ -436,7 +460,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1021, 109);
+            this.groupControl1.Size = new System.Drawing.Size(1015, 109);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -567,10 +591,10 @@
             // 
             this.panelControl2.Controls.Add(this.xtraTabControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(75, 133);
+            this.panelControl2.Location = new System.Drawing.Point(81, 133);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1045, 336);
+            this.panelControl2.Size = new System.Drawing.Size(1039, 441);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -580,7 +604,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1021, 312);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1015, 417);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -591,7 +615,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1017, 287);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 389);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -604,7 +628,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(1007, 277);
+            this.dtgPedidos.Size = new System.Drawing.Size(999, 379);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -1075,7 +1099,7 @@
             this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(1019, 290);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1009, 389);
             this.xtraTabPage2.Text = "Insidencias";
             // 
             // dtgPedidosInsidencias
@@ -1088,7 +1112,7 @@
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(1009, 280);
+            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(999, 379);
             this.dtgPedidosInsidencias.TabIndex = 1;
             this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidosInsidencias});
@@ -1553,7 +1577,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 497);
+            this.ClientSize = new System.Drawing.Size(1120, 599);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -1729,5 +1753,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn SumaD;
         private DevExpress.XtraBars.BarLargeButtonItem btnVistaPreviaPedido;
+        private DevExpress.XtraBars.BarLargeButtonItem btnLiberaPedido;
+        private DevExpress.XtraBars.BarLargeButtonItem btnGeneraArchivos;
     }
 }

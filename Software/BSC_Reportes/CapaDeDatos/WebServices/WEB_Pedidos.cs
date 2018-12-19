@@ -14,6 +14,7 @@ namespace CapaDeDatos
         public string ArticuloDescripcion { get; set; }
         public int Cantidad { get; set; }
         public string Tipo { get; set; }
+        public int? PedidosSurtido { get;  set; }
 
         public void MtdSelectPedidoDetallesProveedor()
         {
@@ -207,6 +208,8 @@ namespace CapaDeDatos
                 _conexion.NombreProcedimiento = "SP_WEB_PedidoSurtido_Update";
                 _dato.Entero = PedidosId;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.Entero = PedidosSurtido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosSurtido");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
