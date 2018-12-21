@@ -13,6 +13,7 @@ using DevExpress.XtraSplashScreen;
 using DevExpress.XtraEditors.ViewInfo;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
+using System.IO;
 
 namespace BSC_Reportes
 {
@@ -433,9 +434,21 @@ namespace BSC_Reportes
                     btnLimpiar.PerformClick();
                     CargarPedidos(txtFolio.Text);
                     DesbloquearObjetos(true);
+                    NumerarReg();
+                    XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
             }
         }
+
+        private void NumerarReg()
+        {
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["Reg"], x+1);
+            }
+        }
+
         public void BuscarPrePedido(string vPrePedidoId)
         {
             txtFolio.Text = vPrePedidoId;
@@ -539,7 +552,6 @@ namespace BSC_Reportes
                 dtgPedidos.DataSource = selenc.Datos;
             }
             MensajeCargando(2);
-            XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
         public void MensajeCargando(int opcion)
         {
@@ -575,6 +587,8 @@ namespace BSC_Reportes
                     btnLimpiar.PerformClick();
                     CargarPedidos(txtFolio.Text);
                     DesbloquearObjetos(true);
+                    NumerarReg();
+                    XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
@@ -706,6 +720,7 @@ namespace BSC_Reportes
                 int SumaD = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "SumaD").ToString());
                 insdetped.Surtido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
                 insdetped.TPedido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "TPedido").ToString());
+                insdetped.Exito = true;
                 if (PedidoSurtido)
                 {
                     if (SumaD == insdetped.Surtido)
@@ -729,23 +744,200 @@ namespace BSC_Reportes
 
         private void btnLiberaPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            WEB_Pedidos q = new WEB_Pedidos();
-            q.PedidosId = PedidosId;
-            q.PedidosSurtido = 0;
-            q.MtdUpdatePedidoSurtido();
-            if (!q.Exito)
+            DialogResult = XtraMessageBox.Show("¿Desea liberar el pedido, solo almacen podra cerrar el pedido?", "Liberar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
             {
-                XtraMessageBox.Show(q.Mensaje);
-            }
-            else
-            {
-                XtraMessageBox.Show("¡Pedido Liberado!", "Pedidos", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                WEB_Pedidos q = new WEB_Pedidos();
+                q.PedidosId = Convert.ToInt32(txtFolio.Text);
+                q.PedidosSurtido = 0;
+                q.MtdUpdatePedidoSurtido();
+                if (!q.Exito)
+                {
+                    XtraMessageBox.Show(q.Mensaje);
+                }
+                else
+                {
+                    XtraMessageBox.Show("¡Pedido Liberado!", "Pedidos", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 
         private void btnGeneraArchivos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ExportaDatos(Convert.ToInt32(txtFolio.Text));
+        }
+        private static string DosCero(string sVal)
+        {
+            string str = "";
+            if (sVal.Length == 1)
+            {
+                return (str = "0" + sVal);
+            }
+            return sVal;
+        }
+        private void ExportaDatos(int folio)
+        {
+            if (PedidoSurtido)
+            {
+                try
+                {
+                    if (DistribucionCorrecta())
+                    {
+                        DirectorySucursales();
+                        EntradaAlmacen();
+                        //SalidaAlmacenTiendas();
+                        EntradaTiendas();
+                        XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Existen articulos del pedido con una mala distribucion");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al Generar el Archivo" + ex.Message);
+                }
 
+            }
+            else
+            {
+                MessageBox.Show("No se ha surtido el Pedido");
+            }
+        }
+
+        private void EntradaTiendas()
+        {
+            EntradaSucursal("Centro");
+            EntradaSucursal("Apatzingan");
+            EntradaSucursal("Calzada");
+            EntradaSucursal("CostaRica");
+            EntradaSucursal("Estocolmo");
+            EntradaSucursal("FcoVilla");
+            EntradaSucursal("Lombardia");
+            EntradaSucursal("Reyes");
+            EntradaSucursal("Morelos");
+            EntradaSucursal("NvaItalia");
+            EntradaSucursal("Paseo");
+            EntradaSucursal("SarabiaI");
+            EntradaSucursal("SarabiaII");
+        }
+
+        private void EntradaAlmacen()
+        {
+            try
+            {
+                string Ruta = string.Empty;
+                Ruta = String.Format("C:\\FileExport\\Almacen\\");
+                string fileName = string.Empty;
+                string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+                string TipoArch = "Entrada";
+                fileName = String.Format("{0}_{1}_{2}_{3}.txt", TipoArch, "Almacen", "Pedido[" + txtFolio.Text + "]", VFecha);
+                Ruta += fileName;
+                FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter writer = new StreamWriter(stream);
+                for (int x = 0; x < dtgValPedidos.RowCount; x++)
+                {
+                    int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                    if (dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString() != "0")
+                    {
+                        string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
+                        writer.WriteLine(Linea);
+                    }
+                }
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+        }
+        private void EntradaSucursal(string Sucursal)
+        {
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal,  txtFolio.Text , VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "D" + Sucursal).ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "D" + Sucursal).ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private Boolean DistribucionCorrecta()
+        {
+            Boolean Valor = true;
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                int SumaD = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "SumaD").ToString());
+                int Surtido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
+                if(SumaD!= Surtido)
+                {
+                    Valor = false;
+                    break;
+                }
+            }
+            return Valor;
+        }
+        private static void DirectorySucursales()
+        {
+            System.IO.Directory.CreateDirectory(@"C:\FileExport");
+            CLS_Sucursales suc = new CLS_Sucursales();
+            suc.ListarSucursales();
+            for (int x = 0; x < suc.Datos.Rows.Count; x++)
+            {
+                System.IO.Directory.CreateDirectory(@"C:\FileExport\" + suc.Datos.Rows[x][1].ToString());
+            }
+        }
+        private void btnIgualarACero_Click(object sender, EventArgs e)
+        {
+            if (PedidoSurtido)
+            {
+                DialogResult = XtraMessageBox.Show("¿Desea igualar a 0 todo los articulos que no fueron surtidos?", "Igualar 0 en Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < dtgValPedidos.RowCount; i++)
+                    {
+                        pbProgreso.Position = i + 1;
+                        Application.DoEvents();
+                        CLS_Pedidos insdetped = new CLS_Pedidos();
+                        int xRow = dtgValPedidos.GetVisibleRowHandle(i);
+                        int Surtido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
+                        if (Surtido == 0)
+                        {
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DAlmacen"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCentro"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DApatzingan"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCalzada"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCostaRica"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DEstocolmo"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DFcoVilla"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLombardia"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DReyes"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DMorelos"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DNvaItalia"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DPaseo"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaI"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaII"], 0);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha surtido el Pedido");
+            }
         }
     }
 }

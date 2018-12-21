@@ -33,8 +33,8 @@ namespace CapaDeDatos
                 ProyectName = ConfigurationManager.AppSettings["ProyectName"].ToString();
 
                 StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
-                SqlConnection conn = new SqlConnection(StrConexion);
-                conn.Open();
+                //SqlConnection conn = new SqlConnection(StrConexion);
+                //conn.Open();
                 return StrConexion;
             }
             catch
@@ -85,8 +85,8 @@ namespace CapaDeDatos
                 ProyectName = ConfigurationManager.AppSettings["ProyectName"].ToString();
 
                 StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
-                SqlConnection conn = new SqlConnection(StrConexion);
-                conn.Open();
+                //SqlConnection conn = new SqlConnection(StrConexion);
+                //conn.Open();
                 return StrConexion;
             }
             catch
