@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.Entrada = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -59,6 +59,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnIgualarACero = new DevExpress.XtraEditors.SimpleButton();
             this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
@@ -119,18 +120,19 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.dtgPedidosInsidencias = new DevExpress.XtraGrid.GridControl();
             this.dtgValPedidosInsidencias = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.btnIgualarACero = new DevExpress.XtraEditors.SimpleButton();
-            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -424,13 +426,23 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
+            // btnIgualarACero
+            // 
+            this.btnIgualarACero.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIgualarACero.ImageOptions.Image")));
+            this.btnIgualarACero.Location = new System.Drawing.Point(618, 46);
+            this.btnIgualarACero.Name = "btnIgualarACero";
+            this.btnIgualarACero.Size = new System.Drawing.Size(141, 38);
+            this.btnIgualarACero.TabIndex = 20;
+            this.btnIgualarACero.Text = "Igualar distribucion\r\n a 0";
+            this.btnIgualarACero.Click += new System.EventHandler(this.btnIgualarACero_Click);
+            // 
             // lblStatus
             // 
             this.lblStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold);
             this.lblStatus.Appearance.ForeColor = System.Drawing.Color.Maroon;
             this.lblStatus.Appearance.Options.UseFont = true;
             this.lblStatus.Appearance.Options.UseForeColor = true;
-            this.lblStatus.Location = new System.Drawing.Point(637, 48);
+            this.lblStatus.Location = new System.Drawing.Point(781, 46);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 39);
             this.lblStatus.TabIndex = 19;
@@ -635,13 +647,13 @@
             this.SumaD,
             this.Entrada,
             this.TPedido});
-            gridFormatRule1.Column = this.Entrada;
-            gridFormatRule1.ColumnApplyTo = this.TPedido;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.dtgValPedidos.FormatRules.Add(gridFormatRule1);
+            gridFormatRule3.Column = this.Entrada;
+            gridFormatRule3.ColumnApplyTo = this.TPedido;
+            gridFormatRule3.Name = "Format0";
+            formatConditionRuleExpression3.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression3.PredefinedName = "Red Bold Text";
+            gridFormatRule3.Rule = formatConditionRuleExpression3;
+            this.dtgValPedidos.FormatRules.Add(gridFormatRule3);
             this.dtgValPedidos.GridControl = this.dtgPedidos;
             this.dtgValPedidos.Name = "dtgValPedidos";
             this.dtgValPedidos.OptionsFind.AlwaysVisible = true;
@@ -1017,7 +1029,7 @@
             this.ReyesD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ReyesD.Caption = "D";
             this.ReyesD.ColumnEdit = this.repositoryItemTextEdit2;
-            this.ReyesD.FieldName = "DReyes";
+            this.ReyesD.FieldName = "DLosReyes";
             this.ReyesD.Name = "ReyesD";
             this.ReyesD.Visible = true;
             this.ReyesD.Width = 60;
@@ -1088,13 +1100,15 @@
             this.bandedGridColumn3,
             this.bandedGridColumn4,
             this.bandedGridColumn5,
-            this.bandedGridColumn20});
-            gridFormatRule2.Column = this.bandedGridColumn20;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule2);
+            this.bandedGridColumn20,
+            this.bandedGridColumn6,
+            this.bandedGridColumn7});
+            gridFormatRule1.Column = this.bandedGridColumn20;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule1);
             this.dtgValPedidosInsidencias.GridControl = this.dtgPedidosInsidencias;
             this.dtgValPedidosInsidencias.Name = "dtgValPedidosInsidencias";
             this.dtgValPedidosInsidencias.OptionsFind.AlwaysVisible = true;
@@ -1103,6 +1117,21 @@
             this.dtgValPedidosInsidencias.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.dtgValPedidosInsidencias.OptionsView.ShowFooter = true;
             this.dtgValPedidosInsidencias.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridBand16
+            // 
+            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand16.Caption = "Articulos";
+            this.gridBand16.Columns.Add(this.bandedGridColumn1);
+            this.gridBand16.Columns.Add(this.bandedGridColumn2);
+            this.gridBand16.Columns.Add(this.bandedGridColumn3);
+            this.gridBand16.Columns.Add(this.bandedGridColumn4);
+            this.gridBand16.Columns.Add(this.bandedGridColumn5);
+            this.gridBand16.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.gridBand16.Name = "gridBand16";
+            this.gridBand16.VisibleIndex = 0;
+            this.gridBand16.Width = 784;
             // 
             // bandedGridColumn1
             // 
@@ -1157,6 +1186,32 @@
             this.bandedGridColumn5.Visible = true;
             this.bandedGridColumn5.Width = 202;
             // 
+            // gridBand32
+            // 
+            this.gridBand32.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand32.Caption = "Orden";
+            this.gridBand32.Columns.Add(this.bandedGridColumn20);
+            this.gridBand32.Columns.Add(this.bandedGridColumn6);
+            this.gridBand32.Columns.Add(this.bandedGridColumn7);
+            this.gridBand32.Name = "gridBand32";
+            this.gridBand32.VisibleIndex = 1;
+            this.gridBand32.Width = 225;
+            // 
+            // bandedGridColumn6
+            // 
+            this.bandedGridColumn6.Caption = "Tipo";
+            this.bandedGridColumn6.FieldName = "Tipo";
+            this.bandedGridColumn6.Name = "bandedGridColumn6";
+            this.bandedGridColumn6.Visible = true;
+            // 
+            // bandedGridColumn7
+            // 
+            this.bandedGridColumn7.Caption = "Recibir";
+            this.bandedGridColumn7.FieldName = "Recibir";
+            this.bandedGridColumn7.Name = "bandedGridColumn7";
+            this.bandedGridColumn7.Visible = true;
+            // 
             // repositoryItemTextEdit5
             // 
             this.repositoryItemTextEdit5.AutoHeight = false;
@@ -1182,41 +1237,6 @@
             this.imageCollection1.Images.SetKeyName(0, "iconfinder_Stock Index Up_27881.png");
             this.imageCollection1.Images.SetKeyName(1, "iconfinder_Stock Index Down_27880.png");
             this.imageCollection1.Images.SetKeyName(2, "iconfinder_Glyph Check_58561.png");
-            // 
-            // btnIgualarACero
-            // 
-            this.btnIgualarACero.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnIgualarACero.Location = new System.Drawing.Point(618, 46);
-            this.btnIgualarACero.Name = "btnIgualarACero";
-            this.btnIgualarACero.Size = new System.Drawing.Size(141, 38);
-            this.btnIgualarACero.TabIndex = 20;
-            this.btnIgualarACero.Text = "Igualar distribucion\r\n a 0";
-            this.btnIgualarACero.Click += new System.EventHandler(this.btnIgualarACero_Click);
-            // 
-            // gridBand16
-            // 
-            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand16.Caption = "Articulos";
-            this.gridBand16.Columns.Add(this.bandedGridColumn1);
-            this.gridBand16.Columns.Add(this.bandedGridColumn2);
-            this.gridBand16.Columns.Add(this.bandedGridColumn3);
-            this.gridBand16.Columns.Add(this.bandedGridColumn4);
-            this.gridBand16.Columns.Add(this.bandedGridColumn5);
-            this.gridBand16.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.gridBand16.Name = "gridBand16";
-            this.gridBand16.VisibleIndex = 0;
-            this.gridBand16.Width = 784;
-            // 
-            // gridBand32
-            // 
-            this.gridBand32.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand32.Caption = "Orden";
-            this.gridBand32.Columns.Add(this.bandedGridColumn20);
-            this.gridBand32.Name = "gridBand32";
-            this.gridBand32.VisibleIndex = 1;
-            this.gridBand32.Width = 75;
             // 
             // Frm_Pedidos
             // 
@@ -1372,5 +1392,7 @@
         private DevExpress.XtraEditors.SimpleButton btnIgualarACero;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand32;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
     }
 }

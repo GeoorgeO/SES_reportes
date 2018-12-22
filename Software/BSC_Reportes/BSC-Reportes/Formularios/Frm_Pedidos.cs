@@ -236,7 +236,7 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
-            column.ColumnName = "DReyes";
+            column.ColumnName = "DLosReyes";
             column.AutoIncrement = false;
             column.Caption = "D";
             column.ReadOnly = false;
@@ -275,6 +275,95 @@ namespace BSC_Reportes
             table.Columns.Add(column);
 
             dtgPedidos.DataSource = table;
+        }
+        private void MakeTablaPedidosInsidencias()
+        {
+            DataTable table = new DataTable("FirstTable");
+            DataColumn column;
+            table.Reset();
+
+            // DataRow row;
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Reg";
+            column.AutoIncrement = false;
+            column.Caption = "#";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "ArticuloCodigo";
+            column.AutoIncrement = false;
+            column.Caption = "Codigo";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Descripcion";
+            column.AutoIncrement = false;
+            column.Caption = "Descripcion";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(decimal);
+            column.ColumnName = "CostoReposicion";
+            column.AutoIncrement = false;
+            column.Caption = "Costo Reposicion";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Familia";
+            column.AutoIncrement = false;
+            column.Caption = "Familia";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "Surtido";
+            column.AutoIncrement = false;
+            column.Caption = "Entrada";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(string);
+            column.ColumnName = "Tipo";
+            column.AutoIncrement = false;
+            column.Caption = "Tipo";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Boolean);
+            column.ColumnName = "Recibir";
+            column.AutoIncrement = false;
+            column.Caption = "Recibir";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            dtgPedidosInsidencias.DataSource = table;
         }
         public void OcultarBotones()
         {
@@ -379,6 +468,7 @@ namespace BSC_Reportes
             chkFamilia.Checked = true;
             dtgPedidos.DataSource = null;
             MakeTablaPedidos();
+            MakeTablaPedidosInsidencias();
             dtgValPedidos.OptionsSelection.EnableAppearanceFocusedCell = false;
             dtgValPedidos.OptionsSelection.EnableAppearanceHideSelection = false;
             dtgValPedidos.OptionsSelection.MultiSelect = true;
@@ -615,7 +705,7 @@ namespace BSC_Reportes
                 TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
                 TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
                 TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
-                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DReyes").ToString());
+                TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString());
                 TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
                 TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
                 TDistribucion += Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
@@ -636,6 +726,7 @@ namespace BSC_Reportes
             dtgPedidos.DataSource = null;
             dtgPedidosInsidencias.DataSource = null;
             MakeTablaPedidos();
+            MakeTablaPedidosInsidencias();
             DesbloquearObjetos(true);
         }
 
@@ -654,7 +745,7 @@ namespace BSC_Reportes
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DEstocolmo"]).ToString());
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DFcoVilla"]).ToString());
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DLombardia"]).ToString());
-                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DReyes"]).ToString());
+                TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DLosReyes"]).ToString());
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DMorelos"]).ToString());
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DNvaItalia"]).ToString());
                 TDistribucion += Convert.ToInt32(gv.GetRowCellValue(e.RowHandle, gv.Columns["DPaseo"]).ToString());
@@ -711,7 +802,7 @@ namespace BSC_Reportes
                 insdetped.DEstocolmo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
                 insdetped.DFcoVilla = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
                 insdetped.DLombardia = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
-                insdetped.DReyes = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DReyes").ToString());
+                insdetped.DReyes = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString());
                 insdetped.DMorelos = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
                 insdetped.DNvaItalia = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
                 insdetped.DPaseo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
@@ -808,19 +899,19 @@ namespace BSC_Reportes
 
         private void EntradaTiendas()
         {
-            EntradaSucursal("Centro");
-            EntradaSucursal("Apatzingan");
-            EntradaSucursal("Calzada");
-            EntradaSucursal("CostaRica");
-            EntradaSucursal("Estocolmo");
-            EntradaSucursal("FcoVilla");
-            EntradaSucursal("Lombardia");
-            EntradaSucursal("Reyes");
-            EntradaSucursal("Morelos");
-            EntradaSucursal("NvaItalia");
-            EntradaSucursal("Paseo");
-            EntradaSucursal("SarabiaI");
-            EntradaSucursal("SarabiaII");
+            EntradaSucursalCentro();
+            EntradaSucursalApatzingan();
+            EntradaSucursalCalzada();
+            EntradaSucursalCostaRica();
+            EntradaSucursalEstocolmo();
+            EntradaSucursalFcoVilla();
+            EntradaSucursalLombardia();
+            EntradaSucursalLosReyes();
+            EntradaSucursalMorelos();
+            EntradaSucursalNvaItalia();
+            EntradaSucursalPaseo();
+            EntradaSucursalSarabiaI();
+            EntradaSucursalSarabiaII();
         }
 
         private void EntradaAlmacen()
@@ -852,8 +943,9 @@ namespace BSC_Reportes
                 XtraMessageBox.Show(ex.Message);
             }
         }
-        private void EntradaSucursal(string Sucursal)
+        private void EntradaSucursalCentro()
         {
+            string Sucursal = "CENTRO";
             string Ruta = string.Empty;
             Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
@@ -866,9 +958,285 @@ namespace BSC_Reportes
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
             {
                 int xRow = dtgValPedidos.GetVisibleRowHandle(x);
-                if (dtgValPedidos.GetRowCellValue(xRow, "D" + Sucursal).ToString() != "0")
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString() != "0")
                 {
-                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "D" + Sucursal).ToString());
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalApatzingan()
+        {
+            string Sucursal = "APATZINGAN";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalCalzada()
+        {
+            string Sucursal = "CALZADA B";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalCostaRica()
+        {
+            string Sucursal = "COSTA RICA";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalEstocolmo()
+        {
+            string Sucursal = "ESTOCOLMO";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalFcoVilla()
+        {
+            string Sucursal = "FCO. VILLA";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalLombardia()
+        {
+            string Sucursal = "LOMBARDIA";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalLosReyes()
+        {
+            string Sucursal = "LOS REYES";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalMorelos()
+        {
+            string Sucursal = "MORELOS";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalNvaItalia()
+        {
+            string Sucursal = "NUEVA ITALIA";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalPaseo()
+        {
+            string Sucursal = "PASEO";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalSarabiaI()
+        {
+            string Sucursal = "SARABIA";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+        }
+        private void EntradaSucursalSarabiaII()
+        {
+            string Sucursal = "SARABIA II";
+            string Ruta = string.Empty;
+            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString());
                     writer.WriteLine(Linea);
                 }
             }
@@ -897,7 +1265,7 @@ namespace BSC_Reportes
             suc.ListarSucursales();
             for (int x = 0; x < suc.Datos.Rows.Count; x++)
             {
-                System.IO.Directory.CreateDirectory(@"C:\FileExport\" + suc.Datos.Rows[x][1].ToString());
+                System.IO.Directory.CreateDirectory(@"C:\FileExport\" + suc.Datos.Rows[x][1].ToString().Trim());
             }
         }
         private void btnIgualarACero_Click(object sender, EventArgs e)
