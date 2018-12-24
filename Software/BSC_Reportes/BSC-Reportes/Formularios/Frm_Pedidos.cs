@@ -1365,10 +1365,14 @@ namespace BSC_Reportes
 
         private void btnRecibirInsidencia_Click(object sender, EventArgs e)
         {
-            string[] result = CadenaCodigos.Split(',');
-            foreach (string Codigo in result)
+            DialogResult = XtraMessageBox.Show("¿Desea Agregar los artculos seleccionado al Pedido?", "Recibir Insidencias", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
             {
-                RecibirInsidencia(Codigo);
+                string[] result = CadenaCodigos.Split(',');
+                foreach (string Codigo in result)
+                {
+                    RecibirInsidencia(Codigo);
+                }
             }
         }
 
