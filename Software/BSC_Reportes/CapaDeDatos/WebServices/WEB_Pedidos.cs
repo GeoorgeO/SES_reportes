@@ -72,7 +72,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public void MtdSelectPedidoNombreProveedor()
         {
             string Valor = string.Empty;
@@ -101,7 +100,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public void MtdSelectPedidoProveedor()
         {
             string Valor = string.Empty;
@@ -160,7 +158,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public void MtdInsertPedidoDetalleInsidencias()
         {
             string Valor = string.Empty;
@@ -197,7 +194,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public void MtdUpdatePedidoSurtido()
         {
             string Valor = string.Empty;
@@ -228,7 +224,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public void MtdSelectArticulo()
         {
             string Valor = string.Empty;

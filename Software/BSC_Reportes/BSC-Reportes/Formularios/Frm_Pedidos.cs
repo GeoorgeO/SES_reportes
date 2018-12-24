@@ -14,11 +14,16 @@ using DevExpress.XtraEditors.ViewInfo;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using System.IO;
+using GridControlEditCBMultipleSelection;
+using DevExpress.XtraGrid;
 
 namespace BSC_Reportes
 {
     public partial class Frm_Pedidos : DevExpress.XtraEditors.XtraForm
     {
+        GridControlCheckMarksSelection gridCheckMarksInsidencias;
+        string CadenaCodigos = "0";
+        StringBuilder sb = new StringBuilder();
         public string UsuariosLogin { get; set; }
         public char UsuarioClase { get; set; }
         public int IdPantallaBotones { get; set; }
@@ -50,11 +55,10 @@ namespace BSC_Reportes
         private void MakeTablaPedidos()
         {
             DataTable table = new DataTable("FirstTable");
-            DataColumn column;
+            DataColumn column = new DataColumn();
             table.Reset();
 
             // DataRow row;
-            column = new DataColumn();
             column.DataType = typeof(string);
             column.ColumnName = "Reg";
             column.AutoIncrement = false;
@@ -279,11 +283,10 @@ namespace BSC_Reportes
         private void MakeTablaPedidosInsidencias()
         {
             DataTable table = new DataTable("FirstTable");
-            DataColumn column;
+            DataColumn column = new DataColumn();
             table.Reset();
 
             // DataRow row;
-            column = new DataColumn();
             column.DataType = typeof(string);
             column.ColumnName = "Reg";
             column.AutoIncrement = false;
@@ -308,26 +311,6 @@ namespace BSC_Reportes
             column.ColumnName = "Descripcion";
             column.AutoIncrement = false;
             column.Caption = "Descripcion";
-            column.ReadOnly = false;
-            column.Unique = false;
-
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = typeof(decimal);
-            column.ColumnName = "CostoReposicion";
-            column.AutoIncrement = false;
-            column.Caption = "Costo Reposicion";
-            column.ReadOnly = false;
-            column.Unique = false;
-
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = typeof(string);
-            column.ColumnName = "Familia";
-            column.AutoIncrement = false;
-            column.Caption = "Familia";
             column.ReadOnly = false;
             column.Unique = false;
 
@@ -480,6 +463,8 @@ namespace BSC_Reportes
             dtgValPedidos.CustomDrawCell += dtgValPedidos_CustomDrawCell;
             txtFolio.Focus();
             PrimeraEdicion = false;
+            GridMultipleInsidencias();
+            btnRecibirInsidencia.Enabled = false;
         }
         private void DesbloquearObjetos(Boolean Valor)
         {
@@ -537,6 +522,11 @@ namespace BSC_Reportes
                 int xRow = dtgValPedidos.GetVisibleRowHandle(x);
                 dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["Reg"], x+1);
             }
+            for (int x = 0; x < dtgValPedidosInsidencias.RowCount; x++)
+            {
+                int xRow = dtgValPedidosInsidencias.GetVisibleRowHandle(x);
+                dtgValPedidosInsidencias.SetRowCellValue(xRow, dtgValPedidosInsidencias.Columns["Reg"], x + 1);
+            }
         }
 
         public void BuscarPrePedido(string vPrePedidoId)
@@ -565,8 +555,22 @@ namespace BSC_Reportes
                     this.TPedido.OptionsColumn.AllowEdit = true;
                 }
                 CargarPedidosDetalles(vFolio);
+                CargarPedidosDetallesInsidencias(vFolio);
                 SumaDistribucion();
             }
+        }
+
+        private void CargarPedidosDetallesInsidencias(string vFolio)
+        {
+            MensajeCargando(1);
+            WEB_Pedidos selenc = new WEB_Pedidos();
+            selenc.PedidosId = Convert.ToInt32(vFolio);
+            selenc.MtdSelectPedidoDetallesInsidenciasProveedor();
+            if (selenc.Exito)
+            {
+                dtgPedidosInsidencias.DataSource = selenc.Datos;
+            }
+            MensajeCargando(2);
         }
 
         void dtgValPedidos_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -635,7 +639,7 @@ namespace BSC_Reportes
         {
             MensajeCargando(1);
             CLS_Pedidos selenc = new CLS_Pedidos();
-            selenc.PrePedidosId = Convert.ToInt32(vFolio);
+            selenc.PedidosId = Convert.ToInt32(vFolio);
             selenc.MtdSeleccionarPedidosDetallesId();
             if (selenc.Exito)
             {
@@ -1306,6 +1310,189 @@ namespace BSC_Reportes
             {
                 MessageBox.Show("No se ha surtido el Pedido");
             }
+        }
+
+        private void btnRedistribuir_Click(object sender, EventArgs e)
+        {
+            if (PedidoSurtido)
+            {
+                DialogResult = XtraMessageBox.Show("¿Desea Redistribuir todo los articulos que tengan diferencia?", "Redistribuir Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha surtido el Pedido");
+            }
+        }
+        private void GridMultipleInsidencias()
+        {
+            gridCheckMarksInsidencias = new GridControlCheckMarksSelection(dtgValPedidosInsidencias);
+            gridCheckMarksInsidencias.SelectionChanged += gridCheckMarksAcuerdos_SelectionChanged;
+        }
+        void gridCheckMarksAcuerdos_SelectionChanged(object sender, EventArgs e)
+        {
+            CadenaCodigos = string.Empty;
+            if (ActiveControl is GridControl)
+            {
+
+                foreach (DataRowView rv in (sender as GridControlCheckMarksSelection).selection)
+                {
+                    if (sb.ToString().Length > 0) { sb.Append(", "); }
+                    sb.AppendFormat("{0}", rv["ArticuloCodigo"]);
+
+                    if (CadenaCodigos != string.Empty)
+                    {
+                        CadenaCodigos = string.Format("{0},{1}", CadenaCodigos, rv["ArticuloCodigo"]);
+                    }
+                    else
+                    {
+                        CadenaCodigos = rv["ArticuloCodigo"].ToString();
+                    }
+                }
+            }
+            if(CadenaCodigos==string.Empty)
+            {
+                btnRecibirInsidencia.Enabled = false;
+            }
+            else
+            {
+                btnRecibirInsidencia.Enabled = true;
+            }
+        }
+
+        private void btnRecibirInsidencia_Click(object sender, EventArgs e)
+        {
+            string[] result = CadenaCodigos.Split(',');
+            foreach (string Codigo in result)
+            {
+                RecibirInsidencia(Codigo);
+            }
+        }
+
+        private void RecibirInsidencia(string codigo)
+        {
+            string ArticuloCodigo = string.Empty;
+            int Cantidad = 0;
+            Boolean ExisteenPedido = false;
+            WEB_Pedidos sel = new WEB_Pedidos();
+            sel.ArticuloCodigo = codigo;
+            sel.MtdSelectArticulo();
+            if(sel.Exito)
+            {
+                if(sel.Datos.Rows.Count>0)
+                {
+                    for (int i = 0; i < dtgValPedidos.RowCount; i++)
+                    {
+                        int xRow = dtgValPedidos.GetVisibleRowHandle(i);
+                        if (dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString() == codigo)
+                        {
+                            ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString();
+                            Cantidad = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
+                            ExisteenPedido = true;
+                            break;
+                        }
+                    }
+                    if (ExisteenPedido)
+                    {
+                        int CantidadRecibir = BuscaCantidadInsidencia(codigo);
+                        int CantEntrada = Cantidad + CantidadRecibir;
+                        CLS_Pedidos udp = new CLS_Pedidos();
+                        udp.PedidosId = Convert.ToInt32(txtFolio.Text);
+                        udp.ArticuloCodigo = ArticuloCodigo;
+                        udp.Surtido = CantEntrada;
+                        udp.MtdUpdateInsidencia();
+                        if (udp.Exito)
+                        {
+                            CLS_Pedidos del = new CLS_Pedidos();
+                            del.PedidosId = Convert.ToInt32(txtFolio.Text);
+                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.MtdEliminarInsidencia();
+                        }
+                    }
+                    else
+                    {
+                        CLS_Pedidos ins = new CLS_Pedidos();
+                        ins.PedidosId = Convert.ToInt32(txtFolio.Text);
+                        ins.ArticuloCodigo = sel.Datos.Rows[0][0].ToString();
+                        ins.ArticuloDescripcion = sel.Datos.Rows[0][1].ToString();
+                        ins.Surtido = BuscaCantidadInsidencia(codigo);
+                        ins.MtdInsertInsidenciar();
+                        if (ins.Exito)
+                        {
+                            CLS_Pedidos del = new CLS_Pedidos();
+                            del.PedidosId = Convert.ToInt32(txtFolio.Text);
+                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.MtdEliminarInsidencia();
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < dtgValPedidos.RowCount; i++)
+                    {
+                        int xRow = dtgValPedidos.GetVisibleRowHandle(i);
+                        if (dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString() == codigo)
+                        {
+                            ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString();
+                            Cantidad = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Entrada").ToString());
+                            ExisteenPedido = true;
+                            break;
+                        }
+                    }
+                    if(ExisteenPedido)
+                    {
+                        int CantidadRecibir = BuscaCantidadInsidencia(codigo);
+                        int CantEntrada = Cantidad + CantidadRecibir;
+                        CLS_Pedidos udp = new CLS_Pedidos();
+                        udp.PedidosId =Convert.ToInt32(txtFolio.Text);
+                        udp.ArticuloCodigo = ArticuloCodigo;
+                        udp.Surtido = CantEntrada;
+                        udp.MtdUpdateInsidencia();
+                        if(udp.Exito)
+                        {
+                            CLS_Pedidos del = new CLS_Pedidos();
+                            del.PedidosId = Convert.ToInt32(txtFolio.Text);
+                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.MtdEliminarInsidencia();
+
+                        }
+                    }
+                    else
+                    {
+                        CLS_Pedidos ins = new CLS_Pedidos();
+                        ins.PedidosId = Convert.ToInt32(txtFolio.Text);
+                        ins.ArticuloCodigo = ArticuloCodigo;
+                        ins.ArticuloDescripcion = "Articulo Nuevo Sin Definir";
+                        ins.Surtido = BuscaCantidadInsidencia(codigo);
+                        ins.MtdInsertInsidenciar();
+                        if (ins.Exito)
+                        {
+                            CLS_Pedidos del = new CLS_Pedidos();
+                            del.PedidosId = Convert.ToInt32(txtFolio.Text);
+                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.MtdEliminarInsidencia();
+                        }
+                    }
+                }
+            }
+        }
+
+        private int BuscaCantidadInsidencia(string codigo)
+        {
+            int Valor = 0;
+            for (int i = 0; i < dtgValPedidosInsidencias.RowCount; i++)
+            {
+                int xRow = dtgValPedidosInsidencias.GetVisibleRowHandle(i);
+                if (dtgValPedidosInsidencias.GetRowCellValue(xRow, "Articulocodigo").ToString() == codigo)
+                {
+                    Valor = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Cantidad").ToString());
+                    break;
+                }
+            }
+            return Valor;
         }
     }
 }

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
             this.Entrada = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnFolios = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -59,6 +59,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnRedistribuir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIgualarACero = new DevExpress.XtraEditors.SimpleButton();
             this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
@@ -119,20 +120,16 @@
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.dtgPedidosInsidencias = new DevExpress.XtraGrid.GridControl();
-            this.dtgValPedidosInsidencias = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.dtgValPedidosInsidencias = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.bandedGridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.btnRecibirInsidencia = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -192,9 +189,11 @@
             // bandedGridColumn20
             // 
             this.bandedGridColumn20.Caption = "Entrada";
+            this.bandedGridColumn20.FieldName = "Cantidad";
             this.bandedGridColumn20.Name = "bandedGridColumn20";
             this.bandedGridColumn20.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn20.Visible = true;
+            this.bandedGridColumn20.VisibleIndex = 3;
             // 
             // barManager1
             // 
@@ -402,11 +401,13 @@
             this.panelControl1.Location = new System.Drawing.Point(81, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1039, 133);
+            this.panelControl1.Size = new System.Drawing.Size(1039, 139);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.btnRecibirInsidencia);
+            this.groupControl1.Controls.Add(this.btnRedistribuir);
             this.groupControl1.Controls.Add(this.btnIgualarACero);
             this.groupControl1.Controls.Add(this.lblStatus);
             this.groupControl1.Controls.Add(this.groupControl3);
@@ -422,18 +423,28 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1015, 109);
+            this.groupControl1.Size = new System.Drawing.Size(1015, 115);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // btnRedistribuir
+            // 
+            this.btnRedistribuir.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRedistribuir.ImageOptions.Image")));
+            this.btnRedistribuir.Location = new System.Drawing.Point(608, 55);
+            this.btnRedistribuir.Name = "btnRedistribuir";
+            this.btnRedistribuir.Size = new System.Drawing.Size(141, 25);
+            this.btnRedistribuir.TabIndex = 21;
+            this.btnRedistribuir.Text = "Redistribuir";
+            this.btnRedistribuir.Click += new System.EventHandler(this.btnRedistribuir_Click);
             // 
             // btnIgualarACero
             // 
             this.btnIgualarACero.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIgualarACero.ImageOptions.Image")));
-            this.btnIgualarACero.Location = new System.Drawing.Point(618, 46);
+            this.btnIgualarACero.Location = new System.Drawing.Point(608, 27);
             this.btnIgualarACero.Name = "btnIgualarACero";
-            this.btnIgualarACero.Size = new System.Drawing.Size(141, 38);
+            this.btnIgualarACero.Size = new System.Drawing.Size(141, 24);
             this.btnIgualarACero.TabIndex = 20;
-            this.btnIgualarACero.Text = "Igualar distribucion\r\n a 0";
+            this.btnIgualarACero.Text = "Distribucion a 0";
             this.btnIgualarACero.Click += new System.EventHandler(this.btnIgualarACero_Click);
             // 
             // lblStatus
@@ -563,10 +574,10 @@
             // 
             this.panelControl2.Controls.Add(this.xtraTabControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(81, 133);
+            this.panelControl2.Location = new System.Drawing.Point(81, 139);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1039, 441);
+            this.panelControl2.Size = new System.Drawing.Size(1039, 435);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -576,7 +587,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1015, 417);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1015, 411);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -587,7 +598,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 389);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 383);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -600,7 +611,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(999, 379);
+            this.dtgPedidos.Size = new System.Drawing.Size(999, 373);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -1071,7 +1082,7 @@
             this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(1009, 389);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1009, 383);
             this.xtraTabPage2.Text = "Insidencias";
             // 
             // dtgPedidosInsidencias
@@ -1084,25 +1095,19 @@
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(999, 379);
+            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(999, 373);
             this.dtgPedidosInsidencias.TabIndex = 1;
             this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidosInsidencias});
             // 
             // dtgValPedidosInsidencias
             // 
-            this.dtgValPedidosInsidencias.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand16,
-            this.gridBand32});
-            this.dtgValPedidosInsidencias.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.dtgValPedidosInsidencias.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.bandedGridColumn1,
             this.bandedGridColumn2,
             this.bandedGridColumn3,
-            this.bandedGridColumn4,
-            this.bandedGridColumn5,
             this.bandedGridColumn20,
-            this.bandedGridColumn6,
-            this.bandedGridColumn7});
+            this.bandedGridColumn6});
             gridFormatRule1.Column = this.bandedGridColumn20;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleExpression1.Expression = "[TPedido] <> []";
@@ -1113,25 +1118,11 @@
             this.dtgValPedidosInsidencias.Name = "dtgValPedidosInsidencias";
             this.dtgValPedidosInsidencias.OptionsFind.AlwaysVisible = true;
             this.dtgValPedidosInsidencias.OptionsMenu.ShowConditionalFormattingItem = true;
+            this.dtgValPedidosInsidencias.OptionsSelection.MultiSelect = true;
             this.dtgValPedidosInsidencias.OptionsView.ColumnAutoWidth = false;
             this.dtgValPedidosInsidencias.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.dtgValPedidosInsidencias.OptionsView.ShowFooter = true;
             this.dtgValPedidosInsidencias.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridBand16
-            // 
-            this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand16.Caption = "Articulos";
-            this.gridBand16.Columns.Add(this.bandedGridColumn1);
-            this.gridBand16.Columns.Add(this.bandedGridColumn2);
-            this.gridBand16.Columns.Add(this.bandedGridColumn3);
-            this.gridBand16.Columns.Add(this.bandedGridColumn4);
-            this.gridBand16.Columns.Add(this.bandedGridColumn5);
-            this.gridBand16.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.gridBand16.Name = "gridBand16";
-            this.gridBand16.VisibleIndex = 0;
-            this.gridBand16.Width = 784;
             // 
             // bandedGridColumn1
             // 
@@ -1140,6 +1131,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn1.Visible = true;
+            this.bandedGridColumn1.VisibleIndex = 0;
             this.bandedGridColumn1.Width = 47;
             // 
             // bandedGridColumn2
@@ -1147,10 +1139,11 @@
             this.bandedGridColumn2.AppearanceHeader.Options.UseTextOptions = true;
             this.bandedGridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumn2.Caption = "Codigo";
-            this.bandedGridColumn2.FieldName = "Codigo";
+            this.bandedGridColumn2.FieldName = "ArticuloCodigo";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn2.Visible = true;
+            this.bandedGridColumn2.VisibleIndex = 1;
             this.bandedGridColumn2.Width = 116;
             // 
             // bandedGridColumn3
@@ -1158,59 +1151,22 @@
             this.bandedGridColumn3.AppearanceHeader.Options.UseTextOptions = true;
             this.bandedGridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumn3.Caption = "Descripcion";
-            this.bandedGridColumn3.FieldName = "Descripcion";
+            this.bandedGridColumn3.FieldName = "ArticuloDescripcion";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.VisibleIndex = 2;
             this.bandedGridColumn3.Width = 327;
-            // 
-            // bandedGridColumn4
-            // 
-            this.bandedGridColumn4.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn4.Caption = "Costo Reposicion";
-            this.bandedGridColumn4.FieldName = "CostoReposicion";
-            this.bandedGridColumn4.Name = "bandedGridColumn4";
-            this.bandedGridColumn4.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.Width = 92;
-            // 
-            // bandedGridColumn5
-            // 
-            this.bandedGridColumn5.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn5.Caption = "Familia";
-            this.bandedGridColumn5.FieldName = "Familia";
-            this.bandedGridColumn5.Name = "bandedGridColumn5";
-            this.bandedGridColumn5.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.Width = 202;
-            // 
-            // gridBand32
-            // 
-            this.gridBand32.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand32.Caption = "Orden";
-            this.gridBand32.Columns.Add(this.bandedGridColumn20);
-            this.gridBand32.Columns.Add(this.bandedGridColumn6);
-            this.gridBand32.Columns.Add(this.bandedGridColumn7);
-            this.gridBand32.Name = "gridBand32";
-            this.gridBand32.VisibleIndex = 1;
-            this.gridBand32.Width = 225;
             // 
             // bandedGridColumn6
             // 
             this.bandedGridColumn6.Caption = "Tipo";
             this.bandedGridColumn6.FieldName = "Tipo";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
+            this.bandedGridColumn6.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn6.Visible = true;
-            // 
-            // bandedGridColumn7
-            // 
-            this.bandedGridColumn7.Caption = "Recibir";
-            this.bandedGridColumn7.FieldName = "Recibir";
-            this.bandedGridColumn7.Name = "bandedGridColumn7";
-            this.bandedGridColumn7.Visible = true;
+            this.bandedGridColumn6.VisibleIndex = 4;
+            this.bandedGridColumn6.Width = 180;
             // 
             // repositoryItemTextEdit5
             // 
@@ -1237,6 +1193,16 @@
             this.imageCollection1.Images.SetKeyName(0, "iconfinder_Stock Index Up_27881.png");
             this.imageCollection1.Images.SetKeyName(1, "iconfinder_Stock Index Down_27880.png");
             this.imageCollection1.Images.SetKeyName(2, "iconfinder_Glyph Check_58561.png");
+            // 
+            // btnRecibirInsidencia
+            // 
+            this.btnRecibirInsidencia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnRecibirInsidencia.Location = new System.Drawing.Point(608, 85);
+            this.btnRecibirInsidencia.Name = "btnRecibirInsidencia";
+            this.btnRecibirInsidencia.Size = new System.Drawing.Size(141, 25);
+            this.btnRecibirInsidencia.TabIndex = 22;
+            this.btnRecibirInsidencia.Text = "Recibir Insidencia";
+            this.btnRecibirInsidencia.Click += new System.EventHandler(this.btnRecibirInsidencia_Click);
             // 
             // Frm_Pedidos
             // 
@@ -1358,14 +1324,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraGrid.GridControl dtgPedidosInsidencias;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView dtgValPedidosInsidencias;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit5;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn20;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit6;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit7;
         private DevExpress.XtraEditors.LabelControl lblStatus;
@@ -1390,9 +1349,13 @@
         private DevExpress.XtraBars.BarLargeButtonItem btnLiberaPedido;
         private DevExpress.XtraBars.BarLargeButtonItem btnGeneraArchivos;
         private DevExpress.XtraEditors.SimpleButton btnIgualarACero;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand32;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
+        private DevExpress.XtraEditors.SimpleButton btnRedistribuir;
+        private DevExpress.XtraGrid.Views.Grid.GridView dtgValPedidosInsidencias;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn6;
+        private DevExpress.XtraEditors.SimpleButton btnRecibirInsidencia;
     }
 }

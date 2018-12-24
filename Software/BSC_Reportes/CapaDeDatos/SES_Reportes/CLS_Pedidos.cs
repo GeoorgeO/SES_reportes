@@ -450,9 +450,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
-        
-
         public void MtdUpdatePrePedidoDetalleProveedor()
         {
             string Valor = string.Empty;
@@ -639,7 +636,7 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_PedidoDetalles_Id_Select";
-                _dato.Entero = PrePedidosId;
+                _dato.Entero = PedidosId;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _conexion.EjecutarDataset();
 
@@ -995,5 +992,104 @@ namespace CapaDeDatos
             }
         }
 
+        // Insidencias
+
+        public void MtdUpdateInsidencia()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Update";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.Entero = Surtido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
+
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdInsertInsidenciar()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Insert";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _dato.CadenaTexto = ArticuloDescripcion;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
+                _dato.Entero = Surtido;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdEliminarInsidencia()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Delete";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
     }
 }
