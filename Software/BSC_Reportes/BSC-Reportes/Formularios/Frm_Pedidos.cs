@@ -21,6 +21,37 @@ namespace BSC_Reportes
 {
     public partial class Frm_Pedidos : DevExpress.XtraEditors.XtraForm
     {
+        public int VAlmacen { get; private set; }
+        public int VApatzingan { get; private set; }
+        public int VCalzada { get; private set; }
+        public int VCentro { get; private set; }
+        public int VCostaRica { get; private set; }
+        public int VEstocolmo { get; private set; }
+        public int VFcoVilla { get; private set; }
+        public int VLombardia { get; private set; }
+        public int VLosReyes { get; private set; }
+        public int VMorelos { get; private set; }
+        public int VNvaItalia { get; private set; }
+        public int VPaseo { get; private set; }
+        public int VSarabiaI { get; private set; }
+        public int VSarabiaII { get; private set; }
+
+
+        public decimal DAlmacen { get; set; }
+        public decimal DCentro { get; private set; }
+        public decimal DApatzingan { get; private set; }
+        public decimal DCalzada { get; private set; }
+        public decimal DCostaRica { get; private set; }
+        public decimal DEstocolmo { get; private set; }
+        public decimal DFcoVilla { get; private set; }
+        public decimal DLombardia { get; private set; }
+        public decimal DLosReyes { get; private set; }
+        public decimal DMorelos { get; private set; }
+        public decimal DNvaItalia { get; private set; }
+        public decimal DPaseo { get; private set; }
+        public decimal DSarabiaI { get; private set; }
+        public decimal DSarabiaII { get; private set; }
+
         GridControlCheckMarksSelection gridCheckMarksInsidencias;
         string CadenaCodigos = "0";
         StringBuilder sb = new StringBuilder();
@@ -47,6 +78,9 @@ namespace BSC_Reportes
         public bool PrimeraEdicion { get; private set; }
         public int xRow { get; private set; }
         public int? PedidosId { get; private set; }
+        public string vArticuloCodigo { get; private set; }
+        public int VSumaD { get; private set; }
+        public int vSurtido { get; private set; }
 
         public Frm_Pedidos()
         {
@@ -465,6 +499,7 @@ namespace BSC_Reportes
             PrimeraEdicion = false;
             GridMultipleInsidencias();
             btnRecibirInsidencia.Enabled = false;
+            btnLimpiar.PerformClick();
         }
         private void DesbloquearObjetos(Boolean Valor)
         {
@@ -506,7 +541,7 @@ namespace BSC_Reportes
                 frmpro.ShowDialog();
                 if (txtFolio.Text != string.Empty)
                 {
-                    btnLimpiar.PerformClick();
+                    LimpiarCampos();
                     CargarPedidos(txtFolio.Text);
                     DesbloquearObjetos(true);
                     NumerarReg();
@@ -678,7 +713,7 @@ namespace BSC_Reportes
             {
                 if(txtFolio.Text!=string.Empty)
                 {
-                    btnLimpiar.PerformClick();
+                    LimpiarCampos();
                     CargarPedidos(txtFolio.Text);
                     DesbloquearObjetos(true);
                     NumerarReg();
@@ -721,7 +756,12 @@ namespace BSC_Reportes
         }
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            LimpiarCampos();
+            txtFolio.Text = string.Empty;
+        }
+
+        private void LimpiarCampos()
+        {
             dtInicio.EditValue = DateTime.Now;
             txtProveedorId.Text = string.Empty;
             txtProveedorNombre.Text = string.Empty;
@@ -732,6 +772,11 @@ namespace BSC_Reportes
             MakeTablaPedidos();
             MakeTablaPedidosInsidencias();
             DesbloquearObjetos(true);
+            CadenaCodigos = string.Empty;
+            dtgValPedidosInsidencias.ClearSelection();
+            btnRecibirInsidencia.Enabled = false;
+            btnRedistribuir.Enabled = false;
+            btnIgualarACero.Enabled = false;
         }
 
         private void dtgValPedidos_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -1319,7 +1364,7 @@ namespace BSC_Reportes
                 DialogResult = XtraMessageBox.Show("¿Desea Redistribuir todo los articulos que tengan diferencia?", "Redistribuir Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (DialogResult == DialogResult.Yes)
                 {
-
+                    CalcularDistribucion();
                 }
             }
             else
@@ -1327,6 +1372,203 @@ namespace BSC_Reportes
                 XtraMessageBox.Show("No se ha surtido el Pedido");
             }
         }
+
+        private void CalcularDistribucion()
+        {
+            pbProgreso.Properties.Maximum = dtgValPedidos.RowCount;
+            for (int i = 0; i < dtgValPedidos.RowCount; i++)
+            {
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                xRow = dtgValPedidos.GetVisibleRowHandle(i);
+                if (Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString()) > 0)
+                {
+                    if (Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "SumaD").ToString()) > 0)
+                    {
+                        int TotalDistribucion = 0;
+
+                        vArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString();
+                        VSumaD = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "SumaD").ToString());
+                        vSurtido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
+
+                        VAlmacen = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DAlmacen").ToString());
+                        DAlmacen = Math.Round(((Convert.ToDecimal(VAlmacen) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DAlmacen"], DAlmacen);
+                        TotalDistribucion += Convert.ToInt32(DAlmacen);
+
+                        VCentro = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString());
+                        DCentro = Math.Round(((Convert.ToDecimal(VCentro) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCentro"], DCentro);
+                        TotalDistribucion += Convert.ToInt32(DCentro);
+
+                        VApatzingan = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString());
+                        DApatzingan = Math.Round(((Convert.ToDecimal(VApatzingan) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DApatzingan"], DApatzingan);
+                        TotalDistribucion += Convert.ToInt32(DApatzingan);
+
+                        VCalzada = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString());
+                        DCalzada = Math.Round(((Convert.ToDecimal(VCalzada) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCalzada"], DCalzada);
+                        TotalDistribucion += Convert.ToInt32(DCalzada);
+
+                        VCostaRica = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString());
+                        DCostaRica = Math.Round(((Convert.ToDecimal(VCostaRica) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCostaRica"], DCostaRica);
+                        TotalDistribucion += Convert.ToInt32(DCostaRica);
+
+                        VEstocolmo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
+                        DEstocolmo = Math.Round(((Convert.ToDecimal(VEstocolmo) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DEstocolmo"], DEstocolmo);
+                        TotalDistribucion += Convert.ToInt32(DEstocolmo);
+
+                        VFcoVilla = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
+                        DFcoVilla = Math.Round(((Convert.ToDecimal(VFcoVilla) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DFcoVilla"], DFcoVilla);
+                        TotalDistribucion += Convert.ToInt32(DFcoVilla);
+
+                        VLombardia = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
+                        DLombardia = Math.Round(((Convert.ToDecimal(VLombardia) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLombardia"], DLombardia);
+                        TotalDistribucion += Convert.ToInt32(DLombardia);
+
+                        VLosReyes = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString());
+                        DLosReyes = Math.Round(((Convert.ToDecimal(VLosReyes) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLosReyes"], DLosReyes);
+                        TotalDistribucion += Convert.ToInt32(DLosReyes);
+
+                        VMorelos = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
+                        DMorelos = Math.Round(((Convert.ToDecimal(VMorelos) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DMorelos"], DMorelos);
+                        TotalDistribucion += Convert.ToInt32(DMorelos);
+
+                        VNvaItalia = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
+                        DNvaItalia = Math.Round(((Convert.ToDecimal(VNvaItalia) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DNvaItalia"], DNvaItalia);
+                        TotalDistribucion += Convert.ToInt32(DNvaItalia);
+
+                        VPaseo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "PaseoV").ToString());
+                        DPaseo = Math.Round(((Convert.ToDecimal(VPaseo) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DPaseo"], DPaseo);
+                        TotalDistribucion += Convert.ToInt32(DPaseo);
+
+                        VSarabiaI = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString());
+                        DSarabiaI = Math.Round(((Convert.ToDecimal(VSarabiaI) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaI"], DSarabiaI);
+                        TotalDistribucion += Convert.ToInt32(DSarabiaI);
+
+                        VSarabiaII = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString());
+                        DSarabiaII = Math.Round(((Convert.ToDecimal(VSarabiaII) / VSumaD) * vSurtido), 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaII"], DSarabiaII);
+                        TotalDistribucion += Convert.ToInt32(DSarabiaII);
+
+                        if (!(TotalDistribucion == vSurtido))
+                        {
+                            int Diferencia = vSurtido - TotalDistribucion;
+                            AcomodarDiferencia(Diferencia);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DAlmacen"], DAlmacen);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCentro"], DCentro);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DApatzingan"], DApatzingan);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCalzada"], DCalzada);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCostaRica"], DCostaRica);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DEstocolmo"], DEstocolmo);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DFcoVilla"], DFcoVilla);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLombardia"], DLombardia);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLosReyes"], DLosReyes);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DMorelos"], DMorelos);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DNvaItalia"], DNvaItalia);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DPaseo"], DPaseo);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaI"], DSarabiaI);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaII"], DSarabiaII);
+                        }
+                    }
+                    else
+                    {
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DAlmacen"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCentro"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DApatzingan"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCalzada"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DCostaRica"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DEstocolmo"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DFcoVilla"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLombardia"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLosReyes"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DMorelos"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DNvaItalia"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DPaseo"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaI"], 0);
+                        dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaII"], 0);
+                    }
+                }
+            }
+        }
+
+        private void AcomodarDiferencia(int diferencia)
+        {
+            int Mayor = 0;
+            int pos = 0;
+            int[] datos = new int[14]
+            {Convert.ToInt32(DAlmacen), Convert.ToInt32(DCentro), Convert.ToInt32(DMorelos),
+             Convert.ToInt32(DFcoVilla), Convert.ToInt32(DSarabiaI), Convert.ToInt32(DSarabiaII),
+             Convert.ToInt32(DPaseo), Convert.ToInt32(DEstocolmo), Convert.ToInt32(DCostaRica),
+             Convert.ToInt32(DCalzada), Convert.ToInt32(DLombardia), Convert.ToInt32(DNvaItalia),
+             Convert.ToInt32(DApatzingan), Convert.ToInt32(DLosReyes)};
+            int i = 0;
+            while (i <= 13)
+            {
+                if (datos[i] > Mayor)
+                {
+                    Mayor = datos[i];
+                    pos = i;
+                }
+                i++;
+            }
+            switch (pos)
+            {
+                case 0:
+                    DAlmacen += diferencia;
+                    break;
+                case 1:
+                    DCentro += diferencia;
+                    break;
+                case 2:
+                    DMorelos += diferencia;
+                    break;
+                case 3:
+                    DFcoVilla += diferencia;
+                    break;
+                case 4:
+                    DSarabiaI += diferencia;
+                    break;
+                case 5:
+                    DSarabiaII += diferencia;
+                    break;
+                case 6:
+                    DPaseo += diferencia;
+                    break;
+                case 7:
+                    DEstocolmo += diferencia;
+                    break;
+                case 8:
+                    DCostaRica += diferencia;
+                    break;
+                case 9:
+                    DCalzada += diferencia;
+                    break;
+                case 10:
+                    DLombardia += diferencia;
+                    break;
+                case 11:
+                    DNvaItalia += diferencia;
+                    break;
+                case 12:
+                    DApatzingan += diferencia;
+                    break;
+                case 13:
+                    DLosReyes += diferencia;
+                    break;
+            }
+        }
+
         private void GridMultipleInsidencias()
         {
             gridCheckMarksInsidencias = new GridControlCheckMarksSelection(dtgValPedidosInsidencias);
@@ -1377,6 +1619,7 @@ namespace BSC_Reportes
                     }
                     CadenaCodigos = string.Empty;
                     CargarPedidos(txtFolio.Text);
+                    dtgValPedidosInsidencias.ClearSelection();
                 }
             }
             else
