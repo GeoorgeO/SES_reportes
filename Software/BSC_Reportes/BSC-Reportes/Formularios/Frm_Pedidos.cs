@@ -1324,7 +1324,7 @@ namespace BSC_Reportes
             }
             else
             {
-                MessageBox.Show("No se ha surtido el Pedido");
+                XtraMessageBox.Show("No se ha surtido el Pedido");
             }
         }
         private void GridMultipleInsidencias()
@@ -1365,16 +1365,23 @@ namespace BSC_Reportes
 
         private void btnRecibirInsidencia_Click(object sender, EventArgs e)
         {
-            DialogResult = XtraMessageBox.Show("¿Desea Agregar los artculos seleccionado al Pedido?", "Recibir Insidencias", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (DialogResult == DialogResult.Yes)
+            if (PedidoSurtido)
             {
-                string[] result = CadenaCodigos.Split(',');
-                foreach (string Codigo in result)
+                DialogResult = XtraMessageBox.Show("¿Desea Agregar los artculos seleccionado al Pedido?", "Recibir Insidencias", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
                 {
-                    RecibirInsidencia(Codigo);
+                    string[] result = CadenaCodigos.Split(',');
+                    foreach (string Codigo in result)
+                    {
+                        RecibirInsidencia(Codigo);
+                    }
+                    CadenaCodigos = string.Empty;
+                    CargarPedidos(txtFolio.Text);
                 }
-                CadenaCodigos = string.Empty;
-                CargarPedidos(txtFolio.Text);
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha surtido el Pedido");
             }
         }
 
@@ -1478,7 +1485,7 @@ namespace BSC_Reportes
                         {
                             CLS_Pedidos del = new CLS_Pedidos();
                             del.PedidosId = Convert.ToInt32(txtFolio.Text);
-                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.ArticuloCodigo = codigo;
                             del.MtdEliminarInsidencia();
                         }
                     }
