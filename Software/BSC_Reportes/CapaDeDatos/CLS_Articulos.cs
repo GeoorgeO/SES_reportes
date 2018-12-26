@@ -72,7 +72,5 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
-
     }
 }

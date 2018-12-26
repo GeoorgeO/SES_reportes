@@ -1373,6 +1373,8 @@ namespace BSC_Reportes
                 {
                     RecibirInsidencia(Codigo);
                 }
+                CadenaCodigos = string.Empty;
+                CargarPedidos(txtFolio.Text);
             }
         }
 
@@ -1391,9 +1393,9 @@ namespace BSC_Reportes
                     for (int i = 0; i < dtgValPedidos.RowCount; i++)
                     {
                         int xRow = dtgValPedidos.GetVisibleRowHandle(i);
-                        if (dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString() == codigo)
+                        if (dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString() == codigo)
                         {
-                            ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString();
+                            ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString();
                             Cantidad = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
                             ExisteenPedido = true;
                             break;
@@ -1438,10 +1440,10 @@ namespace BSC_Reportes
                     for (int i = 0; i < dtgValPedidos.RowCount; i++)
                     {
                         int xRow = dtgValPedidos.GetVisibleRowHandle(i);
-                        if (dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString() == codigo)
+                        if (dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString() == codigo)
                         {
-                            ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "Articulocodigo").ToString();
-                            Cantidad = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Entrada").ToString());
+                            ArticuloCodigo = dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString();
+                            Cantidad = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
                             ExisteenPedido = true;
                             break;
                         }
@@ -1468,7 +1470,7 @@ namespace BSC_Reportes
                     {
                         CLS_Pedidos ins = new CLS_Pedidos();
                         ins.PedidosId = Convert.ToInt32(txtFolio.Text);
-                        ins.ArticuloCodigo = ArticuloCodigo;
+                        ins.ArticuloCodigo = codigo;
                         ins.ArticuloDescripcion = "Articulo Nuevo Sin Definir";
                         ins.Surtido = BuscaCantidadInsidencia(codigo);
                         ins.MtdInsertInsidenciar();
@@ -1490,9 +1492,9 @@ namespace BSC_Reportes
             for (int i = 0; i < dtgValPedidosInsidencias.RowCount; i++)
             {
                 int xRow = dtgValPedidosInsidencias.GetVisibleRowHandle(i);
-                if (dtgValPedidosInsidencias.GetRowCellValue(xRow, "Articulocodigo").ToString() == codigo)
+                if (dtgValPedidosInsidencias.GetRowCellValue(xRow, "ArticuloCodigo").ToString() == codigo)
                 {
-                    Valor = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Cantidad").ToString());
+                    Valor = Convert.ToInt32(dtgValPedidosInsidencias.GetRowCellValue(xRow, "Cantidad").ToString());
                     break;
                 }
             }

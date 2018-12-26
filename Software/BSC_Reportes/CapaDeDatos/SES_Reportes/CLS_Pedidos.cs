@@ -1039,8 +1039,6 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
-                _dato.CadenaTexto = ArticuloDescripcion;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
                 _dato.Entero = Surtido;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
                 _conexion.EjecutarDataset();
