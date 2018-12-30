@@ -246,6 +246,12 @@
     <Compile Include="Reportes\rpt_Pedidos.Designer.cs">
       <DependentUpon>rpt_Pedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\rpt_SucursalSurtir.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rpt_SucursalSurtir.Designer.cs">
+      <DependentUpon>rpt_SucursalSurtir.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +316,9 @@
     </Compile>
     <EmbeddedResource Include="Reportes\rpt_Pedidos.resx">
       <DependentUpon>rpt_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rpt_SucursalSurtir.resx">
+      <DependentUpon>rpt_SucursalSurtir.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

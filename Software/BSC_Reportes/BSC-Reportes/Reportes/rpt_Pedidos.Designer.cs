@@ -58,6 +58,7 @@
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // sqlDataSource1
@@ -201,17 +202,17 @@
             // 
             this.xrLabel6.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_RPT_BSC_Pedido_Id_Select.Proveedor")});
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(169.7917F, 29.12499F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(228.125F, 29.12499F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel6.SizeF = new System.Drawing.SizeF(434.2499F, 23F);
+            this.xrLabel6.SizeF = new System.Drawing.SizeF(375.9166F, 23F);
             this.xrLabel6.Text = "xrLabel6";
             // 
             // xrLabel5
             // 
             this.xrLabel5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_RPT_BSC_Pedido_Id_Select.ProveedorId")});
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(53.125F, 29.12499F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(116.6667F, 29.12499F);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(100F, 23F);
@@ -319,13 +320,22 @@
             // PageHeader
             // 
             this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPictureBox1,
             this.xrBarCode1,
             this.xrLabel10,
             this.xrLabel6,
             this.xrLabel5,
             this.xrLabel11});
-            this.PageHeader.HeightF = 87.5F;
+            this.PageHeader.HeightF = 80.24998F;
             this.PageHeader.Name = "PageHeader";
+            // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(100F, 79.20831F);
+            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage;
             // 
             // rpt_Pedidos
             // 
@@ -369,5 +379,6 @@
         private DevExpress.XtraReports.UI.XRLine xrLine2;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
         private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
+        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
     }
 }

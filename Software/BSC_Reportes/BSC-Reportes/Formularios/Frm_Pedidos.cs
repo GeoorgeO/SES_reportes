@@ -16,6 +16,7 @@ using DevExpress.XtraReports.UI;
 using System.IO;
 using GridControlEditCBMultipleSelection;
 using DevExpress.XtraGrid;
+using DevExpress.XtraPrinting;
 
 namespace BSC_Reportes
 {
@@ -1004,13 +1005,16 @@ namespace BSC_Reportes
         private void EntradaSucursalCentro()
         {
             string Sucursal = "CENTRO";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal,  txtFolio.Text , VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1023,17 +1027,24 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 4);
         }
+
+        
+
         private void EntradaSucursalApatzingan()
         {
             string Sucursal = "APATZINGAN";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1046,17 +1057,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 2);
         }
         private void EntradaSucursalCalzada()
         {
             string Sucursal = "CALZADA B";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1069,17 +1084,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 3);
         }
         private void EntradaSucursalCostaRica()
         {
             string Sucursal = "COSTA RICA";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1092,17 +1111,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 5);
         }
         private void EntradaSucursalEstocolmo()
         {
             string Sucursal = "ESTOCOLMO";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1115,17 +1138,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 6);
         }
         private void EntradaSucursalFcoVilla()
         {
             string Sucursal = "FCO. VILLA";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1138,17 +1165,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 7);
         }
         private void EntradaSucursalLombardia()
         {
             string Sucursal = "LOMBARDIA";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1161,17 +1192,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 8);
         }
         private void EntradaSucursalLosReyes()
         {
             string Sucursal = "LOS REYES";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1184,17 +1219,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 9);
         }
         private void EntradaSucursalMorelos()
         {
             string Sucursal = "MORELOS";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1207,17 +1246,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 10);
         }
         private void EntradaSucursalNvaItalia()
         {
             string Sucursal = "NUEVA ITALIA";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1230,17 +1273,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 11);
         }
         private void EntradaSucursalPaseo()
         {
             string Sucursal = "PASEO";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1253,17 +1300,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 12);
         }
         private void EntradaSucursalSarabiaI()
         {
             string Sucursal = "SARABIA";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1276,17 +1327,21 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 13);
         }
         private void EntradaSucursalSarabiaII()
         {
             string Sucursal = "SARABIA II";
-            string Ruta = string.Empty;
-            Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
             string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
             string TipoArch = "Entrada";
             fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
             Ruta += fileName;
+            Rutapdf += fileNamepdf;
             FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             for (int x = 0; x < dtgValPedidos.RowCount; x++)
@@ -1299,7 +1354,57 @@ namespace BSC_Reportes
                 }
             }
             writer.Close();
+            CrearPDF(Rutapdf, 14);
         }
+        private void CrearPDF(string fileNamepdf, int sucursal)
+        {
+            int folio = Convert.ToInt32(txtFolio.Text);
+            rpt_SucursalSurtir rpt = new rpt_SucursalSurtir(folio, sucursal);
+            PdfExportOptions pdfOptions = rpt.ExportOptions.Pdf;
+            pdfOptions.PageRange = "1-1000";
+
+            // Specify the quality of exported images.
+            pdfOptions.ConvertImagesToJpeg = false;
+            pdfOptions.ImageQuality = PdfJpegImageQuality.Medium;
+
+            // Specify the PDF/A-compatibility.
+            pdfOptions.PdfACompatibility = PdfACompatibility.PdfA3b;
+
+            // The following options are not compatible with PDF/A.
+            // The use of these options will result in errors on PDF validation.
+            //pdfOptions.NeverEmbeddedFonts = "Tahoma;Courier New";
+            //pdfOptions.ShowPrintDialogOnOpen = true;
+
+            // If required, you can specify the security and signature options. 
+            //pdfOptions.PasswordSecurityOptions
+            //pdfOptions.SignatureOptions
+
+            // If required, specify necessary metadata and attachments
+            // (e.g., to produce a ZUGFeRD-compatible PDF).
+            //pdfOptions.AdditionalMetadata
+            //pdfOptions.Attachments
+
+            // Specify the document options.
+            pdfOptions.DocumentOptions.Application = "Reporte para surtir Sucursales";
+            pdfOptions.DocumentOptions.Author = "NexusSoft";
+            pdfOptions.DocumentOptions.Keywords = "SEs_Reportes, Reporte, PDF";
+            pdfOptions.DocumentOptions.Producer = Environment.UserName.ToString();
+            pdfOptions.DocumentOptions.Subject = "Documento Surtido";
+            pdfOptions.DocumentOptions.Title = "Reporte Surtido";
+
+            // Checks the validity of PDF export options 
+            // and return a list of any detected inconsistencies.
+            IList<string> result = pdfOptions.Validate();
+            if (result.Count > 0)
+            {
+                Console.WriteLine(String.Join(Environment.NewLine, result));
+            }
+            else
+            {
+                rpt.ExportToPdf(fileNamepdf, pdfOptions);
+            }
+        }
+
         private Boolean DistribucionCorrecta()
         {
             Boolean Valor = true;
