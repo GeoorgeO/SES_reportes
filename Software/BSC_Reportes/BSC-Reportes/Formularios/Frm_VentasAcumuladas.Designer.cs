@@ -59,9 +59,9 @@
             this.FCodigo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.FFloracion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtNombreFamilia = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.txtIdFamilia = new DevExpress.XtraEditors.TextEdit();
             this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dtFin = new DevExpress.XtraEditors.DateEdit();
@@ -92,8 +92,8 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdFamilia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).BeginInit();
@@ -176,24 +176,25 @@
             // 
             this.btnBuscarFamilia.Caption = "Importar\r\n Familia";
             this.btnBuscarFamilia.Id = 51;
-            this.btnBuscarFamilia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.Image")));
-            this.btnBuscarFamilia.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFolios.ImageOptions.LargeImage")));
+            this.btnBuscarFamilia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarFamilia.ImageOptions.Image")));
+            this.btnBuscarFamilia.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarFamilia.ImageOptions.LargeImage")));
             this.btnBuscarFamilia.Name = "btnBuscarFamilia";
+            this.btnBuscarFamilia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscarFamilia_ItemClick);
             // 
             // btnGenerarReporte
             // 
             this.btnGenerarReporte.Caption = "Generar\r\n Reporte";
             this.btnGenerarReporte.Id = 17;
-            this.btnGenerarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
-            this.btnGenerarReporte.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
+            this.btnGenerarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarReporte.ImageOptions.Image")));
+            this.btnGenerarReporte.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGenerarReporte.ImageOptions.LargeImage")));
             this.btnGenerarReporte.Name = "btnGenerarReporte";
             // 
             // btnExportarExcel
             // 
             this.btnExportarExcel.Caption = "Exportar \r\n  Excel";
             this.btnExportarExcel.Id = 53;
-            this.btnExportarExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
-            this.btnExportarExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
+            this.btnExportarExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.ImageOptions.Image")));
+            this.btnExportarExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.ImageOptions.LargeImage")));
             this.btnExportarExcel.Name = "btnExportarExcel";
             // 
             // btnLimpiar
@@ -322,9 +323,9 @@
             // 
             this.groupControl1.Controls.Add(this.cboGridFloracion);
             this.groupControl1.Controls.Add(this.labelControl6);
-            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.txtNombreFamilia);
             this.groupControl1.Controls.Add(this.labelControl4);
-            this.groupControl1.Controls.Add(this.textEdit2);
+            this.groupControl1.Controls.Add(this.txtIdFamilia);
             this.groupControl1.Controls.Add(this.pbProgreso);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.dtFin);
@@ -395,33 +396,33 @@
             this.labelControl6.TabIndex = 21;
             this.labelControl6.Text = "Sucursales:";
             // 
-            // textEdit1
+            // txtNombreFamilia
             // 
-            this.textEdit1.Location = new System.Drawing.Point(154, 25);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(242, 20);
-            this.textEdit1.TabIndex = 20;
+            this.txtNombreFamilia.Location = new System.Drawing.Point(154, 25);
+            this.txtNombreFamilia.Name = "txtNombreFamilia";
+            this.txtNombreFamilia.Properties.ReadOnly = true;
+            this.txtNombreFamilia.Size = new System.Drawing.Size(242, 20);
+            this.txtNombreFamilia.TabIndex = 20;
             // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(31, 31);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(54, 13);
+            this.labelControl4.Size = new System.Drawing.Size(36, 13);
             this.labelControl4.TabIndex = 19;
-            this.labelControl4.Text = "Proveedor:";
+            this.labelControl4.Text = "Familia:";
             // 
-            // textEdit2
+            // txtIdFamilia
             // 
-            this.textEdit2.Location = new System.Drawing.Point(105, 25);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEdit2.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.textEdit2.Properties.Mask.EditMask = "n0";
-            this.textEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit2.Properties.ReadOnly = true;
-            this.textEdit2.Size = new System.Drawing.Size(43, 20);
-            this.textEdit2.TabIndex = 18;
+            this.txtIdFamilia.Location = new System.Drawing.Point(105, 25);
+            this.txtIdFamilia.Name = "txtIdFamilia";
+            this.txtIdFamilia.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtIdFamilia.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txtIdFamilia.Properties.Mask.EditMask = "n0";
+            this.txtIdFamilia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtIdFamilia.Properties.ReadOnly = true;
+            this.txtIdFamilia.Size = new System.Drawing.Size(43, 20);
+            this.txtIdFamilia.TabIndex = 18;
             // 
             // pbProgreso
             // 
@@ -478,9 +479,9 @@
             // 
             this.labelControl3.Location = new System.Drawing.Point(31, 59);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(36, 13);
+            this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 3;
-            this.labelControl3.Text = "Familia:";
+            this.labelControl3.Text = "Proveedor:";
             // 
             // txtProveedorId
             // 
@@ -701,8 +702,8 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdFamilia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).EndInit();
@@ -758,9 +759,9 @@
         private DevExpress.XtraGrid.GridControl dtgVentaExistencia;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtNombreFamilia;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit txtIdFamilia;
         private DevExpress.XtraEditors.GridLookUpEdit cboGridFloracion;
         private DevExpress.XtraGrid.Views.Grid.GridView cboGridFloracionView;
         private DevExpress.XtraGrid.Columns.GridColumn IdFloracion;

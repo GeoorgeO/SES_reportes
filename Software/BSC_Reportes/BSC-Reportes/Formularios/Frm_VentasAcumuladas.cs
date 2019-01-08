@@ -180,5 +180,29 @@ namespace BSC_Reportes
             btnExportarExcel.Links[0].Visible = true;
             btnLimpiar.Links[0].Visible = true;
         }
+
+        private void btnBuscarFamilia_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Frm_BFamilias frmFam = new Frm_BFamilias();
+            frmFam.ShowDialog();
+            if (frmFam.IdFamilia != 0)
+            {
+                txtIdFamilia.Text = frmFam.IdFamilia.ToString();
+                BuscarFamilia(Convert.ToInt32(txtIdFamilia.Text));
+            }
+        }
+        private void BuscarFamilia(int IdFamilia)
+        {
+            CLS_Familias bArt = new CLS_Familias();
+            bArt.FamiliaId = Convert.ToInt32(IdFamilia.ToString());
+            bArt.MtdSeleccionarFamilia();
+            if (bArt.Exito)
+            {
+                if (bArt.Datos.Rows.Count > 0)
+                {
+                    txtNombreFamilia.Text = bArt.Datos.Rows[0][1].ToString();
+                }
+            }
+        }
     }
 }
