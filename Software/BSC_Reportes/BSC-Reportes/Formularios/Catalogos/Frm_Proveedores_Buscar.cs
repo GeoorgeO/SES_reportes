@@ -16,6 +16,7 @@ namespace BSC_Reportes
     {
         public Frm_Pre_Pedidos FrmReportePedidos;
         public Frm_Pedidos_Buscar FrmPedidosBuscar;
+        public Frm_VentasAcumuladas FrmVentasAcumuladas;
         public Frm_Proveedores_Buscar()
         {
             InitializeComponent();
@@ -74,6 +75,11 @@ namespace BSC_Reportes
                 else if(FrmPedidosBuscar!=null)
                 {
                     FrmPedidosBuscar.BuscarProveedor(ProveedorId);
+                    this.Close();
+                }
+                else if (FrmVentasAcumuladas != null)
+                {
+                    FrmVentasAcumuladas.BuscarProveedor(ProveedorId);
                     this.Close();
                 }
             }

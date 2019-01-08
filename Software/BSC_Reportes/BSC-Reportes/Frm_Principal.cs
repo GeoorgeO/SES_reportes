@@ -101,6 +101,26 @@ namespace BSC_Reportes
                                     btnEmail.Visibility = BarItemVisibility.Always;
                                 }
                                 break;
+                            case "5":
+                                if (UsuariosClase == 'N')
+                                {
+
+                                }
+                                else
+                                {
+                                    btnPedidos.Visibility = BarItemVisibility.Always;
+                                }
+                                break;
+                            case "6":
+                                if (UsuariosClase == 'N')
+                                {
+
+                                }
+                                else
+                                {
+                                    btnVentasAcumuladas.Visibility = BarItemVisibility.Always;
+                                }
+                                break;
                         }
                     }
                 }
@@ -194,6 +214,15 @@ namespace BSC_Reportes
             Frm_Pedidos.DefInstance.UsuariosLogin = UsuariosLogin;
             Frm_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
             Frm_Pedidos.DefInstance.Show();
+        }
+
+        private void btnVentasAcumuladas_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_VentasAcumuladas.DefInstance.MdiParent = this;
+            Frm_VentasAcumuladas.DefInstance.IdPantallaBotones = 6;
+            Frm_VentasAcumuladas.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_VentasAcumuladas.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_VentasAcumuladas.DefInstance.Show();
         }
     }
 }

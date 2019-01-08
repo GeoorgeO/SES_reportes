@@ -72,6 +72,10 @@
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v17.1.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraTreeList.v17.1.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\itextsharp.dll</HintPath>
@@ -118,6 +122,12 @@
     <Compile Include="Formularios\Catalogos\Frm_AgregarArticulo.Designer.cs">
       <DependentUpon>Frm_AgregarArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Familias_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Familias_Buscar.designer.cs">
+      <DependentUpon>Frm_Familias_Buscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\Frm_DistribucionManual.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,18 +170,6 @@
     <Compile Include="Formularios\Frm_CambiaPass.Designer.cs">
       <DependentUpon>Frm_CambiaPass.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Frm_CorreccionDistribucion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Frm_CorreccionDistribucion.Designer.cs">
-      <DependentUpon>Frm_CorreccionDistribucion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Frm_DistribucionPedidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Frm_DistribucionPedidos.Designer.cs">
-      <DependentUpon>Frm_DistribucionPedidos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Frm_ExistenciasFaltantes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +211,12 @@
     </Compile>
     <Compile Include="Formularios\Frm_UsuariosPantallaBotones.Designer.cs">
       <DependentUpon>Frm_UsuariosPantallaBotones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frm_VentasAcumuladas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_VentasAcumuladas.Designer.cs">
+      <DependentUpon>Frm_VentasAcumuladas.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Frm_VentasVsMetas.cs">
       <SubType>Form</SubType>
@@ -264,6 +268,9 @@
     <EmbeddedResource Include="Formularios\Catalogos\Frm_AgregarArticulo.resx">
       <DependentUpon>Frm_AgregarArticulo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_Familias_Buscar.resx">
+      <DependentUpon>Frm_Familias_Buscar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Frm_DistribucionManual.resx">
       <DependentUpon>Frm_DistribucionManual.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_UsuariosPantallaBotones.resx">
       <DependentUpon>Frm_UsuariosPantallaBotones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Frm_VentasAcumuladas.resx">
+      <DependentUpon>Frm_VentasAcumuladas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_CargandoConsulta.resx">
       <DependentUpon>Frm_CargandoConsulta.cs</DependentUpon>

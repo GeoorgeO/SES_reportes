@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSC_Reportes", "BSC-Reportes\BSC_Reportes.csproj", "{505BF670-93F8-444A-B359-435F8A45F885}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ECA4E383-40ED-4B15-AF29-82AF25109124} = {ECA4E383-40ED-4B15-AF29-82AF25109124}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos", "CapaDeDatos\CapaDeDatos.csproj", "{ECA4E383-40ED-4B15-AF29-82AF25109124}"
 EndProject
