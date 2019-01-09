@@ -63,7 +63,7 @@ namespace BSC_Reportes
                             case "1":
                                 if (UsuariosClase == 'N')
                                 {
-
+                                    
                                 }
                                 else
                                 {
@@ -72,19 +72,14 @@ namespace BSC_Reportes
 
                                 break;
                             case "2":
-                                if (UsuariosClase == 'N')
-                                {
-
-                                }
-                                else
-                                {
+                                
                                     btnPrePedidos.Visibility = BarItemVisibility.Always;
-                                }
+                                
                                 break;
                             case "3":
                                 if (UsuariosClase == 'N')
                                 {
-
+                                   
                                 }
                                 else
                                 {
@@ -92,34 +87,19 @@ namespace BSC_Reportes
                                 }
                                 break;
                             case "4":
-                                if (UsuariosClase == 'N')
-                                {
-
-                                }
-                                else
-                                {
+                                
                                     btnEmail.Visibility = BarItemVisibility.Always;
-                                }
+                                
                                 break;
                             case "5":
-                                if (UsuariosClase == 'N')
-                                {
-
-                                }
-                                else
-                                {
+                               
                                     btnPedidos.Visibility = BarItemVisibility.Always;
-                                }
+                                
                                 break;
                             case "6":
-                                if (UsuariosClase == 'N')
-                                {
-
-                                }
-                                else
-                                {
+                               
                                     btnVentasAcumuladas.Visibility = BarItemVisibility.Always;
-                                }
+                                
                                 break;
                         }
                     }
