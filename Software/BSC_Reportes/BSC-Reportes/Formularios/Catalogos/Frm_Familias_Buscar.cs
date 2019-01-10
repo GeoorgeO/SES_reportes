@@ -19,6 +19,16 @@ namespace BSC_Reportes
         private bool vTieneHijos;
         public int IdFamilia { get; set; }
         public string VNombreFamilia { get; set; }
+
+         public List<int> FamiliaId = new List<int>();
+        public List<String> FamiliaNombre = new List<String>();
+        List<char> FamiliaTipo = new List<char>();
+
+        public List<int> FamiliaPadreId = new List<int>();
+        List<int> IvaId = new List<int>();
+        List<int> Espadre = new List<int>();
+        List<int> TieneArticulos = new List<int>();
+
         public Frm_BFamilias()
         {
             InitializeComponent();
@@ -78,17 +88,17 @@ namespace BSC_Reportes
         private void Frm_BFamilias_Load(object sender, EventArgs e)
         {
             //CreateColumns(trlFamilia);
-            NodosIniciales(trlFamilia);
+            //NodosIniciales(trlFamilia);
+            llenarlistas();
         }
 
         private void trlFamilia_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             VNombreFamilia = string.Empty;
-            vTieneHijos= e.Node.HasChildren;
-            if(!vTieneHijos)
-            {
-                VNombreFamilia = e.Node.GetValue(TrFamilia).ToString();
-            }
+            //vTieneHijos= e.Node.HasChildren;
+           
+            VNombreFamilia = e.Node.GetValue(TrFamilia).ToString();
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -110,15 +120,84 @@ namespace BSC_Reportes
                     {
                         IdFamilia =Convert.ToInt32(consul.Datos.Rows[0][0].ToString());
                         Boolean FamiliaValida = Convert.ToBoolean(consul.Datos.Rows[0][5].ToString());
-                        if (FamiliaValida == false)
-                        {
+                        
                             this.Close();
-                        }
+                        
                     }
                 }
             }
         }
 
-        
+        private void llenarlistas()
+        {
+            
+
+            CLS_Familias consul = new CLS_Familias();
+            consul.ListarFamiliasGeneral();
+            if (consul.Exito)
+            {
+                if (consul.Datos.Rows.Count > 0)
+                {
+                    for (int i = 0; i < consul.Datos.Rows.Count; i++)
+                    {
+                        FamiliaId.Add(Convert.ToInt32(consul.Datos.Rows[i][0].ToString()));
+                        FamiliaNombre.Add(consul.Datos.Rows[i][1].ToString());
+                        FamiliaTipo.Add(Convert.ToChar(consul.Datos.Rows[i][2].ToString()));
+
+                        FamiliaPadreId.Add(Convert.ToInt32(consul.Datos.Rows[i][3].ToString()));
+                        IvaId.Add(Convert.ToInt32(consul.Datos.Rows[i][4].ToString()));
+                        Espadre.Add(Convert.ToInt32(consul.Datos.Rows[i][5]));
+                        TieneArticulos.Add(Convert.ToInt32(consul.Datos.Rows[i][6]));
+                    }
+
+                    agregarprincipales(trlFamilia);
+
+                }
+            }
+        }
+
+        private void agregarprincipales(TreeList tl)
+        {
+            for (int x = 0; x < FamiliaId.Count; x++)
+            {
+                if (FamiliaPadreId[x] == 0)
+                {
+                    try
+                    {
+                        tl.BeginUnboundLoad();
+                        // Create a root node .
+                        TreeListNode parentForRootNodes = null;
+                        TreeListNode rootNode = tl.AppendNode(new object[] { FamiliaNombre[x].ToString().Trim() }, parentForRootNodes);
+                        AgregarHijos(rootNode, tl, Convert.ToInt32(FamiliaId[x].ToString()));
+
+                        tl.EndUnboundLoad();
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show("Error Descripcion" + Ex.Message);
+                    }
+                }
+   
+            }
+        }
+
+        private void AgregarHijos(TreeListNode Padre, TreeList tl, int ID)
+        {
+            
+                for (int x = 0; x < FamiliaId.Count; x++)
+                {
+                    if (FamiliaPadreId[x] == ID)
+                    {
+                        TreeListNode Hijo = null;
+                        Hijo = tl.AppendNode(new object[] { FamiliaNombre[x].ToString().Trim() }, Padre);
+                        AgregarHijos(Hijo, tl, Convert.ToInt32(FamiliaId[x].ToString()));
+                    }
+                    
+
+                }
+            
+        }
+
+
     }
 }

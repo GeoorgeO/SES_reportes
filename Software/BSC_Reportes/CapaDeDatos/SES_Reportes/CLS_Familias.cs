@@ -10,6 +10,36 @@ namespace CapaDeDatos
     {
         public int FamiliaId { get; set; }
         public string FamiliaNombre { get; set; }
+
+
+        public void ListarFamiliasGeneral()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexion = new Conexion(cadenaConexion);
+
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_FamiliaGeneralSelect";
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+
         public void ListarFamiliasIniciales()
         {
             TipoDato _dato = new TipoDato();

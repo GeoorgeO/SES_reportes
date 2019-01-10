@@ -17,6 +17,13 @@ namespace BSC_Reportes
         public string UsuariosLogin { get; set; }
         public char UsuarioClase { get; set; }
         public int IdPantallaBotones { get; set; }
+
+        List<int> FamiliaId = new List<int>();
+        List<String> FamiliaNombre = new List<String>();
+        List<int> FamiliaPadreId = new List<int>();
+
+        public string CadenaNodos { get; set; }
+
         public Frm_VentasAcumuladas()
         {
             InitializeComponent();
@@ -189,6 +196,16 @@ namespace BSC_Reportes
             {
                 txtIdFamilia.Text = frmFam.IdFamilia.ToString();
                 BuscarFamilia(Convert.ToInt32(txtIdFamilia.Text));
+
+                FamiliaId = frmFam.FamiliaId;
+                FamiliaNombre = frmFam.FamiliaNombre;
+                FamiliaPadreId = frmFam.FamiliaPadreId;
+
+                CadenaNodos = frmFam.IdFamilia.ToString();
+                AgregarHijos(frmFam.IdFamilia);
+
+                string temporal = CadenaNodos;
+
             }
         }
         private void BuscarFamilia(int IdFamilia)
@@ -204,5 +221,28 @@ namespace BSC_Reportes
                 }
             }
         }
+       
+
+        private void AgregarHijos( int ID)
+        {
+            
+            for (int x = 0; x < FamiliaId.Count; x++)
+            {
+                if (FamiliaPadreId[x] == ID)
+                {
+                   
+                        CadenaNodos = CadenaNodos + ","+FamiliaId[x].ToString();
+                    
+                    
+                    
+                    AgregarHijos( Convert.ToInt32(FamiliaId[x].ToString()));
+                }
+
+
+            }
+
+        }
+
+
     }
 }
