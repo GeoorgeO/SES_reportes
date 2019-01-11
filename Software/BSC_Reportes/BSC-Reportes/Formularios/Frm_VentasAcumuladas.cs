@@ -12,6 +12,7 @@ using CapaDeDatos;
 using GridLookUpEditCBMultipleSelection;
 using GridControlEditCBMultipleSelection;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.Xpf.Dialogs;
 
 namespace BSC_Reportes
 {
@@ -341,10 +342,7 @@ namespace BSC_Reportes
         private void btnExportarExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DXOpenFileDialog fileDialog = new DXOpenFileDialog();
-            if (fileDialog.ShowDialog().Value)
-            {
-                
-            }
+            
         }
     }
 }
