@@ -53,11 +53,10 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.cboGridFloracion = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.cboGridSucursales = new DevExpress.XtraEditors.GridLookUpEdit();
             this.cboGridFloracionView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.IdFloracion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.FCodigo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.FFloracion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SucursalesId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SucursalesNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtNombreFamilia = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -90,7 +89,7 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboGridSucursales.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdFamilia.Properties)).BeginInit();
@@ -196,6 +195,7 @@
             this.btnExportarExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.ImageOptions.Image")));
             this.btnExportarExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.ImageOptions.LargeImage")));
             this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportarExcel_ItemClick);
             // 
             // btnLimpiar
             // 
@@ -204,6 +204,7 @@
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
             this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
             // 
             // bEstado
             // 
@@ -321,7 +322,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.cboGridFloracion);
+            this.groupControl1.Controls.Add(this.cboGridSucursales);
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.txtNombreFamilia);
             this.groupControl1.Controls.Add(this.labelControl4);
@@ -342,51 +343,42 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
-            // cboGridFloracion
+            // cboGridSucursales
             // 
-            this.cboGridFloracion.Location = new System.Drawing.Point(105, 81);
-            this.cboGridFloracion.MenuManager = this.barManager1;
-            this.cboGridFloracion.Name = "cboGridFloracion";
-            this.cboGridFloracion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cboGridSucursales.Location = new System.Drawing.Point(105, 81);
+            this.cboGridSucursales.MenuManager = this.barManager1;
+            this.cboGridSucursales.Name = "cboGridSucursales";
+            this.cboGridSucursales.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboGridFloracion.Properties.NullText = "-Seleccione-";
-            this.cboGridFloracion.Properties.View = this.cboGridFloracionView;
-            this.cboGridFloracion.Size = new System.Drawing.Size(291, 20);
-            this.cboGridFloracion.TabIndex = 22;
+            this.cboGridSucursales.Properties.NullText = "-Seleccione-";
+            this.cboGridSucursales.Properties.View = this.cboGridFloracionView;
+            this.cboGridSucursales.Size = new System.Drawing.Size(291, 20);
+            this.cboGridSucursales.TabIndex = 22;
             // 
             // cboGridFloracionView
             // 
             this.cboGridFloracionView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.IdFloracion,
-            this.FCodigo,
-            this.FFloracion});
+            this.SucursalesId,
+            this.SucursalesNombre});
             this.cboGridFloracionView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.cboGridFloracionView.Name = "cboGridFloracionView";
             this.cboGridFloracionView.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.cboGridFloracionView.OptionsSelection.MultiSelect = true;
             this.cboGridFloracionView.OptionsView.ShowGroupPanel = false;
             // 
-            // IdFloracion
+            // SucursalesId
             // 
-            this.IdFloracion.Caption = "IdFloracion";
-            this.IdFloracion.FieldName = "IdFloracion";
-            this.IdFloracion.Name = "IdFloracion";
+            this.SucursalesId.Caption = "Id";
+            this.SucursalesId.FieldName = "SucursalesId";
+            this.SucursalesId.Name = "SucursalesId";
             // 
-            // FCodigo
+            // SucursalesNombre
             // 
-            this.FCodigo.Caption = "Código";
-            this.FCodigo.FieldName = "Codigo";
-            this.FCodigo.Name = "FCodigo";
-            this.FCodigo.Visible = true;
-            this.FCodigo.VisibleIndex = 0;
-            // 
-            // FFloracion
-            // 
-            this.FFloracion.Caption = "Floración";
-            this.FFloracion.FieldName = "Floracion";
-            this.FFloracion.Name = "FFloracion";
-            this.FFloracion.Visible = true;
-            this.FFloracion.VisibleIndex = 1;
+            this.SucursalesNombre.Caption = "Nombre";
+            this.SucursalesNombre.FieldName = "SucursalesNombre";
+            this.SucursalesNombre.Name = "SucursalesNombre";
+            this.SucursalesNombre.Visible = true;
+            this.SucursalesNombre.VisibleIndex = 0;
             // 
             // labelControl6
             // 
@@ -693,6 +685,7 @@
             this.Name = "Frm_VentasAcumuladas";
             this.Text = " Ventas Acumuladas";
             this.Load += new System.EventHandler(this.Frm_VentasAcumuladas_Load);
+            this.Shown += new System.EventHandler(this.Frm_VentasAcumuladas_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -700,7 +693,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboGridSucursales.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdFamilia.Properties)).EndInit();
@@ -762,11 +755,10 @@
         private DevExpress.XtraEditors.TextEdit txtNombreFamilia;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtIdFamilia;
-        private DevExpress.XtraEditors.GridLookUpEdit cboGridFloracion;
+        private DevExpress.XtraEditors.GridLookUpEdit cboGridSucursales;
         private DevExpress.XtraGrid.Views.Grid.GridView cboGridFloracionView;
-        private DevExpress.XtraGrid.Columns.GridColumn IdFloracion;
-        private DevExpress.XtraGrid.Columns.GridColumn FCodigo;
-        private DevExpress.XtraGrid.Columns.GridColumn FFloracion;
+        private DevExpress.XtraGrid.Columns.GridColumn SucursalesId;
+        private DevExpress.XtraGrid.Columns.GridColumn SucursalesNombre;
         private DevExpress.XtraGrid.Views.Grid.GridView dtgValVentaExistencia;
         private DevExpress.XtraGrid.Columns.GridColumn Reg;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Sucursal;

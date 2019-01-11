@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
+using GridLookUpEditCBMultipleSelection;
+using GridControlEditCBMultipleSelection;
+using DevExpress.XtraEditors.Repository;
 
 namespace BSC_Reportes
 {
@@ -23,6 +26,12 @@ namespace BSC_Reportes
         List<int> FamiliaPadreId = new List<int>();
 
         public string CadenaNodos { get; set; }
+
+        GridCheckMarksSelection gridCheckMarkSucursales;
+        StringBuilder sb = new StringBuilder();
+        string CadenaSucursales = string.Empty;
+        string CadenaEspSucursales = string.Empty;
+        int TotalRegSucursales = 0;
 
         public Frm_VentasAcumuladas()
         {
@@ -221,28 +230,121 @@ namespace BSC_Reportes
                 }
             }
         }
-       
 
-        private void AgregarHijos( int ID)
+
+        private void AgregarHijos(int ID)
         {
-            
+
             for (int x = 0; x < FamiliaId.Count; x++)
             {
                 if (FamiliaPadreId[x] == ID)
                 {
-                   
-                        CadenaNodos = CadenaNodos + ","+FamiliaId[x].ToString();
-                    
-                    
-                    
-                    AgregarHijos( Convert.ToInt32(FamiliaId[x].ToString()));
+                    CadenaNodos = CadenaNodos + "," + FamiliaId[x].ToString();
+                    AgregarHijos(Convert.ToInt32(FamiliaId[x].ToString()));
                 }
-
-
             }
-
+        }
+        private void CargarSucursales()
+        {
+            CLS_Sucursales bsel = new CLS_Sucursales();
+            bsel.ListarSucursales();
+            if (bsel.Exito)
+            {
+                gridCheckMarkSucursales.ClearSelection(cboGridFloracionView);
+                TotalRegSucursales = bsel.Datos.Rows.Count;
+                cboGridSucursales.Properties.DataSource = bsel.Datos;
+            }
+        }
+        private void Frm_VentasAcumuladas_Shown(object sender, EventArgs e)
+        {
+            LlenarComboSucursales();
+            CargarSucursales();
+            dtInicio.DateTime = DateTime.Now;
+            dtFin.DateTime = DateTime.Now;
         }
 
+        private void LlenarComboSucursales()
+        {
+            cboGridSucursales.CustomDisplayText += cboGridSucursales_CustomDisplayText;
+            cboGridSucursales.Properties.PopulateViewColumns();
+            gridCheckMarkSucursales = new GridCheckMarksSelection(cboGridSucursales.Properties);
+            gridCheckMarkSucursales.SelectionChanged += cboGridSucursales_SelectionChanged;
+            cboGridSucursales.Properties.Tag = gridCheckMarkSucursales;
+        }
+        void cboGridSucursales_SelectionChanged(object sender, EventArgs e)
+        {
+            CadenaSucursales = string.Empty;
+            if (ActiveControl is GridLookUpEdit)
+            {
+                CadenaEspSucursales = string.Empty;
+                foreach (DataRowView rv in (sender as GridCheckMarksSelection).Selection)
+                {
+                    if (sb.ToString().Length > 0) { sb.Append(", "); }
+                    sb.AppendFormat("{0}; {1}", rv["SucursalesId"], rv["SucursalesNombre"]);
 
+                    if (CadenaSucursales != string.Empty)
+                    {
+                        CadenaSucursales = string.Format("{0},{1}", CadenaSucursales, rv["SucursalesId"]);
+                    }
+                    else
+                    {
+                        CadenaSucursales = rv["SucursalesId"].ToString();
+                    }
+                    //Parametros especiales para Reporte Catalogo de Precios
+                    if (CadenaEspSucursales != string.Empty)
+                    {
+                        CadenaEspSucursales = string.Format("{0},{1}", CadenaEspSucursales, rv["SucursalesNombre"]);
+                    }
+                    else
+                    {
+                        CadenaEspSucursales = rv["SucursalesNombre"].ToString();
+                    }
+                }
+                int TotalSelect = gridCheckMarkSucursales.SelectedCount;
+                if (TotalSelect == TotalRegSucursales)
+                {
+                    CadenaEspSucursales = "Todas";
+                }
+                (ActiveControl as GridLookUpEdit).Text = sb.ToString();
+            }
+        }
+        void cboGridSucursales_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            GridCheckMarksSelection gridCheckMark = sender is GridLookUpEdit ? (sender as GridLookUpEdit).Properties.Tag as GridCheckMarksSelection : (sender as RepositoryItemGridLookUpEdit).Tag as GridCheckMarksSelection;
+            if (gridCheckMark == null) return;
+            foreach (DataRowView rv in gridCheckMark.Selection)
+            {
+                if (sb.ToString().Length > 0) { sb.Append(", "); }
+                sb.AppendFormat("{0}; {1}", rv["SucursalesId"], rv["SucursalesNombre"]);
+            }
+            e.DisplayText = sb.ToString();
+            if (sb.ToString() == string.Empty)
+            {
+                e.DisplayText = "-Seleccione-";
+            }
+        }
+
+        private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LlenarComboSucursales();
+            CargarSucursales();
+            dtInicio.DateTime = DateTime.Now;
+            dtFin.DateTime = DateTime.Now;
+            CadenaNodos = string.Empty;
+            txtIdFamilia.Text = string.Empty;
+            txtNombreFamilia.Text = string.Empty;
+            txtProveedorId.Text = string.Empty;
+            txtProveedorNombre.Text = string.Empty;
+        }
+
+        private void btnExportarExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DXOpenFileDialog fileDialog = new DXOpenFileDialog();
+            if (fileDialog.ShowDialog().Value)
+            {
+                
+            }
+        }
     }
 }

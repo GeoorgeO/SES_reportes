@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Clases\Codigos.cs" />
     <Compile Include="Clases\Crypto.cs" />
+    <Compile Include="Clases\GridCheckMarksSelection.cs" />
     <Compile Include="Clases\GridMarksSelecioncs.cs" />
     <Compile Include="Clases\MSRegistro.cs" />
     <Compile Include="Clases\Validar_Campos.cs" />

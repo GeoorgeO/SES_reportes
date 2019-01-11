@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.Entrada = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,6 +59,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnRecibirInsidencia = new DevExpress.XtraEditors.SimpleButton();
             this.btnRedistribuir = new DevExpress.XtraEditors.SimpleButton();
             this.btnIgualarACero = new DevExpress.XtraEditors.SimpleButton();
             this.lblStatus = new DevExpress.XtraEditors.LabelControl();
@@ -129,7 +130,6 @@
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.btnRecibirInsidencia = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -354,9 +354,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 568);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
             // 
             // barDockControlLeft
             // 
@@ -364,7 +364,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(81, 574);
+            this.barDockControlLeft.Size = new System.Drawing.Size(83, 568);
             // 
             // barDockControlRight
             // 
@@ -372,7 +372,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 574);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
             // btnBuscar
             // 
@@ -398,10 +398,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(81, 0);
+            this.panelControl1.Location = new System.Drawing.Point(83, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1039, 139);
+            this.panelControl1.Size = new System.Drawing.Size(1037, 139);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
@@ -423,9 +423,19 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1015, 115);
+            this.groupControl1.Size = new System.Drawing.Size(1013, 115);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // btnRecibirInsidencia
+            // 
+            this.btnRecibirInsidencia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRecibirInsidencia.ImageOptions.Image")));
+            this.btnRecibirInsidencia.Location = new System.Drawing.Point(608, 85);
+            this.btnRecibirInsidencia.Name = "btnRecibirInsidencia";
+            this.btnRecibirInsidencia.Size = new System.Drawing.Size(141, 25);
+            this.btnRecibirInsidencia.TabIndex = 22;
+            this.btnRecibirInsidencia.Text = "Recibir Insidencia";
+            this.btnRecibirInsidencia.Click += new System.EventHandler(this.btnRecibirInsidencia_Click);
             // 
             // btnRedistribuir
             // 
@@ -574,10 +584,10 @@
             // 
             this.panelControl2.Controls.Add(this.xtraTabControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(81, 139);
+            this.panelControl2.Location = new System.Drawing.Point(83, 139);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1039, 435);
+            this.panelControl2.Size = new System.Drawing.Size(1037, 429);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -587,7 +597,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1015, 411);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1013, 405);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -598,7 +608,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 383);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 380);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -611,7 +621,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(999, 373);
+            this.dtgPedidos.Size = new System.Drawing.Size(999, 370);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -658,13 +668,13 @@
             this.SumaD,
             this.Entrada,
             this.TPedido});
-            gridFormatRule3.Column = this.Entrada;
-            gridFormatRule3.ColumnApplyTo = this.TPedido;
-            gridFormatRule3.Name = "Format0";
-            formatConditionRuleExpression3.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression3.PredefinedName = "Red Bold Text";
-            gridFormatRule3.Rule = formatConditionRuleExpression3;
-            this.dtgValPedidos.FormatRules.Add(gridFormatRule3);
+            gridFormatRule1.Column = this.Entrada;
+            gridFormatRule1.ColumnApplyTo = this.TPedido;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.dtgValPedidos.FormatRules.Add(gridFormatRule1);
             this.dtgValPedidos.GridControl = this.dtgPedidos;
             this.dtgValPedidos.Name = "dtgValPedidos";
             this.dtgValPedidos.OptionsFind.AlwaysVisible = true;
@@ -1108,12 +1118,12 @@
             this.bandedGridColumn3,
             this.bandedGridColumn20,
             this.bandedGridColumn6});
-            gridFormatRule1.Column = this.bandedGridColumn20;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.bandedGridColumn20;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule2);
             this.dtgValPedidosInsidencias.GridControl = this.dtgPedidosInsidencias;
             this.dtgValPedidosInsidencias.Name = "dtgValPedidosInsidencias";
             this.dtgValPedidosInsidencias.OptionsFind.AlwaysVisible = true;
@@ -1194,21 +1204,11 @@
             this.imageCollection1.Images.SetKeyName(1, "iconfinder_Stock Index Down_27880.png");
             this.imageCollection1.Images.SetKeyName(2, "iconfinder_Glyph Check_58561.png");
             // 
-            // btnRecibirInsidencia
-            // 
-            this.btnRecibirInsidencia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnRecibirInsidencia.Location = new System.Drawing.Point(608, 85);
-            this.btnRecibirInsidencia.Name = "btnRecibirInsidencia";
-            this.btnRecibirInsidencia.Size = new System.Drawing.Size(141, 25);
-            this.btnRecibirInsidencia.TabIndex = 22;
-            this.btnRecibirInsidencia.Text = "Recibir Insidencia";
-            this.btnRecibirInsidencia.Click += new System.EventHandler(this.btnRecibirInsidencia_Click);
-            // 
             // Frm_Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 599);
+            this.ClientSize = new System.Drawing.Size(1120, 596);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);

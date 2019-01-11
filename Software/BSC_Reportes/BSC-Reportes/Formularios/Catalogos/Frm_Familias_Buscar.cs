@@ -72,7 +72,6 @@ namespace BSC_Reportes
                     TreeListNode Hijo = null;
                     Hijo = tl.AppendNode(new object[] { Nuevas.Datos.Rows[x][1].ToString().Trim() }, Padre);
                     NodosHijos(Hijo, tl, Convert.ToInt32(Nuevas.Datos.Rows[x][0].ToString()));
-                    
                 }
             }
         }
@@ -95,10 +94,7 @@ namespace BSC_Reportes
         private void trlFamilia_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             VNombreFamilia = string.Empty;
-            //vTieneHijos= e.Node.HasChildren;
-           
             VNombreFamilia = e.Node.GetValue(TrFamilia).ToString();
-            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -114,15 +110,13 @@ namespace BSC_Reportes
                 CLS_Familias consul = new CLS_Familias();
                 consul.FamiliaNombre = VNombreFamilia;
                 consul.ListarFamiliaNombre();
-                if(consul.Exito)
+                if (consul.Exito)
                 {
                     if (consul.Datos.Rows.Count > 0)
                     {
-                        IdFamilia =Convert.ToInt32(consul.Datos.Rows[0][0].ToString());
+                        IdFamilia = Convert.ToInt32(consul.Datos.Rows[0][0].ToString());
                         Boolean FamiliaValida = Convert.ToBoolean(consul.Datos.Rows[0][5].ToString());
-                        
-                            this.Close();
-                        
+                        this.Close();
                     }
                 }
             }
@@ -130,8 +124,6 @@ namespace BSC_Reportes
 
         private void llenarlistas()
         {
-            
-
             CLS_Familias consul = new CLS_Familias();
             consul.ListarFamiliasGeneral();
             if (consul.Exito)
@@ -149,9 +141,7 @@ namespace BSC_Reportes
                         Espadre.Add(Convert.ToInt32(consul.Datos.Rows[i][5]));
                         TieneArticulos.Add(Convert.ToInt32(consul.Datos.Rows[i][6]));
                     }
-
                     agregarprincipales(trlFamilia);
-
                 }
             }
         }
