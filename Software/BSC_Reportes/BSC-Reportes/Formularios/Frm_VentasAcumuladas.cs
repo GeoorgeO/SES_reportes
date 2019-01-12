@@ -341,8 +341,31 @@ namespace BSC_Reportes
 
         private void btnExportarExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DXOpenFileDialog fileDialog = new DXOpenFileDialog();
+            XtraFolderBrowserDialog saveFileDialog = new XtraFolderBrowserDialog();
+            //openFileDialog.Filter = "Image Files(*.PNG; *.BMP; *.JPG; *.GIF)| *.PNG; *.BMP; *.JPG; *.GIF";
+            //saveFileDialog.Filter = "Excel Files(*.xls)| *.xls";
+            //saveFileDialog.CheckFileExists = true;
+            //saveFileDialog.FilterIndex = 1;
+            //saveFileDialog.RestoreDirectory = true;
             
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string Cadena = saveFileDialog.SelectedPath;
+                XtraInputBoxArgs args = new XtraInputBoxArgs();
+                // set required Input Box options 
+                args.Caption = "Ingrese Nombre del Archivo Excel";
+                args.Prompt = "Nombre Archivo";
+                args.DefaultButtonIndex = 0;
+                //args.Showing += Args_Showing;
+                // initialize a DateEdit editor with custom settings 
+                TextEdit editor = new TextEdit();
+                args.Editor = editor;
+                // a default DateEdit value 
+                args.DefaultResponse = "Nombre_Archivo_Excel";
+                // display an Input Box with the custom editor 
+                var result = XtraInputBox.Show(args).ToString();
+
+            }
         }
     }
 }
