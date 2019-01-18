@@ -94,7 +94,7 @@ namespace BSC_Reportes
             {
                 XtraMessageBox.Show(clasepantallas.Mensaje);
             }
-            if (GusuariosClase == 'S')
+            if (UsuarioClase == 'S')
             {
                 accesosuperusuario();
             }else

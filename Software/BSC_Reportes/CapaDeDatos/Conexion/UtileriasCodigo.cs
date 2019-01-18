@@ -12,6 +12,7 @@ namespace CapaDeDatos
         Fecha,
         Tipodecimal,
         Boleano,
-        Caracter
+        Caracter,
+        imagen
     }
 }

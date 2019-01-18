@@ -30,8 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\SES_WebServices\Software\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CLS_Articulos.cs" />
-    <Compile Include="CLS_Catalogos.cs" />
-    <Compile Include="CLS_ConexionesLC.cs" />
+    <Compile Include="Conexion\CLS_AppConfig.cs" />
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\ConexionBase.cs" />
     <Compile Include="Conexion\ConexionSQL.cs" />
@@ -99,10 +110,14 @@
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="SEG_Login.cs" />
+    <Compile Include="SES_Reportes\CLS_Correos.cs" />
+    <Compile Include="SES_Reportes\CLS_Email.cs" />
     <Compile Include="SES_Reportes\CLS_Pantallas.cs" />
     <Compile Include="SES_Reportes\CLS_Pedidos.cs" />
     <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
     <Compile Include="SES_Reportes\CLS_Usuarios.cs" />
+    <Compile Include="SES_Reportes\CLS_Sucursales.cs" />
+    <Compile Include="SES_Reportes\CLS_Familias.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
@@ -152,6 +167,7 @@
     <Compile Include="SincronizacionCentral\CLS_Tarifa_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_Usuarios_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_Vendedor_Central.cs" />
+    <Compile Include="WebServices\WEB_Pedidos.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

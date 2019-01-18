@@ -32,19 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnUsuarios = new DevExpress.XtraBars.BarButtonItem();
-            this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPrePedidos = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.btncontrolacesos = new DevExpress.XtraBars.BarButtonItem();
             this.btnCambiaPass = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnVentasAcumuladas = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -55,12 +59,15 @@
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.btnUsuarios,
-            this.btnPedidos,
+            this.btnPrePedidos,
             this.skinRibbonGalleryBarItem1,
             this.btncontrolacesos,
-            this.btnCambiaPass});
+            this.btnCambiaPass,
+            this.btnEmail,
+            this.btnPedidos,
+            this.btnVentasAcumuladas});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 2;
+            this.ribbon.MaxItemId = 5;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -84,14 +91,14 @@
             this.btnUsuarios.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnUsuarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsuarios_ItemClick);
             // 
-            // btnPedidos
+            // btnPrePedidos
             // 
-            this.btnPedidos.Caption = "Pedidos";
-            this.btnPedidos.Id = 2;
-            this.btnPedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.Image")));
-            this.btnPedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.LargeImage")));
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick);
+            this.btnPrePedidos.Caption = "Pre-Pedidos";
+            this.btnPrePedidos.Id = 2;
+            this.btnPrePedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrePedidos.ImageOptions.Image")));
+            this.btnPrePedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrePedidos.ImageOptions.LargeImage")));
+            this.btnPrePedidos.Name = "btnPrePedidos";
+            this.btnPrePedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -121,6 +128,42 @@
             this.btnCambiaPass.Name = "btnCambiaPass";
             this.btnCambiaPass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCambiaPass_ItemClick);
             // 
+            // btnEmail
+            // 
+            this.btnEmail.Caption = "EMail";
+            this.btnEmail.Id = 2;
+            this.btnEmail.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmail.ImageOptions.Image")));
+            this.btnEmail.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEmail.ImageOptions.LargeImage")));
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmail_ItemClick);
+            // 
+            // btnPedidos
+            // 
+            this.btnPedidos.Caption = "Pedidos";
+            this.btnPedidos.Id = 3;
+            this.btnPedidos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.Image")));
+            this.btnPedidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidos.ImageOptions.LargeImage")));
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick_1);
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup4});
+            this.ribbonPage2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage2.Image")));
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "Compras";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.AllowTextClipping = false;
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnPrePedidos);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnPedidos);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.ShowCaptionButton = false;
+            this.ribbonPageGroup2.Text = "Compras";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -135,25 +178,10 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnUsuarios);
             this.ribbonPageGroup1.ItemLinks.Add(this.btncontrolacesos);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnCambiaPass);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnEmail);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "Seguridad";
-            // 
-            // ribbonPage2
-            // 
-            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
-            this.ribbonPage2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage2.Image")));
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Compras";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnPedidos);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.ShowCaptionButton = false;
-            this.ribbonPageGroup2.Text = "Compras";
             // 
             // ribbonPage3
             // 
@@ -180,12 +208,28 @@
             // 
             // xtraTabbedMdiManager1
             // 
+            this.xtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // SkinForm
             // 
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnVentasAcumuladas);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Ventas";
+            // 
+            // btnVentasAcumuladas
+            // 
+            this.btnVentasAcumuladas.Caption = "Ventas Acumuladas";
+            this.btnVentasAcumuladas.Id = 4;
+            this.btnVentasAcumuladas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnVentasAcumuladas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnVentasAcumuladas.Name = "btnVentasAcumuladas";
+            this.btnVentasAcumuladas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasAcumuladas_ItemClick);
             // 
             // Frm_Principal
             // 
@@ -195,6 +239,7 @@
             this.ClientSize = new System.Drawing.Size(931, 534);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "Frm_Principal";
             this.Ribbon = this.ribbon;
@@ -226,7 +271,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btncontrolacesos;
-        private DevExpress.XtraBars.BarButtonItem btnPedidos;
+        private DevExpress.XtraBars.BarButtonItem btnPrePedidos;
         private DevExpress.XtraBars.BarButtonItem btnCambiaPass;
+        private DevExpress.XtraBars.BarButtonItem btnEmail;
+        private DevExpress.XtraBars.BarButtonItem btnPedidos;
+        private DevExpress.XtraBars.BarButtonItem btnVentasAcumuladas;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
     }
 }

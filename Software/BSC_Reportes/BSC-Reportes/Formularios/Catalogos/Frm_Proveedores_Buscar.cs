@@ -15,6 +15,8 @@ namespace BSC_Reportes
     public partial class Frm_Proveedores_Buscar : DevExpress.XtraEditors.XtraForm
     {
         public Frm_Pre_Pedidos FrmReportePedidos;
+        public Frm_Pedidos_Buscar FrmPedidosBuscar;
+        public Frm_VentasAcumuladas FrmVentasAcumuladas;
         public Frm_Proveedores_Buscar()
         {
             InitializeComponent();
@@ -63,8 +65,28 @@ namespace BSC_Reportes
 
         private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmReportePedidos.BuscarProveedor(ProveedorId);
-            this.Close();
+            if (ProveedorId != string.Empty)
+            {
+                if (FrmReportePedidos != null)
+                {
+                    FrmReportePedidos.BuscarProveedor(ProveedorId);
+                    this.Close();
+                }
+                else if(FrmPedidosBuscar!=null)
+                {
+                    FrmPedidosBuscar.BuscarProveedor(ProveedorId);
+                    this.Close();
+                }
+                else if (FrmVentasAcumuladas != null)
+                {
+                    FrmVentasAcumuladas.BuscarProveedor(ProveedorId);
+                    this.Close();
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha seleccionado Proveedor");
+            }
         }
 
         private void dtgProveedores_DoubleClick(object sender, EventArgs e)

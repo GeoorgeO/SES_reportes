@@ -63,25 +63,43 @@ namespace BSC_Reportes
                             case "1":
                                 if (UsuariosClase == 'N')
                                 {
-
-                                }else
+                                    
+                                }
+                                else
                                 {
                                     btnUsuarios.Visibility = BarItemVisibility.Always;
                                 }
-                                
+
                                 break;
                             case "2":
-                                btnPedidos.Visibility = BarItemVisibility.Always;
+                                
+                                    btnPrePedidos.Visibility = BarItemVisibility.Always;
+                                
                                 break;
                             case "3":
                                 if (UsuariosClase == 'N')
                                 {
-
+                                   
                                 }
                                 else
                                 {
                                     btncontrolacesos.Visibility = BarItemVisibility.Always;
                                 }
+                                break;
+                            case "4":
+                                
+                                    btnEmail.Visibility = BarItemVisibility.Always;
+                                
+                                break;
+                            case "5":
+                               
+                                    btnPedidos.Visibility = BarItemVisibility.Always;
+                                
+                                break;
+                            case "6":
+                               
+                                    btnVentasAcumuladas.Visibility = BarItemVisibility.Always;
+                                
                                 break;
                         }
                     }
@@ -112,6 +130,8 @@ namespace BSC_Reportes
 
         private void Frm_Principal_Load(object sender, EventArgs e)
         {
+            MSRegistro RegOut = new MSRegistro();
+            SkinForm.LookAndFeel.SetSkinStyle(RegOut.GetSetting("ConexionSQL", "Sking"));
             OcultarBotones();
             if (UsuariosClase == 'S')
             {
@@ -121,20 +141,21 @@ namespace BSC_Reportes
             {
                 revisaopciones();
             }
-
+            CLS_AppConfig con = new CLS_AppConfig();
+            con.ConnectionStrings("SES_Reportes_Connection");
             
         }
         private void OcultarBotones()
         {
             btnUsuarios.Visibility = BarItemVisibility.Never;
             btncontrolacesos.Visibility = BarItemVisibility.Never;
-            btnPedidos.Visibility = BarItemVisibility.Never;
+            btnPrePedidos.Visibility = BarItemVisibility.Never;
         }
         public void accesosuperusuario()
         {
             btnUsuarios.Visibility = BarItemVisibility.Always;
             btncontrolacesos.Visibility = BarItemVisibility.Always;
-            btnPedidos.Visibility = BarItemVisibility.Always;
+            btnPrePedidos.Visibility = BarItemVisibility.Always;
         }
 
         private void btnPedidos_ItemClick(object sender, ItemClickEventArgs e)
@@ -155,6 +176,33 @@ namespace BSC_Reportes
             frmusu.UsuarioClase = UsuariosClase;
             //frmusu.llenarusuario(GusuariosLogin, GusuariosClase);
             frmusu.ShowDialog();
+        }
+
+        private void btnEmail_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ConfigEmail.DefInstance.MdiParent = this;
+            Frm_ConfigEmail.DefInstance.IdPantallaBotones = 4;
+            Frm_ConfigEmail.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_ConfigEmail.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_ConfigEmail.DefInstance.Show();
+        }
+
+        private void btnPedidos_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            Frm_Pedidos.DefInstance.MdiParent = this;
+            Frm_Pedidos.DefInstance.IdPantallaBotones = 5;
+            Frm_Pedidos.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Pedidos.DefInstance.Show();
+        }
+
+        private void btnVentasAcumuladas_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_VentasAcumuladas.DefInstance.MdiParent = this;
+            Frm_VentasAcumuladas.DefInstance.IdPantallaBotones = 6;
+            Frm_VentasAcumuladas.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_VentasAcumuladas.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_VentasAcumuladas.DefInstance.Show();
         }
     }
 }

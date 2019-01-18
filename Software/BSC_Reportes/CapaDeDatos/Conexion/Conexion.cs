@@ -123,7 +123,12 @@ namespace CapaDeDatos
                 parametro.SqlDbType = SqlDbType.Bit ;
                 parametro.Value = valor.BoleanoValor ;
             }
-       }
+            if (tipo == EnumTipoDato.imagen)
+            {
+                parametro.SqlDbType = SqlDbType.Image;
+                parametro.Value = valor.ImagenValor;
+            }
+        }
 
 
        public void eliminarTodosParametros(ref SqlCommand x)
