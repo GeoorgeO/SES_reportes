@@ -23,7 +23,8 @@ GO
 -- =============================================
 CREATE PROCEDURE asp_VentaAcumulada_Insert 
 	-- Add the parameters for the stored procedure here
-	@fecha datetime
+	@fecha datetime,
+	@opcion numeric(1,0)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,7 +38,7 @@ BEGIN
 		--set @fecha=getdate()
 		--set @fecha='2019-04-30 00:00:00.000'
 		
-		select @fechaAnt=  dateadd(
+		select @fechaAnt=case @opcion when 1 then  dateadd(
 			day,
 			( case when datepart(dw,@fecha) - datepart(dw,
 		
@@ -70,6 +71,9 @@ BEGIN
 			cast(convert(nvarchar(MAX), datepart(year,@fecha)-1 , 0)+'-'+convert(nvarchar(MAX), datepart(month,@fecha) , 0)+'-'+convert(nvarchar(MAX), datepart(day,@fecha) , 0)+' 00:00:00.000' as datetime)--,datepart(dw,@fecha)  --,datepart(dw,cast(convert(nvarchar(MAX), datepart(year,@fecha)-1 , 0)+'-'+convert(nvarchar(MAX), datepart(month,@fecha) , 0)+'-'+convert(nvarchar(MAX), datepart(day,@fecha) , 0)+' 00:00:00.000' as datetime))  
 			end 
 		)
+		when 2 then
+			cast(convert(nvarchar(MAX), datepart(year,@fecha)-1 , 0)+'-'+convert(nvarchar(MAX), datepart(month,@fecha) , 0)+'-'+convert(nvarchar(MAX), datepart(day,@fecha) , 0)+' 00:00:00.000' as datetime)
+		end 
 		declare @IdFolio int
 		select @IdFolio=isnull(max(IdFolio),0)+1  from RPT_VentaAcumulada
 		
