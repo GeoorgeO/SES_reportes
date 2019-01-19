@@ -13,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_Insert_VentaAcumulada_Local')
-DROP PROCEDURE SP_Insert_VentaAcumulada_Local
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'asp_VentaAcumulada_Insert')
+DROP PROCEDURE asp_VentaAcumulada_Insert
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_Insert_VentaAcumulada_Local 
+CREATE PROCEDURE asp_VentaAcumulada_Insert 
 	-- Add the parameters for the stored procedure here
 	@fecha datetime
 AS
@@ -36,7 +36,7 @@ BEGIN
 		--set @fecha='2016-02-29 00:00:00.000'
 		--set @fecha=getdate()
 		--set @fecha='2019-04-30 00:00:00.000'
-
+		
 		select @fechaAnt=  dateadd(
 			day,
 			( case when datepart(dw,@fecha) - datepart(dw,
@@ -70,8 +70,10 @@ BEGIN
 			cast(convert(nvarchar(MAX), datepart(year,@fecha)-1 , 0)+'-'+convert(nvarchar(MAX), datepart(month,@fecha) , 0)+'-'+convert(nvarchar(MAX), datepart(day,@fecha) , 0)+' 00:00:00.000' as datetime)--,datepart(dw,@fecha)  --,datepart(dw,cast(convert(nvarchar(MAX), datepart(year,@fecha)-1 , 0)+'-'+convert(nvarchar(MAX), datepart(month,@fecha) , 0)+'-'+convert(nvarchar(MAX), datepart(day,@fecha) , 0)+' 00:00:00.000' as datetime))  
 			end 
 		)
-
-		insert into SES_rpt_ventaacumulada ([Tventa_Actual] ,
+		declare @IdFolio int
+		select @IdFolio=isnull(max(IdFolio),0)+1  from RPT_VentaAcumulada
+		
+		insert into RPT_VentaAcumulada ([IdFolio],[Tventa_Actual] ,
 			[NTickets_Actual] ,
 			[Pventa_Actual],
 			[PArticulosXticket_Actual],
@@ -85,7 +87,7 @@ BEGIN
 			[Sucursal],
 			[FechaInsert])  
 
-		(select Tventa_Actual,NTickets_Actual,Pventa_Actual,PArticulosXticket_Actual,Tventa_Anterior,NTickets_Anterior,Pventa_Anterior,PArticulosXticket_Anterior,(Tventa_Actual*100)/Tventa_Anterior as Porcentaje,@fecha as Fecha_Actual,@fechaAnt as Fecha_Anterior,Sucursal,getdate()
+		(select @IdFolio, Tventa_Actual,NTickets_Actual,Pventa_Actual,PArticulosXticket_Actual,Tventa_Anterior,NTickets_Anterior,Pventa_Anterior,PArticulosXticket_Anterior,(Tventa_Actual*100)/Tventa_Anterior as Porcentaje,@fecha as Fecha_Actual,@fechaAnt as Fecha_Anterior,Sucursal,getdate()
 		from
 
 		(select 
@@ -121,5 +123,7 @@ BEGIN
 			(select top 1 SucursalesNombre from Ticket as t inner join caja as c on c.CajaId=t.cajaId inner join sucursales as s on s.SucursalesId=c.SucursalesId ) as Sucursal
 			) as TG
 		)
+
+		Select @IdFolio
 END
 GO

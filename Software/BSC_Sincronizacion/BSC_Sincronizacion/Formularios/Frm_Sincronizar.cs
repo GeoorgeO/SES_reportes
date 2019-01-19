@@ -1926,7 +1926,20 @@ namespace BSC_Sincronizacion
             }
         }
 
+        private void btn_CierreVentas_Click(object sender, EventArgs e)
+        {
+            InsertarLocal();
+            InsertarServer();
+        }
 
+        private void InsertarServer()
+        {
+            throw new NotImplementedException();
+        }
 
+        private void InsertarLocal()
+        {
+            
+        }
     }
 }

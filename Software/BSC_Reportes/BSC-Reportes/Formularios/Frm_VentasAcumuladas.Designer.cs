@@ -61,8 +61,6 @@
             this.txtNombreFamilia = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtIdFamilia = new DevExpress.XtraEditors.TextEdit();
-            this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dtFin = new DevExpress.XtraEditors.DateEdit();
             this.dtInicio = new DevExpress.XtraEditors.DateEdit();
             this.txtProveedorNombre = new DevExpress.XtraEditors.TextEdit();
@@ -73,7 +71,6 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dtgVentaExistencia = new DevExpress.XtraGrid.GridControl();
             this.dtgValVentaExistencia = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Reg = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Sucursal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Descripcion = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -83,7 +80,8 @@
             this.Col_Piezas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Total = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
+            this.chkSucursales = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -94,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdFamilia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicio.Properties.CalendarTimeProperties)).BeginInit();
@@ -106,7 +103,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSucursales.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -148,8 +146,8 @@
             this.bIconos.FloatLocation = new System.Drawing.Point(42, 184);
             this.bIconos.FloatSize = new System.Drawing.Size(1106, 535);
             this.bIconos.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnBuscarFamilia),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnImpProveedor),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnGenerarReporte, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnExportarExcel),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLimpiar)});
@@ -189,6 +187,7 @@
             this.btnGenerarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarReporte.ImageOptions.Image")));
             this.btnGenerarReporte.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGenerarReporte.ImageOptions.LargeImage")));
             this.btnGenerarReporte.Name = "btnGenerarReporte";
+            this.btnGenerarReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGenerarReporte_ItemClick);
             // 
             // btnExportarExcel
             // 
@@ -319,19 +318,18 @@
             this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1086, 191);
+            this.panelControl1.Size = new System.Drawing.Size(1086, 164);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.chkSucursales);
+            this.groupControl1.Controls.Add(this.chkFamilia);
             this.groupControl1.Controls.Add(this.cboGridSucursales);
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.txtNombreFamilia);
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.txtIdFamilia);
-            this.groupControl1.Controls.Add(this.pbProgreso);
-            this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.dtFin);
             this.groupControl1.Controls.Add(this.dtInicio);
             this.groupControl1.Controls.Add(this.txtProveedorNombre);
@@ -342,7 +340,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1062, 167);
+            this.groupControl1.Size = new System.Drawing.Size(1062, 140);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -419,23 +417,6 @@
             this.txtIdFamilia.Size = new System.Drawing.Size(43, 20);
             this.txtIdFamilia.TabIndex = 18;
             // 
-            // pbProgreso
-            // 
-            this.pbProgreso.EditValue = 50;
-            this.pbProgreso.Location = new System.Drawing.Point(105, 137);
-            this.pbProgreso.Name = "pbProgreso";
-            this.pbProgreso.Properties.ShowTitle = true;
-            this.pbProgreso.Size = new System.Drawing.Size(291, 18);
-            this.pbProgreso.TabIndex = 17;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(31, 142);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(47, 13);
-            this.labelControl5.TabIndex = 16;
-            this.labelControl5.Text = "Procceso:";
-            // 
             // dtFin
             // 
             this.dtFin.EditValue = null;
@@ -510,10 +491,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(67, 191);
+            this.panelControl2.Location = new System.Drawing.Point(67, 164);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1086, 351);
+            this.panelControl2.Size = new System.Drawing.Size(1086, 378);
             this.panelControl2.TabIndex = 7;
             // 
             // dtgVentaExistencia
@@ -524,7 +505,7 @@
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
             this.dtgVentaExistencia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit2});
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(1062, 327);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(1062, 354);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -532,7 +513,6 @@
             // dtgValVentaExistencia
             // 
             this.dtgValVentaExistencia.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Reg,
             this.Col_Sucursal,
             this.Col_Codigo,
             this.Col_Descripcion,
@@ -549,16 +529,6 @@
             this.dtgValVentaExistencia.OptionsView.ShowFooter = true;
             this.dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
             // 
-            // Reg
-            // 
-            this.Reg.Caption = "#";
-            this.Reg.FieldName = "Reg";
-            this.Reg.Name = "Reg";
-            this.Reg.OptionsColumn.AllowEdit = false;
-            this.Reg.Visible = true;
-            this.Reg.VisibleIndex = 0;
-            this.Reg.Width = 47;
-            // 
             // Col_Sucursal
             // 
             this.Col_Sucursal.AppearanceCell.Options.UseTextOptions = true;
@@ -570,7 +540,7 @@
             this.Col_Sucursal.Name = "Col_Sucursal";
             this.Col_Sucursal.OptionsColumn.AllowEdit = false;
             this.Col_Sucursal.Visible = true;
-            this.Col_Sucursal.VisibleIndex = 1;
+            this.Col_Sucursal.VisibleIndex = 0;
             this.Col_Sucursal.Width = 72;
             // 
             // Col_Codigo
@@ -578,11 +548,11 @@
             this.Col_Codigo.AppearanceHeader.Options.UseTextOptions = true;
             this.Col_Codigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Col_Codigo.Caption = "Codigo";
-            this.Col_Codigo.FieldName = "Codigo";
+            this.Col_Codigo.FieldName = "ArticuloCodigo";
             this.Col_Codigo.Name = "Col_Codigo";
             this.Col_Codigo.OptionsColumn.AllowEdit = false;
             this.Col_Codigo.Visible = true;
-            this.Col_Codigo.VisibleIndex = 2;
+            this.Col_Codigo.VisibleIndex = 1;
             this.Col_Codigo.Width = 116;
             // 
             // Col_Descripcion
@@ -590,11 +560,11 @@
             this.Col_Descripcion.AppearanceHeader.Options.UseTextOptions = true;
             this.Col_Descripcion.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Col_Descripcion.Caption = "Descripcion";
-            this.Col_Descripcion.FieldName = "Descripcion";
+            this.Col_Descripcion.FieldName = "Articulodescripcion";
             this.Col_Descripcion.Name = "Col_Descripcion";
             this.Col_Descripcion.OptionsColumn.AllowEdit = false;
             this.Col_Descripcion.Visible = true;
-            this.Col_Descripcion.VisibleIndex = 3;
+            this.Col_Descripcion.VisibleIndex = 2;
             this.Col_Descripcion.Width = 327;
             // 
             // Col_Familia
@@ -606,7 +576,7 @@
             this.Col_Familia.Name = "Col_Familia";
             this.Col_Familia.OptionsColumn.AllowEdit = false;
             this.Col_Familia.Visible = true;
-            this.Col_Familia.VisibleIndex = 4;
+            this.Col_Familia.VisibleIndex = 3;
             this.Col_Familia.Width = 202;
             // 
             // Col_Mes
@@ -620,7 +590,7 @@
             this.Col_Mes.Name = "Col_Mes";
             this.Col_Mes.OptionsColumn.AllowEdit = false;
             this.Col_Mes.Visible = true;
-            this.Col_Mes.VisibleIndex = 5;
+            this.Col_Mes.VisibleIndex = 4;
             this.Col_Mes.Width = 72;
             // 
             // Col_Año
@@ -635,7 +605,7 @@
             this.Col_Año.OptionsColumn.AllowEdit = false;
             this.Col_Año.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)";
             this.Col_Año.Visible = true;
-            this.Col_Año.VisibleIndex = 6;
+            this.Col_Año.VisibleIndex = 5;
             // 
             // Col_Piezas
             // 
@@ -650,7 +620,7 @@
             this.Col_Piezas.ToolTip = "Pedido Sugerido = ((TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)-TExisten" +
     "cia";
             this.Col_Piezas.Visible = true;
-            this.Col_Piezas.VisibleIndex = 7;
+            this.Col_Piezas.VisibleIndex = 6;
             this.Col_Piezas.Width = 72;
             // 
             // Col_Total
@@ -663,8 +633,9 @@
             this.Col_Total.ColumnEdit = this.repositoryItemTextEdit2;
             this.Col_Total.FieldName = "TicketArticuloPrecio";
             this.Col_Total.Name = "Col_Total";
+            this.Col_Total.OptionsColumn.AllowEdit = false;
             this.Col_Total.Visible = true;
-            this.Col_Total.VisibleIndex = 8;
+            this.Col_Total.VisibleIndex = 7;
             this.Col_Total.Width = 72;
             // 
             // repositoryItemTextEdit2
@@ -674,14 +645,25 @@
             this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
-            // textEdit1
+            // chkFamilia
             // 
-            this.textEdit1.Location = new System.Drawing.Point(481, 56);
-            this.textEdit1.MenuManager = this.barManager1;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(100, 20);
-            this.textEdit1.TabIndex = 23;
+            this.chkFamilia.Location = new System.Drawing.Point(403, 26);
+            this.chkFamilia.MenuManager = this.barManager1;
+            this.chkFamilia.Name = "chkFamilia";
+            this.chkFamilia.Properties.Caption = "Todas";
+            this.chkFamilia.Size = new System.Drawing.Size(75, 19);
+            this.chkFamilia.TabIndex = 24;
+            this.chkFamilia.CheckedChanged += new System.EventHandler(this.chkFamilia_CheckedChanged);
+            // 
+            // chkSucursales
+            // 
+            this.chkSucursales.Location = new System.Drawing.Point(403, 81);
+            this.chkSucursales.MenuManager = this.barManager1;
+            this.chkSucursales.Name = "chkSucursales";
+            this.chkSucursales.Properties.Caption = "Todas";
+            this.chkSucursales.Size = new System.Drawing.Size(75, 19);
+            this.chkSucursales.TabIndex = 25;
+            this.chkSucursales.CheckedChanged += new System.EventHandler(this.chkSucursales_CheckedChanged);
             // 
             // Frm_VentasAcumuladas
             // 
@@ -709,7 +691,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdFamilia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicio.Properties.CalendarTimeProperties)).EndInit();
@@ -721,7 +702,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSucursales.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,8 +734,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.DateEdit dtFin;
         private DevExpress.XtraEditors.DateEdit dtInicio;
         private DevExpress.XtraEditors.TextEdit txtProveedorNombre;
@@ -773,7 +753,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn SucursalesId;
         private DevExpress.XtraGrid.Columns.GridColumn SucursalesNombre;
         private DevExpress.XtraGrid.Views.Grid.GridView dtgValVentaExistencia;
-        private DevExpress.XtraGrid.Columns.GridColumn Reg;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Sucursal;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Codigo;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Descripcion;
@@ -782,6 +761,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Año;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Piezas;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Total;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.CheckEdit chkFamilia;
+        private DevExpress.XtraEditors.CheckEdit chkSucursales;
     }
 }

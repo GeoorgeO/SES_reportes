@@ -13,6 +13,8 @@ using GridLookUpEditCBMultipleSelection;
 using GridControlEditCBMultipleSelection;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.Xpf.Dialogs;
+using DevExpress.Utils;
+using DevExpress.XtraSplashScreen;
 
 namespace BSC_Reportes
 {
@@ -38,6 +40,15 @@ namespace BSC_Reportes
         {
             InitializeComponent();
         }
+        public string DosCeros(string sVal)
+        {
+            string str = "";
+            if (sVal.Length == 1)
+            {
+                return (str = "0" + sVal);
+            }
+            return sVal;
+        }
         private static Frm_VentasAcumuladas m_FormDefInstance;
         public static Frm_VentasAcumuladas DefInstance
         {
@@ -52,6 +63,9 @@ namespace BSC_Reportes
                 m_FormDefInstance = value;
             }
         }
+
+        public string ElementoFamilia { get; private set; }
+
         private void MakeTablaPedidos()
         {
             DataTable table = new DataTable("FirstTable");
@@ -145,6 +159,8 @@ namespace BSC_Reportes
             {
                 MostrarBotones();
             }
+            ElementoFamilia=string.Empty;
+            CadenaSucursales=string.Empty;
         }
         public void OcultarBotones()
         {
@@ -214,7 +230,7 @@ namespace BSC_Reportes
                 CadenaNodos = frmFam.IdFamilia.ToString();
                 AgregarHijos(frmFam.IdFamilia);
 
-                string temporal = CadenaNodos;
+                ElementoFamilia = CadenaNodos;
 
             }
         }
@@ -337,34 +353,193 @@ namespace BSC_Reportes
             txtNombreFamilia.Text = string.Empty;
             txtProveedorId.Text = string.Empty;
             txtProveedorNombre.Text = string.Empty;
+            ElementoFamilia = string.Empty;
+            CadenaSucursales=string.Empty;
         }
 
         private void btnExportarExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraFolderBrowserDialog saveFileDialog = new XtraFolderBrowserDialog();
-            //openFileDialog.Filter = "Image Files(*.PNG; *.BMP; *.JPG; *.GIF)| *.PNG; *.BMP; *.JPG; *.GIF";
-            //saveFileDialog.Filter = "Excel Files(*.xls)| *.xls";
-            //saveFileDialog.CheckFileExists = true;
-            //saveFileDialog.FilterIndex = 1;
-            //saveFileDialog.RestoreDirectory = true;
-            
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (dtgValVentaExistencia.RowCount > 0)
             {
-                string Cadena = saveFileDialog.SelectedPath;
-                XtraInputBoxArgs args = new XtraInputBoxArgs();
-                // set required Input Box options 
-                args.Caption = "Ingrese Nombre del Archivo Excel";
-                args.Prompt = "Nombre Archivo";
-                args.DefaultButtonIndex = 0;
-                //args.Showing += Args_Showing;
-                // initialize a DateEdit editor with custom settings 
-                TextEdit editor = new TextEdit();
-                args.Editor = editor;
-                // a default DateEdit value 
-                args.DefaultResponse = "Nombre_Archivo_Excel";
-                // display an Input Box with the custom editor 
-                var result = XtraInputBox.Show(args).ToString();
+                XtraFolderBrowserDialog saveFileDialog = new XtraFolderBrowserDialog();
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string Cadena = saveFileDialog.SelectedPath;
+                    XtraInputBoxArgs args = new XtraInputBoxArgs();
+                    // set required Input Box options 
+                    args.Caption = "Ingrese Nombre del Archivo Excel";
+                    args.Prompt = "Nombre Archivo";
+                    args.DefaultButtonIndex = 0;
+                    //args.Showing += Args_Showing;
+                    // initialize a DateEdit editor with custom settings 
+                    TextEdit editor = new TextEdit();
+                    args.Editor = editor;
+                    // a default DateEdit value 
+                    args.DefaultResponse = "Nombre_Archivo_Excel";
+                    // display an Input Box with the custom editor 
+                    string result = string.Empty;
+                    result = XtraInputBox.Show(args).ToString();
+                    if (result != string.Empty)
+                    {
+                        string path = Cadena + "\\" + result + ".xls";
+                        dtgVentaExistencia.ExportToXlsx(path, new DevExpress.XtraPrinting.XlsxExportOptionsEx
+                        {
+                            AllowGrouping = DefaultBoolean.False,
+                            AllowFixedColumnHeaderPanel = DefaultBoolean.False
+                        });
+                        System.Diagnostics.Process.Start(path);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("No se ingreso Nombre para el Archivo a exportar");
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("No existen registros para exportar");
+            }
+        }
 
+        private void chkFamilia_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkFamilia.Checked==true)
+            {
+                ElementoFamilia = string.Empty;
+                txtIdFamilia.Text = string.Empty;
+                txtNombreFamilia.Text = string.Empty;
+            }
+        }
+        public void MensajeCargando(int opcion)
+        {
+            if (opcion == 1)
+            {
+                SplashScreenManager.ShowForm(this, typeof(Frm_CargandoConsulta), true, true, false);
+                SplashScreenManager.Default.SetWaitFormCaption("Procesando...");
+                SplashScreenManager.Default.SetWaitFormDescription("Espere por favor...");
+            }
+            else
+            {
+                try
+                {
+                    SplashScreenManager.CloseForm();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void btnGenerarReporte_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (txtProveedorId.Text != string.Empty && txtProveedorNombre.Text != string.Empty)
+            {
+                if (ValidaFamilia())
+                {
+                    if (ValidaSucursales())
+                    {
+                        DateTime dInicio = Convert.ToDateTime(dtInicio.EditValue);
+                        DateTime dFin = Convert.ToDateTime(dtFin.EditValue);
+                        int result = DateTime.Compare(dInicio, dFin);
+                        if (result < 1)
+                        {
+                            MensajeCargando(1);
+                            DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
+                            DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
+                            CLS_Ventas sel = new CLS_Ventas();
+                            sel.FechaInicio = string.Format("{0}{1}{2} 00:00:00", FInicio.Year, DosCeros(FInicio.Month.ToString()), DosCeros(FInicio.Day.ToString()));
+                            sel.FechaFin = string.Format("{0}{1}{2} 23:59:59", FFin.Year, DosCeros(FFin.Month.ToString()), DosCeros(FFin.Day.ToString()));
+                            sel.ProveedorId = Convert.ToInt32(txtProveedorId.Text);
+                            sel.EFamilia = ElementoFamilia;
+                            sel.ESucursal = CadenaSucursales;
+                            sel.MtdSeleccionarVentasProveedores();
+                            if (sel.Exito)
+                            {
+                                if (sel.Datos.Rows.Count > 0)
+                                {
+                                    dtgVentaExistencia.DataSource = sel.Datos;
+                                    MensajeCargando(2);
+                                }
+                                else
+                                {
+                                    MensajeCargando(2);
+                                    XtraMessageBox.Show("No existen datos para mostrar");
+                                }
+                            }
+                            else
+                            {
+                                MensajeCargando(2);
+                                XtraMessageBox.Show(sel.Mensaje);
+                            }
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("La fecha de Inicio no puede ser mayor a la Fecha Fin");
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("No se ha seleccionado Sucursal");
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("No se ha seleccionado Familia");
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha seleccionado Proveedor");
+            }
+        }
+
+        private bool ValidaFamilia()
+        {
+            Boolean Valor = false;
+            if(txtIdFamilia.Text==string.Empty && txtNombreFamilia.Text==string.Empty && chkFamilia.Checked==true)
+            {
+                Valor = true;
+            }
+            else if (txtIdFamilia.Text != string.Empty && txtNombreFamilia.Text != string.Empty && chkFamilia.Checked == false)
+            {
+                Valor = true;
+            }
+            else
+            {
+                Valor = false;
+            }
+            return Valor;
+        }
+        private bool ValidaSucursales()
+        {
+            Boolean Valor = false;
+            if (CadenaSucursales == string.Empty && chkSucursales.Checked == true)
+            {
+                Valor = true;
+            }
+            else if (CadenaSucursales != string.Empty && chkSucursales.Checked == false)
+                {
+                Valor = true;
+            }
+            else
+            {
+                Valor = false;
+            }
+            return Valor;
+        }
+        private void chkSucursales_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSucursales.Checked == true)
+            {
+                CargarSucursales();
+                CadenaSucursales = string.Empty;
+                cboGridSucursales.Enabled = false;
+            }
+            else
+            {
+                CargarSucursales();
+                CadenaSucursales = string.Empty;
+                cboGridSucursales.Enabled = true;
             }
         }
     }

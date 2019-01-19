@@ -38,6 +38,7 @@
             this.btnCambiaPass = new DevExpress.XtraBars.BarButtonItem();
             this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
             this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnVentasAcumuladas = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -47,8 +48,8 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnVentasAcumuladas = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +72,7 @@
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
+            this.ribbonPage4,
             this.ribbonPage1,
             this.ribbonPage3});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
@@ -146,12 +148,20 @@
             this.btnPedidos.Name = "btnPedidos";
             this.btnPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidos_ItemClick_1);
             // 
+            // btnVentasAcumuladas
+            // 
+            this.btnVentasAcumuladas.Caption = "Ventas Acumuladas";
+            this.btnVentasAcumuladas.Id = 4;
+            this.btnVentasAcumuladas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasAcumuladas.ImageOptions.Image")));
+            this.btnVentasAcumuladas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVentasAcumuladas.ImageOptions.LargeImage")));
+            this.btnVentasAcumuladas.Name = "btnVentasAcumuladas";
+            this.btnVentasAcumuladas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasAcumuladas_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup4});
-            this.ribbonPage2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage2.Image")));
+            this.ribbonPageGroup2});
+            this.ribbonPage2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage2.ImageOptions.Image")));
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "Compras";
             // 
@@ -168,7 +178,7 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1});
-            this.ribbonPage1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.Image")));
+            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Config";
             // 
@@ -187,7 +197,7 @@
             // 
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3});
-            this.ribbonPage3.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage3.Image")));
+            this.ribbonPage3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage3.ImageOptions.Image")));
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "Interfaz";
             // 
@@ -216,20 +226,21 @@
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
             // 
-            // ribbonPageGroup4
+            // ribbonPage4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnVentasAcumuladas);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Ventas";
+            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup5});
+            this.ribbonPage4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage4.ImageOptions.Image")));
+            this.ribbonPage4.Name = "ribbonPage4";
+            this.ribbonPage4.Text = "Ventas";
             // 
-            // btnVentasAcumuladas
+            // ribbonPageGroup5
             // 
-            this.btnVentasAcumuladas.Caption = "Ventas Acumuladas";
-            this.btnVentasAcumuladas.Id = 4;
-            this.btnVentasAcumuladas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnVentasAcumuladas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnVentasAcumuladas.Name = "btnVentasAcumuladas";
-            this.btnVentasAcumuladas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasAcumuladas_ItemClick);
+            this.ribbonPageGroup5.AllowTextClipping = false;
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnVentasAcumuladas);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.ShowCaptionButton = false;
+            this.ribbonPageGroup5.Text = "Acumuladas";
             // 
             // Frm_Principal
             // 
@@ -276,6 +287,7 @@
         private DevExpress.XtraBars.BarButtonItem btnEmail;
         private DevExpress.XtraBars.BarButtonItem btnPedidos;
         private DevExpress.XtraBars.BarButtonItem btnVentasAcumuladas;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
     }
 }

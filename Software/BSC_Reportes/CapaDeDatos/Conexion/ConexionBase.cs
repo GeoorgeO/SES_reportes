@@ -19,5 +19,9 @@ namespace CapaDeDatos
         protected string cadenaConexionC = ConexionSQL.LeerConexionC();
 
         protected Conexion _conexionC = new Conexion(ConexionSQL.LeerConexionC());
+
+        protected string cadenaConexionR = ConexionSQL.LeerConexionR();
+
+        protected Conexion _conexionR = new Conexion(ConexionSQL.LeerConexionR());
     }
 }

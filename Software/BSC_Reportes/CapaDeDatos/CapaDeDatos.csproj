@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -118,6 +117,7 @@
     <Compile Include="SES_Reportes\CLS_Usuarios.cs" />
     <Compile Include="SES_Reportes\CLS_Sucursales.cs" />
     <Compile Include="SES_Reportes\CLS_Familias.cs" />
+    <Compile Include="SES_Reportes\CLS_Ventas.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />

@@ -13,15 +13,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_Insert_VentaAcumulada_Central')
-DROP PROCEDURE SP_Insert_VentaAcumulada_Central
+IF  EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'SP_BSC_VentaAcumulada_Insert')
+DROP PROCEDURE SP_BSC_VentaAcumulada_Insert
 GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE SP_Insert_VentaAcumulada_Central
+CREATE PROCEDURE SP_BSC_VentaAcumulada_Insert
 	-- Add the parameters for the stored procedure here
 	@Tventa_Actual numeric(18,2),
 	@NTickets_Actual numeric(18,2),
@@ -43,7 +43,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	insert into SES_rpt_ventaacumulada ([Tventa_Actual] ,
+	insert into RPT_VentaAcumulada ([Tventa_Actual] ,
 			[NTickets_Actual] ,
 			[Pventa_Actual],
 			[PArticulosXticket_Actual],

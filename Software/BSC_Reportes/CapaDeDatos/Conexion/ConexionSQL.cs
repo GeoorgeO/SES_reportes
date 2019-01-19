@@ -120,6 +120,59 @@ namespace CapaDeDatos
             }
 
         }
+        static public string LeerConexionR()
+        {
+            string StrConexion = string.Empty;
+            string valServer = string.Empty;
+            string valDB = string.Empty;
+            string valLogin = string.Empty;
+            string valPass = string.Empty;
+            string ProyectName = string.Empty;
+            try
+            {
+                StrConexion = string.Empty;
+                valServer = ConfigurationManager.AppSettings["ServerName"].ToString();
+                valDB = ConfigurationManager.AppSettings["DataBase"].ToString();
+                valLogin = ConfigurationManager.AppSettings["UserName"].ToString();
+                valPass = ConfigurationManager.AppSettings["Password"].ToString();
+                ProyectName = ConfigurationManager.AppSettings["ProyectName"].ToString();
+
+                StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
+                //SqlConnection conn = new SqlConnection(StrConexion);
+                //conn.Open();
+                return StrConexion;
+            }
+            catch
+            {
+                MSRegistro RegOut = new MSRegistro();
+                Crypto DesencriptarTexto = new Crypto();
+
+                valServer = RegOut.GetSetting("ConexionSQL", "ServerR");
+                valDB = RegOut.GetSetting("ConexionSQL", "DBaseR");
+                valLogin = RegOut.GetSetting("ConexionSQL", "UserR");
+                valPass = RegOut.GetSetting("ConexionSQL", "PasswordR");
+
+                if (valServer != string.Empty && valDB != string.Empty && valLogin != string.Empty && valPass != string.Empty)
+                {
+                    valServer = DesencriptarTexto.Desencriptar(valServer);
+                    valDB = DesencriptarTexto.Desencriptar(valDB);
+                    valLogin = DesencriptarTexto.Desencriptar(valLogin);
+                    valPass = DesencriptarTexto.Desencriptar(valPass);
+                }
+                else
+                {
+                    valServer = string.Empty;
+                    valDB = string.Empty;
+                    valLogin = string.Empty;
+                    valPass = string.Empty;
+                    ProyectName = string.Empty;
+                    throw new Exception("Faltan datos de Conexion");
+                }
+                StrConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", valServer, valDB, valLogin, valPass);
+                return StrConexion;
+            }
+
+        }
         static public string LeerConexionRC(string ServerC, string DBaseC, string UserC, string PasswordC)
         {
             try

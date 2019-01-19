@@ -1,4 +1,4 @@
-USE [SES_SarabiaII]
+
 GO
 
 /****** Object:  Table [dbo].[SES_rpt_ventaacumulada]    Script Date: 17/01/2019 04:58:28 p. m. ******/
@@ -11,7 +11,7 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[SES_rpt_ventaacumulada](
+CREATE TABLE [dbo].[RPT_VentaAcumulada](
 	[Tventa_Actual] [numeric](18, 2) NULL,
 	[NTickets_Actual] [numeric](18, 2) NULL,
 	[Pventa_Actual] [numeric](18, 2) NULL,

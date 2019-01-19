@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSC_Sincronizacion", "BSC_Sincronizacion\BSC_Sincronizacion.csproj", "{ADBA69B8-4F7A-4FB3-BE0C-5C6DFD14CE67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ECA4E383-40ED-4B15-AF29-82AF25109124} = {ECA4E383-40ED-4B15-AF29-82AF25109124}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos", "..\BSC_Reportes\CapaDeDatos\CapaDeDatos.csproj", "{ECA4E383-40ED-4B15-AF29-82AF25109124}"
 EndProject

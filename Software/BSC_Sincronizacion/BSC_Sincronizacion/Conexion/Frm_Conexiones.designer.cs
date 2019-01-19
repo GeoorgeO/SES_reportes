@@ -69,6 +69,19 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtServerC = new DevExpress.XtraEditors.TextEdit();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.btnProbarConexionR = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuardarConexionR = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDBR = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPasswordR = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.txtLoginR = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.txtServerR = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -93,6 +106,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDBR.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordR.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLoginR.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtServerR.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -136,9 +158,9 @@
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 276);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 280);
             this.barDockControl2.Manager = this.barManager1;
-            this.barDockControl2.Size = new System.Drawing.Size(387, 23);
+            this.barDockControl2.Size = new System.Drawing.Size(387, 19);
             // 
             // barDockControl3
             // 
@@ -146,7 +168,7 @@
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager1;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 276);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 280);
             // 
             // barDockControl4
             // 
@@ -154,7 +176,7 @@
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl4.Location = new System.Drawing.Point(387, 0);
             this.barDockControl4.Manager = this.barManager1;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 276);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 280);
             // 
             // barButtonItem4
             // 
@@ -190,7 +212,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(387, 276);
+            this.panelControl2.Size = new System.Drawing.Size(387, 280);
             this.panelControl2.TabIndex = 6;
             // 
             // xtraTabControl1
@@ -198,19 +220,21 @@
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(7, 7);
             this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(373, 262);
+            this.xtraTabControl1.Size = new System.Drawing.Size(373, 266);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.groupControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(367, 234);
+            this.xtraTabPage1.Size = new System.Drawing.Size(371, 243);
             this.xtraTabPage1.Text = "Conexion Local";
             // 
             // groupControl2
@@ -219,7 +243,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(5, 5);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(357, 224);
+            this.groupControl2.Size = new System.Drawing.Size(361, 233);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Datos Local";
             // 
@@ -236,9 +260,9 @@
             this.panelControl3.Controls.Add(this.labelControl2);
             this.panelControl3.Controls.Add(this.txtServer);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(2, 20);
+            this.panelControl3.Location = new System.Drawing.Point(2, 22);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(353, 202);
+            this.panelControl3.Size = new System.Drawing.Size(357, 209);
             this.panelControl3.TabIndex = 0;
             // 
             // btnProbarConexionL
@@ -329,7 +353,7 @@
             this.xtraTabPage2.Controls.Add(this.groupControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(367, 234);
+            this.xtraTabPage2.Size = new System.Drawing.Size(371, 243);
             this.xtraTabPage2.Text = "Conexion Central";
             // 
             // groupControl1
@@ -338,7 +362,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(5, 5);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(357, 224);
+            this.groupControl1.Size = new System.Drawing.Size(361, 233);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Datos Central";
             // 
@@ -355,9 +379,9 @@
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.txtServerC);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(2, 20);
+            this.panelControl1.Location = new System.Drawing.Point(2, 22);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(353, 202);
+            this.panelControl1.Size = new System.Drawing.Size(357, 209);
             this.panelControl1.TabIndex = 0;
             // 
             // btnProbarConexionC
@@ -448,6 +472,123 @@
             this.imageCollection1.Images.SetKeyName(0, "GuardarConexion.png");
             this.imageCollection1.Images.SetKeyName(1, "ProbarConexion.png");
             // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.groupControl3);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Padding = new System.Windows.Forms.Padding(5);
+            this.xtraTabPage3.Size = new System.Drawing.Size(371, 243);
+            this.xtraTabPage3.Text = "Conexion Reportes";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.panelControl4);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(5, 5);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(361, 233);
+            this.groupControl3.TabIndex = 2;
+            this.groupControl3.Text = "Datos Reportes";
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.btnProbarConexionR);
+            this.panelControl4.Controls.Add(this.btnGuardarConexionR);
+            this.panelControl4.Controls.Add(this.labelControl9);
+            this.panelControl4.Controls.Add(this.txtDBR);
+            this.panelControl4.Controls.Add(this.labelControl10);
+            this.panelControl4.Controls.Add(this.txtPasswordR);
+            this.panelControl4.Controls.Add(this.labelControl11);
+            this.panelControl4.Controls.Add(this.txtLoginR);
+            this.panelControl4.Controls.Add(this.labelControl12);
+            this.panelControl4.Controls.Add(this.txtServerR);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(2, 22);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(357, 209);
+            this.panelControl4.TabIndex = 0;
+            // 
+            // btnProbarConexionR
+            // 
+            this.btnProbarConexionR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnProbarConexionR.Location = new System.Drawing.Point(102, 132);
+            this.btnProbarConexionR.Name = "btnProbarConexionR";
+            this.btnProbarConexionR.Size = new System.Drawing.Size(75, 40);
+            this.btnProbarConexionR.TabIndex = 15;
+            this.btnProbarConexionR.Text = "Probar \r\nConexion";
+            this.btnProbarConexionR.Click += new System.EventHandler(this.btnProbarConexionR_Click);
+            // 
+            // btnGuardarConexionR
+            // 
+            this.btnGuardarConexionR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.btnGuardarConexionR.Location = new System.Drawing.Point(21, 132);
+            this.btnGuardarConexionR.Name = "btnGuardarConexionR";
+            this.btnGuardarConexionR.Size = new System.Drawing.Size(75, 40);
+            this.btnGuardarConexionR.TabIndex = 14;
+            this.btnGuardarConexionR.Text = "Guardar \r\nConexion";
+            this.btnGuardarConexionR.Click += new System.EventHandler(this.btnGuardarConexionR_Click);
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(23, 107);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(73, 13);
+            this.labelControl9.TabIndex = 13;
+            this.labelControl9.Text = "Base de Datos:";
+            // 
+            // txtDBR
+            // 
+            this.txtDBR.Location = new System.Drawing.Point(102, 103);
+            this.txtDBR.Name = "txtDBR";
+            this.txtDBR.Size = new System.Drawing.Size(207, 20);
+            this.txtDBR.TabIndex = 12;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(36, 80);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(60, 13);
+            this.labelControl10.TabIndex = 11;
+            this.labelControl10.Text = "Contraseña:";
+            // 
+            // txtPasswordR
+            // 
+            this.txtPasswordR.Location = new System.Drawing.Point(102, 76);
+            this.txtPasswordR.Name = "txtPasswordR";
+            this.txtPasswordR.Properties.PasswordChar = '*';
+            this.txtPasswordR.Size = new System.Drawing.Size(207, 20);
+            this.txtPasswordR.TabIndex = 10;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(56, 52);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(40, 13);
+            this.labelControl11.TabIndex = 9;
+            this.labelControl11.Text = "Usuario:";
+            // 
+            // txtLoginR
+            // 
+            this.txtLoginR.Location = new System.Drawing.Point(102, 48);
+            this.txtLoginR.Name = "txtLoginR";
+            this.txtLoginR.Size = new System.Drawing.Size(207, 20);
+            this.txtLoginR.TabIndex = 8;
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(52, 24);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(44, 13);
+            this.labelControl12.TabIndex = 7;
+            this.labelControl12.Text = "Servidor:";
+            // 
+            // txtServerR
+            // 
+            this.txtServerR.Location = new System.Drawing.Point(102, 20);
+            this.txtServerR.Name = "txtServerR";
+            this.txtServerR.Size = new System.Drawing.Size(207, 20);
+            this.txtServerR.TabIndex = 6;
+            // 
             // Frm_Conexiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,6 +632,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDBR.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordR.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLoginR.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtServerR.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,5 +688,18 @@
         private DevExpress.XtraEditors.SimpleButton btnGuardarConexionL;
         private DevExpress.XtraEditors.SimpleButton btnProbarConexionC;
         private DevExpress.XtraEditors.SimpleButton btnGuardarConexionC;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.SimpleButton btnProbarConexionR;
+        private DevExpress.XtraEditors.SimpleButton btnGuardarConexionR;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.TextEdit txtDBR;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.TextEdit txtPasswordR;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.TextEdit txtLoginR;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.TextEdit txtServerR;
     }
 }

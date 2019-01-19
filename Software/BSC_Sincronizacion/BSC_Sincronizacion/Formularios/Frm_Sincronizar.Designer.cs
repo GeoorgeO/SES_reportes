@@ -44,6 +44,7 @@
             this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.btn_CierreVentas = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin.Properties.CalendarTimeProperties)).BeginInit();
@@ -138,6 +139,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btn_CierreVentas);
             this.panelControl1.Controls.Add(this.chkTodos);
             this.panelControl1.Controls.Add(this.btnDataBase);
             this.panelControl1.Controls.Add(this.lFechaInicio);
@@ -197,6 +199,16 @@
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp";
             // 
+            // btn_CierreVentas
+            // 
+            this.btn_CierreVentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btn_CierreVentas.Location = new System.Drawing.Point(478, 24);
+            this.btn_CierreVentas.Name = "btn_CierreVentas";
+            this.btn_CierreVentas.Size = new System.Drawing.Size(116, 46);
+            this.btn_CierreVentas.TabIndex = 10;
+            this.btn_CierreVentas.Text = "Enviar Cierre\r\n de Ventas";
+            this.btn_CierreVentas.Click += new System.EventHandler(this.btn_CierreVentas_Click);
+            // 
             // Frm_Sincronizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +254,6 @@
         private DevExpress.XtraEditors.CheckEdit chkTodos;
         private DevExpress.LookAndFeel.DefaultLookAndFeel SkinForm;
         private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
+        private DevExpress.XtraEditors.SimpleButton btn_CierreVentas;
     }
 }
