@@ -91,7 +91,20 @@ BEGIN
 			[Sucursal],
 			[FechaInsert])  
 
-		(select @IdFolio, Tventa_Actual,NTickets_Actual,Pventa_Actual,PArticulosXticket_Actual,Tventa_Anterior,NTickets_Anterior,Pventa_Anterior,PArticulosXticket_Anterior,(Tventa_Actual*100)/Tventa_Anterior as Porcentaje,@fecha as Fecha_Actual,@fechaAnt as Fecha_Anterior,Sucursal,getdate()
+		(select @IdFolio
+		,isnull(Tventa_Actual,0) as Tventa_Actual
+		,isnull(NTickets_Actual,0) as NTickets_Actual
+		,isnull(Pventa_Actual,0) as Pventa_Actual
+		,isnull(PArticulosXticket_Actual,0) as PArticulosXticket_Actual
+		,isnull(Tventa_Anterior,0) as Tventa_Anterior
+		,isnull(NTickets_Anterior,0) as NTickets_Anterior
+		,isnull(Pventa_Anterior,0) as Pventa_Anterior
+		,isnull(PArticulosXticket_Anterior,0) as PArticulosXticket_Anterior
+		,isnull((Tventa_Actual*100)/Tventa_Anterior,0) as Porcentaje
+		,@fecha as Fecha_Actual
+		,@fechaAnt as Fecha_Anterior
+		,Sucursal
+		,getdate()
 		from
 
 		(select 
@@ -128,6 +141,6 @@ BEGIN
 			) as TG
 		)
 
-		Select @IdFolio
+		Select @IdFolio as IdFolio
 END
 GO
