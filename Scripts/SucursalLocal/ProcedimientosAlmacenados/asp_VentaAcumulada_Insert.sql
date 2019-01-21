@@ -91,20 +91,7 @@ BEGIN
 			[Sucursal],
 			[FechaInsert])  
 
-		(select @IdFolio
-		,isnull(Tventa_Actual,0) as Tventa_Actual
-		,isnull(NTickets_Actual,0) as NTickets_Actual
-		,isnull(Pventa_Actual,0) as Pventa_Actual
-		,isnull(PArticulosXticket_Actual,0) as PArticulosXticket_Actual
-		,isnull(Tventa_Anterior,0) as Tventa_Anterior
-		,isnull(NTickets_Anterior,0) as NTickets_Anterior
-		,isnull(Pventa_Anterior,0) as Pventa_Anterior
-		,isnull(PArticulosXticket_Anterior,0) as PArticulosXticket_Anterior
-		,isnull((Tventa_Actual*100)/Tventa_Anterior,0) as Porcentaje
-		,@fecha as Fecha_Actual
-		,@fechaAnt as Fecha_Anterior
-		,Sucursal
-		,getdate()
+		(select @IdFolio, isnull(Tventa_Actual,0),isnull(NTickets_Actual,0),isnull(Pventa_Actual,0),isnull(PArticulosXticket_Actual,0),isnull(Tventa_Anterior,0),isnull(NTickets_Anterior,0),isnull(Pventa_Anterior,0),isnull(PArticulosXticket_Anterior,0),isnull((Tventa_Actual*100)/Tventa_Anterior,0) as Porcentaje,@fecha as Fecha_Actual,@fechaAnt as Fecha_Anterior,Sucursal,getdate()
 		from
 
 		(select 
@@ -141,6 +128,38 @@ BEGIN
 			) as TG
 		)
 
-		Select @IdFolio as IdFolio
+		declare @tventaa numeric(18,2)
+		declare @nticketa numeric(18,2)
+		declare @pventaa numeric(18,2)
+		declare @pticketa numeric(18,2)
+		declare @tventab numeric(18,2)
+		declare @nticketb numeric(18,2)
+		declare @pventab numeric(18,2)
+		declare @pticketb numeric(18,2)
+		declare @porcentaje numeric(18,2)
+		declare @fechaa datetime
+		declare @fechab datetime
+		declare @suc varchar(50)
+		declare @fechains datetime
+
+		set @tventaa=(select isnull(Tventa_Actual,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @nticketa=(select isnull(NTickets_Actual,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @pventaa=(select isnull(Pventa_Actual,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @pticketa=(select isnull(PArticulosXticket_Actual,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @tventab=(select isnull(Tventa_Anterior,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @nticketb=(select isnull(NTickets_Anterior,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @pventab=(select isnull(Pventa_Anterior,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @pticketb=(select isnull(PArticulosXticket_Anterior,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @porcentaje=(select isnull(Porcentaje,0) from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @fechaa=(select Fecha_Actual from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @fechab=(select Fecha_Anterior from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @suc=(select isnull(Sucursal,'') from RPT_VentaAcumulada where IdFolio=@IdFolio)
+		set @fechains=(select FechaInsert from RPT_VentaAcumulada where IdFolio=@IdFolio)
+
+
+		exec [SERVER-SON].SES_Reportes.dbo.SP_BSC_VentaAcumulada_Insert @tventaa,@nticketa,@pventaa,@pticketa,@tventab,@nticketb,@pventab,@pticketb,@porcentaje,@fechaa,@fechab,@suc,@fechains
+
+
+		Select @IdFolio
 END
 GO
