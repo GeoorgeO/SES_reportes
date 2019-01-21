@@ -118,6 +118,7 @@
     <Compile Include="SES_Reportes\CLS_Sucursales.cs" />
     <Compile Include="SES_Reportes\CLS_Familias.cs" />
     <Compile Include="SES_Reportes\CLS_Ventas.cs" />
+    <Compile Include="SES_Reportes\CLS_VentasAcumuladas.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Sincronizacion Local\CLSTarifaLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSUsuariosLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSVendedorLocal.cs" />
+    <Compile Include="Sincronizacion Local\CLSVentasAcumuladas.cs" />
     <Compile Include="SincronizacionCentral\CLSTablasSincronizarCentral.cs" />
     <Compile Include="SincronizacionCentral\CLS_ArticuloMedida_Central.cs" />
     <Compile Include="SincronizacionCentral\CLS_ArticuloProveedores_Central.cs" />
