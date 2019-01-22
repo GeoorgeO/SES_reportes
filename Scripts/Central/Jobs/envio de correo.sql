@@ -43,7 +43,7 @@ SELECT   Tventa_Actual, NTickets_Actual, Pventa_Actual , PArticulosXticket_Actua
 		 CONVERT(VARCHAR(10),Fecha_Actual, 103) as Fecha_Actual,
 		 CONVERT(VARCHAR(10),Fecha_Anterior, 103) as Fecha_Anterior, Sucursal,
 		 CONVERT(VARCHAR(10),FechaInsert, 108)  as Hora
-FROM            RPT_VentaAcumulada
+FROM     SES_Reportes.dbo.RPT_VentaAcumulada
 where FechaInsert between @FechaInicio and @FechaFin
 ) as A
 order by Sucursal,Hora
