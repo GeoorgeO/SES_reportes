@@ -1949,8 +1949,12 @@ namespace BSC_Sincronizacion
 
         private void btn_CierreVentas_Click(object sender, EventArgs e)
         {
-            MensajeCargando(1);
-            InsertarServer();
+            DialogResult = XtraMessageBox.Show("¿Desea envia las ventas Acumuladas de este dia?", "Ventas Acumuladas", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
+            {
+                MensajeCargando(1);
+                InsertarServer();
+            }
         }
 
         private void InsertarServer()
