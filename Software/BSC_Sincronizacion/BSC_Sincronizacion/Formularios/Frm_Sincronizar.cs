@@ -1967,49 +1967,10 @@ namespace BSC_Sincronizacion
             }
             ins.fecha = string.Format("{0}{1}{2} 00:00:00", FechaActual.Year, DosCero(FechaActual.Month.ToString()), DosCero(FechaActual.Day.ToString()));
             ins.MtdInsertarVentaAcumulada();
-            if(ins.Exito==true)
+            if (ins.Exito == true)
             {
-                if(ins.Datos.Rows.Count>0)
-                {
-                    IdFolio =Convert.ToInt32(ins.Datos.Rows[0]["IdFolio"].ToString());
-                    CLSVentasAcumuladas Sel = new CLSVentasAcumuladas();
-                    Sel.IdFolio = IdFolio;
-                    Sel.MtdSeleccionarVentaAcumulada();
-                    if(Sel.Exito==true)
-                    {
-                        if(Sel.Datos.Rows.Count>0)
-                        {
-                            CLS_VentasAcumuladas InsRep = new CLS_VentasAcumuladas();
-                            InsRep.Tventa_Actual =Convert.ToDecimal(Sel.Datos.Rows[0]["Tventa_Actual"].ToString());
-                            InsRep.NTickets_Actual = Convert.ToDecimal(Sel.Datos.Rows[0]["NTickets_Actual"].ToString());
-                            InsRep.Pventa_Actual = Convert.ToDecimal(Sel.Datos.Rows[0]["Pventa_Actual"].ToString());
-                            InsRep.PArticulosXticket_Actual = Convert.ToDecimal(Sel.Datos.Rows[0]["PArticulosXticket_Actual"].ToString());
-                            InsRep.Tventa_Anterior = Convert.ToDecimal(Sel.Datos.Rows[0]["Tventa_Anterior"].ToString());
-                            InsRep.NTickets_Anterior = Convert.ToDecimal(Sel.Datos.Rows[0]["NTickets_Anterior"].ToString());
-                            InsRep.Pventa_Anterior = Convert.ToDecimal(Sel.Datos.Rows[0]["Pventa_Anterior"].ToString());
-                            InsRep.PArticulosXticket_Anterior = Convert.ToDecimal(Sel.Datos.Rows[0]["PArticulosXticket_Anterior"].ToString());
-                            InsRep.Porcentaje = Convert.ToDecimal(Sel.Datos.Rows[0]["Porcentaje"].ToString());
-                            DateTime Fecha_Actual =Convert.ToDateTime(Sel.Datos.Rows[0]["Fecha_Actual"].ToString());
-                            InsRep.Fecha_Actual = string.Format("{0}{1}{2} 00:00:00", FechaActual.Year, DosCero(Fecha_Actual.Month.ToString()), DosCero(Fecha_Actual.Day.ToString()));
-                            DateTime Fecha_Anterior =Convert.ToDateTime(Sel.Datos.Rows[0]["Fecha_Anterior"].ToString());
-                            InsRep.Fecha_Anterior = string.Format("{0}{1}{2} 00:00:00", Fecha_Anterior.Year, DosCero(Fecha_Anterior.Month.ToString()), DosCero(Fecha_Anterior.Day.ToString()));
-                            InsRep.Sucursal = Sel.Datos.Rows[0]["Sucursal"].ToString();
-                            DateTime FechaInsert = Convert.ToDateTime(Sel.Datos.Rows[0]["FechaInsert"].ToString());
-                            InsRep.FechaInsert = string.Format("{0}{1}{2} {3}:{4}:{5}", FechaInsert.Year, DosCero(FechaInsert.Month.ToString()), DosCero(FechaInsert.Day.ToString()),DosCero(FechaInsert.Hour.ToString()),DosCero(FechaInsert.Minute.ToString()),DosCero(FechaInsert.Second.ToString()));
-                            InsRep.MtdInsertVentaAcumulada();
-                            if(InsRep.Exito==true)
-                            {
-                                MensajeCargando(2);
-                                XtraMessageBox.Show("Proceso Completado con Exito");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MensajeCargando(2);
-                        XtraMessageBox.Show("No se pudo recuperar el folio insertado");
-                    }
-                }
+                MensajeCargando(2);
+                XtraMessageBox.Show("Proceso Completado con Exito");
             }
             else
             {

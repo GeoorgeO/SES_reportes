@@ -52,7 +52,8 @@ order by Sucursal,Hora
     ) AS NVARCHAR(MAX) ) +
     N'</table>' ;
 
-	  SET NOCOUNT ON
+SET NOCOUNT ON
+
 Declare @CadenaCorreos varchar(max)
 set @CadenaCorreos= (
  select 
@@ -61,6 +62,7 @@ set @CadenaCorreos= (
     FROM SES_Reportes.dbo.CorreosDestino
     FOR XML PATH('')),
     1, 1, '') As CorreosDestino)
+
 EXEC msdb.dbo.sp_send_dbmail 
 @profile_name = 'Soneli Reportes'
 ,@recipients ='soporte@grupoalegro.com'
