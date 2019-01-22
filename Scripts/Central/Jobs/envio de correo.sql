@@ -16,10 +16,10 @@ SET @tableHTML =
     N'<H1>Ventas Acumuladas</H1>' +
 	N'<H3>Cualquier respuesta a este correo no sera leida</H3>' +
     N'<table border="5">' +
-	N'<th>Sucursal</th><th>Hora</th>'+
-    N'<th>T. Venta Actual</th><th># Ticket Actual</th><th>Prom. Venta Actual</th><th>Prom. Art. Ticket Actual</th>
-	  <th>T. Venta Anterior</th><th># Ticket Anterior</th><th>Prom. Venta Actual</th><th>Prom. Art. Ticket Anterior</th>
-	  <th>Porc. Cumplido</th><th>Fecha Actual</th><th>Fecha Anterior</th></tr>' +
+	N'<th bgcolor= "#1D66A9" style="color:#FFFFFF">Sucursal</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Hora</th>'+
+    N'<th bgcolor= "#1D66A9" style="color:#FFFFFF">T. Venta Actual</th><th bgcolor= "#1D66A9" style="color:#FFFFFF"># Ticket Actual</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Prom. Venta Actual</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Prom. Art. Ticket Actual</th>
+	  <th bgcolor= "#1D66A9" style="color:#FFFFFF">T. Venta Anterior</th><th bgcolor= "#1D66A9" style="color:#FFFFFF"># Ticket Anterior</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Prom. Venta Actual</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Prom. Art. Ticket Anterior</th>
+	  <th bgcolor= "#1D66A9" style="color:#FFFFFF">Porc. Cumplido</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Fecha Actual</th><th bgcolor= "#1D66A9" style="color:#FFFFFF">Fecha Anterior</th></tr>' +
     CAST ( (   Select 
 	td = Sucursal, '',
     td= Hora, '',
@@ -37,9 +37,9 @@ SET @tableHTML =
 	
 
 from (
-SELECT   Tventa_Actual, NTickets_Actual, Pventa_Actual , PArticulosXticket_Actual,
-		 Tventa_Anterior, NTickets_Anterior, Pventa_Anterior, PArticulosXticket_Anterior,
-		 Porcentaje,
+SELECT   '$ '+CONVERT(varchar, convert(money, Tventa_Actual), 1)as Tventa_Actual,CONVERT(varchar, convert(int, NTickets_Actual), 1)as NTickets_Actual,'$ '+CONVERT(varchar, convert(money, Pventa_Actual), 1)as Pventa_Actual ,CONVERT(varchar, convert(int, PArticulosXticket_Actual), 1)as PArticulosXticket_Actual,
+		 '$ '+CONVERT(varchar, convert(money, Tventa_Anterior), 1)as Tventa_Anterior,CONVERT(varchar, convert(int, NTickets_Anterior), 1)as NTickets_Anterior,'$ '+CONVERT(varchar, convert(money, Pventa_Anterior), 1)as Pventa_Anterior,CONVERT(varchar, convert(int, PArticulosXticket_Anterior), 1)as PArticulosXticket_Anterior,
+		 CONVERT(varchar, convert(money, Porcentaje), 1)+ ' %' as Porcentaje,
 		 CONVERT(VARCHAR(10),Fecha_Actual, 103) as Fecha_Actual,
 		 CONVERT(VARCHAR(10),Fecha_Anterior, 103) as Fecha_Anterior, Sucursal,
 		 CONVERT(VARCHAR(10),FechaInsert, 108)  as Hora
@@ -65,8 +65,8 @@ set @CadenaCorreos= (
 
 EXEC msdb.dbo.sp_send_dbmail 
 @profile_name = 'Soneli Reportes'
-,@recipients ='soporte@grupoalegro.com'
-,@Copy_recipients=@CadenaCorreos
+,@recipients ='sistemas@grupoalegro.com'
+--,@Copy_recipients=@CadenaCorreos
 ,@subject = 'Ventas Acumuladas'
 ,@body = @tableHTML
 ,@body_format = 'HTML'
