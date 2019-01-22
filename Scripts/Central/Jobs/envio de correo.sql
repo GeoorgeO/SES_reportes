@@ -1,8 +1,8 @@
 declare @FechaInicio varchar(20)
 declare @FechaFin varchar(20)
 
-set @FechaInicio = '20190121 00:00:00'
-set @FechaFin = '20190121 23:59:59'
+set @FechaInicio = convert(nvarchar(4), datepart(year,getdate()) , 0)+''+right('0'+convert(nvarchar(2), datepart(month,getdate()) , 0),2)+''+right('0'+convert(nvarchar(2), datepart(day,getdate()) , 0),2)+' 00:00:00' 
+set @FechaFin = convert(nvarchar(4), datepart(year,getdate()) , 0)+''+right('0'+convert(nvarchar(2), datepart(month,getdate()) , 0),2)+''+right('0'+convert(nvarchar(2), datepart(day,getdate()) , 0),2)+' 23:59:59'
 
 IF EXISTS(
 Select * from SES_Reportes.dbo.RPT_VentaAcumulada
@@ -46,6 +46,7 @@ SELECT   Tventa_Actual, NTickets_Actual, Pventa_Actual , PArticulosXticket_Actua
 FROM            RPT_VentaAcumulada
 where FechaInsert between @FechaInicio and @FechaFin
 ) as A
+order by Sucursal,Hora
 
  FOR XML PATH('tr'), TYPE 
     ) AS NVARCHAR(MAX) ) +
@@ -62,7 +63,7 @@ set @CadenaCorreos= (
     1, 1, '') As CorreosDestino)
 EXEC msdb.dbo.sp_send_dbmail 
 @profile_name = 'Soneli Reportes'
-,@recipients ='sistemas@grupoalegro.com'
+,@recipients ='soporte@grupoalegro.com'
 ,@Copy_recipients=@CadenaCorreos
 ,@subject = 'Ventas Acumuladas'
 ,@body = @tableHTML
