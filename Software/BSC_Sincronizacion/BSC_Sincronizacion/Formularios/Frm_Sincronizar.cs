@@ -1946,41 +1946,5 @@ namespace BSC_Sincronizacion
                 ArticulosError++;
             }
         }
-
-        private void btn_CierreVentas_Click(object sender, EventArgs e)
-        {
-            DialogResult = XtraMessageBox.Show("¿Desea envia las ventas Acumuladas de este dia?", "Ventas Acumuladas", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (DialogResult == DialogResult.Yes)
-            {
-                MensajeCargando(1);
-                InsertarServer();
-            }
-        }
-
-        private void InsertarServer()
-        {
-            DateTime FechaActual = DateTime.Now;
-            CLSVentasAcumuladas ins = new CLSVentasAcumuladas();
-            if(rdbCoincide.SelectedIndex==0)
-            {
-                ins.opcion = 1;
-            }
-            else
-            {
-                ins.opcion = 2;
-            }
-            ins.fecha = string.Format("{0}{1}{2} 00:00:00", FechaActual.Year, DosCero(FechaActual.Month.ToString()), DosCero(FechaActual.Day.ToString()));
-            ins.MtdInsertarVentaAcumulada();
-            if (ins.Exito == true)
-            {
-                MensajeCargando(2);
-                XtraMessageBox.Show("Proceso Completado con Exito");
-            }
-            else
-            {
-                MensajeCargando(2);
-                XtraMessageBox.Show("No se puedo insertar venta local");
-            }
-        }
     }
 }

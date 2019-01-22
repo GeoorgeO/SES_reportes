@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
 using System.IO;
+using DevExpress.XtraSplashScreen;
 
 namespace BSC_Coorporativo
 {
@@ -48,7 +49,26 @@ namespace BSC_Coorporativo
             }
 
         }
-
+        public void MensajeCargando(int opcion)
+        {
+            if (opcion == 1)
+            {
+                SplashScreenManager.ShowForm(this, typeof(Frm_CargandoConsulta), true, true, false);
+                SplashScreenManager.Default.SetWaitFormCaption("Procesando...");
+                SplashScreenManager.Default.SetWaitFormDescription("Espere por favor...");
+            }
+            else
+            {
+                try
+                {
+                    SplashScreenManager.CloseForm();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message);
+                }
+            }
+        }
         private void MakeFirstTable()
         {
             DataTable table = new DataTable("FirstTable");
@@ -2194,6 +2214,42 @@ namespace BSC_Coorporativo
             {
                 ArticulosError++;
                 escritura.WriteLine(string.Format("No se logro actualizar el Ticket Mayoreo-Articulo [{0}] ", TicketId));
+            }
+        }
+
+        private void btn_CierreVentas_Click(object sender, EventArgs e)
+        {
+            DialogResult = XtraMessageBox.Show("¿Desea envia las ventas Acumuladas de este dia?", "Ventas Acumuladas", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
+            {
+                MensajeCargando(1);
+                InsertarServer();
+            }
+        }
+
+        private void InsertarServer()
+        {
+            DateTime FechaActual = DateTime.Now;
+            CLSVentasAcumuladas ins = new CLSVentasAcumuladas();
+            if (rdbCoincide.SelectedIndex == 0)
+            {
+                ins.opcion = 1;
+            }
+            else
+            {
+                ins.opcion = 2;
+            }
+            ins.fecha = string.Format("{0}{1}{2} 00:00:00", FechaActual.Year, DosCero(FechaActual.Month.ToString()), DosCero(FechaActual.Day.ToString()));
+            ins.MtdInsertarVentaAcumulada();
+            if (ins.Exito == true)
+            {
+                MensajeCargando(2);
+                XtraMessageBox.Show("Proceso Completado con Exito");
+            }
+            else
+            {
+                MensajeCargando(2);
+                XtraMessageBox.Show("No se puedo insertar venta local");
             }
         }
     }

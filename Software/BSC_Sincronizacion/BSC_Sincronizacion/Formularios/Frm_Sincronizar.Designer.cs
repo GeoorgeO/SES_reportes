@@ -39,8 +39,6 @@
             this.GCatalogos = new DevExpress.XtraGrid.GridControl();
             this.GValCatalogos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.rdbCoincide = new DevExpress.XtraEditors.RadioGroup();
-            this.btn_CierreVentas = new DevExpress.XtraEditors.SimpleButton();
             this.chkTodos = new DevExpress.XtraEditors.CheckEdit();
             this.btnDataBase = new DevExpress.XtraEditors.SimpleButton();
             this.pbProgreso = new DevExpress.XtraEditors.ProgressBarControl();
@@ -54,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GValCatalogos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbCoincide.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTodos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -141,8 +138,6 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.rdbCoincide);
-            this.panelControl1.Controls.Add(this.btn_CierreVentas);
             this.panelControl1.Controls.Add(this.chkTodos);
             this.panelControl1.Controls.Add(this.btnDataBase);
             this.panelControl1.Controls.Add(this.lFechaInicio);
@@ -158,30 +153,6 @@
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
             this.panelControl1.Size = new System.Drawing.Size(672, 123);
             this.panelControl1.TabIndex = 9;
-            // 
-            // rdbCoincide
-            // 
-            this.rdbCoincide.Location = new System.Drawing.Point(560, 24);
-            this.rdbCoincide.Name = "rdbCoincide";
-            this.rdbCoincide.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.rdbCoincide.Properties.Appearance.Options.UseBackColor = true;
-            this.rdbCoincide.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.rdbCoincide.Properties.Columns = 1;
-            this.rdbCoincide.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Coincide Dia"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Coincide Fecha")});
-            this.rdbCoincide.Size = new System.Drawing.Size(100, 46);
-            this.rdbCoincide.TabIndex = 11;
-            // 
-            // btn_CierreVentas
-            // 
-            this.btn_CierreVentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_CierreVentas.ImageOptions.Image")));
-            this.btn_CierreVentas.Location = new System.Drawing.Point(435, 24);
-            this.btn_CierreVentas.Name = "btn_CierreVentas";
-            this.btn_CierreVentas.Size = new System.Drawing.Size(116, 46);
-            this.btn_CierreVentas.TabIndex = 10;
-            this.btn_CierreVentas.Text = "Enviar Cierre\r\n de Ventas";
-            this.btn_CierreVentas.Click += new System.EventHandler(this.btn_CierreVentas_Click);
             // 
             // chkTodos
             // 
@@ -247,7 +218,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbCoincide.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTodos.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProgreso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -272,7 +242,5 @@
         private DevExpress.XtraEditors.CheckEdit chkTodos;
         private DevExpress.LookAndFeel.DefaultLookAndFeel SkinForm;
         private DevExpress.XtraEditors.ProgressBarControl pbProgreso;
-        private DevExpress.XtraEditors.SimpleButton btn_CierreVentas;
-        private DevExpress.XtraEditors.RadioGroup rdbCoincide;
     }
 }

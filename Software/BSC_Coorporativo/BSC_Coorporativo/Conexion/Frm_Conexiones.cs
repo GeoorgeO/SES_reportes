@@ -11,7 +11,6 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 using DevExpress.XtraEditors;
 
-
 namespace BSC_Coorporativo
 {
     public partial class Frm_Conexiones : DevExpress.XtraEditors.XtraForm
@@ -74,6 +73,7 @@ namespace BSC_Coorporativo
             Crypto DesencriptarTexto = new Crypto();
             string valServer, valDB, valLogin, valPass;
             string valServerC, valDBC, valLoginC, valPassC;
+            string valServerR, valDBR, valLoginR, valPassR;
 
             try
             {
@@ -103,6 +103,20 @@ namespace BSC_Coorporativo
                 valDBC = string.Empty;
                 valLoginC = string.Empty;
                 valPassC = string.Empty;
+            }
+            try
+            {
+                valServerR = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerR"));
+                valDBR = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseR"));
+                valLoginR = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserR"));
+                valPassR = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordR"));
+            }
+            catch
+            {
+                valServerR = string.Empty;
+                valDBR = string.Empty;
+                valLoginR = string.Empty;
+                valPassR = string.Empty;
             }
 
             if (valServer != null && valDB != null && valLogin != null & valPass != null)
@@ -155,6 +169,32 @@ namespace BSC_Coorporativo
                 txtDBC.Text = string.Empty;
                 txtLoginC.Text = string.Empty;
                 txtPasswordC.Text = string.Empty;
+            }
+
+            if (valServerR != null && valDBR != null && valLoginR != null & valPassR != null)
+            {
+                txtServerR.Text = valServerR;
+                txtDBR.Text = valDBR;
+                txtLoginR.Text = valLoginR;
+                txtPasswordR.Text = valPassR;
+                using (SqlConnection conn = new SqlConnection(String.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", txtServerR.Text, txtDBR.Text, txtLoginR.Text, txtPasswordR.Text)))
+                {
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("No se Han Configurado datos Correctos para la conexion a la base de datos Central");
+                    }
+                }
+            }
+            else
+            {
+                txtServerR.Text = string.Empty;
+                txtDBR.Text = string.Empty;
+                txtLoginR.Text = string.Empty;
+                txtPasswordR.Text = string.Empty;
             }
         }
         private void btnGuardarConexion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -339,6 +379,60 @@ namespace BSC_Coorporativo
                         RegIn.SaveSetting("ConexionSQL", "DBaseC", EncriptarTexto.Encriptar(txtDBC.Text));
                         RegIn.SaveSetting("ConexionSQL", "UserC", EncriptarTexto.Encriptar(txtLoginC.Text));
                         RegIn.SaveSetting("ConexionSQL", "PasswordC", EncriptarTexto.Encriptar(txtPasswordC.Text));
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("No se pudo Conectar con la Base de Datos Central: " + ex);
+                    }
+                }
+            }
+        }
+
+        private void btnGuardarConexionR_Click(object sender, EventArgs e)
+        {
+            if (txtServerR.Text != "" && txtDBR.Text != "" && txtLoginR.Text != "" && txtPasswordR.Text != "")
+            {
+                {
+                    SqlConnection conn = new SqlConnection(string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", txtServerR.Text, txtDBR.Text, txtLoginR.Text, txtPasswordR.Text));
+                    try
+                    {
+                        MSRegistro RegIn = new MSRegistro();
+                        Crypto EncriptarTexto = new Crypto();
+                        conn.Open();
+                        RegIn.SaveSetting("ConexionSQL", "ServerR", EncriptarTexto.Encriptar(txtServerR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "DBaseR", EncriptarTexto.Encriptar(txtDBR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "UserR", EncriptarTexto.Encriptar(txtLoginR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "PasswordR", EncriptarTexto.Encriptar(txtPasswordR.Text));
+                        XtraMessageBox.Show("Se Grabaron los Datos Del Servidor Central Con Exito");
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Error Descripcion: " + ex);
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Faltan Datos para la Conexion Central");
+            }
+        }
+        private void btnProbarConexionR_Click(object sender, EventArgs e)
+        {
+            if (txtServerR.Text != "" && txtDBR.Text != "" && txtLoginR.Text != "" && txtPasswordR.Text != "")
+            {
+                using (SqlConnection conn = new SqlConnection(String.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", txtServerR.Text, txtDBR.Text, txtLoginR.Text, txtPasswordR.Text)))
+                {
+                    try
+                    {
+                        conn.Open();
+                        XtraMessageBox.Show("Conexion Exitosa DB Central");
+                        MSRegistro RegIn = new MSRegistro();
+                        Crypto EncriptarTexto = new Crypto();
+                        RegIn.SaveSetting("ConexionSQL", "ServerC", EncriptarTexto.Encriptar(txtServerR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "DBaseC", EncriptarTexto.Encriptar(txtDBR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "UserC", EncriptarTexto.Encriptar(txtLoginR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "PasswordC", EncriptarTexto.Encriptar(txtPasswordR.Text));
                     }
                     catch (Exception ex)
                     {
