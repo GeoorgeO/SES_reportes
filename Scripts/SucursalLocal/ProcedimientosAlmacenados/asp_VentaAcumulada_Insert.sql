@@ -38,6 +38,8 @@ BEGIN
 		--set @fecha=getdate()
 		--set @fecha='2019-04-30 00:00:00.000'
 		
+		set @fecha=convert(nvarchar(4), datepart(year,@fecha) , 0)+''+right('0'+convert(nvarchar(2), datepart(month,@fecha) , 0),2)+''+right('0'+convert(nvarchar(2), datepart(day,@fecha) , 0),2)
+		
 		select @fechaAnt=case @opcion when 1 then  dateadd(
 			day,
 			( case when datepart(dw,@fecha) - datepart(dw,
@@ -104,7 +106,7 @@ BEGIN
 			from Ticket as t
 			where t.TicketFecha=@fecha) as Pventa_Actual,
 			 (
-			select avg(g.CantidadArt) from (select isnull(sum(isnull(td.TicketArticuloCantidad,0)),0) as CantidadArt
+			select sum(convert(money,g.CantidadArt))/count(convert(money,g.CantidadArt)) from (select isnull(sum(isnull(td.TicketArticuloCantidad,0)),0) as CantidadArt
 			from Ticket as t
 				inner join TicketArticulo as td on t.TicketId=td.TicketId and t.CajaId=td.CajaId
 			where t.TicketFecha=@fecha
@@ -119,7 +121,7 @@ BEGIN
 			from Ticket as t
 			where t.TicketFecha=@fechaAnt) as Pventa_Anterior,
 			 (
-			select avg(g.CantidadArt) from (select isnull(sum(isnull(td.TicketArticuloCantidad,0)),0) as CantidadArt
+			select sum(convert(money,g.CantidadArt))/count(convert(money,g.CantidadArt)) from (select isnull(sum(isnull(td.TicketArticuloCantidad,0)),0) as CantidadArt
 			from Ticket as t
 				inner join TicketArticulo as td on t.TicketId=td.TicketId and t.CajaId=td.CajaId
 			where t.TicketFecha=@fechaAnt
