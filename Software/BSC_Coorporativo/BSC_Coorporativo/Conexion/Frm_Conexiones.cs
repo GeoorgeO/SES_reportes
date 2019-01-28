@@ -429,10 +429,10 @@ namespace BSC_Coorporativo
                         XtraMessageBox.Show("Conexion Exitosa DB Central");
                         MSRegistro RegIn = new MSRegistro();
                         Crypto EncriptarTexto = new Crypto();
-                        RegIn.SaveSetting("ConexionSQL", "ServerC", EncriptarTexto.Encriptar(txtServerR.Text));
-                        RegIn.SaveSetting("ConexionSQL", "DBaseC", EncriptarTexto.Encriptar(txtDBR.Text));
-                        RegIn.SaveSetting("ConexionSQL", "UserC", EncriptarTexto.Encriptar(txtLoginR.Text));
-                        RegIn.SaveSetting("ConexionSQL", "PasswordC", EncriptarTexto.Encriptar(txtPasswordR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "ServerR", EncriptarTexto.Encriptar(txtServerR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "DBaseR", EncriptarTexto.Encriptar(txtDBR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "UserR", EncriptarTexto.Encriptar(txtLoginR.Text));
+                        RegIn.SaveSetting("ConexionSQL", "PasswordR", EncriptarTexto.Encriptar(txtPasswordR.Text));
                     }
                     catch (Exception ex)
                     {
