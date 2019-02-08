@@ -110,6 +110,12 @@
     <Compile Include="Conexion\Frm_Conexiones.designer.cs">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conexion\Frm_ConexionesRemotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion\Frm_ConexionesRemotas.designer.cs">
+      <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Conexion\Frm_DataBaseSQL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     </Compile>
     <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Conexion\Frm_ConexionesRemotas.resx">
+      <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Conexion\Frm_DataBaseSQL.resx">
       <DependentUpon>Frm_DataBaseSQL.cs</DependentUpon>
