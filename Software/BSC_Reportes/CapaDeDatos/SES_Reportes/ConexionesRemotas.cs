@@ -139,46 +139,6 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-        //public void MtdSeleccionarBVentaExistencia()
-        //{
-        //    ServerR = vServerR;
-        //    DBaseR = vDBaseR;
-        //    UserR = vUserR;
-        //    PasswordR = vPasswordR;
-
-        //    TipoDato _dato = new TipoDato();
-        //    string CadenaConexionRemota = ConexionSQL.LeerConexionR(ServerR, DBaseR, UserR, PasswordR);
-        //    Conexion _conexionR = new Conexion(CadenaConexionRemota);
-
-        //    Exito = true;
-        //    try
-        //    {
-
-        //        _conexionR.NombreProcedimiento = "CentroCostos_VentaExistenciaSelect";
-        //        _dato.CadenaTexto = this.ArticuloCodigo;
-        //        _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
-        //        _dato.CadenaTexto = this.FechaInicio;
-        //        _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
-        //        _dato.CadenaTexto = this.FechaFin;
-        //        _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
-        //        _conexionR.EjecutarDataset();
-
-        //        if (_conexionR.Exito)
-        //        {
-        //            Datos = _conexionR.Datos;
-        //        }
-        //        else
-        //        {
-        //            Mensaje = _conexionR.Mensaje;
-        //            Exito = false;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Mensaje = e.Message;
-        //        Exito = false;
-        //    }
-
-        //}
+        
     }
 }

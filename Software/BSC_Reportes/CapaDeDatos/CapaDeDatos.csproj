@@ -111,6 +111,7 @@
     <Compile Include="SEG_Login.cs" />
     <Compile Include="SES_Reportes\CLS_Correos.cs" />
     <Compile Include="SES_Reportes\CLS_Email.cs" />
+    <Compile Include="SES_Reportes\CLS_IndiceRotacion.cs" />
     <Compile Include="SES_Reportes\CLS_Pantallas.cs" />
     <Compile Include="SES_Reportes\CLS_Pedidos.cs" />
     <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
