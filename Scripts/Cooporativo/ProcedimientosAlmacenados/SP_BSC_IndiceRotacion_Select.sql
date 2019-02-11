@@ -45,16 +45,28 @@ select Art.ArticuloCodigo,
 	Fam.FamiliaNombre,
 	ArtPro.ProveedorId,
 	isnull(ArtKar.Existencia,0) as Existencia,
-	convert(money,isnull(TV.Venta,0)) as Venta,
-	convert(money,isnull(TC.Costo,0)) as Costo,
+	convert(money,isnull(TV.Venta,0)) as Venta_Menudeo,
+	convert(money,isnull(TVM.Venta,0)) as Venta_Mayoreo,
+	convert(money,isnull(TC.Costo,0)) as Costo_Menudeo,
+	convert(money,isnull(TCM.Costo,0)) as Costo_Mayoreo,
 	(convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))) as SI,
 	(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))) as SF,
 	case when (((convert(money,isnull(Si.Venta,0))-convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)=0 then 0 
 		else (convert(money,isnull(TV.Venta,0))/(((convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)) 
-		end as IRP,
+		end as IRP_Menudeo,
+
+	case when (((convert(money,isnull(Si.Venta,0))-convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)=0 then 0 
+		else (convert(money,isnull(TVM.Venta,0))/(((convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)) 
+		end as IRP_Mayoreo,
+
 	case when (((convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)=0 then 0 
 		else (convert(money,isnull(TC.Costo,0))/(((convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)) 
-		end as IRC
+		end as IRC_Menudeo,
+
+	case when (((convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)=0 then 0 
+		else (convert(money,isnull(TCM.Costo,0))/(((convert(money,isnull(Si.Venta,0))+convert(money,isnull(ArtKar.Existencia,0)))+(convert(money,isnull(Sf.Venta,0))+convert(money,isnull(ArtKar.Existencia,0))))/2)) 
+		end as IRC_Mayoreo
+
 from Central.dbo.Articulo as Art
 inner join Central.dbo.Familia as fam on fam.FamiliaId=art.FamiliaId
 inner join Central.dbo.ArticuloProveedores as ArtPro on ArtPro.ArticuloCodigo=Art.ArticuloCodigo
@@ -81,6 +93,14 @@ left join (select TicArt.ArticuloCodigo,sum(TicArt.TicketArticuloCosto*TicketArt
 	from TicketArticulo as TicArt 
 		inner join Ticket as Tic on Tic.TicketId=TicArt.TicketId and Tic.CajaId=TicArt.CajaId 
 		where Tic.TicketFecha between @FechaInicio and @Fechafin group by TicArt.ArticuloCodigo) as TC on TC.ArticuloCodigo=Art.ArticuloCodigo
+left join (select TicArt.ArticuloCodigo,sum(TicArt.TicketArticuloCantidad) as Venta 
+	from TicketMayoreoArticulo as TicArt 
+		inner join TicketMayoreo as Tic on Tic.TicketId=TicArt.TicketId and Tic.CajaId=TicArt.CajaId 
+		where Tic.TicketFecha between @FechaInicio and @Fechafin group by TicArt.ArticuloCodigo) as TVM on TVM.ArticuloCodigo=Art.ArticuloCodigo
+left join (select TicArt.ArticuloCodigo,sum(TicArt.TicketArticuloCosto*TicketArticuloCantidad) as Costo 
+	from TicketMayoreoArticulo as TicArt 
+		inner join TicketMayoreo as Tic on Tic.TicketId=TicArt.TicketId and Tic.CajaId=TicArt.CajaId 
+		where Tic.TicketFecha between @FechaInicio and @Fechafin group by TicArt.ArticuloCodigo) as TCM on TCM.ArticuloCodigo=Art.ArticuloCodigo
 where (fam.FamiliaId in (SELECT * FROM @TFamilia) or len(@EFamilia)=0)
   and (ArtPro.ProveedorId=@ProveedorId or @ProveedorId=0)
 order by 2 desc
