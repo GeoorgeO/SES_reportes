@@ -386,6 +386,7 @@ namespace BSC_Coorporativo
             UdpArt.MtdActualizarArticuloKardex();
             if (UdpArt.Exito.ToString() == "True")
             {
+                DeleteArticuloKardex(UdpArt.ArticuloCodigo, UdpArt.FechaExistencia);
                 ArticulosActualizados++;
             }
             else
@@ -395,6 +396,17 @@ namespace BSC_Coorporativo
             }
         }
 
+        private void DeleteArticuloKardex(string articuloCodigo, string fechaExistencia)
+        {
+            CLSArticuloKardexLocal del = new CLSArticuloKardexLocal();
+            del.ArticuloCodigo = articuloCodigo;
+            del.FechaExistencia = fechaExistencia;
+            del.MtdEliminarArticuloKardex();
+            if (!del.Exito == true)
+            {
+                XtraMessageBox.Show(del.Mensaje);
+            }
+        }
         /****** Cancelacion ******/
         private void Cancelacion(int Fila)
         {

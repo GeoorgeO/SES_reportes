@@ -6,17 +6,22 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos.SES_Reportes
 {
-    class CLS_IndiceRotacion
+    class CLS_IndiceRotacion:ConexionBase
     {
-        public void MtdSeleccionarBVentaExistencia()
-        {
-            ServerR = vServerR;
-            DBaseR = vDBaseR;
-            UserR = vUserR;
-            PasswordR = vPasswordR;
+        public object DBaseR { get;  set; }
+        public string EFamilia { get;  set; }
+        public string FechaFin { get;  set; }
+        public string FechaInicio { get;  set; }
 
+        public object PasswordR { get;  set; }
+        public int? ProveedorId { get;  set; }
+        public object ServerR { get;  set; }
+        public object UserR { get;  set; }
+
+        public void MtdSeleccionarIndiceRotacion()
+        {
             TipoDato _dato = new TipoDato();
-            string CadenaConexionRemota = ConexionSQL.LeerConexionR(ServerR, DBaseR, UserR, PasswordR);
+            string CadenaConexionRemota = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", ServerR, DBaseR, UserR, PasswordR);
             Conexion _conexionR = new Conexion(CadenaConexionRemota);
 
             Exito = true;
