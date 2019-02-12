@@ -42,7 +42,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "asp_ArticuloKardex_Delete";
+                _conexion.NombreProcedimiento = "asp_ArticuloKardexLocal_Delete";
                 _dato.CadenaTexto = ArticuloCodigo;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.CadenaTexto = FechaExistencia;
