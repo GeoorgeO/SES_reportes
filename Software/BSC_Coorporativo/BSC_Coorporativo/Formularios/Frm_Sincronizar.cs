@@ -240,6 +240,7 @@ namespace BSC_Coorporativo
                 }
             }
         }
+        
         private string RecorreGrid()
         {
             int xRow = 0;
@@ -383,7 +384,9 @@ namespace BSC_Coorporativo
             UdpArt.ArticuloIVA = Convert.ToDecimal(ArticuloIVA);
             DateTime Fecha = Convert.ToDateTime(FechaExistencia);
             UdpArt.FechaExistencia = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
+            MensajeCargando(1);
             UdpArt.MtdActualizarArticuloKardex();
+            MensajeCargando(2);
             if (UdpArt.Exito.ToString() == "True")
             {
                 DeleteArticuloKardex(UdpArt.ArticuloCodigo, UdpArt.FechaExistencia);
@@ -416,7 +419,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCancelacion();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -524,7 +529,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCancelacionArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -599,7 +606,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCorteZ();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -671,7 +680,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCorteZRecargas();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -759,7 +770,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCorteZRecargasTickets();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -822,7 +835,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCortesZRecibos();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -885,7 +900,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarCortesZRecibosDetalles();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -950,7 +967,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarDevolucion();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1043,7 +1062,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarDevolucionArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1118,7 +1139,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarDevolucionMayoreo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1223,7 +1246,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarDevolucionMayoreoArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1297,7 +1322,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarDevolucionPre();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1388,7 +1415,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarDevolucionPreDetalles();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1459,7 +1488,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarEntradaMercancia();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1542,7 +1573,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarEntradaMercanciaArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1617,7 +1650,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarRecibosRemisiones();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1718,7 +1753,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarSalidaMercancia();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1802,7 +1839,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarSalidaMercanciaArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1876,7 +1915,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarTicket();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -1960,7 +2001,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarTicketArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -2056,7 +2099,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarTicketMayoreo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
@@ -2140,7 +2185,9 @@ namespace BSC_Coorporativo
             Application.DoEvents();
             SelArt.FechaInicio = dtFechaInicio.DateTime.Year.ToString() + DosCero(dtFechaInicio.DateTime.Month.ToString()) + DosCero(dtFechaInicio.DateTime.Day.ToString());
             SelArt.FechaFin = dtFechaFin.DateTime.Year.ToString() + DosCero(dtFechaFin.DateTime.Month.ToString()) + DosCero(dtFechaFin.DateTime.Day.ToString());
+            MensajeCargando(1);
             SelArt.MtdSeleccionarTicketMayoreoArticulo();
+            MensajeCargando(2);
             if (SelArt.Exito == true)
             {
                 ArticulosActualizados = 0;
