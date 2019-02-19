@@ -204,5 +204,14 @@ namespace BSC_Reportes
             Frm_VentasAcumuladas.DefInstance.UsuarioClase = UsuariosClase;
             Frm_VentasAcumuladas.DefInstance.Show();
         }
+
+        private void btnIndiceRotacion_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_RotacionMercancia.DefInstance.MdiParent = this;
+            Frm_RotacionMercancia.DefInstance.IdPantallaBotones = 6;
+            Frm_RotacionMercancia.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_RotacionMercancia.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_RotacionMercancia.DefInstance.Show();
+        }
     }
 }

@@ -39,6 +39,7 @@
             this.btnEmail = new DevExpress.XtraBars.BarButtonItem();
             this.btnPedidos = new DevExpress.XtraBars.BarButtonItem();
             this.btnVentasAcumuladas = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIndiceRotacion = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -50,7 +51,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.SkinForm = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btnIndiceRotacion = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -159,6 +159,15 @@
             this.btnVentasAcumuladas.Name = "btnVentasAcumuladas";
             this.btnVentasAcumuladas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasAcumuladas_ItemClick);
             // 
+            // btnIndiceRotacion
+            // 
+            this.btnIndiceRotacion.Caption = "Indice de Rotacion";
+            this.btnIndiceRotacion.Id = 5;
+            this.btnIndiceRotacion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIndiceRotacion.ImageOptions.Image")));
+            this.btnIndiceRotacion.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIndiceRotacion.ImageOptions.LargeImage")));
+            this.btnIndiceRotacion.Name = "btnIndiceRotacion";
+            this.btnIndiceRotacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIndiceRotacion_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -244,14 +253,6 @@
             // 
             this.SkinForm.EnableBonusSkins = true;
             this.SkinForm.LookAndFeel.SkinName = "Sharp Plus";
-            // 
-            // btnIndiceRotacion
-            // 
-            this.btnIndiceRotacion.Caption = "Indice de Rotacion";
-            this.btnIndiceRotacion.Id = 5;
-            this.btnIndiceRotacion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnIndiceRotacion.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnIndiceRotacion.Name = "btnIndiceRotacion";
             // 
             // Frm_Principal
             // 
