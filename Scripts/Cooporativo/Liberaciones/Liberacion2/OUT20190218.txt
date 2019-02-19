@@ -1,32 +1,22 @@
- El volumen de la unidad C no tiene etiqueta.
- El n£mero de serie del volumen es: 766A-AFCB
-
- Directorio de C:\Coorporativo
-
-18/02/2019  06:43 p. m.    <DIR>          .
-18/02/2019  06:43 p. m.    <DIR>          ..
-18/02/2019  06:43 p. m.                 0 archivo.txt
-18/02/2019  04:58 p. m.             3,860 asp_CancelacionArticulo_Select.sql
-18/02/2019  09:13 a. m.             2,566 asp_Cancelacion_Select.sql
-18/02/2019  10:07 a. m.             3,008 asp_CortesZRecargasTickets_Select.sql
-18/02/2019  09:51 a. m.             2,654 asp_CortesZRecargas_Select.sql
-18/02/2019  10:39 a. m.             2,884 asp_CortesZRecibosDetalles_Select.sql
-18/02/2019  10:33 a. m.             2,352 asp_CortesZRecibos_Select.sql
-18/02/2019  10:16 a. m.             2,292 asp_CortesZ_Select.sql
-18/02/2019  05:01 p. m.             3,776 asp_DevolucionArticulo_Select.sql
-18/02/2019  05:04 p. m.             3,888 asp_DevolucionMayoreoArticulo_Select.sql
-18/02/2019  10:53 a. m.             3,068 asp_DevolucionMayoreo_Select.sql
-18/02/2019  05:11 p. m.             3,056 asp_DevolucionPreDetalles_Select.sql
-18/02/2019  11:10 a. m.             2,694 asp_DevolucionPre_Select.sql
-18/02/2019  10:44 a. m.             2,640 asp_Devolucion_Select.sql
-18/02/2019  04:59 p. m.             4,388 asp_EntradaMercanciaArticulo_Select.sql
-18/02/2019  12:33 p. m.             1,442 asp_EntradaMercancia_Select.sql
-18/02/2019  12:46 p. m.             2,660 asp_RecibosRemisiones_Select.sql
-18/02/2019  05:05 p. m.             4,330 asp_SalidaMercanciaArticulo_Select.sql
-18/02/2019  01:20 p. m.             2,856 asp_SalidaMercancia_Select.sql
-18/02/2019  05:07 p. m.             4,276 asp_TicketArticulo_Select.sql
-18/02/2019  05:09 p. m.             4,612 asp_TicketMayoreoArticulo_Select.sql
-18/02/2019  02:02 p. m.             2,550 asp_TicketMayoreo_Select.sql
-18/02/2019  01:48 p. m.             2,404 asp_Ticket_Select.sql
-              23 archivos         68,256 bytes
-               2 dirs  688,062,590,976 bytes libres
+Scripts\Cooporativo\LinkServer\asp_CancelacionArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_Cancelacion_Select.sql
+Scripts\Cooporativo\LinkServer\asp_CortesZRecargasTickets_Select.sql
+Scripts\Cooporativo\LinkServer\asp_CortesZRecargas_Select.sql
+Scripts\Cooporativo\LinkServer\asp_CortesZRecibosDetalles_Select.sql
+Scripts\Cooporativo\LinkServer\asp_CortesZRecibos_Select.sql
+Scripts\Cooporativo\LinkServer\asp_CortesZ_Select.sql
+Scripts\Cooporativo\LinkServer\asp_DevolucionArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_DevolucionMayoreoArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_DevolucionMayoreo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_DevolucionPreDetalles_Select.sql
+Scripts\Cooporativo\LinkServer\asp_DevolucionPre_Select.sql
+Scripts\Cooporativo\LinkServer\asp_Devolucion_Select.sql
+Scripts\Cooporativo\LinkServer\asp_EntradaMercanciaArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_EntradaMercancia_Select.sql
+Scripts\Cooporativo\LinkServer\asp_RecibosRemisiones_Select.sql
+Scripts\Cooporativo\LinkServer\asp_SalidaMercanciaArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_SalidaMercancia_Select.sql
+Scripts\Cooporativo\LinkServer\asp_TicketArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_TicketMayoreoArticulo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_TicketMayoreo_Select.sql
+Scripts\Cooporativo\LinkServer\asp_Ticket_Select.sql
