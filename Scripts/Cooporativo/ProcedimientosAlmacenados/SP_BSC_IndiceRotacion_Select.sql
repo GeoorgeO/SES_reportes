@@ -88,7 +88,7 @@ left join (select TicArt.ArticuloCodigo,sum(TicArt.TicketArticuloCantidad) as Ve
 left join (select TicArt.ArticuloCodigo,sum(TicArt.TicketArticuloCantidad) as Venta 
 	from TicketArticulo as TicArt 
 		inner join Ticket as Tic on Tic.TicketId=TicArt.TicketId and Tic.CajaId=TicArt.CajaId 
-		where Tic.TicketFecha between @Fechafin and CONVERT (date, GETDATE()) group by TicArt.ArticuloCodigo) as Sf on Sf.ArticuloCodigo=Art.ArticuloCodigo
+		where Tic.TicketFecha between @Fechafin and dateadd(day,1,CONVERT (date, GETDATE())) group by TicArt.ArticuloCodigo) as Sf on Sf.ArticuloCodigo=Art.ArticuloCodigo
 left join (select TicArt.ArticuloCodigo,sum(TicArt.TicketArticuloCosto*TicketArticuloCantidad) as Costo 
 	from TicketArticulo as TicArt 
 		inner join Ticket as Tic on Tic.TicketId=TicArt.TicketId and Tic.CajaId=TicArt.CajaId 
