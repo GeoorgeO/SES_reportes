@@ -134,6 +134,12 @@
     <Compile Include="Formularios\Catalogos\Frm_AgregarArticulo.Designer.cs">
       <DependentUpon>Frm_AgregarArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Articulos_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Articulos_Buscar.Designer.cs">
+      <DependentUpon>Frm_Articulos_Buscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\Frm_Familias_Buscar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Frm_AgregarArticulo.resx">
       <DependentUpon>Frm_AgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_Articulos_Buscar.resx">
+      <DependentUpon>Frm_Articulos_Buscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Frm_Familias_Buscar.resx">
       <DependentUpon>Frm_Familias_Buscar.cs</DependentUpon>

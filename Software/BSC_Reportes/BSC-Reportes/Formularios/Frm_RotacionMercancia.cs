@@ -217,5 +217,42 @@ namespace BSC_Reportes
                 }
             }
         }
+
+        private void btnImportarArticulos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            txtArticuloCodigo.Text = string.Empty;
+            txtArticuloDescripcion.Text = string.Empty;
+            Frm_Articulos_Buscar selart = new Frm_Articulos_Buscar();
+            selart.ShowDialog();
+
+            if(selart.vArticuloCodigo!=string.Empty && selart.vArticuloDescripcion!=string.Empty)
+            {
+                txtArticuloCodigo.Text = selart.vArticuloCodigo;
+                txtArticuloDescripcion.Text = selart.vArticuloDescripcion;
+            }
+        }
+
+        private void chkFamilia_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkFamilia.Checked==true)
+            {
+                txtIdFamilia.Text = string.Empty;
+                txtNombreFamilia.Text = string.Empty;
+            }
+        }
+
+        private void chkProveedores_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkProveedores.Checked == true)
+            {
+                txtProveedorId.Text = string.Empty;
+                txtProveedorNombre.Text = string.Empty;
+            }
+        }
+
+        private void btnGenerarReporte_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

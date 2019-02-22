@@ -10,6 +10,7 @@ namespace CapaDeDatos
     {
         public string ArticuloCodigo { get; set; }
         public string ArticuloDescripcion { get; set; }
+        public int? Registros { get;  set; }
 
         public void MtdInsertarArticulo()
         {
@@ -71,6 +72,39 @@ namespace CapaDeDatos
                 Mensaje = e.Message;
                 Exito = false;
             }
+        }
+        public void MtdSeleccionarArticulos()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexion = new Conexion(cadenaConexion);
+
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_ArticuloBuscar_Select";
+                _dato.CadenaTexto = ArticuloDescripcion;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion ");
+                _dato.Entero = Registros;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Registros ");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                    Mensaje = _conexion.Mensaje;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
         }
     }
 }

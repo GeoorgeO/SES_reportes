@@ -248,5 +248,10 @@ namespace BSC_Reportes
                 chkFecha.Checked = true;
             }
         }
+
+        private void Frm_Pedidos_Buscar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
