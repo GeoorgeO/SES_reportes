@@ -230,7 +230,7 @@ namespace BSC_Reportes
             Frm_ConexionesRemotas.DefInstance.IdPantallaBotones = 8;
             Frm_ConexionesRemotas.DefInstance.UsuariosLogin = UsuariosLogin;
             Frm_ConexionesRemotas.DefInstance.UsuarioClase = UsuariosClase;
-            Frm_ConexionesRemotas.DefInstance.ShowDialog();
+            Frm_ConexionesRemotas.DefInstance.Show();
         }
     }
 }

@@ -172,15 +172,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(876, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(886, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 438);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 534);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(876, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(886, 25);
             // 
             // barDockControlLeft
             // 
@@ -188,15 +188,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(73, 438);
+            this.barDockControlLeft.Size = new System.Drawing.Size(71, 534);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(876, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(886, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 534);
             // 
             // barLargeButtonItem1
             // 
@@ -225,10 +225,10 @@
             // 
             this.panelControl2.Controls.Add(this.groupControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(73, 0);
+            this.panelControl2.Location = new System.Drawing.Point(71, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(803, 88);
+            this.panelControl2.Size = new System.Drawing.Size(815, 88);
             this.panelControl2.TabIndex = 17;
             // 
             // groupControl1
@@ -277,10 +277,10 @@
             // 
             this.panelControl1.Controls.Add(this.dtgArticulos);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(73, 88);
+            this.panelControl1.Location = new System.Drawing.Point(71, 88);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(803, 350);
+            this.panelControl1.Size = new System.Drawing.Size(815, 446);
             this.panelControl1.TabIndex = 22;
             // 
             // dtgArticulos
@@ -291,11 +291,12 @@
             this.dtgArticulos.Name = "dtgArticulos";
             this.dtgArticulos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.dtgArticulos.Size = new System.Drawing.Size(779, 326);
+            this.dtgArticulos.Size = new System.Drawing.Size(791, 422);
             this.dtgArticulos.TabIndex = 4;
             this.dtgArticulos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValArticulos});
             this.dtgArticulos.Click += new System.EventHandler(this.dtgArticulos_Click);
+            this.dtgArticulos.DoubleClick += new System.EventHandler(this.dtgArticulos_DoubleClick);
             // 
             // dtgValArticulos
             // 
@@ -313,6 +314,7 @@
             this.gridColumn1.Caption = "#";
             this.gridColumn1.FieldName = "Registro";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 54;
@@ -322,6 +324,7 @@
             this.gridColumn2.Caption = "Codigo";
             this.gridColumn2.FieldName = "Articulocodigo";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 113;
@@ -331,6 +334,7 @@
             this.gridColumn3.Caption = "Descripcion";
             this.gridColumn3.FieldName = "ArticuloDescripcion";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 292;
@@ -340,6 +344,7 @@
             this.gridColumn4.Caption = "Familia";
             this.gridColumn4.FieldName = "FamiliaNombre";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 300;
@@ -357,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 466);
+            this.ClientSize = new System.Drawing.Size(886, 559);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.barDockControlLeft);

@@ -44,7 +44,7 @@ namespace BSC_Reportes
 
         private void btnSeleccionar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            this.Close();
         }
 
         private void dtgArticulos_Click(object sender, EventArgs e)
@@ -57,6 +57,25 @@ namespace BSC_Reportes
                     vArticuloCodigo = row["ArticuloCodigo"].ToString();
                     vArticuloDescripcion = row["ArticuloDescripcion"].ToString();
                     lblProveedor.Caption = string.Format("ArticuloCodigo: {0}", vArticuloCodigo);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dtgArticulos_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (int i in this.dtgValArticulos.GetSelectedRows())
+                {
+                    DataRow row = this.dtgValArticulos.GetDataRow(i);
+                    vArticuloCodigo = row["ArticuloCodigo"].ToString();
+                    vArticuloDescripcion = row["ArticuloDescripcion"].ToString();
+                    lblProveedor.Caption = string.Format("ArticuloCodigo: {0}", vArticuloCodigo);
+                    this.Close();
                 }
             }
             catch (Exception ex)

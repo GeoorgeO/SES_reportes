@@ -30,11 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_RotacionMercancia));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            this.bandedGridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnBuscarFamilia = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -83,24 +80,22 @@
             this.Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Descripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Familia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage0 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.dtgPedidosInsidencias = new DevExpress.XtraGrid.GridControl();
-            this.dtgValPedidosInsidencias = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.bandedGridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bandedGridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bandedGridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
@@ -112,13 +107,6 @@
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -146,22 +134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
-            this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgPedidosInsidencias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidosInsidencias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bandedGridColumn20
-            // 
-            this.bandedGridColumn20.Caption = "Entrada";
-            this.bandedGridColumn20.FieldName = "Cantidad";
-            this.bandedGridColumn20.Name = "bandedGridColumn20";
-            this.bandedGridColumn20.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn20.Visible = true;
-            this.bandedGridColumn20.VisibleIndex = 3;
             // 
             // barManager1
             // 
@@ -227,6 +200,7 @@
             this.btnBuscarFamilia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarFamilia.ImageOptions.Image")));
             this.btnBuscarFamilia.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarFamilia.ImageOptions.LargeImage")));
             this.btnBuscarFamilia.Name = "btnBuscarFamilia";
+            this.btnBuscarFamilia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscarFamilia_ItemClick);
             // 
             // btnImpProveedor
             // 
@@ -235,6 +209,7 @@
             this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
             this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
             this.btnImpProveedor.Name = "btnImpProveedor";
+            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
             // 
             // btnImportarArticulos
             // 
@@ -270,6 +245,7 @@
             this.btnLimpiar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.Image")));
             this.btnLimpiar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.ImageOptions.LargeImage")));
             this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLimpiar_ItemClick);
             // 
             // bEstado
             // 
@@ -303,9 +279,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 483);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 486);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1017, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1017, 25);
             // 
             // barDockControlLeft
             // 
@@ -313,7 +289,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(69, 483);
+            this.barDockControlLeft.Size = new System.Drawing.Size(67, 486);
             // 
             // barDockControlRight
             // 
@@ -321,7 +297,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1017, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 486);
             // 
             // barLargeButtonItem1
             // 
@@ -394,9 +370,9 @@
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(69, 0);
+            this.groupControl1.Location = new System.Drawing.Point(67, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(948, 140);
+            this.groupControl1.Size = new System.Drawing.Size(950, 140);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Parametros";
             // 
@@ -414,7 +390,7 @@
             // 
             // chkArticulos
             // 
-            this.chkArticulos.Location = new System.Drawing.Point(402, 81);
+            this.chkArticulos.Location = new System.Drawing.Point(504, 81);
             this.chkArticulos.MenuManager = this.barManager1;
             this.chkArticulos.Name = "chkArticulos";
             this.chkArticulos.Properties.Caption = "Todos";
@@ -423,15 +399,15 @@
             // 
             // txtArticuloDescripcion
             // 
-            this.txtArticuloDescripcion.Location = new System.Drawing.Point(211, 81);
+            this.txtArticuloDescripcion.Location = new System.Drawing.Point(217, 81);
             this.txtArticuloDescripcion.Name = "txtArticuloDescripcion";
             this.txtArticuloDescripcion.Properties.ReadOnly = true;
-            this.txtArticuloDescripcion.Size = new System.Drawing.Size(185, 20);
+            this.txtArticuloDescripcion.Size = new System.Drawing.Size(281, 20);
             this.txtArticuloDescripcion.TabIndex = 26;
             // 
             // chkProveedores
             // 
-            this.chkProveedores.Location = new System.Drawing.Point(402, 54);
+            this.chkProveedores.Location = new System.Drawing.Point(504, 54);
             this.chkProveedores.MenuManager = this.barManager1;
             this.chkProveedores.Name = "chkProveedores";
             this.chkProveedores.Properties.Caption = "Todos";
@@ -441,7 +417,7 @@
             // 
             // chkFamilia
             // 
-            this.chkFamilia.Location = new System.Drawing.Point(403, 26);
+            this.chkFamilia.Location = new System.Drawing.Point(505, 26);
             this.chkFamilia.MenuManager = this.barManager1;
             this.chkFamilia.Name = "chkFamilia";
             this.chkFamilia.Properties.Caption = "Todas";
@@ -459,10 +435,10 @@
             // 
             // txtNombreFamilia
             // 
-            this.txtNombreFamilia.Location = new System.Drawing.Point(154, 25);
+            this.txtNombreFamilia.Location = new System.Drawing.Point(217, 25);
             this.txtNombreFamilia.Name = "txtNombreFamilia";
             this.txtNombreFamilia.Properties.ReadOnly = true;
-            this.txtNombreFamilia.Size = new System.Drawing.Size(242, 20);
+            this.txtNombreFamilia.Size = new System.Drawing.Size(281, 20);
             this.txtNombreFamilia.TabIndex = 20;
             // 
             // labelControl4
@@ -482,13 +458,13 @@
             this.txtIdFamilia.Properties.Mask.EditMask = "n0";
             this.txtIdFamilia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtIdFamilia.Properties.ReadOnly = true;
-            this.txtIdFamilia.Size = new System.Drawing.Size(43, 20);
+            this.txtIdFamilia.Size = new System.Drawing.Size(100, 20);
             this.txtIdFamilia.TabIndex = 18;
             // 
             // dtFin
             // 
             this.dtFin.EditValue = null;
-            this.dtFin.Location = new System.Drawing.Point(296, 109);
+            this.dtFin.Location = new System.Drawing.Point(277, 109);
             this.dtFin.Name = "dtFin";
             this.dtFin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -513,10 +489,10 @@
             // 
             // txtProveedorNombre
             // 
-            this.txtProveedorNombre.Location = new System.Drawing.Point(154, 53);
+            this.txtProveedorNombre.Location = new System.Drawing.Point(217, 53);
             this.txtProveedorNombre.Name = "txtProveedorNombre";
             this.txtProveedorNombre.Properties.ReadOnly = true;
-            this.txtProveedorNombre.Size = new System.Drawing.Size(242, 20);
+            this.txtProveedorNombre.Size = new System.Drawing.Size(281, 20);
             this.txtProveedorNombre.TabIndex = 4;
             // 
             // labelControl3
@@ -536,12 +512,12 @@
             this.txtProveedorId.Properties.Mask.EditMask = "n0";
             this.txtProveedorId.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtProveedorId.Properties.ReadOnly = true;
-            this.txtProveedorId.Size = new System.Drawing.Size(43, 20);
+            this.txtProveedorId.Size = new System.Drawing.Size(100, 20);
             this.txtProveedorId.TabIndex = 2;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(222, 113);
+            this.labelControl2.Location = new System.Drawing.Point(217, 112);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 1;
@@ -559,10 +535,10 @@
             // 
             this.panelControl1.Controls.Add(this.xtraTabControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(69, 140);
+            this.panelControl1.Location = new System.Drawing.Point(67, 140);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(948, 343);
+            this.panelControl1.Size = new System.Drawing.Size(950, 346);
             this.panelControl1.TabIndex = 5;
             // 
             // xtraTabControl1
@@ -572,11 +548,11 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(924, 319);
+            this.xtraTabControl1.Size = new System.Drawing.Size(926, 322);
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage14,
+            this.xtraTabPage0,
             this.xtraTabPage2,
             this.xtraTabPage3,
             this.xtraTabPage4,
@@ -631,11 +607,11 @@
             this.bandedGridColumn9,
             this.gridColumn6,
             this.gridColumn7});
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.dtgValCentro.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.dtgValCentro.FormatRules.Add(gridFormatRule1);
             this.dtgValCentro.GridControl = this.dtgCentro;
             this.dtgValCentro.Name = "dtgValCentro";
             this.dtgValCentro.OptionsFind.AlwaysVisible = true;
@@ -688,40 +664,118 @@
             this.Familia.Name = "Familia";
             this.Familia.OptionsColumn.AllowEdit = false;
             this.Familia.Visible = true;
-            this.Familia.VisibleIndex = 8;
+            this.Familia.VisibleIndex = 3;
             this.Familia.Width = 202;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.Caption = "Existencia";
+            this.gridColumn1.FieldName = "Existencia";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn2.Caption = "Venta Piezas Menudeo";
+            this.gridColumn2.FieldName = "Venta_Menudeo";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 7;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn3.Caption = "Venta Piezas Mayoreo";
+            this.gridColumn3.FieldName = "Venta_Mayoreo";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 8;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.gridColumn4.Caption = "Venta $ Menudeo";
+            this.gridColumn4.FieldName = "Costo_Menudeo";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 9;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn5.Caption = "Venta $ Mayoreo";
+            this.gridColumn5.FieldName = "Costo_Mayoreo";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 10;
             // 
             // bandedGridColumn5
             // 
+            this.bandedGridColumn5.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumn5.Caption = "Stock Inicial";
             this.bandedGridColumn5.FieldName = "SI";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.VisibleIndex = 10;
+            this.bandedGridColumn5.VisibleIndex = 5;
             // 
             // bandedGridColumn7
             // 
+            this.bandedGridColumn7.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumn7.Caption = "Stock Final";
             this.bandedGridColumn7.FieldName = "SF";
             this.bandedGridColumn7.Name = "bandedGridColumn7";
             this.bandedGridColumn7.Visible = true;
-            this.bandedGridColumn7.VisibleIndex = 11;
+            this.bandedGridColumn7.VisibleIndex = 6;
             // 
             // bandedGridColumn4
             // 
-            this.bandedGridColumn4.Caption = "Indice Rotacion P Menuedeo";
+            this.bandedGridColumn4.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn4.Caption = "Indice Rotacion P Menudeo";
             this.bandedGridColumn4.FieldName = "IRP_Menudeo";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.VisibleIndex = 9;
+            this.bandedGridColumn4.VisibleIndex = 11;
             // 
             // bandedGridColumn9
             // 
+            this.bandedGridColumn9.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumn9.Caption = "Indice Rotacion $ Menudeo";
             this.bandedGridColumn9.FieldName = "IRC_Menudeo";
             this.bandedGridColumn9.Name = "bandedGridColumn9";
             this.bandedGridColumn9.Visible = true;
             this.bandedGridColumn9.VisibleIndex = 12;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn6.Caption = "Indice Rotacion P Mayoreo";
+            this.gridColumn6.FieldName = "IRP_Mayoreo";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 13;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn7.Caption = "Indice Rotacion $ Mayoreo";
+            this.gridColumn7.FieldName = "IRC_Mayoreo";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 14;
             // 
             // repositoryItemTextEdit2
             // 
@@ -742,255 +796,96 @@
             this.repositoryItemTextEdit4.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
             // 
-            // xtraTabPage14
+            // xtraTabPage0
             // 
-            this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage14.Size = new System.Drawing.Size(738, 297);
-            this.xtraTabPage14.Text = "Almacen";
+            this.xtraTabPage0.Name = "xtraTabPage0";
+            this.xtraTabPage0.Padding = new System.Windows.Forms.Padding(5);
+            this.xtraTabPage0.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage0.Text = "Almacen";
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage2.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage2.Text = "Morelos";
-            // 
-            // dtgPedidosInsidencias
-            // 
-            this.dtgPedidosInsidencias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgPedidosInsidencias.Location = new System.Drawing.Point(5, 5);
-            this.dtgPedidosInsidencias.MainView = this.dtgValPedidosInsidencias;
-            this.dtgPedidosInsidencias.Name = "dtgPedidosInsidencias";
-            this.dtgPedidosInsidencias.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit5,
-            this.repositoryItemTextEdit6,
-            this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(728, 287);
-            this.dtgPedidosInsidencias.TabIndex = 1;
-            this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.dtgValPedidosInsidencias});
-            // 
-            // dtgValPedidosInsidencias
-            // 
-            this.dtgValPedidosInsidencias.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.bandedGridColumn1,
-            this.bandedGridColumn2,
-            this.bandedGridColumn3,
-            this.bandedGridColumn20,
-            this.bandedGridColumn6});
-            gridFormatRule3.Column = this.bandedGridColumn20;
-            gridFormatRule3.Name = "Format0";
-            formatConditionRuleExpression3.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression3.PredefinedName = "Red Bold Text";
-            gridFormatRule3.Rule = formatConditionRuleExpression3;
-            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule3);
-            this.dtgValPedidosInsidencias.GridControl = this.dtgPedidosInsidencias;
-            this.dtgValPedidosInsidencias.Name = "dtgValPedidosInsidencias";
-            this.dtgValPedidosInsidencias.OptionsFind.AlwaysVisible = true;
-            this.dtgValPedidosInsidencias.OptionsMenu.ShowConditionalFormattingItem = true;
-            this.dtgValPedidosInsidencias.OptionsSelection.MultiSelect = true;
-            this.dtgValPedidosInsidencias.OptionsView.ColumnAutoWidth = false;
-            this.dtgValPedidosInsidencias.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
-            this.dtgValPedidosInsidencias.OptionsView.ShowFooter = true;
-            this.dtgValPedidosInsidencias.OptionsView.ShowGroupPanel = false;
-            // 
-            // bandedGridColumn1
-            // 
-            this.bandedGridColumn1.Caption = "#";
-            this.bandedGridColumn1.FieldName = "Reg";
-            this.bandedGridColumn1.Name = "bandedGridColumn1";
-            this.bandedGridColumn1.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.VisibleIndex = 0;
-            this.bandedGridColumn1.Width = 47;
-            // 
-            // bandedGridColumn2
-            // 
-            this.bandedGridColumn2.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn2.Caption = "Codigo";
-            this.bandedGridColumn2.FieldName = "ArticuloCodigo";
-            this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.VisibleIndex = 1;
-            this.bandedGridColumn2.Width = 116;
-            // 
-            // bandedGridColumn3
-            // 
-            this.bandedGridColumn3.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn3.Caption = "Descripcion";
-            this.bandedGridColumn3.FieldName = "ArticuloDescripcion";
-            this.bandedGridColumn3.Name = "bandedGridColumn3";
-            this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.VisibleIndex = 2;
-            this.bandedGridColumn3.Width = 327;
-            // 
-            // bandedGridColumn6
-            // 
-            this.bandedGridColumn6.Caption = "Tipo";
-            this.bandedGridColumn6.FieldName = "Tipo";
-            this.bandedGridColumn6.Name = "bandedGridColumn6";
-            this.bandedGridColumn6.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn6.Visible = true;
-            this.bandedGridColumn6.VisibleIndex = 4;
-            this.bandedGridColumn6.Width = 180;
-            // 
-            // repositoryItemTextEdit5
-            // 
-            this.repositoryItemTextEdit5.AutoHeight = false;
-            this.repositoryItemTextEdit5.Mask.EditMask = "n0";
-            this.repositoryItemTextEdit5.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.repositoryItemTextEdit5.Name = "repositoryItemTextEdit5";
-            // 
-            // repositoryItemTextEdit6
-            // 
-            this.repositoryItemTextEdit6.AutoHeight = false;
-            this.repositoryItemTextEdit6.Name = "repositoryItemTextEdit6";
-            // 
-            // repositoryItemTextEdit7
-            // 
-            this.repositoryItemTextEdit7.AutoHeight = false;
-            this.repositoryItemTextEdit7.Mask.EditMask = "n0";
-            this.repositoryItemTextEdit7.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.repositoryItemTextEdit7.Name = "repositoryItemTextEdit7";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage3.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage3.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage3.Text = "Fco Villa";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage4.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage4.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage4.Text = "Sarabia";
             // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage5.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage5.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage5.Text = "Sarabia II";
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage6.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage6.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage6.Text = "Paseo";
             // 
             // xtraTabPage7
             // 
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage7.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage7.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage7.Text = "Estocolmo";
             // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage8.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage8.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage8.Text = "Costa Rica";
             // 
             // xtraTabPage9
             // 
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage9.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage9.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage9.Text = "Calzada";
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Name = "xtraTabPage10";
             this.xtraTabPage10.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage10.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage10.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage10.Text = "Lombardia";
             // 
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
             this.xtraTabPage11.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage11.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage11.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage11.Text = "Nva Italia";
             // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
             this.xtraTabPage12.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage12.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage12.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage12.Text = "Apatzingan";
             // 
             // xtraTabPage13
             // 
             this.xtraTabPage13.Name = "xtraTabPage13";
             this.xtraTabPage13.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage13.Size = new System.Drawing.Size(738, 297);
+            this.xtraTabPage13.Size = new System.Drawing.Size(920, 294);
             this.xtraTabPage13.Text = "Los Reyes";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Existencia";
-            this.gridColumn1.FieldName = "Existencia";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Venta Piezas Menudeo";
-            this.gridColumn2.FieldName = "Venta_Menudeo";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Venta Piezas Mayoreo";
-            this.gridColumn3.FieldName = "Venta_Mayoreo";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Venta $ Menudeo";
-            this.gridColumn4.FieldName = "Costo_Menudeo";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 6;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Venta $ Mayoreo";
-            this.gridColumn5.FieldName = "Costo_Mayoreo";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 7;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Indice Rotacion P Mayoreo";
-            this.gridColumn6.FieldName = "IRP_Mayoreo";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 13;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Indice Rotacion $ Mayoreo";
-            this.gridColumn7.FieldName = "IRC_Mayoreo";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 14;
             // 
             // Frm_RotacionMercancia
             // 
@@ -1034,12 +929,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
-            this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgPedidosInsidencias)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidosInsidencias)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1093,18 +982,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit4;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage14;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage0;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraGrid.GridControl dtgPedidosInsidencias;
-        private DevExpress.XtraGrid.Views.Grid.GridView dtgValPedidosInsidencias;
-        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn20;
-        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn6;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit5;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit6;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;

@@ -16,7 +16,6 @@ namespace BSC_Reportes
 {
     public partial class Frm_BFamilias : DevExpress.XtraEditors.XtraForm
     {
-        private bool vTieneHijos;
         public int IdFamilia { get; set; }
         public string VNombreFamilia { get; set; }
 
