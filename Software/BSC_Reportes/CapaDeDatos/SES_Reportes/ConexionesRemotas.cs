@@ -80,7 +80,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "CentroCostos_ConexionesRemotasSelect";
+                _conexion.NombreProcedimiento = "SP_BSC_CR_ConexionesRemotasSelect";
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

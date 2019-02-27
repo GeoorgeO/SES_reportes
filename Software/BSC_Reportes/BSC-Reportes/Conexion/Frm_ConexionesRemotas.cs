@@ -62,9 +62,30 @@ namespace BSC_Reportes
                 {
                     for(int x=0;x<conexion.Datos.Rows.Count;x++)
                     {
-                        conexion.Datos.Rows[x][2] = desencriptar.Desencriptar(conexion.Datos.Rows[x][2].ToString());
-                        conexion.Datos.Rows[x][3] = desencriptar.Desencriptar(conexion.Datos.Rows[x][3].ToString());
-                        conexion.Datos.Rows[x][4] = desencriptar.Desencriptar(conexion.Datos.Rows[x][4].ToString());
+                        if (conexion.Datos.Rows[x][2].ToString() != string.Empty)
+                        {
+                            conexion.Datos.Rows[x][2] = desencriptar.Desencriptar(conexion.Datos.Rows[x][2].ToString());
+                        }
+                        else
+                        {
+                            conexion.Datos.Rows[x][2] = string.Empty;
+                        }
+                        if (conexion.Datos.Rows[x][3].ToString() != string.Empty)
+                        {
+                            conexion.Datos.Rows[x][3] = desencriptar.Desencriptar(conexion.Datos.Rows[x][3].ToString());
+                        }
+                        else
+                        {
+                            conexion.Datos.Rows[x][3] = string.Empty;
+                        }
+                        if (conexion.Datos.Rows[x][4].ToString() != string.Empty)
+                        {
+                            conexion.Datos.Rows[x][4] = desencriptar.Desencriptar(conexion.Datos.Rows[x][4].ToString());
+                        }
+                        else
+                        {
+                            conexion.Datos.Rows[x][4] = string.Empty;
+                        }
                     }
                     dtgConexiones.DataSource = conexion.Datos;
                 }
