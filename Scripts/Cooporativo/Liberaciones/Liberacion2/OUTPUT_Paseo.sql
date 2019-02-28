@@ -533,8 +533,8 @@ BEGIN
 	where EntMer.EntradaMercanciaFecha between @FechaInicio and @FechaFin
 	and rtrim(EntMerArt.EntradasMercanciaId)+Rtrim(EntMerArt.SucursalesId)+rtrim(EntMerArt.EntradasMercanciaArticuloUltimoIde) not in (
 	SELECT rtrim(EntMerArtS.EntradasMercanciaId)+Rtrim(EntMerArtS.SucursalesId)+rtrim(EntMerArtS.EntradasMercanciaArticuloUltimoIde)
-	from [SERVER-SON].[Server_Lombardia].[dbo].EntradaMercanciaArticulo as EntMerArtS
-	inner join [SERVER-SON].[Server_Lombardia].[dbo].EntradaMercancia as EntMerS
+	from [SERVER-SON].[Server_Paseo].[dbo].EntradaMercanciaArticulo as EntMerArtS
+	inner join [SERVER-SON].[Server_Paseo].[dbo].EntradaMercancia as EntMerS
 		on EntMerArtS.EntradasMercanciaId=EntMerS.EntradaMercanciaId
 			and EntMerArtS.SucursalesId=EntMerS.SucursalesId
 	where EntMerS.EntradaMercanciaFecha between @FechaInicio and @FechaFin and EntMerArt.SucursalesId=EntMerArtS.SucursalesId and EntMerArt.EntradasMercanciaArticuloUltimoIde=EntMerArtS.EntradasMercanciaArticuloUltimoIde)
