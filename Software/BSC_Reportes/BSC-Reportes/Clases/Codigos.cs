@@ -55,5 +55,7 @@ namespace BSC_Reportes
                 throw new Exception("Error al generar el codigo" + ex.ToString());
             }
         }
+
+
     }
 }

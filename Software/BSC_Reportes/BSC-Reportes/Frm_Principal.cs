@@ -63,7 +63,7 @@ namespace BSC_Reportes
                             case "1":
                                 if (UsuariosClase == 'N')
                                 {
-                                    
+
                                 }
                                 else
                                 {
@@ -72,14 +72,14 @@ namespace BSC_Reportes
 
                                 break;
                             case "2":
-                                
-                                    btnPrePedidos.Visibility = BarItemVisibility.Always;
-                                
+
+                                btnPrePedidos.Visibility = BarItemVisibility.Always;
+
                                 break;
                             case "3":
                                 if (UsuariosClase == 'N')
                                 {
-                                   
+
                                 }
                                 else
                                 {
@@ -87,19 +87,29 @@ namespace BSC_Reportes
                                 }
                                 break;
                             case "4":
-                                
-                                    btnEmail.Visibility = BarItemVisibility.Always;
-                                
+
+                                btnEmail.Visibility = BarItemVisibility.Always;
+
                                 break;
                             case "5":
-                               
-                                    btnPedidos.Visibility = BarItemVisibility.Always;
-                                
+
+                                btnPedidos.Visibility = BarItemVisibility.Always;
+
                                 break;
                             case "6":
-                               
-                                    btnVentasAcumuladas.Visibility = BarItemVisibility.Always;
-                                
+
+                                btnVentasAcumuladas.Visibility = BarItemVisibility.Always;
+
+                                break;
+                            case "7":
+
+                                btnIndiceRotacion.Visibility = BarItemVisibility.Always;
+
+                                break;
+                            case "8":
+
+                                btnConexionesR.Visibility = BarItemVisibility.Always;
+
                                 break;
                         }
                     }
@@ -208,10 +218,19 @@ namespace BSC_Reportes
         private void btnIndiceRotacion_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_RotacionMercancia.DefInstance.MdiParent = this;
-            Frm_RotacionMercancia.DefInstance.IdPantallaBotones = 6;
+            Frm_RotacionMercancia.DefInstance.IdPantallaBotones = 7;
             Frm_RotacionMercancia.DefInstance.UsuariosLogin = UsuariosLogin;
             Frm_RotacionMercancia.DefInstance.UsuarioClase = UsuariosClase;
             Frm_RotacionMercancia.DefInstance.Show();
+        }
+
+        private void btnConexionesR_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ConexionesRemotas.DefInstance.MdiParent = this;
+            Frm_ConexionesRemotas.DefInstance.IdPantallaBotones = 8;
+            Frm_ConexionesRemotas.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_ConexionesRemotas.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_ConexionesRemotas.DefInstance.Show();
         }
     }
 }

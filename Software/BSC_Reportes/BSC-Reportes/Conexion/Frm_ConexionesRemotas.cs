@@ -20,6 +20,25 @@ namespace BSC_Reportes
         {
             InitializeComponent();
         }
+        private static Frm_ConexionesRemotas m_FormDefInstance;
+        public static Frm_ConexionesRemotas DefInstance
+        {
+            get
+            {
+                if (m_FormDefInstance == null || m_FormDefInstance.IsDisposed)
+                    m_FormDefInstance = new Frm_ConexionesRemotas();
+                return m_FormDefInstance;
+            }
+            set
+            {
+                m_FormDefInstance = value;
+            }
+        }
+
+        public int IdPantallaBotones { get;  set; }
+        public string UsuariosLogin { get;  set; }
+        public char UsuarioClase { get;  set; }
+
         private void CargarSucursales(int? Valor)
         {
             ConexionesRemotas conSucursales = new ConexionesRemotas();
@@ -43,9 +62,30 @@ namespace BSC_Reportes
                 {
                     for(int x=0;x<conexion.Datos.Rows.Count;x++)
                     {
-                        conexion.Datos.Rows[x][2] = desencriptar.Desencriptar(conexion.Datos.Rows[x][2].ToString());
-                        conexion.Datos.Rows[x][3] = desencriptar.Desencriptar(conexion.Datos.Rows[x][3].ToString());
-                        conexion.Datos.Rows[x][4] = desencriptar.Desencriptar(conexion.Datos.Rows[x][4].ToString());
+                        if (conexion.Datos.Rows[x][2].ToString() != string.Empty)
+                        {
+                            conexion.Datos.Rows[x][2] = desencriptar.Desencriptar(conexion.Datos.Rows[x][2].ToString());
+                        }
+                        else
+                        {
+                            conexion.Datos.Rows[x][2] = string.Empty;
+                        }
+                        if (conexion.Datos.Rows[x][3].ToString() != string.Empty)
+                        {
+                            conexion.Datos.Rows[x][3] = desencriptar.Desencriptar(conexion.Datos.Rows[x][3].ToString());
+                        }
+                        else
+                        {
+                            conexion.Datos.Rows[x][3] = string.Empty;
+                        }
+                        if (conexion.Datos.Rows[x][4].ToString() != string.Empty)
+                        {
+                            conexion.Datos.Rows[x][4] = desencriptar.Desencriptar(conexion.Datos.Rows[x][4].ToString());
+                        }
+                        else
+                        {
+                            conexion.Datos.Rows[x][4] = string.Empty;
+                        }
                     }
                     dtgConexiones.DataSource = conexion.Datos;
                 }

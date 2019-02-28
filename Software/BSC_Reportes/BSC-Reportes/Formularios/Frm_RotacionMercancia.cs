@@ -53,37 +53,12 @@ namespace BSC_Reportes
         {
             InitializeComponent();
         }
-        private void btnImpProveedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
-            frmpro.FrmRotacionMercancia = this;
-            frmpro.ShowDialog();
-        }
         public void BuscarProveedor(string vProveedorId)
         {
             txtProveedorId.Text = vProveedorId;
             CLS_Proveedores selpro = new CLS_Proveedores() { ProveedorId = Convert.ToInt32(vProveedorId) };
             txtProveedorNombre.Text = selpro.MtdSeleccionarProveedorId();
-        }
-        private void btnBuscarFamilia_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Frm_BFamilias frmFam = new Frm_BFamilias();
-            frmFam.ShowDialog();
-            if (frmFam.IdFamilia != 0)
-            {
-                txtIdFamilia.Text = frmFam.IdFamilia.ToString();
-                BuscarFamilia(Convert.ToInt32(txtIdFamilia.Text));
-
-                FamiliaId = frmFam.FamiliaId;
-                FamiliaNombre = frmFam.FamiliaNombre;
-                FamiliaPadreId = frmFam.FamiliaPadreId;
-
-                CadenaNodos = frmFam.IdFamilia.ToString();
-                AgregarHijos(frmFam.IdFamilia);
-
-                ElementoFamilia = CadenaNodos;
-
-            }
+            chkProveedores.Checked = false;
         }
         private void AgregarHijos(int ID)
         {
@@ -122,6 +97,9 @@ namespace BSC_Reportes
                 MostrarBotones();
             }
             ElementoFamilia = string.Empty;
+            dtInicio.DateTime = DateTime.Now;
+            dtFin.DateTime = DateTime.Now;
+            dtInicio.Focus();
         }
         public void OcultarBotones()
         {
@@ -174,11 +152,71 @@ namespace BSC_Reportes
         {
             btnImpProveedor.Links[0].Visible = true;
             btnBuscarFamilia.Links[0].Visible = true;
+            btnImportarArticulos.Links[0].Visible = true;
             btnGenerarReporte.Links[0].Visible = true;
             btnExportarExcel.Links[0].Visible = true;
             btnLimpiar.Links[0].Visible = true;
         }
+        private void chkFamilia_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkFamilia.Checked==true)
+            {
+                txtIdFamilia.Text = string.Empty;
+                txtNombreFamilia.Text = string.Empty;
+            }
+        }
+        private void chkProveedores_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkProveedores.Checked == true)
+            {
+                txtProveedorId.Text = string.Empty;
+                txtProveedorNombre.Text = string.Empty;
+            }
+        }
+        private void btnBuscarFamilia_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Frm_BFamilias frmFam = new Frm_BFamilias();
+            frmFam.ShowDialog();
+            if (frmFam.IdFamilia != 0)
+            {
+                txtIdFamilia.Text = frmFam.IdFamilia.ToString();
+                BuscarFamilia(Convert.ToInt32(txtIdFamilia.Text));
 
+                FamiliaId = frmFam.FamiliaId;
+                FamiliaNombre = frmFam.FamiliaNombre;
+                FamiliaPadreId = frmFam.FamiliaPadreId;
+
+                CadenaNodos = frmFam.IdFamilia.ToString();
+                AgregarHijos(frmFam.IdFamilia);
+
+                ElementoFamilia = CadenaNodos;
+                chkFamilia.Checked = false;
+            }
+        }
+        private void btnImpProveedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Frm_Proveedores_Buscar frmpro = new Frm_Proveedores_Buscar();
+            frmpro.FrmRotacionMercancia = this;
+            frmpro.ShowDialog();
+        }
+        private void btnImportarArticulos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            txtArticuloCodigo.Text = string.Empty;
+            txtArticuloDescripcion.Text = string.Empty;
+            Frm_Articulos_Buscar selart = new Frm_Articulos_Buscar();
+            selart.ShowDialog();
+
+            if (selart.vArticuloCodigo != string.Empty && selart.vArticuloDescripcion != string.Empty)
+            {
+                txtArticuloCodigo.Text = selart.vArticuloCodigo;
+                txtArticuloDescripcion.Text = selart.vArticuloDescripcion;
+                chkArticulos.Checked = false;
+            }
+        }
+        private void btnGenerarReporte_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
         private void btnExportarExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -216,6 +254,11 @@ namespace BSC_Reportes
                     XtraMessageBox.Show("No se ingreso Nombre para el Archivo a exportar");
                 }
             }
+        }
+
+        private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

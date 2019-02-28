@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLS_Articulos.cs" />
+    <Compile Include="SES_Reportes\CLS_Articulos.cs" />
     <Compile Include="Conexion\CLS_AppConfig.cs" />
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\ConexionBase.cs" />

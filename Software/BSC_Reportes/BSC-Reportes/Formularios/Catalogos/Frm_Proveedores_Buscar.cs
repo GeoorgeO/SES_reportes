@@ -85,7 +85,7 @@ namespace BSC_Reportes
                 }
                 else if (FrmRotacionMercancia != null)
                 {
-                    FrmVentasAcumuladas.BuscarProveedor(ProveedorId);
+                    FrmRotacionMercancia.BuscarProveedor(ProveedorId);
                     this.Close();
                 }
             }
@@ -105,7 +105,33 @@ namespace BSC_Reportes
                     ProveedorId = row["ProveedorId"].ToString();
                     ProveedorNombre = row["ProveedorNombre"].ToString();
                     lblProveedor.Caption = string.Format("{0} {1}", ProveedorId, ProveedorNombre);
-                    FrmReportePedidos.BuscarProveedor(ProveedorId);
+                    if (ProveedorId != string.Empty)
+                    {
+                        if (FrmReportePedidos != null)
+                        {
+                            FrmReportePedidos.BuscarProveedor(ProveedorId);
+                            this.Close();
+                        }
+                        else if (FrmPedidosBuscar != null)
+                        {
+                            FrmPedidosBuscar.BuscarProveedor(ProveedorId);
+                            this.Close();
+                        }
+                        else if (FrmVentasAcumuladas != null)
+                        {
+                            FrmVentasAcumuladas.BuscarProveedor(ProveedorId);
+                            this.Close();
+                        }
+                        else if (FrmRotacionMercancia != null)
+                        {
+                            FrmRotacionMercancia.BuscarProveedor(ProveedorId);
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("No se ha seleccionado Proveedor");
+                    }
                     this.Close();
                 }
             }

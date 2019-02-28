@@ -8,6 +8,7 @@ namespace CapaDeDatos.SES_Reportes
 {
     class CLS_IndiceRotacion:ConexionBase
     {
+        public string ArticuloCodigo { get;  set; }
         public object DBaseR { get;  set; }
         public string EFamilia { get;  set; }
         public string FechaFin { get;  set; }
@@ -37,7 +38,9 @@ namespace CapaDeDatos.SES_Reportes
                 _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.CadenaTexto = this.EFamilia;
                 _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "EFamilia");
-                
+                _dato.CadenaTexto = this.ArticuloCodigo;
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+
                 _conexionR.EjecutarDataset();
 
                 if (_conexionR.Exito)
