@@ -17,29 +17,30 @@ namespace CapaDeDatos
         public void MtdSeleccionarVentasProveedores()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_VentasFamiliaProveedor_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_VentasFamiliaProveedor_Select";
                 _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.CadenaTexto = ESucursal;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ESucursal ");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ESucursal ");
                 _dato.CadenaTexto = EFamilia;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "EFamilia");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "EFamilia");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }

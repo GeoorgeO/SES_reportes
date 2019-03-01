@@ -85,19 +85,20 @@ namespace CapaDeDatos
         public void MtdSeleccionarProveedores()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Proveedores_Select";
-                _conexion.EjecutarDataset();
+                _conexionR.NombreProcedimiento = "SP_BSC_Proveedores_Select";
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -111,17 +112,18 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_ProveedorId_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_ProveedorId_Select";
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                     if (Datos.Rows.Count > 0)
                     {
                         Valor = Datos.Rows[0][1].ToString();
@@ -129,7 +131,7 @@ namespace CapaDeDatos
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -144,21 +146,22 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Existe_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Existe_Select";
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.Entero = PrePedidoCerrado;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
                 _dato.Entero = PrePedidosCancelado;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCancelado");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCancelado");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                     if (Datos.Rows.Count > 0)
                     {
                         Valor = Datos.Rows[0][0].ToString();
@@ -166,7 +169,7 @@ namespace CapaDeDatos
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -181,25 +184,26 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Genera_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Genera_Select";
                 _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -213,21 +217,22 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Delete";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Delete";
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -241,33 +246,34 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Insert";
                 _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.CadenaTexto = ProveedorNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ProveedorNombre");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ProveedorNombre");
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = PeriodoPedido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoPedido");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoPedido");
                 _dato.Entero = PeriodoTipo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoTipo");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoTipo");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -281,35 +287,36 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Update";
                 _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.CadenaTexto = ProveedorNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ProveedorNombre");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ProveedorNombre");
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = PeriodoPedido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoPedido");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoPedido");
                 _dato.Entero = PeriodoTipo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoTipo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PeriodoTipo");
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -323,21 +330,22 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedidoCancelar_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidoCancelar_Update";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -351,96 +359,97 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Insert";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
                 _dato.Entero = Reg;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Reg");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Reg");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.CadenaTexto = ArticuloDescripcion;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
                 _dato.DecimalValor = ArticuloCostoReposicion;
-                _conexion.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "ArticuloCostoReposicion");
+                _conexionR.agregarParametro(EnumTipoDato.Tipodecimal, _dato, "ArticuloCostoReposicion");
                 _dato.CadenaTexto = FamiliaNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FamiliaNombre");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FamiliaNombre");
                 _dato.Entero = VAlmacen;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VAlmacen ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VAlmacen ");
                 _dato.Entero = EAlmacen;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EAlmacen ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EAlmacen ");
                 _dato.Entero = VApatzingan;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VApatzingan ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VApatzingan ");
                 _dato.Entero = EApatzingan;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EApatzingan ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EApatzingan ");
                 _dato.Entero = VCalzada;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VCalzada ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VCalzada ");
                 _dato.Entero = ECalzada;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ECalzada ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ECalzada ");
                 _dato.Entero = VCentro;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VCentro ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VCentro ");
                 _dato.Entero = ECentro;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ECentro ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ECentro ");
                 _dato.Entero = VCostaRica;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VCostaRica ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VCostaRica ");
                 _dato.Entero = ECostaRica;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ECostaRica ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ECostaRica ");
                 _dato.Entero = VEstocolmo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VEstocolmo ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VEstocolmo ");
                 _dato.Entero = EEstocolmo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EEstocolmo ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EEstocolmo ");
                 _dato.Entero = VFCoVilla;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VFCoVilla ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VFCoVilla ");
                 _dato.Entero = EFcoVilla;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EFcoVilla ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EFcoVilla ");
                 _dato.Entero = VLombardia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VLombardia ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VLombardia ");
                 _dato.Entero = ELombardia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ELombardia ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ELombardia ");
                 _dato.Entero = VReyes;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VReyes ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VReyes ");
                 _dato.Entero = EReyes;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EReyes ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EReyes ");
                 _dato.Entero = VMorelos;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VMorelos ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VMorelos ");
                 _dato.Entero = EMorelos;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EMorelos ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EMorelos ");
                 _dato.Entero = VNvaItalia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VNvaItalia ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VNvaItalia ");
                 _dato.Entero = ENvaItalia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ENvaItalia ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ENvaItalia ");
                 _dato.Entero = VPaseo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VPaseo ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VPaseo ");
                 _dato.Entero = EPaseo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "EPaseo ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "EPaseo ");
                 _dato.Entero = VSarabiaI;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VSarabiaI ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VSarabiaI ");
                 _dato.Entero = ESarabiaI;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ESarabiaI ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ESarabiaI ");
                 _dato.Entero = VSarabiaII;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "VSarabiaII ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VSarabiaII ");
                 _dato.Entero = ESarabiaII;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ESarabiaII ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ESarabiaII ");
                 _dato.Entero = TotalV;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "TotalV ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TotalV ");
                 _dato.Entero = TotalE;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "TotalE ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TotalE ");
                 _dato.Entero = PIdeal;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PIdeal ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PIdeal ");
                 _dato.Entero = PSugerido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PSugerido ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PSugerido ");
                 _dato.Entero = Pedido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
-                _conexion.EjecutarDataset();
-                if (_conexion.Exito)
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
+                _conexionR.EjecutarDataset();
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -454,28 +463,29 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidoDetalle_Update";
                 _dato.Entero = Reg;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Reg ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Reg ");
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.CadenaTexto = ArticuloDescripcion;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion");
                 _dato.Entero = Pedido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
-                _conexion.EjecutarDataset();
-                if (_conexion.Exito)
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Pedido ");
+                _conexionR.EjecutarDataset();
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -488,23 +498,24 @@ namespace CapaDeDatos
         public void MtdSeleccionarPrePedidos()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedidos_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidos_Select";
                 _dato.Entero = PrePedidoCerrado;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCerrado");
                 _dato.Entero = PrePedidosCancelado;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCancelado");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosCancelado");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -517,21 +528,22 @@ namespace CapaDeDatos
         public void MtdSeleccionarPrePedidosId()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedidosId_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidosId_Select";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -544,21 +556,22 @@ namespace CapaDeDatos
         public void MtdSeleccionarPrePedidosDetalles()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedidosDetalles_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidosDetalles_Select";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId ");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -571,23 +584,24 @@ namespace CapaDeDatos
         public void MtdActualizarCodigoBarra()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_CodigoBarra_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_CodigoBarra_Update";
                 _dato.Entero = this.PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.ImagenValor = imageCodigoBarra;
-                _conexion.agregarParametro(EnumTipoDato.imagen, _dato, "imageCodigoBarra");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.imagen, _dato, "imageCodigoBarra");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -604,21 +618,22 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionRR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Id_Select";
+                _conexionRR.NombreProcedimiento = "SP_BSC_Pedido_Id_Select";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
-                _conexion.EjecutarDataset();
+                _conexionRR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionRR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionRR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionRR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionRR.Mensaje;
                     Exito = false;
                 }
             }
@@ -632,21 +647,22 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionRR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PedidoDetalles_Id_Select";
+                _conexionRR.NombreProcedimiento = "SP_BSC_PedidoDetalles_Id_Select";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
-                _conexion.EjecutarDataset();
+                _conexionRR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionRR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionRR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionRR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionRR.Mensaje;
                     Exito = false;
                 }
             }
@@ -660,23 +676,24 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionRR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Encabezado_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_Encabezado_Insert";
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -690,53 +707,54 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Detalles_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_Detalles_Insert";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = DAlmacen;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
                 _dato.Entero = DApatzingan;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
                 _dato.Entero = DCalzada;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
                 _dato.Entero = DCentro;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
                 _dato.Entero = DCostaRica;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
                 _dato.Entero = DEstocolmo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
                 _dato.Entero = DFcoVilla;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
                 _dato.Entero = DLombardia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
                 _dato.Entero = DReyes;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
                 _dato.Entero = DMorelos;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
                 _dato.Entero = DNvaItalia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
                 _dato.Entero = DPaseo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
                 _dato.Entero = DSarabiaI;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
                 _dato.Entero = TPedido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
+                _conexionR.EjecutarDataset();
   
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -750,21 +768,22 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_PrePedido_Cerrar_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Cerrar_Update";
                 _dato.Entero = PrePedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -779,27 +798,28 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_FechaProveedorLista_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_FechaProveedorLista_Select";
                 _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.Entero = Opcion;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -813,25 +833,26 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_FechaLista_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_FechaLista_Select";
                 _dato.CadenaTexto = FechaInicio;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaInicio");
                 _dato.CadenaTexto = FechaFin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FechaFin");
                 _dato.Entero = Opcion;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -845,23 +866,24 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_ProveedorLista_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_ProveedorLista_Select";
                 _dato.Entero = ProveedorId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.Entero = Opcion;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -877,51 +899,52 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_DetallesSurtido_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_DetallesSurtido_Update";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = DAlmacen;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
                 _dato.Entero = DApatzingan;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
                 _dato.Entero = DCalzada;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
                 _dato.Entero = DCentro;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
                 _dato.Entero = DCostaRica;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
                 _dato.Entero = DEstocolmo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
                 _dato.Entero = DFcoVilla;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
                 _dato.Entero = DLombardia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
                 _dato.Entero = DReyes;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
                 _dato.Entero = DMorelos;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
                 _dato.Entero = DNvaItalia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
                 _dato.Entero = DPaseo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
                 _dato.Entero = DSarabiaI;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -935,53 +958,54 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_DetallesPendiente_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_DetallesPendiente_Update";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = DAlmacen;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DAlmacen");
                 _dato.Entero = DApatzingan;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DApatzingan");
                 _dato.Entero = DCalzada;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCalzada");
                 _dato.Entero = DCentro;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCentro");
                 _dato.Entero = DCostaRica;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DCostaRica");
                 _dato.Entero = DEstocolmo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DEstocolmo");
                 _dato.Entero = DFcoVilla;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DFcoVilla");
                 _dato.Entero = DLombardia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DLombardia");
                 _dato.Entero = DReyes;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DReyes");
                 _dato.Entero = DMorelos;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DMorelos");
                 _dato.Entero = DNvaItalia;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DNvaItalia");
                 _dato.Entero = DPaseo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DPaseo");
                 _dato.Entero = DSarabiaI;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
                 _dato.Entero = TPedido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -998,26 +1022,27 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Update";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = Surtido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
 
-                _conexion.EjecutarDataset();
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -1031,25 +1056,26 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Insert";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
                 _dato.Entero = Surtido;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Surtido");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -1063,23 +1089,24 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Delete";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_Insidencia_Delete";
                 _dato.Entero = PedidosId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.CadenaTexto = ArticuloCodigo;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }

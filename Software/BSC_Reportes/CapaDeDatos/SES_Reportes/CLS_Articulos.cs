@@ -76,26 +76,26 @@ namespace CapaDeDatos
         public void MtdSeleccionarArticulos()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_ArticuloBuscar_Select";
+                _conexionR.NombreProcedimiento = "SP_ArticuloBuscar_Select";
                 _dato.CadenaTexto = ArticuloDescripcion;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion ");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloDescripcion ");
                 _dato.Entero = Registros;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "Registros ");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Registros ");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
-                    Mensaje = _conexion.Mensaje;
+                    Datos = _conexionR.Datos;
+                    Mensaje = _conexionR.Mensaje;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }

@@ -15,21 +15,21 @@ namespace CapaDeDatos
         public void ListarFamiliasGeneral()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_FamiliaGeneralSelect";
-                _conexion.EjecutarDataset();
+                _conexionR.NombreProcedimiento = "SP_BSC_FamiliaGeneralSelect";
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -43,21 +43,21 @@ namespace CapaDeDatos
         public void ListarFamiliasIniciales()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_FamiliasInicialesSelect";
-                _conexion.EjecutarDataset();
+                _conexionR.NombreProcedimiento = "SP_BSC_FamiliasInicialesSelect";
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -71,23 +71,23 @@ namespace CapaDeDatos
         public void ListarFamiliasHijos()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_FamiliasHijosSelect";
+                _conexionR.NombreProcedimiento = "SP_BSC_FamiliasHijosSelect";
                 _dato.Entero = this.FamiliaId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "FamiliaId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "FamiliaId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -101,23 +101,23 @@ namespace CapaDeDatos
         public void ListarFamiliaNombreEsp()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "usp_FamiliasHijosSelect";
+                _conexionR.NombreProcedimiento = "usp_FamiliasHijosSelect";
                 _dato.CadenaTexto = this.FamiliaNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FamiliaNombre");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FamiliaNombre");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -131,23 +131,23 @@ namespace CapaDeDatos
         public void ListarFamiliaNombre()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_FamiliaEspSelect";
+                _conexionR.NombreProcedimiento = "SP_BSC_FamiliaEspSelect";
                 _dato.CadenaTexto = this.FamiliaNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FamiliaNombre");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "FamiliaNombre");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -161,24 +161,24 @@ namespace CapaDeDatos
         public void MtdSeleccionarFamilia()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_FamiliaSelect";
+                _conexionR.NombreProcedimiento = "SP_BSC_FamiliaSelect";
                 _dato.Entero = this.FamiliaId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "FamiliaId");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "FamiliaId");
 
-                _conexion.EjecutarDataset();
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }

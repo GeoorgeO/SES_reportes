@@ -16,25 +16,26 @@ namespace CapaDeDatos
         public int CorreoCifradoSSL { get; set; }
         public int CorreoPuertoSalida { get; set; }
         public string CorreoNombre { get; set; }
+
         public void MtdSeleccionar()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Correos_Select";
-                _conexion.EjecutarDataset();
+                _conexionR.NombreProcedimiento = "SP_BSC_Correos_Select";
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
-                    Mensaje = _conexion.Mensaje;
+                    Datos = _conexionR.Datos;
+                    Mensaje = _conexionR.Mensaje;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -47,22 +48,22 @@ namespace CapaDeDatos
         public void MtdSeleccionarCorreosDestino()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_CorreosDestino_Select";
-                _conexion.EjecutarDataset();
+                _conexionR.NombreProcedimiento = "SP_BSC_CorreosDestino_Select";
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
-                    Mensaje = _conexion.Mensaje;
+                    Datos = _conexionR.Datos;
+                    Mensaje = _conexionR.Mensaje;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
 
 
@@ -79,24 +80,24 @@ namespace CapaDeDatos
         public void MtdSeleccionarEspecifica()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_CorreosEspecifico_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_CorreosEspecifico_Select";
                 _dato.CadenaTexto = CorreoNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoNombre");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoNombre");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
-                    Mensaje = _conexion.Mensaje;
+                    Datos = _conexionR.Datos;
+                    Mensaje = _conexionR.Mensaje;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -110,30 +111,30 @@ namespace CapaDeDatos
         public void MtdInsertar()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Correos_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_Correos_Insert";
                 _dato.CadenaTexto = CorreoRemitente;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoRemitente");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoRemitente");
                 _dato.CadenaTexto = CorreoUsuario;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoUsuario");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoUsuario");
                 _dato.CadenaTexto = CorreoContrasenia;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoContrasenia");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoContrasenia");
                 _dato.Entero = CorreoPuertoSalida;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoPuertoSalida");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoPuertoSalida");
                 _dato.CadenaTexto = CorreoServidorSalida;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorSalida");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorSalida");
                 _dato.CadenaTexto = CorreoServidorEntrada;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorEntrada");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorEntrada");
                 _dato.Entero = CorreoCifradoSSL;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoCifradoSSL");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoCifradoSSL");
 
-                _conexion.EjecutarNonQuery();
-                Exito = _conexion.Exito;
-                Mensaje = _conexion.Mensaje;
+                _conexionR.EjecutarNonQuery();
+                Exito = _conexionR.Exito;
+                Mensaje = _conexionR.Mensaje;
             }
             catch (Exception e)
             {
@@ -145,17 +146,17 @@ namespace CapaDeDatos
         public void MtdInsertarCorreoDestino()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_CorreosDestino_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_CorreosDestino_Insert";
                 _dato.CadenaTexto = CorreoNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoNombre");
-                _conexion.EjecutarNonQuery();
-                Exito = _conexion.Exito;
-                Mensaje = _conexion.Mensaje;
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoNombre");
+                _conexionR.EjecutarNonQuery();
+                Exito = _conexionR.Exito;
+                Mensaje = _conexionR.Mensaje;
             }
             catch (Exception e)
             {
@@ -167,30 +168,30 @@ namespace CapaDeDatos
         public void MtdModificar()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Correos_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_Correos_Update";
                 _dato.CadenaTexto = CorreoRemitente;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoRemitente");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoRemitente");
                 _dato.CadenaTexto = CorreoUsuario;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoUsuario");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoUsuario");
                 _dato.CadenaTexto = CorreoContrasenia;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoContrasenia");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoContrasenia");
                 _dato.Entero = CorreoPuertoSalida;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoPuertoSalida");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoPuertoSalida");
                 _dato.CadenaTexto = CorreoServidorSalida;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorSalida");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorSalida");
                 _dato.CadenaTexto = CorreoServidorEntrada;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorEntrada");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoServidorEntrada");
                 _dato.Entero = CorreoCifradoSSL;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoCifradoSSL");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "CorreoCifradoSSL");
                 
-                _conexion.EjecutarNonQuery();
-                Exito = _conexion.Exito;
-                Mensaje = _conexion.Mensaje;
+                _conexionR.EjecutarNonQuery();
+                Exito = _conexionR.Exito;
+                Mensaje = _conexionR.Mensaje;
             }
             catch (Exception e)
             {
@@ -202,14 +203,14 @@ namespace CapaDeDatos
         public void MtdEliminar()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_CorreosDestino_Delete";
-                _conexion.EjecutarNonQuery();
-                Exito = _conexion.Exito;
-                Mensaje = _conexion.Mensaje;
+                _conexionR.NombreProcedimiento = "SP_BSC_CorreosDestino_Delete";
+                _conexionR.EjecutarNonQuery();
+                Exito = _conexionR.Exito;
+                Mensaje = _conexionR.Mensaje;
             }
             catch (Exception e)
             {

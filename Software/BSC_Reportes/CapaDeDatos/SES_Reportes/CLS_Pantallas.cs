@@ -16,20 +16,21 @@ namespace CapaDeDatos
         public void Mtdseleccionarpantallas()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Pantallas_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_Pantallas_Select";
 
-                _conexion.EjecutarDataset();
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -44,23 +45,24 @@ namespace CapaDeDatos
         public void Mtdseleccionarbotones()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_UsuarioBotones_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_UsuarioBotones_Select";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = pantallasid;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -74,24 +76,25 @@ namespace CapaDeDatos
         public void Mtdeliminararbotones()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Usuariopantallabotones_delete";
+                _conexionR.NombreProcedimiento = "SP_BSC_Usuariopantallabotones_delete";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = pantallasid;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
                 
-                _conexion.EjecutarDataset();
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -105,25 +108,26 @@ namespace CapaDeDatos
         public void Mtdinsertarbotones()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Usuariopantallabotones_insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_Usuariopantallabotones_insert";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = pantallasid;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
                 _dato.Entero = botonesId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "botonesId");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "botonesId");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -137,23 +141,24 @@ namespace CapaDeDatos
         public void Mtdselecionarbotonespantalla()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_UsuarioBotonesPantalla_Select";
+                _conexionR.NombreProcedimiento = "SP_BSC_UsuarioBotonesPantalla_Select";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.Entero = pantallasid;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "pantallasid");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }

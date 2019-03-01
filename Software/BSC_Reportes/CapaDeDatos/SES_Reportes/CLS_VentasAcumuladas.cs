@@ -26,6 +26,7 @@ namespace CapaDeDatos
         {
             string Valor = string.Empty;
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {

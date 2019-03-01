@@ -22,19 +22,20 @@ namespace CapaDeDatos
             try
             {
                 TipoDato _dato = new TipoDato();
-                _conexion.NombreProcedimiento = "SP_BSC_UsuarioPantallas_Select";
+                Conexion _conexionR = new Conexion(cadenaConexionR);
+                _conexionR.NombreProcedimiento = "SP_BSC_UsuarioPantallas_Select";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                
-                _conexion.EjecutarDataset();
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -47,31 +48,32 @@ namespace CapaDeDatos
         public void MtdInsertarUsuarios()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_Usuarios_Insert";
+                _conexionR.NombreProcedimiento = "SP_BSC_Usuarios_Insert";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.CadenaTexto = UsuariosNombre;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosNombre");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosNombre");
                 _dato.CadenaTexto = UsuariosPassword;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosPassword");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosPassword");
                 _dato.CadenaTexto = UsuariosClase;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosClase");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosClase");
                 _dato.Entero = UsuariosActivo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "UsuariosActivo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "UsuariosActivo");
                 _dato.Entero = nuevo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "nuevo");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "nuevo");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -87,18 +89,19 @@ namespace CapaDeDatos
             try
             {
                 TipoDato _dato = new TipoDato();
-                _conexion.NombreProcedimiento = "SP_BSC_Usuarios_Delete";
+                Conexion _conexionR = new Conexion(cadenaConexionR);
+                _conexionR.NombreProcedimiento = "SP_BSC_Usuarios_Delete";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -114,20 +117,21 @@ namespace CapaDeDatos
             try
             {
                 TipoDato _dato = new TipoDato();
-                _conexion.NombreProcedimiento = "SP_BSC_Usuarios_Select";
+                Conexion _conexionR = new Conexion(cadenaConexionR);
+                _conexionR.NombreProcedimiento = "SP_BSC_Usuarios_Select";
                 _dato.Entero = UsuariosActivo;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "activo");
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "activo");
                 _dato.CadenaTexto = UsuariosClase;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "clase");
-                _conexion.EjecutarDataset();
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "clase");
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
@@ -137,30 +141,30 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
-
         public void MtdUpdatePassUsuarios()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "SP_BSC_UsuariosPass_Update";
+                _conexionR.NombreProcedimiento = "SP_BSC_UsuariosPass_Update";
                 _dato.CadenaTexto = UsuariosLogin;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosLogin");
                 _dato.CadenaTexto = UsuariosOldPass;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosOldPass");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosOldPass");
                 _dato.CadenaTexto = UsuariosPassword;
-                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosPassword");
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UsuariosPassword");
                 
-                _conexion.EjecutarDataset();
+                _conexionR.EjecutarDataset();
 
-                if (_conexion.Exito)
+                if (_conexionR.Exito)
                 {
-                    Datos = _conexion.Datos;
+                    Datos = _conexionR.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexion.Mensaje;
+                    Mensaje = _conexionR.Mensaje;
                     Exito = false;
                 }
             }
