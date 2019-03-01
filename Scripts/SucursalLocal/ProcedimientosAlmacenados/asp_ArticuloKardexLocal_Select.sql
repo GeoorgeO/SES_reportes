@@ -11,7 +11,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	delete from ArticuloKardex
-	where  CONVERT(date,FechaExistencia ,103)= convert(date, GETDATE(),103) 
+	--where  CONVERT(date,FechaExistencia ,103)= convert(date, GETDATE(),103) 
 	
 	insert into ArticuloKardex (ArticuloCodigo,Existencia,ArticuloCosto,ArticuloIVA,FechaExistencia,FechaInsert)
 	SELECT  art.ArticuloCodigo,art.ArticuloCantidad, art.ArticuloUltimoCosto,(art.ArticuloUltimoCosto * Iva.IvaFactor) as iva, getdate() ,getdate()
