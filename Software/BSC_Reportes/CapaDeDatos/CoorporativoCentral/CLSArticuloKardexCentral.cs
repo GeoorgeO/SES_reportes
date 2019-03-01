@@ -49,5 +49,30 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+        public void MtdDeleteArticuloKardex()
+        {
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexionC.NombreProcedimiento = "SP_BSC_ArticuloKardex_Delete";
+                _conexionC.EjecutarDataset();
+
+                if (_conexionC.Exito)
+                {
+                    Datos = _conexionC.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionC.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
     }
 }

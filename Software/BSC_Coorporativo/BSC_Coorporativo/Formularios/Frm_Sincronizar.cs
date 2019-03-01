@@ -335,11 +335,10 @@ namespace BSC_Coorporativo
         /******* Articulos *****/
         private void ArticuloKardex(int Fila)
         {
+            DeleteArticulosKardex();
             CLSArticuloKardexLocal SelArt = new CLSArticuloKardexLocal();
-
             lEstatus.Text = "Recolectando datos";
             Application.DoEvents();
-
             SelArt.MtdSeleccionarArticuloKardex();
             if (SelArt.Exito == true)
             {
@@ -398,7 +397,13 @@ namespace BSC_Coorporativo
                 escritura.WriteLine("No se logro actualizar el articulo ["+ Codigo + "] "+ FechaExistencia);
             }
         }
-
+        private void DeleteArticulosKardex()
+        {
+            CLSArticuloKardexCentral UdpArt = new CLSArticuloKardexCentral();
+            MensajeCargando(1);
+            UdpArt.MtdDeleteArticuloKardex();
+            MensajeCargando(2);
+        }
         private void DeleteArticuloKardex(string articuloCodigo, string fechaExistencia)
         {
             CLSArticuloKardexLocal del = new CLSArticuloKardexLocal();
