@@ -103,6 +103,7 @@ namespace CapaDeDatos
         public void MtdModificarConexion()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
@@ -141,6 +142,7 @@ namespace CapaDeDatos
         public void MtdInsertarConexion()
         {
             TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
             Exito = true;
             try
             {
