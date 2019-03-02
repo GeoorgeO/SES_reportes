@@ -72,14 +72,13 @@ namespace BSC_Reportes
             MSRegistro RegOut = new MSRegistro();
             Crypto DesencriptarTexto = new Crypto();
             string valServer, valDB, valLogin, valPass;
-            string valServerC, valDBC, valLoginC, valPassC;
 
             try
             {
-                valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerL"));
-                valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseL"));
-                valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserL"));
-                valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordL"));
+                valServer = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerR"));
+                valDB = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseR"));
+                valLogin = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserR"));
+                valPass = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordR"));
             }
             catch
             {
@@ -89,20 +88,7 @@ namespace BSC_Reportes
                 valPass = string.Empty;
             }
 
-            try
-            {
-                valServerC = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "ServerC"));
-                valDBC = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "DBaseC"));
-                valLoginC = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "UserC"));
-                valPassC = DesencriptarTexto.Desencriptar(RegOut.GetSetting("ConexionSQL", "PasswordC"));
-            }
-            catch
-            {
-                valServerC = string.Empty;
-                valDBC = string.Empty;
-                valLoginC = string.Empty;
-                valPassC = string.Empty;
-            }
+            
 
             if (valServer != null && valDB != null && valLogin != null & valPass != null)
             {
@@ -213,7 +199,7 @@ namespace BSC_Reportes
             }
         }
 
-        private void btnGuardarConexionL_Click(object sender, EventArgs e)
+        private void btnGuardarConexionR_Click(object sender, EventArgs e)
         {
             if (txtServer.Text != "" && txtDB.Text != "" && txtLogin.Text != "" && txtPassword.Text != "")
             {
@@ -224,10 +210,10 @@ namespace BSC_Reportes
                         MSRegistro RegIn = new MSRegistro();
                         Crypto EncriptarTexto = new Crypto();
                         conn.Open();
-                        RegIn.SaveSetting("ConexionSQL", "ServerL", EncriptarTexto.Encriptar(txtServer.Text));
-                        RegIn.SaveSetting("ConexionSQL", "DBaseL", EncriptarTexto.Encriptar(txtDB.Text));
-                        RegIn.SaveSetting("ConexionSQL", "UserL", EncriptarTexto.Encriptar(txtLogin.Text));
-                        RegIn.SaveSetting("ConexionSQL", "PasswordL", EncriptarTexto.Encriptar(txtPassword.Text));
+                        RegIn.SaveSetting("ConexionSQL", "ServerR", EncriptarTexto.Encriptar(txtServer.Text));
+                        RegIn.SaveSetting("ConexionSQL", "DBaseR", EncriptarTexto.Encriptar(txtDB.Text));
+                        RegIn.SaveSetting("ConexionSQL", "UserR", EncriptarTexto.Encriptar(txtLogin.Text));
+                        RegIn.SaveSetting("ConexionSQL", "PasswordR", EncriptarTexto.Encriptar(txtPassword.Text));
                         XtraMessageBox.Show("Se Grabaron los Datos Del Servidor Local Con Exito");
                         this.Close();
                     }
@@ -242,7 +228,7 @@ namespace BSC_Reportes
                 XtraMessageBox.Show("Faltan Datos para la Conexion Local");
             }
         }
-        private void btnProbarConexionL_Click(object sender, EventArgs e)
+        private void btnProbarConexionR_Click(object sender, EventArgs e)
         {
             if (txtServer.Text != "" && txtDB.Text != "" && txtLogin.Text != "" && txtPassword.Text != "")
             {
@@ -254,10 +240,10 @@ namespace BSC_Reportes
                         XtraMessageBox.Show("Conexion Exitosa DB Local");
                         MSRegistro RegIn = new MSRegistro();
                         Crypto EncriptarTexto = new Crypto();
-                        RegIn.SaveSetting("ConexionSQL", "ServerL", EncriptarTexto.Encriptar(txtServer.Text));
-                        RegIn.SaveSetting("ConexionSQL", "DBaseL", EncriptarTexto.Encriptar(txtDB.Text));
-                        RegIn.SaveSetting("ConexionSQL", "UserL", EncriptarTexto.Encriptar(txtLogin.Text));
-                        RegIn.SaveSetting("ConexionSQL", "PasswordL", EncriptarTexto.Encriptar(txtPassword.Text));
+                        RegIn.SaveSetting("ConexionSQL", "ServerR", EncriptarTexto.Encriptar(txtServer.Text));
+                        RegIn.SaveSetting("ConexionSQL", "DBaseR", EncriptarTexto.Encriptar(txtDB.Text));
+                        RegIn.SaveSetting("ConexionSQL", "UserR", EncriptarTexto.Encriptar(txtLogin.Text));
+                        RegIn.SaveSetting("ConexionSQL", "PasswordR", EncriptarTexto.Encriptar(txtPassword.Text));
                     }
                     catch (Exception ex)
                     {

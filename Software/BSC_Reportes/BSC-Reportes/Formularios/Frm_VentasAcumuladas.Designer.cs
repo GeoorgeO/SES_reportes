@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_VentasAcumuladas));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
-            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnBuscarFamilia = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnImpProveedor = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnGenerarReporte = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnExportarExcel = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLimpiar = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -53,6 +53,8 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.chkSucursales = new DevExpress.XtraEditors.CheckEdit();
+            this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
             this.cboGridSucursales = new DevExpress.XtraEditors.GridLookUpEdit();
             this.cboGridFloracionView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SucursalesId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,14 +82,15 @@
             this.Col_Piezas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Total = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.chkFamilia = new DevExpress.XtraEditors.CheckEdit();
-            this.chkSucursales = new DevExpress.XtraEditors.CheckEdit();
+            this.Col_Existencia = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSucursales.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridSucursales.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).BeginInit();
@@ -103,8 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSucursales.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -162,15 +163,6 @@
             this.bIconos.OptionsBar.UseWholeRow = true;
             this.bIconos.Text = "Menú principal";
             // 
-            // btnImpProveedor
-            // 
-            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
-            this.btnImpProveedor.Id = 52;
-            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
-            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
-            this.btnImpProveedor.Name = "btnImpProveedor";
-            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
-            // 
             // btnBuscarFamilia
             // 
             this.btnBuscarFamilia.Caption = "Importar\r\n Familia";
@@ -179,6 +171,15 @@
             this.btnBuscarFamilia.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarFamilia.ImageOptions.LargeImage")));
             this.btnBuscarFamilia.Name = "btnBuscarFamilia";
             this.btnBuscarFamilia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscarFamilia_ItemClick);
+            // 
+            // btnImpProveedor
+            // 
+            this.btnImpProveedor.Caption = "  Importar \r\nProveedor";
+            this.btnImpProveedor.Id = 52;
+            this.btnImpProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.Image")));
+            this.btnImpProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnImpProveedor.ImageOptions.LargeImage")));
+            this.btnImpProveedor.Name = "btnImpProveedor";
+            this.btnImpProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImpProveedor_ItemClick);
             // 
             // btnGenerarReporte
             // 
@@ -239,9 +240,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 542);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 539);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1153, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1153, 28);
             // 
             // barDockControlLeft
             // 
@@ -249,7 +250,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(67, 542);
+            this.barDockControlLeft.Size = new System.Drawing.Size(69, 539);
             // 
             // barDockControlRight
             // 
@@ -257,7 +258,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1153, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 542);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 539);
             // 
             // barLargeButtonItem1
             // 
@@ -315,10 +316,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(67, 0);
+            this.panelControl1.Location = new System.Drawing.Point(69, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1086, 164);
+            this.panelControl1.Size = new System.Drawing.Size(1084, 164);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
@@ -340,9 +341,29 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1062, 140);
+            this.groupControl1.Size = new System.Drawing.Size(1060, 140);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
+            // 
+            // chkSucursales
+            // 
+            this.chkSucursales.Location = new System.Drawing.Point(403, 81);
+            this.chkSucursales.MenuManager = this.barManager1;
+            this.chkSucursales.Name = "chkSucursales";
+            this.chkSucursales.Properties.Caption = "Todas";
+            this.chkSucursales.Size = new System.Drawing.Size(75, 19);
+            this.chkSucursales.TabIndex = 25;
+            this.chkSucursales.CheckedChanged += new System.EventHandler(this.chkSucursales_CheckedChanged);
+            // 
+            // chkFamilia
+            // 
+            this.chkFamilia.Location = new System.Drawing.Point(403, 26);
+            this.chkFamilia.MenuManager = this.barManager1;
+            this.chkFamilia.Name = "chkFamilia";
+            this.chkFamilia.Properties.Caption = "Todas";
+            this.chkFamilia.Size = new System.Drawing.Size(75, 19);
+            this.chkFamilia.TabIndex = 24;
+            this.chkFamilia.CheckedChanged += new System.EventHandler(this.chkFamilia_CheckedChanged);
             // 
             // cboGridSucursales
             // 
@@ -491,10 +512,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(67, 164);
+            this.panelControl2.Location = new System.Drawing.Point(69, 164);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1086, 378);
+            this.panelControl2.Size = new System.Drawing.Size(1084, 375);
             this.panelControl2.TabIndex = 7;
             // 
             // dtgVentaExistencia
@@ -505,7 +526,7 @@
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
             this.dtgVentaExistencia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit2});
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(1062, 354);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(1060, 351);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -517,6 +538,7 @@
             this.Col_Codigo,
             this.Col_Descripcion,
             this.Col_Familia,
+            this.Col_Existencia,
             this.Col_Mes,
             this.Col_Año,
             this.Col_Piezas,
@@ -590,7 +612,7 @@
             this.Col_Mes.Name = "Col_Mes";
             this.Col_Mes.OptionsColumn.AllowEdit = false;
             this.Col_Mes.Visible = true;
-            this.Col_Mes.VisibleIndex = 4;
+            this.Col_Mes.VisibleIndex = 5;
             this.Col_Mes.Width = 72;
             // 
             // Col_Año
@@ -605,7 +627,7 @@
             this.Col_Año.OptionsColumn.AllowEdit = false;
             this.Col_Año.ToolTip = "Pedido Ideal = (TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)";
             this.Col_Año.Visible = true;
-            this.Col_Año.VisibleIndex = 5;
+            this.Col_Año.VisibleIndex = 6;
             // 
             // Col_Piezas
             // 
@@ -620,7 +642,7 @@
             this.Col_Piezas.ToolTip = "Pedido Sugerido = ((TVentas / Meses[F.Inicio - F.Fin] )* PeriodoEnMeses)-TExisten" +
     "cia";
             this.Col_Piezas.Visible = true;
-            this.Col_Piezas.VisibleIndex = 6;
+            this.Col_Piezas.VisibleIndex = 7;
             this.Col_Piezas.Width = 72;
             // 
             // Col_Total
@@ -635,7 +657,7 @@
             this.Col_Total.Name = "Col_Total";
             this.Col_Total.OptionsColumn.AllowEdit = false;
             this.Col_Total.Visible = true;
-            this.Col_Total.VisibleIndex = 7;
+            this.Col_Total.VisibleIndex = 8;
             this.Col_Total.Width = 72;
             // 
             // repositoryItemTextEdit2
@@ -645,25 +667,13 @@
             this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
-            // chkFamilia
+            // Col_Existencia
             // 
-            this.chkFamilia.Location = new System.Drawing.Point(403, 26);
-            this.chkFamilia.MenuManager = this.barManager1;
-            this.chkFamilia.Name = "chkFamilia";
-            this.chkFamilia.Properties.Caption = "Todas";
-            this.chkFamilia.Size = new System.Drawing.Size(75, 19);
-            this.chkFamilia.TabIndex = 24;
-            this.chkFamilia.CheckedChanged += new System.EventHandler(this.chkFamilia_CheckedChanged);
-            // 
-            // chkSucursales
-            // 
-            this.chkSucursales.Location = new System.Drawing.Point(403, 81);
-            this.chkSucursales.MenuManager = this.barManager1;
-            this.chkSucursales.Name = "chkSucursales";
-            this.chkSucursales.Properties.Caption = "Todas";
-            this.chkSucursales.Size = new System.Drawing.Size(75, 19);
-            this.chkSucursales.TabIndex = 25;
-            this.chkSucursales.CheckedChanged += new System.EventHandler(this.chkSucursales_CheckedChanged);
+            this.Col_Existencia.Caption = "Existencia";
+            this.Col_Existencia.FieldName = "existencia";
+            this.Col_Existencia.Name = "Col_Existencia";
+            this.Col_Existencia.Visible = true;
+            this.Col_Existencia.VisibleIndex = 4;
             // 
             // Frm_VentasAcumuladas
             // 
@@ -687,6 +697,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSucursales.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridSucursales.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGridFloracionView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreFamilia.Properties)).EndInit();
@@ -702,8 +714,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgValVentaExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkFamilia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSucursales.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -763,5 +773,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Total;
         private DevExpress.XtraEditors.CheckEdit chkFamilia;
         private DevExpress.XtraEditors.CheckEdit chkSucursales;
+        private DevExpress.XtraGrid.Columns.GridColumn Col_Existencia;
     }
 }

@@ -45,8 +45,8 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.btnProbarConexionL = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardarConexionL = new DevExpress.XtraEditors.SimpleButton();
+            this.btnProbarConexionR = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuardarConexionR = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtDB = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -87,7 +87,7 @@
             this.barButtonItem5,
             this.btnGuardarConexion,
             this.btnProbarConexion});
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 7;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar3
@@ -114,9 +114,9 @@
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 276);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 280);
             this.barDockControl2.Manager = this.barManager1;
-            this.barDockControl2.Size = new System.Drawing.Size(387, 23);
+            this.barDockControl2.Size = new System.Drawing.Size(387, 19);
             // 
             // barDockControl3
             // 
@@ -124,7 +124,7 @@
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager1;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 276);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 280);
             // 
             // barDockControl4
             // 
@@ -132,7 +132,7 @@
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl4.Location = new System.Drawing.Point(387, 0);
             this.barDockControl4.Manager = this.barManager1;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 276);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 280);
             // 
             // barButtonItem4
             // 
@@ -149,17 +149,13 @@
             // 
             // btnGuardarConexion
             // 
-            this.btnGuardarConexion.Caption = "Guardar Conexion";
-            this.btnGuardarConexion.Id = 2;
+            this.btnGuardarConexion.Id = 5;
             this.btnGuardarConexion.Name = "btnGuardarConexion";
-            this.btnGuardarConexion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardarConexion_ItemClick);
             // 
             // btnProbarConexion
             // 
-            this.btnProbarConexion.Caption = "Probar Conexion";
-            this.btnProbarConexion.Id = 3;
+            this.btnProbarConexion.Id = 6;
             this.btnProbarConexion.Name = "btnProbarConexion";
-            this.btnProbarConexion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProbarConexion_ItemClick);
             // 
             // panelControl2
             // 
@@ -168,7 +164,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(387, 276);
+            this.panelControl2.Size = new System.Drawing.Size(387, 280);
             this.panelControl2.TabIndex = 6;
             // 
             // xtraTabControl1
@@ -177,7 +173,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(7, 7);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(373, 262);
+            this.xtraTabControl1.Size = new System.Drawing.Size(373, 266);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
@@ -187,8 +183,8 @@
             this.xtraTabPage1.Controls.Add(this.groupControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(367, 234);
-            this.xtraTabPage1.Text = "Conexion Local";
+            this.xtraTabPage1.Size = new System.Drawing.Size(369, 241);
+            this.xtraTabPage1.Text = "Conexion Reportes";
             // 
             // groupControl2
             // 
@@ -196,14 +192,14 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(5, 5);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(357, 224);
+            this.groupControl2.Size = new System.Drawing.Size(359, 231);
             this.groupControl2.TabIndex = 0;
-            this.groupControl2.Text = "Datos Local";
+            this.groupControl2.Text = "Datos Reportes";
             // 
             // panelControl3
             // 
-            this.panelControl3.Controls.Add(this.btnProbarConexionL);
-            this.panelControl3.Controls.Add(this.btnGuardarConexionL);
+            this.panelControl3.Controls.Add(this.btnProbarConexionR);
+            this.panelControl3.Controls.Add(this.btnGuardarConexionR);
             this.panelControl3.Controls.Add(this.labelControl1);
             this.panelControl3.Controls.Add(this.txtDB);
             this.panelControl3.Controls.Add(this.labelControl4);
@@ -213,30 +209,30 @@
             this.panelControl3.Controls.Add(this.labelControl2);
             this.panelControl3.Controls.Add(this.txtServer);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(2, 20);
+            this.panelControl3.Location = new System.Drawing.Point(2, 22);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(353, 202);
+            this.panelControl3.Size = new System.Drawing.Size(355, 207);
             this.panelControl3.TabIndex = 0;
             // 
-            // btnProbarConexionL
+            // btnProbarConexionR
             // 
-            this.btnProbarConexionL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProbarConexionL.ImageOptions.Image")));
-            this.btnProbarConexionL.Location = new System.Drawing.Point(102, 132);
-            this.btnProbarConexionL.Name = "btnProbarConexionL";
-            this.btnProbarConexionL.Size = new System.Drawing.Size(75, 40);
-            this.btnProbarConexionL.TabIndex = 17;
-            this.btnProbarConexionL.Text = "Probar \r\nConexion";
-            this.btnProbarConexionL.Click += new System.EventHandler(this.btnProbarConexionL_Click);
+            this.btnProbarConexionR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProbarConexionR.ImageOptions.Image")));
+            this.btnProbarConexionR.Location = new System.Drawing.Point(102, 132);
+            this.btnProbarConexionR.Name = "btnProbarConexionR";
+            this.btnProbarConexionR.Size = new System.Drawing.Size(75, 40);
+            this.btnProbarConexionR.TabIndex = 17;
+            this.btnProbarConexionR.Text = "Probar \r\nConexion";
+            this.btnProbarConexionR.Click += new System.EventHandler(this.btnProbarConexionR_Click);
             // 
-            // btnGuardarConexionL
+            // btnGuardarConexionR
             // 
-            this.btnGuardarConexionL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConexionL.ImageOptions.Image")));
-            this.btnGuardarConexionL.Location = new System.Drawing.Point(21, 132);
-            this.btnGuardarConexionL.Name = "btnGuardarConexionL";
-            this.btnGuardarConexionL.Size = new System.Drawing.Size(75, 40);
-            this.btnGuardarConexionL.TabIndex = 16;
-            this.btnGuardarConexionL.Text = "Guardar \r\nConexion";
-            this.btnGuardarConexionL.Click += new System.EventHandler(this.btnGuardarConexionL_Click);
+            this.btnGuardarConexionR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConexionR.ImageOptions.Image")));
+            this.btnGuardarConexionR.Location = new System.Drawing.Point(21, 132);
+            this.btnGuardarConexionR.Name = "btnGuardarConexionR";
+            this.btnGuardarConexionR.Size = new System.Drawing.Size(75, 40);
+            this.btnGuardarConexionR.TabIndex = 16;
+            this.btnGuardarConexionR.Text = "Guardar \r\nConexion";
+            this.btnGuardarConexionR.Click += new System.EventHandler(this.btnGuardarConexionR_Click);
             // 
             // labelControl1
             // 
@@ -372,7 +368,7 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraEditors.SimpleButton btnProbarConexionL;
-        private DevExpress.XtraEditors.SimpleButton btnGuardarConexionL;
+        private DevExpress.XtraEditors.SimpleButton btnProbarConexionR;
+        private DevExpress.XtraEditors.SimpleButton btnGuardarConexionR;
     }
 }
