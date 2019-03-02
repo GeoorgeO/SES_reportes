@@ -383,9 +383,9 @@ namespace BSC_Coorporativo
             UdpArt.ArticuloIVA = Convert.ToDecimal(ArticuloIVA);
             DateTime Fecha = Convert.ToDateTime(FechaExistencia);
             UdpArt.FechaExistencia = Fecha.Year.ToString() + DosCero(Fecha.Month.ToString()) + DosCero(Fecha.Day.ToString());
-            MensajeCargando(1);
+            //MensajeCargando(1);
             UdpArt.MtdActualizarArticuloKardex();
-            MensajeCargando(2);
+            //MensajeCargando(2);
             if (UdpArt.Exito.ToString() == "True")
             {
                 DeleteArticuloKardex(UdpArt.ArticuloCodigo, UdpArt.FechaExistencia);
