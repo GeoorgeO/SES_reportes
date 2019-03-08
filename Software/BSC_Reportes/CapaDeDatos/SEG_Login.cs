@@ -18,7 +18,7 @@ namespace CapaDeDatos
         public void MtdSeleccionarUsuarioLogin()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexion = new Conexion(cadenaConexion);
+            Conexion _conexion = new Conexion(cadenaConexionR);
 
             Exito = true;
             try
