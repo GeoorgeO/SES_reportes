@@ -279,9 +279,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 486);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 483);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1017, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1017, 28);
             // 
             // barDockControlLeft
             // 
@@ -289,7 +289,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(67, 486);
+            this.barDockControlLeft.Size = new System.Drawing.Size(69, 483);
             // 
             // barDockControlRight
             // 
@@ -297,7 +297,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1017, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 486);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
             // 
             // barLargeButtonItem1
             // 
@@ -370,9 +370,9 @@
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(67, 0);
+            this.groupControl1.Location = new System.Drawing.Point(69, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(950, 140);
+            this.groupControl1.Size = new System.Drawing.Size(948, 140);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Parametros";
             // 
@@ -427,7 +427,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(31, 86);
+            this.labelControl6.Location = new System.Drawing.Point(31, 87);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(45, 13);
             this.labelControl6.TabIndex = 21;
@@ -443,7 +443,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(31, 32);
+            this.labelControl4.Location = new System.Drawing.Point(31, 33);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(36, 13);
             this.labelControl4.TabIndex = 19;
@@ -497,7 +497,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(31, 60);
+            this.labelControl3.Location = new System.Drawing.Point(31, 61);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 3;
@@ -517,7 +517,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(217, 112);
+            this.labelControl2.Location = new System.Drawing.Point(217, 113);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 1;
@@ -525,7 +525,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(31, 113);
+            this.labelControl1.Location = new System.Drawing.Point(31, 114);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(61, 13);
             this.labelControl1.TabIndex = 0;
@@ -535,10 +535,10 @@
             // 
             this.panelControl1.Controls.Add(this.xtraTabControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(67, 140);
+            this.panelControl1.Location = new System.Drawing.Point(69, 140);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(950, 346);
+            this.panelControl1.Size = new System.Drawing.Size(948, 343);
             this.panelControl1.TabIndex = 5;
             // 
             // xtraTabControl1
@@ -548,7 +548,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(926, 322);
+            this.xtraTabControl1.Size = new System.Drawing.Size(924, 319);
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -800,91 +800,91 @@
             // 
             this.xtraTabPage0.Name = "xtraTabPage0";
             this.xtraTabPage0.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage0.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage0.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage0.Text = "Almacen";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage2.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage2.Text = "Morelos";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage3.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage3.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage3.Text = "Fco Villa";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage4.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage4.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage4.Text = "Sarabia";
             // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage5.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage5.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage5.Text = "Sarabia II";
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage6.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage6.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage6.Text = "Paseo";
             // 
             // xtraTabPage7
             // 
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage7.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage7.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage7.Text = "Estocolmo";
             // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage8.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage8.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage8.Text = "Costa Rica";
             // 
             // xtraTabPage9
             // 
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage9.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage9.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage9.Text = "Calzada";
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Name = "xtraTabPage10";
             this.xtraTabPage10.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage10.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage10.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage10.Text = "Lombardia";
             // 
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
             this.xtraTabPage11.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage11.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage11.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage11.Text = "Nva Italia";
             // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
             this.xtraTabPage12.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage12.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage12.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage12.Text = "Apatzingan";
             // 
             // xtraTabPage13
             // 
             this.xtraTabPage13.Name = "xtraTabPage13";
             this.xtraTabPage13.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage13.Size = new System.Drawing.Size(920, 294);
+            this.xtraTabPage13.Size = new System.Drawing.Size(922, 297);
             this.xtraTabPage13.Text = "Los Reyes";
             // 
             // Frm_RotacionMercancia

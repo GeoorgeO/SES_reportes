@@ -5,6 +5,8 @@ using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using System.Configuration;
 using BSC_Reportes.Properties;
+using DevExpress.DataAccess.Sql;
+using DevExpress.DataAccess.ConnectionParameters;
 
 namespace BSC_Reportes
 {
@@ -22,5 +24,6 @@ namespace BSC_Reportes
             sqlDataSource1.Queries[0].Parameters.Add(queryParameter1);
             sqlDataSource1.Queries[1].Parameters.Add(queryParameter1);
         }
+        
     }
 }

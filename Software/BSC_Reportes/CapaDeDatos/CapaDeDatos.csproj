@@ -114,12 +114,14 @@
     <Compile Include="SES_Reportes\CLS_IndiceRotacion.cs" />
     <Compile Include="SES_Reportes\CLS_Pantallas.cs" />
     <Compile Include="SES_Reportes\CLS_Pedidos.cs" />
+    <Compile Include="SES_Reportes\CLS_Pedidos_Sucursales.cs" />
     <Compile Include="SES_Reportes\CLS_Proveedores.cs" />
     <Compile Include="SES_Reportes\CLS_Usuarios.cs" />
     <Compile Include="SES_Reportes\CLS_Sucursales.cs" />
     <Compile Include="SES_Reportes\CLS_Familias.cs" />
     <Compile Include="SES_Reportes\CLS_Ventas.cs" />
     <Compile Include="SES_Reportes\CLS_VentasAcumuladas.cs" />
+    <Compile Include="SES_Reportes\ConexionesSucursales.cs" />
     <Compile Include="SES_Reportes\ConexionesRemotas.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />

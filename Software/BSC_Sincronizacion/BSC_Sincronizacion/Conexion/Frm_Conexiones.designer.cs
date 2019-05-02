@@ -68,7 +68,6 @@
             this.txtLoginC = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtServerC = new DevExpress.XtraEditors.TextEdit();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
@@ -82,6 +81,7 @@
             this.txtLoginR = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.txtServerR = new DevExpress.XtraEditors.TextEdit();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -105,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -115,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordR.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginR.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerR.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -158,9 +158,9 @@
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 280);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 274);
             this.barDockControl2.Manager = this.barManager1;
-            this.barDockControl2.Size = new System.Drawing.Size(387, 19);
+            this.barDockControl2.Size = new System.Drawing.Size(387, 25);
             // 
             // barDockControl3
             // 
@@ -168,7 +168,7 @@
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager1;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 280);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 274);
             // 
             // barDockControl4
             // 
@@ -176,7 +176,7 @@
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl4.Location = new System.Drawing.Point(387, 0);
             this.barDockControl4.Manager = this.barManager1;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 280);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 274);
             // 
             // barButtonItem4
             // 
@@ -212,7 +212,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(387, 280);
+            this.panelControl2.Size = new System.Drawing.Size(387, 274);
             this.panelControl2.TabIndex = 6;
             // 
             // xtraTabControl1
@@ -222,7 +222,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(373, 266);
+            this.xtraTabControl1.Size = new System.Drawing.Size(373, 260);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -234,7 +234,7 @@
             this.xtraTabPage1.Controls.Add(this.groupControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(371, 243);
+            this.xtraTabPage1.Size = new System.Drawing.Size(367, 232);
             this.xtraTabPage1.Text = "Conexion Local";
             // 
             // groupControl2
@@ -243,7 +243,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(5, 5);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(361, 233);
+            this.groupControl2.Size = new System.Drawing.Size(357, 222);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Datos Local";
             // 
@@ -260,9 +260,9 @@
             this.panelControl3.Controls.Add(this.labelControl2);
             this.panelControl3.Controls.Add(this.txtServer);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(2, 22);
+            this.panelControl3.Location = new System.Drawing.Point(2, 20);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(357, 209);
+            this.panelControl3.Size = new System.Drawing.Size(353, 200);
             this.panelControl3.TabIndex = 0;
             // 
             // btnProbarConexionL
@@ -353,7 +353,7 @@
             this.xtraTabPage2.Controls.Add(this.groupControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(371, 243);
+            this.xtraTabPage2.Size = new System.Drawing.Size(367, 238);
             this.xtraTabPage2.Text = "Conexion Central";
             // 
             // groupControl1
@@ -362,7 +362,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(5, 5);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(361, 233);
+            this.groupControl1.Size = new System.Drawing.Size(357, 228);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Datos Central";
             // 
@@ -379,9 +379,9 @@
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.txtServerC);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(2, 22);
+            this.panelControl1.Location = new System.Drawing.Point(2, 20);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(357, 209);
+            this.panelControl1.Size = new System.Drawing.Size(353, 206);
             this.panelControl1.TabIndex = 0;
             // 
             // btnProbarConexionC
@@ -465,19 +465,12 @@
             this.txtServerC.Size = new System.Drawing.Size(207, 20);
             this.txtServerC.TabIndex = 6;
             // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageSize = new System.Drawing.Size(40, 40);
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.Images.SetKeyName(0, "GuardarConexion.png");
-            this.imageCollection1.Images.SetKeyName(1, "ProbarConexion.png");
-            // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.groupControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage3.Size = new System.Drawing.Size(371, 243);
+            this.xtraTabPage3.Size = new System.Drawing.Size(367, 232);
             this.xtraTabPage3.Text = "Conexion Reportes";
             // 
             // groupControl3
@@ -486,7 +479,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(5, 5);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(361, 233);
+            this.groupControl3.Size = new System.Drawing.Size(357, 222);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Datos Reportes";
             // 
@@ -503,14 +496,13 @@
             this.panelControl4.Controls.Add(this.labelControl12);
             this.panelControl4.Controls.Add(this.txtServerR);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(2, 22);
+            this.panelControl4.Location = new System.Drawing.Point(2, 20);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(357, 209);
+            this.panelControl4.Size = new System.Drawing.Size(353, 200);
             this.panelControl4.TabIndex = 0;
             // 
             // btnProbarConexionR
             // 
-            this.btnProbarConexionR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.btnProbarConexionR.Location = new System.Drawing.Point(102, 132);
             this.btnProbarConexionR.Name = "btnProbarConexionR";
             this.btnProbarConexionR.Size = new System.Drawing.Size(75, 40);
@@ -520,7 +512,6 @@
             // 
             // btnGuardarConexionR
             // 
-            this.btnGuardarConexionR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
             this.btnGuardarConexionR.Location = new System.Drawing.Point(21, 132);
             this.btnGuardarConexionR.Name = "btnGuardarConexionR";
             this.btnGuardarConexionR.Size = new System.Drawing.Size(75, 40);
@@ -589,6 +580,13 @@
             this.txtServerR.Size = new System.Drawing.Size(207, 20);
             this.txtServerR.TabIndex = 6;
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageSize = new System.Drawing.Size(40, 40);
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.Images.SetKeyName(0, "GuardarConexion.png");
+            this.imageCollection1.Images.SetKeyName(1, "ProbarConexion.png");
+            // 
             // Frm_Conexiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,7 +629,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerC.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -642,6 +639,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordR.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginR.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerR.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

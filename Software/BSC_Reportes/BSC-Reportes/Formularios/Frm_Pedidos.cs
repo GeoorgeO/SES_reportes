@@ -17,6 +17,8 @@ using System.IO;
 using GridControlEditCBMultipleSelection;
 using DevExpress.XtraGrid;
 using DevExpress.XtraPrinting;
+using DevExpress.DataAccess.Sql;
+using DevExpress.DataAccess.ConnectionParameters;
 
 namespace BSC_Reportes
 {
@@ -585,23 +587,26 @@ namespace BSC_Reportes
             selenc.MtdSeleccionarPedidosId();
             if (selenc.Exito)
             {
-                dtInicio.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaInsert"]);
-                txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
-                txtProveedorNombre.Text = selenc.Datos.Rows[0]["Proveedor"].ToString();
-                PedidoSurtido= Convert.ToBoolean(selenc.Datos.Rows[0]["PedidosSurtido"].ToString());
-                if(PedidoSurtido)
+                if (selenc.Datos.Rows.Count > 0)
                 {
-                    lblStatus.Text = "Surtido";
-                    this.TPedido.OptionsColumn.AllowEdit = false;
+                    dtInicio.DateTime = Convert.ToDateTime(selenc.Datos.Rows[0]["FechaInsert"]);
+                    txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
+                    txtProveedorNombre.Text = selenc.Datos.Rows[0]["Proveedor"].ToString();
+                    PedidoSurtido = Convert.ToBoolean(selenc.Datos.Rows[0]["PedidosSurtido"].ToString());
+                    if (PedidoSurtido)
+                    {
+                        lblStatus.Text = "Surtido";
+                        this.TPedido.OptionsColumn.AllowEdit = false;
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Pendiente";
+                        this.TPedido.OptionsColumn.AllowEdit = true;
+                    }
+                    CargarPedidosDetalles(vFolio);
+                    CargarPedidosDetallesInsidencias(vFolio);
+                    SumaDistribucion();
                 }
-                else
-                {
-                    lblStatus.Text = "Pendiente";
-                    this.TPedido.OptionsColumn.AllowEdit = true;
-                }
-                CargarPedidosDetalles(vFolio);
-                CargarPedidosDetallesInsidencias(vFolio);
-                SumaDistribucion();
             }
         }
 
@@ -821,6 +826,7 @@ namespace BSC_Reportes
             {
                 int folio = Convert.ToInt32(txtFolio.Text);
                 rpt_Pedidos rpt = new rpt_Pedidos(folio);
+                //((SqlDataSource)rpt.DataSource).ConfigureDataConnection += Form1_ConfigureDataConnection;
                 ReportPrintTool print = new ReportPrintTool(rpt);
                 rpt.ShowPreviewDialog();
             }
@@ -829,7 +835,10 @@ namespace BSC_Reportes
                 XtraMessageBox.Show("Falta seleccionar un Pedido");
             }
         }
-
+        private void Form1_ConfigureDataConnection(object sender, ConfigureDataConnectionEventArgs e)
+        {
+            e.ConnectionParameters = new MsSqlConnectionParameters("ServerName", "Nwind", "UserName", "Password", MsSqlAuthorizationType.SqlServer);
+        }
         private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (txtFolio.Text != string.Empty && dtgValPedidos.RowCount>0)
@@ -1455,12 +1464,13 @@ namespace BSC_Reportes
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DEstocolmo"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DFcoVilla"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLombardia"], 0);
-                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DReyes"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DLosReyes"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DMorelos"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DNvaItalia"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DPaseo"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaI"], 0);
                             dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["DSarabiaII"], 0);
+                            dtgValPedidos.SetRowCellValue(xRow, dtgValPedidos.Columns["SumaD"], 0);
                         }
                     }
                 }

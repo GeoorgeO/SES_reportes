@@ -77,12 +77,12 @@
             this.Col_Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Descripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Familia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Col_Existencia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Mes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Año = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Piezas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Total = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.Col_Existencia = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -240,9 +240,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 539);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 542);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1153, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1153, 25);
             // 
             // barDockControlLeft
             // 
@@ -250,7 +250,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(69, 539);
+            this.barDockControlLeft.Size = new System.Drawing.Size(67, 542);
             // 
             // barDockControlRight
             // 
@@ -258,7 +258,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1153, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 539);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 542);
             // 
             // barLargeButtonItem1
             // 
@@ -316,10 +316,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(69, 0);
+            this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1084, 164);
+            this.panelControl1.Size = new System.Drawing.Size(1086, 164);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
@@ -341,7 +341,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1060, 140);
+            this.groupControl1.Size = new System.Drawing.Size(1062, 140);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -512,10 +512,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(69, 164);
+            this.panelControl2.Location = new System.Drawing.Point(67, 164);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1084, 375);
+            this.panelControl2.Size = new System.Drawing.Size(1086, 378);
             this.panelControl2.TabIndex = 7;
             // 
             // dtgVentaExistencia
@@ -526,7 +526,7 @@
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
             this.dtgVentaExistencia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit2});
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(1060, 351);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(1062, 354);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -601,6 +601,14 @@
             this.Col_Familia.VisibleIndex = 3;
             this.Col_Familia.Width = 202;
             // 
+            // Col_Existencia
+            // 
+            this.Col_Existencia.Caption = "Existencia";
+            this.Col_Existencia.FieldName = "existencia";
+            this.Col_Existencia.Name = "Col_Existencia";
+            this.Col_Existencia.Visible = true;
+            this.Col_Existencia.VisibleIndex = 4;
+            // 
             // Col_Mes
             // 
             this.Col_Mes.AppearanceCell.Options.UseTextOptions = true;
@@ -666,14 +674,6 @@
             this.repositoryItemTextEdit2.Mask.EditMask = "n0";
             this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
-            // 
-            // Col_Existencia
-            // 
-            this.Col_Existencia.Caption = "Existencia";
-            this.Col_Existencia.FieldName = "existencia";
-            this.Col_Existencia.Name = "Col_Existencia";
-            this.Col_Existencia.Visible = true;
-            this.Col_Existencia.VisibleIndex = 4;
             // 
             // Frm_VentasAcumuladas
             // 

@@ -1,6 +1,6 @@
 ﻿namespace BSC_Reportes
 {
-    partial class Frm_ConexionesRemotas
+    partial class Frm_ConexionesSucursales
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ConexionesRemotas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ConexionesSucursales));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnGuardarConexion = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -422,7 +422,7 @@
             this.txtPassword.Size = new System.Drawing.Size(207, 20);
             this.txtPassword.TabIndex = 10;
             // 
-            // Frm_ConexionesRemotas
+            // Frm_ConexionesSucursales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -435,9 +435,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Frm_ConexionesRemotas";
+            this.Name = "Frm_ConexionesSucursales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Conexiones Remotas";
+            this.Text = "Conexiones Sucursales";
             this.Load += new System.EventHandler(this.Frm_VerificadorPrecios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();

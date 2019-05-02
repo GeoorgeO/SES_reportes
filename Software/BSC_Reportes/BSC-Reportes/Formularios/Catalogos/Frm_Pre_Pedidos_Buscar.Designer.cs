@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos_Buscar));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnSeleccionar = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -48,14 +48,14 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dtgPrePedidos = new DevExpress.XtraGrid.GridControl();
             this.dtgValPrePedidos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.PrePedidoId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ProveedorNombre = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.FechaInicio = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.FechaFin = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -116,13 +116,13 @@
             this.btnSeleccionar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSeleccionar.ImageOptions.Image")));
             this.btnSeleccionar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSeleccionar.ImageOptions.LargeImage")));
             this.btnSeleccionar.Name = "btnSeleccionar";
-            toolTipItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipItem2.Appearance.Options.UseImage = true;
-            toolTipItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem2.Image")));
-            toolTipTitleItem2.Text = "Seleccionar";
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnSeleccionar.SuperTip = superToolTip2;
+            toolTipItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipItem1.Appearance.Options.UseImage = true;
+            toolTipItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem1.Text = "Seleccionar";
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnSeleccionar.SuperTip = superToolTip1;
             this.btnSeleccionar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSeleccionar_ItemClick);
             // 
             // bEstado
@@ -157,9 +157,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 414);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 408);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(828, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(828, 28);
             // 
             // barDockControlLeft
             // 
@@ -167,7 +167,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(71, 414);
+            this.barDockControlLeft.Size = new System.Drawing.Size(73, 408);
             // 
             // barDockControlRight
             // 
@@ -175,7 +175,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(828, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 414);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 408);
             // 
             // barLargeButtonItem1
             // 
@@ -196,10 +196,10 @@
             // 
             this.panelControl1.Controls.Add(this.dtgPrePedidos);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(71, 0);
+            this.panelControl1.Location = new System.Drawing.Point(73, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(757, 414);
+            this.panelControl1.Size = new System.Drawing.Size(755, 408);
             this.panelControl1.TabIndex = 11;
             // 
             // dtgPrePedidos
@@ -210,7 +210,7 @@
             this.dtgPrePedidos.Name = "dtgPrePedidos";
             this.dtgPrePedidos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.dtgPrePedidos.Size = new System.Drawing.Size(733, 390);
+            this.dtgPrePedidos.Size = new System.Drawing.Size(731, 384);
             this.dtgPrePedidos.TabIndex = 4;
             this.dtgPrePedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPrePedidos});
@@ -234,6 +234,17 @@
             this.dtgValPrePedidos.OptionsFind.AlwaysVisible = true;
             this.dtgValPrePedidos.OptionsView.ShowGroupPanel = false;
             // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Articulo";
+            this.gridBand1.Columns.Add(this.PrePedidoId);
+            this.gridBand1.Columns.Add(this.ProveedorNombre);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 410;
+            // 
             // PrePedidoId
             // 
             this.PrePedidoId.Caption = "Folio";
@@ -254,6 +265,17 @@
             this.ProveedorNombre.Visible = true;
             this.ProveedorNombre.Width = 304;
             // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand2.Caption = "Periodo";
+            this.gridBand2.Columns.Add(this.FechaInicio);
+            this.gridBand2.Columns.Add(this.FechaFin);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 150;
+            // 
             // FechaInicio
             // 
             this.FechaInicio.Caption = "F. Inicio";
@@ -268,35 +290,6 @@
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.Visible = true;
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Fecha Creacion";
-            this.gridColumn1.FieldName = "FechaInsert";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Articulo";
-            this.gridBand1.Columns.Add(this.PrePedidoId);
-            this.gridBand1.Columns.Add(this.ProveedorNombre);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 410;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand2.Caption = "Periodo";
-            this.gridBand2.Columns.Add(this.FechaInicio);
-            this.gridBand2.Columns.Add(this.FechaFin);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 150;
-            // 
             // gridBand3
             // 
             this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
@@ -306,6 +299,13 @@
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
             this.gridBand3.Width = 75;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Fecha Creacion";
+            this.gridColumn1.FieldName = "FechaInsert";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
             // 
             // repositoryItemDateEdit1
             // 
@@ -320,7 +320,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 439);
+            this.ClientSize = new System.Drawing.Size(828, 436);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

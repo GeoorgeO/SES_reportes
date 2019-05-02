@@ -41,6 +41,8 @@
             this.btnVentasAcumuladas = new DevExpress.XtraBars.BarButtonItem();
             this.btnIndiceRotacion = new DevExpress.XtraBars.BarButtonItem();
             this.btnConexionesR = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPedidoSucursales = new DevExpress.XtraBars.BarButtonItem();
+            this.btnConexionesS = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -71,9 +73,11 @@
             this.btnPedidos,
             this.btnVentasAcumuladas,
             this.btnIndiceRotacion,
-            this.btnConexionesR});
+            this.btnConexionesR,
+            this.btnPedidoSucursales,
+            this.btnConexionesS});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 7;
+            this.ribbon.MaxItemId = 9;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -181,6 +185,25 @@
             this.btnConexionesR.Name = "btnConexionesR";
             this.btnConexionesR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnConexionesR_ItemClick);
             // 
+            // btnPedidoSucursales
+            // 
+            this.btnPedidoSucursales.Caption = "Pedido Sucursales";
+            this.btnPedidoSucursales.Id = 7;
+            this.btnPedidoSucursales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidoSucursales.ImageOptions.Image")));
+            this.btnPedidoSucursales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidoSucursales.ImageOptions.LargeImage")));
+            this.btnPedidoSucursales.Name = "btnPedidoSucursales";
+            this.btnPedidoSucursales.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.btnPedidoSucursales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidoSucursales_ItemClick);
+            // 
+            // btnConexionesS
+            // 
+            this.btnConexionesS.Caption = "Conexiones Sucursales";
+            this.btnConexionesS.Id = 8;
+            this.btnConexionesS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnConexionesS.ImageOptions.Image")));
+            this.btnConexionesS.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnConexionesS.ImageOptions.LargeImage")));
+            this.btnConexionesS.Name = "btnConexionesS";
+            this.btnConexionesS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnConexionesS_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -211,6 +234,7 @@
             this.ribbonPageGroup5.AllowTextClipping = false;
             this.ribbonPageGroup5.ItemLinks.Add(this.btnVentasAcumuladas);
             this.ribbonPageGroup5.ItemLinks.Add(this.btnIndiceRotacion);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnPedidoSucursales);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.ShowCaptionButton = false;
             this.ribbonPageGroup5.Text = "Acumuladas";
@@ -239,9 +263,10 @@
             // 
             this.ribbonPageGroup4.AllowTextClipping = false;
             this.ribbonPageGroup4.ItemLinks.Add(this.btnConexionesR);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnConexionesS);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.ShowCaptionButton = false;
-            this.ribbonPageGroup4.Text = "Configuracion Remota";
+            this.ribbonPageGroup4.Text = "Conexiones";
             // 
             // ribbonPage3
             // 
@@ -326,5 +351,7 @@
         private DevExpress.XtraBars.BarButtonItem btnIndiceRotacion;
         private DevExpress.XtraBars.BarButtonItem btnConexionesR;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem btnPedidoSucursales;
+        private DevExpress.XtraBars.BarButtonItem btnConexionesS;
     }
 }

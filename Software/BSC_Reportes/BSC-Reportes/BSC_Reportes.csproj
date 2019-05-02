@@ -110,6 +110,12 @@
     <Compile Include="Conexion\Frm_Conexiones.designer.cs">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conexion\Frm_ConexionesSucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion\Frm_ConexionesSucursales.designer.cs">
+      <DependentUpon>Frm_ConexionesSucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Conexion\Frm_ConexionesRemotas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,12 @@
     <Compile Include="Formularios\Frm_Pedidos.Designer.cs">
       <DependentUpon>Frm_Pedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Frm_Pedidos_Sucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_Pedidos_Sucursales.Designer.cs">
+      <DependentUpon>Frm_Pedidos_Sucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frm_Pre_Pedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +289,9 @@
     <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Conexion\Frm_ConexionesSucursales.resx">
+      <DependentUpon>Frm_ConexionesSucursales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Conexion\Frm_ConexionesRemotas.resx">
       <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_Pedidos.resx">
       <DependentUpon>Frm_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Frm_Pedidos_Sucursales.resx">
+      <DependentUpon>Frm_Pedidos_Sucursales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_Pre_Pedidos.resx">
       <DependentUpon>Frm_Pre_Pedidos.cs</DependentUpon>

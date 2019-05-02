@@ -232,5 +232,19 @@ namespace BSC_Reportes
             Frm_ConexionesRemotas.DefInstance.UsuarioClase = UsuariosClase;
             Frm_ConexionesRemotas.DefInstance.Show();
         }
+
+        private void btnConexionesS_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ConexionesSucursales.DefInstance.MdiParent = this;
+            Frm_ConexionesSucursales.DefInstance.IdPantallaBotones = 9;
+            Frm_ConexionesSucursales.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_ConexionesSucursales.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_ConexionesSucursales.DefInstance.Show();
+        }
+
+        private void btnPedidoSucursales_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

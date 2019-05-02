@@ -185,7 +185,7 @@ namespace BSC_Sincronizacion
                     }
                     catch
                     {
-                        XtraMessageBox.Show("No se Han Configurado datos Correctos para la conexion a la base de datos Central");
+                        XtraMessageBox.Show("No se Han Configurado datos Correctos para la conexion a la base de datos Reportes");
                     }
                 }
             }
