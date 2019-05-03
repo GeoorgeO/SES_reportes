@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDeDatos.SES_Reportes
+namespace CapaDeDatos
 {
-    class CLS_Pedidos_Sucursales:ConexionBase
+    public class CLS_Pedidos_Sucursales:ConexionBase
     {
         public string FechaInicio { get;  set; }
         public string FechaFin { get;  set; }
