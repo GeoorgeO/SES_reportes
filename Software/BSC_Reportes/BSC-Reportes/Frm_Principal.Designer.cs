@@ -192,7 +192,6 @@
             this.btnPedidoSucursales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidoSucursales.ImageOptions.Image")));
             this.btnPedidoSucursales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPedidoSucursales.ImageOptions.LargeImage")));
             this.btnPedidoSucursales.Name = "btnPedidoSucursales";
-            this.btnPedidoSucursales.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnPedidoSucursales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedidoSucursales_ItemClick);
             // 
             // btnConexionesS

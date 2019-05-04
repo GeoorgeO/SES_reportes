@@ -244,7 +244,11 @@ namespace BSC_Reportes
 
         private void btnPedidoSucursales_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            Frm_Pedidos_Sucursales.DefInstance.MdiParent = this;
+            Frm_Pedidos_Sucursales.DefInstance.IdPantallaBotones = 10;
+            Frm_Pedidos_Sucursales.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Pedidos_Sucursales.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Pedidos_Sucursales.DefInstance.Show();
         }
     }
 }

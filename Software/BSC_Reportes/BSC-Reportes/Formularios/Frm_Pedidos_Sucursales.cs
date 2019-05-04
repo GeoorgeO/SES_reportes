@@ -16,6 +16,23 @@ namespace BSC_Reportes
 {
     public partial class Frm_Pedidos_Sucursales : DevExpress.XtraEditors.XtraForm
     {
+        public string UsuariosLogin { get; set; }
+        public char UsuarioClase { get; set; }
+        public int IdPantallaBotones { get; set; }
+        private static Frm_Pedidos_Sucursales m_FormDefInstance;
+        public static Frm_Pedidos_Sucursales DefInstance
+        {
+            get
+            {
+                if (m_FormDefInstance == null || m_FormDefInstance.IsDisposed)
+                    m_FormDefInstance = new Frm_Pedidos_Sucursales();
+                return m_FormDefInstance;
+            }
+            set
+            {
+                m_FormDefInstance = value;
+            }
+        }
         public Frm_Pedidos_Sucursales()
         {
             InitializeComponent();
@@ -30,8 +47,59 @@ namespace BSC_Reportes
             CoberturaA.DisplayFormat.FormatString = "###0.000";
             CoberturaN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             CoberturaN.DisplayFormat.FormatString = "###0.000";
+            Promed.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            Promed.DisplayFormat.FormatString = "###0.000";
+            OcultarBotones();
+            if (UsuarioClase == 'S')
+            {
+                accesosuperusuario();
+            }
+            else
+            {
+                MostrarBotones();
+            }
         }
-
+        public void OcultarBotones()
+        {
+            btnGenerarReporte.Links[0].Visible = false;
+            btnExportarExcel.Links[0].Visible = false;
+            btnLimpiar.Links[0].Visible = false;
+        }
+        public void MostrarBotones()
+        {
+            CLS_Pantallas clspantbotones = new CLS_Pantallas();
+            clspantbotones.UsuariosLogin = UsuariosLogin;
+            clspantbotones.pantallasid = IdPantallaBotones;
+            clspantbotones.Mtdselecionarbotonespantalla();
+            if (clspantbotones.Exito)
+            {
+                for (int t = 0; t < clspantbotones.Datos.Rows.Count; t++)
+                {
+                    switch (clspantbotones.Datos.Rows[t][0].ToString())
+                    {
+                        case "44":
+                            btnGenerarReporte.Links[0].Visible = true;
+                            break;
+                        case "45":
+                            btnExportarExcel.Links[0].Visible = true;
+                            break;
+                        case "46":
+                            btnLimpiar.Links[0].Visible = true;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show(clspantbotones.Mensaje);
+            }
+        }
+        public void accesosuperusuario()
+        {
+            btnGenerarReporte.Links[0].Visible = true;
+            btnExportarExcel.Links[0].Visible = true;
+            btnLimpiar.Links[0].Visible = true;
+        }
         private void LimpiarCampos()
         {
             CargarSucursales(1);
@@ -39,6 +107,7 @@ namespace BSC_Reportes
             dtFin.EditValue = DateTime.Now;
             dtgPedidos.DataSource = null;
             cmbTiendasSurtir.SelectedIndex = 0;
+            txtMesesVenta.Text = string.Empty;
         }
 
         private void MakeTablaPedidos()

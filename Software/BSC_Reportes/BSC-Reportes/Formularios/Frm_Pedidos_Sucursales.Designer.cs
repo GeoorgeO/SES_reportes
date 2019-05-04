@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos_Sucursales));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnGenerarReporte = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -44,6 +44,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMesesVenta = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cmbTiendasSurtir = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cboSucursales = new DevExpress.XtraEditors.GridLookUpEdit();
@@ -65,7 +67,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bandedGridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Promed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,12 +77,11 @@
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.txtMesesVenta = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMesesVenta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTiendasSurtir.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSucursales.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -95,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMesesVenta.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -192,9 +192,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 483);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1480, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1480, 28);
             // 
             // barDockControlLeft
             // 
@@ -202,7 +202,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(59, 483);
+            this.barDockControlLeft.Size = new System.Drawing.Size(61, 480);
             // 
             // barDockControlRight
             // 
@@ -210,7 +210,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1480, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 480);
             // 
             // repositoryItemTextEdit1
             // 
@@ -229,10 +229,29 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(59, 0);
+            this.panelControl1.Location = new System.Drawing.Point(61, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1421, 94);
+            this.panelControl1.Size = new System.Drawing.Size(1419, 94);
             this.panelControl1.TabIndex = 6;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(203, 68);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(65, 13);
+            this.labelControl4.TabIndex = 22;
+            this.labelControl4.Text = "Meses Venta:";
+            // 
+            // txtMesesVenta
+            // 
+            this.txtMesesVenta.Location = new System.Drawing.Point(274, 63);
+            this.txtMesesVenta.MenuManager = this.barManager1;
+            this.txtMesesVenta.Name = "txtMesesVenta";
+            this.txtMesesVenta.Properties.Mask.EditMask = "n0";
+            this.txtMesesVenta.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtMesesVenta.Properties.ReadOnly = true;
+            this.txtMesesVenta.Size = new System.Drawing.Size(100, 20);
+            this.txtMesesVenta.TabIndex = 21;
             // 
             // labelControl3
             // 
@@ -334,10 +353,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgPedidos);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(59, 94);
+            this.panelControl2.Location = new System.Drawing.Point(61, 94);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1421, 389);
+            this.panelControl2.Size = new System.Drawing.Size(1419, 386);
             this.panelControl2.TabIndex = 7;
             // 
             // dtgPedidos
@@ -350,7 +369,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(1397, 365);
+            this.dtgPedidos.Size = new System.Drawing.Size(1395, 362);
             this.dtgPedidos.TabIndex = 1;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -367,18 +386,18 @@
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
-            this.bandedGridColumn5,
+            this.Promed,
             this.bandedGridColumn7,
             this.bandedGridColumn4,
             this.bandedGridColumn9,
             this.gridColumn6,
             this.CoberturaA,
             this.CoberturaN});
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.dtgValPedidos.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.dtgValPedidos.FormatRules.Add(gridFormatRule1);
             this.dtgValPedidos.GridControl = this.dtgPedidos;
             this.dtgValPedidos.Name = "dtgValPedidos";
             this.dtgValPedidos.OptionsFind.AlwaysVisible = true;
@@ -490,16 +509,16 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 8;
             // 
-            // bandedGridColumn5
+            // Promed
             // 
-            this.bandedGridColumn5.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn5.Caption = "Promedio";
-            this.bandedGridColumn5.FieldName = "Prom";
-            this.bandedGridColumn5.Name = "bandedGridColumn5";
-            this.bandedGridColumn5.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.VisibleIndex = 9;
+            this.Promed.AppearanceHeader.Options.UseTextOptions = true;
+            this.Promed.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Promed.Caption = "Promedio";
+            this.Promed.FieldName = "Prom";
+            this.Promed.Name = "Promed";
+            this.Promed.OptionsColumn.AllowEdit = false;
+            this.Promed.Visible = true;
+            this.Promed.VisibleIndex = 9;
             // 
             // bandedGridColumn7
             // 
@@ -586,25 +605,6 @@
             this.repositoryItemTextEdit4.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
             // 
-            // txtMesesVenta
-            // 
-            this.txtMesesVenta.Location = new System.Drawing.Point(274, 63);
-            this.txtMesesVenta.MenuManager = this.barManager1;
-            this.txtMesesVenta.Name = "txtMesesVenta";
-            this.txtMesesVenta.Properties.Mask.EditMask = "n0";
-            this.txtMesesVenta.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtMesesVenta.Properties.ReadOnly = true;
-            this.txtMesesVenta.Size = new System.Drawing.Size(100, 20);
-            this.txtMesesVenta.TabIndex = 21;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(203, 68);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(65, 13);
-            this.labelControl4.TabIndex = 22;
-            this.labelControl4.Text = "Meses Venta:";
-            // 
             // Frm_Pedidos_Sucursales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,6 +624,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMesesVenta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTiendasSurtir.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSucursales.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -638,7 +639,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMesesVenta.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,7 +676,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn Promed;
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn9;

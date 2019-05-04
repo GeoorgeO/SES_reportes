@@ -354,7 +354,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 562);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 559);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
             // 
@@ -364,7 +364,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(83, 562);
+            this.barDockControlLeft.Size = new System.Drawing.Size(83, 559);
             // 
             // barDockControlRight
             // 
@@ -372,7 +372,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 562);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
             // 
             // btnBuscar
             // 
@@ -587,7 +587,7 @@
             this.panelControl2.Location = new System.Drawing.Point(83, 139);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1037, 423);
+            this.panelControl2.Size = new System.Drawing.Size(1037, 420);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -597,7 +597,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1013, 399);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1013, 396);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -608,7 +608,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 374);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 371);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -621,7 +621,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(999, 364);
+            this.dtgPedidos.Size = new System.Drawing.Size(999, 361);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -1092,7 +1092,7 @@
             this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(1007, 374);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1007, 371);
             this.xtraTabPage2.Text = "Insidencias";
             // 
             // dtgPedidosInsidencias
@@ -1105,7 +1105,7 @@
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(997, 364);
+            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(997, 361);
             this.dtgPedidosInsidencias.TabIndex = 1;
             this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidosInsidencias});
@@ -1208,7 +1208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 590);
+            this.ClientSize = new System.Drawing.Size(1120, 587);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
