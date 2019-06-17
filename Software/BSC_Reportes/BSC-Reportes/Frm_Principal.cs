@@ -250,5 +250,14 @@ namespace BSC_Reportes
             Frm_Pedidos_Sucursales.DefInstance.UsuarioClase = UsuariosClase;
             Frm_Pedidos_Sucursales.DefInstance.Show();
         }
+
+        private void btnCheckSincronizacion_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_CheckSincroniza_Sucursales.DefInstance.MdiParent = this;
+            Frm_CheckSincroniza_Sucursales.DefInstance.IdPantallaBotones = 11;
+            Frm_CheckSincroniza_Sucursales.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_CheckSincroniza_Sucursales.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_CheckSincroniza_Sucursales.DefInstance.Show();
+        }
     }
 }

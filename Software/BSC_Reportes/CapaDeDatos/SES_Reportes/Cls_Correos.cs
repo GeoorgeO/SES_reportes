@@ -16,6 +16,8 @@ namespace CapaDeDatos
         public int CorreoCifradoSSL { get; set; }
         public int CorreoPuertoSalida { get; set; }
         public string CorreoNombre { get; set; }
+        public int IdCorreo { get; set; }
+        public int ReportesId { get; set; }
 
         public void MtdSeleccionar()
         {
@@ -88,6 +90,8 @@ namespace CapaDeDatos
                 _conexionR.NombreProcedimiento = "SP_BSC_CorreosEspecifico_Select";
                 _dato.CadenaTexto = CorreoNombre;
                 _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoNombre");
+                _dato.Entero = ReportesId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ReportesId");
                 _conexionR.EjecutarDataset();
 
                 if (_conexionR.Exito)
@@ -154,6 +158,8 @@ namespace CapaDeDatos
                 _conexionR.NombreProcedimiento = "SP_BSC_CorreosDestino_Insert";
                 _dato.CadenaTexto = CorreoNombre;
                 _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "CorreoNombre");
+                _dato.Entero = ReportesId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ReportesId");
                 _conexionR.EjecutarNonQuery();
                 Exito = _conexionR.Exito;
                 Mensaje = _conexionR.Mensaje;
@@ -208,15 +214,58 @@ namespace CapaDeDatos
             try
             {
                 _conexionR.NombreProcedimiento = "SP_BSC_CorreosDestino_Delete";
+                _dato.Entero = IdCorreo;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "IdCorreo");
                 _conexionR.EjecutarNonQuery();
                 Exito = _conexionR.Exito;
-                Mensaje = _conexionR.Mensaje;
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                    Mensaje = _conexionR.Mensaje;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
             }
             catch (Exception e)
             {
                 Mensaje = e.Message;
                 Exito = false;
             }
+
+        }
+        public void MtdSeleccionarReportes()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_CorreosReportes_Select";
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                    Mensaje = _conexionR.Mensaje;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
 
         }
     }

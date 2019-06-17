@@ -45,14 +45,19 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnProbar = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.cboReportes = new DevExpress.XtraEditors.LookUpEdit();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtCorreoDestino = new DevExpress.XtraEditors.TextEdit();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.dtgCorreosDestino = new DevExpress.XtraGrid.GridControl();
             this.dtgValoresCorreosDestino = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreoPuerto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSeguridadSSL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreoServerEntrante.Properties)).BeginInit();
@@ -62,8 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreoRemitente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboReportes.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreoDestino.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -208,10 +213,16 @@
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.separatorControl1);
+            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.btnProbar);
+            this.panelControl1.Controls.Add(this.cboReportes);
             this.panelControl1.Controls.Add(this.labelControl9);
+            this.panelControl1.Controls.Add(this.btnAgregar);
             this.panelControl1.Controls.Add(this.btnGuardar);
+            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.txtCorreoRemitente);
+            this.panelControl1.Controls.Add(this.txtCorreoDestino);
             this.panelControl1.Controls.Add(this.txtCorreoPuerto);
             this.panelControl1.Controls.Add(this.labelControl10);
             this.panelControl1.Controls.Add(this.labelControl19);
@@ -227,8 +238,23 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(566, 193);
+            this.panelControl1.Size = new System.Drawing.Size(566, 268);
             this.panelControl1.TabIndex = 38;
+            // 
+            // separatorControl1
+            // 
+            this.separatorControl1.Location = new System.Drawing.Point(3, 191);
+            this.separatorControl1.Name = "separatorControl1";
+            this.separatorControl1.Size = new System.Drawing.Size(560, 19);
+            this.separatorControl1.TabIndex = 41;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(107, 246);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(43, 13);
+            this.labelControl2.TabIndex = 40;
+            this.labelControl2.Text = "Reporte:";
             // 
             // btnProbar
             // 
@@ -242,24 +268,21 @@
             this.btnProbar.Text = "Probar Config";
             this.btnProbar.Click += new System.EventHandler(this.btnProbar_Click);
             // 
-            // panelControl2
+            // cboReportes
             // 
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.btnAgregar);
-            this.panelControl2.Controls.Add(this.labelControl1);
-            this.panelControl2.Controls.Add(this.txtCorreoDestino);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(0, 193);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(566, 50);
-            this.panelControl2.TabIndex = 39;
+            this.cboReportes.Location = new System.Drawing.Point(161, 242);
+            this.cboReportes.Name = "cboReportes";
+            this.cboReportes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboReportes.Size = new System.Drawing.Size(199, 20);
+            this.cboReportes.TabIndex = 39;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Appearance.Options.UseFont = true;
             this.btnAgregar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.ImageOptions.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(374, 3);
+            this.btnAgregar.Location = new System.Drawing.Point(374, 218);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(147, 44);
             this.btnAgregar.TabIndex = 38;
@@ -268,7 +291,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(74, 13);
+            this.labelControl1.Location = new System.Drawing.Point(74, 219);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(76, 13);
             this.labelControl1.TabIndex = 27;
@@ -276,7 +299,7 @@
             // 
             // txtCorreoDestino
             // 
-            this.txtCorreoDestino.Location = new System.Drawing.Point(161, 10);
+            this.txtCorreoDestino.Location = new System.Drawing.Point(161, 216);
             this.txtCorreoDestino.Name = "txtCorreoDestino";
             this.txtCorreoDestino.Size = new System.Drawing.Size(199, 20);
             this.txtCorreoDestino.TabIndex = 28;
@@ -286,10 +309,10 @@
             this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl3.Controls.Add(this.dtgCorreosDestino);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(0, 243);
+            this.panelControl3.Location = new System.Drawing.Point(0, 268);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl3.Size = new System.Drawing.Size(566, 225);
+            this.panelControl3.Size = new System.Drawing.Size(566, 240);
             this.panelControl3.TabIndex = 40;
             // 
             // dtgCorreosDestino
@@ -298,7 +321,7 @@
             this.dtgCorreosDestino.Location = new System.Drawing.Point(10, 10);
             this.dtgCorreosDestino.MainView = this.dtgValoresCorreosDestino;
             this.dtgCorreosDestino.Name = "dtgCorreosDestino";
-            this.dtgCorreosDestino.Size = new System.Drawing.Size(546, 205);
+            this.dtgCorreosDestino.Size = new System.Drawing.Size(546, 220);
             this.dtgCorreosDestino.TabIndex = 4;
             this.dtgCorreosDestino.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValoresCorreosDestino});
@@ -307,6 +330,10 @@
             // 
             // dtgValoresCorreosDestino
             // 
+            this.dtgValoresCorreosDestino.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
             this.dtgValoresCorreosDestino.GridControl = this.dtgCorreosDestino;
             this.dtgValoresCorreosDestino.Name = "dtgValoresCorreosDestino";
             this.dtgValoresCorreosDestino.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -319,13 +346,31 @@
             this.dtgValoresCorreosDestino.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.dtgValoresCorreosDestino.OptionsView.ShowGroupPanel = false;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "IdCorreo";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "CorreoNombre";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "ReporteNombre";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            // 
             // Frm_ConfigEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 468);
+            this.ClientSize = new System.Drawing.Size(566, 508);
             this.Controls.Add(this.panelControl3);
-            this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Name = "Frm_ConfigEmail";
             this.Text = "Configuracion Email";
@@ -340,9 +385,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboReportes.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreoDestino.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -370,7 +414,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton btnAgregar;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtCorreoDestino;
@@ -378,6 +421,11 @@
         private DevExpress.XtraEditors.SimpleButton btnProbar;
         private DevExpress.XtraGrid.GridControl dtgCorreosDestino;
         private DevExpress.XtraGrid.Views.Grid.GridView dtgValoresCorreosDestino;
-
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LookUpEdit cboReportes;
+        private DevExpress.XtraEditors.SeparatorControl separatorControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

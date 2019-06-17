@@ -43,6 +43,7 @@
             this.btnConexionesR = new DevExpress.XtraBars.BarButtonItem();
             this.btnPedidoSucursales = new DevExpress.XtraBars.BarButtonItem();
             this.btnConexionesS = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCheckSincronizacion = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -75,9 +76,10 @@
             this.btnIndiceRotacion,
             this.btnConexionesR,
             this.btnPedidoSucursales,
-            this.btnConexionesS});
+            this.btnConexionesS,
+            this.btnCheckSincronizacion});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 9;
+            this.ribbon.MaxItemId = 10;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -203,6 +205,15 @@
             this.btnConexionesS.Name = "btnConexionesS";
             this.btnConexionesS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnConexionesS_ItemClick);
             // 
+            // btnCheckSincronizacion
+            // 
+            this.btnCheckSincronizacion.Caption = "Check Sincronizacion";
+            this.btnCheckSincronizacion.Id = 9;
+            this.btnCheckSincronizacion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckSincronizacion.ImageOptions.Image")));
+            this.btnCheckSincronizacion.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCheckSincronizacion.ImageOptions.LargeImage")));
+            this.btnCheckSincronizacion.Name = "btnCheckSincronizacion";
+            this.btnCheckSincronizacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheckSincronizacion_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -263,6 +274,7 @@
             this.ribbonPageGroup4.AllowTextClipping = false;
             this.ribbonPageGroup4.ItemLinks.Add(this.btnConexionesR);
             this.ribbonPageGroup4.ItemLinks.Add(this.btnConexionesS);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnCheckSincronizacion);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.ShowCaptionButton = false;
             this.ribbonPageGroup4.Text = "Conexiones";
@@ -313,7 +325,7 @@
             this.Name = "Frm_Principal";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Frm_Principal";
+            this.Text = "SES Reportes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_Principal_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm_Principal_FormClosed);
@@ -352,5 +364,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem btnPedidoSucursales;
         private DevExpress.XtraBars.BarButtonItem btnConexionesS;
+        private DevExpress.XtraBars.BarButtonItem btnCheckSincronizacion;
     }
 }

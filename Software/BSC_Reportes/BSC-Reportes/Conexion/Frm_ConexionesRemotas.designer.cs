@@ -158,7 +158,7 @@
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 593);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 590);
             this.barDockControl2.Manager = this.barManager1;
             this.barDockControl2.Size = new System.Drawing.Size(728, 28);
             // 
@@ -168,7 +168,7 @@
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 24);
             this.barDockControl3.Manager = this.barManager1;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 569);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 566);
             // 
             // barDockControl4
             // 
@@ -176,7 +176,7 @@
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl4.Location = new System.Drawing.Point(728, 24);
             this.barDockControl4.Manager = this.barManager1;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 569);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 566);
             // 
             // barButtonItem4
             // 
@@ -205,7 +205,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 24);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(728, 569);
+            this.panelControl2.Size = new System.Drawing.Size(728, 566);
             this.panelControl2.TabIndex = 7;
             // 
             // groupControl2
@@ -214,7 +214,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(7, 7);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(714, 555);
+            this.groupControl2.Size = new System.Drawing.Size(714, 552);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Base de Datos";
             // 
@@ -225,7 +225,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(2, 22);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(710, 531);
+            this.panelControl3.Size = new System.Drawing.Size(710, 528);
             this.panelControl3.TabIndex = 0;
             // 
             // panelControl4
@@ -235,7 +235,7 @@
             this.panelControl4.Location = new System.Drawing.Point(2, 183);
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl4.Size = new System.Drawing.Size(706, 346);
+            this.panelControl4.Size = new System.Drawing.Size(706, 343);
             this.panelControl4.TabIndex = 15;
             // 
             // dtgConexiones
@@ -245,7 +245,7 @@
             this.dtgConexiones.MainView = this.dtgValConexiones;
             this.dtgConexiones.MenuManager = this.barManager1;
             this.dtgConexiones.Name = "dtgConexiones";
-            this.dtgConexiones.Size = new System.Drawing.Size(682, 322);
+            this.dtgConexiones.Size = new System.Drawing.Size(682, 319);
             this.dtgConexiones.TabIndex = 0;
             this.dtgConexiones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValConexiones});
@@ -426,7 +426,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 621);
+            this.ClientSize = new System.Drawing.Size(728, 618);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControl4);

@@ -37,6 +37,9 @@ namespace BSC_Reportes
                 m_FormDefInstance = value;
             }
         }
+
+        public object vIdCorreo { get; private set; }
+
         private void EncabezadoTabla()
         {
             dt.Columns.Add("Correos");
@@ -83,13 +86,7 @@ namespace BSC_Reportes
             {
                 if (CargaR.Datos.Rows.Count > 0)
                 {
-                    for (int x = 0; x < CargaR.Datos.Rows.Count; x++)
-                    {
-                        DataRow dr = dt.NewRow();
-                        dr[0] = CargaR.Datos.Rows[x][0].ToString().Trim();
-                        dt.Rows.Add(dr);
-                    }
-                    dtgCorreosDestino.DataSource = dt;
+                    dtgCorreosDestino.DataSource = CargaR.Datos;
                 }
             }
         }
@@ -149,8 +146,20 @@ namespace BSC_Reportes
             EncabezadoTabla();
             CargarConfigEmail();
             CargarCorreosDestino();
+            CargarReportes(1);
         }
-
+        private void CargarReportes(int? Valor)
+        {
+            CLS_Correos conReportes = new CLS_Correos();
+            conReportes.MtdSeleccionarReportes();
+            if (conReportes.Exito)
+            {
+                cboReportes.Properties.DisplayMember = "ReporteNombre";
+                cboReportes.Properties.ValueMember = "ReportesId";
+                cboReportes.EditValue = Valor;
+                cboReportes.Properties.DataSource = conReportes.Datos;
+            }
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidaCampos())
@@ -263,28 +272,31 @@ namespace BSC_Reportes
         {
             CLS_Correos GuardaC = new CLS_Correos();
             GuardaC.CorreoNombre = txtCorreoDestino.Text;
+            GuardaC.ReportesId =Convert.ToInt32(cboReportes.EditValue.ToString());
             GuardaC.MtdSeleccionarEspecifica();
             if (GuardaC.Exito)
             {
                 if (GuardaC.Datos.Rows.Count == 0)
                 {
-                    DataRow dr = dt.NewRow();
-                    dr[0] = txtCorreoDestino.Text;
-                    dt.Rows.Add(dr);
-                    dtgCorreosDestino.DataSource = dt;
-                    GuardaC.MtdEliminar();
-                    for (int x = 0; x < dtgValoresCorreosDestino.RowCount; x++)
+                    CLS_Correos GuardaCD = new CLS_Correos();
+                    GuardaCD.CorreoNombre = txtCorreoDestino.Text;
+                    GuardaCD.ReportesId = Convert.ToInt32(cboReportes.EditValue.ToString());
+                    GuardaCD.MtdInsertarCorreoDestino();
+                    if (GuardaCD.Exito)
                     {
-                        GuardaC.CorreoNombre = dt.Rows[x][0].ToString(); ;
-                        GuardaC.MtdInsertarCorreoDestino();
+                        CargarCorreosDestino();
+                        XtraMessageBox.Show("Se ha Agregado el Correo con Exito");
+                        txtCorreoDestino.Text = string.Empty;
                     }
-                    XtraMessageBox.Show("Se han Guardado los Registros con Exito");
-                    txtCorreoDestino.Text = string.Empty;
+                    else
+                    {
+                        XtraMessageBox.Show(GuardaCD.Mensaje);
+                    }
                 }
-            }
-            else
-            {
-                XtraMessageBox.Show("Este Correo ya Existe en la Lista");
+                else
+                {
+                    XtraMessageBox.Show("Este Correo ya Existe en la Lista");
+                }
             }
         }
 
@@ -299,15 +311,28 @@ namespace BSC_Reportes
 
         private void dtgCorreosDestino_DoubleClick(object sender, EventArgs e)
         {
-            txtCorreoDestino.Text = dt.Rows[FilaSelect][0].ToString().Trim();
-            dt.Rows.RemoveAt(FilaSelect);
-            dtgCorreosDestino.DataSource = dt;
-            CLS_Correos GuardaC = new CLS_Correos();
-            GuardaC.MtdEliminar();
-            for (int x = 0; x < dtgValoresCorreosDestino.RowCount; x++)
+            DialogResult = XtraMessageBox.Show("¿Desea Eliminar este correo", "Eliminar Correo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (DialogResult == DialogResult.Yes)
             {
-                GuardaC.CorreoNombre = dt.Rows[x][0].ToString(); ;
-                GuardaC.MtdInsertarCorreoDestino();
+                try
+                {
+                    foreach (int i in this.dtgValoresCorreosDestino.GetSelectedRows())
+                    {
+                        DataRow row = this.dtgValoresCorreosDestino.GetDataRow(i);
+                        string vCorreoId = row["IdCorreo"].ToString();
+                        CLS_Correos GuardaC = new CLS_Correos();
+                        GuardaC.IdCorreo = Convert.ToInt32(vCorreoId);
+                        GuardaC.MtdEliminar();
+                        if (GuardaC.Exito)
+                        {
+                            CargarCorreosDestino();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message);
+                }
             }
         }
 

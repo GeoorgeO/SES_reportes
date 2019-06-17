@@ -194,6 +194,12 @@
     <Compile Include="Formularios\Frm_CambiaPass.Designer.cs">
       <DependentUpon>Frm_CambiaPass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Frm_CheckSincroniza_Sucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frm_CheckSincroniza_Sucursales.Designer.cs">
+      <DependentUpon>Frm_CheckSincroniza_Sucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frm_ExistenciasFaltantes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_CambiaPass.resx">
       <DependentUpon>Frm_CambiaPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Frm_CheckSincroniza_Sucursales.resx">
+      <DependentUpon>Frm_CheckSincroniza_Sucursales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_Pedidos.resx">
       <DependentUpon>Frm_Pedidos.cs</DependentUpon>

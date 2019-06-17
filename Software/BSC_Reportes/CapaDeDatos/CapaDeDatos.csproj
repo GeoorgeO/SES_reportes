@@ -109,6 +109,7 @@
     <Compile Include="Conexion\TipoDato.cs" />
     <Compile Include="Conexion\UtileriasCodigo.cs" />
     <Compile Include="SEG_Login.cs" />
+    <Compile Include="SES_Reportes\CLS_CheckSincroniza_Sucursales.cs" />
     <Compile Include="SES_Reportes\CLS_Correos.cs" />
     <Compile Include="SES_Reportes\CLS_Email.cs" />
     <Compile Include="SES_Reportes\CLS_IndiceRotacion.cs" />
