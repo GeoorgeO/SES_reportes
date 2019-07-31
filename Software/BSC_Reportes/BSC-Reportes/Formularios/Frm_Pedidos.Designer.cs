@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.Entrada = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,6 +46,7 @@
             this.btnActualizarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnVistaPreviaPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnLiberaPedido = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnCerrarPedido = new DevExpress.XtraBars.BarLargeButtonItem();
             this.btnGeneraArchivos = new DevExpress.XtraBars.BarLargeButtonItem();
             this.bEstado = new DevExpress.XtraBars.Bar();
             this.lblProveedor = new DevExpress.XtraBars.BarStaticItem();
@@ -53,9 +54,6 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -117,6 +115,7 @@
             this.ReyesD = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.SumaD = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.TancitaroD = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -206,9 +205,6 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnBuscar,
-            this.barLargeButtonItem1,
-            this.barEditItem1,
             this.lblProveedor,
             this.btnLimpiar,
             this.btnFolios,
@@ -217,9 +213,10 @@
             this.btnCancelar,
             this.btnVistaPreviaPedido,
             this.btnLiberaPedido,
-            this.btnGeneraArchivos});
+            this.btnGeneraArchivos,
+            this.btnCerrarPedido});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 62;
+            this.barManager1.MaxItemId = 63;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -240,6 +237,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnActualizarPedido),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnVistaPreviaPedido),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLiberaPedido),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCerrarPedido),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnGeneraArchivos)});
             this.bIconos.OptionsBar.AllowCollapse = true;
             this.bIconos.OptionsBar.AllowQuickCustomization = false;
@@ -286,7 +284,7 @@
             this.btnCancelar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.Image")));
             this.btnCancelar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.ImageOptions.LargeImage")));
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelar_ItemClick);
+           
             // 
             // btnActualizarPedido
             // 
@@ -313,6 +311,15 @@
             this.btnLiberaPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLiberaPedido.ImageOptions.LargeImage")));
             this.btnLiberaPedido.Name = "btnLiberaPedido";
             this.btnLiberaPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLiberaPedido_ItemClick);
+            // 
+            // btnCerrarPedido
+            // 
+            this.btnCerrarPedido.Caption = "Cerrar Pedido";
+            this.btnCerrarPedido.Id = 62;
+            this.btnCerrarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.Image")));
+            this.btnCerrarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarPedido.ImageOptions.LargeImage")));
+            this.btnCerrarPedido.Name = "btnCerrarPedido";
+            this.btnCerrarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCerrarPedido_ItemClick);
             // 
             // btnGeneraArchivos
             // 
@@ -355,9 +362,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 556);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 559);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1120, 25);
             // 
             // barDockControlLeft
             // 
@@ -365,7 +372,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(83, 556);
+            this.barDockControlLeft.Size = new System.Drawing.Size(83, 559);
             // 
             // barDockControlRight
             // 
@@ -373,23 +380,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Id = 58;
-            this.btnBuscar.Name = "btnBuscar";
-            // 
-            // barLargeButtonItem1
-            // 
-            this.barLargeButtonItem1.Id = 46;
-            this.barLargeButtonItem1.Name = "barLargeButtonItem1";
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Edit = null;
-            this.barEditItem1.Id = 47;
-            this.barEditItem1.Name = "barEditItem1";
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
             // 
             // repositoryItemTextEdit1
             // 
@@ -402,7 +393,7 @@
             this.panelControl1.Location = new System.Drawing.Point(83, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1037, 139);
+            this.panelControl1.Size = new System.Drawing.Size(1037, 150);
             this.panelControl1.TabIndex = 4;
             // 
             // groupControl1
@@ -424,7 +415,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1013, 115);
+            this.groupControl1.Size = new System.Drawing.Size(1013, 126);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -475,7 +466,7 @@
             this.groupControl3.Controls.Add(this.chkCosto);
             this.groupControl3.Location = new System.Drawing.Point(414, 27);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(188, 77);
+            this.groupControl3.Size = new System.Drawing.Size(188, 90);
             this.groupControl3.TabIndex = 18;
             this.groupControl3.Text = "Columnas";
             // 
@@ -500,7 +491,7 @@
             // pbProgreso
             // 
             this.pbProgreso.EditValue = 50;
-            this.pbProgreso.Location = new System.Drawing.Point(105, 75);
+            this.pbProgreso.Location = new System.Drawing.Point(105, 94);
             this.pbProgreso.Name = "pbProgreso";
             this.pbProgreso.Properties.ShowTitle = true;
             this.pbProgreso.Size = new System.Drawing.Size(291, 18);
@@ -508,7 +499,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(31, 86);
+            this.labelControl5.Location = new System.Drawing.Point(31, 97);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(47, 13);
             this.labelControl5.TabIndex = 16;
@@ -516,7 +507,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(31, 35);
+            this.labelControl4.Location = new System.Drawing.Point(31, 38);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(26, 13);
             this.labelControl4.TabIndex = 12;
@@ -524,7 +515,7 @@
             // 
             // txtFolio
             // 
-            this.txtFolio.Location = new System.Drawing.Point(105, 23);
+            this.txtFolio.Location = new System.Drawing.Point(105, 34);
             this.txtFolio.Name = "txtFolio";
             this.txtFolio.Properties.Mask.EditMask = "n0";
             this.txtFolio.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -536,7 +527,7 @@
             // 
             this.dtInicio.EditValue = null;
             this.dtInicio.Enabled = false;
-            this.dtInicio.Location = new System.Drawing.Point(296, 24);
+            this.dtInicio.Location = new System.Drawing.Point(296, 34);
             this.dtInicio.Name = "dtInicio";
             this.dtInicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -548,7 +539,7 @@
             // 
             // txtProveedorNombre
             // 
-            this.txtProveedorNombre.Location = new System.Drawing.Point(154, 49);
+            this.txtProveedorNombre.Location = new System.Drawing.Point(154, 64);
             this.txtProveedorNombre.Name = "txtProveedorNombre";
             this.txtProveedorNombre.Properties.ReadOnly = true;
             this.txtProveedorNombre.Size = new System.Drawing.Size(242, 20);
@@ -556,7 +547,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(31, 61);
+            this.labelControl3.Location = new System.Drawing.Point(31, 68);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 3;
@@ -565,7 +556,7 @@
             // txtProveedorId
             // 
             this.txtProveedorId.Enabled = false;
-            this.txtProveedorId.Location = new System.Drawing.Point(105, 49);
+            this.txtProveedorId.Location = new System.Drawing.Point(105, 64);
             this.txtProveedorId.Name = "txtProveedorId";
             this.txtProveedorId.Properties.Mask.EditMask = "n0";
             this.txtProveedorId.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -575,7 +566,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(212, 35);
+            this.labelControl1.Location = new System.Drawing.Point(212, 38);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(78, 13);
             this.labelControl1.TabIndex = 0;
@@ -585,10 +576,10 @@
             // 
             this.panelControl2.Controls.Add(this.xtraTabControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(83, 139);
+            this.panelControl2.Location = new System.Drawing.Point(83, 150);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1037, 417);
+            this.panelControl2.Size = new System.Drawing.Size(1037, 409);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -598,7 +589,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1013, 393);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1013, 385);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -609,7 +600,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1009, 368);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1007, 357);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -622,7 +613,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(999, 358);
+            this.dtgPedidos.Size = new System.Drawing.Size(997, 347);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -666,16 +657,17 @@
             this.NvaItaliaD,
             this.ApatzinganD,
             this.ReyesD,
+            this.TancitaroD,
             this.SumaD,
             this.Entrada,
             this.TPedido});
-            gridFormatRule1.Column = this.Entrada;
-            gridFormatRule1.ColumnApplyTo = this.TPedido;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.dtgValPedidos.FormatRules.Add(gridFormatRule1);
+            gridFormatRule3.Column = this.Entrada;
+            gridFormatRule3.ColumnApplyTo = this.TPedido;
+            gridFormatRule3.Name = "Format0";
+            formatConditionRuleExpression3.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression3.PredefinedName = "Red Bold Text";
+            gridFormatRule3.Rule = formatConditionRuleExpression3;
+            this.dtgValPedidos.FormatRules.Add(gridFormatRule3);
             this.dtgValPedidos.GridControl = this.dtgPedidos;
             this.dtgValPedidos.Name = "dtgValPedidos";
             this.dtgValPedidos.OptionsFind.AlwaysVisible = true;
@@ -1076,6 +1068,12 @@
             this.SumaD.OptionsColumn.AllowEdit = false;
             this.SumaD.Visible = true;
             // 
+            // TancitaroD
+            // 
+            this.TancitaroD.Caption = "D";
+            this.TancitaroD.FieldName = "DTancitaro";
+            this.TancitaroD.Name = "TancitaroD";
+            // 
             // repositoryItemTextEdit3
             // 
             this.repositoryItemTextEdit3.AutoHeight = false;
@@ -1093,7 +1091,7 @@
             this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(1009, 371);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1009, 357);
             this.xtraTabPage2.Text = "Insidencias";
             // 
             // dtgPedidosInsidencias
@@ -1106,7 +1104,7 @@
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(999, 361);
+            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(999, 347);
             this.dtgPedidosInsidencias.TabIndex = 1;
             this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidosInsidencias});
@@ -1119,12 +1117,12 @@
             this.bandedGridColumn3,
             this.bandedGridColumn20,
             this.bandedGridColumn6});
-            gridFormatRule2.Column = this.bandedGridColumn20;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.Column = this.bandedGridColumn20;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule1);
             this.dtgValPedidosInsidencias.GridControl = this.dtgPedidosInsidencias;
             this.dtgValPedidosInsidencias.Name = "dtgValPedidosInsidencias";
             this.dtgValPedidosInsidencias.OptionsFind.AlwaysVisible = true;
@@ -1264,7 +1262,6 @@
         public DevExpress.XtraBars.BarManager barManager1;
         public DevExpress.XtraBars.Bar bIconos;
         private DevExpress.XtraBars.BarLargeButtonItem btnFolios;
-        public DevExpress.XtraBars.BarLargeButtonItem btnBuscar;
         private DevExpress.XtraBars.BarLargeButtonItem btnGuardar;
         private DevExpress.XtraBars.BarLargeButtonItem btnLimpiar;
         private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
@@ -1275,8 +1272,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem1;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraBars.BarLargeButtonItem btnBuscarPedidoCerrado;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -1358,5 +1353,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn6;
         private DevExpress.XtraEditors.SimpleButton btnRecibirInsidencia;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TancitaroD;
+        private DevExpress.XtraBars.BarLargeButtonItem btnCerrarPedido;
     }
 }

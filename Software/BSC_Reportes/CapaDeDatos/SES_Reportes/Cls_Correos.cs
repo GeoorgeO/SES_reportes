@@ -268,5 +268,36 @@ namespace CapaDeDatos
 
 
         }
+        public void MtdSeleccionarCorreosReportes()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexion = new Conexion(cadenaConexion);
+
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_CorreosDestinoReportes_Select";
+                _dato.Entero = ReportesId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ReportesId");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                    Mensaje = _conexion.Mensaje;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
+        }
     }
 }

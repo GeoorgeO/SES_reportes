@@ -67,6 +67,9 @@ namespace CapaDeDatos
         public int? DApatzingan { get;  set; }
         public int? DCalzada { get;  set; }
         public int? DCentro { get;  set; }
+
+        
+
         public int? DCostaRica { get;  set; }
         public int? DEstocolmo { get;  set; }
         public int? DFcoVilla { get;  set; }
@@ -81,6 +84,11 @@ namespace CapaDeDatos
         public int? Surtido { get; set; }
         public int Opcion { get; set; }
         public byte[] imageCodigoBarra { get;  set; }
+        public int? Status { get;  set; }
+        public string PedidosConfigRuta { get;  set; }
+        public int VTancitaro { get; set; }
+        public int ETancitaro { get; set; }
+        public int DTancitaro { get; set; }
 
         public void MtdSeleccionarProveedores()
         {
@@ -432,6 +440,10 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VSarabiaII ");
                 _dato.Entero = ESarabiaII;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ESarabiaII ");
+                //_dato.Entero = VTancitaro;
+                //_conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VTancitaro ");
+                //_dato.Entero = ETancitaro;
+                //_conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ETancitaro ");
                 _dato.Entero = TotalV;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TotalV ");
                 _dato.Entero = TotalE;
@@ -612,6 +624,36 @@ namespace CapaDeDatos
             }
 
         }
+        public void MtdSeleccionarPrePedidosArticulo()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedidosArticulo_Select";
+                _dato.Entero = PrePedidosId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _dato.CadenaTexto = ArticuloCodigo;
+                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ArticuloCodigo");
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
 
         //Pedidos
         public void MtdSeleccionarPedidosId()
@@ -744,6 +786,8 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                //_dato.Entero = DTancitaro;
+                //_conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DTancitaro");
                 _dato.Entero = TPedido;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
                 _conexionR.EjecutarDataset();
@@ -784,6 +828,63 @@ namespace CapaDeDatos
                 else
                 {
                     Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarParametrosPedidos()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionRR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionRR.NombreProcedimiento = "SP_BSC_Pedido_Parametros_Select";
+                
+                _conexionRR.EjecutarDataset();
+
+                if (_conexionRR.Exito)
+                {
+                    Datos = _conexionRR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionRR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdInsertarParametrosPedidos()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionRR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionRR.NombreProcedimiento = "SP_BSC_Pedido_Parametros_Insert";
+                _dato.CadenaTexto = PedidosConfigRuta;
+                _conexionRR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "PedidosConfigRuta");
+                _conexionRR.EjecutarDataset();
+
+                if (_conexionRR.Exito)
+                {
+                    Datos = _conexionRR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionRR.Mensaje;
                     Exito = false;
                 }
             }
@@ -871,6 +972,64 @@ namespace CapaDeDatos
             try
             {
                 _conexionR.NombreProcedimiento = "SP_BSC_Pedido_ProveedorLista_Select";
+                _dato.Entero = ProveedorId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.Entero = Opcion;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPrePedidosProveedores()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_ProvStatus_Select";
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPrePedidoListaEstatus()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Status_Select";
                 _dato.Entero = ProveedorId;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.Entero = Opcion;
@@ -997,6 +1156,68 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
                 _dato.Entero = TPedido;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdActualizarPrePedidoEstatus()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Status_Update";
+                _dato.Entero = PrePedidosId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _dato.Entero = Opcion;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdActualizarPrePedidoSoloLectura()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_SoloLectura_Update";
+                _dato.Entero = PrePedidosId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "PrePedidosId");
+                _dato.Entero = Status;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Status");
                 _conexionR.EjecutarDataset();
 
                 if (_conexionR.Exito)

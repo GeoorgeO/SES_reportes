@@ -124,6 +124,7 @@
     <Compile Include="SES_Reportes\CLS_VentasAcumuladas.cs" />
     <Compile Include="SES_Reportes\ConexionesSucursales.cs" />
     <Compile Include="SES_Reportes\ConexionesRemotas.cs" />
+    <Compile Include="SES_Reportes\CuerpoHTML.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloMedidasLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticuloProveedoresLocal.cs" />
     <Compile Include="Sincronizacion Local\CLSArticulosLocal.cs" />

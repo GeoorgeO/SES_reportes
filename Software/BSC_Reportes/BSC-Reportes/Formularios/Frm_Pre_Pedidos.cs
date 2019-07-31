@@ -35,6 +35,7 @@ namespace BSC_Reportes
         public int VPaseo { get; private set; }
         public int VSarabiaI { get; private set; }
         public int VSarabiaII { get; private set; }
+        public int VTancitaro { get; private set; }
         public decimal mesesT { get; private set; }
         public decimal sugerido { get; private set; }
         public decimal Ideal { get; private set; }
@@ -79,8 +80,11 @@ namespace BSC_Reportes
         public decimal DPaseo { get; private set; }
         public decimal DSarabiaI { get; private set; }
         public decimal DSarabiaII { get; private set; }
+        public decimal DTancitaro { get; private set; }
         public int PedidosId { get;  set; }
         public string Pedido { get; private set; }
+        public bool CambiosEnPedido { get; private set; }
+        public bool vSoloLectura { get; private set; }
 
         public Frm_Pre_Pedidos()
         {
@@ -434,6 +438,26 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
+            column.ColumnName = "TancitaroV";
+            column.AutoIncrement = false;
+            column.Caption = "V";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
+            column.ColumnName = "TancitaroE";
+            column.AutoIncrement = false;
+            column.Caption = "E";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
             column.ColumnName = "TotalV";
             column.AutoIncrement = false;
             column.Caption = "TotalV";
@@ -486,6 +510,10 @@ namespace BSC_Reportes
         }
         private void btnLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(txtFolio.Text!=string.Empty && vSoloLectura==false)
+            {
+                CambiarPedidoSoloLectura(0);
+            }
             txtFolio.Text = string.Empty;
             txtCMayorA.Text = "0";
             txtCMenorA.Text = "0";
@@ -503,6 +531,8 @@ namespace BSC_Reportes
             dtgVentaExistencia.DataSource = null;
             MakeTablaPedidos();
             DesbloquearObjetos(true);
+            BloquearObjetosSoloLectura(true);
+
         }
         private void txtProveedorId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -546,6 +576,8 @@ namespace BSC_Reportes
             CostoReposicion.DisplayFormat.FormatString = "$ ###,###0.00";
             pbProgreso.Position = 0;
             DesbloquearObjetos(true);
+            CambiosEnPedido = false;
+            vSoloLectura = true;
         }
         private void rdbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -580,7 +612,7 @@ namespace BSC_Reportes
         }
         private void ColumnsBands(Boolean Mostrar)
         {
-            gridBand2.Visible = Mostrar;
+            //gridBand2.Visible = Mostrar;
             gridBand3.Visible = Mostrar;
             gridBand4.Visible = Mostrar;
             gridBand5.Visible = Mostrar;
@@ -594,10 +626,11 @@ namespace BSC_Reportes
             gridBand13.Visible = Mostrar;
             gridBand14.Visible = Mostrar;
             gridBand15.Visible = Mostrar;
+            //gridBand16.Visible = Mostrar;
         }
         private void ColumnsExistencia(Boolean Mostrar)
         {
-            AlmacenE.Visible = Mostrar;
+            //AlmacenE.Visible = Mostrar;
             CentroE.Visible = Mostrar;
             MorelosE.Visible = Mostrar;
             FcoVillaE.Visible = Mostrar;
@@ -611,6 +644,7 @@ namespace BSC_Reportes
             NvaItaliaE.Visible = Mostrar;
             ApatzinganE.Visible = Mostrar;
             ReyesE.Visible = Mostrar;
+            //TancitaroE.Visible = Mostrar;
         }
         private void ColumnsCosto(Boolean Mostrar)
         {
@@ -635,6 +669,7 @@ namespace BSC_Reportes
             NvaItaliaV.Visible = Mostrar;
             ApatzinganV.Visible = Mostrar;
             ReyesV.Visible = Mostrar;
+            //TancitaroV.Visible = Mostrar;
         }
         private void chkVentas_CheckedChanged(object sender, EventArgs e)
         {
@@ -727,7 +762,7 @@ namespace BSC_Reportes
                                     string VCentro, string ECentro, string VMorelos, string EMorelos, string VFCoVilla, string EFcoVilla, string VSarabiaI, string ESarabiaI,
                                     string VSarabiaII, string ESarabiaII, string VPaseo, string EPaseo, string VEstocolmo, string EEstocolmo, string VCostaRica, string ECostaRica,
                                     string VCalzada, string ECalzada, string VLombardia, string ELombardia, string VNvaItalia, string ENvaItalia, string VApatzingan, string EApatzingan,
-                                    string VReyes, string EReyes, string TotalV, string TotalE, string TPedido, string PSugerido, string PIdeal)
+                                    string VReyes, string EReyes, string VTancitaro, string ETancitaro, string TotalV, string TotalE, string TPedido, string PSugerido, string PIdeal)
         {
             dtgValVentaExistencia.AddNewRow();
 
@@ -767,6 +802,8 @@ namespace BSC_Reportes
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ApatzinganE"], EApatzingan);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ReyesV"], VReyes);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ReyesE"], EReyes);
+                //dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TancitaroV"], VTancitaro);
+                //dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TancitaroE"], ETancitaro);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TotalV"], TotalV);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TotalE"], TotalE);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["PIdeal"], PIdeal);
@@ -894,6 +931,8 @@ namespace BSC_Reportes
                 TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
                 TVentas += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                 TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
+                //TVentas += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                //TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
 
                 Decimal MesesPedido = 0;
                 if (rdbPeriodo.SelectedIndex == 0)
@@ -964,7 +1003,7 @@ namespace BSC_Reportes
         {
             MensajeCargando(1);
             GuardarPrepedido();
-            MensajeCargando(2);
+           
             
         }
 
@@ -1013,8 +1052,13 @@ namespace BSC_Reportes
                             PrePedidosId = Convert.ToInt32(insped.Datos.Rows[0][0].ToString());
                             GuardarDetalles();
                             DesbloquearObjetos(false);
+                            MensajeCargando(2);
                             XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-
+                            CambiosEnPedido = false;
+                        }
+                        else
+                        {
+                            MensajeCargando(2);
                         }
                     }
                 }
@@ -1029,8 +1073,13 @@ namespace BSC_Reportes
                             PrePedidosId = Convert.ToInt32(txtFolio.Text);
                             UpdateDetalles();
                             DesbloquearObjetos(false);
+                            MensajeCargando(2);
                             XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                         }
+                    }
+                    else
+                    {
+                        MensajeCargando(2);
                     }
                 }
             }
@@ -1050,7 +1099,7 @@ namespace BSC_Reportes
                 CLS_Pedidos insdetped = new CLS_Pedidos();
                 xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
                 insdetped.PrePedidosId = PrePedidosId;
-                insdetped.Reg= Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
+                insdetped.Reg = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
                 insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
                 insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
                 insdetped.ArticuloCostoReposicion = Convert.ToDecimal(dtgValVentaExistencia.GetRowCellValue(xRow, "CostoReposicion").ToString());
@@ -1083,6 +1132,8 @@ namespace BSC_Reportes
                 insdetped.ESarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
                 insdetped.VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                 insdetped.ESarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
+                //insdetped.VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                //insdetped.ETancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
                 insdetped.TotalV = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
                 insdetped.TotalE = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalE").ToString());
                 insdetped.PIdeal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PIdeal").ToString());
@@ -1100,21 +1151,93 @@ namespace BSC_Reportes
             pbProgreso.Properties.Maximum = dtgValVentaExistencia.RowCount;
             for (int i = 0; i < dtgValVentaExistencia.RowCount; i++)
             {
-                pbProgreso.Position = i + 1;
-                Application.DoEvents();
-                CLS_Pedidos insdetped = new CLS_Pedidos();
                 xRow = dtgValVentaExistencia.GetVisibleRowHandle(i);
-                insdetped.PrePedidosId = PrePedidosId;
-                insdetped.Reg =Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
-                insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
-                insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
-                insdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
-                insdetped.MtdUpdatePrePedidoDetalleProveedor();
-                if (!insdetped.Exito)
+                if (ExisteCodigo(dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString()))
                 {
-                    XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
+                    pbProgreso.Position = i + 1;
+                    Application.DoEvents();
+                    CLS_Pedidos udpdetped = new CLS_Pedidos();
+                    udpdetped.PrePedidosId = PrePedidosId;
+                    udpdetped.Reg = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
+                    udpdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                    udpdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
+                    udpdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
+                    udpdetped.MtdUpdatePrePedidoDetalleProveedor();
+                    if (!udpdetped.Exito)
+                    {
+                        XtraMessageBox.Show(udpdetped.Mensaje, "Error al guardar el Registro");
+                    }
+                }
+                else
+                {
+                    pbProgreso.Position = i + 1;
+                    Application.DoEvents();
+                    CLS_Pedidos insdetped = new CLS_Pedidos();
+                    insdetped.PrePedidosId = PrePedidosId;
+                    insdetped.Reg = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "Reg").ToString());
+                    insdetped.ArticuloCodigo = dtgValVentaExistencia.GetRowCellValue(xRow, "Codigo").ToString();
+                    insdetped.ArticuloDescripcion = dtgValVentaExistencia.GetRowCellValue(xRow, "Descripcion").ToString();
+                    insdetped.ArticuloCostoReposicion = Convert.ToDecimal(dtgValVentaExistencia.GetRowCellValue(xRow, "CostoReposicion").ToString());
+                    insdetped.FamiliaNombre = dtgValVentaExistencia.GetRowCellValue(xRow, "Familia").ToString();
+                    insdetped.VAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenV").ToString());
+                    insdetped.EAlmacen = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "AlmacenE").ToString());
+                    insdetped.VCentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroV").ToString());
+                    insdetped.ECentro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CentroE").ToString());
+                    insdetped.VApatzingan = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ApatzinganV").ToString());
+                    insdetped.EApatzingan = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ApatzinganE").ToString());
+                    insdetped.VCalzada = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CalzadaV").ToString());
+                    insdetped.ECalzada = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CalzadaE").ToString());
+                    insdetped.VCostaRica = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CostaRicaV").ToString());
+                    insdetped.ECostaRica = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "CostaRicaE").ToString());
+                    insdetped.VEstocolmo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "EstocolmoV").ToString());
+                    insdetped.EEstocolmo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "EstocolmoE").ToString());
+                    insdetped.VFCoVilla = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "FcoVillaV").ToString());
+                    insdetped.EFcoVilla = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "FcoVillaE").ToString());
+                    insdetped.VLombardia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "LombardiaV").ToString());
+                    insdetped.ELombardia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "LombardiaE").ToString());
+                    insdetped.VReyes = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ReyesV").ToString());
+                    insdetped.EReyes = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "ReyesE").ToString());
+                    insdetped.VMorelos = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "MorelosV").ToString());
+                    insdetped.EMorelos = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "MorelosE").ToString());
+                    insdetped.VNvaItalia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "NvaItaliaV").ToString());
+                    insdetped.ENvaItalia = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "NvaItaliaE").ToString());
+                    insdetped.VPaseo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PaseoV").ToString());
+                    insdetped.EPaseo = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PaseoE").ToString());
+                    insdetped.VSarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIV").ToString());
+                    insdetped.ESarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
+                    insdetped.VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
+                    insdetped.ESarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
+                    //insdetped.VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                    //insdetped.ETancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
+                    insdetped.TotalV = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
+                    insdetped.TotalE = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalE").ToString());
+                    insdetped.PIdeal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PIdeal").ToString());
+                    insdetped.PSugerido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PSugerido").ToString());
+                    insdetped.Pedido = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TPedido").ToString());
+                    insdetped.MtdInsertPrePedidoDetalleProveedor();
+                    if (!insdetped.Exito)
+                    {
+                        XtraMessageBox.Show(insdetped.Mensaje, "Error al guardar el Registro");
+                    }
                 }
             }
+        }
+
+        private bool ExisteCodigo(string v)
+        {
+            Boolean Valor = false;
+            CLS_Pedidos sel = new CLS_Pedidos();
+            sel.PrePedidosId =Convert.ToInt32(txtFolio.Text);
+            sel.ArticuloCodigo = v;
+            sel.MtdSeleccionarPrePedidosArticulo();
+            if(sel.Exito)
+            {
+                if(sel.Datos.Rows.Count>0)
+                {
+                    Valor = true;
+                }
+            }
+            return Valor;
         }
 
         private void EliminarPedido()
@@ -1231,11 +1354,42 @@ namespace BSC_Reportes
                 {
                     CargarPrePedidos(txtFolio.Text);
                     DesbloquearObjetos(false);
+                    if (vSoloLectura == false)
+                    {
+                        CambiarPedidoSoloLectura(1);
+                        BloquearObjetosSoloLectura(true);
+                    }
+                    else
+                    {
+                        BloquearObjetosSoloLectura(false);
+                    }
                 }
                 else
                 {
                     DesbloquearObjetos(true);
                 }
+            }
+        }
+
+        private void BloquearObjetosSoloLectura(Boolean Valor)
+        {
+            if (Valor == false)
+            {
+                btnGuardar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                btnBuscar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                btnCancelar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                btnCerrarPedido.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                ColPedido.OptionsColumn.AllowEdit = false;
+                this.Text = "Pre Pedidos Solo Lectura";
+            }
+            else
+            {
+                btnGuardar.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                btnBuscar.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                btnCancelar.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                btnCerrarPedido.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                ColPedido.OptionsColumn.AllowEdit = true;
+                this.Text = "Pre Pedidos";
             }
         }
 
@@ -1251,6 +1405,11 @@ namespace BSC_Reportes
                 txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
                 txtProveedorNombre.Text = selenc.Datos.Rows[0]["ProveedorNombre"].ToString();
                 txtPeriodo.Text = selenc.Datos.Rows[0]["PeriodoPedido"].ToString();
+                vSoloLectura = Convert.ToBoolean(selenc.Datos.Rows[0]["PrePedidoSoloLectura"].ToString());
+                if(vSoloLectura==false)
+                {
+                    CambiarPedidoSoloLectura(1);
+                }
                 if (selenc.Datos.Rows[0]["PeriodoTipo"].ToString() == "1")
                 {
                     rdbPeriodo.SelectedIndex = 0;
@@ -1264,6 +1423,18 @@ namespace BSC_Reportes
                     rdbPeriodo.SelectedIndex = 2;
                 }
                 CargarPrePedidosDetalles(vFolio);
+            }
+        }
+
+        private void CambiarPedidoSoloLectura(int Status)
+        {
+            CLS_Pedidos udp = new CLS_Pedidos();
+            udp.Status = Status;
+            udp.PrePedidosId = Convert.ToInt32(txtFolio.Text);
+            udp.MtdActualizarPrePedidoSoloLectura();
+            if(!udp.Exito)
+            {
+                XtraMessageBox.Show(udp.Mensaje);
             }
         }
 
@@ -1435,7 +1606,10 @@ namespace BSC_Reportes
                         VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                         DSarabiaII = Math.Round(((Convert.ToDecimal(VSarabiaII) / VTotal) * vTPedido), 0);
                         TotalDistribucion += Convert.ToInt32(DSarabiaII);
-                        if(!(TotalDistribucion== vTPedido))
+                        //VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                        //DTancitaro = Math.Round(((Convert.ToDecimal(VTancitaro) / VTotal) * vTPedido), 0);
+                        //TotalDistribucion += Convert.ToInt32(DTancitaro);
+                        if (!(TotalDistribucion== vTPedido))
                         { 
                             int Diferencia = vTPedido - TotalDistribucion;
                             AcomodarDiferencia(Diferencia);
@@ -1476,6 +1650,7 @@ namespace BSC_Reportes
             insdet.DPaseo = Convert.ToInt32(DPaseo);
             insdet.DSarabiaI = Convert.ToInt32(DSarabiaI);
             insdet.DSarabiaII = Convert.ToInt32(DSarabiaII);
+            //insdet.DTancitaro = Convert.ToInt32(DTancitaro);
             insdet.TPedido = Convert.ToInt32(vTPedido);
             insdet.MtdInsertPedidoDetalleProveedor();
             if (!insdet.Exito)
@@ -1488,14 +1663,14 @@ namespace BSC_Reportes
         {
             int Mayor = 0;
             int pos = 0;
-            int[] datos = new int[14]
+            int[] datos = new int[15]
             {Convert.ToInt32(DAlmacen), Convert.ToInt32(DCentro), Convert.ToInt32(DMorelos),
              Convert.ToInt32(DFcoVilla), Convert.ToInt32(DSarabiaI), Convert.ToInt32(DSarabiaII),
              Convert.ToInt32(DPaseo), Convert.ToInt32(DEstocolmo), Convert.ToInt32(DCostaRica),
              Convert.ToInt32(DCalzada), Convert.ToInt32(DLombardia), Convert.ToInt32(DNvaItalia),
-             Convert.ToInt32(DApatzingan), Convert.ToInt32(DLosReyes)};
+             Convert.ToInt32(DApatzingan), Convert.ToInt32(DLosReyes),Convert.ToInt32(DTancitaro)};
             int i = 0;
-            while (i<=13)
+            while (i<=14)
             {
                 if(datos[i]>Mayor)
                 {
@@ -1548,20 +1723,26 @@ namespace BSC_Reportes
                 case 13:
                     DLosReyes += diferencia;
                     break;
+                //case 14:
+                //    DTancitaro += diferencia;
+                //    break;
             }
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
+            dtgValVentaExistencia.ApplyFindFilter("");
             if (dtgValVentaExistencia.RowCount > 0)
             {
+                vArticuloCodigo = string.Empty;
+                vArticuloDescripcion = string.Empty;
                 Frm_AgregarArticulo frmadd = new Frm_AgregarArticulo();
                 frmadd.FrmPrePedidos = this;
                 frmadd.ShowDialog();
                 if (vArticuloCodigo != string.Empty && vArticuloDescripcion != string.Empty)
                 {
                     string Reg = (dtgValVentaExistencia.RowCount + 1).ToString();
-                    CreatNewRowArticulo(Reg,vArticuloCodigo, vArticuloDescripcion, "0", "No Definida", "0",
+                    CreatNewRowArticulo(Reg,vArticuloCodigo, vArticuloDescripcion, "0", "No Definida", "0","0","0",
                                             "0", "0", "0", "0", "0", "0", "0", "0",
                                             "0", "0", "0", "0", "0", "0", "0", "0",
                                             "0", "0", "0", "0", "0", "0", "0", "0",
@@ -1653,6 +1834,50 @@ namespace BSC_Reportes
             MemoryStream ms = new MemoryStream();
             Imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             return ms.ToArray();
+        }
+
+        private void dtgValVentaExistencia_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName == "TPedido")
+            {
+                CambiosEnPedido = true;
+            }
+        }
+
+        private void Frm_Pre_Pedidos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (CambiosEnPedido == true)
+            {
+                DialogResult = XtraMessageBox.Show("¿Existen cambios sin guardar, Desear Guardarlos?", "Salir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.No)
+                {
+                    e.Cancel = false;
+                    if (txtFolio.Text != string.Empty && vSoloLectura == false)
+                    {
+                        CambiarPedidoSoloLectura(0);
+                    }
+                }
+                else if (DialogResult == DialogResult.Yes)
+                {
+                    btnGuardar.PerformClick();
+                    e.Cancel = false;
+                    if (txtFolio.Text != string.Empty && vSoloLectura == false)
+                    {
+                        CambiarPedidoSoloLectura(0);
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                if (txtFolio.Text != string.Empty && vSoloLectura == false)
+                {
+                    CambiarPedidoSoloLectura(0);
+                }
+            }
         }
     }
 }

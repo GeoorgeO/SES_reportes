@@ -24,6 +24,10 @@ namespace CapaDeDatos
         public Boolean EmailSSL { get; set; }
         public string UnSoloEmail { get; set; }
         public string Elementos { get; set; }
+        public string vFolio { get;  set; }
+        public string vProveedorId { get;  set; }
+        public string vNombreProveedor { get;  set; }
+        public string vRutaArchivos { get;  set; }
 
         public void Enviar_Email()
         {
@@ -191,6 +195,109 @@ namespace CapaDeDatos
             if (i > 0)
             {
                 smtp.Send(mail);
+            }
+        }
+        public void SendMailReportes(string Asunto, int ReportesId, string Archivos)
+        {
+            Exito = false;
+            try
+            {
+                CLS_Correos ParmGen = new CLS_Correos();
+                ParmGen.MtdSeleccionar();
+                if (ParmGen.Exito)
+                {
+                    Crypto DesEncryp = new Crypto();
+                    EmailRemitente = ParmGen.Datos.Rows[0]["CorreoRemitente"].ToString();
+                    EmailUsuario = ParmGen.Datos.Rows[0]["CorreoUsuario"].ToString();
+                    EmailPass = ParmGen.Datos.Rows[0]["CorreoContrasenia"].ToString();
+                    EmailPuerto = Convert.ToInt32(ParmGen.Datos.Rows[0]["CorreoPuertoSalida"].ToString());
+                    EmailServidorSalida = ParmGen.Datos.Rows[0]["CorreoServidorSalida"].ToString();
+                    EmailServidorEntrada = ParmGen.Datos.Rows[0]["CorreoServidorEntrada"].ToString();
+                    EmailSSL = Convert.ToBoolean(ParmGen.Datos.Rows[0]["CorreoCifradoSSL"].ToString());
+                }
+                MailMessage mail = new MailMessage()
+                {
+                    From = new MailAddress(EmailRemitente),
+                    Subject = Asunto,
+                    IsBodyHtml = true,
+                };
+                
+                CLS_Correos EmailDestinos = new CLS_Correos();
+                EmailDestinos.ReportesId = ReportesId;
+                EmailDestinos.MtdSeleccionarCorreosReportes();
+                List<string> destinatarios = new List<string>();
+                if (EmailDestinos.Exito)
+                {
+                    if (EmailDestinos.Datos.Rows.Count > 0)
+                    {
+                        for (int x = 0; x < EmailDestinos.Datos.Rows.Count; x++)
+                        {
+                            destinatarios.Add(EmailDestinos.Datos.Rows[x]["CorreoNombre"].ToString());
+                        }
+                    }
+                }
+
+                foreach (string item in destinatarios)
+                {
+                    mail.To.Add(new MailAddress(item));
+                }
+                if (Archivos != string.Empty)
+                {
+                    mail.Attachments.Add(new Attachment(Archivos, System.Net.Mime.MediaTypeNames.Application.Pdf));
+                }
+
+                string htmlBody = "";
+                Directory.CreateDirectory(@"C:\LiberaPedidos");
+                const string path = @"C:\LiberaPedidos\MailHtmlBody.txt";
+                const string pathImagen = @"C:\LiberaPedidos\Soneli.png";
+                CuerpoHTML archivo = new CuerpoHTML();
+                // aquí si se pone elementos SendMailBodyHTMLGestor
+                archivo.vFolio = vFolio;
+                archivo.vProveedorId = vProveedorId;
+                archivo.vNombreProveedor = vNombreProveedor;
+                archivo.vRutaArchivos = vRutaArchivos;
+                archivo.CreaHTMLLiberaPedidos(path);
+                
+                if (File.Exists(path))
+                {
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        htmlBody = reader.ReadToEnd();
+                    }
+
+                    AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
+
+                    Assembly thisExe = Assembly.GetExecutingAssembly();
+                    string[] cadena = thisExe.GetManifestResourceNames();
+
+                    FileStream file = File.Open(pathImagen, FileMode.Open);
+                    //System.IO.Stream file = thisExe.GetManifestResourceStream("CapaDatos.Properties.Resources.resources");
+
+                    LinkedResource logo = new LinkedResource(file) { ContentId = "Soneli" };
+                    htmlView.LinkedResources.Add(logo);
+
+                    mail.AlternateViews.Add(htmlView);
+                    //
+                    // se define el smtp
+                    //
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = EmailServidorSalida;
+                    smtp.Port = EmailPuerto;
+                    smtp.EnableSsl = EmailSSL;
+                    smtp.Credentials = new System.Net.NetworkCredential(EmailUsuario, EmailPass);
+                    smtp.Send(mail);
+                    mail.Dispose();
+                    Exito = true;
+                }
+                else
+                {
+                    XtraMessageBox.Show("No se ha definido Archivo HTML");
+                }
+            }
+            catch (Exception ex)
+            {
+                Exito = false;
+                Mensaje = ex.Message;
             }
         }
     }

@@ -52,10 +52,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.btnBuscarPedidoCerrado = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barLargeButtonItem3 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtCopiasPedido = new DevExpress.XtraEditors.TextEdit();
@@ -107,8 +104,8 @@
             this.MorelosV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.MorelosE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.FcoVillaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.FcoVillaV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.FcoVillaE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.SarabiaIV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SarabiaIE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -139,15 +136,19 @@
             this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.ReyesV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ReyesE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.Tancitaro = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.TancitaroV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.TancitaroE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.TotalV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TotalE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn35 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumn37 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.ColPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barLargeButtonItem2 = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btnVistaPrevia = new DevExpress.XtraBars.BarLargeButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -191,10 +192,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(69, 0);
+            this.panelControl1.Location = new System.Drawing.Point(67, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1072, 191);
+            this.panelControl1.Size = new System.Drawing.Size(1074, 191);
             this.panelControl1.TabIndex = 0;
             // 
             // groupControl1
@@ -223,7 +224,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1048, 167);
+            this.groupControl1.Size = new System.Drawing.Size(1050, 167);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Parametros";
             // 
@@ -251,8 +252,6 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnBuscar,
-            this.barLargeButtonItem1,
-            this.barEditItem1,
             this.lblProveedor,
             this.btnLimpiar,
             this.btnFolios,
@@ -262,9 +261,9 @@
             this.btnActualizarPedido,
             this.btnBuscarPedidoCerrado,
             this.btnCancelar,
-            this.barLargeButtonItem3});
+            this.btnVistaPrevia});
             this.barManager1.MainMenu = this.bIconos;
-            this.barManager1.MaxItemId = 59;
+            this.barManager1.MaxItemId = 60;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bEstado;
@@ -401,9 +400,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 625);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 622);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1141, 28);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1141, 25);
             // 
             // barDockControlLeft
             // 
@@ -411,7 +410,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(69, 625);
+            this.barDockControlLeft.Size = new System.Drawing.Size(67, 622);
             // 
             // barDockControlRight
             // 
@@ -419,18 +418,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1141, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 625);
-            // 
-            // barLargeButtonItem1
-            // 
-            this.barLargeButtonItem1.Id = 46;
-            this.barLargeButtonItem1.Name = "barLargeButtonItem1";
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Edit = null;
-            this.barEditItem1.Id = 47;
-            this.barEditItem1.Name = "barEditItem1";
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 622);
             // 
             // btnBuscarPedidoCerrado
             // 
@@ -440,19 +428,13 @@
             this.btnBuscarPedidoCerrado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPedidoCerrado.ImageOptions.LargeImage")));
             this.btnBuscarPedidoCerrado.Name = "btnBuscarPedidoCerrado";
             // 
-            // barLargeButtonItem3
-            // 
-            this.barLargeButtonItem3.Caption = "barLargeButtonItem3";
-            this.barLargeButtonItem3.Id = 58;
-            this.barLargeButtonItem3.Name = "barLargeButtonItem3";
-            // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(171, 29);
+            this.labelControl8.Location = new System.Drawing.Point(171, 31);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(71, 13);
             this.labelControl8.TabIndex = 25;
@@ -578,7 +560,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(31, 140);
+            this.labelControl5.Location = new System.Drawing.Point(31, 142);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(47, 13);
             this.labelControl5.TabIndex = 16;
@@ -670,7 +652,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(31, 29);
+            this.labelControl4.Location = new System.Drawing.Point(31, 31);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(26, 13);
             this.labelControl4.TabIndex = 12;
@@ -736,7 +718,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(31, 57);
+            this.labelControl3.Location = new System.Drawing.Point(31, 59);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(54, 13);
             this.labelControl3.TabIndex = 3;
@@ -750,13 +732,14 @@
             this.txtProveedorId.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txtProveedorId.Properties.Mask.EditMask = "n0";
             this.txtProveedorId.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtProveedorId.Properties.ReadOnly = true;
             this.txtProveedorId.Size = new System.Drawing.Size(43, 20);
             this.txtProveedorId.TabIndex = 2;
             this.txtProveedorId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProveedorId_KeyDown);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(31, 113);
+            this.labelControl2.Location = new System.Drawing.Point(31, 115);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 1;
@@ -764,7 +747,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(31, 85);
+            this.labelControl1.Location = new System.Drawing.Point(31, 87);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(61, 13);
             this.labelControl1.TabIndex = 0;
@@ -774,10 +757,10 @@
             // 
             this.panelControl2.Controls.Add(this.dtgVentaExistencia);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(69, 191);
+            this.panelControl2.Location = new System.Drawing.Point(67, 191);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1072, 434);
+            this.panelControl2.Size = new System.Drawing.Size(1074, 431);
             this.panelControl2.TabIndex = 6;
             // 
             // dtgVentaExistencia
@@ -788,7 +771,7 @@
             this.dtgVentaExistencia.Name = "dtgVentaExistencia";
             this.dtgVentaExistencia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit2});
-            this.dtgVentaExistencia.Size = new System.Drawing.Size(1048, 410);
+            this.dtgVentaExistencia.Size = new System.Drawing.Size(1050, 407);
             this.dtgVentaExistencia.TabIndex = 0;
             this.dtgVentaExistencia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValVentaExistencia});
@@ -811,6 +794,7 @@
             this.gridBand13,
             this.gridBand14,
             this.gridBand15,
+            this.Tancitaro,
             this.gridBand16,
             this.gridBand17});
             this.dtgValVentaExistencia.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
@@ -847,11 +831,13 @@
             this.ApatzinganE,
             this.ReyesV,
             this.ReyesE,
+            this.TancitaroV,
+            this.TancitaroE,
             this.TotalV,
             this.TotalE,
             this.gridColumn35,
             this.gridColumn36,
-            this.gridColumn37});
+            this.ColPedido});
             this.dtgValVentaExistencia.GridControl = this.dtgVentaExistencia;
             this.dtgValVentaExistencia.Name = "dtgValVentaExistencia";
             this.dtgValVentaExistencia.OptionsFind.AlwaysVisible = true;
@@ -859,6 +845,7 @@
             this.dtgValVentaExistencia.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.dtgValVentaExistencia.OptionsView.ShowFooter = true;
             this.dtgValVentaExistencia.OptionsView.ShowGroupPanel = false;
+            this.dtgValVentaExistencia.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.dtgValVentaExistencia_CellValueChanged);
             // 
             // gridBand1
             // 
@@ -1032,22 +1019,11 @@
             this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
             this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridBand5.Caption = "Fco Villa";
-            this.gridBand5.Columns.Add(this.FcoVillaE);
             this.gridBand5.Columns.Add(this.FcoVillaV);
+            this.gridBand5.Columns.Add(this.FcoVillaE);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 4;
             this.gridBand5.Width = 94;
-            // 
-            // FcoVillaE
-            // 
-            this.FcoVillaE.AppearanceHeader.Options.UseTextOptions = true;
-            this.FcoVillaE.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.FcoVillaE.Caption = "E";
-            this.FcoVillaE.FieldName = "FcoVillaE";
-            this.FcoVillaE.Name = "FcoVillaE";
-            this.FcoVillaE.OptionsColumn.AllowEdit = false;
-            this.FcoVillaE.Visible = true;
-            this.FcoVillaE.Width = 47;
             // 
             // FcoVillaV
             // 
@@ -1059,6 +1035,17 @@
             this.FcoVillaV.OptionsColumn.AllowEdit = false;
             this.FcoVillaV.Visible = true;
             this.FcoVillaV.Width = 47;
+            // 
+            // FcoVillaE
+            // 
+            this.FcoVillaE.AppearanceHeader.Options.UseTextOptions = true;
+            this.FcoVillaE.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.FcoVillaE.Caption = "E";
+            this.FcoVillaE.FieldName = "FcoVillaE";
+            this.FcoVillaE.Name = "FcoVillaE";
+            this.FcoVillaE.OptionsColumn.AllowEdit = false;
+            this.FcoVillaE.Visible = true;
+            this.FcoVillaE.Width = 47;
             // 
             // gridBand6
             // 
@@ -1390,6 +1377,34 @@
             this.ReyesE.Visible = true;
             this.ReyesE.Width = 47;
             // 
+            // Tancitaro
+            // 
+            this.Tancitaro.AppearanceHeader.Options.UseTextOptions = true;
+            this.Tancitaro.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Tancitaro.Caption = "Tancitaro";
+            this.Tancitaro.Columns.Add(this.TancitaroV);
+            this.Tancitaro.Columns.Add(this.TancitaroE);
+            this.Tancitaro.Name = "Tancitaro";
+            this.Tancitaro.Visible = false;
+            this.Tancitaro.VisibleIndex = -1;
+            this.Tancitaro.Width = 94;
+            // 
+            // TancitaroV
+            // 
+            this.TancitaroV.Caption = "V";
+            this.TancitaroV.FieldName = "TancitaroV";
+            this.TancitaroV.Name = "TancitaroV";
+            this.TancitaroV.Visible = true;
+            this.TancitaroV.Width = 47;
+            // 
+            // TancitaroE
+            // 
+            this.TancitaroE.Caption = "E";
+            this.TancitaroE.FieldName = "TancitaroE";
+            this.TancitaroE.Name = "TancitaroE";
+            this.TancitaroE.Visible = true;
+            this.TancitaroE.Width = 47;
+            // 
             // gridBand16
             // 
             this.gridBand16.AppearanceHeader.Options.UseTextOptions = true;
@@ -1434,7 +1449,7 @@
             this.gridBand17.Caption = "Orden";
             this.gridBand17.Columns.Add(this.gridColumn35);
             this.gridBand17.Columns.Add(this.gridColumn36);
-            this.gridBand17.Columns.Add(this.gridColumn37);
+            this.gridBand17.Columns.Add(this.ColPedido);
             this.gridBand17.Name = "gridBand17";
             this.gridBand17.VisibleIndex = 16;
             this.gridBand17.Width = 219;
@@ -1467,18 +1482,18 @@
             this.gridColumn36.Visible = true;
             this.gridColumn36.Width = 72;
             // 
-            // gridColumn37
+            // ColPedido
             // 
-            this.gridColumn37.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn37.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn37.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn37.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn37.Caption = "Pedido";
-            this.gridColumn37.ColumnEdit = this.repositoryItemTextEdit2;
-            this.gridColumn37.FieldName = "TPedido";
-            this.gridColumn37.Name = "gridColumn37";
-            this.gridColumn37.Visible = true;
-            this.gridColumn37.Width = 72;
+            this.ColPedido.AppearanceCell.Options.UseTextOptions = true;
+            this.ColPedido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ColPedido.AppearanceHeader.Options.UseTextOptions = true;
+            this.ColPedido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ColPedido.Caption = "Pedido";
+            this.ColPedido.ColumnEdit = this.repositoryItemTextEdit2;
+            this.ColPedido.FieldName = "TPedido";
+            this.ColPedido.Name = "ColPedido";
+            this.ColPedido.Visible = true;
+            this.ColPedido.Width = 72;
             // 
             // repositoryItemTextEdit2
             // 
@@ -1499,11 +1514,17 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.barLargeButtonItem2.SuperTip = superToolTip1;
             // 
+            // btnVistaPrevia
+            // 
+            this.btnVistaPrevia.Caption = "Vista Previa";
+            this.btnVistaPrevia.Id = 59;
+            this.btnVistaPrevia.Name = "btnVistaPrevia";
+            // 
             // Frm_Pre_Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 653);
+            this.ClientSize = new System.Drawing.Size(1141, 647);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -1514,6 +1535,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pre Pedidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_Pre_Pedidos_FormClosing);
             this.Load += new System.EventHandler(this.Frm_ReportePedidos_Load);
             this.Shown += new System.EventHandler(this.Frm_ReportePedidos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -1616,8 +1638,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ReyesE;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn AlmacenV;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn AlmacenE;
-        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem1;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         public DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem2;
         private DevExpress.XtraBars.BarLargeButtonItem btnLimpiar;
@@ -1645,9 +1665,24 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn NvaItaliaE;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn35;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn36;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn37;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ColPedido;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn Reg;
+        private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
+        private DevExpress.XtraEditors.SimpleButton btnAgregarProducto;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private DevExpress.XtraEditors.SimpleButton btnConvertir;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.TextEdit txtCMayorA;
+        private DevExpress.XtraEditors.TextEdit txtCMenorA;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.TextEdit txtCIgualA;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit txtCopiasPedido;
+        private DevExpress.XtraEditors.PictureEdit ptb1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TancitaroV;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TancitaroE;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
@@ -1662,21 +1697,9 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand Tancitaro;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
-        private DevExpress.XtraBars.BarLargeButtonItem btnCancelar;
-        private DevExpress.XtraEditors.SimpleButton btnAgregarProducto;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
-        private DevExpress.XtraEditors.SimpleButton btnConvertir;
-        private DevExpress.XtraEditors.GroupControl groupControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit txtCMayorA;
-        private DevExpress.XtraEditors.TextEdit txtCMenorA;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit txtCIgualA;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.TextEdit txtCopiasPedido;
-        private DevExpress.XtraEditors.PictureEdit ptb1;
-        private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem3;
+        private DevExpress.XtraBars.BarLargeButtonItem btnVistaPrevia;
     }
 }

@@ -68,7 +68,7 @@
             storedProcQuery1.Name = "SP_RPT_BSC_Pedido_Id_Select";
             queryParameter1.Name = "@PedidosId";
             queryParameter1.Type = typeof(int);
-            queryParameter1.ValueInfo = "5";
+            queryParameter1.ValueInfo = "8";
             storedProcQuery1.Parameters.Add(queryParameter1);
             storedProcQuery1.StoredProcName = "SP_RPT_BSC_Pedido_Id_Select";
             storedProcQuery2.Name = "SP_RPT_BSC_PedidoDetalles_Id_Select";

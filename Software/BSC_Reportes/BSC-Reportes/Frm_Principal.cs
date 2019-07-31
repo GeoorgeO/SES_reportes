@@ -259,5 +259,23 @@ namespace BSC_Reportes
             Frm_CheckSincroniza_Sucursales.DefInstance.UsuarioClase = UsuariosClase;
             Frm_CheckSincroniza_Sucursales.DefInstance.Show();
         }
+
+        private void btnDesbloquear_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_Pre_Pedidos_Status.DefInstance.MdiParent = this;
+            Frm_Pre_Pedidos_Status.DefInstance.IdPantallaBotones = 12;
+            Frm_Pre_Pedidos_Status.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Pre_Pedidos_Status.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Pre_Pedidos_Status.DefInstance.Show();
+        }
+
+        private void btnParametrosPedidos_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_Parametros_Pedidos.DefInstance.MdiParent = this;
+            Frm_Parametros_Pedidos.DefInstance.IdPantallaBotones = 13;
+            Frm_Parametros_Pedidos.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Parametros_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Parametros_Pedidos.DefInstance.Show();
+        }
     }
 }

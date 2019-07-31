@@ -93,6 +93,7 @@ namespace BSC_Reportes
 
         private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            dtgPedidos.DataSource = null;
             CLS_Pedidos selped = new CLS_Pedidos();
             DateTime FInicio = Convert.ToDateTime(dtInicio.EditValue.ToString());
             DateTime FFin = Convert.ToDateTime(dtFin.EditValue.ToString());
@@ -115,6 +116,10 @@ namespace BSC_Reportes
                             selped.Opcion = 2;
                         }
                         else if (rdgTipoPedido.SelectedIndex == 2)
+                        {
+                            selped.Opcion = 4;
+                        }
+                        else if (rdgTipoPedido.SelectedIndex == 3)
                         {
                             selped.Opcion = 3;
                         }
@@ -145,6 +150,10 @@ namespace BSC_Reportes
                     }
                     else if (rdgTipoPedido.SelectedIndex == 2)
                     {
+                        selped.Opcion = 4;
+                    }
+                    else if (rdgTipoPedido.SelectedIndex == 3)
+                    {
                         selped.Opcion = 3;
                     }
                     selped.MtdSeleccionarPedidoProveedorLista();
@@ -171,6 +180,10 @@ namespace BSC_Reportes
                     }
                     else if (rdgTipoPedido.SelectedIndex == 2)
                     {
+                        selped.Opcion = 4;
+                    }
+                    else if (rdgTipoPedido.SelectedIndex == 3)
+                    {
                         selped.Opcion = 3;
                     }
                     selped.MtdSeleccionarPedidoFechaLista();
@@ -186,6 +199,10 @@ namespace BSC_Reportes
                 if (selped.Datos.Rows.Count > 0)
                 {
                     dtgPedidos.DataSource = selped.Datos;
+                }
+                else
+                {
+                    XtraMessageBox.Show("No existen registros para mostrar");
                 }
             }
         }

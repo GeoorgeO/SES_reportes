@@ -15,6 +15,7 @@ namespace CapaDeDatos
         public int Cantidad { get; set; }
         public string Tipo { get; set; }
         public int? PedidosSurtido { get;  set; }
+        public int? PedidosCerrado { get;  set; }
 
         public void MtdSelectPedidoDetallesProveedor()
         {
@@ -206,6 +207,36 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
                 _dato.Entero = PedidosSurtido;
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosSurtido");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdUpdatePedidoCerrado()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_WEB_PedidoCerrado_Update";
+                _dato.Entero = PedidosId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosId");
+                _dato.Entero = PedidosCerrado;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "PedidosCerrado");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)

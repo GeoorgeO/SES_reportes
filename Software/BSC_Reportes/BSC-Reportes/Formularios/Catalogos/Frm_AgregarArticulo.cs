@@ -22,7 +22,7 @@ namespace BSC_Reportes
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if(txtCodigo.Text!=string.Empty && txtDescripcion.Text!=string.Empty)
+            if(txtCodigo.Text.Trim()!=string.Empty && txtDescripcion.Text.Trim()!=string.Empty)
             {
                 FrmPrePedidos.vArticuloCodigo = txtCodigo.Text;
                 FrmPrePedidos.vArticuloDescripcion = txtDescripcion.Text;
@@ -32,6 +32,11 @@ namespace BSC_Reportes
             {
                 XtraMessageBox.Show("No se ha llenado los campos requeridos","Campos Faltantes", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

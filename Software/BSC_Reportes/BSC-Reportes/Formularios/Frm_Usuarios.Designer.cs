@@ -217,7 +217,7 @@
             // 
             // btnselusuario
             // 
-            this.btnselusuario.Caption = "Selecionar Usuario";
+            this.btnselusuario.Caption = "Selecionar\r\n Usuario";
             this.btnselusuario.Id = 61;
             this.btnselusuario.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnselusuario.ImageOptions.Image")));
             this.btnselusuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnselusuario.ImageOptions.LargeImage")));
@@ -266,7 +266,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(107, 422);
+            this.barDockControlLeft.Size = new System.Drawing.Size(68, 422);
             // 
             // barDockControlRight
             // 
@@ -350,7 +350,7 @@
             this.barLargeButtonItem2.Name = "barLargeButtonItem2";
             toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
+            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             toolTipTitleItem5.Text = "Desactivar usuario";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "Inhabilita usuarios para que ya no operen en el sistema";
@@ -369,10 +369,10 @@
             // 
             this.panelControl2.Controls.Add(this.grid);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(107, 120);
+            this.panelControl2.Location = new System.Drawing.Point(68, 120);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl2.Size = new System.Drawing.Size(569, 302);
+            this.panelControl2.Size = new System.Drawing.Size(608, 302);
             this.panelControl2.TabIndex = 14;
             // 
             // grid
@@ -383,7 +383,7 @@
             this.grid.Name = "grid";
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit2});
-            this.grid.Size = new System.Drawing.Size(555, 288);
+            this.grid.Size = new System.Drawing.Size(594, 288);
             this.grid.TabIndex = 0;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -508,10 +508,10 @@
             // 
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(107, 0);
+            this.panelControl1.Location = new System.Drawing.Point(68, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl1.Size = new System.Drawing.Size(569, 120);
+            this.panelControl1.Size = new System.Drawing.Size(608, 120);
             this.panelControl1.TabIndex = 7;
             // 
             // groupControl1
@@ -527,7 +527,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(7, 7);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(555, 106);
+            this.groupControl1.Size = new System.Drawing.Size(594, 106);
             this.groupControl1.TabIndex = 11;
             this.groupControl1.Text = "Configuracion Usuarios";
             // 

@@ -110,16 +110,16 @@
     <Compile Include="Conexion\Frm_Conexiones.designer.cs">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conexion\Frm_ConexionesSucursales.cs">
+    <Compile Include="Formularios\Config\Frm_ConexionesSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Conexion\Frm_ConexionesSucursales.designer.cs">
+    <Compile Include="Formularios\Config\Frm_ConexionesSucursales.designer.cs">
       <DependentUpon>Frm_ConexionesSucursales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conexion\Frm_ConexionesRemotas.cs">
+    <Compile Include="Formularios\Config\Frm_ConexionesRemotas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Conexion\Frm_ConexionesRemotas.designer.cs">
+    <Compile Include="Formularios\Config\Frm_ConexionesRemotas.designer.cs">
       <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion\Frm_DataBaseSQL.cs">
@@ -170,17 +170,29 @@
     <Compile Include="Formularios\Catalogos\Frm_Pre_Pedidos_Buscar.Designer.cs">
       <DependentUpon>Frm_Pre_Pedidos_Buscar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Pre_Pedidos_Status.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Pre_Pedidos_Status.Designer.cs">
+      <DependentUpon>Frm_Pre_Pedidos_Status.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\Frm_Proveedores_Buscar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Catalogos\Frm_Proveedores_Buscar.Designer.cs">
       <DependentUpon>Frm_Proveedores_Buscar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Email\Frm_ConfigEmail.cs">
+    <Compile Include="Formularios\Config\Frm_ConfigEmail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Email\Frm_ConfigEmail.designer.cs">
+    <Compile Include="Formularios\Config\Frm_ConfigEmail.designer.cs">
       <DependentUpon>Frm_ConfigEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Config\Frm_Parametros_Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Config\Frm_Parametros_Pedidos.Designer.cs">
+      <DependentUpon>Frm_Parametros_Pedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Frm_AlertaCoberturaStock.cs">
       <SubType>Form</SubType>
@@ -194,10 +206,10 @@
     <Compile Include="Formularios\Frm_CambiaPass.Designer.cs">
       <DependentUpon>Frm_CambiaPass.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Frm_CheckSincroniza_Sucursales.cs">
+    <Compile Include="Formularios\Config\Frm_CheckSincroniza_Sucursales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Frm_CheckSincroniza_Sucursales.Designer.cs">
+    <Compile Include="Formularios\Config\Frm_CheckSincroniza_Sucursales.Designer.cs">
       <DependentUpon>Frm_CheckSincroniza_Sucursales.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Frm_ExistenciasFaltantes.cs">
@@ -295,10 +307,10 @@
     <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Conexion\Frm_ConexionesSucursales.resx">
+    <EmbeddedResource Include="Formularios\Config\Frm_ConexionesSucursales.resx">
       <DependentUpon>Frm_ConexionesSucursales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Conexion\Frm_ConexionesRemotas.resx">
+    <EmbeddedResource Include="Formularios\Config\Frm_ConexionesRemotas.resx">
       <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Conexion\Frm_DataBaseSQL.resx">
@@ -325,16 +337,22 @@
     <EmbeddedResource Include="Formularios\Catalogos\Frm_Pre_Pedidos_Buscar.resx">
       <DependentUpon>Frm_Pre_Pedidos_Buscar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_Pre_Pedidos_Status.resx">
+      <DependentUpon>Frm_Pre_Pedidos_Status.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Frm_Proveedores_Buscar.resx">
       <DependentUpon>Frm_Proveedores_Buscar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Email\Frm_ConfigEmail.resx">
+    <EmbeddedResource Include="Formularios\Config\Frm_ConfigEmail.resx">
       <DependentUpon>Frm_ConfigEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Config\Frm_Parametros_Pedidos.resx">
+      <DependentUpon>Frm_Parametros_Pedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_CambiaPass.resx">
       <DependentUpon>Frm_CambiaPass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Frm_CheckSincroniza_Sucursales.resx">
+    <EmbeddedResource Include="Formularios\Config\Frm_CheckSincroniza_Sucursales.resx">
       <DependentUpon>Frm_CheckSincroniza_Sucursales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_Pedidos.resx">

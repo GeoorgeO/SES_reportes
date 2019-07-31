@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using DevExpress.XtraEditors;
 using CapaDeDatos;
 using DevExpress.XtraSplashScreen;
@@ -77,6 +78,7 @@ namespace BSC_Reportes
         }
 
         public Boolean PedidoSurtido { get;  set; }
+        public bool PedidoCerrado { get;  set; }
         public Boolean _valida { get;  set; }
         public bool PrimeraEdicion { get; private set; }
         public int xRow { get; private set; }
@@ -84,6 +86,8 @@ namespace BSC_Reportes
         public string vArticuloCodigo { get; private set; }
         public int VSumaD { get; private set; }
         public int vSurtido { get; private set; }
+        public string RutaArchivos { get; private set; }
+        public string Sucursal2 { get; private set; }
 
         public Frm_Pedidos()
         {
@@ -556,10 +560,28 @@ namespace BSC_Reportes
                     LimpiarCampos();
                     CargarPedidos(txtFolio.Text);
                     DesbloquearObjetos(true);
+                    if(lblStatus.Text == "Pendiente")
+                    {
+                        BloqueoEspecial(false);
+                    }
+                    else
+                    {
+                        BloqueoEspecial(true);
+                    }
                     NumerarReg();
                     XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
             }
+        }
+
+        private void BloqueoEspecial(bool v)
+        {
+            btnIgualarACero.Enabled = v;
+            btnRedistribuir.Enabled = v;
+            btnRecibirInsidencia.Enabled = v;
+            btnVistaPreviaPedido.Links[0].Visible = v;
+            btnLiberaPedido.Links[0].Visible = v;
+            btnGeneraArchivos.Links[0].Visible = v;
         }
 
         private void NumerarReg()
@@ -593,6 +615,7 @@ namespace BSC_Reportes
                     txtProveedorId.Text = selenc.Datos.Rows[0]["ProveedorId"].ToString();
                     txtProveedorNombre.Text = selenc.Datos.Rows[0]["Proveedor"].ToString();
                     PedidoSurtido = Convert.ToBoolean(selenc.Datos.Rows[0]["PedidosSurtido"].ToString());
+                    PedidoCerrado = Convert.ToBoolean(selenc.Datos.Rows[0]["PedidosCerrado"].ToString());
                     if (PedidoSurtido)
                     {
                         lblStatus.Text = "Surtido";
@@ -602,6 +625,10 @@ namespace BSC_Reportes
                     {
                         lblStatus.Text = "Pendiente";
                         this.TPedido.OptionsColumn.AllowEdit = true;
+                    }
+                    if(PedidoCerrado)
+                    {
+                        lblStatus.Text = "Cerrado";
                     }
                     CargarPedidosDetalles(vFolio);
                     CargarPedidosDetallesInsidencias(vFolio);
@@ -792,6 +819,7 @@ namespace BSC_Reportes
             btnRecibirInsidencia.Enabled = false;
             btnRedistribuir.Enabled = false;
             btnIgualarACero.Enabled = false;
+            BloqueoEspecial(true);
         }
 
         private void dtgValPedidos_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -826,7 +854,7 @@ namespace BSC_Reportes
             {
                 int folio = Convert.ToInt32(txtFolio.Text);
                 rpt_Pedidos rpt = new rpt_Pedidos(folio);
-                //((SqlDataSource)rpt.DataSource).ConfigureDataConnection += Form1_ConfigureDataConnection;
+                ((SqlDataSource)rpt.DataSource).ConfigureDataConnection += Form1_ConfigureDataConnection;
                 ReportPrintTool print = new ReportPrintTool(rpt);
                 rpt.ShowPreviewDialog();
             }
@@ -837,8 +865,27 @@ namespace BSC_Reportes
         }
         private void Form1_ConfigureDataConnection(object sender, ConfigureDataConnectionEventArgs e)
         {
-            e.ConnectionParameters = new MsSqlConnectionParameters("ServerName", "Nwind", "UserName", "Password", MsSqlAuthorizationType.SqlServer);
+            MSRegistro RegOut = new MSRegistro();
+            Crypto DesencriptarTexto = new Crypto();
+
+            string valServer = RegOut.GetSetting("ConexionSQL", "ServerR");
+            string valDB = RegOut.GetSetting("ConexionSQL", "DBaseR");
+            string valLogin = RegOut.GetSetting("ConexionSQL", "UserR");
+            string valPass = RegOut.GetSetting("ConexionSQL", "PasswordR");
+
+            if (valServer != string.Empty && valDB != string.Empty && valLogin != string.Empty && valPass != string.Empty)
+            {
+                valServer = DesencriptarTexto.Desencriptar(valServer);
+                valDB = DesencriptarTexto.Desencriptar(valDB);
+                valLogin = DesencriptarTexto.Desencriptar(valLogin);
+                valPass = DesencriptarTexto.Desencriptar(valPass);
+                e.ConnectionParameters = new MsSqlConnectionParameters(valServer, valDB, valLogin, valPass, MsSqlAuthorizationType.SqlServer);
+            }
         }
+        //private void Form1_ConfigureDataConnection(object sender, ConfigureDataConnectionEventArgs e)
+        //{
+        //    e.ConnectionParameters = new MsSqlConnectionParameters("ServerName", "Nwind", "UserName", "Password", MsSqlAuthorizationType.SqlServer);
+        //}
         private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (txtFolio.Text != string.Empty && dtgValPedidos.RowCount>0)
@@ -903,21 +950,28 @@ namespace BSC_Reportes
 
         private void btnLiberaPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DialogResult = XtraMessageBox.Show("¿Desea liberar el pedido, solo almacen podra cerrar el pedido?", "Liberar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (DialogResult == DialogResult.Yes)
+            if (lblStatus.Text == "Surtido")
             {
-                WEB_Pedidos q = new WEB_Pedidos();
-                q.PedidosId = Convert.ToInt32(txtFolio.Text);
-                q.PedidosSurtido = 0;
-                q.MtdUpdatePedidoSurtido();
-                if (!q.Exito)
+                DialogResult = XtraMessageBox.Show("¿Desea liberar el pedido, solo almacen podra cerrar el pedido?", "Liberar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
                 {
-                    XtraMessageBox.Show(q.Mensaje);
+                    WEB_Pedidos q = new WEB_Pedidos();
+                    q.PedidosId = Convert.ToInt32(txtFolio.Text);
+                    q.PedidosSurtido = 0;
+                    q.MtdUpdatePedidoSurtido();
+                    if (!q.Exito)
+                    {
+                        XtraMessageBox.Show(q.Mensaje);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("¡Pedido Liberado!", "Pedidos", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    }
                 }
-                else
-                {
-                    XtraMessageBox.Show("¡Pedido Liberado!", "Pedidos", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Este pedido aun no se ha surtido o ya esta cerrado por lo que no se puede liberar");
             }
         }
 
@@ -936,7 +990,7 @@ namespace BSC_Reportes
         }
         private void ExportaDatos(int folio)
         {
-            if (PedidoSurtido)
+            if (PedidoCerrado)
             {
                 try
                 {
@@ -946,52 +1000,94 @@ namespace BSC_Reportes
                         EntradaAlmacen();
                         //SalidaAlmacenTiendas();
                         EntradaTiendas();
+                        EnviarCorreoPedido();
                         XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     }
                     else
                     {
-                        MessageBox.Show("Existen articulos del pedido con una mala distribucion");
+                        XtraMessageBox.Show("Existen articulos del pedido con una mala distribucion");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al Generar el Archivo" + ex.Message);
+                    XtraMessageBox.Show("Error al Generar el Archivo" + ex.Message);
                 }
 
             }
             else
             {
-                MessageBox.Show("No se ha surtido el Pedido");
+                XtraMessageBox.Show("No se ha Cerrado el Pedido");
+            }
+        }
+
+        private void EnviarCorreoPedido()
+        {
+            string Asunto = "Liberacion de Pedidos";
+            
+            CLS_Email send = new CLS_Email();
+            send.vFolio = txtFolio.Text;
+            send.vProveedorId = txtProveedorId.Text;
+            send.vNombreProveedor = txtProveedorNombre.Text;
+            send.vRutaArchivos = RutaArchivos;
+            send.SendMailReportes(Asunto, 8, string.Empty);
+            if(send.Exito)
+            {
+                XtraMessageBox.Show("Se ha enviado el correo con exito");
+            }
+            else
+            {
+                XtraMessageBox.Show(send.Mensaje);
             }
         }
 
         private void EntradaTiendas()
         {
+            MensajeCargando(1);
+            pbProgreso.Position = 0;
+            pbProgreso.Properties.Maximum = 14;
             EntradaSucursalCentro();
+            pbProgreso.Position = 1;
             EntradaSucursalApatzingan();
+            pbProgreso.Position = 2;
             EntradaSucursalCalzada();
+            pbProgreso.Position = 3;
             EntradaSucursalCostaRica();
+            pbProgreso.Position = 4;
             EntradaSucursalEstocolmo();
+            pbProgreso.Position = 5;
             EntradaSucursalFcoVilla();
+            pbProgreso.Position = 6;
             EntradaSucursalLombardia();
+            pbProgreso.Position = 7;
             EntradaSucursalLosReyes();
+            pbProgreso.Position = 8;
             EntradaSucursalMorelos();
+            pbProgreso.Position = 9;
             EntradaSucursalNvaItalia();
+            pbProgreso.Position = 10;
             EntradaSucursalPaseo();
+            pbProgreso.Position = 11;
             EntradaSucursalSarabiaI();
+            pbProgreso.Position = 12;
             EntradaSucursalSarabiaII();
+            pbProgreso.Position = 13;
+            //EntradaSucursalTancitaro();
+            pbProgreso.Position = 14;
+            MensajeCargando(2);
+            pbProgreso.Position = 0;
         }
 
         private void EntradaAlmacen()
         {
             try
             {
+                string Sucursal = "ALMACEN";
                 string Ruta = string.Empty;
-                Ruta = String.Format("C:\\FileExport\\Almacen\\");
+                Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
                 string fileName = string.Empty;
                 string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
                 string TipoArch = "Entrada";
-                fileName = String.Format("{0}_{1}_{2}_{3}.txt", TipoArch, "Almacen", "Pedido[" + txtFolio.Text + "]", VFecha);
+                fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
                 Ruta += fileName;
                 FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
                 StreamWriter writer = new StreamWriter(stream);
@@ -1014,8 +1110,8 @@ namespace BSC_Reportes
         private void EntradaSucursalCentro()
         {
             string Sucursal = "CENTRO";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos+"{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1037,15 +1133,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 4);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
-
-        
-
         private void EntradaSucursalApatzingan()
         {
             string Sucursal = "APATZINGAN";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1067,12 +1184,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 2);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DApatzingan").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalCalzada()
         {
             string Sucursal = "CALZADA B";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1094,12 +1235,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 3);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2,Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2,Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DCalzada").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalCostaRica()
         {
             string Sucursal = "COSTA RICA";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1121,12 +1286,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 5);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DCostaRica").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalEstocolmo()
         {
             string Sucursal = "ESTOCOLMO";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1148,12 +1337,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 6);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DEstocolmo").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalFcoVilla()
         {
             string Sucursal = "FCO. VILLA";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1175,12 +1388,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 7);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DFcoVilla").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalLombardia()
         {
             string Sucursal = "LOMBARDIA";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1202,12 +1439,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 8);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DLombardia").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalLosReyes()
         {
             string Sucursal = "LOS REYES";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1229,12 +1490,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 9);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DLosReyes").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalMorelos()
         {
             string Sucursal = "MORELOS";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1256,12 +1541,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 10);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DMorelos").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalNvaItalia()
         {
             string Sucursal = "NUEVA ITALIA";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1283,12 +1592,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 11);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DNvaItalia").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalPaseo()
         {
             string Sucursal = "PASEO";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1310,12 +1643,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 12);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalSarabiaI()
         {
             string Sucursal = "SARABIA";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1337,12 +1694,36 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 13);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void EntradaSucursalSarabiaII()
         {
             string Sucursal = "SARABIA II";
-            string Ruta = String.Format("C:\\FileExport\\{0}\\", Sucursal);
-            string Rutapdf = String.Format("C:\\FileExport\\{0}\\", Sucursal);
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
             string fileName = string.Empty;
             string fileNamepdf = string.Empty;
             string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
@@ -1364,11 +1745,87 @@ namespace BSC_Reportes
             }
             writer.Close();
             CrearPDF(Rutapdf, 14);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal2);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
+        }
+        private void EntradaSucursalTancitaro()
+        {
+            string Sucursal = "TANCITARO";
+            string Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            string fileName = string.Empty;
+            string fileNamepdf = string.Empty;
+            string VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            string TipoArch = "Entrada";
+            fileName = String.Format("{0}_{1}_Pedido[{2}]_{3}.txt", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}_Pedido[{2}]_{3}.pdf", TipoArch, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DTancitaro").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DTancitaro").ToString());
+                    writer.WriteLine(Linea);
+                }
+            }
+            writer.Close();
+            CrearPDF(Rutapdf, 14);
+
+            Sucursal2 = "ALMACEN";
+            Ruta = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            Rutapdf = String.Format(RutaArchivos + "{0}\\", Sucursal);
+            fileName = string.Empty;
+            fileNamepdf = string.Empty;
+            VFecha = DateTime.Now.Year.ToString() + DosCero(DateTime.Now.Month.ToString()) + DosCero(DateTime.Now.Day.ToString());
+            TipoArch = "SALIDA";
+            fileName = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.txt", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            fileNamepdf = String.Format("{0}_{1}-{2}_Pedido[{3}]_{4}.pdf", TipoArch, Sucursal2, Sucursal, txtFolio.Text, VFecha);
+            Ruta += fileName;
+            Rutapdf += fileNamepdf;
+            FileStream stream2 = new FileStream(Ruta, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
+            for (int x = 0; x < dtgValPedidos.RowCount; x++)
+            {
+                int xRow = dtgValPedidos.GetVisibleRowHandle(x);
+                if (dtgValPedidos.GetRowCellValue(xRow, "DCentro").ToString() != "0")
+                {
+                    string Linea = String.Format(",,,{0},{1}", dtgValPedidos.GetRowCellValue(xRow, "ArticuloCodigo").ToString(), dtgValPedidos.GetRowCellValue(xRow, "DTancitaro").ToString());
+                    writer2.WriteLine(Linea);
+                }
+            }
+            writer2.Close();
         }
         private void CrearPDF(string fileNamepdf, int sucursal)
         {
             int folio = Convert.ToInt32(txtFolio.Text);
             rpt_SucursalSurtir rpt = new rpt_SucursalSurtir(folio, sucursal);
+            ((SqlDataSource)rpt.DataSource).ConfigureDataConnection += Form1_ConfigureDataConnection;
             PdfExportOptions pdfOptions = rpt.ExportOptions.Pdf;
             pdfOptions.PageRange = "1-1000";
 
@@ -1396,7 +1853,7 @@ namespace BSC_Reportes
             // Specify the document options.
             pdfOptions.DocumentOptions.Application = "Reporte para surtir Sucursales";
             pdfOptions.DocumentOptions.Author = "NexusSoft";
-            pdfOptions.DocumentOptions.Keywords = "SEs_Reportes, Reporte, PDF";
+            pdfOptions.DocumentOptions.Keywords = "SES_Reportes, Reporte, PDF";
             pdfOptions.DocumentOptions.Producer = Environment.UserName.ToString();
             pdfOptions.DocumentOptions.Subject = "Documento Surtido";
             pdfOptions.DocumentOptions.Title = "Reporte Surtido";
@@ -1430,14 +1887,30 @@ namespace BSC_Reportes
             }
             return Valor;
         }
-        private static void DirectorySucursales()
+        private void DirectorySucursales()
         {
-            System.IO.Directory.CreateDirectory(@"C:\FileExport");
-            CLS_Sucursales suc = new CLS_Sucursales();
-            suc.ListarSucursales();
-            for (int x = 0; x < suc.Datos.Rows.Count; x++)
+            RutaArchivos = string.Empty;
+            
+            CLS_Pedidos ins = new CLS_Pedidos();
+            ins.MtdSeleccionarParametrosPedidos();
+            if (ins.Exito)
             {
-                System.IO.Directory.CreateDirectory(@"C:\FileExport\" + suc.Datos.Rows[x][1].ToString().Trim());
+                if (ins.Datos.Rows.Count > 0)
+                {
+                    RutaArchivos = ins.Datos.Rows[0]["PedidosConfigRuta"].ToString();
+                }
+            }
+            if (RutaArchivos != string.Empty)
+            {
+                RutaArchivos = RutaArchivos + "\\Pedidos\\" + txtFolio.Text;
+                System.IO.Directory.CreateDirectory(RutaArchivos);
+                CLS_Sucursales suc = new CLS_Sucursales();
+                suc.ListarSucursales();
+                for (int x = 0; x < suc.Datos.Rows.Count; x++)
+                {
+                    System.IO.Directory.CreateDirectory(RutaArchivos +"\\"+ suc.Datos.Rows[x][1].ToString().Trim());
+                }
+                RutaArchivos += "\\";
             }
         }
         private void btnIgualarACero_Click(object sender, EventArgs e)
@@ -1789,6 +2262,7 @@ namespace BSC_Reportes
                     {
                         try
                         {
+                            MensajeCargando(1);
                             string[] result = CadenaCodigos.Split(',');
                             int Elementos = result.Length;
                             pbProgreso.Properties.Maximum = Elementos;
@@ -1800,9 +2274,19 @@ namespace BSC_Reportes
                                 pos++;
                             }
                             CadenaCodigos = string.Empty;
+                            MensajeCargando(2);
                             CargarPedidos(txtFolio.Text);
                             dtgValPedidosInsidencias.ClearSelection();
-                            btnRecibirInsidencia.Enabled = false;
+                            if(dtgValPedidosInsidencias.RowCount>0)
+                            {
+                                btnRecibirInsidencia.Enabled = true;
+                            }
+                            else
+                            {
+                                btnRecibirInsidencia.Enabled = false;
+                            }
+                            
+                            EnumeraRegistros();
                             XtraMessageBox.Show("Se han ingresado las insidencias al pedido con exito");
                         }
                         catch (Exception ex)
@@ -1820,6 +2304,17 @@ namespace BSC_Reportes
             else
             {
                 XtraMessageBox.Show("No se ha surtido el Pedido");
+            }
+        }
+
+        private void EnumeraRegistros()
+        {
+            for (int i = 0; i < dtgValPedidos.RowCount; i++)
+            {
+                pbProgreso.Position = i + 1;
+                Application.DoEvents();
+                xRow = dtgValPedidos.GetVisibleRowHandle(i);
+                dtgValPedidos.SetRowCellValue(xRow, "Reg", i + 1);
             }
         }
 
@@ -1852,14 +2347,14 @@ namespace BSC_Reportes
                         int CantEntrada = Cantidad + CantidadRecibir;
                         CLS_Pedidos udp = new CLS_Pedidos();
                         udp.PedidosId = Convert.ToInt32(txtFolio.Text);
-                        udp.ArticuloCodigo = ArticuloCodigo;
+                        udp.ArticuloCodigo = codigo;
                         udp.Surtido = CantEntrada;
                         udp.MtdUpdateInsidencia();
                         if (udp.Exito)
                         {
                             CLS_Pedidos del = new CLS_Pedidos();
                             del.PedidosId = Convert.ToInt32(txtFolio.Text);
-                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.ArticuloCodigo = codigo;
                             del.MtdEliminarInsidencia();
                         }
                     }
@@ -1875,7 +2370,7 @@ namespace BSC_Reportes
                         {
                             CLS_Pedidos del = new CLS_Pedidos();
                             del.PedidosId = Convert.ToInt32(txtFolio.Text);
-                            del.ArticuloCodigo = ArticuloCodigo;
+                            del.ArticuloCodigo = codigo;
                             del.MtdEliminarInsidencia();
                         }
                     }
@@ -1946,9 +2441,34 @@ namespace BSC_Reportes
             return Valor;
         }
 
-        private void btnCancelar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnCerrarPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (lblStatus.Text == "Surtido" || !(lblStatus.Text == "Cerrado"))
+            {
+                
+                DialogResult = XtraMessageBox.Show("¿Desea Cerrar el pedido, solo un usuario administrador podra abrir el pedido?", "Cerrar Pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    WEB_Pedidos q = new WEB_Pedidos();
+                    q.PedidosId = Convert.ToInt32(txtFolio.Text);
+                    q.PedidosCerrado = 1;
+                    q.MtdUpdatePedidoCerrado();
+                    if (!q.Exito)
+                    {
+                        XtraMessageBox.Show(q.Mensaje);
+                    }
+                    else
+                    {
+                        PedidoCerrado = true;
+                        lblStatus.Text = "Cerrado";
+                        XtraMessageBox.Show("¡Pedido Cerrado!", "Pedidos", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("El pedido no esta surtido o ya se encuentra cerrado ");
+            }
         }
     }
 }
