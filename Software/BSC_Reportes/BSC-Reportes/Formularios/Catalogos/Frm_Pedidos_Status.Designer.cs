@@ -1,6 +1,6 @@
 ﻿namespace BSC_Reportes
 {
-    partial class Frm_Pre_Pedidos_Status
+    partial class Frm_Pedidos_Status
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pre_Pedidos_Status));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos_Status));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bIconos = new DevExpress.XtraBars.Bar();
             this.btnBuscar = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -47,8 +47,8 @@
             this.cmbProveedores = new DevExpress.XtraEditors.LookUpEdit();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.dtgPrePedidos = new DevExpress.XtraGrid.GridControl();
-            this.dtgValPrePedidos = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.dtgPedidos = new DevExpress.XtraGrid.GridControl();
+            this.dtgValPedidos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,8 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgPrePedidos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgValPrePedidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPedidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidos)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -110,7 +110,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Caption = "   Buscar \r\nPrePedidos";
+            this.btnBuscar.Caption = "Buscar \r\nPedidos";
             this.btnBuscar.Id = 59;
             this.btnBuscar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.Image")));
             this.btnBuscar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.ImageOptions.LargeImage")));
@@ -119,7 +119,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Caption = "  Activar \r\nPrePedido";
+            this.btnGuardar.Caption = "Activar \r\nPedido";
             this.btnGuardar.Id = 53;
             this.btnGuardar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.Image")));
             this.btnGuardar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.ImageOptions.LargeImage")));
@@ -150,7 +150,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 351);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 357);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(716, 28);
             // 
@@ -160,7 +160,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(72, 351);
+            this.barDockControlLeft.Size = new System.Drawing.Size(56, 357);
             // 
             // barDockControlRight
             // 
@@ -168,7 +168,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(716, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 351);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 357);
             // 
             // barLargeButtonItem1
             // 
@@ -187,14 +187,14 @@
             this.panelControl1.Controls.Add(this.cmbProveedores);
             this.panelControl1.Controls.Add(this.radioGroup1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(72, 0);
+            this.panelControl1.Location = new System.Drawing.Point(56, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(644, 100);
+            this.panelControl1.Size = new System.Drawing.Size(660, 75);
             this.panelControl1.TabIndex = 4;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(131, 20);
+            this.labelControl1.Location = new System.Drawing.Point(96, 10);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(50, 13);
             this.labelControl1.TabIndex = 3;
@@ -203,7 +203,7 @@
             // chkTodos
             // 
             this.chkTodos.AutoSize = true;
-            this.chkTodos.Location = new System.Drawing.Point(370, 43);
+            this.chkTodos.Location = new System.Drawing.Point(335, 33);
             this.chkTodos.Name = "chkTodos";
             this.chkTodos.Size = new System.Drawing.Size(55, 17);
             this.chkTodos.TabIndex = 2;
@@ -213,7 +213,7 @@
             // 
             // cmbProveedores
             // 
-            this.cmbProveedores.Location = new System.Drawing.Point(131, 41);
+            this.cmbProveedores.Location = new System.Drawing.Point(96, 31);
             this.cmbProveedores.MenuManager = this.barManager1;
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -223,62 +223,60 @@
             // 
             // radioGroup1
             // 
-            this.radioGroup1.Location = new System.Drawing.Point(12, 12);
+            this.radioGroup1.Location = new System.Drawing.Point(12, 32);
             this.radioGroup1.MenuManager = this.barManager1;
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
             this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Cerrado"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Cancelado"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Solo Lectura")});
-            this.radioGroup1.Size = new System.Drawing.Size(100, 71);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Finalizado")});
+            this.radioGroup1.Size = new System.Drawing.Size(81, 18);
             this.radioGroup1.TabIndex = 0;
             this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.dtgPrePedidos);
+            this.panelControl2.Controls.Add(this.dtgPedidos);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(72, 100);
+            this.panelControl2.Location = new System.Drawing.Point(56, 75);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(644, 251);
+            this.panelControl2.Size = new System.Drawing.Size(660, 282);
             this.panelControl2.TabIndex = 5;
             // 
-            // dtgPrePedidos
+            // dtgPedidos
             // 
-            this.dtgPrePedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgPrePedidos.Location = new System.Drawing.Point(12, 12);
-            this.dtgPrePedidos.MainView = this.dtgValPrePedidos;
-            this.dtgPrePedidos.MenuManager = this.barManager1;
-            this.dtgPrePedidos.Name = "dtgPrePedidos";
-            this.dtgPrePedidos.Size = new System.Drawing.Size(620, 227);
-            this.dtgPrePedidos.TabIndex = 0;
-            this.dtgPrePedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.dtgValPrePedidos});
+            this.dtgPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgPedidos.Location = new System.Drawing.Point(12, 12);
+            this.dtgPedidos.MainView = this.dtgValPedidos;
+            this.dtgPedidos.MenuManager = this.barManager1;
+            this.dtgPedidos.Name = "dtgPedidos";
+            this.dtgPedidos.Size = new System.Drawing.Size(636, 258);
+            this.dtgPedidos.TabIndex = 0;
+            this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dtgValPedidos});
             // 
-            // dtgValPrePedidos
+            // dtgValPedidos
             // 
-            this.dtgValPrePedidos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.dtgValPedidos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5});
-            this.dtgValPrePedidos.GridControl = this.dtgPrePedidos;
-            this.dtgValPrePedidos.Name = "dtgValPrePedidos";
-            this.dtgValPrePedidos.OptionsView.ShowGroupPanel = false;
+            this.dtgValPedidos.GridControl = this.dtgPedidos;
+            this.dtgValPedidos.Name = "dtgValPedidos";
+            this.dtgValPedidos.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "PrePedido Folio";
-            this.gridColumn1.FieldName = "PrePedidosId";
+            this.gridColumn1.Caption = "Pedido Folio";
+            this.gridColumn1.FieldName = "PedidosId";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 93;
+            this.gridColumn1.Width = 82;
             // 
             // gridColumn2
             // 
@@ -287,16 +285,16 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 331;
+            this.gridColumn2.Width = 240;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Cerrado";
+            this.gridColumn3.Caption = "Finalizado";
             this.gridColumn3.FieldName = "Estado";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 89;
+            this.gridColumn3.Width = 95;
             // 
             // gridColumn4
             // 
@@ -305,7 +303,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 91;
+            this.gridColumn4.Width = 102;
             // 
             // gridColumn5
             // 
@@ -313,21 +311,21 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.Width = 81;
             // 
-            // Frm_Pre_Pedidos_Status
+            // Frm_Pedidos_Status
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 379);
+            this.ClientSize = new System.Drawing.Size(716, 385);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "Frm_Pre_Pedidos_Status";
-            this.Text = "PrePedidos Status";
-            this.Load += new System.EventHandler(this.Frm_Pre_Pedidos_Status_Load);
+            this.Name = "Frm_Pedidos_Status";
+            this.Text = "Pedidos Status";
             this.Shown += new System.EventHandler(this.Frm_Pre_Pedidos_Status_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -338,8 +336,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgPrePedidos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgValPrePedidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPedidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgValPedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,8 +354,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraGrid.GridControl dtgPrePedidos;
-        private DevExpress.XtraGrid.Views.Grid.GridView dtgValPrePedidos;
+        private DevExpress.XtraGrid.GridControl dtgPedidos;
+        private DevExpress.XtraGrid.Views.Grid.GridView dtgValPedidos;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;

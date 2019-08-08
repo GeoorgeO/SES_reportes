@@ -46,6 +46,7 @@
             this.btnCheckSincronizacion = new DevExpress.XtraBars.BarButtonItem();
             this.btnDesbloquear = new DevExpress.XtraBars.BarButtonItem();
             this.btnParametrosPedidos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDesbloquearPedido = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -82,9 +83,10 @@
             this.btnConexionesS,
             this.btnCheckSincronizacion,
             this.btnDesbloquear,
-            this.btnParametrosPedidos});
+            this.btnParametrosPedidos,
+            this.btnDesbloquearPedido});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 12;
+            this.ribbon.MaxItemId = 13;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -237,6 +239,15 @@
             this.btnParametrosPedidos.Name = "btnParametrosPedidos";
             this.btnParametrosPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnParametrosPedidos_ItemClick);
             // 
+            // btnDesbloquearPedido
+            // 
+            this.btnDesbloquearPedido.Caption = "Desbloquear Pedidos";
+            this.btnDesbloquearPedido.Id = 12;
+            this.btnDesbloquearPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnDesbloquearPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnDesbloquearPedido.Name = "btnDesbloquearPedido";
+            this.btnDesbloquearPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDesbloquearPedido_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -251,6 +262,7 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnPrePedidos);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnPedidos);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnDesbloquear);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnDesbloquearPedido);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "Compras";
@@ -399,5 +411,6 @@
         private DevExpress.XtraBars.BarButtonItem btnDesbloquear;
         private DevExpress.XtraBars.BarButtonItem btnParametrosPedidos;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.BarButtonItem btnDesbloquearPedido;
     }
 }

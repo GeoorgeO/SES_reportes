@@ -1021,6 +1021,33 @@ namespace CapaDeDatos
                 Exito = false;
             }
         }
+        public void MtdSeleccionarPedidosProveedores()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_ProvStatus_Select";
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
         public void MtdSeleccionarPrePedidoListaEstatus()
         {
             string Valor = string.Empty;
@@ -1030,6 +1057,37 @@ namespace CapaDeDatos
             try
             {
                 _conexionR.NombreProcedimiento = "SP_BSC_PrePedido_Status_Select";
+                _dato.Entero = ProveedorId;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
+                _dato.Entero = Opcion;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "Opcion");
+                _conexionR.EjecutarDataset();
+
+                if (_conexionR.Exito)
+                {
+                    Datos = _conexionR.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexionR.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+        }
+        public void MtdSeleccionarPedidoListaEstatus()
+        {
+            string Valor = string.Empty;
+            TipoDato _dato = new TipoDato();
+            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Exito = true;
+            try
+            {
+                _conexionR.NombreProcedimiento = "SP_BSC_Pedido_Status_Select";
                 _dato.Entero = ProveedorId;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ProveedorId");
                 _dato.Entero = Opcion;

@@ -277,5 +277,14 @@ namespace BSC_Reportes
             Frm_Parametros_Pedidos.DefInstance.UsuarioClase = UsuariosClase;
             Frm_Parametros_Pedidos.DefInstance.Show();
         }
+
+        private void btnDesbloquearPedido_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_Pedidos_Status.DefInstance.MdiParent = this;
+            Frm_Pedidos_Status.DefInstance.IdPantallaBotones = 14;
+            Frm_Pedidos_Status.DefInstance.UsuariosLogin = UsuariosLogin;
+            Frm_Pedidos_Status.DefInstance.UsuarioClase = UsuariosClase;
+            Frm_Pedidos_Status.DefInstance.Show();
+        }
     }
 }

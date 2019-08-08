@@ -110,6 +110,12 @@
     <Compile Include="Conexion\Frm_Conexiones.designer.cs">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Pedidos_Status.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Frm_Pedidos_Status.Designer.cs">
+      <DependentUpon>Frm_Pedidos_Status.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Config\Frm_ConexionesSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     </Compile>
     <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
       <DependentUpon>Frm_Conexiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Frm_Pedidos_Status.resx">
+      <DependentUpon>Frm_Pedidos_Status.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Config\Frm_ConexionesSucursales.resx">
       <DependentUpon>Frm_ConexionesSucursales.cs</DependentUpon>
