@@ -17,21 +17,21 @@ namespace CapaDeDatos
         public void MtdSeleccionarSucursales()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexionR = new Conexion(cadenaConexion);
+            Conexion _conexion = new Conexion(cadenaConexion);
 
             Exito = true;
             try
             {
-                _conexionR.NombreProcedimiento = "SP_BSC_CS_ListaSucursales";
-                _conexionR.EjecutarDataset();
+                _conexion.NombreProcedimiento = "SP_BSC_CS_ListaSucursales";
+                _conexion.EjecutarDataset();
 
-                if (_conexionR.Exito)
+                if (_conexion.Exito)
                 {
-                    Datos = _conexionR.Datos;
+                    Datos = _conexion.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexionR.Mensaje;
+                    Mensaje = _conexion.Mensaje;
                     Exito = false;
                 }
             }
@@ -45,23 +45,23 @@ namespace CapaDeDatos
         public void MtdSeleccionarSucursalesId()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexionR = new Conexion(cadenaConexion);
+            Conexion _conexion = new Conexion(cadenaConexion);
 
             Exito = true;
             try
             {
-                _conexionR.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesId";
+                _conexion.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesId";
                 _dato.Entero = this.SucursalesId;
-                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
-                _conexionR.EjecutarDataset();
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
+                _conexion.EjecutarDataset();
 
-                if (_conexionR.Exito)
+                if (_conexion.Exito)
                 {
-                    Datos = _conexionR.Datos;
+                    Datos = _conexion.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexionR.Mensaje;
+                    Mensaje = _conexion.Mensaje;
                     Exito = false;
                 }
             }
@@ -75,21 +75,21 @@ namespace CapaDeDatos
         public void MtdSeleccionarConexionesSucursales()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Conexion _conexion = new Conexion(cadenaConexion);
 
             Exito = true;
             try
             {
-                _conexionR.NombreProcedimiento = "SP_BSC_CS_ConexionesSucursalesSelect";
-                _conexionR.EjecutarDataset();
+                _conexion.NombreProcedimiento = "SP_BSC_CS_ConexionesSucursalesSelect";
+                _conexion.EjecutarDataset();
 
-                if (_conexionR.Exito)
+                if (_conexion.Exito)
                 {
-                    Datos = _conexionR.Datos;
+                    Datos = _conexion.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexionR.Mensaje;
+                    Mensaje = _conexion.Mensaje;
                     Exito = false;
                 }
             }
@@ -103,33 +103,33 @@ namespace CapaDeDatos
         public void MtdModificarConexion()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Conexion _conexion = new Conexion(cadenaConexion);
             Exito = true;
             try
             {
-                _conexionR.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesIdUpdate";
+                _conexion.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesIdUpdate";
 
 
                 _dato.Entero = this.SucursalesId;
-                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
                 _dato.CadenaTexto = this.ServerID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ServerID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ServerID");
                 _dato.CadenaTexto = this.DataBaseID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "DataBaseID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "DataBaseID");
                 _dato.CadenaTexto = this.UserID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UserID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UserID");
                 _dato.CadenaTexto = this.PassID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "PassID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "PassID");
 
-                _conexionR.EjecutarDataset();
+                _conexion.EjecutarDataset();
 
-                if (_conexionR.Exito)
+                if (_conexion.Exito)
                 {
-                    Datos = _conexionR.Datos;
+                    Datos = _conexion.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexionR.Mensaje;
+                    Mensaje = _conexion.Mensaje;
                     Exito = false;
                 }
             }
@@ -142,31 +142,31 @@ namespace CapaDeDatos
         public void MtdInsertarConexion()
         {
             TipoDato _dato = new TipoDato();
-            Conexion _conexionR = new Conexion(cadenaConexionR);
+            Conexion _conexion = new Conexion(cadenaConexion);
             Exito = true;
             try
             {
-                _conexionR.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesIdInsert";
+                _conexion.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesIdInsert";
                 _dato.Entero = this.SucursalesId;
-                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
                 _dato.CadenaTexto = this.ServerID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ServerID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "ServerID");
                 _dato.CadenaTexto = this.DataBaseID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "DataBaseID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "DataBaseID");
                 _dato.CadenaTexto = this.UserID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UserID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "UserID");
                 _dato.CadenaTexto = this.PassID;
-                _conexionR.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "PassID");
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "PassID");
 
-                _conexionR.EjecutarDataset();
+                _conexion.EjecutarDataset();
 
-                if (_conexionR.Exito)
+                if (_conexion.Exito)
                 {
-                    Datos = _conexionR.Datos;
+                    Datos = _conexion.Datos;
                 }
                 else
                 {
-                    Mensaje = _conexionR.Mensaje;
+                    Mensaje = _conexion.Mensaje;
                     Exito = false;
                 }
             }
