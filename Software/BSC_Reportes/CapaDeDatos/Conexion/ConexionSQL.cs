@@ -42,10 +42,10 @@ namespace CapaDeDatos
                 MSRegistro RegOut = new MSRegistro();
                 Crypto DesencriptarTexto = new Crypto();
 
-                valServer = RegOut.GetSetting("ConexionSQL", "ServerR");
-                valDB = RegOut.GetSetting("ConexionSQL", "DBaseR");
-                valLogin = RegOut.GetSetting("ConexionSQL", "UserR");
-                valPass = RegOut.GetSetting("ConexionSQL", "PasswordR");
+                valServer = RegOut.GetSetting("ConexionSQL", "Server");
+                valDB = RegOut.GetSetting("ConexionSQL", "DBase");
+                valLogin = RegOut.GetSetting("ConexionSQL", "User");
+                valPass = RegOut.GetSetting("ConexionSQL", "Password");
 
                 if (valServer != string.Empty && valDB != string.Empty && valLogin != string.Empty && valPass != string.Empty)
                 {
