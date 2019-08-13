@@ -576,13 +576,25 @@ namespace BSC_Inventarios
 
         private void DirectorySucursal()
         {
-            RutaArchivos = @"C:\InventarioCiego";
-            if (RutaArchivos != string.Empty)
+            CLS_ConfigInventario sel = new CLS_ConfigInventario();
+            sel.MtdSeleccionarConfiguracion();
+            if (sel.Exito)
             {
-                RutaArchivos = RutaArchivos + "\\" + txtFolio.Text;
-                System.IO.Directory.CreateDirectory(RutaArchivos);
-                
-                RutaArchivos += "\\";
+                if (sel.Datos.Rows.Count > 0)
+                {
+                    if (sel.Datos.Rows[0]["InventarioRutaArchivosPDF"].ToString() != string.Empty)
+                    {
+
+                        RutaArchivos = sel.Datos.Rows[0]["InventarioRutaArchivosPDF"].ToString();
+                        if (RutaArchivos != string.Empty)
+                        {
+                            System.IO.Directory.CreateDirectory(RutaArchivos);
+                            RutaArchivos = RutaArchivos + "\\" + txtFolio.Text;
+                            System.IO.Directory.CreateDirectory(RutaArchivos);
+                            RutaArchivos += "\\";
+                        }
+                    }
+                }
             }
         }
     }
