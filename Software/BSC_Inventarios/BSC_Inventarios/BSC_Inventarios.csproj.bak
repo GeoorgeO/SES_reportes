@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1AA8C8C-4B12-469A-8AE7-C5FDFC19F1E1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BSC_Inventarios</RootNamespace>
+    <AssemblyName>BSC_Inventarios</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CapaDeDatos">
+      <HintPath>..\CapaDeDatos\bin\Debug\CapaDeDatos.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v17.2" />
+    <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v17.2" />
+    <Reference Include="DevExpress.Data.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v17.2.Core" />
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2" />
+    <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.2" />
+    <Reference Include="DevExpress.Sparkline.v17.2.Core" />
+    <Reference Include="DevExpress.XtraCharts.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.XtraDialogs.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.2" />
+    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.XtraGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Busquedas\Frm_Articulos_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\Frm_Articulos_Buscar.designer.cs">
+      <DependentUpon>Frm_Articulos_Buscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Codigos.cs" />
+    <Compile Include="Clases\Crypto.cs" />
+    <Compile Include="Clases\GridCheckMarksSelection.cs" />
+    <Compile Include="Clases\GridMarksSelecioncs.cs" />
+    <Compile Include="Clases\MSRegistro.cs" />
+    <Compile Include="Clases\Validar_Campos.cs" />
+    <Compile Include="Conexion\Frm_Conexiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion\Frm_Conexiones.designer.cs">
+      <DependentUpon>Frm_Conexiones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion\Frm_ConexionesRemotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion\Frm_ConexionesRemotas.designer.cs">
+      <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion\Frm_DataBaseSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion\Frm_DataBaseSQL.designer.cs">
+      <DependentUpon>Frm_DataBaseSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion\Frm_InstanciaSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion\Frm_InstanciaSQL.designer.cs">
+      <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Config\Frm_ConfigEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Config\Frm_ConfigEmail.designer.cs">
+      <DependentUpon>Frm_ConfigEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Config\Frm_Config_Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Config\Frm_Config_Inventario.Designer.cs">
+      <DependentUpon>Frm_Config_Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Entradas\Frm_Entradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Entradas\Frm_Entradas.Designer.cs">
+      <DependentUpon>Frm_Entradas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\Frm_Entradas_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\Frm_Entradas_Buscar.Designer.cs">
+      <DependentUpon>Frm_Entradas_Buscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Entradas\Frm_Entradas_Existencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Entradas\Frm_Entradas_Existencia.Designer.cs">
+      <DependentUpon>Frm_Entradas_Existencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Inventario Ciego\Frm_Inventario_Ciego.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Inventario Ciego\Frm_Inventario_Ciego.Designer.cs">
+      <DependentUpon>Frm_Inventario_Ciego.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Inventario Ciego\Frm_Inventario_Ciego_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Inventario Ciego\Frm_Inventario_Ciego_Buscar.Designer.cs">
+      <DependentUpon>Frm_Inventario_Ciego_Buscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Inventario Ciego\Frm_Revision_Contraloria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Inventario Ciego\Frm_Revision_Contraloria.Designer.cs">
+      <DependentUpon>Frm_Revision_Contraloria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Salidas\Frm_Salidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Salidas\Frm_Salidas.Designer.cs">
+      <DependentUpon>Frm_Salidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_CargandoConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_CargandoConsulta.designer.cs">
+      <DependentUpon>Frm_CargandoConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Login.designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Principal.Designer.cs">
+      <DependentUpon>Frm_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\Entradas\rpt_Entradas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Entradas\rpt_Entradas.Designer.cs">
+      <DependentUpon>rpt_Entradas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\InventarioCiego\rpt_InventarioCiego_Enviado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\InventarioCiego\rpt_InventarioCiego_Enviado.Designer.cs">
+      <DependentUpon>rpt_InventarioCiego_Enviado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\InventarioCiego\rpt_InventarioCiego_Inicial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\InventarioCiego\rpt_InventarioCiego_Inicial.Designer.cs">
+      <DependentUpon>rpt_InventarioCiego_Inicial.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Busquedas\Frm_Articulos_Buscar.resx">
+      <DependentUpon>Frm_Articulos_Buscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Conexion\Frm_Conexiones.resx">
+      <DependentUpon>Frm_Conexiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Conexion\Frm_ConexionesRemotas.resx">
+      <DependentUpon>Frm_ConexionesRemotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Conexion\Frm_DataBaseSQL.resx">
+      <DependentUpon>Frm_DataBaseSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Conexion\Frm_InstanciaSQL.resx">
+      <DependentUpon>Frm_InstanciaSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Config\Frm_ConfigEmail.resx">
+      <DependentUpon>Frm_ConfigEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Config\Frm_Config_Inventario.resx">
+      <DependentUpon>Frm_Config_Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Entradas\Frm_Entradas.resx">
+      <DependentUpon>Frm_Entradas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\Frm_Entradas_Buscar.resx">
+      <DependentUpon>Frm_Entradas_Buscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Entradas\Frm_Entradas_Existencia.resx">
+      <DependentUpon>Frm_Entradas_Existencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Inventario Ciego\Frm_Inventario_Ciego.resx">
+      <DependentUpon>Frm_Inventario_Ciego.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Inventario Ciego\Frm_Inventario_Ciego_Buscar.resx">
+      <DependentUpon>Frm_Inventario_Ciego_Buscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Inventario Ciego\Frm_Revision_Contraloria.resx">
+      <DependentUpon>Frm_Revision_Contraloria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_CargandoConsulta.resx">
+      <DependentUpon>Frm_CargandoConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Principal.resx">
+      <DependentUpon>Frm_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Reportes\Entradas\rpt_Entradas.resx">
+      <DependentUpon>rpt_Entradas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\InventarioCiego\rpt_InventarioCiego_Enviado.resx">
+      <DependentUpon>rpt_InventarioCiego_Enviado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\InventarioCiego\rpt_InventarioCiego_Inicial.resx">
+      <DependentUpon>rpt_InventarioCiego_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

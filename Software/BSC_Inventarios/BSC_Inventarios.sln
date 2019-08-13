@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSC_Inventarios", "BSC_Inventarios\BSC_Inventarios.csproj", "{F1AA8C8C-4B12-469A-8AE7-C5FDFC19F1E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0FC74FC7-B606-4AF6-98AD-59AC2D8320E9} = {0FC74FC7-B606-4AF6-98AD-59AC2D8320E9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos", "CapaDeDatos\CapaDeDatos.csproj", "{0FC74FC7-B606-4AF6-98AD-59AC2D8320E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1AA8C8C-4B12-469A-8AE7-C5FDFC19F1E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1AA8C8C-4B12-469A-8AE7-C5FDFC19F1E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1AA8C8C-4B12-469A-8AE7-C5FDFC19F1E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1AA8C8C-4B12-469A-8AE7-C5FDFC19F1E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FC74FC7-B606-4AF6-98AD-59AC2D8320E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC74FC7-B606-4AF6-98AD-59AC2D8320E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC74FC7-B606-4AF6-98AD-59AC2D8320E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC74FC7-B606-4AF6-98AD-59AC2D8320E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
