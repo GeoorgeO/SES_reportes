@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExistenciasSucursales\CLS_Usuario_Pantalla.cs" />
     <Compile Include="ExistenciasSucursales\ConexionesSucursalesExistencias.cs" />
+    <Compile Include="ExistenciasSucursales\ConfigConexion.cs" />
     <Compile Include="SES_Reportes\CLS_Articulos.cs" />
     <Compile Include="Conexion\CLS_AppConfig.cs" />
     <Compile Include="Conexion\Conexion.cs" />

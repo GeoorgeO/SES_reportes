@@ -13,6 +13,7 @@ namespace CapaDeDatos
         public string DataBaseID { get; set; }
         public string UserID { get; set; }
         public string PassID { get; set; }
+        public string Codigo { get; set; }
 
         public void MtdSeleccionarSucursales()
         {
@@ -23,6 +24,7 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_CS_ListaSucursales";
+                
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
@@ -51,8 +53,7 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_CS_ListaSucursalesId";
-                _dato.Entero = this.SucursalesId;
-                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "SucursalesId");
+                
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
@@ -81,6 +82,8 @@ namespace CapaDeDatos
             try
             {
                 _conexion.NombreProcedimiento = "SP_BSC_CS_ConexionesSucursalesSelect";
+                _dato.Entero = this.SucursalesId;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "exepcion");
                 _conexion.EjecutarDataset();
 
                 if (_conexion.Exito)
@@ -175,6 +178,64 @@ namespace CapaDeDatos
                 Mensaje = e.Message;
                 Exito = false;
             }
+        }
+        public void MtdSeleccionarArticulo()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexion = new Conexion(cadenaConexion);
+
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_CS_selectBusqArticulo";
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
+        }
+        public void MtdSeleccionarArticuloId()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexion = new Conexion(cadenaConexion);
+
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "SP_BSC_CS_selectBusqArticuloId";
+                _dato.CadenaTexto = this.Codigo;
+                _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "Codigo");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
         }
 
     }
