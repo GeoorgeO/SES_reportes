@@ -210,7 +210,7 @@ namespace BSC_Inventarios
                                 do
                                 {
                                     Random r = new Random();
-                                    alea = r.Next(0, (ArticulosActivos - ArticuloInventario - 1));
+                                    alea = r.Next(0, (ArticulosActivos - ArticuloInventario));
                                     ValidaValor(alea, i);
                                 } while (!Valido);
                                 valores[i] = alea;
@@ -661,9 +661,9 @@ namespace BSC_Inventarios
                             if (send.Exito)
                             {
                                 MarcarEnviado();
-                                XtraMessageBox.Show("Se ha enviado el Inventario con exito");
                                 LimpiarCampos();
                                 MensajeCargando(2);
+                                XtraMessageBox.Show("Se ha enviado el Inventario con exito");
                             }
                             else
                             {
@@ -701,7 +701,7 @@ namespace BSC_Inventarios
                 {
                     CodigoAleatorios = Convert.ToInt32(sel.Datos.Rows[0]["InventarioCiegoCodigosAleatorios"].ToString());
                     int Sindiferencias = ArticulosSinDiferencias();
-                    if (Sindiferencias > 0 && CodigoAleatorios > 0)
+                    if (Sindiferencias > 0 && CodigoAleatorios > 0 && Sindiferencias>= CodigoAleatorios)
                     {
                         valores = new int[CodigoAleatorios];
                         for (int i = 0; i < CodigoAleatorios; i++)
@@ -709,7 +709,7 @@ namespace BSC_Inventarios
                             do
                             {
                                 Random r = new Random();
-                                alea = r.Next(0, (ArticulosSinDiferencias() - 1));
+                                alea = r.Next(0, Sindiferencias);
                                 ValidaValor(alea, i);
                             } while (!Valido);
                             valores[i] = alea;
@@ -718,7 +718,7 @@ namespace BSC_Inventarios
                     }
                     else
                     {
-                        XtraMessageBox.Show("No existen articulos sin diferencias o no se ha configurado el parametro de codigo Aleatorios");
+                        XtraMessageBox.Show("No existen articulos sin diferencias suficientes o no se ha configurado el parametro de codigo Aleatorios");
                     }
                 }
             }

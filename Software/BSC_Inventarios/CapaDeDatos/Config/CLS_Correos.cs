@@ -92,7 +92,7 @@ namespace CapaDeDatos
                 _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "ReportesId");
                 _conexion.EjecutarDataset();
 
-                if (_conexionR.Exito)
+                if (_conexion.Exito)
                 {
                     Datos = _conexion.Datos;
                     Mensaje = _conexion.Mensaje;
