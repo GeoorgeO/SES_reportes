@@ -770,6 +770,8 @@ namespace BSC_Inventarios
         {
             int folio = Convert.ToInt32(txtFolio.Text);
             rpt_InventarioCiego_Enviado rpt = new rpt_InventarioCiego_Enviado(folio);
+            ((SqlDataSource)rpt.DataSource).ConfigureDataConnection += Form1_ConfigureDataConnection;
+            ReportPrintTool print = new ReportPrintTool(rpt);
             PdfExportOptions pdfOptions = rpt.ExportOptions.Pdf;
             pdfOptions.PageRange = "1-1000";
 
