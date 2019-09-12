@@ -202,7 +202,7 @@ namespace BSC_Inventarios
         {
             CLS_InventarioCiego sel = new CLS_InventarioCiego();
             sel.InventarioCiegoFolio = Convert.ToInt32(txtFolio.Text);
-            sel.MtdSeleccionarFolioDetalles();
+            sel.MtdSeleccionarFolioDetallesEnviado();
             if (sel.Exito)
             {
                 if (sel.Datos.Rows.Count > 0)

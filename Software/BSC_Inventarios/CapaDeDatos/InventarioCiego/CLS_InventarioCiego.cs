@@ -258,6 +258,36 @@ namespace CapaDeDatos
             }
 
         }
+        public void MtdSeleccionarFolioDetallesEnviado()
+        {
+            TipoDato _dato = new TipoDato();
+            Conexion _conexion = new Conexion(cadenaConexion);
+
+            Exito = true;
+            try
+            {
+                _conexion.NombreProcedimiento = "Inventarios_Ciego_EnviadoFoliosDetalles_Select";
+                _dato.Entero = this.InventarioCiegoFolio;
+                _conexion.agregarParametro(EnumTipoDato.Entero, _dato, "InventarioCiegoFolio");
+                _conexion.EjecutarDataset();
+
+                if (_conexion.Exito)
+                {
+                    Datos = _conexion.Datos;
+                }
+                else
+                {
+                    Mensaje = _conexion.Mensaje;
+                    Exito = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message;
+                Exito = false;
+            }
+
+        }
         //Insert
         public void MtdInsertarFolio()
         {
