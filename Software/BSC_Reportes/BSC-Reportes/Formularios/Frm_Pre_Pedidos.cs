@@ -802,8 +802,8 @@ namespace BSC_Reportes
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ApatzinganE"], EApatzingan);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ReyesV"], VReyes);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["ReyesE"], EReyes);
-                //dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TancitaroV"], VTancitaro);
-                //dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TancitaroE"], ETancitaro);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TancitaroV"], VTancitaro);
+                dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TancitaroE"], ETancitaro);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TotalV"], TotalV);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["TotalE"], TotalE);
                 dtgValVentaExistencia.SetRowCellValue(rowHandle, dtgValVentaExistencia.Columns["PIdeal"], PIdeal);
@@ -931,8 +931,8 @@ namespace BSC_Reportes
                 TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
                 TVentas += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                 TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
-                //TVentas += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
-                //TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
+                TVentas += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                TExistencia += Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
 
                 Decimal MesesPedido = 0;
                 if (rdbPeriodo.SelectedIndex == 0)
@@ -1132,8 +1132,8 @@ namespace BSC_Reportes
                 insdetped.ESarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
                 insdetped.VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                 insdetped.ESarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
-                //insdetped.VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
-                //insdetped.ETancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
+                insdetped.VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                insdetped.ETancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
                 insdetped.TotalV = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
                 insdetped.TotalE = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalE").ToString());
                 insdetped.PIdeal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PIdeal").ToString());

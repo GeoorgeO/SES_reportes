@@ -1090,7 +1090,7 @@
             this.xtraTabPage2.Controls.Add(this.dtgPedidosInsidencias);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage2.Size = new System.Drawing.Size(1009, 360);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1007, 357);
             this.xtraTabPage2.Text = "Insidencias";
             // 
             // dtgPedidosInsidencias
@@ -1103,7 +1103,7 @@
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit7});
-            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(999, 350);
+            this.dtgPedidosInsidencias.Size = new System.Drawing.Size(997, 347);
             this.dtgPedidosInsidencias.TabIndex = 1;
             this.dtgPedidosInsidencias.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidosInsidencias});

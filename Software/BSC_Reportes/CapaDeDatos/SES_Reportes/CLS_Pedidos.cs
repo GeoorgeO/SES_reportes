@@ -440,10 +440,10 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VSarabiaII ");
                 _dato.Entero = ESarabiaII;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ESarabiaII ");
-                //_dato.Entero = VTancitaro;
-                //_conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VTancitaro ");
-                //_dato.Entero = ETancitaro;
-                //_conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ETancitaro ");
+                _dato.Entero = VTancitaro;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "VTancitaro ");
+                _dato.Entero = ETancitaro;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "ETancitaro ");
                 _dato.Entero = TotalV;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TotalV ");
                 _dato.Entero = TotalE;

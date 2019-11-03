@@ -23,7 +23,7 @@ namespace CapaDeDatos
             Exito = true;
             try
             {
-                _conexion.NombreProcedimiento = "usp_UsuarioAccesosSelect";
+                _conexion.NombreProcedimiento = "usp_UsuarioAccesosInventarioSelect";
                 _dato.CadenaTexto = c_codigo_usu;
                 _conexion.agregarParametro(EnumTipoDato.CadenaTexto, _dato, "c_codigo_usu");
                 _dato.CadenaTexto = v_passwo_usu;
