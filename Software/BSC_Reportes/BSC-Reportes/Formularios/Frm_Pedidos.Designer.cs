@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pedidos));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.Entrada = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TPedido = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -292,6 +292,7 @@
             this.btnActualizarPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.Image")));
             this.btnActualizarPedido.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnActualizarPedido.ImageOptions.LargeImage")));
             this.btnActualizarPedido.Name = "btnActualizarPedido";
+            this.btnActualizarPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnActualizarPedido_ItemClick);
             // 
             // btnVistaPreviaPedido
             // 
@@ -361,7 +362,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 556);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 857);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1120, 28);
             // 
@@ -371,7 +372,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(85, 556);
+            this.barDockControlLeft.Size = new System.Drawing.Size(85, 857);
             // 
             // barDockControlRight
             // 
@@ -379,7 +380,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1120, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 857);
             // 
             // repositoryItemTextEdit1
             // 
@@ -578,7 +579,7 @@
             this.panelControl2.Location = new System.Drawing.Point(85, 150);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl2.Size = new System.Drawing.Size(1035, 406);
+            this.panelControl2.Size = new System.Drawing.Size(1035, 707);
             this.panelControl2.TabIndex = 7;
             // 
             // xtraTabControl1
@@ -588,7 +589,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(5);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1011, 382);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1011, 683);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -599,7 +600,7 @@
             this.xtraTabPage1.Controls.Add(this.dtgPedidos);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.xtraTabPage1.Size = new System.Drawing.Size(1007, 357);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1007, 658);
             this.xtraTabPage1.Text = "Pedido";
             // 
             // dtgPedidos
@@ -612,7 +613,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.dtgPedidos.Size = new System.Drawing.Size(997, 347);
+            this.dtgPedidos.Size = new System.Drawing.Size(997, 648);
             this.dtgPedidos.TabIndex = 0;
             this.dtgPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgValPedidos});
@@ -660,13 +661,13 @@
             this.SumaD,
             this.Entrada,
             this.TPedido});
-            gridFormatRule1.Column = this.Entrada;
-            gridFormatRule1.ColumnApplyTo = this.TPedido;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleExpression1.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression1.PredefinedName = "Red Bold Text";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.dtgValPedidos.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.Entrada;
+            gridFormatRule2.ColumnApplyTo = this.TPedido;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.dtgValPedidos.FormatRules.Add(gridFormatRule2);
             this.dtgValPedidos.GridControl = this.dtgPedidos;
             this.dtgValPedidos.Name = "dtgValPedidos";
             this.dtgValPedidos.OptionsFind.AlwaysVisible = true;
@@ -1072,6 +1073,7 @@
             this.TancitaroD.Caption = "D";
             this.TancitaroD.FieldName = "DTancitaro";
             this.TancitaroD.Name = "TancitaroD";
+            this.TancitaroD.Visible = true;
             // 
             // repositoryItemTextEdit3
             // 
@@ -1116,12 +1118,12 @@
             this.bandedGridColumn3,
             this.bandedGridColumn20,
             this.bandedGridColumn6});
-            gridFormatRule2.Column = this.bandedGridColumn20;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleExpression2.Expression = "[TPedido] <> []";
-            formatConditionRuleExpression2.PredefinedName = "Red Bold Text";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule2);
+            gridFormatRule3.Column = this.bandedGridColumn20;
+            gridFormatRule3.Name = "Format0";
+            formatConditionRuleExpression3.Expression = "[TPedido] <> []";
+            formatConditionRuleExpression3.PredefinedName = "Red Bold Text";
+            gridFormatRule3.Rule = formatConditionRuleExpression3;
+            this.dtgValPedidosInsidencias.FormatRules.Add(gridFormatRule3);
             this.dtgValPedidosInsidencias.GridControl = this.dtgPedidosInsidencias;
             this.dtgValPedidosInsidencias.Name = "dtgValPedidosInsidencias";
             this.dtgValPedidosInsidencias.OptionsFind.AlwaysVisible = true;
@@ -1206,7 +1208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 584);
+            this.ClientSize = new System.Drawing.Size(1120, 885);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);

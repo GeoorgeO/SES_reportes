@@ -786,8 +786,8 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
-                //_dato.Entero = DTancitaro;
-                //_conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DTancitaro");
+                _dato.Entero = DTancitaro;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DTancitaro");
                 _dato.Entero = TPedido;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
                 _conexionR.EjecutarDataset();
@@ -1153,6 +1153,8 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _dato.Entero = DTancitaro;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DTancitaro");
                 _conexionR.EjecutarDataset();
 
                 if (_conexionR.Exito)
@@ -1212,6 +1214,8 @@ namespace CapaDeDatos
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaI");
                 _dato.Entero = DSarabiaII;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DSarabiaII");
+                _dato.Entero = DTancitaro;
+                _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "DTancitaro");
                 _dato.Entero = TPedido;
                 _conexionR.agregarParametro(EnumTipoDato.Entero, _dato, "TPedido");
                 _conexionR.EjecutarDataset();

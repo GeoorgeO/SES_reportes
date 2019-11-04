@@ -626,7 +626,8 @@ namespace BSC_Reportes
             gridBand13.Visible = Mostrar;
             gridBand14.Visible = Mostrar;
             gridBand15.Visible = Mostrar;
-            //gridBand16.Visible = Mostrar;
+            gridBand16.Visible = Mostrar;
+            Tancitaro.Visible = Mostrar;
         }
         private void ColumnsExistencia(Boolean Mostrar)
         {
@@ -644,7 +645,7 @@ namespace BSC_Reportes
             NvaItaliaE.Visible = Mostrar;
             ApatzinganE.Visible = Mostrar;
             ReyesE.Visible = Mostrar;
-            //TancitaroE.Visible = Mostrar;
+            TancitaroE.Visible = Mostrar;
         }
         private void ColumnsCosto(Boolean Mostrar)
         {
@@ -669,7 +670,7 @@ namespace BSC_Reportes
             NvaItaliaV.Visible = Mostrar;
             ApatzinganV.Visible = Mostrar;
             ReyesV.Visible = Mostrar;
-            //TancitaroV.Visible = Mostrar;
+            TancitaroV.Visible = Mostrar;
         }
         private void chkVentas_CheckedChanged(object sender, EventArgs e)
         {
@@ -1003,8 +1004,6 @@ namespace BSC_Reportes
         {
             MensajeCargando(1);
             GuardarPrepedido();
-           
-            
         }
 
         private void DesbloquearObjetos(Boolean Valor)
@@ -1207,8 +1206,8 @@ namespace BSC_Reportes
                     insdetped.ESarabiaI = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIE").ToString());
                     insdetped.VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                     insdetped.ESarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIE").ToString());
-                    //insdetped.VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
-                    //insdetped.ETancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
+                    insdetped.VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                    insdetped.ETancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroE").ToString());
                     insdetped.TotalV = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalV").ToString());
                     insdetped.TotalE = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TotalE").ToString());
                     insdetped.PIdeal = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "PIdeal").ToString());
@@ -1606,9 +1605,9 @@ namespace BSC_Reportes
                         VSarabiaII = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "SarabiaIIV").ToString());
                         DSarabiaII = Math.Round(((Convert.ToDecimal(VSarabiaII) / VTotal) * vTPedido), 0);
                         TotalDistribucion += Convert.ToInt32(DSarabiaII);
-                        //VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
-                        //DTancitaro = Math.Round(((Convert.ToDecimal(VTancitaro) / VTotal) * vTPedido), 0);
-                        //TotalDistribucion += Convert.ToInt32(DTancitaro);
+                        VTancitaro = Convert.ToInt32(dtgValVentaExistencia.GetRowCellValue(xRow, "TancitaroV").ToString());
+                        DTancitaro = Math.Round(((Convert.ToDecimal(VTancitaro) / VTotal) * vTPedido), 0);
+                        TotalDistribucion += Convert.ToInt32(DTancitaro);
                         if (!(TotalDistribucion== vTPedido))
                         { 
                             int Diferencia = vTPedido - TotalDistribucion;
@@ -1650,7 +1649,7 @@ namespace BSC_Reportes
             insdet.DPaseo = Convert.ToInt32(DPaseo);
             insdet.DSarabiaI = Convert.ToInt32(DSarabiaI);
             insdet.DSarabiaII = Convert.ToInt32(DSarabiaII);
-            //insdet.DTancitaro = Convert.ToInt32(DTancitaro);
+            insdet.DTancitaro = Convert.ToInt32(DTancitaro);
             insdet.TPedido = Convert.ToInt32(vTPedido);
             insdet.MtdInsertPedidoDetalleProveedor();
             if (!insdet.Exito)
@@ -1723,9 +1722,9 @@ namespace BSC_Reportes
                 case 13:
                     DLosReyes += diferencia;
                     break;
-                //case 14:
-                //    DTancitaro += diferencia;
-                //    break;
+                case 14:
+                    DTancitaro += diferencia;
+                    break;
             }
         }
 

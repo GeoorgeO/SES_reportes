@@ -291,6 +291,16 @@ namespace BSC_Reportes
 
             column = new DataColumn();
             column.DataType = typeof(Int32);
+            column.ColumnName = "DTancitaro";
+            column.AutoIncrement = false;
+            column.Caption = "D";
+            column.ReadOnly = false;
+            column.Unique = false;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(Int32);
             column.ColumnName = "SumaD";
             column.AutoIncrement = false;
             column.Caption = "Suma D";
@@ -923,6 +933,7 @@ namespace BSC_Reportes
                 insdetped.DPaseo = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DPaseo").ToString());
                 insdetped.DSarabiaI = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaI").ToString());
                 insdetped.DSarabiaII = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DSarabiaII").ToString());
+                insdetped.DSarabiaII = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "DTancitaro").ToString());
                 int SumaD = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "SumaD").ToString());
                 insdetped.Surtido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "Surtido").ToString());
                 insdetped.TPedido = Convert.ToInt32(dtgValPedidos.GetRowCellValue(xRow, "TPedido").ToString());
@@ -1071,7 +1082,7 @@ namespace BSC_Reportes
             pbProgreso.Position = 12;
             EntradaSucursalSarabiaII();
             pbProgreso.Position = 13;
-            //EntradaSucursalTancitaro();
+            EntradaSucursalTancitaro();
             pbProgreso.Position = 14;
             MensajeCargando(2);
             pbProgreso.Position = 0;
@@ -2468,6 +2479,30 @@ namespace BSC_Reportes
             else
             {
                 XtraMessageBox.Show("El pedido no esta surtido o ya se encuentra cerrado ");
+            }
+        }
+
+        private void btnActualizarPedido_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (txtFolio.Text != string.Empty)
+            {
+                LimpiarCampos();
+                CargarPedidos(txtFolio.Text);
+                DesbloquearObjetos(true);
+                if (lblStatus.Text == "Pendiente")
+                {
+                    BloqueoEspecial(false);
+                }
+                else
+                {
+                    BloqueoEspecial(true);
+                }
+                NumerarReg();
+                XtraMessageBox.Show("Proceso Completado", "Proceso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                XtraMessageBox.Show("No se ha cargado folio de pedido");
             }
         }
     }
